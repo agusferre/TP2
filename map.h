@@ -762,6 +762,10 @@ public:
      * \attention El parámetro formal \LT del TAD diccionario se establece en esta función.
      * \LT = \P{c}.operator()
      */
+     /**
+	ambos hijos de header apuntan a null, y padre de header apunta a null
+
+    **/
     explicit map(Compare c = Compare()) {
     	//completar
     }
@@ -781,7 +785,15 @@ public:
      * \LT es igual al operator() del comparador de \P{other}
      *
      */
+
+    /**
+    begin() iterador en other.
+    mientras haya Siguiente en el iterador de other, insertar siguiente, y avanzar.
+	
+
+    **/
     map(const map& other) {
+
     	//completar
     }
 
@@ -852,6 +864,12 @@ public:
      *
      * \note Es importante remarcar que no se realiza ninguna comparación entre los elementos.
      */
+     /**
+	-destruir this
+	- this->map(other)
+
+     **/
+
     map& operator=(map other) {
     	//completar
     }
@@ -877,6 +895,12 @@ public:
      * memoria de la computadora), podríamos expresar la funcionalidad estableciendo la
      * liberación de la memoria
      */
+
+     /**
+	inicializa iterador con begin()
+	mientras hay Siguiente, borra (siguiente)
+     **/
+
     ~map() {
         //completar
     }
