@@ -44,8 +44,63 @@
  */
 /**
  * \page Enunciado Enunciado
+ * 
+ * - Fecha de entrega: 2 de Junio, hasta las 16:00 hs.
+ * 
+ * \section intro-enunciado Introducción
+ * 
+ * El objetivo del trabajo práctico es implementar y documentar nuestra versión de un diccionario que emule al 
+ * diccionario `std::map` del estándar C++03.  Para ello, se pide completar el archivo `map.h` que se adjunta como 
+ * parte del enunciado.  La implementación debe respetar las complejidades solicitadas y no debe perder memoria.  A 
+ * continuación se describen los lineamientos para resolver el TP.
+ * 
+ * \subsection intro-doc Documentación
+ * 
+ * El archivo `map.h` sirve a la vez como implementación y documentación.  Dentro de este archivo hay una serie de
+ * comentarios C++ que sirven para generar una pagina web con la documentación.  Para ello, es necesario compilar el 
+ * archivo fuente usando el sistema [doxygen](http://www.doxygen.org).  En dicha página web de documentación, 
+ * además del presente enunciado, se encuentra:
+ * 
+ * - Una descripción general de cómo se usa el módulo `aed2::map` (o `std::map`).
+ * - Una explicación detallada de la estructura de datos a utilizar, con las justificaciones para la elección de dicha 
+ * estructura.
+ * - Una explicación de cómo especificar formalmente las distintas funciones que utilizan punteros.
+ * - Algunas consideraciones a la hora de especificar las funciones que usan iteradores.
+ * - Una descripción de cómo especificar los aspectos de aliasing de un módulo.
+ * - La interfaz del módulo `aed2::map`, incluyendo \b todas las funciones públicas, escrita en lenguaje 
+ * coloquial.
+ * - Algunas funciones completamente especificadas e implementadas que sirven como ejemplo de lo que se espera del TP.
  *
- * A ser completado. Ver enunciado.pdf
+ * Para generar la documentación, alcanza con ejecutar `doxygen map.h`, teniendo en cuenta que el archivo `map.doxyfile`
+ * debe estar en la misma carpeta que `map.h`.  Se recomienda el uso de Eclipse, junto con plugins para `google test`, 
+ * `valgrind` y `doxygen`.
+ * 
+ * \subsection enun-lineamiento Lineamientos para la resolución
+ *
+ * - Estructura de representación: la estructura de representación se encuentra en la parte privada de la clase y 
+ * <b>no se puede modificar</b>.  En pocas palabras, implementa un red-black tree con un nodo cabecera.
+ * - Implementación: se deben implementar todas las funciones públicas.  No se pueden agregar funciones en la parte 
+ * pública, aunque sí se pueden agregar en la parte privada (recomendado).
+ * - Eficiencia: las funciones implementadas deben satisfacer las cotas de complejidad requeridas.  Asimismo, todas 
+ * las funciones privadas que se agreguen deben indicar cuál es su complejidad.
+ * - Aspectos no funcionales:  además de la corrección y la eficiencia, se va a evaluar la claridad del código, la 
+ * reutilización de funciones, y la no perdida de memoria.
+ * - Especificación formal: se debe completar la especificación de todas las funciones publicas, escribiendo las pre 
+ * y postcondiciones en lenguaje formal.  Asimismo, se deben especificar los invariantes de representación y las 
+ * funciones de abstracción de todas las estructuras (diccionario e iteradores), tanto en lenguaje coloquial como formal.
+ * - Especificación coloquial: no es necesario especificar las funciones privadas en términos formales.  Sí se 
+ * deben documentar en lenguaje coloquial, describiendo los parámetros requeridos y el valor de retorno, siguiendo 
+ * el mismo estilo que se usa para las funciones públicas.
+ * - Axiomas y proposiciones auxiliares: las funciones auxiliares del lenguaje de especificación, deben axiomatizarse 
+ * en la sección correspondiente dentro del archivo `map.h`.  Se sugiere agregar la función dentro del archivo 
+ * `map.doxyfile` a fin de poder generar links desde las otras secciones del documento.  Ver los ejemplos incluidos en 
+ * el archivo.
+ * - Testing: una semana antes de la entrega se van a publicar la batería de test que se van a utilizar para testear 
+ * el módulo.  Pasar o no pasar los casos de test es irrelevante para la aprobación del TP, que será corregido por uno 
+ * de los docentes.
+ * - Forma de entrega:  El trabajo práctico se entrega enviando un mail a `algo2.dc+tp2` en `gmail.com`.  El mail 
+ * debe incluir a los integrantes del grupo y debe tener adjunto el archivo `map.h`.  El bot de la materia podría 
+ * llegar a responder si se pasan los casos de test o no; tener en cuenta el punto anterior. 
  */
 /**
  * \page Interfaz Descripción de la interfaz
@@ -699,8 +754,8 @@ public:
      * @param c comparador (functor de orden) a utilizar
      * @retval res diccionario recién construido
      *
-     * \pre \aedpre{completar}
-     * \post \aedpost{completar}
+     * \pre \aedpre{true}
+     * \post \aedpost{res \igobs vacio()}
      *
      * \complexity{\O(1)}
      *
@@ -717,8 +772,8 @@ public:
      * @param other diccionario a copiar
      * @retval res diccionario recien construido
      *
-     * \pre \aedpre{completar}
-     * \post \aedpost{completar}
+     * \pre \aedpre{true}
+     * \post \aedpost{res \igobs other}
      *
      * \complexity{\O(\COPY(\P{other}))}
      *
@@ -764,8 +819,8 @@ public:
      * \endparblock
      *
      * \complexity{
-     * - En el peor caso: \O(\SIZE(\P{res})\LOG(\SIZE(\P{res})) \CDOT \CMP(\P{res}))
-     * - Si el rango [\P{first}, \P{last}) está ordenado: \O(\SIZE(\P{res}) \CDOT \CMP(\P{res}))
+     * - En el peor caso: \O(\SIZE(\P{res}) \CDOT (\LOG(\SIZE(\P{res})) \CDOT \CMP(\P{res}) + \COPY(\P{res})))
+     * - Si el rango [\P{first}, \P{last}) está ordenado: \O(\SIZE(\P{res}) \CDOT (\CMP(\P{res})+ \COPY(\P{res})))
      * }
      *
      * \attention El parámetro formal \LT del TAD diccionario se establece en esta función.
@@ -788,10 +843,10 @@ public:
      * @param other diccionario a copiar
      * @retval res referencia a *this
      *
-     * \aliasing{completar}
+     * \aliasing{no hay}
      *
-     * \pre \aedpre{completar}
-     * \post \aedpost{completar}
+     * \pre \aedpre{true}
+     * \post \aedpost{res \igobs other}
      *
      * \complexity{\O(\DEL(\P{*this}) \PLUS \COPY(\P{other}))}
      *
@@ -839,9 +894,9 @@ public:
      *
      * \aliasing{completar}
      *
-     * \pre \aedpre{completar}
+     * \pre \aedpre{def?(key,*this)}
      *
-     * \post \aedpost{completar}
+     * \post \aedpost{res \igobs obtener(key,*this)}
      *
      * \complexity{\O(\LOG(\SIZE(\P{*this}) \CDOT \CMP(\P{*this}))}
      *
@@ -862,7 +917,7 @@ public:
      * @brief Devuelve el significado asociado a \P{key}, asegurando su existencia
      *
      * Devuelve el significado asociado a \P{key}.  Si \P{key} no está definido en \P{*this},
-     * entonces se inserta un nuevo valor con clave \P{key} y significado \T{Value}().  De esta
+     * entonces se inserta un nuevo valor con clave \P{key} y significado \T{Meaning}().  De esta
      * forma, podemos usar `operator[]` para definir nuevos valores o modificar los
      * existentes.
      *
@@ -882,10 +937,10 @@ public:
      * \par Requerimientos sobre el tipo \T{Meaning}
      * Requiere que \T{Meaning} tenga un constructor sin parámetros con complejidad \O(\a c)
      *
-     * \aliasing{completar}
+     * \aliasing{hay aliasing entre res y obtener(key, *this)}
      *
-     * \pre \aedpre{completar}
-     * \post \aedpost{completar}
+     * \pre \aedpre{true}
+     * \post \aedpost{def?(key, *this) \rightarrow res \igobs obtener(key, *this)}
 	 *
      * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}) + \a x) donde
      * - \a x = 1 si def?(\a self, \P{key}), y
@@ -906,10 +961,10 @@ public:
      * @param key clave a buscar
      * @retval res iterador apuntando al valor con clave \P{key} (o a \P{this}->end() si dicho elemento no existe)
      *
-     * \aliasing{completar}
+     * \aliasing{Hay aliasing entre el actual(iterador) y obtener(key, *this)}
      *
-     * \pre \aedpre{completar}
-     * \post \aedpost{completar}
+     * \pre \aedpre{true}
+     * \post \aedpost{def?(key, *this) \rightarrow res \igobs crearitAux(key,inorder(*this))}
      *
      * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
      *
@@ -937,10 +992,10 @@ public:
      * @param key clave a buscar
      * @retval res iterador apuntando al valor con clave al menos \P{key} (o a \P{this}->end() si dicho elemento no existe)
      *
-     * \aliasing{completar}
+     * \aliasing{hay aliasing entre res y el sucesor inmediato de key}
      *
-     * \pre \aedpre{completar}
-     * \post \aedpost{completar}
+     * \pre \aedpre{true}
+     * \post \aedpost{res \igobs crearitAux2(key,inorder(*this))(busca en la secu inorder a key y devuelve el siguiente o null si es mayor a todas las claves)}
      *
      * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
      *
@@ -964,8 +1019,8 @@ public:
      *
      * @retval res denota true si y solo si el diccionario está vacío
      *
-     * \pre \aedpre{completar}
-     * \post \aedpost{completar}
+     * \pre \aedpre{true}
+     * \post \aedpost{res \igobs \emptyset ?(claves(*this))}
      *
      * \complexity{\O(1)}
      */
@@ -978,8 +1033,8 @@ public:
      *
      * @retval res cantidad de valores
 	 *
-     * \pre \aedpre{completar}
-     * \post \aedpost{completar}
+     * \pre \aedpre{true}
+     * \post \aedpost{res \igobs \#claves(*this)}
      *
      * \complexity{\O(1)}
      */
@@ -1005,11 +1060,11 @@ public:
      * Igualmente, la función es robusta y funciona correctamente aunque esto no ocurra.
      * @retval res iterador apuntando al elemento insertado o que previno la inserción
      *
-     * \aliasing{completar}
+     * \aliasing{hay aliasing???}
      *
      *
-     * \pre \aedpre{completar}
-     * \post  \aedpost{completar}
+     * \pre \aedpre{true}
+     * \post  \aedpost{def?(value.first, *this) \rightarrow crearitAux(*this.first, inorder(*this) ) \and \neg def?(value.first, *this) \rightarrow res \igobs agregar(crearIt(inorder(*this)), value)}
      *
      * \complexity{
      *  - Peor caso: \O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}) \PLUS \COPY(\P{value}))
@@ -1041,10 +1096,10 @@ public:
      * Igualmente, la función es robusta y funciona correctamente aunque esto no ocurra.
      * @retval res iterador apuntando al elemento insertado o redefinido
      *
-     * \aliasing{completar}
+     * \aliasing{hay aliasing????}
      *
-     * \pre \aedpre{completar}
-     * \post  \aedpost{completar}
+     * \pre \aedpre{true}
+     * \post  \aedpost{def?(value.first, *this) \rightarrow res \igobs Agregar(Eliminar(CrearItMod(hasta(inorder(*this), value), desde(inorder(*this), value)))) \}
      *
      * \complexity{
      *  - Peor caso: \O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}) \PLUS \COPY(\P{value}))
@@ -1072,10 +1127,10 @@ public:
      * @param pos iterador apuntando al valor a eliminar.
      * @retval res iterador apuntando al primer valor con clave mayor a \P{pos} (o \P{this}->end(), si dicho valor no existe).
      *
-     * \aliasing{completar}.
+     * \aliasing{complertar}.
      *
-     * \pre \aedpre{completar}
-     * \post \aedpost{completar}
+     * \pre \aedpre{HayMas?(pos)}
+     * \post \aedpost{Eliminar(pos)}
      *
      * \complexity{
      * - Peor caso: \O(\DEL(\P{*pos}) + \LOG(\SIZE(\P{*this})))
@@ -1094,8 +1149,8 @@ public:
      *
      * \aliasing{completar}
      *
-     * \pre \aedpre{completar}
-     * \post \aedpost{completar}
+     * \pre \aedpre{*this \igobs *this0 \and def?(key, *this)}
+     * \post \aedpost{*this \igobs borrar(key, *this0)}
      *
      * \complexity{\O(\DEL(\P{*pos}) + \LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
      */
@@ -1165,12 +1220,12 @@ public:
     /**
      * @brief Devuelve un iterador al primer valor del diccionario
      *
-     * \aliasing{completar}
+     * \aliasing{no hay}
      *
      * @retval res iterador al primer valor
      *
-     * \pre \aedpre{completar}
-     * \post \aedpost{completar}
+     * \pre \aedpre{true}
+     * \post \aedpost{res \igobs CrearItMod(inorder(*this))}
      *
      * \complexity{\O(1)}
      */
@@ -1191,12 +1246,12 @@ public:
     /**
      * @brief Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario
      *
-     * \aliasing{completar}
+     * \aliasing{no hay}
      *
      * @retval res iterador a la posicion pasando-al-ultimo
      *
-     * \pre \aedpre{completar}
-     * \post \aedpost{completar}
+     * \pre \aedpre{true}
+     * \post \aedpost{res \igobs CrearItMod(inorder(*this), \langle \ranlge)}
      *
      * \complexity{\O(1)}
      */
@@ -1217,12 +1272,12 @@ public:
     /**
      * @brief Devuelve un iterador al primer valor del diccionario, en un recorrido al revés
      *
-     * \aliasing{completar}
+     * \aliasing{no hay}
      *
      * @retval res iterador a la primer posicion en un recorrido al revés
      *
-     * \pre \aedpre{completar}
-     * \post \aedpost{completar}
+     * \pre \aedpre{true}
+     * \post \aedpost{res \igobs CrearItMod(\langle \rangle , postorder(*this))}
      *
      * \complexity{\O(1)}
      */
@@ -1243,12 +1298,12 @@ public:
     /**
      * @brief Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario, en un recorrido al revés
      *
-     * \aliasing{completar}
+     * \aliasing{no hay}
      *
      * @retval res iterador a la posicion pasando-al-ultimo, en un recorrido al revés
      *
-     * \pre \aedpre{completar}
-     * \post \aedpost{completar}
+     * \pre \aedpre{true}
+     * \post \aedpost{res \igobs CrearItMod(postorder(*this), \langle \ranlge)}
      *
      * \complexity{\O(1)}
      */
@@ -1344,10 +1399,10 @@ public:
          *
          * @retval res referencia al valor apuntado por \P{*this}
          *
-         * \aliasing{completar}
+         * \aliasing{hay aliasing entre res y Siguiente(*this)}
          *
-         * \pre \aedpre{completar}
-         * \post \aedpost{completar}
+         * \pre \aedpre{true}
+         * \post \aedpost{res \igobs Siguiente(*this)}
          *
          * \complexity{\O(1)}
          */
@@ -1359,9 +1414,9 @@ public:
          *
          * @retval res puntero al valor apuntado por \P{*this}
          *
-         * \aliasing{completar}
+         * \aliasing{hay aliasing entre res y Siguiente(*this)}
          *
-         * \pre \aedpre{true}
+         * \pre \aedpre{haySiguiente(\P{*this})}
          * \post \aedpost{\P{*res} \IGOBS siguiente(\P{*this})}
          *
          * \complexity{\O(1)}
@@ -1377,10 +1432,10 @@ public:
          *
          * @retval res referencia a \P{*this}
          *
-         * \aliasing{completar}
+         * \aliasing{no hay}
          *
-         * \pre \aedpre{completar}
-         * \post \aedpost{completar}
+         * \pre \aedpre{HaySiguiente?(*this)}
+         * \post \aedpost{res \igobs Avanzar(*this)}
          *
          * \complexity{
          * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
@@ -1395,10 +1450,10 @@ public:
          *
          * @retval res iterador apuntando a la dirección anterior de \P{*this}
          *
-         * \aliasing{completar}
+         * \aliasing{no hay}
          *
-         * \pre \aedpre{completar}
-         * \post \aedpost{completar}
+         * \pre \aedpre{HaySiguiente?(*this)}
+         * \post \aedpost{????}
          *
          * \complexity{
          * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
@@ -1413,10 +1468,10 @@ public:
          *
          * @retval res referencia a \P{*this}
          *
-         * \aliasing{completar}
+         * \aliasing{no hay}
          *
-         * \pre \aedpre{completar}
-         * \post \aedpost{completar}
+         * \pre \aedpre{HayAnterior?(*this)}
+         * \post \aedpost{res \igobs Retroceder(*this)}
          *
          * \complexity{
          * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
@@ -1431,9 +1486,9 @@ public:
          *
          * @retval res iterador apuntando a la dirección siguiente de \P{*this}
          *
-         * \aliasing{completar}
+         * \aliasing{no hay}
          *
-         * \pre \aedpre{completar}
+         * \pre \aedpre{HayAnterior?(*this)}
          * \post \aedpost{completar}
          *
          * \complexity{
@@ -1456,8 +1511,8 @@ public:
          * - false, cuando alguno de ellos es no nulo, o
          * - true, cuando ambos son nulos.}
          *
-         * \pre \aedpre{completar}
-         * \post \aedpost{completar}
+         * \pre \aedpre{true}
+         * \post \aedpost{res \leftrightarrow (*this \igobs other)}
          *
          * \complexity{\O(1)}
          */
@@ -1680,6 +1735,23 @@ private:
          */
         Node(Node* p, Color c = Color::Red) : parent(p), color(c) {}
         //@}
+        
+        /**
+         * @brief Destructor de Node
+         *
+         * Como Node funciona de clase base, el destructor es virtual, asi se puede
+         * invocar delete de un Node* que apunta a un InnerNode, destruyendo el valor contenido
+         * en el InnerNode.
+         *
+         * \remark En rigor, nunca deberíamos invocar new Node, asi que no tiene sentido hacer
+         * delete de un Node*.  Podemos evitar esta invocación poniendo el destructor como protegido
+         * y no virtual.  De esa forma, nos obliga a tener un InnerNode* para el delete, lo cual
+         * efectivamente llama al destructor del valor.  Sin embargo, por simplicidad, vamos a permitir
+         * que el destructor sea virtual.  Además, así no es necesario que hagan el `static_cast` y evitamos
+         * errores de memoria difíciles de debugguear.
+         */
+        virtual ~Node() {}
+
 
 		/////////////////////////////////////////////////
         /** \name Acceso a la información en los nodos */
