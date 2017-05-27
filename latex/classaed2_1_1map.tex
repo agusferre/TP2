@@ -54,6 +54,20 @@ using \hyperlink{classaed2_1_1map_a8e6a592062260177fd73b2f9897b1dd5}{reverse\+\_
 using \hyperlink{classaed2_1_1map_aed66a216549d13078a3ea6978ea0b768}{const\+\_\+reverse\+\_\+iterator} = std\+::reverse\+\_\+iterator$<$ \hyperlink{classaed2_1_1map_1_1const__iterator}{const\+\_\+iterator} $>$
 \begin{DoxyCompactList}\small\item\em Iterador para recorrer un diccionario constante en orden inverso. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a2ef6723c183916276b0afc4a4c721475}{insert\+\_\+or\+\_\+assign} (\hyperlink{classaed2_1_1map_1_1const__iterator}{const\+\_\+iterator} hint, const \hyperlink{classaed2_1_1map_a719db98e0ff9a837610f76be33264680}{value\+\_\+type} \&value)
+\item 
+\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a9128a806713bcc999ebd8a97ab77e765}{insert\+\_\+or\+\_\+assign} (const \hyperlink{classaed2_1_1map_a719db98e0ff9a837610f76be33264680}{value\+\_\+type} \&value)
+\item 
+\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_ad8e796bf9c9c558e5ce6b61e116253fe}{erase} (\hyperlink{classaed2_1_1map_1_1const__iterator}{const\+\_\+iterator} pos)
+\begin{DoxyCompactList}\small\item\em Elimina el valor apuntado por \{pos\}. \end{DoxyCompactList}\item 
+void \hyperlink{classaed2_1_1map_a2ffadb42cd5f0bc7b3752ff159b75334}{erase} (const Key \&key)
+\begin{DoxyCompactList}\small\item\em Elimina el valor cuya clave es \{key\}. \end{DoxyCompactList}\item 
+void \hyperlink{classaed2_1_1map_a2bfa5165825979bf2431db55bc6bc9ca}{clear} ()
+\begin{DoxyCompactList}\small\item\em Vacia el diccionario. \end{DoxyCompactList}\item 
+void \hyperlink{classaed2_1_1map_a43ddb71cc91e5c6021a7a1f243d6cc4a}{swap} (\hyperlink{classaed2_1_1map}{map} \&other)
+\begin{DoxyCompactList}\small\item\em Intercambia el contenido de \{$\ast$this\} y \{other\}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \begin{Indent}\textbf{ Construcción, asignación y destrucción}\par
 \begin{DoxyCompactItemize}
 \item 
@@ -100,19 +114,7 @@ size\+\_\+t \hyperlink{classaed2_1_1map_aa6e806b3be6dc0da79adbfae08b571bf}{size}
 \hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a6941cde9a79c27f054b5c97a587a1854}{insert} (\hyperlink{classaed2_1_1map_1_1const__iterator}{const\+\_\+iterator} hint, const \hyperlink{classaed2_1_1map_a719db98e0ff9a837610f76be33264680}{value\+\_\+type} \&value)
 \begin{DoxyCompactList}\small\item\em Inserta \{value\} en el diccionario. \end{DoxyCompactList}\item 
 \hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8}{insert} (const \hyperlink{classaed2_1_1map_a719db98e0ff9a837610f76be33264680}{value\+\_\+type} \&value)
-\item 
-\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a2ef6723c183916276b0afc4a4c721475}{insert\+\_\+or\+\_\+assign} (\hyperlink{classaed2_1_1map_1_1const__iterator}{const\+\_\+iterator} hint, const \hyperlink{classaed2_1_1map_a719db98e0ff9a837610f76be33264680}{value\+\_\+type} \&value)
-\begin{DoxyCompactList}\small\item\em Inserta o redefine \{value\} en el diccionario. \end{DoxyCompactList}\item 
-\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a9128a806713bcc999ebd8a97ab77e765}{insert\+\_\+or\+\_\+assign} (const \hyperlink{classaed2_1_1map_a719db98e0ff9a837610f76be33264680}{value\+\_\+type} \&value)
-\item 
-\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_ad8e796bf9c9c558e5ce6b61e116253fe}{erase} (\hyperlink{classaed2_1_1map_1_1const__iterator}{const\+\_\+iterator} pos)
-\begin{DoxyCompactList}\small\item\em Elimina el valor apuntado por \{pos\}. \end{DoxyCompactList}\item 
-void \hyperlink{classaed2_1_1map_a2ffadb42cd5f0bc7b3752ff159b75334}{erase} (const Key \&key)
-\begin{DoxyCompactList}\small\item\em Elimina el valor cuya clave es \{key\}. \end{DoxyCompactList}\item 
-void \hyperlink{classaed2_1_1map_a2bfa5165825979bf2431db55bc6bc9ca}{clear} ()
-\begin{DoxyCompactList}\small\item\em Vacia el diccionario. \end{DoxyCompactList}\item 
-void \hyperlink{classaed2_1_1map_a43ddb71cc91e5c6021a7a1f243d6cc4a}{swap} (\hyperlink{classaed2_1_1map}{map} \&other)
-\begin{DoxyCompactList}\small\item\em Intercambia el contenido de \{$\ast$this\} y \{other\}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}\textbf{ Recorridos e iteradores}\par
 \begin{DoxyCompactItemize}
@@ -301,10 +303,10 @@ Crea un diccionario vacio.
 \hline
 \end{DoxyRetVals}
 \begin{DoxyPrecond}{Precondition}
-\{completar\} 
+\{true\} 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
-\{completar\}
+\{res  vacio()\}
 \end{DoxyPostcond}
 \{(1)\}
 
@@ -333,10 +335,10 @@ Constructor por copia.
 \hline
 \end{DoxyRetVals}
 \begin{DoxyPrecond}{Precondition}
-\{completar\} 
+\{true\} 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
-\{completar\}
+\{res  other\}
 \end{DoxyPostcond}
 \{((\{other\}))\}
 
@@ -395,8 +397,8 @@ Los valores definidos en \{res\} son aquellos que aparecen en \mbox{[}\{first\},
 
 \{
 \begin{DoxyItemize}
-\item En el peor caso\+: ((\{res\})((\{res\}))  (\{res\}))
-\item Si el rango \mbox{[}\{first\}, \{last\}) está ordenado\+: ((\{res\})  (\{res\})) \}
+\item En el peor caso\+: ((\{res\})  (((\{res\}))  (\{res\}) + (\{res\})))
+\item Si el rango \mbox{[}\{first\}, \{last\}) está ordenado\+: ((\{res\})  ((\{res\})+ (\{res\}))) \}
 \end{DoxyItemize}
 
 \begin{DoxyAttention}{Attention}
@@ -456,10 +458,10 @@ Devuelve el significado asociado a \{key\}.
 \{completar\}
 
 \begin{DoxyPrecond}{Precondition}
-\{completar\}
+\{def?(key,$\ast$this)\}
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
-\{completar\}
+\{res  obtener(key,$\ast$this)\}
 \end{DoxyPostcond}
 \{(((\{$\ast$this\})  (\{$\ast$this\}))\}
 
@@ -484,7 +486,7 @@ This is an overloaded member function, provided for convenience. It differs from
 
 Devuelve un iterador al primer valor del diccionario. 
 
-\{completar\}
+\{no hay\}
 
 
 \begin{DoxyRetVals}{Return values}
@@ -492,10 +494,10 @@ Devuelve un iterador al primer valor del diccionario.
 \hline
 \end{DoxyRetVals}
 \begin{DoxyPrecond}{Precondition}
-\{completar\} 
+\{true\} 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
-\{completar\}
+\{res  Crear\+It\+Mod(inorder($\ast$this))\}
 \end{DoxyPostcond}
 \{(1)\} \mbox{\Hypertarget{classaed2_1_1map_af3b1818c2b44e37221cc3b131768555b}\label{classaed2_1_1map_af3b1818c2b44e37221cc3b131768555b}} 
 \index{aed2\+::map@{aed2\+::map}!begin@{begin}}
@@ -568,10 +570,10 @@ Indica si el diccionario esta vacío.
 \hline
 \end{DoxyRetVals}
 \begin{DoxyPrecond}{Precondition}
-\{completar\} 
+\{true\} 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
-\{completar\}
+\{res   ?(claves($\ast$this))\}
 \end{DoxyPostcond}
 \{(1)\} \mbox{\Hypertarget{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983}\label{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983}} 
 \index{aed2\+::map@{aed2\+::map}!end@{end}}
@@ -584,7 +586,7 @@ Indica si el diccionario esta vacío.
 
 Devuelve un iterador apuntando a la posición pasando-\/el-\/ultimo del diccionario. 
 
-\{completar\}
+\{no hay\}
 
 
 \begin{DoxyRetVals}{Return values}
@@ -592,10 +594,10 @@ Devuelve un iterador apuntando a la posición pasando-\/el-\/ultimo del dicciona
 \hline
 \end{DoxyRetVals}
 \begin{DoxyPrecond}{Precondition}
-\{completar\} 
+\{true\} 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
-\{completar\}
+\{res  Crear\+It\+Mod(inorder($\ast$this),  )\}
 \end{DoxyPostcond}
 \{(1)\} \mbox{\Hypertarget{classaed2_1_1map_a91e7cad1a638c55659c169d5574cd5d7}\label{classaed2_1_1map_a91e7cad1a638c55659c169d5574cd5d7}} 
 \index{aed2\+::map@{aed2\+::map}!end@{end}}
@@ -625,13 +627,13 @@ Elimina el valor apuntado por \{pos\}.
 {\em res} & iterador apuntando al primer valor con clave mayor a \{pos\} (o \{this\}-\/$>$\hyperlink{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983}{end()}, si dicho valor no existe).\\
 \hline
 \end{DoxyRetVals}
-\{completar\}.
+\{complertar\}.
 
 \begin{DoxyPrecond}{Precondition}
-\{completar\} 
+\{Hay\+Mas?(pos)\} 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
-\{completar\}
+\{Eliminar(pos)\}
 \end{DoxyPostcond}
 \{
 \begin{DoxyItemize}
@@ -656,10 +658,10 @@ Elimina el valor cuya clave es \{key\}.
 \{completar\}
 
 \begin{DoxyPrecond}{Precondition}
-\{completar\} 
+\{$\ast$this  $\ast$this0  def?(key, $\ast$this)\} 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
-\{completar\}
+\{$\ast$this  borrar(key, $\ast$this0)\}
 \end{DoxyPostcond}
 \{((\{$\ast$pos\}) + ((\{$\ast$this\}))  (\{$\ast$this\}))\} \mbox{\Hypertarget{classaed2_1_1map_afd0fc1a8234888e61e0e615de7e245b8}\label{classaed2_1_1map_afd0fc1a8234888e61e0e615de7e245b8}} 
 \index{aed2\+::map@{aed2\+::map}!find@{find}}
@@ -684,13 +686,13 @@ Retorna un iterador apuntando a la posicion del valor con clave \{key\}. Si dich
 {\em res} & iterador apuntando al valor con clave \{key\} (o a \{this\}-\/$>$\hyperlink{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983}{end()} si dicho elemento no existe)\\
 \hline
 \end{DoxyRetVals}
-\{completar\}
+\{Hay aliasing entre el actual(iterador) y obtener(key, $\ast$this)\}
 
 \begin{DoxyPrecond}{Precondition}
-\{completar\} 
+\{true\} 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
-\{completar\}
+\{def?(key, $\ast$this)  res  crearit\+Aux(key,inorder($\ast$this))\}
 \end{DoxyPostcond}
 \{(((\{$\ast$this\}))  (\{$\ast$this\}))\}
 
@@ -729,13 +731,13 @@ Inserta un {\bfseries nuevo} valor en el diccionario. Si \{$\ast$this\} ya tiene
 {\em res} & iterador apuntando al elemento insertado o que previno la inserción\\
 \hline
 \end{DoxyRetVals}
-\{completar\}
+\{hay aliasing???\}
 
 \begin{DoxyPrecond}{Precondition}
-\{completar\} 
+\{true\} 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
-\{completar\}
+\{def?(value.\+first, $\ast$this)  crearit\+Aux($\ast$this.first, inorder($\ast$this) )   def?(value.\+first, $\ast$this)  res  agregar(crear\+It(inorder($\ast$this)), value)\}
 \end{DoxyPostcond}
 \{
 \begin{DoxyItemize}
@@ -760,32 +762,6 @@ This is an overloaded member function, provided for convenience. It differs from
 {\footnotesize\ttfamily template$<$class Key, class Meaning, class Compare = std\+::less$<$\+Key$>$$>$ \\
 \hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map}{aed2\+::map}$<$ Key, Meaning, Compare $>$\+::insert\+\_\+or\+\_\+assign (\begin{DoxyParamCaption}\item[{\hyperlink{classaed2_1_1map_1_1const__iterator}{const\+\_\+iterator}}]{hint,  }\item[{const \hyperlink{classaed2_1_1map_a719db98e0ff9a837610f76be33264680}{value\+\_\+type} \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-
-
-Inserta o redefine \{value\} en el diccionario. 
-
-Inserta un valor en el diccionario. Si \{$\ast$this\} ya tiene un valor con clave \{value\}.first, entonces se redefine. El iterador de retorno apunta al elemento recien insertado o redefinido.
-
-
-\begin{DoxyParams}{Parameters}
-{\em value} & valor a insertar \\
-\hline
-{\em hint} & iterador apuntando al diccionario. Se espera que apunte al mínimo valor mayor o igual a \{value\}.first (i.\+e., a lower\+\_\+bound(\{value\}.first)). Igualmente, la función es robusta y funciona correctamente aunque esto no ocurra. \\
-\hline
-\end{DoxyParams}
-
-\begin{DoxyRetVals}{Return values}
-{\em res} & iterador apuntando al elemento insertado o redefinido\\
-\hline
-\end{DoxyRetVals}
-\{completar\}
-
-\begin{DoxyPrecond}{Precondition}
-\{completar\} 
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{Postcondition}
-\{completar\}
-\end{DoxyPostcond}
 \{
 \begin{DoxyItemize}
 \item Peor caso\+: (((\{$\ast$this\}))  (\{$\ast$this\})  (\{value\}))
@@ -828,13 +804,13 @@ Retorna un iterador apuntando a la primer posición cuyo valor tenga clave al me
 {\em res} & iterador apuntando al valor con clave al menos \{key\} (o a \{this\}-\/$>$\hyperlink{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983}{end()} si dicho elemento no existe)\\
 \hline
 \end{DoxyRetVals}
-\{completar\}
+\{hay aliasing entre res y el sucesor inmediato de key\}
 
 \begin{DoxyPrecond}{Precondition}
-\{completar\} 
+\{true\} 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
-\{completar\}
+\{res  crearit\+Aux2(key,inorder($\ast$this))(busca en la secu inorder a key y devuelve el siguiente o null si es mayor a todas las claves)\}
 \end{DoxyPostcond}
 \{(((\{$\ast$this\}))  (\{$\ast$this\}))\} \mbox{\Hypertarget{classaed2_1_1map_a07b3dd65557c59ee085e5f211269c6b3}\label{classaed2_1_1map_a07b3dd65557c59ee085e5f211269c6b3}} 
 \index{aed2\+::map@{aed2\+::map}!lower\+\_\+bound@{lower\+\_\+bound}}
@@ -864,13 +840,13 @@ Operador de asignación.
 {\em res} & referencia a $\ast$this\\
 \hline
 \end{DoxyRetVals}
-\{completar\}
+\{no hay\}
 
 \begin{DoxyPrecond}{Precondition}
-\{completar\} 
+\{true\} 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
-\{completar\}
+\{res  other\}
 \end{DoxyPostcond}
 \{((\{$\ast$this\})  (\{other\}))\}
 
@@ -888,7 +864,7 @@ Meaning\& \hyperlink{classaed2_1_1map}{aed2\+::map}$<$ Key, Meaning, Compare $>$
 
 Devuelve el significado asociado a \{key\}, asegurando su existencia. 
 
-Devuelve el significado asociado a \{key\}. Si \{key\} no está definido en \{$\ast$this\}, entonces se inserta un nuevo valor con clave \{key\} y significado \{Value\}(). De esta forma, podemos usar {\ttfamily operator\mbox{[}\mbox{]}} para definir nuevos valores o modificar los existentes.
+Devuelve el significado asociado a \{key\}. Si \{key\} no está definido en \{$\ast$this\}, entonces se inserta un nuevo valor con clave \{key\} y significado \{Meaning\}(). De esta forma, podemos usar {\ttfamily operator\mbox{[}\mbox{]}} para definir nuevos valores o modificar los existentes.
 
 Ejemplo\+: 
 \begin{DoxyCode}
@@ -914,13 +890,13 @@ d[1] = 3;      \textcolor{comment}{//redefine 1 -> 3}
 \begin{DoxyParagraph}{Requerimientos sobre el tipo \{Meaning\}}
 Requiere que \{Meaning\} tenga un constructor sin parámetros con complejidad ({\itshape c})
 \end{DoxyParagraph}
-\{completar\}
+\{hay aliasing entre res y obtener(key, $\ast$this)\}
 
 \begin{DoxyPrecond}{Precondition}
-\{completar\} 
+\{true\} 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
-\{completar\}
+\{def?(key, $\ast$this)  res  obtener(key, $\ast$this)\}
 \end{DoxyPostcond}
 \{(((\{$\ast$this\}))  (\{$\ast$this\}) + {\itshape x}) donde
 \begin{DoxyItemize}
@@ -937,7 +913,7 @@ Requiere que \{Meaning\} tenga un constructor sin parámetros con complejidad ({
 
 Devuelve un iterador al primer valor del diccionario, en un recorrido al revés. 
 
-\{completar\}
+\{no hay\}
 
 
 \begin{DoxyRetVals}{Return values}
@@ -945,10 +921,10 @@ Devuelve un iterador al primer valor del diccionario, en un recorrido al revés.
 \hline
 \end{DoxyRetVals}
 \begin{DoxyPrecond}{Precondition}
-\{completar\} 
+\{true\} 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
-\{completar\}
+\{res  Crear\+It\+Mod(  , postorder($\ast$this))\}
 \end{DoxyPostcond}
 \{(1)\} \mbox{\Hypertarget{classaed2_1_1map_a71ab53ab04f5e35a189c6576fddeb483}\label{classaed2_1_1map_a71ab53ab04f5e35a189c6576fddeb483}} 
 \index{aed2\+::map@{aed2\+::map}!rbegin@{rbegin}}
@@ -968,7 +944,7 @@ This is an overloaded member function, provided for convenience. It differs from
 
 Devuelve un iterador apuntando a la posición pasando-\/el-\/ultimo del diccionario, en un recorrido al revés. 
 
-\{completar\}
+\{no hay\}
 
 
 \begin{DoxyRetVals}{Return values}
@@ -976,10 +952,10 @@ Devuelve un iterador apuntando a la posición pasando-\/el-\/ultimo del dicciona
 \hline
 \end{DoxyRetVals}
 \begin{DoxyPrecond}{Precondition}
-\{completar\} 
+\{true\} 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
-\{completar\}
+\{res  Crear\+It\+Mod(postorder($\ast$this),  )\}
 \end{DoxyPostcond}
 \{(1)\} \mbox{\Hypertarget{classaed2_1_1map_a7cf14a4b505505d0f074034b7399fb24}\label{classaed2_1_1map_a7cf14a4b505505d0f074034b7399fb24}} 
 \index{aed2\+::map@{aed2\+::map}!rend@{rend}}
@@ -1005,10 +981,10 @@ Devuelve la cantidad de valores en el diccionario.
 \hline
 \end{DoxyRetVals}
 \begin{DoxyPrecond}{Precondition}
-\{completar\} 
+\{true\} 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
-\{completar\}
+\{res  \#claves($\ast$this)\}
 \end{DoxyPostcond}
 \{(1)\} \mbox{\Hypertarget{classaed2_1_1map_a43ddb71cc91e5c6021a7a1f243d6cc4a}\label{classaed2_1_1map_a43ddb71cc91e5c6021a7a1f243d6cc4a}} 
 \index{aed2\+::map@{aed2\+::map}!swap@{swap}}

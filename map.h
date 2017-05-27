@@ -904,13 +904,23 @@ public:
      * que al estándar C++, fue incluida en el estándar C++11.  Antes era obligación
      * recurrir a la función find.
      */
+
+
+    /**
+     Comienza en la raiz y si el valor es menor sigue la recursión hacia la izquierda, sino a la derecha, hasta
+     que encuentra un nodo con la clave (key) pasada por parámetro y devuelve el significado almacenado en ese nodo.
+     */
+
     const Meaning& at(const Key& key) const {
-    	//completar
+
+
     }
 
     /** \overload */
     Meaning& at(const Key& key) {
-    	//completar
+
+
+
     }
 
     /**
@@ -947,8 +957,14 @@ public:
      * - \a x = \a c en caso contrario.}
      *
      */
+
+     /**
+     Comienza en la raiz y si el valor es menor sigue la recursión hacia la izquierda, sino a la derecha, hasta
+     que encuentra un nodo con la clave (key) pasada por parámetro y devuelve el significado almacenado en ese nodo,
+     o en el caso que la clave no esté definida, la define con el significado default y además incrementa en uno count.
+     */
     Meaning& operator[](const Key& key) {
-    	//completar
+    	// completar
     }
 
     /**
@@ -973,6 +989,13 @@ public:
      * resultado puede ser usado como hint, mejorando la complejidad de la inserción.
      *
      */
+
+     /**
+     - Inicia el iterador en el hijo izquierdo de header.
+     - Avanzo hasta que la clave sea key o, en caso de que no esté definida, hasta la posición pasando-el-último.
+     - Devuelve el Iterador en esa posición.
+      */
+
     iterator find(const Key& key) {
     	//completar
     }
@@ -1000,6 +1023,11 @@ public:
      * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
      *
      */
+    /**
+     - Inicia el iterador en el hijo izquierdo de header.
+     - Avanzo hasta que la clave sea mayor o igual a key o, en caso de que no exista ninguna, hasta la posición pasando-el-último.
+     - Devuelve el Iterador en esa posición.
+    */
     const_iterator lower_bound(const Key& key) const {
     	//completar
     }
@@ -1024,6 +1052,9 @@ public:
      *
      * \complexity{\O(1)}
      */
+    /**
+    Inicia en raíz, y si la misma es distinta de null devuelve false.
+    */
     bool empty() const {
     	//completar
     }
@@ -1038,7 +1069,10 @@ public:
      *
      * \complexity{\O(1)}
      */
-    size_t size() const {
+    /**
+     Devuelve count;
+     */
+     size_t size() const {
     	//completar
     }
     //@}
@@ -1074,6 +1108,10 @@ public:
      *
      * \attention Para garantizar que el nuevo elemento se inserte sí o sí, usar aed2::map::insert_or_assign.
      */
+    /**
+
+
+    */
     iterator insert(const_iterator hint, const value_type& value) {
     	//completar
     }
@@ -1169,6 +1207,9 @@ public:
      *
      * \complexity{\O(\DEL(\P{*this}))}
      */
+    /**
+    Mientras count sea distinto de 0, va eliminando con la función erase todos los elementos del árbol.
+    */
     void clear() {
         //completar
     }
@@ -1229,6 +1270,10 @@ public:
      *
      * \complexity{\O(1)}
      */
+    /**
+    Inicia un iterador en raíz, y va iterando hacia la izquierda hasta llegar al elemento más chico.
+    Devuelve el iterador.
+    */
     iterator begin() {
     	//completar
     }
@@ -1254,6 +1299,9 @@ public:
      * \post \aedpost{res \igobs CrearItMod(inorder(*this), \langle \ranlge)}
      *
      * \complexity{\O(1)}
+     *
+     * Inicia un iterador en raíz, y va iterando hacia la derecha hasta llegar al elemento más grande.
+     * Devuelve el iterador.
      */
     iterator end() {
     	//completar
@@ -1280,6 +1328,8 @@ public:
      * \post \aedpost{res \igobs CrearItMod(\langle \rangle , postorder(*this))}
      *
      * \complexity{\O(1)}
+     *
+     * Inicia un reverse_iterator en el hijo derecho de header.
      */
     reverse_iterator rbegin() {
     	//completar
@@ -1306,6 +1356,8 @@ public:
      * \post \aedpost{res \igobs CrearItMod(postorder(*this), \langle \ranlge)}
      *
      * \complexity{\O(1)}
+     *
+     * Inicia un reversre_iterator en el hijo izquierdo de header.
      */
     reverse_iterator rend() {
     	//completar
@@ -1392,6 +1444,8 @@ public:
          * \post \aedpost{coleccion(\P{res}) \IGOBS \BOTTOM \LAND vacia?(SecuSuby(\P{res}))}
          *
          * \complexity{\O(1)}
+         *
+         * Inicia un iterador apuntando a nullptr.
          */
         iterator() {}
         /**
@@ -1405,6 +1459,8 @@ public:
          * \post \aedpost{res \igobs Siguiente(*this)}
          *
          * \complexity{\O(1)}
+         *
+         * Devuelve el elemento del nodo al que está apuntando el iterador.
          */
         reference operator*() const {
         	//completar
@@ -1423,6 +1479,9 @@ public:
          *
          * \attention No hay forma de expresar, en el lenguaje de TADs, que un puntero apunta a la dirección de otro objeto.  Es por
          * eso que la postcondición es más débil de lo que debiera.  Eso no ocurre en las otras funciones del TP.
+         *
+         * Devuelve la posición de memoria del valor del nodo al que está apuntando el iterador.
+         *
          */
         pointer operator->() const {
 			//completar
@@ -1441,6 +1500,9 @@ public:
          * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
          * - Peor caso amortizado: \O(1)
          * }
+         *
+         * Avanza el iterador en una posición y lo devuelve.
+         *
          */
         iterator& operator++() {
         	//completar
@@ -1453,12 +1515,15 @@ public:
          * \aliasing{no hay}
          *
          * \pre \aedpre{HaySiguiente?(*this)}
-         * \post \aedpost{????}
+         * \post \aedpost{CONSULTAR}
          *
          * \complexity{
          * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
          * - Peor caso amortizado: \O(1)
          * }
+         *
+         * CONSULTAR.
+         *
          */
         iterator operator++(int) {
         	//completar
@@ -1477,6 +1542,9 @@ public:
          * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
          * - Peor caso amortizado: \O(1)
          * }
+         *
+         * Retrocede el iterador en una posicion y lo devuelve.
+         *
          */
         iterator& operator--() {
         	//completar
@@ -1495,6 +1563,9 @@ public:
          * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
          * - Peor caso amortizado: \O(1)
          * }
+         *
+         * CONSULTAR
+         *
          */
         iterator operator--(int) {
         	//completar
@@ -1515,6 +1586,9 @@ public:
          * \post \aedpost{res \leftrightarrow (*this \igobs other)}
          *
          * \complexity{\O(1)}
+         *
+         * Devuelve true si el nodo al que apunta this es el mismo que al que apunta other. (Consultar)
+         *
          */
         bool operator==(iterator other) const {
         	//completar

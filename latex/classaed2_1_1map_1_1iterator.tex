@@ -143,13 +143,13 @@ Retorna el valor apuntado por \{$\ast$this\}.
 {\em res} & referencia al valor apuntado por \{$\ast$this\}\\
 \hline
 \end{DoxyRetVals}
-\{completar\}
+\{hay aliasing entre res y Siguiente($\ast$this)\}
 
 \begin{DoxyPrecond}{Precondition}
-\{completar\} 
+\{true\} 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
-\{completar\}
+\{res  Siguiente($\ast$this)\}
 \end{DoxyPostcond}
 \{(1)\} \mbox{\Hypertarget{classaed2_1_1map_1_1iterator_a7c44de7f0508186e135ddbcfe782fec5}\label{classaed2_1_1map_1_1iterator_a7c44de7f0508186e135ddbcfe782fec5}} 
 \index{aed2\+::map\+::iterator@{aed2\+::map\+::iterator}!operator++@{operator++}}
@@ -167,13 +167,13 @@ Avanza el iterador a la siguiente posición.
 {\em res} & referencia a \{$\ast$this\}\\
 \hline
 \end{DoxyRetVals}
-\{completar\}
+\{no hay\}
 
 \begin{DoxyPrecond}{Precondition}
-\{completar\} 
+\{Hay\+Siguiente?($\ast$this)\} 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
-\{completar\}
+\{res  Avanzar($\ast$this)\}
 \end{DoxyPostcond}
 \{
 \begin{DoxyItemize}
@@ -195,13 +195,13 @@ Avanza el iterador a la siguiente posición.
 {\em res} & iterador apuntando a la dirección anterior de \{$\ast$this\}\\
 \hline
 \end{DoxyRetVals}
-\{completar\}
+\{no hay\}
 
 \begin{DoxyPrecond}{Precondition}
-\{completar\} 
+\{Hay\+Siguiente?($\ast$this)\} 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
-\{completar\}
+\{????\}
 \end{DoxyPostcond}
 \{
 \begin{DoxyItemize}
@@ -223,13 +223,13 @@ Retrocede el iterador a la posición anterior.
 {\em res} & referencia a \{$\ast$this\}\\
 \hline
 \end{DoxyRetVals}
-\{completar\}
+\{no hay\}
 
 \begin{DoxyPrecond}{Precondition}
-\{completar\} 
+\{Hay\+Anterior?($\ast$this)\} 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
-\{completar\}
+\{res  Retroceder($\ast$this)\}
 \end{DoxyPostcond}
 \{
 \begin{DoxyItemize}
@@ -251,10 +251,10 @@ Retrocede el iterador a la posición anterior.
 {\em res} & iterador apuntando a la dirección siguiente de \{$\ast$this\}\\
 \hline
 \end{DoxyRetVals}
-\{completar\}
+\{no hay\}
 
 \begin{DoxyPrecond}{Precondition}
-\{completar\} 
+\{Hay\+Anterior?($\ast$this)\} 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
 \{completar\}
@@ -279,10 +279,10 @@ Retorna la dirección del valor apuntado por \{$\ast$this\}.
 {\em res} & puntero al valor apuntado por \{$\ast$this\}\\
 \hline
 \end{DoxyRetVals}
-\{completar\}
+\{hay aliasing entre res y Siguiente($\ast$this)\}
 
 \begin{DoxyPrecond}{Precondition}
-\{true\} 
+\{hay\+Siguiente(\{$\ast$this\})\} 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
 \{\{$\ast$res\}  siguiente(\{$\ast$this\})\}
@@ -321,10 +321,10 @@ Operador de igualdad.
 \end{DoxyItemize}
 
 \begin{DoxyPrecond}{Precondition}
-\{completar\} 
+\{true\} 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
-\{completar\}
+\{res  ($\ast$this  other)\}
 \end{DoxyPostcond}
 \{(1)\} 
 

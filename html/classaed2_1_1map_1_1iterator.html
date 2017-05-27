@@ -227,9 +227,9 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
   </table>
   </dd>
 </dl>
-<p>{completar}</p>
-<dl class="section pre"><dt>Precondition</dt><dd>{completar} </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>{completar}</dd></dl>
+<p>{hay aliasing entre res y Siguiente(*this)}</p>
+<dl class="section pre"><dt>Precondition</dt><dd>{true} </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>{res  Siguiente(*this)}</dd></dl>
 <p>{(1)} </p>
 
 </div>
@@ -266,9 +266,9 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
   </table>
   </dd>
 </dl>
-<p>{completar}</p>
-<dl class="section pre"><dt>Precondition</dt><dd>{completar} </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>{completar}</dd></dl>
+<p>{no hay}</p>
+<dl class="section pre"><dt>Precondition</dt><dd>{HaySiguiente?(*this)} </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>{res  Avanzar(*this)}</dd></dl>
 <p>{</p><ul>
 <li>Peor caso: ((SIZE(<em>d</em>)) donde <em>d</em> es el diccionario asociado a {*this}.</li>
 <li>Peor caso amortizado: (1) } </li>
@@ -309,9 +309,9 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
   </table>
   </dd>
 </dl>
-<p>{completar}</p>
-<dl class="section pre"><dt>Precondition</dt><dd>{completar} </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>{completar}</dd></dl>
+<p>{no hay}</p>
+<dl class="section pre"><dt>Precondition</dt><dd>{HaySiguiente?(*this)} </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>{????}</dd></dl>
 <p>{</p><ul>
 <li>Peor caso: ((SIZE(<em>d</em>)) donde <em>d</em> es el diccionario asociado a {*this}.</li>
 <li>Peor caso amortizado: (1) } </li>
@@ -351,9 +351,9 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
   </table>
   </dd>
 </dl>
-<p>{completar}</p>
-<dl class="section pre"><dt>Precondition</dt><dd>{completar} </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>{completar}</dd></dl>
+<p>{no hay}</p>
+<dl class="section pre"><dt>Precondition</dt><dd>{HayAnterior?(*this)} </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>{res  Retroceder(*this)}</dd></dl>
 <p>{</p><ul>
 <li>Peor caso: ((SIZE(<em>d</em>)) donde <em>d</em> es el diccionario asociado a {*this}.</li>
 <li>Peor caso amortizado: (1) } </li>
@@ -394,8 +394,8 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
   </table>
   </dd>
 </dl>
-<p>{completar}</p>
-<dl class="section pre"><dt>Precondition</dt><dd>{completar} </dd></dl>
+<p>{no hay}</p>
+<dl class="section pre"><dt>Precondition</dt><dd>{HayAnterior?(*this)} </dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>{completar}</dd></dl>
 <p>{</p><ul>
 <li>Peor caso: ((SIZE(<em>d</em>)) donde <em>d</em> es el diccionario asociado a {*this}.</li>
@@ -436,8 +436,8 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
   </table>
   </dd>
 </dl>
-<p>{completar}</p>
-<dl class="section pre"><dt>Precondition</dt><dd>{true} </dd></dl>
+<p>{hay aliasing entre res y Siguiente(*this)}</p>
+<dl class="section pre"><dt>Precondition</dt><dd>{haySiguiente({*this})} </dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>{{*res}  siguiente({*this})}</dd></dl>
 <p>{(1)}</p>
 <dl class="section attention"><dt>Attention</dt><dd>No hay forma de expresar, en el lenguaje de TADs, que un puntero apunta a la dirección de otro objeto. Es por eso que la postcondición es más débil de lo que debiera. Eso no ocurre en las otras funciones del TP. </dd></dl>
@@ -488,8 +488,8 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 <li>false, cuando alguno de ellos es no nulo, o</li>
 <li>true, cuando ambos son nulos.}</li>
 </ul>
-<dl class="section pre"><dt>Precondition</dt><dd>{completar} </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>{completar}</dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>{true} </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>{res  (*this  other)}</dd></dl>
 <p>{(1)} </p>
 
 </div>
