@@ -936,16 +936,25 @@ public:
      */
 
     const Meaning& at(const Key& key) const {
-
+    Node* indice = header->parent;
+    //pepito
+    	
+    	return indice->_value.second;
 
     }
 
     /** \overload */
     Meaning& at(const Key& key) {
-
-
-
-    }
+    	 Node* indice = header->parent;
+    //pepito
+    	while(indice->_value->key() != key){
+    		if (indice->_value->key() < key)
+    			indice = indice->child[0];
+    		else
+    			indice = indice->child[1];
+    	}
+    	return indice->_value.second;
+   }
 
     /**
      * @brief Devuelve el significado asociado a \P{key}, asegurando su existencia
@@ -988,7 +997,15 @@ public:
      o en el caso que la clave no esté definida, la define con el significado default y además incrementa en uno count.
      */
     Meaning& operator[](const Key& key) {
-    	// completar
+    /**
+	it = lower_bound(key);
+	if (it.nodo->value_.key() == key)
+	return value_->second;
+	else
+	insert(it, value(key, Meaning))
+
+    **/
+
     }
 
     /**
@@ -1021,12 +1038,31 @@ public:
       */
 
     iterator find(const Key& key) {
-    	//completar
+    	Node* indice = header->parent;
+    	while(indice->_value->key() != key){
+    		if (indice->_value->key() < key)
+    			indice = indice->child[0];
+    		else
+    			indice = indice->child[1];
+    	}
+    	Iterator it();
+    	it.node = indice;
+    	return it;
+
     }
 
     /** \overload */
     const_iterator find(const Key& key) const {
-    	//completar
+    		Node* indice = header->parent;
+    	while(indice->_value->key() != key){
+    		if (indice->_value->key() < key)
+    			indice = indice->child[0];
+    		else
+    			indice = indice->child[1];
+    	}
+    	Iterator it();
+    	it.node = indice;
+    	return it;
     }
 
     /**
@@ -1053,7 +1089,16 @@ public:
      - Devuelve el Iterador en esa posición.
     */
     const_iterator lower_bound(const Key& key) const {
-    	//completar
+    	Node* indice = header->parent;
+    	while(indice != nullptr || indice->_value->key() != key){
+    		if (indice->_value->key() < key)
+    			indice = indice->child[0];
+    		else
+    			indice = indice->child[1];
+    	}
+    	Iterator it();
+    	it.node = indice;
+    	return it;
     }
 
     /** \overload */
@@ -1080,7 +1125,7 @@ public:
     Inicia en raíz, y si la misma es distinta de null devuelve false.
     */
     bool empty() const {
-    	//completar
+
     }
 
     /**
@@ -1137,7 +1182,90 @@ public:
 
     */
     iterator insert(const_iterator hint, const value_type& value) {
-    	//completar
+    	
+
+/*
+    	RB-I NSERT .T;  ́/
+	1 y D T:nil
+	2 x D T:root
+	3 while x ¤ T:nil
+	4
+	y Dx
+	5
+	if  ́:key < x:key
+	6
+x D x:left
+7
+else x D x:right
+8  ́:p D y
+9 if y == T:nil
+10
+T:root D  ́
+11 elseif  ́:key < y:key
+12
+y:left D  ́
+13 else y:right D  ́
+14  ́:left D T:nil
+15  ́:right D T:nil
+16  ́:color D RED
+17 RB-I NSERT-F IXUP .T;  ́/
+
+
+
+RB-I NSERT-F IXUP .T;  ́/
+1 while  ́:p:color == RED
+2
+if  ́:p ==  ́:p:p:left
+3
+y D  ́:p:p:right
+4
+if y:color == RED
+5
+ ́:p:color D BLACK
+6
+y:color D BLACK
+7
+ ́:p:p:color D RED
+8
+ ́ D  ́:p:p
+9
+else if  ́ ==  ́:p:right
+10
+ ́ D  ́:p
+11
+L EFT-ROTATE .T;  ́/
+12
+ ́:p:color D BLACK
+13
+ ́:p:p:color D RED
+14
+R IGHT-ROTATE .T;  ́:p:p/
+15
+else (same as then clause
+with “right” and “left” exchanged)
+16 T:root:color D BLACK
+
+
+L EFT-ROTATE .T; x/
+1 y D x:right
+2 x:right D y:left
+3 if y:left ¤ T:nil
+4
+y:left:p D x
+5 y:p D x:p
+6 if x:p == T:nil
+7
+T:root D y
+8 elseif x == x:p:left
+9
+x:p:left D y
+10 else x:p:right D y
+11 y:left D x
+12 x:p D y
+
+
+
+*/
     }
 
     /** \overload*/
@@ -1201,7 +1329,91 @@ public:
      *
      */
     iterator erase(const_iterator pos) {
-    	//completar
+    	
+    	/*
+    	RB-T RANSPLANT .T; u; /
+1 if u:p == T:nil
+2
+T:root D
+3 elseif u == u:p:left
+4
+u:p:left D
+5 else u:p:right D
+6
+:p D u:p
+
+
+T REE -D ELETE .T;  ́/
+1 if  ́:left == NIL
+2
+T RANSPLANT .T;  ́;  ́:right/
+3 elseif  ́:right == NIL
+4
+T RANSPLANT .T;  ́;  ́:left/
+5 else y D T REE -M INIMUM . ́:right/
+6
+if y:p ¤  ́
+7
+T RANSPLANT .T; y; y:right/
+8
+y:right D  ́:right
+9
+y:right:p D y
+10
+T RANSPLANT .T;  ́; y/
+11
+y:left D  ́:left
+12
+y:left:p D y
+
+
+
+RB-D ELETE -F IXUP .T; x/
+1 while x ¤ T:root and x:color == BLACK
+2
+if x == x:p:left
+3
+w D x:p:right
+4
+if w:color == RED
+5
+w:color D BLACK
+6
+x:p:color D RED
+7
+L EFT-ROTATE .T; x:p/
+8
+w D x:p:right
+9
+if w:left:color == BLACK and w:right:color == BLACK
+10
+w:color D RED
+11
+x D x:p
+12
+else if w:right:color == BLACK
+13
+w:left:color D BLACK
+14
+w:color D RED
+15
+R IGHT-ROTATE .T; w/
+16
+w D x:p:right
+17
+w:color D x:p:color
+18
+x:p:color D BLACK
+19
+w:right:color D BLACK
+20
+L EFT-ROTATE .T; x:p/
+21
+x D T:root
+22
+else (same as then clause with “right” and “left” exchanged)
+23 x:color D BLACK
+
     }
 
     /**
@@ -1529,7 +1741,8 @@ public:
          *
          */
         iterator& operator++() {
-        	//completar
+        	
+
         }
         /**
          * \brief Avanza el iterador a la siguiente posición
