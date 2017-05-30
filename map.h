@@ -1090,7 +1090,7 @@ public:
     */
     const_iterator lower_bound(const Key& key) const {
     	Node* indice = header->parent;
-    	while(indice != nullptr || indice->_value->key() != key){
+    	while(indice != nullptr || indice->_value->key()  key){
     		if (indice->_value->key() < key)
     			indice = indice->child[0];
     		else
@@ -1125,6 +1125,7 @@ public:
     Inicia en raíz, y si la misma es distinta de null devuelve false.
     */
     bool empty() const {
+    	return (count == 0);
 
     }
 
@@ -1142,7 +1143,7 @@ public:
      Devuelve count;
      */
      size_t size() const {
-    	//completar
+    	return count;
     }
     //@}
 
@@ -1507,21 +1508,23 @@ else (same as then clause with “right” and “left” exchanged)
      * \complexity{\O(1)}
      */
     /**
-    Inicia un iterador en raíz, y va iterando hacia la izquierda hasta llegar al elemento más chico.
-    Devuelve el iterador.
+    Inicia un iterador en header->izq.
     */
     iterator begin() {
-    	//completar
+    	iterator it(header->child[0]);
+    	return it;
     }
 
     /** \overload */
     const_iterator begin() const {
-    	//completar
+    	const_iterator it(header->child[0]);
+    	return it;
     }
 
     /** \overload */
     const_iterator cbegin() {
-    	//completar
+    	const_iterator it(header->child[0]);
+    	return it;
     }
 
     /**
@@ -1536,21 +1539,23 @@ else (same as then clause with “right” and “left” exchanged)
      *
      * \complexity{\O(1)}
      *
-     * Inicia un iterador en raíz, y va iterando hacia la derecha hasta llegar al elemento más grande.
-     * Devuelve el iterador.
+     * Inicia un iterador en nullptr.
      */
     iterator end() {
-    	//completar
+    	iterator it();
+    	return it;
     }
 
     /** \overload */
     const_iterator end() const {
-    	//completar
+    	const_iterator it();
+    	return it;
     }
 
     /** \overload */
     const_iterator cend() {
-    	//completar
+    	const_iterator it();
+    	return it;
     }
 
     /**
@@ -1568,17 +1573,20 @@ else (same as then clause with “right” and “left” exchanged)
      * Inicia un reverse_iterator en el hijo derecho de header.
      */
     reverse_iterator rbegin() {
-    	//completar
+    	reverse_iterator it = reverse_iterator(header->child[1]);
+    	return it;
     }
 
     /** \overload */
     const_reverse_iterator rbegin() const {
-    	//completar
+    	const_reverse_iterator it = reverse_iterator(header->child[1]);
+    	return it;
     }
 
     /** \overload */
     const_reverse_iterator crbegin() {
-    	//completar
+    	const_reverse_iterator it = reverse_iterator(header->child[1]);
+    	return it;
 	}
 
     /**
@@ -1596,17 +1604,20 @@ else (same as then clause with “right” and “left” exchanged)
      * Inicia un reversre_iterator en el hijo izquierdo de header.
      */
     reverse_iterator rend() {
-    	//completar
+    	reverse_iterator it = reverse_iterator();
+    	return it;
     }
 
     /** \overload */
     const_reverse_iterator rend() const {
-    	//completar
+    	const_reverse_iterator it = reverse_iterator();
+    	return it;
     }
 
     /** \overload */
     const_reverse_iterator crend() {
-    	//completar
+    	const_reverse_iterator it = reverse_iterator();
+    	return it;
     }
     //@}
 
@@ -1683,7 +1694,7 @@ else (same as then clause with “right” and “left” exchanged)
          *
          * Inicia un iterador apuntando a nullptr.
          */
-        iterator() {}
+        iterator() : n(nullptr) {}
         /**
          * \brief Retorna el valor apuntado por \P{*this}
          *
@@ -1691,7 +1702,7 @@ else (same as then clause with “right” and “left” exchanged)
          *
          * \aliasing{hay aliasing entre res y Siguiente(*this)}
          *
-         * \pre \aedpre{true}
+         * \pre \aedpre{Siguiente(this) != nullptr}
          * \post \aedpost{res \igobs Siguiente(*this)}
          *
          * \complexity{\O(1)}
@@ -1699,7 +1710,7 @@ else (same as then clause with “right” and “left” exchanged)
          * Devuelve el elemento del nodo al que está apuntando el iterador.
          */
         reference operator*() const {
-        	//completar
+        	return n.value();
         }
         /**
          * \brief Retorna la dirección del valor apuntado por \P{*this}
