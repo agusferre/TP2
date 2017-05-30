@@ -997,14 +997,14 @@ public:
      o en el caso que la clave no esté definida, la define con el significado default y además incrementa en uno count.
      */
     Meaning& operator[](const Key& key) {
-    /**
-	it = lower_bound(key);
-	if (it.nodo->value_.key() == key)
-	return value_->second;
-	else
-	insert(it, value(key, Meaning))
 
-    **/
+        iterator it = lower_bound(key);
+        if (it.n->value_.key() == key)
+            return value_->second;
+	else
+            insert(it, value_type(key, Meaning()));
+
+        return at(key);
 
     }
 
@@ -2118,7 +2118,9 @@ private:
         	return static_cast<InnerNode*>(this)->_value;
         }
         /** \overload */
-        const value_type& value() const {
+        const value
+
+                _type& value() const {
         	assert(not is_header());
         	return static_cast<const InnerNode*>(this)->_value;
         }
