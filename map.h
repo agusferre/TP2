@@ -1002,7 +1002,7 @@ public:
         if (it.n->value_.key() == key)
             return value_->second;
 	else
-            insert(it, value_type(key, Meaning()));
+            it.insert(value_type(key, Meaning()));
 
         return at(key);
 
