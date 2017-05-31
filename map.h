@@ -999,10 +999,9 @@ public:
     Meaning& operator[](const Key& key) {
 
         iterator it = lower_bound(key);
-        if (it.n->value_.key() == key)
+        if (it.n != nullptr && ->value_.key() == key)
             return value_->second;
 	else
-
             insert(it, value_type(key, Meaning()));
 
         return at(key);
