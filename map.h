@@ -1107,17 +1107,18 @@ public:
     /** \overload */
     iterator lower_bound(const Key& key)  {
         Node* indice = header->parent;
-        while(indice != nullptr && indice->_value->key() < key){
+        while (indice != nullptr && (indice->_value->key() < key || (indice->_value->key() != key && indice->child[0] != nullptr))) {
             if (indice->_value->key() < key)
-                indice = indice->child[0];
-            else
                 indice = indice->child[1];
+            else
+                indice = indice->child[0];
         }
         if (indice == nullptr)
             indice = end();
         Iterator it();
-        it.node = indice;
+        it.n = indice;
         return it;
+
     }
     ///@}
 
