@@ -793,8 +793,7 @@ public:
 
     **/
     map(const map& other) {
-
-    	//completar
+    	while ()
     }
 
     /**
@@ -1090,21 +1089,34 @@ public:
      - Devuelve el Iterador en esa posición.
     */
     const_iterator lower_bound(const Key& key) const {
-    	Node* indice = header->parent;
-    	while(indice != nullptr || indice->_value->key()  key){
-    		if (indice->_value->key() < key)
-    			indice = indice->child[0];
-    		else
-    			indice = indice->child[1];
-    	}
-    	Iterator it();
-    	it.node = indice;
-    	return it;
+        Node* indice = header->parent;
+        while (indice != nullptr && (indice->_value->key() < key || (indice->_value->key() != key && indice->child[0] != nullptr))) {
+            if (indice->_value->key() < key)
+                indice = indice->child[1];
+            else
+                indice = indice->child[0];
+        }
+        if (indice == nullptr)
+            indice = end();
+        Iterator it();
+        it.n = indice;
+        return it;
     }
 
     /** \overload */
     iterator lower_bound(const Key& key)  {
-        //completar
+        Node* indice = header->parent;
+        while (indice != nullptr && (indice->_value->key() < key || (indice->_value->key() != key && indice->child[0] != nullptr))) {
+            if (indice->_value->key() < key)
+                indice = indice->child[1];
+            else
+                indice = indice->child[0];
+        }
+        if (indice == nullptr)
+            indice = end();
+        Iterator it();
+        it.n = indice;
+        return it;
     }
     ///@}
 
@@ -1127,7 +1139,6 @@ public:
     */
     bool empty() const {
     	return (count == 0);
-
     }
 
     /**
@@ -1732,7 +1743,7 @@ else (same as then clause with “right” and “left” exchanged)
          *
          */
         pointer operator->() const {
-			//completar
+			return &n.value();
 		}
         /**
          * \brief Avanza el iterador a la siguiente posición
@@ -1868,7 +1879,7 @@ else (same as then clause with “right” and “left” exchanged)
         }
         /** \brief idem !|operator== */
         bool operator!=(iterator other) const {
-                return (n != other.n);
+            return (n != other.n);
         }
 
     private:
