@@ -1029,7 +1029,7 @@ public:
      - Devuelve el Iterador en esa posición.
     */
     const_iterator lower_bound(const Key& key) const {
-    	//completar
+    	
     }
 
     /** \overload */
