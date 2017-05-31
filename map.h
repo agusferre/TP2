@@ -1753,12 +1753,15 @@ else (same as then clause with “right” and “left” exchanged)
          *
          */
         iterator& operator++() {
+        	assert(n != nullptr);
             if(n->child[1] == nullptr){
                 while (n->parent->child[1] == n)
                     n = n->parent;
             }
-            if (n->child[1] != nullptr)
-                n = n->child[1];
+            if (!n->parent.is_header())
+                n = n->parent;
+            else
+            	n = nullptr;
             return *this;
         }
         	
@@ -1781,12 +1784,15 @@ else (same as then clause with “right” and “left” exchanged)
          *
          */
         iterator operator++(int) {
+        assert(n != nullptr);
             if(n->child[1] == nullptr){
                 while (n->parent->child[1] == n)
                     n = n->parent;
             }
-            if (n->child[1] != nullptr)
-                n = n->child[1];
+            if (!n->parent.is_header())
+                n = n->parent;
+            else
+            	n = nullptr;
             return *this;
         }
         /**
@@ -1808,12 +1814,15 @@ else (same as then clause with “right” and “left” exchanged)
          *
          */
         iterator& operator--() {
-         if(n->child[0] == nullptr){
-            while (n->parent->child[0] == n)
-                n = n->parent;
+         assert(n != nullptr);
+            if(n->child[0] == nullptr){
+                while (n->parent->child[0] == n)
+                    n = n->parent;
             }
-            if (n->child[0] != nullptr)
-                n = n->child[0];
+            if (!n->parent.is_header())
+                n = n->parent;
+            else
+            	n = nullptr;
             return *this;
         }
         /**
@@ -1835,13 +1844,16 @@ else (same as then clause with “right” and “left” exchanged)
          *
          */
         iterator operator--(int) {
-            if(n->child[0] == nullptr){
-               while (n->parent->child[0] == n)
-                   n = n->parent;
-               }
-               if (n->child[0] != nullptr)
-                   n = n->child[0];
-               return *this;
+            assert(n != nullptr);
+            if(n->child[1] == nullptr){
+                while (n->parent->child[1] == n)
+                    n = n->parent;
+            }
+            if (!n->parent.is_header())
+                n = n->parent;
+            else
+            	n = nullptr;
+            return *this;
         }
         /**
          * \brief Operador de igualdad
