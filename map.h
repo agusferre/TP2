@@ -1091,34 +1091,20 @@ public:
     */
     const_iterator lower_bound(const Key& key) const {
     	Node* indice = header->parent;
-        while (indice != nullptr && (indice->_value->key() < key || (indice->_value->key() != key && indice->child[0] != nullptr))) {
-            if (indice->_value->key() < key)
-                indice = indice->child[1];
-            else
-                indice = indice->child[0];
-        }
-        if (indice == nullptr)
-            indice = end();
+    	while(indice != nullptr || indice->_value->key()  key){
+    		if (indice->_value->key() < key)
+    			indice = indice->child[0];
+    		else
+    			indice = indice->child[1];
+    	}
     	Iterator it();
-    	it.n = indice;
+    	it.node = indice;
     	return it;
     }
 
     /** \overload */
     iterator lower_bound(const Key& key)  {
-        Node* indice = header->parent;
-        while (indice != nullptr && (indice->_value->key() < key || (indice->_value->key() != key && indice->child[0] != nullptr))) {
-            if (indice->_value->key() < key)
-                indice = indice->child[1];
-            else
-                indice = indice->child[0];
-        }
-        if (indice == nullptr)
-            indice = end();
-        Iterator it();
-        it.n = indice;
-        return it;
-
+        //completar
     }
     ///@}
 
@@ -1319,7 +1305,7 @@ x:p:left D y
      * \T{Meaning} tenga constructor sin parámetros.  La desventaja es que la notación no es tan bonita.
      */
     iterator insert_or_assign(const_iterator hint, const value_type& value) {
-    	//completar
+
     }
 
     /** \overload */
@@ -1767,9 +1753,15 @@ else (same as then clause with “right” and “left” exchanged)
          *
          */
         iterator& operator++() {
-        	
-
+            if(n->child[1] == nullptr){
+                while (n->parent->child[1] == n)
+                    n = n->parent;
+            }
+            if (n->child[1] != nullptr)
+                n = n->child[1];
+            return *this;
         }
+        	
         /**
          * \brief Avanza el iterador a la siguiente posición
          *
@@ -1789,7 +1781,13 @@ else (same as then clause with “right” and “left” exchanged)
          *
          */
         iterator operator++(int) {
-        	//completar
+            if(n->child[1] == nullptr){
+                while (n->parent->child[1] == n)
+                    n = n->parent;
+            }
+            if (n->child[1] != nullptr)
+                n = n->child[1];
+            return *this;
         }
         /**
          * \brief Retrocede el iterador a la posición anterior
@@ -1810,7 +1808,13 @@ else (same as then clause with “right” and “left” exchanged)
          *
          */
         iterator& operator--() {
-        	//completar
+         if(n->child[0] == nullptr){
+            while (n->parent->child[0] == n)
+                n = n->parent;
+            }
+            if (n->child[0] != nullptr)
+                n = n->child[0];
+            return *this;
         }
         /**
          * \brief Retrocede el iterador a la posición anterior
@@ -1831,7 +1835,13 @@ else (same as then clause with “right” and “left” exchanged)
          *
          */
         iterator operator--(int) {
-        	//completar
+            if(n->child[0] == nullptr){
+               while (n->parent->child[0] == n)
+                   n = n->parent;
+               }
+               if (n->child[0] != nullptr)
+                   n = n->child[0];
+               return *this;
         }
         /**
          * \brief Operador de igualdad
@@ -1854,11 +1864,11 @@ else (same as then clause with “right” and “left” exchanged)
          *
          */
         bool operator==(iterator other) const {
-        	//completar
+            return (n == other.n);
         }
         /** \brief idem !|operator== */
         bool operator!=(iterator other) const {
-        	//completar
+                return (n != other.n);
         }
 
     private:
