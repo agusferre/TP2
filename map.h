@@ -1456,60 +1456,38 @@ void erase_fixup(iterator it){
 			w.color = x->parent.color;
 			x->parent.color = black;
 			w->child[1].color = black;
-	}
+			it.n = x->parent;
+			left_rotate(it);
+			x = header->parent;
+		} else {
+			w = x->parent->child[0];
+			if (w.color == red){
+				w.color = black;
+				x->parent.color = red;
+				it.n = x->parent;
+				right_rotate(it);
+				w = x->parent->child[0];
+			}
+			if (w->child[1].color == black && w->child[0].color == black){
+				w.color = red;
+				x = x->parent;
+			} else if (w->child[0].color == black){
+				w->child[1].color = black;
+				w.color = red;
+				iterator it2(w);
+				left_rotate(it2);
+				w = x->parent->child[0];
+			}
+			w.color = x->parent.color;
+			x->parent.color = black;
+			w->child[0].color = black;
+			it.n = x->parent;
+			right_rotate(it);
+			x = header->parent;
+
 		}
 }
 
-
-/*
-
-RB-D ELETE -F IXUP .T; x/
-1 while x ¤ T:root and x:color == BLACK
-2
-if x == x:p:left
-3
-w D x:p:right
-4
-if w:color == RED
-5
-w:color D BLACK
-6
-x:p:color D RED
-7
-L EFT-ROTATE .T; x:p/
-8
-w D x:p:right
-9
-if w:left:color == BLACK and w:right:color == BLACK
-10
-w:color D RED
-11
-x D x:p
-12
-else if w:right:color == BLACK
-13
-w:left:color D BLACK
-14
-w:color D RED
-15
-R IGHT-ROTATE .T; w/
-16
-w D x:p:right
-17
-w:color D x:p:color
-18
-x:p:color D BLACK
-19
-w:right:color D BLACK
-20
-L EFT-ROTATE .T; x:p/
-21
-x D T:root
-22
-else (same as then clause with “right” and “left” exchanged)
-23 x:color D BLACK
-
-    }
 
     /**
      * @brief Elimina el valor cuya clave es \P{key}
