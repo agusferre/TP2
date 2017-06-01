@@ -1348,12 +1348,23 @@ void right-rotate(iterator it){
      * \T{Meaning} tenga constructor sin parámetros.  La desventaja es que la notación no es tan bonita.
      */
     iterator insert_or_assign(const_iterator hint, const value_type& value) {
-
+        iterator it;
+        if (hint.n->value()->first == value.first){
+            it = hint;
+            it.n->value()->second = value->second;
+            } else if (hint.n->value()->first < value->first() || (hint--.n == nullptr
+            || hint.n->value()->first >= value->first)) {
+            it = lower_bound(hint->_value);
+        }
+        it = insert(hint, value);
+        return it;
     }
 
     /** \overload */
     iterator insert_or_assign(const value_type& value) {
-    	//completar
+
+
+        
     }
 
     /**
