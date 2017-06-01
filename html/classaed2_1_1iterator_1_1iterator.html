@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: aed2::map&lt; Key, Meaning, Compare &gt;::iterator Class Reference</title>
+<title>My Project: aed2::iterator::iterator Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -58,7 +58,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a></li><li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a></li><li class="navelem"><a class="el" href="classaed2_1_1map_1_1iterator.html">iterator</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a></li><li class="navelem"><a class="el" href="classaed2_1_1iterator.html">iterator</a></li><li class="navelem"><a class="el" href="classaed2_1_1iterator_1_1iterator.html">iterator</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -66,70 +66,70 @@ $(function() {
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#friends">Friends</a> &#124;
-<a href="classaed2_1_1map_1_1iterator-members.html">List of all members</a>  </div>
+<a href="classaed2_1_1iterator_1_1iterator-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">aed2::map&lt; Key, Meaning, Compare &gt;::iterator Class Reference</div>  </div>
+<div class="title">aed2::iterator::iterator Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
 <p>Parte del módulo que implementa los iteradores que permiten la modificación de los significados.  
- <a href="classaed2_1_1map_1_1iterator.html#details">More...</a></p>
+ <a href="classaed2_1_1iterator_1_1iterator.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="map_8h_source.html">map.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="map2_8h_source.html">map2.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a709df3d8aef6fd1eeb839616b554ff0b"><td class="memItemLeft" align="right" valign="top"><a id="a709df3d8aef6fd1eeb839616b554ff0b"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_1_1iterator.html#a709df3d8aef6fd1eeb839616b554ff0b">iterator_category</a> = std::bidirectional_iterator_tag</td></tr>
-<tr class="memdesc:a709df3d8aef6fd1eeb839616b554ff0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Categoria del iterador: bidireccional. Requerido por estándar C++. <br /></td></tr>
-<tr class="separator:a709df3d8aef6fd1eeb839616b554ff0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e1d954ef5c6a64bbcd881854f039a16"><td class="memItemLeft" align="right" valign="top"><a id="a4e1d954ef5c6a64bbcd881854f039a16"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_1_1iterator.html#a4e1d954ef5c6a64bbcd881854f039a16">value_type</a> = <a class="el" href="classaed2_1_1map.html#a719db98e0ff9a837610f76be33264680">map::value_type</a></td></tr>
-<tr class="memdesc:a4e1d954ef5c6a64bbcd881854f039a16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tipo de los valores recorridos. Requerido por estándar C++. <br /></td></tr>
-<tr class="separator:a4e1d954ef5c6a64bbcd881854f039a16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac19788914a3110897e44c53f1318f6af"><td class="memItemLeft" align="right" valign="top"><a id="ac19788914a3110897e44c53f1318f6af"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_1_1iterator.html#ac19788914a3110897e44c53f1318f6af">reference</a> = <a class="el" href="classaed2_1_1map.html#af4f147533b3c0207ab036c86ce13ec0d">map::reference</a></td></tr>
-<tr class="memdesc:ac19788914a3110897e44c53f1318f6af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tipo de la referencia (resultado de operator*). Requerido por estándar C++. <br /></td></tr>
-<tr class="separator:ac19788914a3110897e44c53f1318f6af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52ea7bdbf1dc6b252aec76633564bdf5"><td class="memItemLeft" align="right" valign="top"><a id="a52ea7bdbf1dc6b252aec76633564bdf5"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_1_1iterator.html#a52ea7bdbf1dc6b252aec76633564bdf5">pointer</a> = <a class="el" href="classaed2_1_1map.html#a7394e98a23b86bc008ad73326b273fd5">map::pointer</a></td></tr>
-<tr class="memdesc:a52ea7bdbf1dc6b252aec76633564bdf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tipo del puntero (resultado de operator-&gt;). Requerido por estándar C++. <br /></td></tr>
-<tr class="separator:a52ea7bdbf1dc6b252aec76633564bdf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a803083681db1f62aed5138194abc1f06"><td class="memItemLeft" align="right" valign="top"><a id="a803083681db1f62aed5138194abc1f06"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_1_1iterator.html#a803083681db1f62aed5138194abc1f06">difference_type</a> = std::ptrdiff_t</td></tr>
-<tr class="memdesc:a803083681db1f62aed5138194abc1f06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resultado de la diferencia entre dos punteros. Requerido por estándar C++. <br /></td></tr>
-<tr class="separator:a803083681db1f62aed5138194abc1f06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad98a0b33afe1df977c248314251fe2b2"><td class="memItemLeft" align="right" valign="top"><a id="ad98a0b33afe1df977c248314251fe2b2"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1iterator_1_1iterator.html#ad98a0b33afe1df977c248314251fe2b2">iterator_category</a> = std::bidirectional_iterator_tag</td></tr>
+<tr class="memdesc:ad98a0b33afe1df977c248314251fe2b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Categoria del iterador: bidireccional. Requerido por estándar C++. <br /></td></tr>
+<tr class="separator:ad98a0b33afe1df977c248314251fe2b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10ed10b6d144d04ae127ef846e1d4e7c"><td class="memItemLeft" align="right" valign="top"><a id="a10ed10b6d144d04ae127ef846e1d4e7c"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1iterator_1_1iterator.html#a10ed10b6d144d04ae127ef846e1d4e7c">value_type</a> = <a class="el" href="classaed2_1_1map.html#a719db98e0ff9a837610f76be33264680">map::value_type</a></td></tr>
+<tr class="memdesc:a10ed10b6d144d04ae127ef846e1d4e7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tipo de los valores recorridos. Requerido por estándar C++. <br /></td></tr>
+<tr class="separator:a10ed10b6d144d04ae127ef846e1d4e7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91be74b60dfc3eabfa5a69d9aa068959"><td class="memItemLeft" align="right" valign="top"><a id="a91be74b60dfc3eabfa5a69d9aa068959"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1iterator_1_1iterator.html#a91be74b60dfc3eabfa5a69d9aa068959">reference</a> = <a class="el" href="classaed2_1_1map.html#af4f147533b3c0207ab036c86ce13ec0d">map::reference</a></td></tr>
+<tr class="memdesc:a91be74b60dfc3eabfa5a69d9aa068959"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tipo de la referencia (resultado de operator*). Requerido por estándar C++. <br /></td></tr>
+<tr class="separator:a91be74b60dfc3eabfa5a69d9aa068959"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add8c8243f6b0e3cb7b67ce06757df53b"><td class="memItemLeft" align="right" valign="top"><a id="add8c8243f6b0e3cb7b67ce06757df53b"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1iterator_1_1iterator.html#add8c8243f6b0e3cb7b67ce06757df53b">pointer</a> = <a class="el" href="classaed2_1_1map.html#a7394e98a23b86bc008ad73326b273fd5">map::pointer</a></td></tr>
+<tr class="memdesc:add8c8243f6b0e3cb7b67ce06757df53b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tipo del puntero (resultado de operator-&gt;). Requerido por estándar C++. <br /></td></tr>
+<tr class="separator:add8c8243f6b0e3cb7b67ce06757df53b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dc57879d054ca0168a20003c9d655b6"><td class="memItemLeft" align="right" valign="top"><a id="a7dc57879d054ca0168a20003c9d655b6"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1iterator_1_1iterator.html#a7dc57879d054ca0168a20003c9d655b6">difference_type</a> = std::ptrdiff_t</td></tr>
+<tr class="memdesc:a7dc57879d054ca0168a20003c9d655b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resultado de la diferencia entre dos punteros. Requerido por estándar C++. <br /></td></tr>
+<tr class="separator:a7dc57879d054ca0168a20003c9d655b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:acdd790eb54216601a2e0591776004dba"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_1_1iterator.html#acdd790eb54216601a2e0591776004dba">iterator</a> ()</td></tr>
-<tr class="memdesc:acdd790eb54216601a2e0591776004dba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea un iterador nulo.  <a href="#acdd790eb54216601a2e0591776004dba">More...</a><br /></td></tr>
-<tr class="separator:acdd790eb54216601a2e0591776004dba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab115711d0295146906830840590d900a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classaed2_1_1map_1_1iterator.html#ac19788914a3110897e44c53f1318f6af">reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_1_1iterator.html#ab115711d0295146906830840590d900a">operator*</a> () const</td></tr>
-<tr class="memdesc:ab115711d0295146906830840590d900a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna el valor apuntado por {*this}.  <a href="#ab115711d0295146906830840590d900a">More...</a><br /></td></tr>
-<tr class="separator:ab115711d0295146906830840590d900a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a712522d62f461c1eb9b02ecf248bae8c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classaed2_1_1map_1_1iterator.html#a52ea7bdbf1dc6b252aec76633564bdf5">pointer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_1_1iterator.html#a712522d62f461c1eb9b02ecf248bae8c">operator-&gt;</a> () const</td></tr>
-<tr class="memdesc:a712522d62f461c1eb9b02ecf248bae8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna la dirección del valor apuntado por {*this}.  <a href="#a712522d62f461c1eb9b02ecf248bae8c">More...</a><br /></td></tr>
-<tr class="separator:a712522d62f461c1eb9b02ecf248bae8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c44de7f0508186e135ddbcfe782fec5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classaed2_1_1map_1_1iterator.html">iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_1_1iterator.html#a7c44de7f0508186e135ddbcfe782fec5">operator++</a> ()</td></tr>
-<tr class="memdesc:a7c44de7f0508186e135ddbcfe782fec5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Avanza el iterador a la siguiente posición.  <a href="#a7c44de7f0508186e135ddbcfe782fec5">More...</a><br /></td></tr>
-<tr class="separator:a7c44de7f0508186e135ddbcfe782fec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4fe5565eb478cfccd254b2ef230b974"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classaed2_1_1map_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_1_1iterator.html#af4fe5565eb478cfccd254b2ef230b974">operator++</a> (int)</td></tr>
-<tr class="memdesc:af4fe5565eb478cfccd254b2ef230b974"><td class="mdescLeft">&#160;</td><td class="mdescRight">Avanza el iterador a la siguiente posición.  <a href="#af4fe5565eb478cfccd254b2ef230b974">More...</a><br /></td></tr>
-<tr class="separator:af4fe5565eb478cfccd254b2ef230b974"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7f70f71545d2a9de17b65edaaec748a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classaed2_1_1map_1_1iterator.html">iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_1_1iterator.html#ae7f70f71545d2a9de17b65edaaec748a">operator--</a> ()</td></tr>
-<tr class="memdesc:ae7f70f71545d2a9de17b65edaaec748a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrocede el iterador a la posición anterior.  <a href="#ae7f70f71545d2a9de17b65edaaec748a">More...</a><br /></td></tr>
-<tr class="separator:ae7f70f71545d2a9de17b65edaaec748a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add45e9ddbb8eeda99326cdb9ac9dd225"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classaed2_1_1map_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_1_1iterator.html#add45e9ddbb8eeda99326cdb9ac9dd225">operator--</a> (int)</td></tr>
-<tr class="memdesc:add45e9ddbb8eeda99326cdb9ac9dd225"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrocede el iterador a la posición anterior.  <a href="#add45e9ddbb8eeda99326cdb9ac9dd225">More...</a><br /></td></tr>
-<tr class="separator:add45e9ddbb8eeda99326cdb9ac9dd225"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34f6622845af93ca42f1be8516eeafa2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_1_1iterator.html#a34f6622845af93ca42f1be8516eeafa2">operator==</a> (<a class="el" href="classaed2_1_1map_1_1iterator.html">iterator</a> other) const</td></tr>
-<tr class="memdesc:a34f6622845af93ca42f1be8516eeafa2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operador de igualdad.  <a href="#a34f6622845af93ca42f1be8516eeafa2">More...</a><br /></td></tr>
-<tr class="separator:a34f6622845af93ca42f1be8516eeafa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a748cdf8c35707d1c2e9ef8ef9d862d37"><td class="memItemLeft" align="right" valign="top"><a id="a748cdf8c35707d1c2e9ef8ef9d862d37"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_1_1iterator.html#a748cdf8c35707d1c2e9ef8ef9d862d37">operator!=</a> (<a class="el" href="classaed2_1_1map_1_1iterator.html">iterator</a> other) const</td></tr>
-<tr class="memdesc:a748cdf8c35707d1c2e9ef8ef9d862d37"><td class="mdescLeft">&#160;</td><td class="mdescRight">idem !|operator== <br /></td></tr>
-<tr class="separator:a748cdf8c35707d1c2e9ef8ef9d862d37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae488782067dfba96b447080b0db1ed2c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1iterator_1_1iterator.html#ae488782067dfba96b447080b0db1ed2c">iterator</a> ()</td></tr>
+<tr class="memdesc:ae488782067dfba96b447080b0db1ed2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea un iterador nulo.  <a href="#ae488782067dfba96b447080b0db1ed2c">More...</a><br /></td></tr>
+<tr class="separator:ae488782067dfba96b447080b0db1ed2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d87de9e96d5efd0456e8f7aec240b8d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classaed2_1_1iterator_1_1iterator.html#a91be74b60dfc3eabfa5a69d9aa068959">reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1iterator_1_1iterator.html#a5d87de9e96d5efd0456e8f7aec240b8d">operator*</a> () const</td></tr>
+<tr class="memdesc:a5d87de9e96d5efd0456e8f7aec240b8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna el valor apuntado por {*this}.  <a href="#a5d87de9e96d5efd0456e8f7aec240b8d">More...</a><br /></td></tr>
+<tr class="separator:a5d87de9e96d5efd0456e8f7aec240b8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e9f5ca8d13a6945d6520736c0cc1a4f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classaed2_1_1iterator_1_1iterator.html#add8c8243f6b0e3cb7b67ce06757df53b">pointer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1iterator_1_1iterator.html#a9e9f5ca8d13a6945d6520736c0cc1a4f">operator-&gt;</a> () const</td></tr>
+<tr class="memdesc:a9e9f5ca8d13a6945d6520736c0cc1a4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna la dirección del valor apuntado por {*this}.  <a href="#a9e9f5ca8d13a6945d6520736c0cc1a4f">More...</a><br /></td></tr>
+<tr class="separator:a9e9f5ca8d13a6945d6520736c0cc1a4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a457fdf0ed06c88121b441424f1c99f4f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classaed2_1_1iterator_1_1iterator.html">iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1iterator_1_1iterator.html#a457fdf0ed06c88121b441424f1c99f4f">operator++</a> ()</td></tr>
+<tr class="memdesc:a457fdf0ed06c88121b441424f1c99f4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Avanza el iterador a la siguiente posición.  <a href="#a457fdf0ed06c88121b441424f1c99f4f">More...</a><br /></td></tr>
+<tr class="separator:a457fdf0ed06c88121b441424f1c99f4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2023454f3ce45f7da4ef23d7a7f6749"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classaed2_1_1iterator_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1iterator_1_1iterator.html#aa2023454f3ce45f7da4ef23d7a7f6749">operator++</a> (int)</td></tr>
+<tr class="memdesc:aa2023454f3ce45f7da4ef23d7a7f6749"><td class="mdescLeft">&#160;</td><td class="mdescRight">Avanza el iterador a la siguiente posición.  <a href="#aa2023454f3ce45f7da4ef23d7a7f6749">More...</a><br /></td></tr>
+<tr class="separator:aa2023454f3ce45f7da4ef23d7a7f6749"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a260692ee1d51f87ef547b4a798fc2de5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classaed2_1_1iterator_1_1iterator.html">iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1iterator_1_1iterator.html#a260692ee1d51f87ef547b4a798fc2de5">operator--</a> ()</td></tr>
+<tr class="memdesc:a260692ee1d51f87ef547b4a798fc2de5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrocede el iterador a la posición anterior.  <a href="#a260692ee1d51f87ef547b4a798fc2de5">More...</a><br /></td></tr>
+<tr class="separator:a260692ee1d51f87ef547b4a798fc2de5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bd61026c75767d0d41e45229144e9d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classaed2_1_1iterator_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1iterator_1_1iterator.html#a6bd61026c75767d0d41e45229144e9d0">operator--</a> (int)</td></tr>
+<tr class="memdesc:a6bd61026c75767d0d41e45229144e9d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrocede el iterador a la posición anterior.  <a href="#a6bd61026c75767d0d41e45229144e9d0">More...</a><br /></td></tr>
+<tr class="separator:a6bd61026c75767d0d41e45229144e9d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a565d56436e9490edab1ea31803af34ae"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1iterator_1_1iterator.html#a565d56436e9490edab1ea31803af34ae">operator==</a> (<a class="el" href="classaed2_1_1iterator_1_1iterator.html">iterator</a> other) const</td></tr>
+<tr class="memdesc:a565d56436e9490edab1ea31803af34ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operador de igualdad.  <a href="#a565d56436e9490edab1ea31803af34ae">More...</a><br /></td></tr>
+<tr class="separator:a565d56436e9490edab1ea31803af34ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c42a3d770db85a6b25abf05e7fa1683"><td class="memItemLeft" align="right" valign="top"><a id="a1c42a3d770db85a6b25abf05e7fa1683"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1iterator_1_1iterator.html#a1c42a3d770db85a6b25abf05e7fa1683">operator!=</a> (<a class="el" href="classaed2_1_1iterator_1_1iterator.html">iterator</a> other) const</td></tr>
+<tr class="memdesc:a1c42a3d770db85a6b25abf05e7fa1683"><td class="mdescLeft">&#160;</td><td class="mdescRight">idem !|operator== <br /></td></tr>
+<tr class="separator:a1c42a3d770db85a6b25abf05e7fa1683"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -138,10 +138,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>map</b></td></tr>
 <tr class="separator:aeda338414e516b47761f994fb78056c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt;<br />
-class aed2::map&lt; Key, Meaning, Compare &gt;::iterator</h3>
-
-<p>Parte del módulo que implementa los iteradores que permiten la modificación de los significados. </p>
+<div class="textblock"><p>Parte del módulo que implementa los iteradores que permiten la modificación de los significados. </p>
 <p>Cuando el iterador se encuentra asociado a un diccionario <code>d</code>, el rango válido de valores del iterador va desde el primer valor de <code>d</code> hasta una posición (ficticia) que se encuentra pasando-el-último. Esta posición no tiene definido un valor para el <code>operator*</code>, y se usa para indicar el fin del recorrido.</p>
 <p>Este es un iterador que sigue el estándar de C++, y por lo tanto es compatible con la bilioteca de algoritmos. Asimismo, las operaciones siguen el protocolo estándar, con lo cual no es necesiario describir el resultado de las mismas. Sin embargo, siendo este un TP, vamos a describir el comportamiento en el marco conceptual de la materia.</p>
 <dl class="section user"><dt>Aspectos generales de aliasing</dt><dd>Vale remarcar que un iterador tiene dos estados posibles:<ol type="1">
@@ -154,19 +151,17 @@ class aed2::map&lt; Key, Meaning, Compare &gt;::iterator</h3>
 <dl class="section attention"><dt>Attention</dt><dd>En caso de usar los iteradores como punteros, se desaconseja el uso de la posicion pasando-el-ultimo como valor nulo, ya que queda invalidada luego de aplicar la operación <a class="el" href="classaed2_1_1map.html#a43ddb71cc91e5c6021a7a1f243d6cc4a" title="Intercambia el contenido de {*this} y {other}. ">aed2::map::swap</a>. Conviene usar el iterador nulo (que, lamentablemente, es independiente del diccionario).</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a href="http://en.cppreference.com/w/cpp/concept/BidirectionalIterator">Documentacion estándar de iteradores bidireccionales</a> </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="acdd790eb54216601a2e0591776004dba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acdd790eb54216601a2e0591776004dba">&#9670;&nbsp;</a></span>iterator()</h2>
+<a id="ae488782067dfba96b447080b0db1ed2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae488782067dfba96b447080b0db1ed2c">&#9670;&nbsp;</a></span>iterator()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classaed2_1_1map.html">aed2::map</a>&lt; Key, Meaning, Compare &gt;::<a class="el" href="classaed2_1_1iterator_1_1iterator.html">iterator::iterator</a> </td>
+          <td class="memname">aed2::iterator::iterator::iterator </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -196,19 +191,17 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab115711d0295146906830840590d900a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab115711d0295146906830840590d900a">&#9670;&nbsp;</a></span>operator*()</h2>
+<a id="a5d87de9e96d5efd0456e8f7aec240b8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d87de9e96d5efd0456e8f7aec240b8d">&#9670;&nbsp;</a></span>operator*()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classaed2_1_1map_1_1iterator.html#ac19788914a3110897e44c53f1318f6af">reference</a> <a class="el" href="classaed2_1_1map.html">aed2::map</a>&lt; Key, Meaning, Compare &gt;::iterator::operator* </td>
+          <td class="memname"><a class="el" href="classaed2_1_1iterator_1_1iterator.html#a91be74b60dfc3eabfa5a69d9aa068959">reference</a> aed2::iterator::iterator::operator* </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -236,19 +229,17 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 
 </div>
 </div>
-<a id="a7c44de7f0508186e135ddbcfe782fec5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7c44de7f0508186e135ddbcfe782fec5">&#9670;&nbsp;</a></span>operator++() <span class="overload">[1/2]</span></h2>
+<a id="a457fdf0ed06c88121b441424f1c99f4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a457fdf0ed06c88121b441424f1c99f4f">&#9670;&nbsp;</a></span>operator++() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classaed2_1_1map_1_1iterator.html">iterator</a>&amp; <a class="el" href="classaed2_1_1map.html">aed2::map</a>&lt; Key, Meaning, Compare &gt;::iterator::operator++ </td>
+          <td class="memname"><a class="el" href="classaed2_1_1iterator_1_1iterator.html">iterator</a>&amp; aed2::iterator::iterator::operator++ </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -279,19 +270,17 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 
 </div>
 </div>
-<a id="af4fe5565eb478cfccd254b2ef230b974"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af4fe5565eb478cfccd254b2ef230b974">&#9670;&nbsp;</a></span>operator++() <span class="overload">[2/2]</span></h2>
+<a id="aa2023454f3ce45f7da4ef23d7a7f6749"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2023454f3ce45f7da4ef23d7a7f6749">&#9670;&nbsp;</a></span>operator++() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classaed2_1_1map_1_1iterator.html">iterator</a> <a class="el" href="classaed2_1_1map.html">aed2::map</a>&lt; Key, Meaning, Compare &gt;::iterator::operator++ </td>
+          <td class="memname"><a class="el" href="classaed2_1_1iterator_1_1iterator.html">iterator</a> aed2::iterator::iterator::operator++ </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -323,19 +312,17 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 
 </div>
 </div>
-<a id="ae7f70f71545d2a9de17b65edaaec748a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7f70f71545d2a9de17b65edaaec748a">&#9670;&nbsp;</a></span>operator--() <span class="overload">[1/2]</span></h2>
+<a id="a260692ee1d51f87ef547b4a798fc2de5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a260692ee1d51f87ef547b4a798fc2de5">&#9670;&nbsp;</a></span>operator--() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classaed2_1_1map_1_1iterator.html">iterator</a>&amp; <a class="el" href="classaed2_1_1map.html">aed2::map</a>&lt; Key, Meaning, Compare &gt;::iterator::operator-- </td>
+          <td class="memname"><a class="el" href="classaed2_1_1iterator_1_1iterator.html">iterator</a>&amp; aed2::iterator::iterator::operator-- </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -366,19 +353,17 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 
 </div>
 </div>
-<a id="add45e9ddbb8eeda99326cdb9ac9dd225"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#add45e9ddbb8eeda99326cdb9ac9dd225">&#9670;&nbsp;</a></span>operator--() <span class="overload">[2/2]</span></h2>
+<a id="a6bd61026c75767d0d41e45229144e9d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bd61026c75767d0d41e45229144e9d0">&#9670;&nbsp;</a></span>operator--() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classaed2_1_1map_1_1iterator.html">iterator</a> <a class="el" href="classaed2_1_1map.html">aed2::map</a>&lt; Key, Meaning, Compare &gt;::iterator::operator-- </td>
+          <td class="memname"><a class="el" href="classaed2_1_1iterator_1_1iterator.html">iterator</a> aed2::iterator::iterator::operator-- </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -410,19 +395,17 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 
 </div>
 </div>
-<a id="a712522d62f461c1eb9b02ecf248bae8c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a712522d62f461c1eb9b02ecf248bae8c">&#9670;&nbsp;</a></span>operator->()</h2>
+<a id="a9e9f5ca8d13a6945d6520736c0cc1a4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e9f5ca8d13a6945d6520736c0cc1a4f">&#9670;&nbsp;</a></span>operator->()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classaed2_1_1map_1_1iterator.html#a52ea7bdbf1dc6b252aec76633564bdf5">pointer</a> <a class="el" href="classaed2_1_1map.html">aed2::map</a>&lt; Key, Meaning, Compare &gt;::iterator::operator-&gt; </td>
+          <td class="memname"><a class="el" href="classaed2_1_1iterator_1_1iterator.html#add8c8243f6b0e3cb7b67ce06757df53b">pointer</a> aed2::iterator::iterator::operator-&gt; </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -451,21 +434,19 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 
 </div>
 </div>
-<a id="a34f6622845af93ca42f1be8516eeafa2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34f6622845af93ca42f1be8516eeafa2">&#9670;&nbsp;</a></span>operator==()</h2>
+<a id="a565d56436e9490edab1ea31803af34ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a565d56436e9490edab1ea31803af34ae">&#9670;&nbsp;</a></span>operator==()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="classaed2_1_1map.html">aed2::map</a>&lt; Key, Meaning, Compare &gt;::iterator::operator== </td>
+          <td class="memname">bool aed2::iterator::iterator::operator== </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classaed2_1_1map_1_1iterator.html">iterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="classaed2_1_1iterator_1_1iterator.html">iterator</a>&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -503,7 +484,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="map_8h_source.html">map.h</a></li>
+<li><a class="el" href="map2_8h_source.html">map2.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

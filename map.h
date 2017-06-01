@@ -1348,9 +1348,14 @@ void right_rotate(iterator it){
 
     /** \overload */
     iterator insert_or_assign(const value_type& value) {
-
-
-        
+        iterator it;
+        it = lower_bound(value->first);
+        if (value->first == it.n->_value->fisrt) {
+            it->_value = value;
+        } else {
+            insert(it, value);
+        }
+        return it
     }
 
     /**

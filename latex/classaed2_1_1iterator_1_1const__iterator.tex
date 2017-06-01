@@ -1,0 +1,110 @@
+\hypertarget{classaed2_1_1iterator_1_1const__iterator}{}\section{aed2\+:\+:iterator\+:\+:const\+\_\+iterator Class Reference}
+\label{classaed2_1_1iterator_1_1const__iterator}\index{aed2\+::iterator\+::const\+\_\+iterator@{aed2\+::iterator\+::const\+\_\+iterator}}
+
+
+Parte del módulo que implementa los iteradores que no permiten la modificación de los significados.  
+
+
+
+
+{\ttfamily \#include $<$map2.\+h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classaed2_1_1iterator_1_1const__iterator_a0081a05e065b4fa9f489f5bd2a252fe2}\label{classaed2_1_1iterator_1_1const__iterator_a0081a05e065b4fa9f489f5bd2a252fe2}} 
+using {\bfseries iterator\+\_\+category} = std\+::bidirectional\+\_\+iterator\+\_\+tag
+\item 
+\mbox{\Hypertarget{classaed2_1_1iterator_1_1const__iterator_a47f035bb6b420788be00cc9b968cbd5d}\label{classaed2_1_1iterator_1_1const__iterator_a47f035bb6b420788be00cc9b968cbd5d}} 
+using {\bfseries value\+\_\+type} = \hyperlink{classaed2_1_1map_a719db98e0ff9a837610f76be33264680}{map\+::value\+\_\+type}
+\item 
+\mbox{\Hypertarget{classaed2_1_1iterator_1_1const__iterator_a957d8873a18f579efb4210f1640ad83b}\label{classaed2_1_1iterator_1_1const__iterator_a957d8873a18f579efb4210f1640ad83b}} 
+using {\bfseries reference} = \hyperlink{classaed2_1_1map_a277080d3db76f19df9319ecba16475a9}{map\+::const\+\_\+reference}
+\item 
+\mbox{\Hypertarget{classaed2_1_1iterator_1_1const__iterator_a629690353abe9f4b60d38e990c1f4f76}\label{classaed2_1_1iterator_1_1const__iterator_a629690353abe9f4b60d38e990c1f4f76}} 
+using {\bfseries pointer} = \hyperlink{classaed2_1_1map_a1366fc3e227a49777cb748fc6d4e022b}{map\+::const\+\_\+pointer}
+\item 
+\mbox{\Hypertarget{classaed2_1_1iterator_1_1const__iterator_a48c8db849a8f9ddffddd596bc2caff80}\label{classaed2_1_1iterator_1_1const__iterator_a48c8db849a8f9ddffddd596bc2caff80}} 
+using {\bfseries difference\+\_\+type} = std\+::ptrdiff\+\_\+t
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classaed2_1_1iterator_1_1const__iterator_aaa51a026552b907959961fb5e890f786}\label{classaed2_1_1iterator_1_1const__iterator_aaa51a026552b907959961fb5e890f786}} 
+\hyperlink{classaed2_1_1iterator_1_1const__iterator_aaa51a026552b907959961fb5e890f786}{const\+\_\+iterator} ()
+\begin{DoxyCompactList}\small\item\em Ver \hyperlink{classaed2_1_1map_1_1iterator_acdd790eb54216601a2e0591776004dba}{aed2\+::map\+::iterator\+::iterator()} \end{DoxyCompactList}\item 
+\hyperlink{classaed2_1_1iterator_1_1const__iterator_a721711310bb4fc525e4ce9a2b13f7ce9}{const\+\_\+iterator} (\hyperlink{classaed2_1_1iterator_1_1iterator}{iterator} it)
+\begin{DoxyCompactList}\small\item\em Constructor desde un iterador modificable. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classaed2_1_1iterator_1_1const__iterator_a43ef67b26f144793d7bec567261738a1}\label{classaed2_1_1iterator_1_1const__iterator_a43ef67b26f144793d7bec567261738a1}} 
+reference \hyperlink{classaed2_1_1iterator_1_1const__iterator_a43ef67b26f144793d7bec567261738a1}{operator$\ast$} () const
+\begin{DoxyCompactList}\small\item\em Ver \hyperlink{classaed2_1_1map_1_1iterator_ab115711d0295146906830840590d900a}{aed2\+::map\+::iterator\+::operator$\ast$()} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classaed2_1_1iterator_1_1const__iterator_afe8d4dc9ecced7c7f42db1b55f008b77}\label{classaed2_1_1iterator_1_1const__iterator_afe8d4dc9ecced7c7f42db1b55f008b77}} 
+pointer \hyperlink{classaed2_1_1iterator_1_1const__iterator_afe8d4dc9ecced7c7f42db1b55f008b77}{operator-\/$>$} () const
+\begin{DoxyCompactList}\small\item\em Ver \hyperlink{classaed2_1_1map_1_1iterator_a712522d62f461c1eb9b02ecf248bae8c}{aed2\+::map\+::iterator\+::operator-\/$>$()} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classaed2_1_1iterator_1_1const__iterator_acf3320ad50b0c151117e2384ec784330}\label{classaed2_1_1iterator_1_1const__iterator_acf3320ad50b0c151117e2384ec784330}} 
+\hyperlink{classaed2_1_1iterator_1_1const__iterator}{const\+\_\+iterator} \& \hyperlink{classaed2_1_1iterator_1_1const__iterator_acf3320ad50b0c151117e2384ec784330}{operator++} ()
+\begin{DoxyCompactList}\small\item\em Ver \hyperlink{classaed2_1_1map_1_1iterator_a7c44de7f0508186e135ddbcfe782fec5}{aed2\+::map\+::iterator\+::operator++()} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classaed2_1_1iterator_1_1const__iterator_a27088afe8fffc9d7fdc2f1596b401d46}\label{classaed2_1_1iterator_1_1const__iterator_a27088afe8fffc9d7fdc2f1596b401d46}} 
+\hyperlink{classaed2_1_1iterator_1_1const__iterator}{const\+\_\+iterator} \hyperlink{classaed2_1_1iterator_1_1const__iterator_a27088afe8fffc9d7fdc2f1596b401d46}{operator++} (int)
+\begin{DoxyCompactList}\small\item\em Ver \hyperlink{classaed2_1_1map_1_1iterator_af4fe5565eb478cfccd254b2ef230b974}{aed2\+::map\+::iterator\+::operator++(int)} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classaed2_1_1iterator_1_1const__iterator_a1aac8371db66fcc4035863537b554b99}\label{classaed2_1_1iterator_1_1const__iterator_a1aac8371db66fcc4035863537b554b99}} 
+\hyperlink{classaed2_1_1iterator_1_1const__iterator}{const\+\_\+iterator} \& \hyperlink{classaed2_1_1iterator_1_1const__iterator_a1aac8371db66fcc4035863537b554b99}{operator-\/-\/} ()
+\begin{DoxyCompactList}\small\item\em Ver \hyperlink{classaed2_1_1map_1_1iterator_ae7f70f71545d2a9de17b65edaaec748a}{aed2\+::map\+::iterator\+::operator-\/-\/()} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classaed2_1_1iterator_1_1const__iterator_a7e421ccf4290b2945d538c9991df7c74}\label{classaed2_1_1iterator_1_1const__iterator_a7e421ccf4290b2945d538c9991df7c74}} 
+\hyperlink{classaed2_1_1iterator_1_1const__iterator}{const\+\_\+iterator} \hyperlink{classaed2_1_1iterator_1_1const__iterator_a7e421ccf4290b2945d538c9991df7c74}{operator-\/-\/} (int)
+\begin{DoxyCompactList}\small\item\em Ver \hyperlink{classaed2_1_1map_1_1iterator_add45e9ddbb8eeda99326cdb9ac9dd225}{aed2\+::map\+::iterator\+::operator-\/-\/(int)} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classaed2_1_1iterator_1_1const__iterator_aa96bbb56e80fa97a9974ef97c826fe3a}\label{classaed2_1_1iterator_1_1const__iterator_aa96bbb56e80fa97a9974ef97c826fe3a}} 
+bool \hyperlink{classaed2_1_1iterator_1_1const__iterator_aa96bbb56e80fa97a9974ef97c826fe3a}{operator==} (\hyperlink{classaed2_1_1iterator_1_1const__iterator}{const\+\_\+iterator} other) const
+\begin{DoxyCompactList}\small\item\em Ver \hyperlink{classaed2_1_1map_1_1iterator_a34f6622845af93ca42f1be8516eeafa2}{aed2\+::map\+::iterator\+::operator==()} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classaed2_1_1iterator_1_1const__iterator_ac9d9eb5bae19cd792c4e92dcc0426e81}\label{classaed2_1_1iterator_1_1const__iterator_ac9d9eb5bae19cd792c4e92dcc0426e81}} 
+bool \hyperlink{classaed2_1_1iterator_1_1const__iterator_ac9d9eb5bae19cd792c4e92dcc0426e81}{operator!=} (\hyperlink{classaed2_1_1iterator_1_1const__iterator}{const\+\_\+iterator} other) const
+\begin{DoxyCompactList}\small\item\em Ver \hyperlink{classaed2_1_1map_1_1iterator_a748cdf8c35707d1c2e9ef8ef9d862d37}{aed2\+::map\+::iterator\+::operator!=()} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classaed2_1_1iterator_1_1const__iterator_aeda338414e516b47761f994fb78056c6}\label{classaed2_1_1iterator_1_1const__iterator_aeda338414e516b47761f994fb78056c6}} 
+class {\bfseries map}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Parte del módulo que implementa los iteradores que no permiten la modificación de los significados. 
+
+Este módulo es análogo a \hyperlink{classaed2_1_1map_1_1iterator}{aed2\+::map\+::iterator}, pero no permite la modificación cuando hay aliasing. Sólo se documentan las funcionalidades nuevas. Para las restantes, ver \hyperlink{classaed2_1_1map_1_1iterator}{aed2\+::map\+::iterator}. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classaed2_1_1iterator_1_1const__iterator_a721711310bb4fc525e4ce9a2b13f7ce9}\label{classaed2_1_1iterator_1_1const__iterator_a721711310bb4fc525e4ce9a2b13f7ce9}} 
+\index{aed2\+::iterator\+::const\+\_\+iterator@{aed2\+::iterator\+::const\+\_\+iterator}!const\+\_\+iterator@{const\+\_\+iterator}}
+\index{const\+\_\+iterator@{const\+\_\+iterator}!aed2\+::iterator\+::const\+\_\+iterator@{aed2\+::iterator\+::const\+\_\+iterator}}
+\subsubsection{\texorpdfstring{const\+\_\+iterator()}{const\_iterator()}}
+{\footnotesize\ttfamily aed2\+::iterator\+::const\+\_\+iterator\+::const\+\_\+iterator (\begin{DoxyParamCaption}\item[{\hyperlink{classaed2_1_1iterator_1_1iterator}{iterator}}]{it }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor desde un iterador modificable. 
+
+Este constructor construye un iterador no modificable que apunta al mismo valor que uno modificable. Tambien funciona como operador de casteo, para no tener que estar transformando los iteradores en aquellas funciones que toman un {\ttfamily \hyperlink{classaed2_1_1iterator_1_1const__iterator}{const\+\_\+iterator}} como parametro.
+
+
+\begin{DoxyParams}{Parameters}
+{\em it} & iterator a \char`\"{}transformar\char`\"{} \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em res} & iterator creado en la transformación\\
+\hline
+\end{DoxyRetVals}
+\{completar\}
+
+\begin{DoxyPrecond}{Precondition}
+\{completar\} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\{completar\}
+\end{DoxyPostcond}
+\{(1)\} 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+map2.\+h\end{DoxyCompactItemize}

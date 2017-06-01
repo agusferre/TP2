@@ -8,11 +8,255 @@ Namespace para las clases de A\+E\+D2.
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
+class \hyperlink{classaed2_1_1iterator}{iterator}
+\begin{DoxyCompactList}\small\item\em Parte del módulo que implementa los iteradores que permiten la modificación de los significados. \end{DoxyCompactList}\item 
 class \hyperlink{classaed2_1_1map}{map}
 \begin{DoxyCompactList}\small\item\em Modulo que implementa un diccionario. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Key , class Meaning , class Compare  = std\+::less$<$\+Key$>$$>$ }\\class \hyperlink{classaed2_1_1map}{aed2\+::map} \hyperlink{namespaceaed2_af94e184e6463abb6f7f5237afd0d808a}{erase} (const Key \&key)
+\begin{DoxyCompactList}\small\item\em Elimina el valor cuya clave es \{key\}. \end{DoxyCompactList}\item 
+void \hyperlink{namespaceaed2_ac055546b287d4b50772e8b4e9d188ed2}{clear} ()
+\begin{DoxyCompactList}\small\item\em Vacia el diccionario. \end{DoxyCompactList}\item 
+void \hyperlink{namespaceaed2_ab24ac4be44835194ce27a61969e4a292}{swap} (\hyperlink{classaed2_1_1map}{map} \&other)
+\begin{DoxyCompactList}\small\item\em Intercambia el contenido de \{$\ast$this\} y \{other\}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Recorridos e iteradores}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classaed2_1_1iterator}{iterator} \hyperlink{namespaceaed2_a669d2fcf59e6ec1fe40105ba395768b6}{begin} ()
+\begin{DoxyCompactList}\small\item\em Devuelve un iterador al primer valor del diccionario. \end{DoxyCompactList}\item 
+const\+\_\+iterator \hyperlink{namespaceaed2_ac1c803de21070eb6f9b7fa3e2035bc22}{cbegin} ()
+\item 
+\hyperlink{classaed2_1_1iterator}{iterator} \hyperlink{namespaceaed2_a3a9c18730be5c97fa5eafebd3aef61ed}{end} ()
+\begin{DoxyCompactList}\small\item\em Devuelve un iterador apuntando a la posición pasando-\/el-\/ultimo del diccionario. \end{DoxyCompactList}\item 
+const\+\_\+iterator \hyperlink{namespaceaed2_a82f5c60a3ebe119105e244fff3c90e20}{cend} ()
+\item 
+reverse\+\_\+iterator \hyperlink{namespaceaed2_a19713cdc443ce739325238c50f233717}{rbegin} ()
+\begin{DoxyCompactList}\small\item\em Devuelve un iterador al primer valor del diccionario, en un recorrido al revés. \end{DoxyCompactList}\item 
+const\+\_\+reverse\+\_\+iterator \hyperlink{namespaceaed2_a38b3285f169e2a78a3b561b5fee6027f}{crbegin} ()
+\item 
+reverse\+\_\+iterator \hyperlink{namespaceaed2_a161376ee8d17855224ab722ff9e0dd9a}{rend} ()
+\begin{DoxyCompactList}\small\item\em Devuelve un iterador apuntando a la posición pasando-\/el-\/ultimo del diccionario, en un recorrido al revés. \end{DoxyCompactList}\item 
+const\+\_\+reverse\+\_\+iterator \hyperlink{namespaceaed2_a3f4649ed2b93f1fdb07419fa1de0bf7f}{crend} ()
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceaed2_ad4e768819128d9a5e85ad658ef19e766}\label{namespaceaed2_ad4e768819128d9a5e85ad658ef19e766}} 
+class \hyperlink{classaed2_1_1iterator}{aed2\+::iterator} {\bfseries erase}
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 Namespace para las clases de A\+E\+D2. 
 
 Para evitar cualquier tipo de conflictos, todas las clases de A\+E\+D2 se implementan en el namespace \hyperlink{namespaceaed2}{aed2}. Recordar el uso de {\ttfamily namespace}, el keyword {\ttfamily using}, y el método A\+DL para la busqueda de las funciones. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceaed2_a669d2fcf59e6ec1fe40105ba395768b6}\label{namespaceaed2_a669d2fcf59e6ec1fe40105ba395768b6}} 
+\index{aed2@{aed2}!begin@{begin}}
+\index{begin@{begin}!aed2@{aed2}}
+\subsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily const\+\_\+iterator aed2\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Devuelve un iterador al primer valor del diccionario. 
+
+\{no hay\}
+
+
+\begin{DoxyRetVals}{Return values}
+{\em res} & iterador al primer valor\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyPrecond}{Precondition}
+\{true\} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\{res  Crear\+It\+Mod(inorder($\ast$this))\}
+\end{DoxyPostcond}
+\{(1)\} Inicia un iterador en header-\/$>$izq.
+
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. \mbox{\Hypertarget{namespaceaed2_ac1c803de21070eb6f9b7fa3e2035bc22}\label{namespaceaed2_ac1c803de21070eb6f9b7fa3e2035bc22}} 
+\index{aed2@{aed2}!cbegin@{cbegin}}
+\index{cbegin@{cbegin}!aed2@{aed2}}
+\subsubsection{\texorpdfstring{cbegin()}{cbegin()}}
+{\footnotesize\ttfamily const\+\_\+iterator aed2\+::cbegin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. \mbox{\Hypertarget{namespaceaed2_a82f5c60a3ebe119105e244fff3c90e20}\label{namespaceaed2_a82f5c60a3ebe119105e244fff3c90e20}} 
+\index{aed2@{aed2}!cend@{cend}}
+\index{cend@{cend}!aed2@{aed2}}
+\subsubsection{\texorpdfstring{cend()}{cend()}}
+{\footnotesize\ttfamily const\+\_\+iterator aed2\+::cend (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. \mbox{\Hypertarget{namespaceaed2_ac055546b287d4b50772e8b4e9d188ed2}\label{namespaceaed2_ac055546b287d4b50772e8b4e9d188ed2}} 
+\index{aed2@{aed2}!clear@{clear}}
+\index{clear@{clear}!aed2@{aed2}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void aed2\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Vacia el diccionario. 
+
+\{Se invalidan todos los iteradores asociados a \{$\ast$this\}, con excepcion de aquellos que apuntan a la posicion pasando-\/el-\/ultimo.\}
+
+\begin{DoxyPrecond}{Precondition}
+\{true\} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\{\{$\ast$this\}  vacio\}
+\end{DoxyPostcond}
+\{((\{$\ast$this\}))\} Mientras count sea distinto de 0, va eliminando con la función erase todos los elementos del árbol. \mbox{\Hypertarget{namespaceaed2_a38b3285f169e2a78a3b561b5fee6027f}\label{namespaceaed2_a38b3285f169e2a78a3b561b5fee6027f}} 
+\index{aed2@{aed2}!crbegin@{crbegin}}
+\index{crbegin@{crbegin}!aed2@{aed2}}
+\subsubsection{\texorpdfstring{crbegin()}{crbegin()}}
+{\footnotesize\ttfamily const\+\_\+reverse\+\_\+iterator aed2\+::crbegin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. \mbox{\Hypertarget{namespaceaed2_a3f4649ed2b93f1fdb07419fa1de0bf7f}\label{namespaceaed2_a3f4649ed2b93f1fdb07419fa1de0bf7f}} 
+\index{aed2@{aed2}!crend@{crend}}
+\index{crend@{crend}!aed2@{aed2}}
+\subsubsection{\texorpdfstring{crend()}{crend()}}
+{\footnotesize\ttfamily const\+\_\+reverse\+\_\+iterator aed2\+::crend (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. \mbox{\Hypertarget{namespaceaed2_a3a9c18730be5c97fa5eafebd3aef61ed}\label{namespaceaed2_a3a9c18730be5c97fa5eafebd3aef61ed}} 
+\index{aed2@{aed2}!end@{end}}
+\index{end@{end}!aed2@{aed2}}
+\subsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily const\+\_\+iterator aed2\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Devuelve un iterador apuntando a la posición pasando-\/el-\/ultimo del diccionario. 
+
+\{no hay\}
+
+
+\begin{DoxyRetVals}{Return values}
+{\em res} & iterador a la posicion pasando-\/al-\/ultimo\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyPrecond}{Precondition}
+\{true\} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\{res  Crear\+It\+Mod(inorder($\ast$this),  )\}
+\end{DoxyPostcond}
+\{(1)\}
+
+Inicia un iterador en nullptr.
+
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. \mbox{\Hypertarget{namespaceaed2_af94e184e6463abb6f7f5237afd0d808a}\label{namespaceaed2_af94e184e6463abb6f7f5237afd0d808a}} 
+\index{aed2@{aed2}!erase@{erase}}
+\index{erase@{erase}!aed2@{aed2}}
+\subsubsection{\texorpdfstring{erase()}{erase()}}
+{\footnotesize\ttfamily template$<$class Key , class Meaning , class Compare  = std\+::less$<$\+Key$>$$>$ \\
+class \hyperlink{classaed2_1_1map}{aed2\+::map} aed2\+::erase (\begin{DoxyParamCaption}\item[{const Key \&}]{key }\end{DoxyParamCaption})}
+
+
+
+Elimina el valor cuya clave es \{key\}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & clave del elemento a eliminar\\
+\hline
+\end{DoxyParams}
+\{completar\}
+
+\begin{DoxyPrecond}{Precondition}
+\{$\ast$this  $\ast$this0  def?(key, $\ast$this)\} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\{$\ast$this  borrar(key, $\ast$this0)\}
+\end{DoxyPostcond}
+\{((\{$\ast$pos\}) + ((\{$\ast$this\}))  (\{$\ast$this\}))\} \mbox{\Hypertarget{namespaceaed2_a19713cdc443ce739325238c50f233717}\label{namespaceaed2_a19713cdc443ce739325238c50f233717}} 
+\index{aed2@{aed2}!rbegin@{rbegin}}
+\index{rbegin@{rbegin}!aed2@{aed2}}
+\subsubsection{\texorpdfstring{rbegin()}{rbegin()}}
+{\footnotesize\ttfamily const\+\_\+reverse\+\_\+iterator aed2\+::rbegin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Devuelve un iterador al primer valor del diccionario, en un recorrido al revés. 
+
+\{no hay\}
+
+
+\begin{DoxyRetVals}{Return values}
+{\em res} & iterador a la primer posicion en un recorrido al revés\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyPrecond}{Precondition}
+\{true\} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\{res  Crear\+It\+Mod(  , postorder($\ast$this))\}
+\end{DoxyPostcond}
+\{(1)\}
+
+Inicia un reverse\+\_\+iterator en el hijo derecho de header.
+
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. \mbox{\Hypertarget{namespaceaed2_a161376ee8d17855224ab722ff9e0dd9a}\label{namespaceaed2_a161376ee8d17855224ab722ff9e0dd9a}} 
+\index{aed2@{aed2}!rend@{rend}}
+\index{rend@{rend}!aed2@{aed2}}
+\subsubsection{\texorpdfstring{rend()}{rend()}}
+{\footnotesize\ttfamily const\+\_\+reverse\+\_\+iterator aed2\+::rend (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Devuelve un iterador apuntando a la posición pasando-\/el-\/ultimo del diccionario, en un recorrido al revés. 
+
+\{no hay\}
+
+
+\begin{DoxyRetVals}{Return values}
+{\em res} & iterador a la posicion pasando-\/al-\/ultimo, en un recorrido al revés\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyPrecond}{Precondition}
+\{true\} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\{res  Crear\+It\+Mod(postorder($\ast$this),  )\}
+\end{DoxyPostcond}
+\{(1)\}
+
+Inicia un reversre\+\_\+iterator en el hijo izquierdo de header.
+
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. \mbox{\Hypertarget{namespaceaed2_ab24ac4be44835194ce27a61969e4a292}\label{namespaceaed2_ab24ac4be44835194ce27a61969e4a292}} 
+\index{aed2@{aed2}!swap@{swap}}
+\index{swap@{swap}!aed2@{aed2}}
+\subsubsection{\texorpdfstring{swap()}{swap()}}
+{\footnotesize\ttfamily void aed2\+::swap (\begin{DoxyParamCaption}\item[{\hyperlink{classaed2_1_1map}{map} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Intercambia el contenido de \{$\ast$this\} y \{other\}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & diccionario a intercambiar con \{$\ast$this\}\\
+\hline
+\end{DoxyParams}
+\{Todos los iteradores, salvo aquellos que apuntan a las posiciones pasando-\/el-\/ultimo, se mantienen válidos. Aquellos iteradores que apuntan a la posición pasando-\/el-\/ultimo de \{$\ast$this\} pasan a apuntar a la posición pasando-\/el-\/ultimo de \{other\}, y viceversa.\}
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & mapa a intercambiar con this\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+\{{\itshape self} = \{$\ast$this\}  {\itshape oth} = \{other\}\} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\{\{$\ast$this\}  {\itshape oth}  \{other\} = {\itshape self\}} 
+\end{DoxyPostcond}
+\{(1)\}
+
+\begin{DoxyNote}{Note}
+La razón por la que se \char`\"{}invalidan\char`\"{} los iteradores pasando-\/el-\/fin tiene que ver con la forma en que se implementa el módulo (que emula la implementacion de C++). No hay ninguna razón técnica que impida mantener los iteradores pasando el fin, salvo por un pequeño ahorro de memoria y tiempo. En caso de querer usar los iteradores como punteros, se recomienda usar el iterador nulo de diccionario para representar al valor inválido, en lugar de usar los iteradores pasando-\/el-\/ultimo. 
+\end{DoxyNote}

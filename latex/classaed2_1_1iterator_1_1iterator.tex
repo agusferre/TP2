@@ -1,5 +1,5 @@
-\hypertarget{classaed2_1_1map_1_1iterator}{}\section{aed2\+:\+:map$<$ Key, Meaning, Compare $>$\+:\+:iterator Class Reference}
-\label{classaed2_1_1map_1_1iterator}\index{aed2\+::map$<$ Key, Meaning, Compare $>$\+::iterator@{aed2\+::map$<$ Key, Meaning, Compare $>$\+::iterator}}
+\hypertarget{classaed2_1_1iterator_1_1iterator}{}\section{aed2\+:\+:iterator\+:\+:iterator Class Reference}
+\label{classaed2_1_1iterator_1_1iterator}\index{aed2\+::iterator\+::iterator@{aed2\+::iterator\+::iterator}}
 
 
 Parte del módulo que implementa los iteradores que permiten la modificación de los significados.  
@@ -7,60 +7,57 @@ Parte del módulo que implementa los iteradores que permiten la modificación de
 
 
 
-{\ttfamily \#include $<$map.\+h$>$}
+{\ttfamily \#include $<$map2.\+h$>$}
 
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classaed2_1_1map_1_1iterator_a709df3d8aef6fd1eeb839616b554ff0b}\label{classaed2_1_1map_1_1iterator_a709df3d8aef6fd1eeb839616b554ff0b}} 
-using \hyperlink{classaed2_1_1map_1_1iterator_a709df3d8aef6fd1eeb839616b554ff0b}{iterator\+\_\+category} = std\+::bidirectional\+\_\+iterator\+\_\+tag
+\mbox{\Hypertarget{classaed2_1_1iterator_1_1iterator_ad98a0b33afe1df977c248314251fe2b2}\label{classaed2_1_1iterator_1_1iterator_ad98a0b33afe1df977c248314251fe2b2}} 
+using \hyperlink{classaed2_1_1iterator_1_1iterator_ad98a0b33afe1df977c248314251fe2b2}{iterator\+\_\+category} = std\+::bidirectional\+\_\+iterator\+\_\+tag
 \begin{DoxyCompactList}\small\item\em Categoria del iterador\+: bidireccional. Requerido por estándar C++. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classaed2_1_1map_1_1iterator_a4e1d954ef5c6a64bbcd881854f039a16}\label{classaed2_1_1map_1_1iterator_a4e1d954ef5c6a64bbcd881854f039a16}} 
-using \hyperlink{classaed2_1_1map_1_1iterator_a4e1d954ef5c6a64bbcd881854f039a16}{value\+\_\+type} = \hyperlink{classaed2_1_1map_a719db98e0ff9a837610f76be33264680}{map\+::value\+\_\+type}
+\mbox{\Hypertarget{classaed2_1_1iterator_1_1iterator_a10ed10b6d144d04ae127ef846e1d4e7c}\label{classaed2_1_1iterator_1_1iterator_a10ed10b6d144d04ae127ef846e1d4e7c}} 
+using \hyperlink{classaed2_1_1iterator_1_1iterator_a10ed10b6d144d04ae127ef846e1d4e7c}{value\+\_\+type} = \hyperlink{classaed2_1_1map_a719db98e0ff9a837610f76be33264680}{map\+::value\+\_\+type}
 \begin{DoxyCompactList}\small\item\em Tipo de los valores recorridos. Requerido por estándar C++. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classaed2_1_1map_1_1iterator_ac19788914a3110897e44c53f1318f6af}\label{classaed2_1_1map_1_1iterator_ac19788914a3110897e44c53f1318f6af}} 
-using \hyperlink{classaed2_1_1map_1_1iterator_ac19788914a3110897e44c53f1318f6af}{reference} = \hyperlink{classaed2_1_1map_af4f147533b3c0207ab036c86ce13ec0d}{map\+::reference}
+\mbox{\Hypertarget{classaed2_1_1iterator_1_1iterator_a91be74b60dfc3eabfa5a69d9aa068959}\label{classaed2_1_1iterator_1_1iterator_a91be74b60dfc3eabfa5a69d9aa068959}} 
+using \hyperlink{classaed2_1_1iterator_1_1iterator_a91be74b60dfc3eabfa5a69d9aa068959}{reference} = \hyperlink{classaed2_1_1map_af4f147533b3c0207ab036c86ce13ec0d}{map\+::reference}
 \begin{DoxyCompactList}\small\item\em Tipo de la referencia (resultado de operator$\ast$). Requerido por estándar C++. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classaed2_1_1map_1_1iterator_a52ea7bdbf1dc6b252aec76633564bdf5}\label{classaed2_1_1map_1_1iterator_a52ea7bdbf1dc6b252aec76633564bdf5}} 
-using \hyperlink{classaed2_1_1map_1_1iterator_a52ea7bdbf1dc6b252aec76633564bdf5}{pointer} = \hyperlink{classaed2_1_1map_a7394e98a23b86bc008ad73326b273fd5}{map\+::pointer}
+\mbox{\Hypertarget{classaed2_1_1iterator_1_1iterator_add8c8243f6b0e3cb7b67ce06757df53b}\label{classaed2_1_1iterator_1_1iterator_add8c8243f6b0e3cb7b67ce06757df53b}} 
+using \hyperlink{classaed2_1_1iterator_1_1iterator_add8c8243f6b0e3cb7b67ce06757df53b}{pointer} = \hyperlink{classaed2_1_1map_a7394e98a23b86bc008ad73326b273fd5}{map\+::pointer}
 \begin{DoxyCompactList}\small\item\em Tipo del puntero (resultado de operator-\/$>$). Requerido por estándar C++. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classaed2_1_1map_1_1iterator_a803083681db1f62aed5138194abc1f06}\label{classaed2_1_1map_1_1iterator_a803083681db1f62aed5138194abc1f06}} 
-using \hyperlink{classaed2_1_1map_1_1iterator_a803083681db1f62aed5138194abc1f06}{difference\+\_\+type} = std\+::ptrdiff\+\_\+t
+\mbox{\Hypertarget{classaed2_1_1iterator_1_1iterator_a7dc57879d054ca0168a20003c9d655b6}\label{classaed2_1_1iterator_1_1iterator_a7dc57879d054ca0168a20003c9d655b6}} 
+using \hyperlink{classaed2_1_1iterator_1_1iterator_a7dc57879d054ca0168a20003c9d655b6}{difference\+\_\+type} = std\+::ptrdiff\+\_\+t
 \begin{DoxyCompactList}\small\item\em Resultado de la diferencia entre dos punteros. Requerido por estándar C++. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classaed2_1_1map_1_1iterator_acdd790eb54216601a2e0591776004dba}{iterator} ()
+\hyperlink{classaed2_1_1iterator_1_1iterator_ae488782067dfba96b447080b0db1ed2c}{iterator} ()
 \begin{DoxyCompactList}\small\item\em Crea un iterador nulo. \end{DoxyCompactList}\item 
-\hyperlink{classaed2_1_1map_1_1iterator_ac19788914a3110897e44c53f1318f6af}{reference} \hyperlink{classaed2_1_1map_1_1iterator_ab115711d0295146906830840590d900a}{operator$\ast$} () const
+\hyperlink{classaed2_1_1iterator_1_1iterator_a91be74b60dfc3eabfa5a69d9aa068959}{reference} \hyperlink{classaed2_1_1iterator_1_1iterator_a5d87de9e96d5efd0456e8f7aec240b8d}{operator$\ast$} () const
 \begin{DoxyCompactList}\small\item\em Retorna el valor apuntado por \{$\ast$this\}. \end{DoxyCompactList}\item 
-\hyperlink{classaed2_1_1map_1_1iterator_a52ea7bdbf1dc6b252aec76633564bdf5}{pointer} \hyperlink{classaed2_1_1map_1_1iterator_a712522d62f461c1eb9b02ecf248bae8c}{operator-\/$>$} () const
+\hyperlink{classaed2_1_1iterator_1_1iterator_add8c8243f6b0e3cb7b67ce06757df53b}{pointer} \hyperlink{classaed2_1_1iterator_1_1iterator_a9e9f5ca8d13a6945d6520736c0cc1a4f}{operator-\/$>$} () const
 \begin{DoxyCompactList}\small\item\em Retorna la dirección del valor apuntado por \{$\ast$this\}. \end{DoxyCompactList}\item 
-\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \& \hyperlink{classaed2_1_1map_1_1iterator_a7c44de7f0508186e135ddbcfe782fec5}{operator++} ()
+\hyperlink{classaed2_1_1iterator_1_1iterator}{iterator} \& \hyperlink{classaed2_1_1iterator_1_1iterator_a457fdf0ed06c88121b441424f1c99f4f}{operator++} ()
 \begin{DoxyCompactList}\small\item\em Avanza el iterador a la siguiente posición. \end{DoxyCompactList}\item 
-\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_1_1iterator_af4fe5565eb478cfccd254b2ef230b974}{operator++} (int)
+\hyperlink{classaed2_1_1iterator_1_1iterator}{iterator} \hyperlink{classaed2_1_1iterator_1_1iterator_aa2023454f3ce45f7da4ef23d7a7f6749}{operator++} (int)
 \begin{DoxyCompactList}\small\item\em Avanza el iterador a la siguiente posición. \end{DoxyCompactList}\item 
-\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \& \hyperlink{classaed2_1_1map_1_1iterator_ae7f70f71545d2a9de17b65edaaec748a}{operator-\/-\/} ()
+\hyperlink{classaed2_1_1iterator_1_1iterator}{iterator} \& \hyperlink{classaed2_1_1iterator_1_1iterator_a260692ee1d51f87ef547b4a798fc2de5}{operator-\/-\/} ()
 \begin{DoxyCompactList}\small\item\em Retrocede el iterador a la posición anterior. \end{DoxyCompactList}\item 
-\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_1_1iterator_add45e9ddbb8eeda99326cdb9ac9dd225}{operator-\/-\/} (int)
+\hyperlink{classaed2_1_1iterator_1_1iterator}{iterator} \hyperlink{classaed2_1_1iterator_1_1iterator_a6bd61026c75767d0d41e45229144e9d0}{operator-\/-\/} (int)
 \begin{DoxyCompactList}\small\item\em Retrocede el iterador a la posición anterior. \end{DoxyCompactList}\item 
-bool \hyperlink{classaed2_1_1map_1_1iterator_a34f6622845af93ca42f1be8516eeafa2}{operator==} (\hyperlink{classaed2_1_1map_1_1iterator}{iterator} other) const
+bool \hyperlink{classaed2_1_1iterator_1_1iterator_a565d56436e9490edab1ea31803af34ae}{operator==} (\hyperlink{classaed2_1_1iterator_1_1iterator}{iterator} other) const
 \begin{DoxyCompactList}\small\item\em Operador de igualdad. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classaed2_1_1map_1_1iterator_a748cdf8c35707d1c2e9ef8ef9d862d37}\label{classaed2_1_1map_1_1iterator_a748cdf8c35707d1c2e9ef8ef9d862d37}} 
-bool \hyperlink{classaed2_1_1map_1_1iterator_a748cdf8c35707d1c2e9ef8ef9d862d37}{operator!=} (\hyperlink{classaed2_1_1map_1_1iterator}{iterator} other) const
+\mbox{\Hypertarget{classaed2_1_1iterator_1_1iterator_a1c42a3d770db85a6b25abf05e7fa1683}\label{classaed2_1_1iterator_1_1iterator_a1c42a3d770db85a6b25abf05e7fa1683}} 
+bool \hyperlink{classaed2_1_1iterator_1_1iterator_a1c42a3d770db85a6b25abf05e7fa1683}{operator!=} (\hyperlink{classaed2_1_1iterator_1_1iterator}{iterator} other) const
 \begin{DoxyCompactList}\small\item\em idem !$\vert$operator== \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classaed2_1_1map_1_1iterator_aeda338414e516b47761f994fb78056c6}\label{classaed2_1_1map_1_1iterator_aeda338414e516b47761f994fb78056c6}} 
+\mbox{\Hypertarget{classaed2_1_1iterator_1_1iterator_aeda338414e516b47761f994fb78056c6}\label{classaed2_1_1iterator_1_1iterator_aeda338414e516b47761f994fb78056c6}} 
 class {\bfseries map}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-\subsubsection*{template$<$class Key, class Meaning, class Compare = std\+::less$<$\+Key$>$$>$\newline
-class aed2\+::map$<$ Key, Meaning, Compare $>$\+::iterator}
-
 Parte del módulo que implementa los iteradores que permiten la modificación de los significados. 
 
 Cuando el iterador se encuentra asociado a un diccionario {\ttfamily d}, el rango válido de valores del iterador va desde el primer valor de {\ttfamily d} hasta una posición (ficticia) que se encuentra pasando-\/el-\/último. Esta posición no tiene definido un valor para el {\ttfamily operator$\ast$}, y se usa para indicar el fin del recorrido.
@@ -89,12 +86,11 @@ En caso de usar los iteradores como punteros, se desaconseja el uso de la posici
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classaed2_1_1map_1_1iterator_acdd790eb54216601a2e0591776004dba}\label{classaed2_1_1map_1_1iterator_acdd790eb54216601a2e0591776004dba}} 
-\index{aed2\+::map\+::iterator@{aed2\+::map\+::iterator}!iterator@{iterator}}
-\index{iterator@{iterator}!aed2\+::map\+::iterator@{aed2\+::map\+::iterator}}
+\mbox{\Hypertarget{classaed2_1_1iterator_1_1iterator_ae488782067dfba96b447080b0db1ed2c}\label{classaed2_1_1iterator_1_1iterator_ae488782067dfba96b447080b0db1ed2c}} 
+\index{aed2\+::iterator\+::iterator@{aed2\+::iterator\+::iterator}!iterator@{iterator}}
+\index{iterator@{iterator}!aed2\+::iterator\+::iterator@{aed2\+::iterator\+::iterator}}
 \subsubsection{\texorpdfstring{iterator()}{iterator()}}
-{\footnotesize\ttfamily template$<$class Key, class Meaning, class Compare = std\+::less$<$\+Key$>$$>$ \\
-\hyperlink{classaed2_1_1map}{aed2\+::map}$<$ Key, Meaning, Compare $>$\+::\hyperlink{classaed2_1_1iterator_1_1iterator}{iterator\+::iterator} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily aed2\+::iterator\+::iterator\+::iterator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -129,12 +125,11 @@ Hay dos razones para permitir la existencia de iteradores nulos. La primera, má
 Inicia un iterador apuntando a nullptr. 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{classaed2_1_1map_1_1iterator_ab115711d0295146906830840590d900a}\label{classaed2_1_1map_1_1iterator_ab115711d0295146906830840590d900a}} 
-\index{aed2\+::map\+::iterator@{aed2\+::map\+::iterator}!operator$\ast$@{operator$\ast$}}
-\index{operator$\ast$@{operator$\ast$}!aed2\+::map\+::iterator@{aed2\+::map\+::iterator}}
+\mbox{\Hypertarget{classaed2_1_1iterator_1_1iterator_a5d87de9e96d5efd0456e8f7aec240b8d}\label{classaed2_1_1iterator_1_1iterator_a5d87de9e96d5efd0456e8f7aec240b8d}} 
+\index{aed2\+::iterator\+::iterator@{aed2\+::iterator\+::iterator}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!aed2\+::iterator\+::iterator@{aed2\+::iterator\+::iterator}}
 \subsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
-{\footnotesize\ttfamily template$<$class Key, class Meaning, class Compare = std\+::less$<$\+Key$>$$>$ \\
-\hyperlink{classaed2_1_1map_1_1iterator_ac19788914a3110897e44c53f1318f6af}{reference} \hyperlink{classaed2_1_1map}{aed2\+::map}$<$ Key, Meaning, Compare $>$\+::iterator\+::operator$\ast$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \hyperlink{classaed2_1_1iterator_1_1iterator_a91be74b60dfc3eabfa5a69d9aa068959}{reference} aed2\+::iterator\+::iterator\+::operator$\ast$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -155,12 +150,11 @@ Retorna el valor apuntado por \{$\ast$this\}.
 \end{DoxyPostcond}
 \{(1)\}
 
-Devuelve el elemento del nodo al que está apuntando el iterador. \mbox{\Hypertarget{classaed2_1_1map_1_1iterator_a7c44de7f0508186e135ddbcfe782fec5}\label{classaed2_1_1map_1_1iterator_a7c44de7f0508186e135ddbcfe782fec5}} 
-\index{aed2\+::map\+::iterator@{aed2\+::map\+::iterator}!operator++@{operator++}}
-\index{operator++@{operator++}!aed2\+::map\+::iterator@{aed2\+::map\+::iterator}}
+Devuelve el elemento del nodo al que está apuntando el iterador. \mbox{\Hypertarget{classaed2_1_1iterator_1_1iterator_a457fdf0ed06c88121b441424f1c99f4f}\label{classaed2_1_1iterator_1_1iterator_a457fdf0ed06c88121b441424f1c99f4f}} 
+\index{aed2\+::iterator\+::iterator@{aed2\+::iterator\+::iterator}!operator++@{operator++}}
+\index{operator++@{operator++}!aed2\+::iterator\+::iterator@{aed2\+::iterator\+::iterator}}
 \subsubsection{\texorpdfstring{operator++()}{operator++()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily template$<$class Key, class Meaning, class Compare = std\+::less$<$\+Key$>$$>$ \\
-\hyperlink{classaed2_1_1map_1_1iterator}{iterator}\& \hyperlink{classaed2_1_1map}{aed2\+::map}$<$ Key, Meaning, Compare $>$\+::iterator\+::operator++ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \hyperlink{classaed2_1_1iterator_1_1iterator}{iterator}\& aed2\+::iterator\+::iterator\+::operator++ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -185,12 +179,11 @@ Avanza el iterador a la siguiente posición.
 \item Peor caso amortizado\+: (1) \}
 \end{DoxyItemize}
 
-Avanza el iterador en una posición y lo devuelve. \mbox{\Hypertarget{classaed2_1_1map_1_1iterator_af4fe5565eb478cfccd254b2ef230b974}\label{classaed2_1_1map_1_1iterator_af4fe5565eb478cfccd254b2ef230b974}} 
-\index{aed2\+::map\+::iterator@{aed2\+::map\+::iterator}!operator++@{operator++}}
-\index{operator++@{operator++}!aed2\+::map\+::iterator@{aed2\+::map\+::iterator}}
+Avanza el iterador en una posición y lo devuelve. \mbox{\Hypertarget{classaed2_1_1iterator_1_1iterator_aa2023454f3ce45f7da4ef23d7a7f6749}\label{classaed2_1_1iterator_1_1iterator_aa2023454f3ce45f7da4ef23d7a7f6749}} 
+\index{aed2\+::iterator\+::iterator@{aed2\+::iterator\+::iterator}!operator++@{operator++}}
+\index{operator++@{operator++}!aed2\+::iterator\+::iterator@{aed2\+::iterator\+::iterator}}
 \subsubsection{\texorpdfstring{operator++()}{operator++()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily template$<$class Key, class Meaning, class Compare = std\+::less$<$\+Key$>$$>$ \\
-\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map}{aed2\+::map}$<$ Key, Meaning, Compare $>$\+::iterator\+::operator++ (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \hyperlink{classaed2_1_1iterator_1_1iterator}{iterator} aed2\+::iterator\+::iterator\+::operator++ (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -215,12 +208,11 @@ Avanza el iterador a la siguiente posición.
 \item Peor caso amortizado\+: (1) \}
 \end{DoxyItemize}
 
-C\+O\+N\+S\+U\+L\+T\+AR. \mbox{\Hypertarget{classaed2_1_1map_1_1iterator_ae7f70f71545d2a9de17b65edaaec748a}\label{classaed2_1_1map_1_1iterator_ae7f70f71545d2a9de17b65edaaec748a}} 
-\index{aed2\+::map\+::iterator@{aed2\+::map\+::iterator}!operator-\/-\/@{operator-\/-\/}}
-\index{operator-\/-\/@{operator-\/-\/}!aed2\+::map\+::iterator@{aed2\+::map\+::iterator}}
+C\+O\+N\+S\+U\+L\+T\+AR. \mbox{\Hypertarget{classaed2_1_1iterator_1_1iterator_a260692ee1d51f87ef547b4a798fc2de5}\label{classaed2_1_1iterator_1_1iterator_a260692ee1d51f87ef547b4a798fc2de5}} 
+\index{aed2\+::iterator\+::iterator@{aed2\+::iterator\+::iterator}!operator-\/-\/@{operator-\/-\/}}
+\index{operator-\/-\/@{operator-\/-\/}!aed2\+::iterator\+::iterator@{aed2\+::iterator\+::iterator}}
 \subsubsection{\texorpdfstring{operator-\/-\/()}{operator--()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily template$<$class Key, class Meaning, class Compare = std\+::less$<$\+Key$>$$>$ \\
-\hyperlink{classaed2_1_1map_1_1iterator}{iterator}\& \hyperlink{classaed2_1_1map}{aed2\+::map}$<$ Key, Meaning, Compare $>$\+::iterator\+::operator-\/-\/ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \hyperlink{classaed2_1_1iterator_1_1iterator}{iterator}\& aed2\+::iterator\+::iterator\+::operator-\/-\/ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -245,12 +237,11 @@ Retrocede el iterador a la posición anterior.
 \item Peor caso amortizado\+: (1) \}
 \end{DoxyItemize}
 
-Retrocede el iterador en una posicion y lo devuelve. \mbox{\Hypertarget{classaed2_1_1map_1_1iterator_add45e9ddbb8eeda99326cdb9ac9dd225}\label{classaed2_1_1map_1_1iterator_add45e9ddbb8eeda99326cdb9ac9dd225}} 
-\index{aed2\+::map\+::iterator@{aed2\+::map\+::iterator}!operator-\/-\/@{operator-\/-\/}}
-\index{operator-\/-\/@{operator-\/-\/}!aed2\+::map\+::iterator@{aed2\+::map\+::iterator}}
+Retrocede el iterador en una posicion y lo devuelve. \mbox{\Hypertarget{classaed2_1_1iterator_1_1iterator_a6bd61026c75767d0d41e45229144e9d0}\label{classaed2_1_1iterator_1_1iterator_a6bd61026c75767d0d41e45229144e9d0}} 
+\index{aed2\+::iterator\+::iterator@{aed2\+::iterator\+::iterator}!operator-\/-\/@{operator-\/-\/}}
+\index{operator-\/-\/@{operator-\/-\/}!aed2\+::iterator\+::iterator@{aed2\+::iterator\+::iterator}}
 \subsubsection{\texorpdfstring{operator-\/-\/()}{operator--()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily template$<$class Key, class Meaning, class Compare = std\+::less$<$\+Key$>$$>$ \\
-\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map}{aed2\+::map}$<$ Key, Meaning, Compare $>$\+::iterator\+::operator-\/-\/ (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \hyperlink{classaed2_1_1iterator_1_1iterator}{iterator} aed2\+::iterator\+::iterator\+::operator-\/-\/ (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -275,12 +266,11 @@ Retrocede el iterador a la posición anterior.
 \item Peor caso amortizado\+: (1) \}
 \end{DoxyItemize}
 
-C\+O\+N\+S\+U\+L\+T\+AR \mbox{\Hypertarget{classaed2_1_1map_1_1iterator_a712522d62f461c1eb9b02ecf248bae8c}\label{classaed2_1_1map_1_1iterator_a712522d62f461c1eb9b02ecf248bae8c}} 
-\index{aed2\+::map\+::iterator@{aed2\+::map\+::iterator}!operator-\/$>$@{operator-\/$>$}}
-\index{operator-\/$>$@{operator-\/$>$}!aed2\+::map\+::iterator@{aed2\+::map\+::iterator}}
+C\+O\+N\+S\+U\+L\+T\+AR \mbox{\Hypertarget{classaed2_1_1iterator_1_1iterator_a9e9f5ca8d13a6945d6520736c0cc1a4f}\label{classaed2_1_1iterator_1_1iterator_a9e9f5ca8d13a6945d6520736c0cc1a4f}} 
+\index{aed2\+::iterator\+::iterator@{aed2\+::iterator\+::iterator}!operator-\/$>$@{operator-\/$>$}}
+\index{operator-\/$>$@{operator-\/$>$}!aed2\+::iterator\+::iterator@{aed2\+::iterator\+::iterator}}
 \subsubsection{\texorpdfstring{operator-\/$>$()}{operator->()}}
-{\footnotesize\ttfamily template$<$class Key, class Meaning, class Compare = std\+::less$<$\+Key$>$$>$ \\
-\hyperlink{classaed2_1_1map_1_1iterator_a52ea7bdbf1dc6b252aec76633564bdf5}{pointer} \hyperlink{classaed2_1_1map}{aed2\+::map}$<$ Key, Meaning, Compare $>$\+::iterator\+::operator-\/$>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \hyperlink{classaed2_1_1iterator_1_1iterator_add8c8243f6b0e3cb7b67ce06757df53b}{pointer} aed2\+::iterator\+::iterator\+::operator-\/$>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -304,12 +294,11 @@ Retorna la dirección del valor apuntado por \{$\ast$this\}.
 \begin{DoxyAttention}{Attention}
 No hay forma de expresar, en el lenguaje de T\+A\+Ds, que un puntero apunta a la dirección de otro objeto. Es por eso que la postcondición es más débil de lo que debiera. Eso no ocurre en las otras funciones del TP.
 \end{DoxyAttention}
-Devuelve la posición de memoria del valor del nodo al que está apuntando el iterador. \mbox{\Hypertarget{classaed2_1_1map_1_1iterator_a34f6622845af93ca42f1be8516eeafa2}\label{classaed2_1_1map_1_1iterator_a34f6622845af93ca42f1be8516eeafa2}} 
-\index{aed2\+::map\+::iterator@{aed2\+::map\+::iterator}!operator==@{operator==}}
-\index{operator==@{operator==}!aed2\+::map\+::iterator@{aed2\+::map\+::iterator}}
+Devuelve la posición de memoria del valor del nodo al que está apuntando el iterador. \mbox{\Hypertarget{classaed2_1_1iterator_1_1iterator_a565d56436e9490edab1ea31803af34ae}\label{classaed2_1_1iterator_1_1iterator_a565d56436e9490edab1ea31803af34ae}} 
+\index{aed2\+::iterator\+::iterator@{aed2\+::iterator\+::iterator}!operator==@{operator==}}
+\index{operator==@{operator==}!aed2\+::iterator\+::iterator@{aed2\+::iterator\+::iterator}}
 \subsubsection{\texorpdfstring{operator==()}{operator==()}}
-{\footnotesize\ttfamily template$<$class Key, class Meaning, class Compare = std\+::less$<$\+Key$>$$>$ \\
-bool \hyperlink{classaed2_1_1map}{aed2\+::map}$<$ Key, Meaning, Compare $>$\+::iterator\+::operator== (\begin{DoxyParamCaption}\item[{\hyperlink{classaed2_1_1map_1_1iterator}{iterator}}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily bool aed2\+::iterator\+::iterator\+::operator== (\begin{DoxyParamCaption}\item[{\hyperlink{classaed2_1_1iterator_1_1iterator}{iterator}}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -344,4 +333,4 @@ Devuelve true si el nodo al que apunta this es el mismo que al que apunta other.
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-\hyperlink{map_8h}{map.\+h}\end{DoxyCompactItemize}
+map2.\+h\end{DoxyCompactItemize}

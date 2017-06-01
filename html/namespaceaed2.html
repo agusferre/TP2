@@ -59,7 +59,9 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">aed2 Namespace Reference</div>  </div>
 </div><!--header-->
@@ -70,14 +72,345 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1iterator.html">iterator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parte del módulo que implementa los iteradores que permiten la modificación de los significados.  <a href="classaed2_1_1iterator.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map.html">map</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modulo que implementa un diccionario.  <a href="classaed2_1_1map.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:af94e184e6463abb6f7f5237afd0d808a"><td class="memTemplParams" colspan="2">template&lt;class Key , class Meaning , class Compare  = std::less&lt;Key&gt;&gt; </td></tr>
+<tr class="memitem:af94e184e6463abb6f7f5237afd0d808a"><td class="memTemplItemLeft" align="right" valign="top">class <a class="el" href="classaed2_1_1map.html">aed2::map</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceaed2.html#af94e184e6463abb6f7f5237afd0d808a">erase</a> (const Key &amp;key)</td></tr>
+<tr class="memdesc:af94e184e6463abb6f7f5237afd0d808a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Elimina el valor cuya clave es {key}.  <a href="#af94e184e6463abb6f7f5237afd0d808a">More...</a><br /></td></tr>
+<tr class="separator:af94e184e6463abb6f7f5237afd0d808a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac055546b287d4b50772e8b4e9d188ed2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceaed2.html#ac055546b287d4b50772e8b4e9d188ed2">clear</a> ()</td></tr>
+<tr class="memdesc:ac055546b287d4b50772e8b4e9d188ed2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vacia el diccionario.  <a href="#ac055546b287d4b50772e8b4e9d188ed2">More...</a><br /></td></tr>
+<tr class="separator:ac055546b287d4b50772e8b4e9d188ed2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab24ac4be44835194ce27a61969e4a292"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceaed2.html#ab24ac4be44835194ce27a61969e4a292">swap</a> (<a class="el" href="classaed2_1_1map.html">map</a> &amp;other)</td></tr>
+<tr class="memdesc:ab24ac4be44835194ce27a61969e4a292"><td class="mdescLeft">&#160;</td><td class="mdescRight">Intercambia el contenido de {*this} y {other}.  <a href="#ab24ac4be44835194ce27a61969e4a292">More...</a><br /></td></tr>
+<tr class="separator:ab24ac4be44835194ce27a61969e4a292"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Recorridos e iteradores</div></td></tr>
+<tr class="memitem:a669d2fcf59e6ec1fe40105ba395768b6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classaed2_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceaed2.html#a669d2fcf59e6ec1fe40105ba395768b6">begin</a> ()</td></tr>
+<tr class="memdesc:a669d2fcf59e6ec1fe40105ba395768b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve un iterador al primer valor del diccionario.  <a href="#a669d2fcf59e6ec1fe40105ba395768b6">More...</a><br /></td></tr>
+<tr class="separator:a669d2fcf59e6ec1fe40105ba395768b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1c803de21070eb6f9b7fa3e2035bc22"><td class="memItemLeft" align="right" valign="top">const_iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceaed2.html#ac1c803de21070eb6f9b7fa3e2035bc22">cbegin</a> ()</td></tr>
+<tr class="separator:ac1c803de21070eb6f9b7fa3e2035bc22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a9c18730be5c97fa5eafebd3aef61ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classaed2_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceaed2.html#a3a9c18730be5c97fa5eafebd3aef61ed">end</a> ()</td></tr>
+<tr class="memdesc:a3a9c18730be5c97fa5eafebd3aef61ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario.  <a href="#a3a9c18730be5c97fa5eafebd3aef61ed">More...</a><br /></td></tr>
+<tr class="separator:a3a9c18730be5c97fa5eafebd3aef61ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82f5c60a3ebe119105e244fff3c90e20"><td class="memItemLeft" align="right" valign="top">const_iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceaed2.html#a82f5c60a3ebe119105e244fff3c90e20">cend</a> ()</td></tr>
+<tr class="separator:a82f5c60a3ebe119105e244fff3c90e20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19713cdc443ce739325238c50f233717"><td class="memItemLeft" align="right" valign="top">reverse_iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceaed2.html#a19713cdc443ce739325238c50f233717">rbegin</a> ()</td></tr>
+<tr class="memdesc:a19713cdc443ce739325238c50f233717"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve un iterador al primer valor del diccionario, en un recorrido al revés.  <a href="#a19713cdc443ce739325238c50f233717">More...</a><br /></td></tr>
+<tr class="separator:a19713cdc443ce739325238c50f233717"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38b3285f169e2a78a3b561b5fee6027f"><td class="memItemLeft" align="right" valign="top">const_reverse_iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceaed2.html#a38b3285f169e2a78a3b561b5fee6027f">crbegin</a> ()</td></tr>
+<tr class="separator:a38b3285f169e2a78a3b561b5fee6027f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a161376ee8d17855224ab722ff9e0dd9a"><td class="memItemLeft" align="right" valign="top">reverse_iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceaed2.html#a161376ee8d17855224ab722ff9e0dd9a">rend</a> ()</td></tr>
+<tr class="memdesc:a161376ee8d17855224ab722ff9e0dd9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario, en un recorrido al revés.  <a href="#a161376ee8d17855224ab722ff9e0dd9a">More...</a><br /></td></tr>
+<tr class="separator:a161376ee8d17855224ab722ff9e0dd9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f4649ed2b93f1fdb07419fa1de0bf7f"><td class="memItemLeft" align="right" valign="top">const_reverse_iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceaed2.html#a3f4649ed2b93f1fdb07419fa1de0bf7f">crend</a> ()</td></tr>
+<tr class="separator:a3f4649ed2b93f1fdb07419fa1de0bf7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ad4e768819128d9a5e85ad658ef19e766"><td class="memItemLeft" align="right" valign="top"><a id="ad4e768819128d9a5e85ad658ef19e766"></a>
+class <a class="el" href="classaed2_1_1iterator.html">aed2::iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>erase</b></td></tr>
+<tr class="separator:ad4e768819128d9a5e85ad658ef19e766"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Namespace para las clases de AED2. </p>
 <p>Para evitar cualquier tipo de conflictos, todas las clases de AED2 se implementan en el namespace <a class="el" href="namespaceaed2.html" title="Namespace para las clases de AED2. ">aed2</a>. Recordar el uso de <code>namespace</code>, el keyword <code>using</code>, y el método ADL para la busqueda de las funciones. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a669d2fcf59e6ec1fe40105ba395768b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a669d2fcf59e6ec1fe40105ba395768b6">&#9670;&nbsp;</a></span>begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const_iterator aed2::begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve un iterador al primer valor del diccionario. </p>
+<p>{no hay}</p>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">res</td><td>iterador al primer valor</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>{true} </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>{res  CrearItMod(inorder(*this))}</dd></dl>
+<p>{(1)} Inicia un iterador en header-&gt;izq.</p>
+<p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+
+</div>
+</div>
+<a id="ac1c803de21070eb6f9b7fa3e2035bc22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1c803de21070eb6f9b7fa3e2035bc22">&#9670;&nbsp;</a></span>cbegin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const_iterator aed2::cbegin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+
+</div>
+</div>
+<a id="a82f5c60a3ebe119105e244fff3c90e20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82f5c60a3ebe119105e244fff3c90e20">&#9670;&nbsp;</a></span>cend()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const_iterator aed2::cend </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+
+</div>
+</div>
+<a id="ac055546b287d4b50772e8b4e9d188ed2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac055546b287d4b50772e8b4e9d188ed2">&#9670;&nbsp;</a></span>clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void aed2::clear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vacia el diccionario. </p>
+<p>{Se invalidan todos los iteradores asociados a {*this}, con excepcion de aquellos que apuntan a la posicion pasando-el-ultimo.}</p>
+<dl class="section pre"><dt>Precondition</dt><dd>{true} </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>{{*this}  vacio}</dd></dl>
+<p>{(({*this}))} Mientras count sea distinto de 0, va eliminando con la función erase todos los elementos del árbol. </p>
+
+</div>
+</div>
+<a id="a38b3285f169e2a78a3b561b5fee6027f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38b3285f169e2a78a3b561b5fee6027f">&#9670;&nbsp;</a></span>crbegin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const_reverse_iterator aed2::crbegin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+
+</div>
+</div>
+<a id="a3f4649ed2b93f1fdb07419fa1de0bf7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f4649ed2b93f1fdb07419fa1de0bf7f">&#9670;&nbsp;</a></span>crend()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const_reverse_iterator aed2::crend </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+
+</div>
+</div>
+<a id="a3a9c18730be5c97fa5eafebd3aef61ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a9c18730be5c97fa5eafebd3aef61ed">&#9670;&nbsp;</a></span>end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const_iterator aed2::end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario. </p>
+<p>{no hay}</p>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">res</td><td>iterador a la posicion pasando-al-ultimo</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>{true} </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>{res  CrearItMod(inorder(*this),  )}</dd></dl>
+<p>{(1)}</p>
+<p>Inicia un iterador en nullptr.</p>
+<p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+
+</div>
+</div>
+<a id="af94e184e6463abb6f7f5237afd0d808a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af94e184e6463abb6f7f5237afd0d808a">&#9670;&nbsp;</a></span>erase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key , class Meaning , class Compare  = std::less&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">class <a class="el" href="classaed2_1_1map.html">aed2::map</a> aed2::erase </td>
+          <td>(</td>
+          <td class="paramtype">const Key &amp;&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Elimina el valor cuya clave es {key}. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>clave del elemento a eliminar</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>{completar}</p>
+<dl class="section pre"><dt>Precondition</dt><dd>{*this  *this0  def?(key, *this)} </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>{*this  borrar(key, *this0)}</dd></dl>
+<p>{(({*pos}) + (({*this}))  ({*this}))} </p>
+
+</div>
+</div>
+<a id="a19713cdc443ce739325238c50f233717"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19713cdc443ce739325238c50f233717">&#9670;&nbsp;</a></span>rbegin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const_reverse_iterator aed2::rbegin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve un iterador al primer valor del diccionario, en un recorrido al revés. </p>
+<p>{no hay}</p>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">res</td><td>iterador a la primer posicion en un recorrido al revés</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>{true} </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>{res  CrearItMod(  , postorder(*this))}</dd></dl>
+<p>{(1)}</p>
+<p>Inicia un reverse_iterator en el hijo derecho de header.</p>
+<p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+
+</div>
+</div>
+<a id="a161376ee8d17855224ab722ff9e0dd9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a161376ee8d17855224ab722ff9e0dd9a">&#9670;&nbsp;</a></span>rend()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const_reverse_iterator aed2::rend </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario, en un recorrido al revés. </p>
+<p>{no hay}</p>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">res</td><td>iterador a la posicion pasando-al-ultimo, en un recorrido al revés</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>{true} </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>{res  CrearItMod(postorder(*this),  )}</dd></dl>
+<p>{(1)}</p>
+<p>Inicia un reversre_iterator en el hijo izquierdo de header.</p>
+<p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+
+</div>
+</div>
+<a id="ab24ac4be44835194ce27a61969e4a292"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab24ac4be44835194ce27a61969e4a292">&#9670;&nbsp;</a></span>swap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void aed2::swap </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classaed2_1_1map.html">map</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Intercambia el contenido de {*this} y {other}. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>diccionario a intercambiar con {*this}</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>{Todos los iteradores, salvo aquellos que apuntan a las posiciones pasando-el-ultimo, se mantienen válidos. Aquellos iteradores que apuntan a la posición pasando-el-ultimo de {*this} pasan a apuntar a la posición pasando-el-ultimo de {other}, y viceversa.}</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>mapa a intercambiar con this</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondition</dt><dd>{<em>self</em> = {*this}  <em>oth</em> = {other}} </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>{{*this}  <em>oth</em>  {other} = <em>self}</em> </dd></dl>
+<p>{(1)}</p>
+<dl class="section note"><dt>Note</dt><dd>La razón por la que se "invalidan" los iteradores pasando-el-fin tiene que ver con la forma en que se implementa el módulo (que emula la implementacion de C++). No hay ninguna razón técnica que impida mantener los iteradores pasando el fin, salvo por un pequeño ahorro de memoria y tiempo. En caso de querer usar los iteradores como punteros, se recomienda usar el iterador nulo de diccionario para representar al valor inválido, en lugar de usar los iteradores pasando-el-ultimo. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
