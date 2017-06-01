@@ -1200,8 +1200,10 @@ public:
 
     */
     iterator insert(const_iterator hint, const value_type& value) {
-        //falta primera parte
-    if (find(value).n == nullptr){
+        if (!(hint.n == nullptr || (hint._value.first > value.first && 
+        	(hint--.n != nullptr && hint.n._value.first < value.first ))))
+        	hint = find(value.first);
+        
         Node* nuevo = new Nodo(value);
         Node* padre = header;
         Node* n = header->parent;
@@ -1221,8 +1223,7 @@ public:
             padre->child[1] = nuevo;
         nuevo.color = Red;
         iterator it = find(nuevo);
-        //insert-fixup(it, value)
-    }
+        insert-fixup(it, value)
 
 }
 
