@@ -767,7 +767,10 @@ public:
 
     **/
     explicit map(Compare c = Compare()) {
-    	//completar
+    	header = Node();
+    	header->parent = nullptr;
+    	header->child[0] = nullptr;
+    	header->child[1] = nullptr;
     }
 
     /**
@@ -793,7 +796,7 @@ public:
 
     **/
     map(const map& other) {
-    	while ()
+
     }
 
     /**
@@ -944,15 +947,7 @@ public:
 
     /** \overload */
     Meaning& at(const Key& key) {
-    	 Node* indice = header->parent;
-    //pepito
-    	while(indice->_value->key() != key){
-    		if (indice->_value->key() < key)
-    			indice = indice->child[0];
-    		else
-    			indice = indice->child[1];
-    	}
-    	return indice->_value.second;
+    	return find(key).n.second;
    }
 
     /**
