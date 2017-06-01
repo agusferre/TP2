@@ -1202,30 +1202,22 @@ public:
     iterator insert(const_iterator hint, const value_type& value) {
         if (!(hint.n == nullptr || (hint._value.first > value.first && 
         	(hint--.n != nullptr && hint.n._value.first < value.first ))))
-        	hint = find(value.first);
-        
-        Node* nuevo = new Nodo(value);
-        Node* padre = header;
-        Node* n = header->parent;
-        while (n != nullptr){
-            padre = n;
-            if (value.key() < n.key())
-                n = n->child[0];
-            else
-                n = n->child[1];
-        }
-        nuevo->parent = padre;
-        if (padre.is_header())
-            header->parent = nuevo;
-        else if (nuevo->key() < padre->key())
-            padre->child[0] = nuevo;
+        	return insert(value);     
         else
-            padre->child[1] = nuevo;
-        nuevo.color = Red;
-        iterator it = find(nuevo);
-        insert-fixup(it, value)
-
-}
+       		Node* nuevo = new Nodo(value);
+        	Node* padre = hint.n->parent;
+        	nuevo->parent = padre;
+        	if (padre.is_header())
+            	header->parent = nuevo;
+        	else if (nuevo->key() < padre->key())
+        	    padre->child[0] = nuevo;
+        	else
+        	    padre->child[1] = nuevo;
+        	nuevo.color = Red;
+        	iterator it = find(nuevo);
+        	insert-fixup(it, value);
+        	return it;
+  }
 
 void insert-fixup(iterator it, const value_type& value){
 	Node* n = it.n;
@@ -1267,6 +1259,7 @@ while (n->parent.color == red){
 }
 
 	header->parent.color = black;
+	it.n = n;
 }
 
 void left-rotate(iterator it){
@@ -1284,6 +1277,7 @@ void left-rotate(iterator it){
 		n->parent->child[1] = y;
 	y->child[0] = n;
 	n->parent = y;
+	it.n = n;
 }
 
 void right-rotate(iterator it){
@@ -1301,13 +1295,27 @@ void right-rotate(iterator it){
 		n->parent->child[0] = y;
 	y->child[1] = n;
 	n->parent = y;
-
+	it.n = n;
 }
     
 
     /** \overload*/
     iterator insert(const value_type& value) {
-    	//completar
+    	Node* nuevo = new Nodo(value);
+    	iterator it = lower_bound(value.first);
+        Node* padre = hint.n->parent;
+        nuevo->parent = padre;
+        if (padre.is_header())
+            header->parent = nuevo;
+        else if (nuevo->key() < padre->key())
+            padre->child[0] = nuevo;
+        else
+            padre->child[1] = nuevo;
+        nuevo.color = Red;
+        iterator it = find(nuevo);
+        insert-fixup(it, value);
+        return it;
+
     }
 
     /**
