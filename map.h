@@ -766,11 +766,16 @@ public:
 	ambos hijos de header apuntan a null, y padre de header apunta a null
 
     **/
+<<<<<<< HEAD
     explicit map(Compare c = Compare()) {
     	header = Node();
     	header->parent = nullptr;
     	header->child[0] = nullptr;
     	header->child[1] = nullptr;
+=======
+    explicit map(Compare c = Compare()): lt(c) {
+    	//completar
+>>>>>>> e16d1b999ddab79993209182dee6d70a24a221c6
     }
 
     /**
@@ -797,6 +802,10 @@ public:
     **/
     map(const map& other) {
 
+<<<<<<< HEAD
+=======
+    	//completar
+>>>>>>> e16d1b999ddab79993209182dee6d70a24a221c6
     }
 
     /**
@@ -993,9 +1002,10 @@ public:
     Meaning& operator[](const Key& key) {
 
         iterator it = lower_bound(key);
-        if (it.n != nullptr && ->value_.key() == key)
+        if (it.n->value_.key() == key)
             return value_->second;
 	else
+
             insert(it, value_type(key, Meaning()));
 
         return at(key);
@@ -1083,34 +1093,21 @@ public:
      - Devuelve el Iterador en esa posición.
     */
     const_iterator lower_bound(const Key& key) const {
-        Node* indice = header->parent;
-        while (indice != nullptr && (indice->_value->key() < key || (indice->_value->key() != key && indice->child[0] != nullptr))) {
-            if (indice->_value->key() < key)
-                indice = indice->child[1];
-            else
-                indice = indice->child[0];
-        }
-        if (indice == nullptr)
-            indice = end();
-        Iterator it();
-        it.n = indice;
-        return it;
+    	Node* indice = header->parent;
+    	while(indice != nullptr || indice->_value->key()  key){
+    		if (indice->_value->key() < key)
+    			indice = indice->child[0];
+    		else
+    			indice = indice->child[1];
+    	}
+    	Iterator it();
+    	it.node = indice;
+    	return it;
     }
 
     /** \overload */
     iterator lower_bound(const Key& key)  {
-        Node* indice = header->parent;
-        while (indice != nullptr && (indice->_value->key() < key || (indice->_value->key() != key && indice->child[0] != nullptr))) {
-            if (indice->_value->key() < key)
-                indice = indice->child[1];
-            else
-                indice = indice->child[0];
-        }
-        if (indice == nullptr)
-            indice = end();
-        Iterator it();
-        it.n = indice;
-        return it;
+        //completar
     }
     ///@}
 
@@ -1133,6 +1130,7 @@ public:
     */
     bool empty() const {
     	return (count == 0);
+
     }
 
     /**
@@ -1189,91 +1187,109 @@ public:
 
     */
     iterator insert(const_iterator hint, const value_type& value) {
-    	
-
-/*
-    	RB-I NSERT .T;  ́/
-	1 y D T:nil
-	2 x D T:root
-	3 while x ¤ T:nil
-	4
-	y Dx
-	5
-	if  ́:key < x:key
-	6
-x D x:left
-7
-else x D x:right
-8  ́:p D y
-9 if y == T:nil
-10
-T:root D  ́
-11 elseif  ́:key < y:key
-12
-y:left D  ́
-13 else y:right D  ́
-14  ́:left D T:nil
-15  ́:right D T:nil
-16  ́:color D RED
-17 RB-I NSERT-F IXUP .T;  ́/
-
-
-
-RB-I NSERT-F IXUP .T;  ́/
-1 while  ́:p:color == RED
-2
-if  ́:p ==  ́:p:p:left
-3
-y D  ́:p:p:right
-4
-if y:color == RED
-5
- ́:p:color D BLACK
-6
-y:color D BLACK
-7
- ́:p:p:color D RED
-8
- ́ D  ́:p:p
-9
-else if  ́ ==  ́:p:right
-10
- ́ D  ́:p
-11
-L EFT-ROTATE .T;  ́/
-12
- ́:p:color D BLACK
-13
- ́:p:p:color D RED
-14
-R IGHT-ROTATE .T;  ́:p:p/
-15
-else (same as then clause
-with “right” and “left” exchanged)
-16 T:root:color D BLACK
-
-
-L EFT-ROTATE .T; x/
-1 y D x:right
-2 x:right D y:left
-3 if y:left ¤ T:nil
-4
-y:left:p D x
-5 y:p D x:p
-6 if x:p == T:nil
-7
-T:root D y
-8 elseif x == x:p:left
-9
-x:p:left D y
-10 else x:p:right D y
-11 y:left D x
-12 x:p D y
-
-
-
-*/
+        //falta primera parte
+    if (find(value).n == nullptr){
+        Node* nuevo = new Nodo(value);
+        Node* padre = header;
+        Node* n = header->parent;
+        while (n != nullptr){
+            padre = n;
+            if (value.key() < n.key())
+                n = n->child[0];
+            else
+                n = n->child[1];
+        }
+        nuevo->parent = padre;
+        if (padre.is_header())
+            header->parent = nuevo;
+        else if (nuevo->key() < padre->key())
+            padre->child[0] = nuevo;
+        else
+            padre->child[1] = nuevo;
+        nuevo.color = Red;
+        iterator it = find(nuevo);
+        //insert-fixup(it, value)
     }
+
+}
+
+void insert-fixup(iterator it, const value_type& value){
+	Node* n = it.n;
+	Node* y;
+while (n->parent.color == red){
+	if (n->parent == n->parent->parent->child[0]){
+		y = n->parent->parent->child[1];
+	}
+	if (y.color == red){
+		n.color = black;
+		y.color = black;
+		n->parent->parent.color = red;
+		n = n->parent->parent;
+	} else if(n == n->parent->child[1]){
+		n = n->parent;
+		iterator it2(n);
+		left-rotate(it2);
+		n->parent.color = black;
+		n->parent->parent.color = red;
+		right-rotate(it2);
+		}
+	} else {
+		if (n->parent == n->parent->parent->child[1]){
+		y = n->parent->parent->child[0];
+	}
+	if (y.color == red){
+		n.color = black;
+		y.color = black;
+		n->parent->parent.color = red;
+		n = n->parent->parent;
+	} else if(n == n->parent->child[0]){
+		n = n->parent;
+		iterator it2(n);
+		right-rotate(it2);
+		n->parent.color = black;
+		n->parent->parent.color = red;
+		left-rotate(it2);
+	}
+}
+
+	header->parent.color = black;
+}
+
+void left-rotate(iterator it){
+	Node* n = it.n;
+	Node* y = it.n->child[1];
+	n->child[1] = y->child[0];
+	if (y->child[0] != nullptr)
+		y->child[0]->parent = n;
+	y->parent = n->parent;
+	if(n->parent.is_header())
+		header->parent = y;
+	else if (n == n->parent->child[0])
+		n->parent->child[0] = y;
+	else
+		n->parent->child[1] = y;
+	y->child[0] = n;
+	n->parent = y;
+}
+
+void right-rotate(iterator it){
+	Node* n = it.n;
+	Node* y = it.n->child[0];
+	n->child[0] = y->child[1];
+	if (y->child[1] != nullptr)
+		y->child[1]->parent = n;
+	y->parent = n->parent;
+	if(n->parent.is_header())
+		header->parent = y;
+	else if (n == n->parent->child[1])
+		n->parent->child[1] = y;
+	else
+		n->parent->child[0] = y;
+	y->child[1] = n;
+	n->parent = y;
+
+}
+    
 
     /** \overload*/
     iterator insert(const value_type& value) {
@@ -1310,31 +1326,13 @@ x:p:left D y
      * \T{Meaning} tenga constructor sin parámetros.  La desventaja es que la notación no es tan bonita.
      */
     iterator insert_or_assign(const_iterator hint, const value_type& value) {
-    	iterator it;
-    	if (hint.n->value()->first == value.first){ 
-    		it = hint;
-    		it.n->value()->second = value->second;
-    	} else if (hint.n->value()->first < value->first() || (hint--.n == nullptr 
-    		|| hint.n->value()->first >= value->first)){
-    		it = lower_bound(hint->_value);
-		}
-		it = insert(hint, value);
-		return it;
+
     }
 
     /** \overload */
     iterator insert_or_assign(const value_type& value) {
-		iterator it;
-    	if (hint.n->value()->first == value.first){ 
-    		it = hint;
-    		it.n->value()->second = value->second;
-    	} else if (hint.n->value()->first < value->first() || (hint--.n == nullptr 
-    		|| hint.n->value()->first >= value->first)){
-    		it = lower_bound(hint->_value);
-		}
-		it = insert(hint, value);
-		return it;    
-	}
+    	//completar
+    }
 
     /**
      * @brief Elimina el valor apuntado por \P{pos}
@@ -1755,7 +1753,7 @@ else (same as then clause with “right” and “left” exchanged)
          *
          */
         pointer operator->() const {
-			return &n.value();
+			//completar
 		}
         /**
          * \brief Avanza el iterador a la siguiente posición
@@ -1776,15 +1774,12 @@ else (same as then clause with “right” and “left” exchanged)
          *
          */
         iterator& operator++() {
-        	assert(n != nullptr);
             if(n->child[1] == nullptr){
                 while (n->parent->child[1] == n)
                     n = n->parent;
             }
-            if (!n->parent.is_header())
-                n = n->parent;
-            else
-            	n = nullptr;
+            if (n->child[1] != nullptr)
+                n = n->child[1];
             return *this;
         }
         	
@@ -1807,15 +1802,12 @@ else (same as then clause with “right” and “left” exchanged)
          *
          */
         iterator operator++(int) {
-        assert(n != nullptr);
             if(n->child[1] == nullptr){
                 while (n->parent->child[1] == n)
                     n = n->parent;
             }
-            if (!n->parent.is_header())
-                n = n->parent;
-            else
-            	n = nullptr;
+            if (n->child[1] != nullptr)
+                n = n->child[1];
             return *this;
         }
         /**
@@ -1837,15 +1829,12 @@ else (same as then clause with “right” and “left” exchanged)
          *
          */
         iterator& operator--() {
-         assert(n != nullptr);
-            if(n->child[0] == nullptr){
-                while (n->parent->child[0] == n)
-                    n = n->parent;
-            }
-            if (!n->parent.is_header())
+         if(n->child[0] == nullptr){
+            while (n->parent->child[0] == n)
                 n = n->parent;
-            else
-            	n = nullptr;
+            }
+            if (n->child[0] != nullptr)
+                n = n->child[0];
             return *this;
         }
         /**
@@ -1867,16 +1856,13 @@ else (same as then clause with “right” and “left” exchanged)
          *
          */
         iterator operator--(int) {
-            assert(n != nullptr);
-            if(n->child[1] == nullptr){
-                while (n->parent->child[1] == n)
-                    n = n->parent;
-            }
-            if (!n->parent.is_header())
-                n = n->parent;
-            else
-            	n = nullptr;
-            return *this;
+            if(n->child[0] == nullptr){
+               while (n->parent->child[0] == n)
+                   n = n->parent;
+               }
+               if (n->child[0] != nullptr)
+                   n = n->child[0];
+               return *this;
         }
         /**
          * \brief Operador de igualdad
@@ -1903,7 +1889,7 @@ else (same as then clause with “right” and “left” exchanged)
         }
         /** \brief idem !|operator== */
         bool operator!=(iterator other) const {
-            return (n != other.n);
+                return (n != other.n);
         }
 
     private:
@@ -2374,6 +2360,7 @@ bool operator!=(const map<K, V, C>& m1, const map<K, V, C>& m2) {
  */
 template<class K, class V, class C>
 bool operator<(const map<K, V, C>& m1, const map<K, V, C>& m2) {
+    return (std::lexicographical_compare(m1.begin(), m1.end(), m2.begin(), m2.end(), lt));
 	//completar.  Vale usar std::lexicographical_compare
 }
 
