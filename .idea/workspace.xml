@@ -12,7 +12,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27c471db-531e-4441-a3a4-3f261feeee45" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/map.h" afterPath="$PROJECT_DIR$/map.h" />
     </list>
     <ignored path="TP 2.iws" />
@@ -36,15 +35,20 @@
       <file leaf-file-name="map.h" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/map.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="1208" column="44" selection-start-line="1208" selection-start-column="44" selection-end-line="1208" selection-end-column="44" />
+            <state relative-caret-position="392">
+              <caret line="3405" column="2" selection-start-line="3405" selection-start-column="2" selection-end-line="3405" selection-end-column="2" />
               <folding>
-                <element signature="e#48651#48667#0" expanded="true" />
-                <element signature="e#109699#110305#0" expanded="true" />
-                <element signature="e#115828#115855#0" expanded="true" />
-                <element signature="e#116132#116159#0" expanded="true" />
-                <element signature="e#117139#117166#0" expanded="true" />
-                <marker date="1496353347817" expanded="false" signature="40709:40818" ph="&lt;Key,Meaning,Compare=std::less&lt;Key&gt;&gt;" />
+                <element signature="e#40713#40779#0" expanded="true" />
+                <element signature="e#47582#47598#0" expanded="true" />
+                <element signature="e#81775#81791#0" expanded="true" />
+                <element signature="e#142800#143406#0" expanded="true" />
+                <element signature="e#148929#148956#0" expanded="true" />
+                <element signature="e#149233#149260#0" expanded="true" />
+                <element signature="e#150240#150267#0" expanded="true" />
+                <marker date="1496354504435" expanded="false" signature="150605:150640" ph="&lt;K,V,C&gt;" />
+                <marker date="1496354504435" expanded="false" signature="150854:150889" ph="&lt;K,V,C&gt;" />
+                <marker date="1496354504435" expanded="false" signature="151109:151144" ph="&lt;K,V,C&gt;" />
+                <marker date="1496354504435" expanded="false" signature="151788:151823" ph="&lt;K,V,C&gt;" />
               </folding>
             </state>
           </provider>
@@ -315,15 +319,15 @@
       <workItem from="1496206546026" duration="121000" />
       <workItem from="1496207763216" duration="5269000" />
       <workItem from="1496247751273" duration="1101000" />
-      <workItem from="1496347327060" duration="5969000" />
+      <workItem from="1496347327060" duration="7105000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13603000" />
+    <option name="totallyTimeSpent" value="14739000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="49" y="24" width="1317" height="744" extended-state="6" />
+    <frame x="49" y="24" width="1317" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24981017" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -366,12 +370,17 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#48651#48667#0" expanded="true" />
-            <element signature="e#109699#110305#0" expanded="true" />
-            <element signature="e#115828#115855#0" expanded="true" />
-            <element signature="e#116132#116159#0" expanded="true" />
-            <element signature="e#117139#117166#0" expanded="true" />
-            <marker date="1496353347817" expanded="false" signature="40709:40818" ph="&lt;Key,Meaning,Compare=std::less&lt;Key&gt;&gt;" />
+            <element signature="e#40713#40779#0" expanded="true" />
+            <element signature="e#47582#47598#0" expanded="true" />
+            <element signature="e#81775#81791#0" expanded="true" />
+            <element signature="e#142800#143406#0" expanded="true" />
+            <element signature="e#148929#148956#0" expanded="true" />
+            <element signature="e#149233#149260#0" expanded="true" />
+            <element signature="e#150240#150267#0" expanded="true" />
+            <marker date="1496354504435" expanded="false" signature="150605:150640" ph="&lt;K,V,C&gt;" />
+            <marker date="1496354504435" expanded="false" signature="150854:150889" ph="&lt;K,V,C&gt;" />
+            <marker date="1496354504435" expanded="false" signature="151109:151144" ph="&lt;K,V,C&gt;" />
+            <marker date="1496354504435" expanded="false" signature="151788:151823" ph="&lt;K,V,C&gt;" />
           </folding>
         </state>
       </provider>
@@ -381,12 +390,17 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#48651#48667#0" expanded="true" />
-            <element signature="e#109699#110305#0" expanded="true" />
-            <element signature="e#115828#115855#0" expanded="true" />
-            <element signature="e#116132#116159#0" expanded="true" />
-            <element signature="e#117139#117166#0" expanded="true" />
-            <marker date="1496353347817" expanded="false" signature="40709:40818" ph="&lt;Key,Meaning,Compare=std::less&lt;Key&gt;&gt;" />
+            <element signature="e#40713#40779#0" expanded="true" />
+            <element signature="e#47582#47598#0" expanded="true" />
+            <element signature="e#81775#81791#0" expanded="true" />
+            <element signature="e#142800#143406#0" expanded="true" />
+            <element signature="e#148929#148956#0" expanded="true" />
+            <element signature="e#149233#149260#0" expanded="true" />
+            <element signature="e#150240#150267#0" expanded="true" />
+            <marker date="1496354504435" expanded="false" signature="150605:150640" ph="&lt;K,V,C&gt;" />
+            <marker date="1496354504435" expanded="false" signature="150854:150889" ph="&lt;K,V,C&gt;" />
+            <marker date="1496354504435" expanded="false" signature="151109:151144" ph="&lt;K,V,C&gt;" />
+            <marker date="1496354504435" expanded="false" signature="151788:151823" ph="&lt;K,V,C&gt;" />
           </folding>
         </state>
       </provider>
@@ -396,12 +410,17 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#48651#48667#0" expanded="true" />
-            <element signature="e#109699#110305#0" expanded="true" />
-            <element signature="e#115828#115855#0" expanded="true" />
-            <element signature="e#116132#116159#0" expanded="true" />
-            <element signature="e#117139#117166#0" expanded="true" />
-            <marker date="1496353347817" expanded="false" signature="40709:40818" ph="&lt;Key,Meaning,Compare=std::less&lt;Key&gt;&gt;" />
+            <element signature="e#40713#40779#0" expanded="true" />
+            <element signature="e#47582#47598#0" expanded="true" />
+            <element signature="e#81775#81791#0" expanded="true" />
+            <element signature="e#142800#143406#0" expanded="true" />
+            <element signature="e#148929#148956#0" expanded="true" />
+            <element signature="e#149233#149260#0" expanded="true" />
+            <element signature="e#150240#150267#0" expanded="true" />
+            <marker date="1496354504435" expanded="false" signature="150605:150640" ph="&lt;K,V,C&gt;" />
+            <marker date="1496354504435" expanded="false" signature="150854:150889" ph="&lt;K,V,C&gt;" />
+            <marker date="1496354504435" expanded="false" signature="151109:151144" ph="&lt;K,V,C&gt;" />
+            <marker date="1496354504435" expanded="false" signature="151788:151823" ph="&lt;K,V,C&gt;" />
           </folding>
         </state>
       </provider>
@@ -415,15 +434,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/map.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="1208" column="44" selection-start-line="1208" selection-start-column="44" selection-end-line="1208" selection-end-column="44" />
+        <state relative-caret-position="392">
+          <caret line="3405" column="2" selection-start-line="3405" selection-start-column="2" selection-end-line="3405" selection-end-column="2" />
           <folding>
-            <element signature="e#48651#48667#0" expanded="true" />
-            <element signature="e#109699#110305#0" expanded="true" />
-            <element signature="e#115828#115855#0" expanded="true" />
-            <element signature="e#116132#116159#0" expanded="true" />
-            <element signature="e#117139#117166#0" expanded="true" />
-            <marker date="1496353347817" expanded="false" signature="40709:40818" ph="&lt;Key,Meaning,Compare=std::less&lt;Key&gt;&gt;" />
+            <element signature="e#40713#40779#0" expanded="true" />
+            <element signature="e#47582#47598#0" expanded="true" />
+            <element signature="e#81775#81791#0" expanded="true" />
+            <element signature="e#142800#143406#0" expanded="true" />
+            <element signature="e#148929#148956#0" expanded="true" />
+            <element signature="e#149233#149260#0" expanded="true" />
+            <element signature="e#150240#150267#0" expanded="true" />
+            <marker date="1496354504435" expanded="false" signature="150605:150640" ph="&lt;K,V,C&gt;" />
+            <marker date="1496354504435" expanded="false" signature="150854:150889" ph="&lt;K,V,C&gt;" />
+            <marker date="1496354504435" expanded="false" signature="151109:151144" ph="&lt;K,V,C&gt;" />
+            <marker date="1496354504435" expanded="false" signature="151788:151823" ph="&lt;K,V,C&gt;" />
           </folding>
         </state>
       </provider>
