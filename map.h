@@ -596,7 +596,7 @@
  * en el namespace aed2.  Recordar el uso de `namespace`, el keyword `using`, y el
  * método ADL para la busqueda de las funciones.
  */
-namespace aed2{
+namespace aed2 {
 
 /**
  * @brief Modulo que implementa un diccionario.
@@ -666,1655 +666,1685 @@ namespace aed2{
  * \attention No tenemos forma en AED2 de decir que el parámetro formal se define en
  * tiempo de ejecución, como ocurre en este caso.
  */
-template<
-  class Key,
-  class Meaning,
-  class Compare = std::less<Key>
->
-class map {
-	//forward declarations (innecesario, pero ayuda al analizador semantico de Eclipse)
-	class Node;
-	class InnerNode;
-public:
-    //forward declarations
-    class iterator;
-    class const_iterator;
+    template<
+            class Key,
+            class Meaning,
+            class Compare = std::less <Key>
+    >
+    class map {
+        //forward declarations (innecesario, pero ayuda al analizador semantico de Eclipse)
+        class Node;
+
+        class InnerNode;
 
-    /**
-     * \brief Renombre para poder acceder al tipo de las claves.  Compatible con estándar C++.
-     */
-    using key_type = Key;
-    /**
-     * \brief Renombre para poder acceder al tipo de los significados.  Compatible con estándar C++.
-     */
-    using mapped_type = Meaning;
-    /**
-     * \brief Renombre para poder acceder al tipo de las valores almacenados.  Compatible con estándar C++.
-     */
-    using value_type = std::pair<const Key, Meaning>;
-    /**
-     * \brief Renombre para poder acceder al tipo del comparador.  Compatible con estándar C++.
-     */
-    using key_compare = Compare;
-    /**
-     * \brief Renombre para poder acceder al tipo de referencia de los valores guardados.  Compatible con estándar C++.
-     */
-    using reference = value_type&;
-    /**
-     * \brief Renombre para poder acceder al tipo de referencia constante de los valores guardados.  Compatible con estándar C++.
-     */
-    using const_reference = const value_type&;
-    /**
-     * \brief Renombre para poder acceder al tipo de los punteros de los valores guardados.  Compatible con estándar C++.
-     */
-    using pointer = value_type*;
-    /**
-     * \brief Renombre para poder acceder al tipo de los punteros de los valores constantes guardados.  Compatible con estándar C++.
-     */
-    using const_pointer = const value_type*;
-    /**
-     * \brief Renombre para poder acceder al tipo usado para describir tamaños.  Compatible con estándar C++.
-     */
-    using size_type = std::size_t;
-    /**
-     * \brief Renombre para poder acceder al tipo usado para describir diferencias entre punteros.  Compatible con estándar C++.
-     */
-    using difference_type = std::ptrdiff_t;
-
-    /**
-     * \brief Iterador para recorrer un diccionario en orden inverso
-     *
-     * Este tipo implementa un iterador que puede recorrer el diccionario en el orden inverso.
-     * Es un renombre, porque nos aprovechamos del adaptador `std::reverse_iterator` que implementa
-     * un iterador reverso para \b cualquier iterador bidireccional que respete el estándar C++.
-     * Su interfaz y complejidades pueden consultarse en la documentación de la biblioteca estándar
-     *
-     * \see [Documentación de `std::reverse_iterator`](http://en.cppreference.com/w/cpp/iterator/reverse_iterator)
-     */
-    using reverse_iterator = std::reverse_iterator<iterator>;
-    /**
-     * \brief Iterador para recorrer un diccionario constante en orden inverso
-     *
-     * Este tipo implementa un iterador que puede recorrer el diccionario en el orden inverso.
-     * Es un renombre, porque nos aprovechamos del adaptador `std::reverse_iterator` que implementa
-     * un iterador reverso para \b cualquier iterador bidireccional que respete el estándar C++.
-     * Su interfaz y complejidades puede consultarse en la documentación de la biblioteca estándar
-     *
-     * \see [Documentación de `std::reverse_iterator`](http://en.cppreference.com/w/cpp/iterator/reverse_iterator)
-     */
-    using const_reverse_iterator = std::reverse_iterator<const_iterator>;
-
-    //////////////////////////////////////////////////
-    /** \name Construcción, asignación y destrucción */
-    //////////////////////////////////////////////////
-    ///@{
-    /**
-     * @brief Crea un diccionario vacio.
-     *
-     * @param c comparador (functor de orden) a utilizar
-     * @retval res diccionario recién construido
-     *
-     * \pre \aedpre{true}
-     * \post \aedpost{res \igobs vacio()}
-     *
-     * \complexity{\O(1)}
-     *
-     * \attention El parámetro formal \LT del TAD diccionario se establece en esta función.
-     * \LT = \P{c}.operator()
-     */
-     /**
-	ambos hijos de header apuntan a null, y padre de header apunta a null
-
-    **/
-<<<<<<< HEAD
-    explicit map(Compare c = Compare()) {
-    	header = Node();
-    	header->parent = nullptr;
-    	header->child[0] = nullptr;
-    	header->child[1] = nullptr;
-=======
-    explicit map(Compare c = Compare()): lt(c) {
-    	//completar
->>>>>>> e16d1b999ddab79993209182dee6d70a24a221c6
-    }
-
-    /**
-     * @brief Constructor por copia
-     *
-     * @param other diccionario a copiar
-     * @retval res diccionario recien construido
-     *
-     * \pre \aedpre{true}
-     * \post \aedpost{res \igobs other}
-     *
-     * \complexity{\O(\COPY(\P{other}))}
-     *
-     * \attention El parámetro formal \LT del TAD diccionario se establece en esta función.
-     * \LT es igual al operator() del comparador de \P{other}
-     *
-     */
-
-    /**
-    begin() iterador en other.
-    mientras haya Siguiente en el iterador de other, insertar siguiente, y avanzar.
-	
-
-    **/
-    map(const map& other) {
-
-<<<<<<< HEAD
-=======
-    	//completar
->>>>>>> e16d1b999ddab79993209182dee6d70a24a221c6
-    }
-
-    /**
-     * @brief Crea un diccionario con los elementos del rango [\P{first}, \P{last})
-     *
-     * @tparam iterator clase del iterador a recorrer
-     *
-     * \par Requerimientos sobre el tipo \T{iterator}
-     * El tipo \T{iterator} debe tener todas las funcionalidades de un \e InputIterator de C++.
-     * En términos de la materia, vamos a suponer que \T{iterator} se explica con el
-     * TAD Iterador Unidireccional(puntero(C), \T{value_type}) para alguna colección de tipo C.
-     *
-     * @param first iterador al primer elemento del rango
-     * @param last iterador pasando el ultimo elemento del rango
-     * @param c comparador a utilizar
-     * @retval res diccionario recien construido
-     *
-     * \aliasing{\P{first} y \P{last} son iteradores que recorren la misma secuencia definida por una colección.}
-     *
-     * \pre \parblock
-     * \P{last} debe ser alcanzable desde \P{first} y en el rango [\P{first}, \P{last}) no pueden haber valores repetidos.
-     *
-     * \aedpre{coleccion(\P{first}) \IGOBS coleccion(\P{last}) \LAND esSufijo(Siguientes(\P{last}), Siguientes(\P{first})) \LAND
-     *   \esDiccionario(Siguientes(\P{first}) \MINUS Siguientes(\P{last}))}
-     * \endparblock
-     *
-     * \post \parblock
-     * Los valores definidos en \P{res} son aquellos que aparecen en [\P{first}, \P{last})
-     *
-     * \aedpost{(\FORALL k: \T{Key})(\FORALL s: \T{Meaning})
-     *   (def?(\P{res}, k) \LAND_L significado(\P{res}, k) \IGOBS s \IFF esta((k,s), Siguientes(\P{first})
-     *   \MINUS Siguientes(\P{last})))
-     * }
-     * \endparblock
-     *
-     * \complexity{
-     * - En el peor caso: \O(\SIZE(\P{res}) \CDOT (\LOG(\SIZE(\P{res})) \CDOT \CMP(\P{res}) + \COPY(\P{res})))
-     * - Si el rango [\P{first}, \P{last}) está ordenado: \O(\SIZE(\P{res}) \CDOT (\CMP(\P{res})+ \COPY(\P{res})))
-     * }
-     *
-     * \attention El parámetro formal \LT del TAD diccionario se establece en esta función.
-     * \LT = \P{c}.operator()
-     *
-     * \sa [Documentación de InputIterator](http://en.cppreference.com/w/cpp/concept/InputIterator)
-     */
-    template<class iterator>
-    map(iterator first, iterator last, Compare c = Compare()) : lt(c) {
-    	auto it = end();
-    	while(first != last) {
-    		insert(*first, it);
-    		++first;
-    	}
-    }
-
-    /**
-     * @brief Operador de asignación
-     *
-     * @param other diccionario a copiar
-     * @retval res referencia a *this
-     *
-     * \aliasing{no hay}
-     *
-     * \pre \aedpre{true}
-     * \post \aedpost{res \igobs other}
-     *
-     * \complexity{\O(\DEL(\P{*this}) \PLUS \COPY(\P{other}))}
-     *
-     * \note Es importante remarcar que no se realiza ninguna comparación entre los elementos.
-     */
-     /**
-	-destruir this
-	- this->map(other)
-
-     **/
-
-    map& operator=(map other) {
-    	//completar
-    }
-
-    /**
-     * @brief Destructor
-     *
-     *
-     * \aliasing{completar}
-     *
-     * \pre \aedpre{true}
-     * \post \aedpost{true}
-     *
-     * \complexity{\O(\DEL(\P{*this}))}
-     *
-     * \attention Como se explicita, esta función no hace nada, porque
-     * no tiene un objetivo funcional.  De hecho, su implementación es innecesaria bajo
-     * la hipótesis de infinitud de memoria (que muchos sistemas de especificación, e.g.
-     * nuestros TADs, asumen por simplicidad).  Sin embargo, esta función tiene un
-     * comportamiento real y es liberar la memoria usada.  Claramente, esta funcionalidad
-     * depende del sistema en que estemos trabajando.  Suponiendo que tuvieramos acceso
-     * a la implementación de las tablas de memoria del sistema operativo (o al mapa de
-     * memoria de la computadora), podríamos expresar la funcionalidad estableciendo la
-     * liberación de la memoria
-     */
-
-     /**
-	inicializa iterador con begin()
-	mientras hay Siguiente, borra (siguiente)
-     **/
-
-    ~map() {
-        //completar
-    }
-    ///@}
-
-    ////////////////////////////////////////////
-    /** \name Busqueda y acceso a los valores */
-    ////////////////////////////////////////////
-    ///@{
-    /**
-     * @brief Devuelve el significado asociado a \P{key}
-     *
-     * @param key clave a buscar.
-     * @retval res referencia al significado asociado a \P{key}.
-     *
-     * \aliasing{completar}
-     *
-     * \pre \aedpre{def?(key,*this)}
-     *
-     * \post \aedpost{res \igobs obtener(key,*this)}
-     *
-     * \complexity{\O(\LOG(\SIZE(\P{*this}) \CDOT \CMP(\P{*this}))}
-     *
-     * \remark Esta función, que se asemeja más a la forma de programar propuesta en AED2
-     * que al estándar C++, fue incluida en el estándar C++11.  Antes era obligación
-     * recurrir a la función find.
-     */
-
-
-    /**
-     Comienza en la raiz y si el valor es menor sigue la recursión hacia la izquierda, sino a la derecha, hasta
-     que encuentra un nodo con la clave (key) pasada por parámetro y devuelve el significado almacenado en ese nodo.
-     */
-
-    const Meaning& at(const Key& key) const {
-    Node* indice = header->parent;
-    //pepito
-    	
-    	return indice->_value.second;
-
-    }
-
-    /** \overload */
-    Meaning& at(const Key& key) {
-    	return find(key).n.second;
-   }
-
-    /**
-     * @brief Devuelve el significado asociado a \P{key}, asegurando su existencia
-     *
-     * Devuelve el significado asociado a \P{key}.  Si \P{key} no está definido en \P{*this},
-     * entonces se inserta un nuevo valor con clave \P{key} y significado \T{Meaning}().  De esta
-     * forma, podemos usar `operator[]` para definir nuevos valores o modificar los
-     * existentes.
-     *
-     * Ejemplo:
-     * \code{.cpp}
-     * aed2::map<int, int> d;
-     * d[1] = 2;      //define 1 -> 2
-     * d[1] = 3;      //redefine 1 -> 3
-     *
-     * aed2::map<int, int> m;
-     * if(m[1] == 3) {...} //posible bug: define 1 -> basura (que puede o no ser 3).
-     * \endcode
-     *
-     * @param key clave a buscar.
-     * @retval res referencia al significado asociado a \P{key}.
-     *
-     * \par Requerimientos sobre el tipo \T{Meaning}
-     * Requiere que \T{Meaning} tenga un constructor sin parámetros con complejidad \O(\a c)
-     *
-     * \aliasing{hay aliasing entre res y obtener(key, *this)}
-     *
-     * \pre \aedpre{true}
-     * \post \aedpost{def?(key, *this) \rightarrow res \igobs obtener(key, *this)}
-	 *
-     * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}) + \a x) donde
-     * - \a x = 1 si def?(\a self, \P{key}), y
-     * - \a x = \a c en caso contrario.}
-     *
-     */
-
-     /**
-     Comienza en la raiz y si el valor es menor sigue la recursión hacia la izquierda, sino a la derecha, hasta
-     que encuentra un nodo con la clave (key) pasada por parámetro y devuelve el significado almacenado en ese nodo,
-     o en el caso que la clave no esté definida, la define con el significado default y además incrementa en uno count.
-     */
-    Meaning& operator[](const Key& key) {
-
-        iterator it = lower_bound(key);
-        if (it.n->value_.key() == key)
-            return value_->second;
-	else
-
-            insert(it, value_type(key, Meaning()));
-
-        return at(key);
-
-    }
-
-    /**
-     * @brief Devuelve un iterador a la posicion del valor con clave \P{key}
-     *
-     * Retorna un iterador apuntando a la posicion del valor con clave \P{key}.
-     * Si dicho valor no existe, porque la clave no fue definida, entonces
-     * el iterador retornado apunta a la posición \e pasando-el-ultimo.
-     *
-     * @param key clave a buscar
-     * @retval res iterador apuntando al valor con clave \P{key} (o a \P{this}->end() si dicho elemento no existe)
-     *
-     * \aliasing{Hay aliasing entre el actual(iterador) y obtener(key, *this)}
-     *
-     * \pre \aedpre{true}
-     * \post \aedpost{def?(key, *this) \rightarrow res \igobs crearitAux(key,inorder(*this))}
-     *
-     * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
-     *
-     * \attention Si el objetivo es insertar un valor con clave \P{key} de acuerdo a alguna condición,
-     * entonces conviene usar aed2::map::lower_bound para la búsqueda, dado que el
-     * resultado puede ser usado como hint, mejorando la complejidad de la inserción.
-     *
-     */
-
-     /**
-     - Inicia el iterador en el hijo izquierdo de header.
-     - Avanzo hasta que la clave sea key o, en caso de que no esté definida, hasta la posición pasando-el-último.
-     - Devuelve el Iterador en esa posición.
-      */
-
-    iterator find(const Key& key) {
-    	Node* indice = header->parent;
-    	while(indice->_value->key() != key){
-    		if (indice->_value->key() < key)
-    			indice = indice->child[0];
-    		else
-    			indice = indice->child[1];
-    	}
-    	Iterator it();
-    	it.node = indice;
-    	return it;
-
-    }
-
-    /** \overload */
-    const_iterator find(const Key& key) const {
-    		Node* indice = header->parent;
-    	while(indice->_value->key() != key){
-    		if (indice->_value->key() < key)
-    			indice = indice->child[0];
-    		else
-    			indice = indice->child[1];
-    	}
-    	Iterator it();
-    	it.node = indice;
-    	return it;
-    }
-
-    /**
-     * @brief Devuelve un iterador al primer valor con clave mayor o igual a \P{key}
-     *
-     * Retorna un iterador apuntando a la primer posición cuyo valor tenga clave al menos \P{key}.
-     * Si dicho valor no existe, porque \P{key} es mayor a todas las claves de \P{*this}, entonces
-     * el iterador retornado apunta a la posición \e pasando-el-último.
-     *
-     * @param key clave a buscar
-     * @retval res iterador apuntando al valor con clave al menos \P{key} (o a \P{this}->end() si dicho elemento no existe)
-     *
-     * \aliasing{hay aliasing entre res y el sucesor inmediato de key}
-     *
-     * \pre \aedpre{true}
-     * \post \aedpost{res \igobs crearitAux2(key,inorder(*this))(busca en la secu inorder a key y devuelve el siguiente o null si es mayor a todas las claves)}
-     *
-     * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
-     *
-     */
-    /**
-     - Inicia el iterador en el hijo izquierdo de header.
-     - Avanzo hasta que la clave sea mayor o igual a key o, en caso de que no exista ninguna, hasta la posición pasando-el-último.
-     - Devuelve el Iterador en esa posición.
-    */
-    const_iterator lower_bound(const Key& key) const {
-        Node* indice = header->parent;
-        while (indice != nullptr && (indice->_value->key() < key || (indice->_value->key() != key && indice->child[0] != nullptr))) {
-            if (indice->_value->key() < key)
-                indice = indice->child[1];
-            else
-                indice = indice->child[0];
-        }
-        if (indice == nullptr)
-            indice = end();
-        const_iterator it();
-        it.n = indice;
-        return it;
-    }
-
-    /** \overload */
-    iterator lower_bound(const Key& key)  {
-        Node* indice = header->parent;
-        while (indice != nullptr && (indice->_value->key() < key || (indice->_value->key() != key && indice->child[0] != nullptr))) {
-            if (indice->_value->key() < key)
-                indice = indice->child[1];
-            else
-                indice = indice->child[0];
-        }
-        if (indice == nullptr)
-            indice = end();
-        iterator it();
-        it.n = indice;
-        return it;
-    }
-    ///@}
-
-    ///////////////////////////////////
-    /** \name Tamaño del diccionario */
-    ///////////////////////////////////
-    ///@{
-    /**
-     * @brief Indica si el diccionario esta vacío
-     *
-     * @retval res denota true si y solo si el diccionario está vacío
-     *
-     * \pre \aedpre{true}
-     * \post \aedpost{res \igobs \emptyset ?(claves(*this))}
-     *
-     * \complexity{\O(1)}
-     */
-    /**
-    Inicia en raíz, y si la misma es distinta de null devuelve false.
-    */
-    bool empty() const {
-    	return (count == 0);
-
-    }
-
-    /**
-     * @brief Devuelve la cantidad de valores en el diccionario
-     *
-     * @retval res cantidad de valores
-	 *
-     * \pre \aedpre{true}
-     * \post \aedpost{res \igobs \#claves(*this)}
-     *
-     * \complexity{\O(1)}
-     */
-    /**
-     Devuelve count;
-     */
-     size_t size() const {
-    	return count;
-    }
-    //@}
-
-	//////////////////////////////////////////////
-    /** \name Inserción, borrado y modificación */
-    //////////////////////////////////////////////
-    //@{
-    /**
-     * @brief Inserta \P{value} en el diccionario
-     *
-     * Inserta un \b nuevo valor en el diccionario.  Si \P{*this} ya tiene un valor con clave
-     * \P{value}.first, entonces la función no tiene efectos.  El iterador de retorno apunta al elemento
-     * recien insertado (o aquel que previno la insercion).
-     *
-     * @param value valor a insertar
-     * @param hint iterador apuntando al diccionario.  Se espera que apunte al minimo valor
-     * mayor o igual a \P{value}.first (i.e., a lower_bound(\P{value}.first)).
-     * Igualmente, la función es robusta y funciona correctamente aunque esto no ocurra.
-     * @retval res iterador apuntando al elemento insertado o que previno la inserción
-     *
-     * \aliasing{hay aliasing???}
-     *
-     *
-     * \pre \aedpre{true}
-     * \post  \aedpost{def?(value.first, *this) \rightarrow crearitAux(*this.first, inorder(*this) ) \and \neg def?(value.first, *this) \rightarrow res \igobs agregar(crearIt(inorder(*this)), value)}
-     *
-     * \complexity{
-     *  - Peor caso: \O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}) \PLUS \COPY(\P{value}))
-     *  - Si \P{hint} apunta al primer valor con clave al menos \P{value}.first (o \P{this}->end() en caso de no existir):
-     *  \O(\CMP(\P{*this}) \PLUS \COPY(\P{value})) amortizado.
-     * }
-     *
-     * \attention Para garantizar que el nuevo elemento se inserte sí o sí, usar aed2::map::insert_or_assign.
-     */
-    /**
-
-
-    */
-    iterator insert(const_iterator hint, const value_type& value) {
-        //falta primera parte
-    if (find(value).n == nullptr){
-        Node* nuevo = new Nodo(value);
-        Node* padre = header;
-        Node* n = header->parent;
-        while (n != nullptr){
-            padre = n;
-            if (value.key() < n.key())
-                n = n->child[0];
-            else
-                n = n->child[1];
-        }
-        nuevo->parent = padre;
-        if (padre.is_header())
-            header->parent = nuevo;
-        else if (nuevo->key() < padre->key())
-            padre->child[0] = nuevo;
-        else
-            padre->child[1] = nuevo;
-        nuevo.color = Red;
-        iterator it = find(nuevo);
-        //insert-fixup(it, value)
-    }
-
-}
-
-void insert-fixup(iterator it, const value_type& value){
-	Node* n = it.n;
-	Node* y;
-while (n->parent.color == red){
-	if (n->parent == n->parent->parent->child[0]){
-		y = n->parent->parent->child[1];
-	}
-	if (y.color == red){
-		n.color = black;
-		y.color = black;
-		n->parent->parent.color = red;
-		n = n->parent->parent;
-	} else if(n == n->parent->child[1]){
-		n = n->parent;
-		iterator it2(n);
-		left-rotate(it2);
-		n->parent.color = black;
-		n->parent->parent.color = red;
-		right-rotate(it2);
-		}
-	} else {
-		if (n->parent == n->parent->parent->child[1]){
-		y = n->parent->parent->child[0];
-	}
-	if (y.color == red){
-		n.color = black;
-		y.color = black;
-		n->parent->parent.color = red;
-		n = n->parent->parent;
-	} else if(n == n->parent->child[0]){
-		n = n->parent;
-		iterator it2(n);
-		right-rotate(it2);
-		n->parent.color = black;
-		n->parent->parent.color = red;
-		left-rotate(it2);
-	}
-}
-
-	header->parent.color = black;
-}
-
-void left-rotate(iterator it){
-	Node* n = it.n;
-	Node* y = it.n->child[1];
-	n->child[1] = y->child[0];
-	if (y->child[0] != nullptr)
-		y->child[0]->parent = n;
-	y->parent = n->parent;
-	if(n->parent.is_header())
-		header->parent = y;
-	else if (n == n->parent->child[0])
-		n->parent->child[0] = y;
-	else
-		n->parent->child[1] = y;
-	y->child[0] = n;
-	n->parent = y;
-}
-
-void right-rotate(iterator it){
-	Node* n = it.n;
-	Node* y = it.n->child[0];
-	n->child[0] = y->child[1];
-	if (y->child[1] != nullptr)
-		y->child[1]->parent = n;
-	y->parent = n->parent;
-	if(n->parent.is_header())
-		header->parent = y;
-	else if (n == n->parent->child[1])
-		n->parent->child[1] = y;
-	else
-		n->parent->child[0] = y;
-	y->child[1] = n;
-	n->parent = y;
-
-}
-    
-
-    /** \overload*/
-    iterator insert(const value_type& value) {
-    	//completar
-    }
-
-    /**
-     * @brief Inserta o redefine \P{value} en el diccionario
-     *
-     * Inserta un valor en el diccionario.  Si \P{*this} ya tiene un valor con clave
-     * \P{value}.first, entonces se redefine.  El iterador de retorno apunta al elemento
-     * recien insertado o redefinido.
-     *
-     * @param value valor a insertar
-     * @param hint iterador apuntando al diccionario.  Se espera que apunte al mínimo valor
-     * mayor o igual a \P{value}.first (i.e., a lower_bound(\P{value}.first)).
-     * Igualmente, la función es robusta y funciona correctamente aunque esto no ocurra.
-     * @retval res iterador apuntando al elemento insertado o redefinido
-     *
-     * \aliasing{hay aliasing????}
-     *
-     * \pre \aedpre{true}
-     * \post  \aedpost{def?(value.first, *this) \rightarrow res \igobs Agregar(Eliminar(CrearItMod(hasta(inorder(*this), value), desde(inorder(*this), value)))) \}
-     *
-     * \complexity{
-     *  - Peor caso: \O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}) \PLUS \COPY(\P{value}))
-     *  - Si \P{hint} apunta al primer valor con clave al menos \P{value}.first (o \P{this}->end() en caso de no existir):
-     *  \O(\CMP(\P{*this}) \PLUS \COPY(\P{value})) amortizado.
-     * }
-	 *
-     * \attention Para prevenir que el nuevo valor redefina uno ya existente, usar aed2::map::insert.
-     * \remark Esta función es similar al operator[], pero tiene dos ventajas y una desventaja.
-     * Las ventajas es que 1. se puede indicar un \P{hint} para la búsqueda y 2. no es necesario que
-     * \T{Meaning} tenga constructor sin parámetros.  La desventaja es que la notación no es tan bonita.
-     */
-    iterator insert_or_assign(const_iterator hint, const value_type& value) {
-        iterator it;
-        if (hint.n->value()->first == value.first){
-            it = hint;
-            it.n->value()->second = value->second;
-            } else if (hint.n->value()->first < value->first() || (hint--.n == nullptr
-            || hint.n->value()->first >= value->first)) {
-            it = lower_bound(hint->_value);
-        }
-        it = insert(hint, value);
-        return it;
-    }
-
-    /** \overload */
-    iterator insert_or_assign(const value_type& value) {
-
-
-        
-    }
-
-    /**
-     * @brief Elimina el valor apuntado por \P{pos}
-     *
-     * @param pos iterador apuntando al valor a eliminar.
-     * @retval res iterador apuntando al primer valor con clave mayor a \P{pos} (o \P{this}->end(), si dicho valor no existe).
-     *
-     * \aliasing{complertar}.
-     *
-     * \pre \aedpre{HayMas?(pos)}
-     * \post \aedpost{Eliminar(pos)}
-     *
-     * \complexity{
-     * - Peor caso: \O(\DEL(\P{*pos}) + \LOG(\SIZE(\P{*this})))
-     * - Peor caso amortizado: \O(\DEL(\P{*pos}))
-     * }
-     *
-     */
-    iterator erase(const_iterator pos) {
-    	
-    	/*
-    	RB-T RANSPLANT .T; u; /
-1 if u:p == T:nil
-2
-T:root D
-3 elseif u == u:p:left
-4
-u:p:left D
-5 else u:p:right D
-6
-:p D u:p
-
-
-T REE -D ELETE .T;  ́/
-1 if  ́:left == NIL
-2
-T RANSPLANT .T;  ́;  ́:right/
-3 elseif  ́:right == NIL
-4
-T RANSPLANT .T;  ́;  ́:left/
-5 else y D T REE -M INIMUM . ́:right/
-6
-if y:p ¤  ́
-7
-T RANSPLANT .T; y; y:right/
-8
-y:right D  ́:right
-9
-y:right:p D y
-10
-T RANSPLANT .T;  ́; y/
-11
-y:left D  ́:left
-12
-y:left:p D y
-
-
-
-RB-D ELETE -F IXUP .T; x/
-1 while x ¤ T:root and x:color == BLACK
-2
-if x == x:p:left
-3
-w D x:p:right
-4
-if w:color == RED
-5
-w:color D BLACK
-6
-x:p:color D RED
-7
-L EFT-ROTATE .T; x:p/
-8
-w D x:p:right
-9
-if w:left:color == BLACK and w:right:color == BLACK
-10
-w:color D RED
-11
-x D x:p
-12
-else if w:right:color == BLACK
-13
-w:left:color D BLACK
-14
-w:color D RED
-15
-R IGHT-ROTATE .T; w/
-16
-w D x:p:right
-17
-w:color D x:p:color
-18
-x:p:color D BLACK
-19
-w:right:color D BLACK
-20
-L EFT-ROTATE .T; x:p/
-21
-x D T:root
-22
-else (same as then clause with “right” and “left” exchanged)
-23 x:color D BLACK
-
-    }
-
-    /**
-     * @brief Elimina el valor cuya clave es \P{key}
-     *
-     * @param key clave del elemento a eliminar
-     *
-     * \aliasing{completar}
-     *
-     * \pre \aedpre{*this \igobs *this0 \and def?(key, *this)}
-     * \post \aedpost{*this \igobs borrar(key, *this0)}
-     *
-     * \complexity{\O(\DEL(\P{*pos}) + \LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
-     */
-    void erase(const Key& key) {
-    	//completar
-    }
-
-    /**
-     * @brief Vacia el diccionario
-     *
-     * \aliasing{Se invalidan todos los iteradores asociados a \P{*this}, con excepcion de aquellos que apuntan
-     * a la posicion pasando-el-ultimo.}
-     *
-     * \pre \aedpre{true}
-     * \post \aedpost{\P{*this} \IGOBS vacio}
-     *
-     * \complexity{\O(\DEL(\P{*this}))}
-     */
-    /**
-    Mientras count sea distinto de 0, va eliminando con la función erase todos los elementos del árbol.
-    */
-    void clear() {
-        //completar
-    }
-
-    /**
-     * @brief Intercambia el contenido de \P{*this} y \P{other}
-     *
-     * @param other diccionario a intercambiar con \P{*this}
-     *
-     * \aliasing{Todos los iteradores, salvo aquellos que apuntan a las posiciones pasando-el-ultimo,
-     * se mantienen válidos.  Aquellos iteradores que apuntan a la posición pasando-el-ultimo de \P{*this} pasan a
-     * apuntar a la posición pasando-el-ultimo de \P{other}, y viceversa.}
-     *
-     * @param other mapa a intercambiar con this
-     *
-     * \pre \aedpre{\a self = \P{*this} \LAND \a oth = \P{other}}
-     * \post \aedpost{\P{*this} \IGOBS \a oth \LAND \P{other} = \a self}
-     *
-     * \complexity{\O(1)}
-     *
-     * \note La razón por la que se "invalidan" los iteradores pasando-el-fin tiene que ver con
-     * la forma en que se implementa el módulo (que emula la implementacion de C++).  No hay ninguna razón
-     * técnica que impida mantener los iteradores pasando el fin, salvo por un pequeño ahorro de memoria y tiempo.
-     * En caso de querer usar los iteradores como punteros, se recomienda usar el iterador nulo de diccionario para
-     * representar al valor inválido, en lugar de usar los iteradores pasando-el-ultimo.
-     *
-     */
-    void swap(map& other) {
-    	using std::swap;
-        swap(lt, other.lt);
-        swap(count, other.count);
-
-        swap(header.parent, other.header.parent);
-        swap(header.child[0], other.header.child[0]);
-        swap(header.child[1], other.header.child[1]);
-        if(root() != nullptr) root()->parent = &header;
-        if(other.root() != nullptr) other.root()->parent = &other.header;
-
-        //nota: cuando el arbol es vacio, los child de header apuntan a header.  Notar que quedan apuntando mal despues del swap
-        if(root() == nullptr) header.child[0] = header.child[1] = &header;
-        if(other.root() == nullptr) other.header.child[0] = other.header.child[1] = &other.header;
-    }
-    //@}
-
-    ////////////////////////////////////
-    /** \name Recorridos e iteradores */
-    ////////////////////////////////////
-    //@{
-    /**
-     * @brief Devuelve un iterador al primer valor del diccionario
-     *
-     * \aliasing{no hay}
-     *
-     * @retval res iterador al primer valor
-     *
-     * \pre \aedpre{true}
-     * \post \aedpost{res \igobs CrearItMod(inorder(*this))}
-     *
-     * \complexity{\O(1)}
-     */
-    /**
-    Inicia un iterador en header->izq.
-    */
-    iterator begin() {
-    	iterator it(header->child[0]);
-    	return it;
-    }
-
-    /** \overload */
-    const_iterator begin() const {
-    	const_iterator it(header->child[0]);
-    	return it;
-    }
-
-    /** \overload */
-    const_iterator cbegin() {
-    	const_iterator it(header->child[0]);
-    	return it;
-    }
-
-    /**
-     * @brief Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario
-     *
-     * \aliasing{no hay}
-     *
-     * @retval res iterador a la posicion pasando-al-ultimo
-     *
-     * \pre \aedpre{true}
-     * \post \aedpost{res \igobs CrearItMod(inorder(*this), \langle \ranlge)}
-     *
-     * \complexity{\O(1)}
-     *
-     * Inicia un iterador en nullptr.
-     */
-    iterator end() {
-    	iterator it();
-    	return it;
-    }
-
-    /** \overload */
-    const_iterator end() const {
-    	const_iterator it();
-    	return it;
-    }
-
-    /** \overload */
-    const_iterator cend() {
-    	const_iterator it();
-    	return it;
-    }
-
-    /**
-     * @brief Devuelve un iterador al primer valor del diccionario, en un recorrido al revés
-     *
-     * \aliasing{no hay}
-     *
-     * @retval res iterador a la primer posicion en un recorrido al revés
-     *
-     * \pre \aedpre{true}
-     * \post \aedpost{res \igobs CrearItMod(\langle \rangle , postorder(*this))}
-     *
-     * \complexity{\O(1)}
-     *
-     * Inicia un reverse_iterator en el hijo derecho de header.
-     */
-    reverse_iterator rbegin() {
-    	reverse_iterator it = reverse_iterator(header->child[1]);
-    	return it;
-    }
-
-    /** \overload */
-    const_reverse_iterator rbegin() const {
-    	const_reverse_iterator it = reverse_iterator(header->child[1]);
-    	return it;
-    }
-
-    /** \overload */
-    const_reverse_iterator crbegin() {
-    	const_reverse_iterator it = reverse_iterator(header->child[1]);
-    	return it;
-	}
-
-    /**
-     * @brief Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario, en un recorrido al revés
-     *
-     * \aliasing{no hay}
-     *
-     * @retval res iterador a la posicion pasando-al-ultimo, en un recorrido al revés
-     *
-     * \pre \aedpre{true}
-     * \post \aedpost{res \igobs CrearItMod(postorder(*this), \langle \ranlge)}
-     *
-     * \complexity{\O(1)}
-     *
-     * Inicia un reversre_iterator en el hijo izquierdo de header.
-     */
-    reverse_iterator rend() {
-    	reverse_iterator it = reverse_iterator();
-    	return it;
-    }
-
-    /** \overload */
-    const_reverse_iterator rend() const {
-    	const_reverse_iterator it = reverse_iterator();
-    	return it;
-    }
-
-    /** \overload */
-    const_reverse_iterator crend() {
-    	const_reverse_iterator it = reverse_iterator();
-    	return it;
-    }
-    //@}
-
-    /**
-     * @brief Parte del módulo que implementa los iteradores que permiten la modificación de los significados.
-     *
-     * Cuando el iterador se encuentra asociado a un diccionario `d`, el rango válido de valores del
-     * iterador va desde el primer valor de `d` hasta una posición (ficticia) que se encuentra pasando-el-último.
-     * Esta posición no tiene definido un valor para el `operator*`, y se usa para indicar el fin del recorrido.
-     *
-     * Este es un iterador que sigue el estándar de C++, y por lo tanto es compatible con la bilioteca
-     * de algoritmos.  Asimismo, las operaciones siguen el protocolo estándar, con lo cual no es necesiario
-     * describir el resultado de las mismas.  Sin embargo, siendo este un TP, vamos a describir el comportamiento
-     * en el marco conceptual de la materia.
-     *
-     * \par Aspectos generales de aliasing
-     * \parblock
-     * Vale remarcar que un iterador tiene dos estados posibles:
-     * -# Es valido: cuando esta asociado a un diccionario y apunta a un valor existente del diccionario,
-     * -# Es inválido: cuando esta asociado a un diccionario (que quiza ya no es accesible), pero el valor al que apunta fue eliminado.
-     * -# Es nulo: cuando no está asociado a ningún diccionario; sirve como análogo de `nullptr`.
-     * \endparblock
-     *
-     * \par Se explica con
-     * IteradorBidireccional(Diccionario(\T{Key}, \T{Meaning}), tupla(\T{Key}, \T{Meaning}))
-     *
-     * \attention En caso de usar los iteradores como punteros, se desaconseja el uso de la posicion pasando-el-ultimo como valor nulo,
-     * ya que queda invalidada luego de aplicar la operación aed2::map::swap.  Conviene usar el iterador nulo (que, lamentablemente,
-     * es independiente del diccionario).
-     *
-     * \see [Documentacion estándar de iteradores bidireccionales](http://en.cppreference.com/w/cpp/concept/BidirectionalIterator)
-     */
-    class iterator {
-        using Node = typename map::Node;
-        using InnerNode = typename map::InnerNode;
     public:
+        //forward declarations
+        class iterator;
 
-        /** \brief Categoria del iterador: bidireccional.  Requerido por estándar C++. */
-        using iterator_category = std::bidirectional_iterator_tag;
-        /** \brief Tipo de los valores recorridos.  Requerido por estándar C++ */
-        using value_type = map::value_type;
-        /** \brief Tipo de la referencia (resultado de operator*).  Requerido por estándar C++ */
-        using reference = map::reference;
-        /** \brief Tipo del puntero (resultado de operator->).  Requerido por estándar C++ */
-        using pointer = map::pointer;
-        /** \brief Resultado de la diferencia entre dos punteros.  Requerido por estándar C++ */
+        class const_iterator;
+
+        /**
+         * \brief Renombre para poder acceder al tipo de las claves.  Compatible con estándar C++.
+         */
+        using key_type = Key;
+        /**
+         * \brief Renombre para poder acceder al tipo de los significados.  Compatible con estándar C++.
+         */
+        using mapped_type = Meaning;
+        /**
+         * \brief Renombre para poder acceder al tipo de las valores almacenados.  Compatible con estándar C++.
+         */
+        using value_type = std::pair<const Key, Meaning>;
+        /**
+         * \brief Renombre para poder acceder al tipo del comparador.  Compatible con estándar C++.
+         */
+        using key_compare = Compare;
+        /**
+         * \brief Renombre para poder acceder al tipo de referencia de los valores guardados.  Compatible con estándar C++.
+         */
+        using reference = value_type &;
+        /**
+         * \brief Renombre para poder acceder al tipo de referencia constante de los valores guardados.  Compatible con estándar C++.
+         */
+        using const_reference = const value_type &;
+        /**
+         * \brief Renombre para poder acceder al tipo de los punteros de los valores guardados.  Compatible con estándar C++.
+         */
+        using pointer = value_type *;
+        /**
+         * \brief Renombre para poder acceder al tipo de los punteros de los valores constantes guardados.  Compatible con estándar C++.
+         */
+        using const_pointer = const value_type *;
+        /**
+         * \brief Renombre para poder acceder al tipo usado para describir tamaños.  Compatible con estándar C++.
+         */
+        using size_type = std::size_t;
+        /**
+         * \brief Renombre para poder acceder al tipo usado para describir diferencias entre punteros.  Compatible con estándar C++.
+         */
         using difference_type = std::ptrdiff_t;
 
         /**
-         * \brief Crea un iterador nulo
+         * \brief Iterador para recorrer un diccionario en orden inverso
          *
-         * Hay dos razones para permitir la existencia de iteradores nulos.  La primera, más trivial, es permitir la declaracion de iteradores
-         * sin necesariamente asignarles un valor inicial.  Por ejemplo
-         * \code{.cpp}
-         * aed2::map::iterator it;   //iterador invalido
-         * if(...) {
-         *   it = d.rbegin();
-         * } else {
-         *   it = d.rend();
-         * }
-         * \endcode
-         * El segundo motivo, más esencial, es permitir el uso de iteradores como \e handles (punteros).  En este caso,
-         * y teniendo en cuenta que el puntero pasando-el-último podría invalidarse, el iterador nulo nos brinda una forma conveniente de
-         * representar el puntero nulo.
+         * Este tipo implementa un iterador que puede recorrer el diccionario en el orden inverso.
+         * Es un renombre, porque nos aprovechamos del adaptador `std::reverse_iterator` que implementa
+         * un iterador reverso para \b cualquier iterador bidireccional que respete el estándar C++.
+         * Su interfaz y complejidades pueden consultarse en la documentación de la biblioteca estándar
          *
-         * @retval res iterador recién creado
+         * \see [Documentación de `std::reverse_iterator`](http://en.cppreference.com/w/cpp/iterator/reverse_iterator)
+         */
+        using reverse_iterator = std::reverse_iterator<iterator>;
+        /**
+         * \brief Iterador para recorrer un diccionario constante en orden inverso
          *
-         * \aliasing{El iterador \P{res} no está asociado a ningún diccionario.}
+         * Este tipo implementa un iterador que puede recorrer el diccionario en el orden inverso.
+         * Es un renombre, porque nos aprovechamos del adaptador `std::reverse_iterator` que implementa
+         * un iterador reverso para \b cualquier iterador bidireccional que respete el estándar C++.
+         * Su interfaz y complejidades puede consultarse en la documentación de la biblioteca estándar
+         *
+         * \see [Documentación de `std::reverse_iterator`](http://en.cppreference.com/w/cpp/iterator/reverse_iterator)
+         */
+        using const_reverse_iterator = std::reverse_iterator<const_iterator>;
+
+        //////////////////////////////////////////////////
+        /** \name Construcción, asignación y destrucción */
+        //////////////////////////////////////////////////
+        ///@{
+        /**
+         * @brief Crea un diccionario vacio.
+         *
+         * @param c comparador (functor de orden) a utilizar
+         * @retval res diccionario recién construido
          *
          * \pre \aedpre{true}
-         * \post \aedpost{coleccion(\P{res}) \IGOBS \BOTTOM \LAND vacia?(SecuSuby(\P{res}))}
+         * \post \aedpost{res \igobs vacio()}
          *
          * \complexity{\O(1)}
          *
-         * Inicia un iterador apuntando a nullptr.
+         * \attention El parámetro formal \LT del TAD diccionario se establece en esta función.
+         * \LT = \P{c}.operator()
          */
-        iterator() : n(nullptr) {}
         /**
-         * \brief Retorna el valor apuntado por \P{*this}
-         *
-         * @retval res referencia al valor apuntado por \P{*this}
-         *
-         * \aliasing{hay aliasing entre res y Siguiente(*this)}
-         *
-         * \pre \aedpre{Siguiente(this) != nullptr}
-         * \post \aedpost{res \igobs Siguiente(*this)}
-         *
-         * \complexity{\O(1)}
-         *
-         * Devuelve el elemento del nodo al que está apuntando el iterador.
-         */
-        reference operator*() const {
-        	return n.value();
-        }
-        /**
-         * \brief Retorna la dirección del valor apuntado por \P{*this}
-         *
-         * @retval res puntero al valor apuntado por \P{*this}
-         *
-         * \aliasing{hay aliasing entre res y Siguiente(*this)}
-         *
-         * \pre \aedpre{haySiguiente(\P{*this})}
-         * \post \aedpost{\P{*res} \IGOBS siguiente(\P{*this})}
-         *
-         * \complexity{\O(1)}
-         *
-         * \attention No hay forma de expresar, en el lenguaje de TADs, que un puntero apunta a la dirección de otro objeto.  Es por
-         * eso que la postcondición es más débil de lo que debiera.  Eso no ocurre en las otras funciones del TP.
-         *
-         * Devuelve la posición de memoria del valor del nodo al que está apuntando el iterador.
-         *
-         */
-        pointer operator->() const {
-			//completar
-		}
-        /**
-         * \brief Avanza el iterador a la siguiente posición
-         *
-         * @retval res referencia a \P{*this}
-         *
-         * \aliasing{no hay}
-         *
-         * \pre \aedpre{HaySiguiente?(*this)}
-         * \post \aedpost{res \igobs Avanzar(*this)}
-         *
-         * \complexity{
-         * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
-         * - Peor caso amortizado: \O(1)
-         * }
-         *
-         * Avanza el iterador en una posición y lo devuelve.
-         *
-         */
-        iterator& operator++() {
-            if(n->child[1] == nullptr){
-                while (n->parent->child[1] == n)
-                    n = n->parent;
+       ambos hijos de header apuntan a null, y padre de header apunta a null
+
+       **/
+        explicit map(Compare c = Compare()) {
+            this->header = Node();
+            header->parent = nullptr;
+            header->child[0] = nullptr;
+            header->child[1] = nullptr;
+            explicit map(Comparec c = Compare()): lt(c);
             }
-            if (n->child[1] != nullptr)
-                n = n->child[1];
-            return *this;
-        }
-        	
-        /**
-         * \brief Avanza el iterador a la siguiente posición
-         *
-         * @retval res iterador apuntando a la dirección anterior de \P{*this}
-         *
-         * \aliasing{no hay}
-         *
-         * \pre \aedpre{HaySiguiente?(*this)}
-         * \post \aedpost{CONSULTAR}
-         *
-         * \complexity{
-         * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
-         * - Peor caso amortizado: \O(1)
-         * }
-         *
-         * CONSULTAR.
-         *
-         */
-        iterator operator++(int) {
-            if(n->child[1] == nullptr){
-                while (n->parent->child[1] == n)
-                    n = n->parent;
+
+
+            /**
+             * @brief Constructor por copia
+             *
+             * @param other diccionario a copiar
+             * @retval res diccionario recien construido
+             *
+             * \pre \aedpre{true}
+             * \post \aedpost{res \igobs other}
+             *
+             * \complexity{\O(\COPY(\P{other}))}
+             *
+             * \attention El parámetro formal \LT del TAD diccionario se establece en esta función.
+             * \LT es igual al operator() del comparador de \P{other}
+             *
+             */
+
+            /**
+            begin() iterador en other.
+            mientras haya Siguiente en el iterador de other, insertar siguiente, y avanzar.
+
+
+            **/
+            map(const map &other) {
+                //completar
             }
-            if (n->child[1] != nullptr)
-                n = n->child[1];
-            return *this;
-        }
-        /**
-         * \brief Retrocede el iterador a la posición anterior
-         *
-         * @retval res referencia a \P{*this}
-         *
-         * \aliasing{no hay}
-         *
-         * \pre \aedpre{HayAnterior?(*this)}
-         * \post \aedpost{res \igobs Retroceder(*this)}
-         *
-         * \complexity{
-         * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
-         * - Peor caso amortizado: \O(1)
-         * }
-         *
-         * Retrocede el iterador en una posicion y lo devuelve.
-         *
-         */
-        iterator& operator--() {
-         if(n->child[0] == nullptr){
-            while (n->parent->child[0] == n)
-                n = n->parent;
+
+            /**
+             * @brief Crea un diccionario con los elementos del rango [\P{first}, \P{last})
+             *
+             * @tparam iterator clase del iterador a recorrer
+             *
+             * \par Requerimientos sobre el tipo \T{iterator}
+             * El tipo \T{iterator} debe tener todas las funcionalidades de un \e InputIterator de C++.
+             * En términos de la materia, vamos a suponer que \T{iterator} se explica con el
+             * TAD Iterador Unidireccional(puntero(C), \T{value_type}) para alguna colección de tipo C.
+             *
+             * @param first iterador al primer elemento del rango
+             * @param last iterador pasando el ultimo elemento del rango
+             * @param c comparador a utilizar
+             * @retval res diccionario recien construido
+             *
+             * \aliasing{\P{first} y \P{last} son iteradores que recorren la misma secuencia definida por una colección.}
+             *
+             * \pre \parblock
+             * \P{last} debe ser alcanzable desde \P{first} y en el rango [\P{first}, \P{last}) no pueden haber valores repetidos.
+             *
+             * \aedpre{coleccion(\P{first}) \IGOBS coleccion(\P{last}) \LAND esSufijo(Siguientes(\P{last}), Siguientes(\P{first})) \LAND
+             *   \esDiccionario(Siguientes(\P{first}) \MINUS Siguientes(\P{last}))}
+             * \endparblock
+             *
+             * \post \parblock
+             * Los valores definidos en \P{res} son aquellos que aparecen en [\P{first}, \P{last})
+             *
+             * \aedpost{(\FORALL k: \T{Key})(\FORALL s: \T{Meaning})
+             *   (def?(\P{res}, k) \LAND_L significado(\P{res}, k) \IGOBS s \IFF esta((k,s), Siguientes(\P{first})
+             *   \MINUS Siguientes(\P{last})))
+             * }
+             * \endparblock
+             *
+             * \complexity{
+             * - En el peor caso: \O(\SIZE(\P{res}) \CDOT (\LOG(\SIZE(\P{res})) \CDOT \CMP(\P{res}) + \COPY(\P{res})))
+             * - Si el rango [\P{first}, \P{last}) está ordenado: \O(\SIZE(\P{res}) \CDOT (\CMP(\P{res})+ \COPY(\P{res})))
+             * }
+             *
+             * \attention El parámetro formal \LT del TAD diccionario se establece en esta función.
+             * \LT = \P{c}.operator()
+             *
+             * \sa [Documentación de InputIterator](http://en.cppreference.com/w/cpp/concept/InputIterator)
+             */
+            template<class iterator> map(iterator first, iterator last, Compare c = Compare()) : lt(c) {
+                auto it = end();
+                while (first != last) {
+                    insert(*first, it);
+                    ++first;
+                }
             }
-            if (n->child[0] != nullptr)
-                n = n->child[0];
-            return *this;
-        }
-        /**
-         * \brief Retrocede el iterador a la posición anterior
-         *
-         * @retval res iterador apuntando a la dirección siguiente de \P{*this}
-         *
-         * \aliasing{no hay}
-         *
-         * \pre \aedpre{HayAnterior?(*this)}
-         * \post \aedpost{completar}
-         *
-         * \complexity{
-         * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
-         * - Peor caso amortizado: \O(1)
-         * }
-         *
-         * CONSULTAR
-         *
-         */
-        iterator operator--(int) {
-            if(n->child[0] == nullptr){
-               while (n->parent->child[0] == n)
-                   n = n->parent;
-               }
-               if (n->child[0] != nullptr)
-                   n = n->child[0];
-               return *this;
-        }
-        /**
-         * \brief Operador de igualdad
-         *
-         * @param other iterador a comparar
-         * @retval res indica si \P{*this} apunta al mismo valor que \P{other}
-         *
-         * \aliasing{No es necesario que \P{*this} y \P{other} estén asociados al mismo diccionario.  Si no lo están,
-         * el resultado esta:
-         * - indeterminado, cuando alguno de ellos es inválido,
-         * - false, cuando alguno de ellos es no nulo, o
-         * - true, cuando ambos son nulos.}
-         *
-         * \pre \aedpre{true}
-         * \post \aedpost{res \leftrightarrow (*this \igobs other)}
-         *
-         * \complexity{\O(1)}
-         *
-         * Devuelve true si el nodo al que apunta this es el mismo que al que apunta other. (Consultar)
-         *
-         */
-        bool operator==(iterator other) const {
-            return (n == other.n);
-        }
-        /** \brief idem !|operator== */
-        bool operator!=(iterator other) const {
-                return (n != other.n);
-        }
 
-    private:
-        /**
-         * @brief Construye un iterador que apunta al valor del Nodo \P{pos}
-         *
-         * @param pos puntero al nodo
-         * @retval res iterador recién construido
-         *
-         * \aliasing{La dirección \P{pos} debe apuntar a un nodo del árbol red-black que se usa para implementar un diccionario `d`.
-         * El iterador \P{res} queda asociado a `d` y permite modificar el significado del valor que apunte.}
-         *
-         * \pre \aedpre{rep_iter(n)}
-         * \post \aedpost{res \IGOBS CrearItBi(&`d`, completar, completar)}
-         *
-         * \complexity{\O(1)}
-         *
-         * \attention El diccionario `d` se describe en castellano, porque depende de un aspecto de aliasing.  Es la interpretacion de la
-         * posicion de memoria del nodo cabecera como si fuera un diccionario.  No hay forma de expresar este hecho.  Igualmente, estamos
-         * en la parte privada de nuestro modulo, con lo cual permitimos el castellano.
-         *
-         * \note Este constructor permite castear punteros a nodos en iteradores.
-         */
-        iterator(Node* pos) : n(pos) {}
-        /**
-         * @brief Operador de casteo a Node*
-         *
-         * Función conveniente para poder intercambiar nodos e iteradores sin necesidad de llamar a funciones.
-         * Hay que tener un poco de cuidado, pero forma parte de la implementación privada.
-         *
-         * @retval res dirección del nodo que implementa \P{*this}.
-         *
-         * \remark Esta función se brinda como ayuda para el TP
-         */
-        operator Node*() const {return n;}
-        /////////////////////////////////////////////////////////////////////////////////////////////////
-        /** \name Estructura de representación
-         *
-         * \T{iterator} se representa con \P{n}: puntero(Node)
-         *
-         * \par Invariante de representación
-         *
-         * rep_iter: puntero(Node) \TO bool\n
-         * rep_iter(n) \EQUIV completar
-         *
-         * \par Función de abstracción
-         *
-         * abs_iter: puntero(Node) n \TO IteradorBidireccional(Diccionario(\T{Key}, \T{Meaning}), tupla(\T{Key}, \T{Meaning}))  {rep_iter(n)}\n
-         * abs_iter(n) \EQUIV completar
-         *
-         * Nota: se puede usar `d` para referirse al valor computacional del diccionario definido desde la cabecera (como en el constructor).
-         *
-         * \attention  No hay forma de expresar el diccionario `d` porque depende de un aspecto de aliasing.  Es por esto que permitimos usar
-         * castellano.
-         */
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-        //@{
-        /**
-         * \brief Puntero al nodo actual.  Ver Estructura de Representación
-         */
-        Node* n{nullptr};
-        //@}
-        friend class map;
-    };
+            /**
+             * @brief Operador de asignación
+             *
+             * @param other diccionario a copiar
+             * @retval res referencia a *this
+             *
+             * \aliasing{no hay}
+             *
+             * \pre \aedpre{true}
+             * \post \aedpost{res \igobs other}
+             *
+             * \complexity{\O(\DEL(\P{*this}) \PLUS \COPY(\P{other}))}
+             *
+             * \note Es importante remarcar que no se realiza ninguna comparación entre los elementos.
+             */
+            /**
+           -destruir this
+           - this->map(other)
 
-    /**
-     * @brief Parte del módulo que implementa los iteradores que no permiten la modificación de los significados.
-     *
-     * Este módulo es análogo a aed2::map::iterator, pero no permite la modificación cuando hay aliasing.  Sólo se
-     * documentan las funcionalidades nuevas.  Para las restantes, ver aed2::map::iterator.
-     */
-    class const_iterator {
-        using Node = const typename map::Node;
-        using InnerNode = const typename map::InnerNode;
-    public:
-        using iterator_category = std::bidirectional_iterator_tag;
-        using value_type = map::value_type;
-        using reference = map::const_reference;
-        using pointer = map::const_pointer;
-        using difference_type = std::ptrdiff_t;
+            **/
 
-        /** \brief Ver aed2::map::iterator::iterator() */
-        const_iterator() {}
-        /**
-         * \brief Constructor desde un iterador modificable
-         *
-         * Este constructor construye un iterador no modificable que apunta al mismo valor que uno modificable.
-         * Tambien funciona como operador de casteo, para no tener que estar transformando los iteradores en aquellas
-         * funciones que toman un `const_iterator` como parametro.
-         *
-         * @param it iterator a "transformar"
-         * @retval res iterator creado en la transformación
-         *
-         * \aliasing{completar}
-         *
-         * \pre \aedpre{completar}
-         * \post \aedpost{completar}
-         *
-         * \complexity{\O(1)}
-         */
-        const_iterator(iterator it) {
-          //completar
-        }
-        /** \brief Ver aed2::map::iterator::operator*() */
-        reference operator*() const  {
-          //completar
-        }
-        /** \brief Ver aed2::map::iterator::operator->() */
-        pointer operator->() const {
-          //completar
-        }
-        /** \brief Ver aed2::map::iterator::operator++() */
-        const_iterator& operator++()  {
-          //completar
-        }
-        /** \brief Ver aed2::map::iterator::operator++(int) */
-        const_iterator operator++(int)  {
-          //completar
-        }
-        /** \brief Ver aed2::map::iterator::operator--() */
-        const_iterator& operator--()  {
-          //completar
-        }
-        /** \brief Ver aed2::map::iterator::operator--(int) */
-        const_iterator operator--(int)  {
-          //completar
-        }
-        /** \brief Ver aed2::map::iterator::operator==() */
-        bool operator==(const_iterator other) const  {
-          //completar
-        }
-        /** \brief Ver aed2::map::iterator::operator!=() */
-        bool operator!=(const_iterator other) const  {
-          //completar
-        }
+            map &operator=(map other) {
+                //completar
+            }
 
-    private:
-        /** \brief Ver aed2::map::iterator::iterator(Node*) */
-        const_iterator(Node* pos) : n(pos) {}
-        /** \brief Ver aed2::map::iterator::operator Node*() */
-        operator Node*() const {return n;}
-        /** \brief Ver aed2::map::iterator::n */
-        Node* n{nullptr};
-        friend class map;
-    };
+            /**
+             * @brief Destructor
+             *
+             *
+             * \aliasing{completar}
+             *
+             * \pre \aedpre{true}
+             * \post \aedpost{true}
+             *
+             * \complexity{\O(\DEL(\P{*this}))}
+             *
+             * \attention Como se explicita, esta función no hace nada, porque
+             * no tiene un objetivo funcional.  De hecho, su implementación es innecesaria bajo
+             * la hipótesis de infinitud de memoria (que muchos sistemas de especificación, e.g.
+             * nuestros TADs, asumen por simplicidad).  Sin embargo, esta función tiene un
+             * comportamiento real y es liberar la memoria usada.  Claramente, esta funcionalidad
+             * depende del sistema en que estemos trabajando.  Suponiendo que tuvieramos acceso
+             * a la implementación de las tablas de memoria del sistema operativo (o al mapa de
+             * memoria de la computadora), podríamos expresar la funcionalidad estableciendo la
+             * liberación de la memoria
+             */
 
-private:
-    friend class iterator;
-    friend class const_iterator;
+            /**
+           inicializa iterador con begin()
+           mientras hay Siguiente, borra (siguiente)
+            **/
 
-    /** \brief Colores de los nodos en un árbol red-black.  Ver \ref Implementacion
-     *
-     * Valores validos:
-     * \arg Color::Red (color rojo)
-     * \arg Color::Black (color negro)
-     * \arg Color::Header (color azul, reservado para la cabecera)
-     *
-     * \see Cormen et al. \cite CormenLeisersonRivestStein2009 e \ref Implementacion
-     */
-    enum class Color {Red, Black, Header};
+            ~map()
+            {
+                //compl
+            }
+            ///@}
 
-    /**
-     * \brief Estructura (privada) de un nodo del árbol red-black.
-     *
-     * Tal como sugiere Cormen et al. \cite CormenLeisersonRivestStein2009, como se implementa en gcc,
-     * y cómo explicamos en \ref Implementacion, el arbol tiene dos tipos de nodos.  Aquellos que
-     * tienen un valor e implementan el árbol y aquellos que se usan como sentinelas.  La estructura
-     * \T{Node} es la base para representar a ambos tipos de nodos, ya que omite los valores.  La clase
-     * aed2::map::InnerNode, que hereda de \T{Node}, extiende la representación incluyendo el valor.
-     *
-     * Además de definir los campos de la estructura de un nodo, esta clase podría usarse para implementar una especie de submodulo
-     * que incluya funciones para manipular el arbol red-black.  Las funciones incluidas en esta estructura deberían
-     * ser aquellas que, si bien no requieren conocer el resto de la estructura red-black, explotan el conocimiento
-     * de que el árbol red-black tiene un único nodo sentinela que sirve de cabecera. (Ver ejemplos)
-     *
-     * \remark Como \T{Node} es una estructura privada, no tiene ventajas imporantes implementarla en forma modular.
-     */
-    struct Node {
-        /** \brief Punteros a los hijos izquierdo (child[0]) y derecho (child[1]) */
-        Node* child[2]{nullptr,nullptr};
-        /** \brief Puntero al padre: garantiza insercion con puntero en O(1) amortizado e iteracion en O(1) memoria */
-        Node* parent{nullptr};
-        /** \brief Color del nodo */
-        Color color{Color::Red};
-
-		//////////////////////////////////////////////
-        /** \name Creación de nodos (constructores) */
-        //////////////////////////////////////////////
-        //@{
-        /**
-         * @brief Constructor para crear el nodo header.
-         *
-         * Construye un nodo con color Header y cuyos hijos apuntan al nodo creado.
-         * Esta es la definicion del nodo cabecera cuando el arbol está vacío.
-         *
-         * \complexity{\O(1)}
-         */
-        Node() : color(Color::Header) {
-        	child[0] = child[1] = this;
-        }
-
-        /**
-         * @brief Constructor para nodos del arbol red-black, sin enlaces.
-         *
-         * Crea un nodo con padre \P{p}, color \P{c} y sin hijos.
-         *
-         * @param p puntero al padre
-         * @param c color del nodo
-         *
-         * \complexity{\O(1)}
-         */
-        Node(Node* p, Color c = Color::Red) : parent(p), color(c) {}
-        //@}
-        
-        /**
-         * @brief Destructor de Node
-         *
-         * Como Node funciona de clase base, el destructor es virtual, asi se puede
-         * invocar delete de un Node* que apunta a un InnerNode, destruyendo el valor contenido
-         * en el InnerNode.
-         *
-         * \remark En rigor, nunca deberíamos invocar new Node, asi que no tiene sentido hacer
-         * delete de un Node*.  Podemos evitar esta invocación poniendo el destructor como protegido
-         * y no virtual.  De esa forma, nos obliga a tener un InnerNode* para el delete, lo cual
-         * efectivamente llama al destructor del valor.  Sin embargo, por simplicidad, vamos a permitir
-         * que el destructor sea virtual.  Además, así no es necesario que hagan el `static_cast` y evitamos
-         * errores de memoria difíciles de debugguear.
-         */
-        virtual ~Node() {}
+            ////////////////////////////////////////////
+            /** \name Busqueda y acceso a los valores */
+            ////////////////////////////////////////////
+            ///@{
+            /**
+             * @brief Devuelve el significado asociado a \P{key}
+             *
+             * @param key clave a buscar.
+             * @retval res referencia al significado asociado a \P{key}.
+             *
+             * \aliasing{completar}
+             *
+             * \pre \aedpre{def?(key,*this)}
+             *
+             * \post \aedpost{res \igobs obtener(key,*this)}
+             *
+             * \complexity{\O(\LOG(\SIZE(\P{*this}) \CDOT \CMP(\P{*this}))}
+             *
+             * \remark Esta función, que se asemeja más a la forma de programar propuesta en AED2
+             * que al estándar C++, fue incluida en el estándar C++11.  Antes era obligación
+             * recurrir a la función find.
+             */
 
 
-		/////////////////////////////////////////////////
-        /** \name Acceso a la información en los nodos */
-        /////////////////////////////////////////////////
-        //@{
-        /**
-         * @brief Devuelve true si el nodo actual es el header de la estructura.
-         *
-         * \remark Vale destacar que hay exactamente dos nodos n con n->parent->parent = &n: la cabecera y la raíz.
-         * En la implementación del árbol red-black de GCC, el nodo cabecera tiene color Rojo.
-         * De esta forma, se puede distinguir la cabecera de la raíz, que siempre es negra.  Para ello, alcanza
-         * con verificar que `color == Color::Red and (parent == nullptr or parent->parent = this)`.  Sin embargo,
-         * esta condicion también podría ser satisfecha por la raíz algún `fixup`.  Por simplicidad, y para evitar bugs,
-         * acá tomamos como solucion que el header
-         * tiene un color particular, llamado Color::Header.  Si bien se necesita mas de un bit para el color, lo cierto
-         * es que ningun procesador admite direccionamiento a bit, asi que no se pierde nada en la practica.
-         * El objetivo de esta función es poder reemplazar el chequeo de la condición para determinar si el nodo es
-         * la cabecera, en caso en que queramos evitar el nuevo color.
-         *
-         * @returns true si el nodo actual tiene color aed2::map::Color::Header.
-         *
-         * \complexity{\O(1)}
-         */
-        bool is_header() const {
-        	return color == Color::Header;
-        }
+            /**
+             Comienza en la raiz y si el valor es menor sigue la recursión hacia la izquierda, sino a la derecha, hasta
+             que encuentra un nodo con la clave (key) pasada por parámetro y devuelve el significado almacenado en ese nodo.
+             */
 
-        /**
-         * @brief Devuelve el valor asociado a un nodo no cabecera
-         *
-         * Esta funcion es un shortcut para acceder al valor de un nodo no centinela. Recordar
-         * que dicho valor no está definido para la cabecera.
-         *
-         * @returns valor asociado al nodo.
-         *
-         * @pre \P{this} no es el nodo cabecera (y por ende su tipo es \T{InnerNode})
-         *
-         * \complexity{\O(1)}
-         */
-        value_type& value() {
-        	assert(not is_header());
-        	return static_cast<InnerNode*>(this)->_value;
-        }
-        /** \overload */
-        const value
+            const Meaning &at(const Key &key) const {
+                Node *indice = header->parent;
+                //pepito
 
-                _type& value() const {
-        	assert(not is_header());
-        	return static_cast<const InnerNode*>(this)->_value;
-        }
+                return indice->_value.second;
 
-        /**
-         * @brief Devuelve la clave del valor de un nodo no cabecera
-         *
-         * Esta funcion es un shortcut para acceder a la clave de un nodo no centinela. Recordar
-         * que dicha clave no está definida para la cabecera.
-         *
-         * @returns clave del valor asociado al nodo.
-         *
-         * @pre \P{this} no es el nodo cabecera (y por ende su tipo es \T{InnerNode})
-         *
-         * \complexity{\O(1)}
-         */
-        const Key& key() const {
-        	assert(not is_header());
-        	return value().first;
-        }
+            }
 
-        //@}
+            /** \overload */
+            Meaning &at(const Key &key) {
+                return find(key).n.second;
+            }
+
+            /**
+             * @brief Devuelve el significado asociado a \P{key}, asegurando su existencia
+             *
+             * Devuelve el significado asociado a \P{key}.  Si \P{key} no está definido en \P{*this},
+             * entonces se inserta un nuevo valor con clave \P{key} y significado \T{Meaning}().  De esta
+             * forma, podemos usar `operator[]` para definir nuevos valores o modificar los
+             * existentes.
+             *
+             * Ejemplo:
+             * \code{.cpp}
+             * aed2::map<int, int> d;
+             * d[1] = 2;      //define 1 -> 2
+             * d[1] = 3;      //redefine 1 -> 3
+             *
+             * aed2::map<int, int> m;
+             * if(m[1] == 3) {...} //posible bug: define 1 -> basura (que puede o no ser 3).
+             * \endcode
+             *
+             * @param key clave a buscar.
+             * @retval res referencia al significado asociado a \P{key}.
+             *
+             * \par Requerimientos sobre el tipo \T{Meaning}
+             * Requiere que \T{Meaning} tenga un constructor sin parámetros con complejidad \O(\a c)
+             *
+             * \aliasing{hay aliasing entre res y obtener(key, *this)}
+             *
+             * \pre \aedpre{true}
+             * \post \aedpost{def?(key, *this) \rightarrow res \igobs obtener(key, *this)}
+             *
+             * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}) + \a x) donde
+             * - \a x = 1 si def?(\a self, \P{key}), y
+             * - \a x = \a c en caso contrario.}
+             *
+             */
+
+            /**
+            Comienza en la raiz y si el valor es menor sigue la recursión hacia la izquierda, sino a la derecha, hasta
+            que encuentra un nodo con la clave (key) pasada por parámetro y devuelve el significado almacenado en ese nodo,
+            o en el caso que la clave no esté definida, la define con el significado default y además incrementa en uno count.
+            */
+            Meaning &operator[](const Key &key) {
+
+                iterator it = lower_bound(key);
+                if (it.n->value_.key() == key)
+                    return value_->second;
+                else
+
+                    insert(it, value_type(key, Meaning()));
+
+                return at(key);
+
+            }
+
+            /**
+             * @brief Devuelve un iterador a la posicion del valor con clave \P{key}
+             *
+             * Retorna un iterador apuntando a la posicion del valor con clave \P{key}.
+             * Si dicho valor no existe, porque la clave no fue definida, entonces
+             * el iterador retornado apunta a la posición \e pasando-el-ultimo.
+             *
+             * @param key clave a buscar
+             * @retval res iterador apuntando al valor con clave \P{key} (o a \P{this}->end() si dicho elemento no existe)
+             *
+             * \aliasing{Hay aliasing entre el actual(iterador) y obtener(key, *this)}
+             *
+             * \pre \aedpre{true}
+             * \post \aedpost{def?(key, *this) \rightarrow res \igobs crearitAux(key,inorder(*this))}
+             *
+             * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
+             *
+             * \attention Si el objetivo es insertar un valor con clave \P{key} de acuerdo a alguna condición,
+             * entonces conviene usar aed2::map::lower_bound para la búsqueda, dado que el
+             * resultado puede ser usado como hint, mejorando la complejidad de la inserción.
+             *
+             */
+
+            /**
+            - Inicia el iterador en el hijo izquierdo de header.
+            - Avanzo hasta que la clave sea key o, en caso de que no esté definida, hasta la posición pasando-el-último.
+            - Devuelve el Iterador en esa posición.
+             */
+
+            iterator find(const Key &key) {
+                Node *indice = header->parent;
+                while (indice->_value->key() != key) {
+                    if (indice->_value->key() < key)
+                        indice = indice->child[0];
+                    else
+                        indice = indice->child[1];
+                }
+                Iterator it();
+                it.node = indice;
+                return it;
+
+            }
+
+            /** \overload */
+            const_iterator find(const Key &key) const {
+                Node *indice = header->parent;
+                while (indice->_value->key() != key) {
+                    if (indice->_value->key() < key)
+                        indice = indice->child[0];
+                    else
+                        indice = indice->child[1];
+                }
+                Iterator it();
+                it.node = indice;
+                return it;
+            }
+
+            /**
+             * @brief Devuelve un iterador al primer valor con clave mayor o igual a \P{key}
+             *
+             * Retorna un iterador apuntando a la primer posición cuyo valor tenga clave al menos \P{key}.
+             * Si dicho valor no existe, porque \P{key} es mayor a todas las claves de \P{*this}, entonces
+             * el iterador retornado apunta a la posición \e pasando-el-último.
+             *
+             * @param key clave a buscar
+             * @retval res iterador apuntando al valor con clave al menos \P{key} (o a \P{this}->end() si dicho elemento no existe)
+             *
+             * \aliasing{hay aliasing entre res y el sucesor inmediato de key}
+             *
+             * \pre \aedpre{true}
+             * \post \aedpost{res \igobs crearitAux2(key,inorder(*this))(busca en la secu inorder a key y devuelve el siguiente o null si es mayor a todas las claves)}
+             *
+             * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
+             *
+             */
+            /**
+             - Inicia el iterador en el hijo izquierdo de header.
+             - Avanzo hasta que la clave sea mayor o igual a key o, en caso de que no exista ninguna, hasta la posición pasando-el-último.
+             - Devuelve el Iterador en esa posición.
+            */
+            const_iterator lower_bound(const Key &key) const {
+                Node *indice = header->parent;
+                while (indice != nullptr &&
+                       (indice->_value->key() < key || (indice->_value->key() != key && indice->child[0] != nullptr))) {
+                    if (indice->_value->key() < key)
+                        indice = indice->child[1];
+                    else
+                        indice = indice->child[0];
+                }
+                if (indice == nullptr)
+                    indice = end();
+                const_iterator it();
+                it.n = indice;
+                return it;
+            }
+
+            /** \overload */
+            iterator lower_bound(const Key &key) {
+                Node *indice = header->parent;
+                while (indice != nullptr &&
+                       (indice->_value->key() < key || (indice->_value->key() != key && indice->child[0] != nullptr))) {
+                    if (indice->_value->key() < key)
+                        indice = indice->child[1];
+                    else
+                        indice = indice->child[0];
+                }
+                if (indice == nullptr)
+                    indice = end();
+                iterator it();
+                it.n = indice;
+                return it;
+            }
+            ///@}
+
+            ///////////////////////////////////
+            /** \name Tamaño del diccionario */
+            ///////////////////////////////////
+            ///@{
+            /**
+             * @brief Indica si el diccionario esta vacío
+             *
+             * @retval res denota true si y solo si el diccionario está vacío
+             *
+             * \pre \aedpre{true}
+             * \post \aedpost{res \igobs \emptyset ?(claves(*this))}
+             *
+             * \complexity{\O(1)}
+             */
+            /**
+            Inicia en raíz, y si la misma es distinta de null devuelve false.
+            */
+            bool empty() const {
+                return (count == 0);
+
+            }
+
+            /**
+             * @brief Devuelve la cantidad de valores en el diccionario
+             *
+             * @retval res cantidad de valores
+             *
+             * \pre \aedpre{true}
+             * \post \aedpost{res \igobs \#claves(*this)}
+             *
+             * \complexity{\O(1)}
+             */
+            /**
+             Devuelve count;
+             */
+            size_t size() const {
+                return count;
+            }
+            //@}
+
+            //////////////////////////////////////////////
+            /** \name Inserción, borrado y modificación */
+            //////////////////////////////////////////////
+            //@{
+            /**
+             * @brief Inserta \P{value} en el diccionario
+             *
+             * Inserta un \b nuevo valor en el diccionario.  Si \P{*this} ya tiene un valor con clave
+             * \P{value}.first, entonces la función no tiene efectos.  El iterador de retorno apunta al elemento
+             * recien insertado (o aquel que previno la insercion).
+             *
+             * @param value valor a insertar
+             * @param hint iterador apuntando al diccionario.  Se espera que apunte al minimo valor
+             * mayor o igual a \P{value}.first (i.e., a lower_bound(\P{value}.first)).
+             * Igualmente, la función es robusta y funciona correctamente aunque esto no ocurra.
+             * @retval res iterador apuntando al elemento insertado o que previno la inserción
+             *
+             * \aliasing{hay aliasing???}
+             *
+             *
+             * \pre \aedpre{true}
+             * \post  \aedpost{def?(value.first, *this) \rightarrow crearitAux(*this.first, inorder(*this) ) \and \neg def?(value.first, *this) \rightarrow res \igobs agregar(crearIt(inorder(*this)), value)}
+             *
+             * \complexity{
+             *  - Peor caso: \O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}) \PLUS \COPY(\P{value}))
+             *  - Si \P{hint} apunta al primer valor con clave al menos \P{value}.first (o \P{this}->end() en caso de no existir):
+             *  \O(\CMP(\P{*this}) \PLUS \COPY(\P{value})) amortizado.
+             * }
+             *
+             * \attention Para garantizar que el nuevo elemento se inserte sí o sí, usar aed2::map::insert_or_assign.
+             */
+            /**
+
+
+            */
+            iterator insert(const_iterator hint, const value_type &value) {
+                //falta primera parte
+                iterador it = find(value);
+                if (it.n == nullptr) {
+                    Node *nuevo = new Node(it.n.parent, value);
+                    Node padre = header;
+                    Node *n = header.parent;
+                    while (n != nullptr) {
+                        padre = n;
+                        if (value.key() < it.n->_value.key())
+                            n = n->child[0];
+                        else
+                            n = n->child[1];
+                    }
+                    nuevo->parent = padre;
+                    if (padre->is_header())
+                        header->parent = nuevo;
+                    else if (nuevo->key() < padre->key())
+                        padre->child[0] = nuevo;
+                    else
+                        padre->child[1] = nuevo;
+                    nuevo->color = Red;
+                    iterator it = find(nuevo);
+                    insert_fixup(it, value);
+                }
+                return it;
+            }
+
+            void insert_fixup(iterator it, const value_type &value){
+                Node *n = it.n;
+                Node *y;
+                while (n->parent.color == red) {
+                    if (n->parent == n->parent->parent->child[0]) {
+                        y = n->parent->parent->child[1];
+                    }
+                    if (y.color == red) {
+                        n.color = black;
+                        y.color = black;
+                        n->parent->parent.color = red;
+                        n = n->parent->parent;
+                    } else if (n == n->parent->child[1]) {
+                        n = n->parent;
+                        iterator it2(n);
+                        left-rotate(it2);
+                        n->parent.color = black;
+                        n->parent->parent.color = red;
+                        right-rotate(it2);
+                    }
+                } else {
+                    if (n->parent == n->parent->parent->child[1]) {
+                        y = n->parent->parent->child[0];
+                    }
+                    if (y.color == red) {
+                        n.color = black;
+                        y.color = black;
+                        n->parent->parent.color = red;
+                        n = n->parent->parent;
+                    } else if (n == n->parent->child[0]) {
+                        n = n->parent;
+                        iterator it2(n);
+                        right-rotate(it2);
+                        n->parent.color = black;
+                        n->parent->parent.color = red;
+                        left-rotate(it2);
+                    }
+                }
+
+                header->parent.color = black;
+            };
+
+            void left-rotate(iterator it){
+                Node *n = it.n;
+                Node *y = it.n->child[1];
+                n->child[1] = y->child[0];
+                if (y->child[0] != nullptr)
+                    y->child[0]->parent = n;
+                y->parent = n->parent;
+                if (n->parent.is_header())
+                    header->parent = y;
+                else if (n == n->parent->child[0])
+                    n->parent->child[0] = y;
+                else
+                    n->parent->child[1] = y;
+                y->child[0] = n;
+                n->parent = y;
+            }
+
+            void right-rotate(iterator it){
+                Node *n = it.n;
+                Node *y = it.n->child[0];
+                n->child[0] = y->child[1];
+                if (y->child[1] != nullptr)
+                    y->child[1]->parent = n;
+                y->parent = n->parent;
+                if (n->parent.is_header())
+                    header->parent = y;
+                else if (n == n->parent->child[1])
+                    n->parent->child[1] = y;
+                else
+                    n->parent->child[0] = y;
+                y->child[1] = n;
+                n->parent = y;
+            }
+
+
+            /** \overload*/
+            iterator insert(const value_type &value) {
+                //completar
+            }
+
+            /**
+             * @brief Inserta o redefine \P{value} en el diccionario
+             *
+             * Inserta un valor en el diccionario.  Si \P{*this} ya tiene un valor con clave
+             * \P{value}.first, entonces se redefine.  El iterador de retorno apunta al elemento
+             * recien insertado o redefinido.
+             *
+             * @param value valor a insertar
+             * @param hint iterador apuntando al diccionario.  Se espera que apunte al mínimo valor
+             * mayor o igual a \P{value}.first (i.e., a lower_bound(\P{value}.first)).
+             * Igualmente, la función es robusta y funciona correctamente aunque esto no ocurra.
+             * @retval res iterador apuntando al elemento insertado o redefinido
+             *
+             * \aliasing{hay aliasing????}
+             *
+             * \pre \aedpre{true}
+             * \post  \aedpost{def?(value.first, *this) \rightarrow res \igobs Agregar(Eliminar(CrearItMod(hasta(inorder(*this), value), desde(inorder(*this), value)))) \}
+             *
+             * \complexity{
+             *  - Peor caso: \O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}) \PLUS \COPY(\P{value}))
+             *  - Si \P{hint} apunta al primer valor con clave al menos \P{value}.first (o \P{this}->end() en caso de no existir):
+             *  \O(\CMP(\P{*this}) \PLUS \COPY(\P{value})) amortizado.
+             * }
+             *
+             * \attention Para prevenir que el nuevo valor redefina uno ya existente, usar aed2::map::insert.
+             * \remark Esta función es similar al operator[], pero tiene dos ventajas y una desventaja.
+             * Las ventajas es que 1. se puede indicar un \P{hint} para la búsqueda y 2. no es necesario que
+             * \T{Meaning} tenga constructor sin parámetros.  La desventaja es que la notación no es tan bonita.
+             */
+            iterator insert_or_assign(const_iterator hint, const value_type &value) {
+                iterator it;
+                if (hint.n->value()->first == value.first) {
+                    it = hint;
+                    it.n->value()->second = value->second;
+                } else if (hint.n->value()->first < value->first() || (hint--.n == nullptr
+                                                                       || hint.n->value()->first >= value->first)) {
+                    it = lower_bound(hint->_value);
+                }
+                it = insert(hint, value);
+                return it;
+            }
+
+            /** \overload */
+            iterator insert_or_assign(const value_type &value) {
+                iterator it;
+                it = lower_bound(value->first);
+                if (value->first == it.n->_value->fisrt) {
+                    it->_value = value;
+                } else {
+                    insert(it, value);
+                }
+                return it;
+            }
+
+            /**
+             * @brief Elimina el valor apuntado por \P{pos}
+             *
+             * @param pos iterador apuntando al valor a eliminar.
+             * @retval res iterador apuntando al primer valor con clave mayor a \P{pos} (o \P{this}->end(), si dicho valor no existe).
+             *
+             * \aliasing{complertar}.
+             *
+             * \pre \aedpre{HayMas?(pos)}
+             * \post \aedpost{Eliminar(pos)}
+             *
+             * \complexity{
+             * - Peor caso: \O(\DEL(\P{*pos}) + \LOG(\SIZE(\P{*this})))
+             * - Peor caso amortizado: \O(\DEL(\P{*pos}))
+             * }
+             *
+             */
+            iterator erase(const_iterator pos) {
+
+                /*
+                RB-T RANSPLANT .T; u; /
+        1 if u:p == T:nil
+        2
+        T:root D
+        3 elseif u == u:p:left
+        4
+        u:p:left D
+        5 else u:p:right D
+        6
+        :p D u:p
+
+
+        T REE -D ELETE .T;  ́/
+        1 if  ́:left == NIL
+        2
+        T RANSPLANT .T;  ́;  ́:right/
+        3 elseif  ́:right == NIL
+        4
+        T RANSPLANT .T;  ́;  ́:left/
+        5 else y D T REE -M INIMUM . ́:right/
+        6
+        if y:p ¤  ́
+        7
+        T RANSPLANT .T; y; y:right/
+        8
+        y:right D  ́:right
+        9
+        y:right:p D y
+        10
+        T RANSPLANT .T;  ́; y/
+        11
+        y:left D  ́:left
+        12
+        y:left:p D y
+
+
+
+        RB-D ELETE -F IXUP .T; x/
+        1 while x ¤ T:root and x:color == BLACK
+        2
+        if x == x:p:left
+        3
+        w D x:p:right
+        4
+        if w:color == RED
+        5
+        w:color D BLACK
+        6
+        x:p:color D RED
+        7
+        L EFT-ROTATE .T; x:p/
+        8
+        w D x:p:right
+        9
+        if w:left:color == BLACK and w:right:color == BLACK
+        10
+        w:color D RED
+        11
+        x D x:p
+        12
+        else if w:right:color == BLACK
+        13
+        w:left:color D BLACK
+        14
+        w:color D RED
+        15
+        R IGHT-ROTATE .T; w/
+        16
+        w D x:p:right
+        17
+        w:color D x:p:color
+        18
+        x:p:color D BLACK
+        19
+        w:right:color D BLACK
+        20
+        L EFT-ROTATE .T; x:p/
+        21
+        x D T:root
+        22
+        else (same as then clause with “right” and “left” exchanged)
+        23 x:color D BLACK
+*/
+            }
+
+            /**
+             * @brief Elimina el valor cuya clave es \P{key}
+             *
+             * @param key clave del elemento a eliminar
+             *
+             * \aliasing{completar}
+             *
+             * \pre \aedpre{*this \igobs *this0 \and def?(key, *this)}
+             * \post \aedpost{*this \igobs borrar(key, *this0)}
+             *
+             * \complexity{\O(\DEL(\P{*pos}) + \LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
+             */
+                void erase(const Key &key) {
+                    //completar
+                }
+
+                /**
+                 * @brief Vacia el diccionario
+                 *
+                 * \aliasing{Se invalidan todos los iteradores asociados a \P{*this}, con excepcion de aquellos que apuntan
+                 * a la posicion pasando-el-ultimo.}
+                 *
+                 * \pre \aedpre{true}
+                 * \post \aedpost{\P{*this} \IGOBS vacio}
+                 *
+                 * \complexity{\O(\DEL(\P{*this}))}
+                 */
+                /**
+                Mientras count sea distinto de 0, va eliminando con la función erase todos los elementos del árbol.
+                */
+                void clear() {
+                    //completar
+                }
+
+                /**
+                 * @brief Intercambia el contenido de \P{*this} y \P{other}
+                 *
+                 * @param other diccionario a intercambiar con \P{*this}
+                 *
+                 * \aliasing{Todos los iteradores, salvo aquellos que apuntan a las posiciones pasando-el-ultimo,
+                 * se mantienen válidos.  Aquellos iteradores que apuntan a la posición pasando-el-ultimo de \P{*this} pasan a
+                 * apuntar a la posición pasando-el-ultimo de \P{other}, y viceversa.}
+                 *
+                 * @param other mapa a intercambiar con this
+                 *
+                 * \pre \aedpre{\a self = \P{*this} \LAND \a oth = \P{other}}
+                 * \post \aedpost{\P{*this} \IGOBS \a oth \LAND \P{other} = \a self}
+                 *
+                 * \complexity{\O(1)}
+                 *
+                 * \note La razón por la que se "invalidan" los iteradores pasando-el-fin tiene que ver con
+                 * la forma en que se implementa el módulo (que emula la implementacion de C++).  No hay ninguna razón
+                 * técnica que impida mantener los iteradores pasando el fin, salvo por un pequeño ahorro de memoria y tiempo.
+                 * En caso de querer usar los iteradores como punteros, se recomienda usar el iterador nulo de diccionario para
+                 * representar al valor inválido, en lugar de usar los iteradores pasando-el-ultimo.
+                 *
+                 */
+                void swap(map &other) {
+                    using std::swap;
+                    swap(lt, other.lt);
+                    swap(count, other.count);
+
+                    swap(header.parent, other.header.parent);
+                    swap(header.child[0], other.header.child[0]);
+                    swap(header.child[1], other.header.child[1]);
+                    if (root() != nullptr) root()->parent = &header;
+                    if (other.root() != nullptr) other.root()->parent = &other.header;
+
+                    //nota: cuando el arbol es vacio, los child de header apuntan a header.  Notar que quedan apuntando mal despues del swap
+                    if (root() == nullptr) header.child[0] = header.child[1] = &header;
+                    if (other.root() == nullptr) other.header.child[0] = other.header.child[1] = &other.header;
+                }
+                //@}
+
+                ////////////////////////////////////
+                /** \name Recorridos e iteradores */
+                ////////////////////////////////////
+                //@{
+                /**
+                 * @brief Devuelve un iterador al primer valor del diccionario
+                 *
+                 * \aliasing{no hay}
+                 *
+                 * @retval res iterador al primer valor
+                 *
+                 * \pre \aedpre{true}
+                 * \post \aedpost{res \igobs CrearItMod(inorder(*this))}
+                 *
+                 * \complexity{\O(1)}
+                 */
+                /**
+                Inicia un iterador en header->izq.
+                */
+                iterator begin() {
+                    iterator it(header->child[0]);
+                    return it;
+                }
+
+                /** \overload */
+                const_iterator begin() const {
+                    const_iterator it(header->child[0]);
+                    return it;
+                }
+
+                /** \overload */
+                const_iterator cbegin() {
+                    const_iterator it(header->child[0]);
+                    return it;
+                }
+
+                /**
+                 * @brief Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario
+                 *
+                 * \aliasing{no hay}
+                 *
+                 * @retval res iterador a la posicion pasando-al-ultimo
+                 *
+                 * \pre \aedpre{true}
+                 * \post \aedpost{res \igobs CrearItMod(inorder(*this), \langle \ranlge)}
+                 *
+                 * \complexity{\O(1)}
+                 *
+                 * Inicia un iterador en nullptr.
+                 */
+                iterator end() {
+                    iterator it();
+                    return it;
+                }
+
+                /** \overload */
+                const_iterator end() const {
+                    const_iterator it();
+                    return it;
+                }
+
+                /** \overload */
+                const_iterator cend() {
+                    const_iterator it();
+                    return it;
+                }
+
+                /**
+                 * @brief Devuelve un iterador al primer valor del diccionario, en un recorrido al revés
+                 *
+                 * \aliasing{no hay}
+                 *
+                 * @retval res iterador a la primer posicion en un recorrido al revés
+                 *
+                 * \pre \aedpre{true}
+                 * \post \aedpost{res \igobs CrearItMod(\langle \rangle , postorder(*this))}
+                 *
+                 * \complexity{\O(1)}
+                 *
+                 * Inicia un reverse_iterator en el hijo derecho de header.
+                 */
+                reverse_iterator rbegin() {
+                    reverse_iterator it = reverse_iterator(header->child[1]);
+                    return it;
+                }
+
+                /** \overload */
+                const_reverse_iterator rbegin() const {
+                    const_reverse_iterator it = reverse_iterator(header->child[1]);
+                    return it;
+                }
+
+                /** \overload */
+                const_reverse_iterator crbegin() {
+                    const_reverse_iterator it = reverse_iterator(header->child[1]);
+                    return it;
+                }
+
+                /**
+                 * @brief Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario, en un recorrido al revés
+                 *
+                 * \aliasing{no hay}
+                 *
+                 * @retval res iterador a la posicion pasando-al-ultimo, en un recorrido al revés
+                 *
+                 * \pre \aedpre{true}
+                 * \post \aedpost{res \igobs CrearItMod(postorder(*this), \langle \ranlge)}
+                 *
+                 * \complexity{\O(1)}
+                 *
+                 * Inicia un reversre_iterator en el hijo izquierdo de header.
+                 */
+                reverse_iterator rend() {
+                    reverse_iterator it = reverse_iterator();
+                    return it;
+                }
+
+                /** \overload */
+                const_reverse_iterator rend() const {
+                    const_reverse_iterator it = reverse_iterator();
+                    return it;
+                }
+
+                /** \overload */
+                const_reverse_iterator crend() {
+                    const_reverse_iterator it = reverse_iterator();
+                    return it;
+                }
+                //@}
+
+                /**
+                 * @brief Parte del módulo que implementa los iteradores que permiten la modificación de los significados.
+                 *
+                 * Cuando el iterador se encuentra asociado a un diccionario `d`, el rango válido de valores del
+                 * iterador va desde el primer valor de `d` hasta una posición (ficticia) que se encuentra pasando-el-último.
+                 * Esta posición no tiene definido un valor para el `operator*`, y se usa para indicar el fin del recorrido.
+                 *
+                 * Este es un iterador que sigue el estándar de C++, y por lo tanto es compatible con la bilioteca
+                 * de algoritmos.  Asimismo, las operaciones siguen el protocolo estándar, con lo cual no es necesiario
+                 * describir el resultado de las mismas.  Sin embargo, siendo este un TP, vamos a describir el comportamiento
+                 * en el marco conceptual de la materia.
+                 *
+                 * \par Aspectos generales de aliasing
+                 * \parblock
+                 * Vale remarcar que un iterador tiene dos estados posibles:
+                 * -# Es valido: cuando esta asociado a un diccionario y apunta a un valor existente del diccionario,
+                 * -# Es inválido: cuando esta asociado a un diccionario (que quiza ya no es accesible), pero el valor al que apunta fue eliminado.
+                 * -# Es nulo: cuando no está asociado a ningún diccionario; sirve como análogo de `nullptr`.
+                 * \endparblock
+                 *
+                 * \par Se explica con
+                 * IteradorBidireccional(Diccionario(\T{Key}, \T{Meaning}), tupla(\T{Key}, \T{Meaning}))
+                 *
+                 * \attention En caso de usar los iteradores como punteros, se desaconseja el uso de la posicion pasando-el-ultimo como valor nulo,
+                 * ya que queda invalidada luego de aplicar la operación aed2::map::swap.  Conviene usar el iterador nulo (que, lamentablemente,
+                 * es independiente del diccionario).
+                 *
+                 * \see [Documentacion estándar de iteradores bidireccionales](http://en.cppreference.com/w/cpp/concept/BidirectionalIterator)
+                 */
+                class iterator {
+                    using Node = typename map::Node;
+                    using InnerNode = typename map::InnerNode;
+                public:
+
+                    /** \brief Categoria del iterador: bidireccional.  Requerido por estándar C++. */
+                    using iterator_category = std::bidirectional_iterator_tag;
+                    /** \brief Tipo de los valores recorridos.  Requerido por estándar C++ */
+                    using value_type = map::value_type;
+                    /** \brief Tipo de la referencia (resultado de operator*).  Requerido por estándar C++ */
+                    using reference = map::reference;
+                    /** \brief Tipo del puntero (resultado de operator->).  Requerido por estándar C++ */
+                    using pointer = map::pointer;
+                    /** \brief Resultado de la diferencia entre dos punteros.  Requerido por estándar C++ */
+                    using difference_type = std::ptrdiff_t;
+
+                    /**
+                     * \brief Crea un iterador nulo
+                     *
+                     * Hay dos razones para permitir la existencia de iteradores nulos.  La primera, más trivial, es permitir la declaracion de iteradores
+                     * sin necesariamente asignarles un valor inicial.  Por ejemplo
+                     * \code{.cpp}
+                     * aed2::map::iterator it;   //iterador invalido
+                     * if(...) {
+                     *   it = d.rbegin();
+                     * } else {
+                     *   it = d.rend();
+                     * }
+                     * \endcode
+                     * El segundo motivo, más esencial, es permitir el uso de iteradores como \e handles (punteros).  En este caso,
+                     * y teniendo en cuenta que el puntero pasando-el-último podría invalidarse, el iterador nulo nos brinda una forma conveniente de
+                     * representar el puntero nulo.
+                     *
+                     * @retval res iterador recién creado
+                     *
+                     * \aliasing{El iterador \P{res} no está asociado a ningún diccionario.}
+                     *
+                     * \pre \aedpre{true}
+                     * \post \aedpost{coleccion(\P{res}) \IGOBS \BOTTOM \LAND vacia?(SecuSuby(\P{res}))}
+                     *
+                     * \complexity{\O(1)}
+                     *
+                     * Inicia un iterador apuntando a nullptr.
+                     */
+                    iterator() : n(nullptr) {}
+
+                    /**
+                     * \brief Retorna el valor apuntado por \P{*this}
+                     *
+                     * @retval res referencia al valor apuntado por \P{*this}
+                     *
+                     * \aliasing{hay aliasing entre res y Siguiente(*this)}
+                     *
+                     * \pre \aedpre{Siguiente(this) != nullptr}
+                     * \post \aedpost{res \igobs Siguiente(*this)}
+                     *
+                     * \complexity{\O(1)}
+                     *
+                     * Devuelve el elemento del nodo al que está apuntando el iterador.
+                     */
+                    reference operator*() const {
+                        return n.value();
+                    }
+
+                    /**
+                     * \brief Retorna la dirección del valor apuntado por \P{*this}
+                     *
+                     * @retval res puntero al valor apuntado por \P{*this}
+                     *
+                     * \aliasing{hay aliasing entre res y Siguiente(*this)}
+                     *
+                     * \pre \aedpre{haySiguiente(\P{*this})}
+                     * \post \aedpost{\P{*res} \IGOBS siguiente(\P{*this})}
+                     *
+                     * \complexity{\O(1)}
+                     *
+                     * \attention No hay forma de expresar, en el lenguaje de TADs, que un puntero apunta a la dirección de otro objeto.  Es por
+                     * eso que la postcondición es más débil de lo que debiera.  Eso no ocurre en las otras funciones del TP.
+                     *
+                     * Devuelve la posición de memoria del valor del nodo al que está apuntando el iterador.
+                     *
+                     */
+                    pointer operator->() const {
+                        //completar
+                    }
+
+                    /**
+                     * \brief Avanza el iterador a la siguiente posición
+                     *
+                     * @retval res referencia a \P{*this}
+                     *
+                     * \aliasing{no hay}
+                     *
+                     * \pre \aedpre{HaySiguiente?(*this)}
+                     * \post \aedpost{res \igobs Avanzar(*this)}
+                     *
+                     * \complexity{
+                     * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
+                     * - Peor caso amortizado: \O(1)
+                     * }
+                     *
+                     * Avanza el iterador en una posición y lo devuelve.
+                     *
+                     */
+                    iterator &operator++() {
+                        if (n->child[1] == nullptr) {
+                            while (n->parent->child[1] == n)
+                                n = n->parent;
+                        }
+                        if (n->child[1] != nullptr)
+                            n = n->child[1];
+                        return *this;
+                    }
+
+                    /**
+                     * \brief Avanza el iterador a la siguiente posición
+                     *
+                     * @retval res iterador apuntando a la dirección anterior de \P{*this}
+                     *
+                     * \aliasing{no hay}
+                     *
+                     * \pre \aedpre{HaySiguiente?(*this)}
+                     * \post \aedpost{CONSULTAR}
+                     *
+                     * \complexity{
+                     * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
+                     * - Peor caso amortizado: \O(1)
+                     * }
+                     *
+                     * CONSULTAR.
+                     *
+                     */
+                    iterator operator++(int) {
+                        if (n->child[1] == nullptr) {
+                            while (n->parent->child[1] == n)
+                                n = n->parent;
+                        }
+                        if (n->child[1] != nullptr)
+                            n = n->child[1];
+                        return *this;
+                    }
+
+                    /**
+                     * \brief Retrocede el iterador a la posición anterior
+                     *
+                     * @retval res referencia a \P{*this}
+                     *
+                     * \aliasing{no hay}
+                     *
+                     * \pre \aedpre{HayAnterior?(*this)}
+                     * \post \aedpost{res \igobs Retroceder(*this)}
+                     *
+                     * \complexity{
+                     * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
+                     * - Peor caso amortizado: \O(1)
+                     * }
+                     *
+                     * Retrocede el iterador en una posicion y lo devuelve.
+                     *
+                     */
+                    iterator &operator--() {
+                        if (n->child[0] == nullptr) {
+                            while (n->parent->child[0] == n)
+                                n = n->parent;
+                        }
+                        if (n->child[0] != nullptr)
+                            n = n->child[0];
+                        return *this;
+                    }
+
+                    /**
+                     * \brief Retrocede el iterador a la posición anterior
+                     *
+                     * @retval res iterador apuntando a la dirección siguiente de \P{*this}
+                     *
+                     * \aliasing{no hay}
+                     *
+                     * \pre \aedpre{HayAnterior?(*this)}
+                     * \post \aedpost{completar}
+                     *
+                     * \complexity{
+                     * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
+                     * - Peor caso amortizado: \O(1)
+                     * }
+                     *
+                     * CONSULTAR
+                     *
+                     */
+                    iterator operator--(int) {
+                        if (n->child[0] == nullptr) {
+                            while (n->parent->child[0] == n)
+                                n = n->parent;
+                        }
+                        if (n->child[0] != nullptr)
+                            n = n->child[0];
+                        return *this;
+                    }
+
+                    /**
+                     * \brief Operador de igualdad
+                     *
+                     * @param other iterador a comparar
+                     * @retval res indica si \P{*this} apunta al mismo valor que \P{other}
+                     *
+                     * \aliasing{No es necesario que \P{*this} y \P{other} estén asociados al mismo diccionario.  Si no lo están,
+                     * el resultado esta:
+                     * - indeterminado, cuando alguno de ellos es inválido,
+                     * - false, cuando alguno de ellos es no nulo, o
+                     * - true, cuando ambos son nulos.}
+                     *
+                     * \pre \aedpre{true}
+                     * \post \aedpost{res \leftrightarrow (*this \igobs other)}
+                     *
+                     * \complexity{\O(1)}
+                     *
+                     * Devuelve true si el nodo al que apunta this es el mismo que al que apunta other. (Consultar)
+                     *
+                     */
+                    bool operator==(iterator other) const {
+                        return (n == other.n);
+                    }
+
+                    /** \brief idem !|operator== */
+                    bool operator!=(iterator other) const {
+                        return (n != other.n);
+                    }
+
+                private:
+                    /**
+                     * @brief Construye un iterador que apunta al valor del Nodo \P{pos}
+                     *
+                     * @param pos puntero al nodo
+                     * @retval res iterador recién construido
+                     *
+                     * \aliasing{La dirección \P{pos} debe apuntar a un nodo del árbol red-black que se usa para implementar un diccionario `d`.
+                     * El iterador \P{res} queda asociado a `d` y permite modificar el significado del valor que apunte.}
+                     *
+                     * \pre \aedpre{rep_iter(n)}
+                     * \post \aedpost{res \IGOBS CrearItBi(&`d`, completar, completar)}
+                     *
+                     * \complexity{\O(1)}
+                     *
+                     * \attention El diccionario `d` se describe en castellano, porque depende de un aspecto de aliasing.  Es la interpretacion de la
+                     * posicion de memoria del nodo cabecera como si fuera un diccionario.  No hay forma de expresar este hecho.  Igualmente, estamos
+                     * en la parte privada de nuestro modulo, con lo cual permitimos el castellano.
+                     *
+                     * \note Este constructor permite castear punteros a nodos en iteradores.
+                     */
+                    iterator(Node *pos) : n(pos) {}
+
+                    /**
+                     * @brief Operador de casteo a Node*
+                     *
+                     * Función conveniente para poder intercambiar nodos e iteradores sin necesidad de llamar a funciones.
+                     * Hay que tener un poco de cuidado, pero forma parte de la implementación privada.
+                     *
+                     * @retval res dirección del nodo que implementa \P{*this}.
+                     *
+                     * \remark Esta función se brinda como ayuda para el TP
+                     */
+                    operator Node *() const { return n; }
+                    /////////////////////////////////////////////////////////////////////////////////////////////////
+                    /** \name Estructura de representación
+                     *
+                     * \T{iterator} se representa con \P{n}: puntero(Node)
+                     *
+                     * \par Invariante de representación
+                     *
+                     * rep_iter: puntero(Node) \TO bool\n
+                     * rep_iter(n) \EQUIV completar
+                     *
+                     * \par Función de abstracción
+                     *
+                     * abs_iter: puntero(Node) n \TO IteradorBidireccional(Diccionario(\T{Key}, \T{Meaning}), tupla(\T{Key}, \T{Meaning}))  {rep_iter(n)}\n
+                     * abs_iter(n) \EQUIV completar
+                     *
+                     * Nota: se puede usar `d` para referirse al valor computacional del diccionario definido desde la cabecera (como en el constructor).
+                     *
+                     * \attention  No hay forma de expresar el diccionario `d` porque depende de un aspecto de aliasing.  Es por esto que permitimos usar
+                     * castellano.
+                     */
+                    ////////////////////////////////////////////////////////////////////////////////////////////////
+                    //@{
+                    /**
+                     * \brief Puntero al nodo actual.  Ver Estructura de Representación
+                     */
+                    Node *n{nullptr};
+
+                    //@}
+                    friend class map;
+                };
+
+                /**
+                 * @brief Parte del módulo que implementa los iteradores que no permiten la modificación de los significados.
+                 *
+                 * Este módulo es análogo a aed2::map::iterator, pero no permite la modificación cuando hay aliasing.  Sólo se
+                 * documentan las funcionalidades nuevas.  Para las restantes, ver aed2::map::iterator.
+                 */
+                class const_iterator {
+                    using Node = const typename map::Node;
+                    using InnerNode = const typename map::InnerNode;
+                public:
+                    using iterator_category = std::bidirectional_iterator_tag;
+                    using value_type = map::value_type;
+                    using reference = map::const_reference;
+                    using pointer = map::const_pointer;
+                    using difference_type = std::ptrdiff_t;
+
+                    /** \brief Ver aed2::map::iterator::iterator() */
+                    const_iterator() {}
+
+                    /**
+                     * \brief Constructor desde un iterador modificable
+                     *
+                     * Este constructor construye un iterador no modificable que apunta al mismo valor que uno modificable.
+                     * Tambien funciona como operador de casteo, para no tener que estar transformando los iteradores en aquellas
+                     * funciones que toman un `const_iterator` como parametro.
+                     *
+                     * @param it iterator a "transformar"
+                     * @retval res iterator creado en la transformación
+                     *
+                     * \aliasing{completar}
+                     *
+                     * \pre \aedpre{completar}
+                     * \post \aedpost{completar}
+                     *
+                     * \complexity{\O(1)}
+                     */
+                    const_iterator(iterator it) {
+                        //completar
+                    }
+
+                    /** \brief Ver aed2::map::iterator::operator*() */
+                    reference operator*() const {
+                        //completar
+                    }
+
+                    /** \brief Ver aed2::map::iterator::operator->() */
+                    pointer operator->() const {
+                        //completar
+                    }
+
+                    /** \brief Ver aed2::map::iterator::operator++() */
+                    const_iterator &operator++() {
+                        //completar
+                    }
+
+                    /** \brief Ver aed2::map::iterator::operator++(int) */
+                    const_iterator operator++(int) {
+                        //completar
+                    }
+
+                    /** \brief Ver aed2::map::iterator::operator--() */
+                    const_iterator &operator--() {
+                        //completar
+                    }
+
+                    /** \brief Ver aed2::map::iterator::operator--(int) */
+                    const_iterator operator--(int) {
+                        //completar
+                    }
+
+                    /** \brief Ver aed2::map::iterator::operator==() */
+                    bool operator==(const_iterator other) const {
+                        //completar
+                    }
+
+                    /** \brief Ver aed2::map::iterator::operator!=() */
+                    bool operator!=(const_iterator other) const {
+                        //completar
+                    }
+
+                private:
+                    /** \brief Ver aed2::map::iterator::iterator(Node*) */
+                    const_iterator(Node *pos) : n(pos) {}
+
+                    /** \brief Ver aed2::map::iterator::operator Node*() */
+                    operator Node *() const { return n; }
+
+                    /** \brief Ver aed2::map::iterator::n */
+                    Node *n{nullptr};
+
+                    friend class map;
+                };
+
+                private:
+                friend class iterator;
+                friend class const_iterator;
+
+                /** \brief Colores de los nodos en un árbol red-black.  Ver \ref Implementacion
+                 *
+                 * Valores validos:
+                 * \arg Color::Red (color rojo)
+                 * \arg Color::Black (color negro)
+                 * \arg Color::Header (color azul, reservado para la cabecera)
+                 *
+                 * \see Cormen et al. \cite CormenLeisersonRivestStein2009 e \ref Implementacion
+                 */
+                enum class Color {
+                    Red, Black, Header
+                };
+
+                /**
+                 * \brief Estructura (privada) de un nodo del árbol red-black.
+                 *
+                 * Tal como sugiere Cormen et al. \cite CormenLeisersonRivestStein2009, como se implementa en gcc,
+                 * y cómo explicamos en \ref Implementacion, el arbol tiene dos tipos de nodos.  Aquellos que
+                 * tienen un valor e implementan el árbol y aquellos que se usan como sentinelas.  La estructura
+                 * \T{Node} es la base para representar a ambos tipos de nodos, ya que omite los valores.  La clase
+                 * aed2::map::InnerNode, que hereda de \T{Node}, extiende la representación incluyendo el valor.
+                 *
+                 * Además de definir los campos de la estructura de un nodo, esta clase podría usarse para implementar una especie de submodulo
+                 * que incluya funciones para manipular el arbol red-black.  Las funciones incluidas en esta estructura deberían
+                 * ser aquellas que, si bien no requieren conocer el resto de la estructura red-black, explotan el conocimiento
+                 * de que el árbol red-black tiene un único nodo sentinela que sirve de cabecera. (Ver ejemplos)
+                 *
+                 * \remark Como \T{Node} es una estructura privada, no tiene ventajas imporantes implementarla en forma modular.
+                 */
+                struct Node {
+                    /** \brief Punteros a los hijos izquierdo (child[0]) y derecho (child[1]) */
+                    Node *child[2]{nullptr, nullptr};
+                    /** \brief Puntero al padre: garantiza insercion con puntero en O(1) amortizado e iteracion en O(1) memoria */
+                    Node *parent{nullptr};
+                    /** \brief Color del nodo */
+                    Color color{Color::Red};
+
+                    //////////////////////////////////////////////
+                    /** \name Creación de nodos (constructores) */
+                    //////////////////////////////////////////////
+                    //@{
+                    /**
+                     * @brief Constructor para crear el nodo header.
+                     *
+                     * Construye un nodo con color Header y cuyos hijos apuntan al nodo creado.
+                     * Esta es la definicion del nodo cabecera cuando el arbol está vacío.
+                     *
+                     * \complexity{\O(1)}
+                     */
+                    Node() : color(Color::Header) {
+                        child[0] = child[1] = this;
+                    }
+
+                    /**
+                     * @brief Constructor para nodos del arbol red-black, sin enlaces.
+                     *
+                     * Crea un nodo con padre \P{p}, color \P{c} y sin hijos.
+                     *
+                     * @param p puntero al padre
+                     * @param c color del nodo
+                     *
+                     * \complexity{\O(1)}
+                     */
+                    Node(Node *p, Color c = Color::Red) : parent(p), color(c) {}
+                    //@}
+
+                    /**
+                     * @brief Destructor de Node
+                     *
+                     * Como Node funciona de clase base, el destructor es virtual, asi se puede
+                     * invocar delete de un Node* que apunta a un InnerNode, destruyendo el valor contenido
+                     * en el InnerNode.
+                     *
+                     * \remark En rigor, nunca deberíamos invocar new Node, asi que no tiene sentido hacer
+                     * delete de un Node*.  Podemos evitar esta invocación poniendo el destructor como protegido
+                     * y no virtual.  De esa forma, nos obliga a tener un InnerNode* para el delete, lo cual
+                     * efectivamente llama al destructor del valor.  Sin embargo, por simplicidad, vamos a permitir
+                     * que el destructor sea virtual.  Además, así no es necesario que hagan el `static_cast` y evitamos
+                     * errores de memoria difíciles de debugguear.
+                     */
+                    virtual ~Node() {}
+
+
+                    /////////////////////////////////////////////////
+                    /** \name Acceso a la información en los nodos */
+                    /////////////////////////////////////////////////
+                    //@{
+                    /**
+                     * @brief Devuelve true si el nodo actual es el header de la estructura.
+                     *
+                     * \remark Vale destacar que hay exactamente dos nodos n con n->parent->parent = &n: la cabecera y la raíz.
+                     * En la implementación del árbol red-black de GCC, el nodo cabecera tiene color Rojo.
+                     * De esta forma, se puede distinguir la cabecera de la raíz, que siempre es negra.  Para ello, alcanza
+                     * con verificar que `color == Color::Red and (parent == nullptr or parent->parent = this)`.  Sin embargo,
+                     * esta condicion también podría ser satisfecha por la raíz algún `fixup`.  Por simplicidad, y para evitar bugs,
+                     * acá tomamos como solucion que el header
+                     * tiene un color particular, llamado Color::Header.  Si bien se necesita mas de un bit para el color, lo cierto
+                     * es que ningun procesador admite direccionamiento a bit, asi que no se pierde nada en la practica.
+                     * El objetivo de esta función es poder reemplazar el chequeo de la condición para determinar si el nodo es
+                     * la cabecera, en caso en que queramos evitar el nuevo color.
+                     *
+                     * @returns true si el nodo actual tiene color aed2::map::Color::Header.
+                     *
+                     * \complexity{\O(1)}
+                     */
+                    bool is_header() const {
+                        return color == Color::Header;
+                    }
+
+                    /**
+                     * @brief Devuelve el valor asociado a un nodo no cabecera
+                     *
+                     * Esta funcion es un shortcut para acceder al valor de un nodo no centinela. Recordar
+                     * que dicho valor no está definido para la cabecera.
+                     *
+                     * @returns valor asociado al nodo.
+                     *
+                     * @pre \P{this} no es el nodo cabecera (y por ende su tipo es \T{InnerNode})
+                     *
+                     * \complexity{\O(1)}
+                     */
+                    value_type &value() {
+                        assert(not is_header());
+                        return static_cast<InnerNode *>(this)->_value;
+                    }
+
+                    /** \overload */
+                    const value
+
+                            _type
+                    &
+
+                    value() const {
+                        assert(not is_header());
+                        return static_cast<const InnerNode *>(this)->_value;
+                    }
+
+                    /**
+                     * @brief Devuelve la clave del valor de un nodo no cabecera
+                     *
+                     * Esta funcion es un shortcut para acceder a la clave de un nodo no centinela. Recordar
+                     * que dicha clave no está definida para la cabecera.
+                     *
+                     * @returns clave del valor asociado al nodo.
+                     *
+                     * @pre \P{this} no es el nodo cabecera (y por ende su tipo es \T{InnerNode})
+                     *
+                     * \complexity{\O(1)}
+                     */
+                    const Key &key() const {
+                        assert(not is_header());
+                        return value().first;
+                    }
+
+                    //@}
 
 #ifdef DEBUG
 
-        /**
-         * @brief imprime el subarbol apuntado por this
-         *
-         * Esta en una funcion de debugging que se incluye de ejemplo para mostrar cómo usar la técnica.
-         */
-        void print(int tab = 0) const {
-        	std::cout << std::string(tab, ' ') << value().first << "->" << value().second << "   (" << (color == Color::Red ? "Red)" : "Black)") << std::endl;
-        	if(child[0]) child[0]->print(tab + 2);
-        	if(child[1]) child[1]->print(tab + 2);
-        }
+                    /**
+                     * @brief imprime el subarbol apuntado por this
+                     *
+                     * Esta en una funcion de debugging que se incluye de ejemplo para mostrar cómo usar la técnica.
+                     */
+                    void print(int tab = 0) const {
+                        std::cout << std::string(tab, ' ') << value().first << "->" << value().second << "   (" << (color == Color::Red ? "Red)" : "Black)") << std::endl;
+                        if(child[0]) child[0]->print(tab + 2);
+                        if(child[1]) child[1]->print(tab + 2);
+                    }
 
 #endif
-    };
+                };
 
-    /**
-     * @brief Estructura (privada) de un nodo no cabecera del árbol red-black
-     *
-     * Tal como sugiere Cormen et al. \cite CormenLeisersonRivestStein2009, como se implementa en GCC,
-     * y cómo explicamos en \ref Implementacion, el árbol tiene dos tipos de nodos.  Aquellos que
-     * tienen un valor e implementan el árbol y aquellos que se usan como centinelas.  La estructura
-     * \T{InnerNode} hereda de la estructura aed2::map::Node, agregando el valor, para representar a los nodos
-     * no cabecera.
-     *
-     * Además de definir los campos de la estructura de un nodo, esta clase podría implementar una especie de submodulo
-     * que incluya funciones para manipular el árbol red-black.  Se sugiere incluir en esta estructura aquellas funciones
-     * que, si bien no requieren conocer el resto de la estructura red-black, explotan el conocimiento
-     * de que el árbol red-black tiene un unico nodo sentinela que sirve de cabecera.
-     *
-     * \remark Como \T{InnerNode} es una estructura privada, no tiene ventajas imporantes implementarla en forma modular.
-     */
-    struct InnerNode : public Node {
-        /** Valor del nodo */
-        value_type _value;
-    };
+                /**
+                 * @brief Estructura (privada) de un nodo no cabecera del árbol red-black
+                 *
+                 * Tal como sugiere Cormen et al. \cite CormenLeisersonRivestStein2009, como se implementa en GCC,
+                 * y cómo explicamos en \ref Implementacion, el árbol tiene dos tipos de nodos.  Aquellos que
+                 * tienen un valor e implementan el árbol y aquellos que se usan como centinelas.  La estructura
+                 * \T{InnerNode} hereda de la estructura aed2::map::Node, agregando el valor, para representar a los nodos
+                 * no cabecera.
+                 *
+                 * Además de definir los campos de la estructura de un nodo, esta clase podría implementar una especie de submodulo
+                 * que incluya funciones para manipular el árbol red-black.  Se sugiere incluir en esta estructura aquellas funciones
+                 * que, si bien no requieren conocer el resto de la estructura red-black, explotan el conocimiento
+                 * de que el árbol red-black tiene un unico nodo sentinela que sirve de cabecera.
+                 *
+                 * \remark Como \T{InnerNode} es una estructura privada, no tiene ventajas imporantes implementarla en forma modular.
+                 */
+                struct InnerNode : public Node {
+                    /** Valor del nodo */
+                    value_type _value;
+                };
 
-	////////////////////////////////////////////////////////////////////////////////////////////////////
-    /** \name Estructura de representación
-     *
-     * Nota: vamos a omitir la discusión del functor de comparación, ya que no entra dentro del contexto de los TADs de la materia.
-     * Para poder definirlos, habría que 1. especificar el tipo functor y 2. extender el TAD Diccionario para que pueda crearse con una
-     * instancia del TAD functor.
-     *
-     * \par Representación
-     * Diccionario se representa con map: tupla(header: Node, count: Nat).  Ver \ref axiomas
-     *
-     * \par Invariante de representacion
-	 * \parblock
-	 * rep: map \TO bool\n
-	 * rep(m) \EQUIV completar
-	 * \endparblock
-	 *
-	 * \par Función de abstracción
-	 * \parblock
-	 * abs: map m \TO Diccionario(\T{Key}, \T{Meaning})  {rep(n)}\n
-	 * abs(m) \EQUIV completar
-	 * \endparblock
-     */
-    //////////////////////////////////////////////////////////////////////////////////////////////////////
-    //@{
-    /** \brief Orden total para comparar claves.
-     *
-     * Definición: lt(x, y) == true cuando x es menor que y; si lt(x,y) == lt(y,x) == false, entonces x e y son iguales.
-     */
-    Compare lt;
-    /** \brief Cantidad de elementos en el diccionario */
-    size_t count{0};
-    /** \brief Cabeceera del arbol; ver \ref Implementacion */
-    Node header;
-    //@}
+                ////////////////////////////////////////////////////////////////////////////////////////////////////
+                /** \name Estructura de representación
+                 *
+                 * Nota: vamos a omitir la discusión del functor de comparación, ya que no entra dentro del contexto de los TADs de la materia.
+                 * Para poder definirlos, habría que 1. especificar el tipo functor y 2. extender el TAD Diccionario para que pueda crearse con una
+                 * instancia del TAD functor.
+                 *
+                 * \par Representación
+                 * Diccionario se representa con map: tupla(header: Node, count: Nat).  Ver \ref axiomas
+                 *
+                 * \par Invariante de representacion
+                 * \parblock
+                 * rep: map \TO bool\n
+                 * rep(m) \EQUIV completar
+                 * \endparblock
+                 *
+                 * \par Función de abstracción
+                 * \parblock
+                 * abs: map m \TO Diccionario(\T{Key}, \T{Meaning})  {rep(n)}\n
+                 * abs(m) \EQUIV completar
+                 * \endparblock
+                 */
+                //////////////////////////////////////////////////////////////////////////////////////////////////////
+                //@{
+                /** \brief Orden total para comparar claves.
+                 *
+                 * Definición: lt(x, y) == true cuando x es menor que y; si lt(x,y) == lt(y,x) == false, entonces x e y son iguales.
+                 */
+                Compare lt;
+                /** \brief Cantidad de elementos en el diccionario */
+                size_t count{0};
+                /** \brief Cabeceera del arbol; ver \ref Implementacion */
+                Node header;
+                //@}
 
-    ////////////////////////////////////////
-    /** \name Acceso y consulta del árbol */
-    ////////////////////////////////////////
-	//@{
-    /**
-     * @brief Devuelve un puntero al nodo raíz
-     *
-     * @returns Nodo a la raiz del arbol.
-     */
-    inline InnerNode* root() { return static_cast<InnerNode*>(header.parent); }
+                ////////////////////////////////////////
+                /** \name Acceso y consulta del árbol */
+                ////////////////////////////////////////
+                //@{
+                /**
+                 * @brief Devuelve un puntero al nodo raíz
+                 *
+                 * @returns Nodo a la raiz del arbol.
+                 */
+                inline InnerNode *root() { return static_cast<InnerNode *>(header.parent); }
 
-    /** \overload */
-    inline const InnerNode* root() const { return static_cast<const InnerNode*>(header.parent); }
-	//@}
+                /** \overload */
+                inline const InnerNode *root() const { return static_cast<const InnerNode *>(header.parent); }
+                //@}
 
-	/////////////////////////////////
-	/** \name Funciones auxiliares */
-	/////////////////////////////////
-    /**
-     * @brief Retorna true si las claves son iguales con respecto a \P{this}->lt.
-     *
-     * @param k1 clave a comparar
-     * @param k2 clave a comparar
-     * @returns true cuando \P{k1} y \P{k2} son iguales con respecto a \P{this}->lt.
-     */
-    inline bool eq(const Key& k1, const Key& k2) const {
-        return lt(k1, k2) == lt(k2, k1);
-    }
-};
+                /////////////////////////////////
+                /** \name Funciones auxiliares */
+                /////////////////////////////////
+                /**
+                 * @brief Retorna true si las claves son iguales con respecto a \P{this}->lt.
+                 *
+                 * @param k1 clave a comparar
+                 * @param k2 clave a comparar
+                 * @returns true cuando \P{k1} y \P{k2} son iguales con respecto a \P{this}->lt.
+                 */
+                inline bool eq(const Key &k1, const Key &k2) const {
+                    return lt(k1, k2) == lt(k2, k1);
+                }
+            };
 
 //////////////////////////////////////
 /** \name Operadores de comparación */
@@ -2343,10 +2373,10 @@ private:
  * \attention  Para determinar la igualdad de las claves no se utiliza el functor de comparación (que podrian
  * ser distintos entre los diccionarios), sino si los valores son los mismos con respecto al operator== de \T{K} y T{V}.
  */
-template<class K, class V, class C>
-bool operator==(const map<K, V, C>& m1, const map<K, V, C>& m2) {
-	return m1.size() == m2.size() and std::equal(m1.begin(), m1.end(), m2.begin());
-}
+            template<class K, class V, class C>
+            bool operator==(const map<K, V, C> &m) {
+                return size() == m.size() and std::equal(begin(), end(), m.begin());
+            }
 
 /**
  * \relates aed2::map
@@ -2354,10 +2384,10 @@ bool operator==(const map<K, V, C>& m1, const map<K, V, C>& m2) {
  *
  * \sa aed2::operator==()
  */
-template<class K, class V, class C>
-bool operator!=(const map<K, V, C>& m1, const map<K, V, C>& m2) {
-	return not(m1 == m2);
-}
+            template<class K, class V, class C>
+            bool operator!=(const map<K, V, C> &m) {
+                return not(this == m);
+            }
 
 /**
  * \relates aed2::map
@@ -2382,11 +2412,11 @@ bool operator!=(const map<K, V, C>& m1, const map<K, V, C>& m2) {
  * \attention  Para determinar la comparación de las claves no se utiliza el functor de comparación (que podrian
  * ser distintos entre los diccionarios), sino si los valores son los mismos con respecto al operator< de \T{K} y T{V}.
  */
-template<class K, class V, class C>
-bool operator<(const map<K, V, C>& m1, const map<K, V, C>& m2) {
-    return (std::lexicographical_compare(m1.begin(), m1.end(), m2.begin(), m2.end(), lt));
-	//completar.  Vale usar std::lexicographical_compare
-}
+            template<class K, class V, class C>
+            bool operator<(const map<K, V, C> &m) {
+                return (std::lexicographical_compare(begin(), end(), m.begin(), end(), lt));
+                //completar.  Vale usar std::lexicographical_compare
+            }
 
 /**
  * \relates aed2::map
@@ -2394,10 +2424,10 @@ bool operator<(const map<K, V, C>& m1, const map<K, V, C>& m2) {
  *
  * \sa aed2::operator<()
  */
-template<class K, class V, class C>
-bool operator>(const map<K, V, C>& m1, const map<K, V, C>& m2) {
-	return m2 < m1;
-}
+            template<class K, class V, class C>
+            bool operator>(const map<K, V, C> &m) {
+                return m < this;
+            }
 
 /**
  * \relates aed2::map
@@ -2405,10 +2435,10 @@ bool operator>(const map<K, V, C>& m1, const map<K, V, C>& m2) {
  *
  * \sa aed2::operator<()
  */
-template<class K, class V, class C>
-bool operator<=(const map<K, V, C>& m1, const map<K, V, C>& m2) {
-	return not(m2 < m1);
-}
+            template<class K, class V, class C>
+            bool operator<=(const map<K, V, C> &m) {
+                return not(this < m);
+            }
 
 /**
  * \relates aed2::map
@@ -2416,10 +2446,10 @@ bool operator<=(const map<K, V, C>& m1, const map<K, V, C>& m2) {
  *
  * \sa aed2::operator<()
  */
-template<class K, class V, class C>
-bool operator>=(const map<K, V, C>& m1, const map<K, V, C>& m2) {
-	return !(m1 < m2);
-}
+            template<class K, class V, class C>
+            bool operator>=(const map<K, V, C> &m) {
+                return !(this < m);
+            }
 //@}
 
 ////////////////////////////////////////
@@ -2440,10 +2470,9 @@ bool operator>=(const map<K, V, C>& m1, const map<K, V, C>& m2) {
  *
  * \sa [Swappable](http://en.cppreference.com/w/cpp/concept/Swappable)
  */
-template<class K, class V, class C>
-void swap(map<K, V, C>& m1, map<K, V, C>& m2) {
-	m1.swap(m2);
-}
-}
-
+            template<class K, class V, class C>
+            void swap(map<K, V, C> &m) {
+                this.swap(m);
+            }
+        };
 #endif /* MAP_H_ */
