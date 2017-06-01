@@ -1234,10 +1234,10 @@ while (n->parent.color == red){
 	} else if(n == n->parent->child[1]){
 		n = n->parent;
 		iterator it2(n);
-		left-rotate(it2);
+		left_rotate(it2);
 		n->parent.color = black;
 		n->parent->parent.color = red;
-		right-rotate(it2);
+		right_rotate(it2);
 		}
 	} else {
 		if (n->parent == n->parent->parent->child[1]){
@@ -1429,6 +1429,36 @@ void right-rotate(iterator it){
 
     }
 
+
+void erase_fixup(iterator it){
+	Node* x = it.n;
+	Node* w;
+	while (x != header->parent && x.color == black){
+		if (x == x->parent->child[0]){
+			w = x->parent->child[1];
+			if (w.color == red){
+				w.color = black;
+				x->parent.color = red;
+				it.n = x->parent;
+				left_rotate(it);
+				w = x->parent->child[1];
+			}
+			if (w->child[0].color == black && w->child[1].color == black){
+				w.color = red;
+				x = x->parent;
+			} else if (w->child[1].color == black){
+				w->child[0].color = black;
+				w.color = red;
+				iterator it2(w);
+				right_rotate(it2);
+				w = x->parent->child[1];
+			}
+			w.color = x->parent.color;
+			x->parent.color = black;
+			w->child[1].color = black;
+	}
+		}
+}
 
 
 /*
