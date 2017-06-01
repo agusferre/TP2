@@ -1385,7 +1385,38 @@ void right-rotate(iterator it){
      *
      */
     iterator erase(const_iterator pos) {
+    	Node* z = pos.n;
+    	Node* y = pos.n;
+    	Node* x;
+    	yColorsito = y.color;
+    	if (z->child[0] == nullptr){
+   			x = z->child[1];
+   			transplant(z, z->child[1]);
+    	} else if (x->child[1] == nullptr) {
+    		x = z->child[0];
+    		transplant(z, z->child[0]);
+    	} else {
+    		y = sucesorInmediato(z->child[1]);
+    		yColorsito = y.color;
+    		x = y->child[1];
+    		if (y->parent == z)
+    			x->parent = y;
+    		else {
+    			transplant(y, y->child[1]);
+    			y->child[1] = z->child[1];
+    			y->child[1]->parent = y;
+    		}
+    		transplant(z, y);
+    		y->child[0] = z->child[0];
+    		y->child[0]->parent = y;
+    		y.color = z.color;
+
+    		if (yColorsito == black)
+    			iterator it(x);
+    			erase_fixup(it);
     	}
+
+}
 
     void transplant(Node* u, Node* v){
     	if (!u->parent.is_header())
@@ -1397,43 +1428,10 @@ void right-rotate(iterator it){
     	v->parent = u->parent;
 
     }
-    	/*
-    	RB-T RANSPLANT .T; u; /
-1 if u:p == T:nil
-2
-T:root D
-3 elseif u == u:p:left
-4
-u:p:left D
-5 else u:p:right D
-6
-:p D u:p
 
 
-T REE -D ELETE .T;  ́/
-1 if  ́:left == NIL
-2
-T RANSPLANT .T;  ́;  ́:right/
-3 elseif  ́:right == NIL
-4
-T RANSPLANT .T;  ́;  ́:left/
-5 else y D T REE -M INIMUM . ́:right/
-6
-if y:p ¤  ́
-7
-T RANSPLANT .T; y; y:right/
-8
-y:right D  ́:right
-9
-y:right:p D y
-10
-T RANSPLANT .T;  ́; y/
-11
-y:left D  ́:left
-12
-y:left:p D y
 
-
+/*
 
 RB-D ELETE -F IXUP .T; x/
 1 while x ¤ T:root and x:color == BLACK
