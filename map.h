@@ -1385,7 +1385,18 @@ void right-rotate(iterator it){
      *
      */
     iterator erase(const_iterator pos) {
-    	
+    	}
+
+    void transplant(Node* u, Node* v){
+    	if (!u->parent.is_header())
+    		header->parent = v;
+    	else if (u == u->parent->child[0])
+    		u->parent->child[0] = v;
+    	else
+    		u->parent->child[1] = v;
+    	v->parent = u->parent;
+
+    }
     	/*
     	RB-T RANSPLANT .T; u; /
 1 if u:p == T:nil
