@@ -1090,21 +1090,34 @@ public:
      - Devuelve el Iterador en esa posición.
     */
     const_iterator lower_bound(const Key& key) const {
-    	Node* indice = header->parent;
-    	while(indice != nullptr || indice->_value->key()  key){
-    		if (indice->_value->key() < key)
-    			indice = indice->child[0];
-    		else
-    			indice = indice->child[1];
-    	}
-    	Iterator it();
-    	it.node = indice;
-    	return it;
+        Node* indice = header->parent;
+        while (indice != nullptr && (indice->_value->key() < key || (indice->_value->key() != key && indice->child[0] != nullptr))) {
+            if (indice->_value->key() < key)
+                indice = indice->child[1];
+            else
+                indice = indice->child[0];
+        }
+        if (indice == nullptr)
+            indice = end();
+        const_iterator it();
+        it.n = indice;
+        return it;
     }
 
     /** \overload */
     iterator lower_bound(const Key& key)  {
-        //completar
+        Node* indice = header->parent;
+        while (indice != nullptr && (indice->_value->key() < key || (indice->_value->key() != key && indice->child[0] != nullptr))) {
+            if (indice->_value->key() < key)
+                indice = indice->child[1];
+            else
+                indice = indice->child[0];
+        }
+        if (indice == nullptr)
+            indice = end();
+        iterator it();
+        it.n = indice;
+        return it;
     }
     ///@}
 

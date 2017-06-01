@@ -13,6 +13,7 @@
   <component name="ChangeListManager">
     <list default="true" id="27c471db-531e-4441-a3a4-3f261feeee45" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/map.h" afterPath="$PROJECT_DIR$/map.h" />
     </list>
     <ignored path="TP 2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,10 +36,15 @@
       <file leaf-file-name="map.h" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/map.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1378">
-              <caret line="1120" column="0" selection-start-line="1120" selection-start-column="0" selection-end-line="1120" selection-end-column="0" />
+            <state relative-caret-position="-6729">
+              <caret line="616" column="84" selection-start-line="616" selection-start-column="82" selection-end-line="616" selection-end-column="84" />
               <folding>
-                <element signature="e#47496#47512#0" expanded="true" />
+                <element signature="e#47503#47519#0" expanded="true" />
+                <element signature="e#93037#93526#0" expanded="true" />
+                <element signature="e#98003#98030#0" expanded="true" />
+                <element signature="e#98292#98319#0" expanded="true" />
+                <element signature="e#99272#99299#0" expanded="true" />
+                <marker date="1496349392542" expanded="false" signature="40704:40778" ph="&lt;Key,Meaning,Compare=std::less&lt;Key&gt;&gt;" />
               </folding>
             </state>
           </provider>
@@ -308,20 +314,20 @@
       <workItem from="1496206546026" duration="121000" />
       <workItem from="1496207763216" duration="5269000" />
       <workItem from="1496247751273" duration="1101000" />
-      <workItem from="1496347327060" duration="7000" />
+      <workItem from="1496347327060" duration="2508000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7641000" />
+    <option name="totallyTimeSpent" value="10142000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="24" width="1317" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24981017" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="CMake" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32884902" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32884902" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -359,7 +365,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#47496#47512#0" expanded="true" />
+            <element signature="e#47503#47519#0" expanded="true" />
+            <element signature="e#93037#93526#0" expanded="true" />
+            <element signature="e#98003#98030#0" expanded="true" />
+            <element signature="e#98292#98319#0" expanded="true" />
+            <element signature="e#99272#99299#0" expanded="true" />
+            <marker date="1496349392542" expanded="false" signature="40704:40778" ph="&lt;Key,Meaning,Compare=std::less&lt;Key&gt;&gt;" />
           </folding>
         </state>
       </provider>
@@ -369,7 +380,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#47496#47512#0" expanded="true" />
+            <element signature="e#47503#47519#0" expanded="true" />
+            <element signature="e#93037#93526#0" expanded="true" />
+            <element signature="e#98003#98030#0" expanded="true" />
+            <element signature="e#98292#98319#0" expanded="true" />
+            <element signature="e#99272#99299#0" expanded="true" />
+            <marker date="1496349392542" expanded="false" signature="40704:40778" ph="&lt;Key,Meaning,Compare=std::less&lt;Key&gt;&gt;" />
           </folding>
         </state>
       </provider>
@@ -379,7 +395,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#47496#47512#0" expanded="true" />
+            <element signature="e#47503#47519#0" expanded="true" />
+            <element signature="e#93037#93526#0" expanded="true" />
+            <element signature="e#98003#98030#0" expanded="true" />
+            <element signature="e#98292#98319#0" expanded="true" />
+            <element signature="e#99272#99299#0" expanded="true" />
+            <marker date="1496349392542" expanded="false" signature="40704:40778" ph="&lt;Key,Meaning,Compare=std::less&lt;Key&gt;&gt;" />
           </folding>
         </state>
       </provider>
@@ -393,10 +414,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/map.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1378">
-          <caret line="1120" column="0" selection-start-line="1120" selection-start-column="0" selection-end-line="1120" selection-end-column="0" />
+        <state relative-caret-position="-6729">
+          <caret line="616" column="84" selection-start-line="616" selection-start-column="82" selection-end-line="616" selection-end-column="84" />
           <folding>
-            <element signature="e#47496#47512#0" expanded="true" />
+            <element signature="e#47503#47519#0" expanded="true" />
+            <element signature="e#93037#93526#0" expanded="true" />
+            <element signature="e#98003#98030#0" expanded="true" />
+            <element signature="e#98292#98319#0" expanded="true" />
+            <element signature="e#99272#99299#0" expanded="true" />
+            <marker date="1496349392542" expanded="false" signature="40704:40778" ph="&lt;Key,Meaning,Compare=std::less&lt;Key&gt;&gt;" />
           </folding>
         </state>
       </provider>
