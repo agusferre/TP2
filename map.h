@@ -582,13 +582,13 @@
 #include <utility>
 #include <cassert>
 #include <algorithm>
+#include <iostream>
 
 #ifdef DEBUG
 //Aca se puede incluir cualquier cosa que consideren que necesitan para debug
 //#include <iostream>
 //#include <iomanip>
 #endif
-
 
 /**
  * \brief Namespace para las clases de AED2.
@@ -755,24 +755,17 @@ public:
      * @param c comparador (functor de orden) a utilizar
      * @retval res diccionario recién construido
      *
-     * \pre \aedpre{true}
-     * \post \aedpost{res \igobs vacio()}
+     * \pre \aedpre{completar}
+     * \post \aedpost{completar}
      *
      * \complexity{\O(1)}
      *
      * \attention El parámetro formal \LT del TAD diccionario se establece en esta función.
      * \LT = \P{c}.operator()
      */
-     /**
-	ambos hijos de header apuntan a null, y padre de header apunta a null
-
-    **/
     explicit map(Compare c = Compare()) {
-    	header = Node();
-    	header.parent = nullptr;
-    	header.child[0] = nullptr;
-    	header.child[1] = nullptr;
-     }
+    	//completar
+    }
 
     /**
      * @brief Constructor por copia
@@ -780,8 +773,8 @@ public:
      * @param other diccionario a copiar
      * @retval res diccionario recien construido
      *
-     * \pre \aedpre{true}
-     * \post \aedpost{res \igobs other}
+     * \pre \aedpre{completar}
+     * \post \aedpost{completar}
      *
      * \complexity{\O(\COPY(\P{other}))}
      *
@@ -789,16 +782,8 @@ public:
      * \LT es igual al operator() del comparador de \P{other}
      *
      */
-
-    /**
-    begin() iterador en other.
-    mientras haya Siguiente en el iterador de other, insertar siguiente, y avanzar.
-	
-
-    **/
     map(const map& other) {
-
-
+    	//completar
     }
 
     /**
@@ -848,32 +833,27 @@ public:
     map(iterator first, iterator last, Compare c = Compare()) : lt(c) {
     	auto it = end();
     	while(first != last) {
-    		insert(*first, it);
+    		insert(it, *first);
     		++first;
     	}
     }
 
-    /**
+    /**Node* indice = header.parent;
+        return indice->value().second;
      * @brief Operador de asignación
      *
      * @param other diccionario a copiar
      * @retval res referencia a *this
      *
-     * \aliasing{no hay}
+     * \aliasing{completar}
      *
-     * \pre \aedpre{true}
-     * \post \aedpost{res \igobs other}
+     * \pre \aedpre{completar}
+     * \post \aedpost{completar}
      *
      * \complexity{\O(\DEL(\P{*this}) \PLUS \COPY(\P{other}))}
      *
      * \note Es importante remarcar que no se realiza ninguna comparación entre los elementos.
      */
-     /**
-	-destruir this
-	- this->map(other)
-
-     **/
-
     map& operator=(map other) {
     	//completar
     }
@@ -899,12 +879,6 @@ public:
      * memoria de la computadora), podríamos expresar la funcionalidad estableciendo la
      * liberación de la memoria
      */
-
-     /**
-	inicializa iterador con begin()
-	mientras hay Siguiente, borra (siguiente)
-     **/
-
     ~map() {
         //completar
     }
@@ -922,9 +896,9 @@ public:
      *
      * \aliasing{completar}
      *
-     * \pre \aedpre{def?(key,*this)}
+     * \pre \aedpre{completar}
      *
-     * \post \aedpost{res \igobs obtener(key,*this)}
+     * \post \aedpost{completar}
      *
      * \complexity{\O(\LOG(\SIZE(\P{*this}) \CDOT \CMP(\P{*this}))}
      *
@@ -932,22 +906,15 @@ public:
      * que al estándar C++, fue incluida en el estándar C++11.  Antes era obligación
      * recurrir a la función find.
      */
-
-
-    /**
-     Comienza en la raiz y si el valor es menor sigue la recursión hacia la izquierda, sino a la derecha, hasta
-     que encuentra un nodo con la clave (key) pasada por parámetro y devuelve el significado almacenado en ese nodo.
-     */
-
     const Meaning& at(const Key& key) const {
-        Node* indice = header.parent;
+    	Node* indice = header.parent;
         return indice->value().second;
     }
 
     /** \overload */
     Meaning& at(const Key& key) {
     	return find(key).n->value().second;
-   }
+    }
 
     /**
      * @brief Devuelve el significado asociado a \P{key}, asegurando su existencia
@@ -973,29 +940,24 @@ public:
      * \par Requerimientos sobre el tipo \T{Meaning}
      * Requiere que \T{Meaning} tenga un constructor sin parámetros con complejidad \O(\a c)
      *
-     * \aliasing{hay aliasing entre res y obtener(key, *this)}
+     * \aliasing{completar}
      *
-     * \pre \aedpre{true}
-     * \post \aedpost{def?(key, *this) \rightarrow res \igobs obtener(key, *this)}
+     * \pre \aedpre{completar}
+     * \post \aedpost{completar}
 	 *
      * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}) + \a x) donde
      * - \a x = 1 si def?(\a self, \P{key}), y
      * - \a x = \a c en caso contrario.}
      *
      */
-
-     /**
-     Comienza en la raiz y si el valor es menor sigue la recursión hacia la izquierda, sino a la derecha, hasta
-     que encuentra un nodo con la clave (key) pasada por parámetro y devuelve el significado almacenado en ese nodo,
-     o en el caso que la clave no esté definida, la define con el significado default y además incrementa en uno count.
-     */
     Meaning& operator[](const Key& key) {
-        iterator it = lower_bound(key);
+    	     iterator it = lower_bound(key);
         if (it.n->value().first == key)
             return it.n->value().second;
 	    else
             insert(it, value_type(key, Meaning()));
         return at(key);
+    
     }
 
     /**
@@ -1008,10 +970,10 @@ public:
      * @param key clave a buscar
      * @retval res iterador apuntando al valor con clave \P{key} (o a \P{this}->end() si dicho elemento no existe)
      *
-     * \aliasing{Hay aliasing entre el actual(iterador) y obtener(key, *this)}
+     * \aliasing{completar}
      *
-     * \pre \aedpre{true}
-     * \post \aedpost{def?(key, *this) \rightarrow res \igobs crearitAux(key,inorder(*this))}
+     * \pre \aedpre{completar}
+     * \post \aedpost{completar}
      *
      * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
      *
@@ -1020,15 +982,8 @@ public:
      * resultado puede ser usado como hint, mejorando la complejidad de la inserción.
      *
      */
-
-     /**
-     - Inicia el iterador en el hijo izquierdo de header.
-     - Avanzo hasta que la clave sea key o, en caso de que no esté definida, hasta la posición pasando-el-último.
-     - Devuelve el Iterador en esa posición.
-      */
-
     iterator find(const Key& key) {
-        Node* indice = header.parent;
+    	InnerNode* indice = header.parent;
     	while(indice->value().first != key){
     		if (indice->value().first < key)
     			indice = indice->child[0];
@@ -1038,19 +993,18 @@ public:
     	iterator it;
     	it.n = indice;
     	return it;
-
     }
 
     /** \overload */
     const_iterator find(const Key& key) const {
-    		InnerNode* indice = header.parent;
+    			InnerNode* indice = header.parent;
     	while(indice->value().first != key){
     		if (indice->value().first < key)
     			indice = indice->child[0];
     		else
     			indice = indice->child[1];
     	}
-    	iterator it();
+    	const_iterator it;
     	it.n = indice;
     	return it;
     }
@@ -1065,46 +1019,37 @@ public:
      * @param key clave a buscar
      * @retval res iterador apuntando al valor con clave al menos \P{key} (o a \P{this}->end() si dicho elemento no existe)
      *
-     * \aliasing{hay aliasing entre res y el sucesor inmediato de key}
+     * \aliasing{completar}
      *
-     * \pre \aedpre{true}
-     * \post \aedpost{res \igobs crearitAux2(key,inorder(*this))(busca en la secu inorder a key y devuelve el siguiente o null si es mayor a todas las claves)}
+     * \pre \aedpre{completar}
+     * \post \aedpost{completar}
      *
      * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
      *
      */
-    /**
-     - Inicia el iterador en el hijo izquierdo de header.
-     - Avanzo hasta que la clave sea mayor o igual a key o, en caso de que no exista ninguna, hasta la posición pasando-el-último.
-     - Devuelve el Iterador en esa posición.
-    */
     const_iterator lower_bound(const Key& key) const {
-        InnerNode* indice = header.parent;
+    	InnerNode* indice = header.parent;
         while (indice != nullptr && (indice->value().first < key || (indice->value().first != key && indice->child[0] != nullptr))) {
             if (indice->value().first < key)
                 indice = indice->child[1];
             else
                 indice = indice->child[0];
         }
-        if (indice == nullptr)
-            indice = end();
-        const_iterator it();
+        const_iterator it;
         it.n = indice;
         return it;
     }
 
     /** \overload */
     iterator lower_bound(const Key& key)  {
-        Node* indice = header.parent;
+  	 	InnerNode* indice = header.parent;
         while (indice != nullptr && (indice->value().first < key || (indice->value().first != key && indice->child[0] != nullptr))) {
             if (indice->value().first < key)
                 indice = indice->child[1];
             else
                 indice = indice->child[0];
         }
-        if (indice == nullptr)
-            indice = end();
-        iterator it = iterator();
+  		iterator it;
         it.n = indice;
         return it;
     }
@@ -1119,17 +1064,13 @@ public:
      *
      * @retval res denota true si y solo si el diccionario está vacío
      *
-     * \pre \aedpre{true}
-     * \post \aedpost{res \igobs \emptyset ?(claves(*this))}
+     * \pre \aedpre{completar}
+     * \post \aedpost{completar}
      *
      * \complexity{\O(1)}
      */
-    /**
-    Inicia en raíz, y si la misma es distinta de null devuelve false.
-    */
     bool empty() const {
     	return (count == 0);
-
     }
 
     /**
@@ -1137,15 +1078,12 @@ public:
      *
      * @retval res cantidad de valores
 	 *
-     * \pre \aedpre{true}
-     * \post \aedpost{res \igobs \#claves(*this)}
+     * \pre \aedpre{completar}
+     * \post \aedpost{completar}
      *
      * \complexity{\O(1)}
      */
-    /**
-     Devuelve count;
-     */
-     size_t size() const {
+    size_t size() const {
     	return count;
     }
     //@}
@@ -1167,11 +1105,11 @@ public:
      * Igualmente, la función es robusta y funciona correctamente aunque esto no ocurra.
      * @retval res iterador apuntando al elemento insertado o que previno la inserción
      *
-     * \aliasing{hay aliasing???}
+     * \aliasing{completar}
      *
      *
-     * \pre \aedpre{true}
-     * \post  \aedpost{def?(value.first, *this) \rightarrow crearitAux(*this.first, inorder(*this) ) \and \neg def?(value.first, *this) \rightarrow res \igobs agregar(crearIt(inorder(*this)), value)}
+     * \pre \aedpre{completar}
+     * \post  \aedpost{completar}
      *
      * \complexity{
      *  - Peor caso: \O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}) \PLUS \COPY(\P{value}))
@@ -1181,73 +1119,74 @@ public:
      *
      * \attention Para garantizar que el nuevo elemento se inserte sí o sí, usar aed2::map::insert_or_assign.
      */
-    /**
-
-
-    */
     iterator insert(const_iterator hint, const value_type& value) {
-        if (!(hint.n == nullptr || (hint.n->value().first > value.first && (hint--.n != nullptr && hint.n->value().first < value.first ))))
-            return insert(value);
-        else {
-            InnerNode* nuevo = new InnerNode(value);
-            Node *padre = hint.n->parent;
-            nuevo->parent = padre;
-            if (padre->is_header())
-                header.parent = nuevo;
-            else if (nuevo->key() < padre->key())
-                padre->child[0] = nuevo;
-            else
-                padre->child[1] = nuevo;
-            nuevo->color = Color::Red;
-            iterator it = find(nuevo);
-            insert_fixup(it, value);
-            return it;
-        }
+    	  // if (!(hint.n == nullptr || (hint.n->value().first > value.first && (hint--.n != nullptr && hint.n->value().first < value.first ))))
+       //      return insert(value);
+       //  else {
+       //      InnerNode *nuevo = new InnerNode(*value);
+       //      Node *padre = hint.n->parent;
+       //      nuevo->parent = padre;
+       //      if (padre->is_header())
+       //          header.parent = nuevo;
+       //      else if (nuevo->key() < padre->key())
+       //          padre->child[0] = nuevo;
+       //      else
+       //          padre->child[1] = nuevo;
+       //      nuevo->color = Node::Color::Red;
+       //      iterator it = find(nuevo);
+       //      insert_fixup(it, value);
+    	   	// count++;
+       //      return it;
+        //  }
     }
 
-void insert_fixup(iterator it, const value_type& value) {
-    Node *n = it.n;
-    Node *y;
-    while (n->parent->color == Color::Red) {
-        if (n->parent == n->parent->parent->child[0]) {
-            y = n->parent->parent->child[1];
-        }
-        if (y->color == Color::Red) {
-            n->color = Color::Black;
-            y->color = Color::Black;
-            n->parent->parent->color = Color::Red;
-            n = n->parent->parent;
-        } else if (n == n->parent->child[1]) {
-            n = n->parent;
-            iterator it2(n);
-            left_rotate(it2);
-            n->parent->color = Color::Black;
-            n->parent->parent->color = Color::Red;
-            right_rotate(it2);
-        } else {
-            if (n->parent == n->parent->parent->child[1]) {
-                y = n->parent->parent->child[0];
-            }
-            if (y->color == Color::Red) {
-                n->color = Color::Black;
-                y->color = Color::Black;
-                n->parent->parent->color = Color::Red;
-                n = n->parent->parent;
-            } else if (n == n->parent->child[0]) {
-                n = n->parent;
-                iterator it2(n);
-                right_rotate(it2);
-                n->parent->color = Color::Black;
-                n->parent->parent->color = Color::Red;
-                left_rotate(it2);
-            }
-        }
-    }
-	header.parent->color = Color::Black;
-	it.n = n;
+
+    /*
+oid insert_fixup(iterator it, const value_type& value){
+	Node* n = it.n;
+	Node* y;
+while (n->parent->color == red){
+	if (n->parent == n->parent->parent->child[0]){
+		y = n->parent->parent->child[1];
+	}
+	if (y->color == red){
+		n->color = black;
+		y->color = black;
+		n->parent->parent->color = red;
+		n = n->parent->parent;
+	} else if(n == n->parent->child[1]){
+		n = n->parent;
+		iterator it2(n);
+		left_rotate(it2);
+		n->parent->color = black;
+		n->parent->parent->color = red;
+		right_rotate(it2);
+		}
+	} else {
+		if (n->parent == n->parent->parent->child[1]){
+		y = n->parent->parent->child[0];
+	}
+	if (y->color == red){
+		n->color = black;
+		y->color = black;
+		n->parent->parent->color = red;
+		n = n->parent->parent;
+	} else if(n == n->parent->child[0]){
+		n = n->parent;
+		iterator it2(n);
+		right_rotate(it2);
+		n->parent->color = black;
+		n->parent->parent->color = red;
+		left_rotate(it2);
+	}
 }
 
+	header->parent->color = black;
+	it.n = n;
+}
+*/
 void left_rotate(iterator it){
+	/*
 	Node* n = it.n;
 	Node* y = it.n->child[1];
 	n->child[1] = y->child[0];
@@ -1255,7 +1194,7 @@ void left_rotate(iterator it){
 		y->child[0]->parent = n;
 	y->parent = n->parent;
 	if(n->parent.is_header())
-		header.parent = y;
+		header->parent = y;
 	else if (n == n->parent->child[0])
 		n->parent->child[0] = y;
 	else
@@ -1263,9 +1202,11 @@ void left_rotate(iterator it){
 	y->child[0] = n;
 	n->parent = y;
 	it.n = n;
+	*/
 }
 
 void right_rotate(iterator it){
+	/*
 	Node* n = it.n;
 	Node* y = it.n->child[0];
 	n->child[0] = y->child[1];
@@ -1273,7 +1214,7 @@ void right_rotate(iterator it){
 		y->child[1]->parent = n;
 	y->parent = n->parent;
 	if(n->parent.is_header())
-		header.parent = y;
+		header->parent = y;
 	else if (n == n->parent->child[1])
 		n->parent->child[1] = y;
 	else
@@ -1281,27 +1222,34 @@ void right_rotate(iterator it){
 	y->child[1] = n;
 	n->parent = y;
 	it.n = n;
+	*/
 }
     
 
-    /** \overload*/
+
     iterator insert(const value_type& value) {
-    	InnerNode* nuevo = new InnerNode(value);
+    /*	InnerNode* nuevo = new InnerNode(*value);
     	iterator it = lower_bound(value.first);
-        Node* padre = it.n->parent;
+        Node* padre = hint.n->parent;
         nuevo->parent = padre;
-        if (padre->is_header())
-            header.parent = nuevo;
+        if (padre.is_header())
+            header->parent = nuevo;
         else if (nuevo->key() < padre->key())
             padre->child[0] = nuevo;
         else
             padre->child[1] = nuevo;
-        nuevo->color = Color::Red;
-        iterator it2 = find(nuevo->key());
+        nuevo->color = Red;
+        iterator it = find(nuevo);
         insert_fixup(it, value);
-        return it2;
+        count++;
+        return it;
 
+    */
     }
+
+
+
+   
 
     /**
      * @brief Inserta o redefine \P{value} en el diccionario
@@ -1316,10 +1264,10 @@ void right_rotate(iterator it){
      * Igualmente, la función es robusta y funciona correctamente aunque esto no ocurra.
      * @retval res iterador apuntando al elemento insertado o redefinido
      *
-     * \aliasing{hay aliasing????}
+     * \aliasing{completar}
      *
-     * \pre \aedpre{true}
-     * \post  \aedpost{def?(value.first, *this) \rightarrow res \igobs Agregar(Eliminar(CrearItMod(hasta(inorder(*this), value), desde(inorder(*this), value)))) \}
+     * \pre \aedpre{completar}
+     * \post  \aedpost{completar}
      *
      * \complexity{
      *  - Peor caso: \O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}) \PLUS \COPY(\P{value}))
@@ -1333,26 +1281,32 @@ void right_rotate(iterator it){
      * \T{Meaning} tenga constructor sin parámetros.  La desventaja es que la notación no es tan bonita.
      */
     iterator insert_or_assign(const_iterator hint, const value_type& value) {
-        iterator it;
+    	// Hacer insert Node
+        iterator it2;
         if (hint.n->value().first == value.first){
-            it = hint;
-            it.n->value().second = value->second;
-            } else if (hint.n->value()->first < value->first() || (hint--.n == nullptr
-            || hint.n->value()->first >= value->first)) {
-            it = lower_bound(hint->value());
+            it2.n = hint.n;
+            it2.n->value().second = value.second;
+            } else if (hint.n->value().first < value.first || (hint--.n == nullptr
+            || hint.n->value().first >= value.first)) {
+            iterator it2 = lower_bound(hint.n->value().first);
         }
-        it = insert(hint, value);
-        return it;
+
+       // it = insert(hint, value);
+        return it2;
     }
+ 
+    
 
     /** \overload */
     iterator insert_or_assign(const value_type& value) {
-        iterator it;
-        it = lower_bound(value->first);
-        if (value->first == it.n->_value->fisrt) {
-            it->_value = value;
+    	    	// Hacer insert Node
+
+    	  iterator it;
+        it = lower_bound(value.first);
+        if (value.first == it.n->value().first) {
+            //it.n->_value = value;
         } else {
-            insert(it, value);
+           // insert(it, value);
         }
         return it;
     }
@@ -1363,10 +1317,10 @@ void right_rotate(iterator it){
      * @param pos iterador apuntando al valor a eliminar.
      * @retval res iterador apuntando al primer valor con clave mayor a \P{pos} (o \P{this}->end(), si dicho valor no existe).
      *
-     * \aliasing{complertar}.
+     * \aliasing{completar}.
      *
-     * \pre \aedpre{HayMas?(pos)}
-     * \post \aedpost{Eliminar(pos)}
+     * \pre \aedpre{completar}
+     * \post \aedpost{completar}
      *
      * \complexity{
      * - Peor caso: \O(\DEL(\P{*pos}) + \LOG(\SIZE(\P{*this})))
@@ -1377,6 +1331,141 @@ void right_rotate(iterator it){
     iterator erase(const_iterator pos) {
     	Node* z = pos.n;
     	Node* y = pos.n;
+    	Node* x;
+    	Color yColorsito = y->color;
+    	iterator it = iterator(pos--.n);
+    	if (z->child[0] == nullptr){
+   			x = z->child[1];
+   			transplant(z, z->child[1]);
+    	} else if (x->child[1] == nullptr) {
+    		x = z->child[0];
+    		transplant(z, z->child[0]);
+    	} else {
+    		y = sucesorInmediato(z->child[1]);
+    		yColorsito = y->color;
+    		x = y->child[1];
+    		if (y->parent == z)
+    			x->parent = y;
+    		else {
+    			transplant(y, y->child[1]);
+    			y->child[1] = z->child[1];
+    			y->child[1]->parent = y;
+    		}
+    		transplant(z, y);
+    		y->child[0] = z->child[0];
+    		y->child[0]->parent = y;
+    		y->color = z->color;
+
+    		iterator it2 = iterator(x);
+
+
+
+
+    		if (yColorsito == Color::Black)
+    			erase_fixup(it2);
+
+		}
+		count--;
+    	return it;
+    }
+
+        void transplant(Node* u, Node* v){
+    	if (!u->parent->is_header())
+    		header.parent = v;
+    	else if (u == u->parent->child[0])
+    		u->parent->child[0] = v;
+    	else
+    		u->parent->child[1] = v;
+    	v->parent = u->parent;
+
+    }
+
+
+
+void erase_fixup(iterator it){
+	Node* x = it.n;
+	Node* w;
+	while (x != header.parent && x->color == Color::Black){
+		if (x == x->parent->child[0]){
+			w = x->parent->child[1];
+			if (w->color == Color::Red){
+				w->color = Color::Black;
+				x->parent->color = Color::Red;
+				it.n = x->parent;
+				left_rotate(it);
+				w = x->parent->child[1];
+			}
+			if (w->child[0]->color == Color::Black && w->child[1]->color == Color::Black){
+				w->color = Color::Red;
+				x = x->parent;
+			} else if (w->child[1]->color == Color::Black){
+				w->child[0]->color = Color::Black;
+				w->color = Color::Red;
+				iterator it2(w);
+				right_rotate(it2);
+				w = x->parent->child[1];
+			}
+			w->color = x->parent->color;
+			x->parent->color = Color::Black;
+			w->child[1]->color = Color::Black;
+			it.n = x->parent;
+			left_rotate(it);
+			x = header.parent;
+		} else {
+			w = x->parent->child[0];
+			if (w->color == Color::Red){
+				w->color = Color::Black;
+				x->parent->color = Color::Red;
+				it.n = x->parent;
+				right_rotate(it);
+				w = x->parent->child[0];
+			}
+			if (w->child[1]->color == Color::Black && w->child[0]->color == Color::Black){
+				w->color = Color::Red;
+				x = x->parent;
+			} else if (w->child[0]->color == Color::Black){
+				w->child[1]->color = Color::Black;
+				w->color = Color::Red;
+				iterator it2(w);
+				left_rotate(it2);
+				w = x->parent->child[0];
+			}
+			w->color = x->parent->color;
+			x->parent->color = Color::Black;
+			w->child[0]->color = Color::Black;
+			it.n = x->parent;
+			right_rotate(it);
+			x = header.parent;
+
+		}
+}
+}
+
+
+Node* sucesorInmediato(Node* y){
+	Node* res = y;
+	while (res->child[0] != nullptr){
+		res = res->child[0];
+	}
+	return res;
+}
+
+    /**
+     * @brief Elimina el valor cuya clave es \P{key}
+     *
+     * @param key clave del elemento a eliminar
+     *
+     * \aliasing{completar}
+     *
+     * \pre \aedpre{completar}
+     * \post \aedpost{completar}
+     *
+     * \complexity{\O(\DEL(\P{*pos}) + \LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
+     */
+    void erase(const Key& key) {
+    	iterator it = find(key);
+    	Node* z = it.n;
+    	Node* y = it.n;
     	Node* x;
     	Color yColorsito = y->color;
     	if (z->child[0] == nullptr){
@@ -1401,99 +1490,13 @@ void right_rotate(iterator it){
     		y->child[0]->parent = y;
     		y->color = z->color;
 
-    		if (yColorsito == Color::Black) {
-                iterator it(x);
-                erase_fixup(it);
-            }
-    	}
+    		iterator it2 = iterator(x);
 
-}
+    		if (yColorsito == Color::Black)
+    			erase_fixup(it2);
 
-    void transplant(Node* u, Node* v){
-    	if (!u->parent.is_header())
-    		header.parent = v;
-    	else if (u == u->parent->child[0])
-    		u->parent->child[0] = v;
-    	else
-    		u->parent->child[1] = v;
-    	v->parent = u->parent;
-
-    }
-
-
-void erase_fixup(iterator it) {
-    Node *x = it.n;
-    Node *w;
-    while (x != header.parent && x->color == Color::Black) {
-        if (x == x->parent->child[0]) {
-            w = x->parent->child[1];
-            if (w->color == Color::Red) {
-                w->color = Color::Black;
-                x->parent->color = Color::Red;
-                it.n = x->parent;
-                left_rotate(it);
-                w = x->parent->child[1];
-            }
-            if (w->child[0]->color == Color::Black && w->child[1]->color == Color::Black) {
-                w->color = Color::Red;
-                x = x->parent;
-            } else if (w->child[1]->color == Color::Black) {
-                w->child[0]->color = Color::Black;
-                w->color = Color::Red;
-                iterator it2(w);
-                right_rotate(it2);
-                w = x->parent->child[1];
-            }
-            w->color = x->parent->color;
-            x->parent->color = Color::Black;
-            w->child[1]->color = Color::Black;
-            it.n = x->parent;
-            left_rotate(it);
-            x = header.parent;
-        } else {
-            w = x->parent->child[0];
-            if (w->color == Color::Red) {
-                w->color = Color::Black;
-                x->parent->color = Color::Red;
-                it.n = x->parent;
-                right_rotate(it);
-                w = x->parent->child[0];
-            }
-            if (w->child[1]->color == Color::Black && w->child[0]->color == Color::Black) {
-                w->color = Color::Red;
-                x = x->parent;
-            } else if (w->child[0]->color == Color::Black) {
-                w->child[1]->color = Color::Black;
-                w->color = Color::Red;
-                iterator it2(w);
-                left_rotate(it2);
-                w = x->parent->child[0];
-            }
-            w->color = x->parent->color;
-            x->parent->color = Color::Black;
-            w->child[0]->color = Color::Black;
-            it.n = x->parent;
-            right_rotate(it);
-            x = header.parent;
-
-        }
-    }
-}
-
-    /**
-     * @brief Elimina el valor cuya clave es \P{key}
-     *
-     * @param key clave del elemento a eliminar
-     *
-     * \aliasing{completar}
-     *
-     * \pre \aedpre{*this \igobs *this0 \and def?(key, *this)}
-     * \post \aedpost{*this \igobs borrar(key, *this0)}
-     *
-     * \complexity{\O(\DEL(\P{*pos}) + \LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
-     */
-    void erase(const Key& key) {
-    	//completar
+		}
+		count--;
     }
 
     /**
@@ -1507,11 +1510,10 @@ void erase_fixup(iterator it) {
      *
      * \complexity{\O(\DEL(\P{*this}))}
      */
-    /**
-    Mientras count sea distinto de 0, va eliminando con la función erase todos los elementos del árbol.
-    */
     void clear() {
-        //completar
+        while (count > 0){
+        	erase(begin().n->value().first);
+        }
     }
 
     /**
@@ -1561,18 +1563,15 @@ void erase_fixup(iterator it) {
     /**
      * @brief Devuelve un iterador al primer valor del diccionario
      *
-     * \aliasing{no hay}
+     * \aliasing{completar}
      *
      * @retval res iterador al primer valor
      *
-     * \pre \aedpre{true}
-     * \post \aedpost{res \igobs CrearItMod(inorder(*this))}
+     * \pre \aedpre{completar}
+     * \post \aedpost{completar}
      *
      * \complexity{\O(1)}
      */
-    /**
-    Inicia un iterador en header.izq.
-    */
     iterator begin() {
     	iterator it(header.child[0]);
     	return it;
@@ -1593,49 +1592,43 @@ void erase_fixup(iterator it) {
     /**
      * @brief Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario
      *
-     * \aliasing{no hay}
+     * \aliasing{completar}
      *
      * @retval res iterador a la posicion pasando-al-ultimo
      *
-     * \pre \aedpre{true}
-     * \post \aedpost{res \igobs CrearItMod(inorder(*this), \langle \ranlge)}
+     * \pre \aedpre{completar}
+     * \post \aedpost{completar}
      *
      * \complexity{\O(1)}
-     *
-     * Inicia un iterador en nullptr.
      */
     iterator end() {
     	iterator it;
-        it.n = nullptr;
     	return it;
     }
 
     /** \overload */
     const_iterator end() const {
     	const_iterator it;
-        it.n = nullptr;
     	return it;
     }
 
     /** \overload */
     const_iterator cend() {
-    	const_iterator it();
+    	const_iterator it;
     	return it;
     }
 
     /**
      * @brief Devuelve un iterador al primer valor del diccionario, en un recorrido al revés
      *
-     * \aliasing{no hay}
+     * \aliasing{completar}
      *
      * @retval res iterador a la primer posicion en un recorrido al revés
      *
-     * \pre \aedpre{true}
-     * \post \aedpost{res \igobs CrearItMod(\langle \rangle , postorder(*this))}
+     * \pre \aedpre{completar}
+     * \post \aedpost{completar}
      *
      * \complexity{\O(1)}
-     *
-     * Inicia un reverse_iterator en el hijo derecho de header.
      */
     reverse_iterator rbegin() {
     	reverse_iterator it = reverse_iterator(header.child[1]);
@@ -1644,44 +1637,42 @@ void erase_fixup(iterator it) {
 
     /** \overload */
     const_reverse_iterator rbegin() const {
-    	const_reverse_iterator it = reverse_iterator(header.child[1]);
+    	const_reverse_iterator it = const_reverse_iterator(header.child[1]);
     	return it;
     }
 
     /** \overload */
     const_reverse_iterator crbegin() {
-    	const_reverse_iterator it = reverse_iterator(header.child[1]);
+    	const_reverse_iterator it = const_reverse_iterator(header.child[1]);
     	return it;
 	}
 
     /**
      * @brief Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario, en un recorrido al revés
      *
-     * \aliasing{no hay}
+     * \aliasing{completar}
      *
      * @retval res iterador a la posicion pasando-al-ultimo, en un recorrido al revés
      *
-     * \pre \aedpre{true}
-     * \post \aedpost{res \igobs CrearItMod(postorder(*this), \langle \ranlge)}
+     * \pre \aedpre{completar}
+     * \post \aedpost{completar}
      *
      * \complexity{\O(1)}
-     *
-     * Inicia un reversre_iterator en el hijo izquierdo de header.
      */
     reverse_iterator rend() {
-    	reverse_iterator it = reverse_iterator();
+    	   	reverse_iterator it = reverse_iterator();
     	return it;
     }
 
     /** \overload */
     const_reverse_iterator rend() const {
-    	const_reverse_iterator it = reverse_iterator();
+    	   	const_reverse_iterator it = const_reverse_iterator();
     	return it;
     }
 
     /** \overload */
     const_reverse_iterator crend() {
-    	const_reverse_iterator it = reverse_iterator();
+    	   	const_reverse_iterator it = const_reverse_iterator();
     	return it;
     }
     //@}
@@ -1756,33 +1747,29 @@ void erase_fixup(iterator it) {
          * \post \aedpost{coleccion(\P{res}) \IGOBS \BOTTOM \LAND vacia?(SecuSuby(\P{res}))}
          *
          * \complexity{\O(1)}
-         *
-         * Inicia un iterador apuntando a nullptr.
          */
-        iterator() : n(nullptr) {}
+        iterator() {}
         /**
          * \brief Retorna el valor apuntado por \P{*this}
          *
          * @retval res referencia al valor apuntado por \P{*this}
          *
-         * \aliasing{hay aliasing entre res y Siguiente(*this)}
+         * \aliasing{completar}
          *
-         * \pre \aedpre{Siguiente(this) != nullptr}
-         * \post \aedpost{res \igobs Siguiente(*this)}
+         * \pre \aedpre{completar}
+         * \post \aedpost{completar}
          *
          * \complexity{\O(1)}
-         *
-         * Devuelve el elemento del nodo al que está apuntando el iterador.
          */
         reference operator*() const {
-        	return n->value();
+            	return n->value();
         }
         /**
          * \brief Retorna la dirección del valor apuntado por \P{*this}
          *
          * @retval res puntero al valor apuntado por \P{*this}
          *
-         * \aliasing{hay aliasing entre res y Siguiente(*this)}
+         * \aliasing{completar}
          *
          * \pre \aedpre{haySiguiente(\P{*this})}
          * \post \aedpost{\P{*res} \IGOBS siguiente(\P{*this})}
@@ -1791,9 +1778,6 @@ void erase_fixup(iterator it) {
          *
          * \attention No hay forma de expresar, en el lenguaje de TADs, que un puntero apunta a la dirección de otro objeto.  Es por
          * eso que la postcondición es más débil de lo que debiera.  Eso no ocurre en las otras funciones del TP.
-         *
-         * Devuelve la posición de memoria del valor del nodo al que está apuntando el iterador.
-         *
          */
         pointer operator->() const {
 			return &n->value();
@@ -1803,21 +1787,18 @@ void erase_fixup(iterator it) {
          *
          * @retval res referencia a \P{*this}
          *
-         * \aliasing{no hay}
+         * \aliasing{completar}
          *
-         * \pre \aedpre{HaySiguiente?(*this)}
-         * \post \aedpost{res \igobs Avanzar(*this)}
+         * \pre \aedpre{completar}
+         * \post \aedpost{completar}
          *
          * \complexity{
          * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
          * - Peor caso amortizado: \O(1)
          * }
-         *
-         * Avanza el iterador en una posición y lo devuelve.
-         *
          */
         iterator& operator++() {
-            if(n->child[1] == nullptr){
+        	 if(n->child[1] == nullptr){
                 while (n->parent->child[1] == n)
                     n = n->parent;
             }
@@ -1825,27 +1806,23 @@ void erase_fixup(iterator it) {
                 n = n->child[1];
             return *this;
         }
-        	
         /**
          * \brief Avanza el iterador a la siguiente posición
          *
          * @retval res iterador apuntando a la dirección anterior de \P{*this}
          *
-         * \aliasing{no hay}
+         * \aliasing{completar}
          *
-         * \pre \aedpre{HaySiguiente?(*this)}
-         * \post \aedpost{CONSULTAR}
+         * \pre \aedpre{completar}
+         * \post \aedpost{completar}
          *
          * \complexity{
          * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
          * - Peor caso amortizado: \O(1)
          * }
-         *
-         * CONSULTAR.
-         *
          */
         iterator operator++(int) {
-            if(n->child[1] == nullptr){
+        	 if(n->child[1] == nullptr){
                 while (n->parent->child[1] == n)
                     n = n->parent;
             }
@@ -1858,21 +1835,18 @@ void erase_fixup(iterator it) {
          *
          * @retval res referencia a \P{*this}
          *
-         * \aliasing{no hay}
+         * \aliasing{completar}
          *
-         * \pre \aedpre{HayAnterior?(*this)}
-         * \post \aedpost{res \igobs Retroceder(*this)}
+         * \pre \aedpre{completar}
+         * \post \aedpost{completar}
          *
          * \complexity{
          * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
          * - Peor caso amortizado: \O(1)
          * }
-         *
-         * Retrocede el iterador en una posicion y lo devuelve.
-         *
          */
         iterator& operator--() {
-         if(n->child[0] == nullptr){
+        	if(n->child[0] == nullptr){
             while (n->parent->child[0] == n)
                 n = n->parent;
             }
@@ -1885,27 +1859,24 @@ void erase_fixup(iterator it) {
          *
          * @retval res iterador apuntando a la dirección siguiente de \P{*this}
          *
-         * \aliasing{no hay}
+         * \aliasing{completar}
          *
-         * \pre \aedpre{HayAnterior?(*this)}
+         * \pre \aedpre{completar}
          * \post \aedpost{completar}
          *
          * \complexity{
          * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
          * - Peor caso amortizado: \O(1)
          * }
-         *
-         * CONSULTAR
-         *
          */
         iterator operator--(int) {
-            if(n->child[0] == nullptr){
-               while (n->parent->child[0] == n)
-                   n = n->parent;
-               }
-               if (n->child[0] != nullptr)
-                   n = n->child[0];
-               return *this;
+        	if(n->child[0] == nullptr){
+            while (n->parent->child[0] == n)
+                n = n->parent;
+            }
+            if (n->child[0] != nullptr)
+                n = n->child[0];
+            return *this;
         }
         /**
          * \brief Operador de igualdad
@@ -1919,20 +1890,17 @@ void erase_fixup(iterator it) {
          * - false, cuando alguno de ellos es no nulo, o
          * - true, cuando ambos son nulos.}
          *
-         * \pre \aedpre{true}
-         * \post \aedpost{res \leftrightarrow (*this \igobs other)}
+         * \pre \aedpre{completar}
+         * \post \aedpost{completar}
          *
          * \complexity{\O(1)}
-         *
-         * Devuelve true si el nodo al que apunta this es el mismo que al que apunta other. (Consultar)
-         *
          */
         bool operator==(iterator other) const {
-            return (n == other.n);
+        	 return (n == other.n);
         }
         /** \brief idem !|operator== */
         bool operator!=(iterator other) const {
-                return (n != other.n);
+        	 return (n != other.n);
         }
 
     private:
@@ -2130,7 +2098,7 @@ private:
          *
          * \complexity{\O(1)}
          */
-        Node() : color(Color::Header), parent(nullptr) {
+        Node() : color(Color::Header) {
         	child[0] = child[1] = this;
         }
 
@@ -2204,12 +2172,12 @@ private:
          */
         value_type& value() {
         	assert(not is_header());
-        	return static_cast<InnerNode*>(this)->value();
+        	return static_cast<InnerNode*>(this)->_value;
         }
         /** \overload */
         const value_type& value() const {
         	assert(not is_header());
-        	return static_cast<const InnerNode*>(this)->value();
+        	return static_cast<const InnerNode*>(this)->_value;
         }
 
         /**
@@ -2264,22 +2232,31 @@ private:
      * \remark Como \T{InnerNode} es una estructura privada, no tiene ventajas imporantes implementarla en forma modular.
      */
     struct InnerNode : public Node {
-        InnerNode (value_type value) : Node(), _value(value) {
-            this->color = Color::Red;
-            this->parent = nullptr;
-        }
+    	value_type _value;
 
-        InnerNode (Node* nodo) : _value(){
-            this->color = nodo->color;
-            this->parent = nodo->parent;
-            this->child[0] = nodo->child[0];
-            this->child[1] = nodo->child[1];
-        }
+  //   InnerNode(): Node(), _value() {}
+    	
+ 	// InnerNode (value_type value) : Node() {
+ 		
+ 	// 	_value = value;
+ 	// 	color = Color::Red;
+  //       parent = nullptr;
+  //       };
 
-        /** Valor del nodo */
-        value_type _value;                                              ;
+
+        
+
     };
 
+
+    //AUXS
+    /*
+	Node* sucesorInmediato(Node* y);    
+  	void transplant(Node* u, Node* v);
+  	void erase_fixup(iterator it);
+  	void left_rotate(iterator it);
+	void right_rotate(iterator it);
+	*/
 	////////////////////////////////////////////////////////////////////////////////////////////////////
     /** \name Estructura de representación
      *
@@ -2372,10 +2349,10 @@ private:
  * \attention  Para determinar la igualdad de las claves no se utiliza el functor de comparación (que podrian
  * ser distintos entre los diccionarios), sino si los valores son los mismos con respecto al operator== de \T{K} y T{V}.
  */
-    template<class K, class V, class C>
-    bool operator==(const map<K, V, C>& m1, const map<K, V, C>& m2) {
-        return m1.size() == m2.size() and std::equal(m1.begin(), m1.end(), m2.begin());
-    }
+template<class K, class V, class C>
+bool operator==(const map<K, V, C>& m1, const map<K, V, C>& m2) {
+	return m1.size() == m2.size() and std::equal(m1.begin(), m1.end(), m2.begin());
+}
 
 /**
  * \relates aed2::map
@@ -2383,10 +2360,10 @@ private:
  *
  * \sa aed2::operator==()
  */
-    template<class K, class V, class C>
-    bool operator!=(const map<K, V, C>& m1, const map<K, V, C>& m2) {
-        return not(m1 == m2);
-    }
+template<class K, class V, class C>
+bool operator!=(const map<K, V, C>& m1, const map<K, V, C>& m2) {
+	return not(m1 == m2);
+}
 
 /**
  * \relates aed2::map
@@ -2411,10 +2388,11 @@ private:
  * \attention  Para determinar la comparación de las claves no se utiliza el functor de comparación (que podrian
  * ser distintos entre los diccionarios), sino si los valores son los mismos con respecto al operator< de \T{K} y T{V}.
  */
-    template<class K, class V, class C>
-    bool operator<(const map<K, V, C>& m1, const map<K, V, C>& m2) {
-        //completar.  Vale usar std::lexicographical_compare
-    }
+template<class K, class V, class C>
+bool operator<(const map<K, V, C>& m1, const map<K, V, C>& m2) {
+	return (std::lexicographical_compare(m1.begin(), m1.end(), m2.begin(), m2.end()));
+	//completar.  Vale usar std::lexicographical_compare
+}
 
 /**
  * \relates aed2::map
@@ -2422,10 +2400,10 @@ private:
  *
  * \sa aed2::operator<()
  */
-    template<class K, class V, class C>
-    bool operator>(const map<K, V, C>& m1, const map<K, V, C>& m2) {
-        return m2 < m1;
-    }
+template<class K, class V, class C>
+bool operator>(const map<K, V, C>& m1, const map<K, V, C>& m2) {
+	return m2 < m1;
+}
 
 /**
  * \relates aed2::map
@@ -2433,10 +2411,10 @@ private:
  *
  * \sa aed2::operator<()
  */
-    template<class K, class V, class C>
-    bool operator<=(const map<K, V, C>& m1, const map<K, V, C>& m2) {
-        return not(m2 < m1);
-    }
+template<class K, class V, class C>
+bool operator<=(const map<K, V, C>& m1, const map<K, V, C>& m2) {
+	return not(m2 < m1);
+}
 
 /**
  * \relates aed2::map
@@ -2444,10 +2422,10 @@ private:
  *
  * \sa aed2::operator<()
  */
-    template<class K, class V, class C>
-    bool operator>=(const map<K, V, C>& m1, const map<K, V, C>& m2) {
-        return !(m1 < m2);
-    }
+template<class K, class V, class C>
+bool operator>=(const map<K, V, C>& m1, const map<K, V, C>& m2) {
+	return !(m1 < m2);
+}
 //@}
 
 ////////////////////////////////////////
@@ -2472,6 +2450,6 @@ template<class K, class V, class C>
 void swap(map<K, V, C>& m1, map<K, V, C>& m2) {
 	m1.swap(m2);
 }
-};
+}
 
 #endif /* MAP_H_ */
