@@ -983,7 +983,7 @@ public:
      *
      */
     iterator find(const Key& key) {
-    	InnerNode* indice = header.parent;
+    	Node* indice = header.parent;
     	while(indice->value().first != key){
     		if (indice->value().first < key)
     			indice = indice->child[0];
@@ -997,7 +997,7 @@ public:
 
     /** \overload */
     const_iterator find(const Key& key) const {
-    			InnerNode* indice = header.parent;
+    			Node* indice = header.parent;
     	while(indice->value().first != key){
     		if (indice->value().first < key)
     			indice = indice->child[0];
@@ -1028,7 +1028,7 @@ public:
      *
      */
     const_iterator lower_bound(const Key& key) const {
-    	InnerNode* indice = header.parent;
+    	Node* indice = header.parent;
         while (indice != nullptr && (indice->value().first < key || (indice->value().first != key && indice->child[0] != nullptr))) {
             if (indice->value().first < key)
                 indice = indice->child[1];
@@ -1042,7 +1042,7 @@ public:
 
     /** \overload */
     iterator lower_bound(const Key& key)  {
-  	 	InnerNode* indice = header.parent;
+  	 	Node* indice = header.parent;
         while (indice != nullptr && (indice->value().first < key || (indice->value().first != key && indice->child[0] != nullptr))) {
             if (indice->value().first < key)
                 indice = indice->child[1];
@@ -1284,7 +1284,7 @@ void right_rotate(iterator it){
     	// Hacer insert Node
         iterator it2;
         if (hint.n->value().first == value.first){
-            it2.n = hint.n;
+            it2.n = const_cast<Node*>(hint.n);
             it2.n->value().second = value.second;
             } else if (hint.n->value().first < value.first || (hint--.n == nullptr
             || hint.n->value().first >= value.first)) {
@@ -1329,11 +1329,11 @@ void right_rotate(iterator it){
      *
      */
     iterator erase(const_iterator pos) {
-    	Node* z = pos.n;
-    	Node* y = pos.n;
+    	Node* z = const_cast<Node*>(pos.n);
+    	Node* y = const_cast<Node*>(pos.n);
     	Node* x;
     	Color yColorsito = y->color;
-    	iterator it = iterator(pos--.n);
+    	iterator it = iterator(const_cast<Node*>(pos--.n));
     	if (z->child[0] == nullptr){
    			x = z->child[1];
    			transplant(z, z->child[1]);
