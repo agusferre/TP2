@@ -95,533 +95,221 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00589"></a>00589 <span class="comment">//#include &lt;iomanip&gt;</span>
 <a name="l00590"></a>00590 <span class="preprocessor">#endif</span>
 <a name="l00591"></a>00591 <span class="preprocessor"></span>
-<a name="l00599"></a><a class="code" href="namespaceaed2.html">00599</a> <span class="keyword">namespace </span>aed2{
-<a name="l00600"></a>00600 
-<a name="l00669"></a>00669 <span class="keyword">template</span>&lt;
-<a name="l00670"></a>00670   <span class="keyword">class </span>Key,
-<a name="l00671"></a>00671   <span class="keyword">class </span>Meaning,
-<a name="l00672"></a>00672   <span class="keyword">class </span>Compare = std::less&lt;Key&gt;
-<a name="l00673"></a>00673 &gt;
-<a name="l00674"></a><a class="code" href="classaed2_1_1map.html">00674</a> <span class="keyword">class </span><a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">map</a> {
-<a name="l00675"></a>00675         <span class="comment">//forward declarations (innecesario, pero ayuda al analizador semantico de Eclipse)</span>
-<a name="l00676"></a>00676         <span class="keyword">class </span>Node;
-<a name="l00677"></a>00677         <span class="keyword">class </span>InnerNode;
-<a name="l00678"></a>00678 <span class="keyword">public</span>:
-<a name="l00679"></a>00679     <span class="comment">//forward declarations</span>
-<a name="l00680"></a>00680     <span class="keyword">class </span><a class="code" href="classaed2_1_1map_1_1iterator.html" title="Parte del módulo que implementa los iteradores que permiten la modificación de los significados...">iterator</a>;
-<a name="l00681"></a>00681     <span class="keyword">class </span><a class="code" href="classaed2_1_1map_1_1const__iterator.html" title="Parte del módulo que implementa los iteradores que no permiten la modificación de los significados...">const_iterator</a>;
-<a name="l00682"></a>00682 
-<a name="l00686"></a>00686     <span class="keyword">using</span> key_type = Key;
-<a name="l00690"></a>00690     <span class="keyword">using</span> mapped_type = Meaning;
-<a name="l00694"></a>00694     <span class="keyword">using</span> value_type = std::pair&lt;const Key, Meaning&gt;;
-<a name="l00698"></a>00698     <span class="keyword">using</span> key_compare = Compare;
-<a name="l00702"></a>00702     <span class="keyword">using</span> reference = value_type&amp;;
-<a name="l00706"></a>00706     <span class="keyword">using</span> const_reference = <span class="keyword">const</span> value_type&amp;;
-<a name="l00710"></a>00710     <span class="keyword">using</span> pointer = value_type*;
-<a name="l00714"></a>00714     <span class="keyword">using</span> const_pointer = <span class="keyword">const</span> value_type*;
-<a name="l00718"></a>00718     <span class="keyword">using</span> size_type = std::size_t;
-<a name="l00722"></a>00722     <span class="keyword">using</span> difference_type = std::ptrdiff_t;
-<a name="l00723"></a>00723 
-<a name="l00734"></a>00734     <span class="keyword">using</span> reverse_iterator = std::reverse_iterator&lt;iterator&gt;;
-<a name="l00745"></a>00745     <span class="keyword">using</span> const_reverse_iterator = std::reverse_iterator&lt;const_iterator&gt;;
-<a name="l00746"></a>00746 
-<a name="l00748"></a>00748 
+<a name="l00592"></a>00592 
+<a name="l00600"></a><a class="code" href="namespaceaed2.html">00600</a> <span class="keyword">namespace </span>aed2{
+<a name="l00601"></a>00601 
+<a name="l00670"></a>00670 <span class="keyword">template</span>&lt;
+<a name="l00671"></a>00671   <span class="keyword">class </span>Key,
+<a name="l00672"></a>00672   <span class="keyword">class </span>Meaning,
+<a name="l00673"></a>00673   <span class="keyword">class </span>Compare = std::less&lt;Key&gt;
+<a name="l00674"></a>00674 &gt;
+<a name="l00675"></a><a class="code" href="classaed2_1_1map.html">00675</a> <span class="keyword">class </span><a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">map</a> {
+<a name="l00676"></a>00676         <span class="comment">//forward declarations (innecesario, pero ayuda al analizador semantico de Eclipse)</span>
+<a name="l00677"></a>00677         <span class="keyword">class </span>Node;
+<a name="l00678"></a>00678         <span class="keyword">class </span>InnerNode;
+<a name="l00679"></a>00679 <span class="keyword">public</span>:
+<a name="l00680"></a>00680     <span class="comment">//forward declarations</span>
+<a name="l00681"></a>00681     <span class="keyword">class </span><a class="code" href="classaed2_1_1map_1_1iterator.html" title="Parte del módulo que implementa los iteradores que permiten la modificación de los significados...">iterator</a>;
+<a name="l00682"></a>00682     <span class="keyword">class </span><a class="code" href="classaed2_1_1map_1_1const__iterator.html" title="Parte del módulo que implementa los iteradores que no permiten la modificación de los significados...">const_iterator</a>;
+<a name="l00683"></a>00683 
+<a name="l00687"></a>00687     <span class="keyword">using</span> key_type = Key;
+<a name="l00691"></a>00691     <span class="keyword">using</span> mapped_type = Meaning;
+<a name="l00695"></a>00695     <span class="keyword">using</span> value_type = std::pair&lt;const Key, Meaning&gt;;
+<a name="l00699"></a>00699     <span class="keyword">using</span> key_compare = Compare;
+<a name="l00703"></a>00703     <span class="keyword">using</span> reference = value_type&amp;;
+<a name="l00707"></a>00707     <span class="keyword">using</span> const_reference = <span class="keyword">const</span> value_type&amp;;
+<a name="l00711"></a>00711     <span class="keyword">using</span> pointer = value_type*;
+<a name="l00715"></a>00715     <span class="keyword">using</span> const_pointer = <span class="keyword">const</span> value_type*;
+<a name="l00719"></a>00719     <span class="keyword">using</span> size_type = std::size_t;
+<a name="l00723"></a>00723     <span class="keyword">using</span> difference_type = std::ptrdiff_t;
+<a name="l00724"></a>00724 
+<a name="l00735"></a>00735     <span class="keyword">using</span> reverse_iterator = std::reverse_iterator&lt;iterator&gt;;
+<a name="l00746"></a>00746     <span class="keyword">using</span> const_reverse_iterator = std::reverse_iterator&lt;const_iterator&gt;;
+<a name="l00747"></a>00747 
 <a name="l00749"></a>00749 
 <a name="l00750"></a>00750 
 <a name="l00751"></a>00751 
-<a name="l00769"></a><a class="code" href="classaed2_1_1map.html#a64da1d965b13eb28cdb3837bc17a18cf">00769</a>     <span class="keyword">explicit</span> <a class="code" href="classaed2_1_1map.html#a64da1d965b13eb28cdb3837bc17a18cf" title="Crea un diccionario vacio.">map</a>(Compare c = Compare()) {
-<a name="l00770"></a>00770         <span class="comment">//completar</span>
-<a name="l00771"></a>00771     }
-<a name="l00772"></a>00772 
-<a name="l00795"></a><a class="code" href="classaed2_1_1map.html#a7a77950a3d8e637bfa7cf5dcd904f257">00795</a>     <a class="code" href="classaed2_1_1map.html#a7a77950a3d8e637bfa7cf5dcd904f257" title="Constructor por copia.">map</a>(<span class="keyword">const</span> <a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">map</a>&amp; other) {
-<a name="l00796"></a>00796 
-<a name="l00797"></a>00797         <span class="comment">//completar</span>
-<a name="l00798"></a>00798     }
-<a name="l00799"></a>00799 
-<a name="l00843"></a>00843     <span class="keyword">template</span>&lt;<span class="keyword">class</span> iterator&gt;
-<a name="l00844"></a><a class="code" href="classaed2_1_1map.html#a5d336f3248572beb56be383dcc95cfeb">00844</a>     <a class="code" href="classaed2_1_1map.html#a5d336f3248572beb56be383dcc95cfeb" title="Crea un diccionario con los elementos del rango [{first}, {last})">map</a>(<a class="code" href="classaed2_1_1map_1_1iterator.html" title="Parte del módulo que implementa los iteradores que permiten la modificación de los significados...">iterator</a> first, <a class="code" href="classaed2_1_1map_1_1iterator.html" title="Parte del módulo que implementa los iteradores que permiten la modificación de los significados...">iterator</a> last, Compare c = Compare()) : lt(c) {
-<a name="l00845"></a>00845         <span class="keyword">auto</span> it = <a class="code" href="classaed2_1_1map.html#a76023e6a56cb625513e1b5ea028bf983" title="Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario.">end</a>();
-<a name="l00846"></a>00846         <span class="keywordflow">while</span>(first != last) {
-<a name="l00847"></a>00847                 <a class="code" href="classaed2_1_1map.html#a6941cde9a79c27f054b5c97a587a1854" title="Inserta {value} en el diccionario.">insert</a>(*first, it);
-<a name="l00848"></a>00848                 ++first;
-<a name="l00849"></a>00849         }
-<a name="l00850"></a>00850     }
-<a name="l00851"></a>00851 
-<a name="l00873"></a><a class="code" href="classaed2_1_1map.html#ac606d334809066929522964d45e76317">00873</a>     <a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">map</a>&amp; <a class="code" href="classaed2_1_1map.html#ac606d334809066929522964d45e76317" title="Operador de asignación.">operator=</a>(<a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">map</a> other) {
-<a name="l00874"></a>00874         <span class="comment">//completar</span>
-<a name="l00875"></a>00875     }
-<a name="l00876"></a>00876 
-<a name="l00904"></a><a class="code" href="classaed2_1_1map.html#ab22c9a85c2dadbc286cd30e97069a8e6">00904</a>     <a class="code" href="classaed2_1_1map.html#ab22c9a85c2dadbc286cd30e97069a8e6" title="Destructor.">~map</a>() {
-<a name="l00905"></a>00905         <span class="comment">//completar</span>
-<a name="l00906"></a>00906     }
-<a name="l00908"></a>00908 
-<a name="l00910"></a>00910 
-<a name="l00911"></a>00911 
-<a name="l00912"></a>00912 
+<a name="l00752"></a>00752 
+<a name="l00770"></a><a class="code" href="classaed2_1_1map.html#a64da1d965b13eb28cdb3837bc17a18cf">00770</a>     <span class="keyword">explicit</span> <a class="code" href="classaed2_1_1map.html#a64da1d965b13eb28cdb3837bc17a18cf" title="Crea un diccionario vacio.">map</a>(Compare c = Compare()) {
+<a name="l00771"></a>00771         header = Node();
+<a name="l00772"></a>00772         header.parent = <span class="keyword">nullptr</span>;
+<a name="l00773"></a>00773         header.child[0] = <span class="keyword">nullptr</span>;
+<a name="l00774"></a>00774         header.child[1] = <span class="keyword">nullptr</span>;
+<a name="l00775"></a>00775      }
+<a name="l00776"></a>00776 
+<a name="l00799"></a><a class="code" href="classaed2_1_1map.html#a7a77950a3d8e637bfa7cf5dcd904f257">00799</a>     <a class="code" href="classaed2_1_1map.html#a7a77950a3d8e637bfa7cf5dcd904f257" title="Constructor por copia.">map</a>(<span class="keyword">const</span> <a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">map</a>&amp; other) {
+<a name="l00800"></a>00800 
+<a name="l00801"></a>00801 
+<a name="l00802"></a>00802     }
+<a name="l00803"></a>00803 
+<a name="l00847"></a>00847     <span class="keyword">template</span>&lt;<span class="keyword">class</span> iterator&gt;
+<a name="l00848"></a><a class="code" href="classaed2_1_1map.html#a5d336f3248572beb56be383dcc95cfeb">00848</a>     <a class="code" href="classaed2_1_1map.html#a5d336f3248572beb56be383dcc95cfeb" title="Crea un diccionario con los elementos del rango [{first}, {last})">map</a>(<a class="code" href="classaed2_1_1iterator.html" title="Parte del módulo que implementa los iteradores que permiten la modificación de los significados...">iterator</a> first, <a class="code" href="classaed2_1_1iterator.html" title="Parte del módulo que implementa los iteradores que permiten la modificación de los significados...">iterator</a> last, Compare c = Compare()) : lt(c) {
+<a name="l00849"></a>00849         <span class="keyword">auto</span> it = <a class="code" href="classaed2_1_1map.html#a76023e6a56cb625513e1b5ea028bf983" title="Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario.">end</a>();
+<a name="l00850"></a>00850         <span class="keywordflow">while</span>(first != last) {
+<a name="l00851"></a>00851                 <a class="code" href="classaed2_1_1map.html#a6941cde9a79c27f054b5c97a587a1854" title="Inserta {value} en el diccionario.">insert</a>(*first, it);
+<a name="l00852"></a>00852                 ++first;
+<a name="l00853"></a>00853         }
+<a name="l00854"></a>00854     }
+<a name="l00855"></a>00855 
+<a name="l00877"></a><a class="code" href="classaed2_1_1map.html#ac606d334809066929522964d45e76317">00877</a>     <a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">map</a>&amp; <a class="code" href="classaed2_1_1map.html#ac606d334809066929522964d45e76317" title="Operador de asignación.">operator=</a>(<a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">map</a> other) {
+<a name="l00878"></a>00878 
+<a name="l00879"></a>00879         <span class="comment">//completar</span>
+<a name="l00880"></a>00880     }
+<a name="l00881"></a>00881 
+<a name="l00909"></a><a class="code" href="classaed2_1_1map.html#ab22c9a85c2dadbc286cd30e97069a8e6">00909</a>     <a class="code" href="classaed2_1_1map.html#ab22c9a85c2dadbc286cd30e97069a8e6" title="Destructor.">~map</a>() {
+<a name="l00910"></a>00910         <span class="comment">//completar</span>
+<a name="l00911"></a>00911     }
 <a name="l00913"></a>00913 
-<a name="l00938"></a><a class="code" href="classaed2_1_1map.html#a0b0a11f906da2926f9eb342fcee79fd7">00938</a>     <span class="keyword">const</span> Meaning&amp; <a class="code" href="classaed2_1_1map.html#a0b0a11f906da2926f9eb342fcee79fd7" title="Devuelve el significado asociado a {key}.">at</a>(<span class="keyword">const</span> Key&amp; key)<span class="keyword"> const </span>{
-<a name="l00939"></a>00939     Node* indice = header-&gt;parent;
-<a name="l00940"></a>00940     <span class="comment">//pepito</span>
-<a name="l00941"></a>00941         <span class="keywordflow">while</span>(indice-&gt;_value-&gt;key() != key){
-<a name="l00942"></a>00942                 <span class="keywordflow">if</span> (indice-&gt;_value-&gt;key() &lt; key)
-<a name="l00943"></a>00943                         indice = indice-&gt;child[0];
-<a name="l00944"></a>00944                 <span class="keywordflow">else</span>
-<a name="l00945"></a>00945                         indice = indice-&gt;child[1];
-<a name="l00946"></a>00946         }
-<a name="l00947"></a>00947         <span class="keywordflow">return</span> indice-&gt;_value.second;
-<a name="l00948"></a>00948 
-<a name="l00949"></a>00949     }
-<a name="l00950"></a>00950 
-<a name="l00952"></a><a class="code" href="classaed2_1_1map.html#a6b21c09f59a83b6ee45432dcfa61f4a1">00952</a>     Meaning&amp; <a class="code" href="classaed2_1_1map.html#a6b21c09f59a83b6ee45432dcfa61f4a1">at</a>(<span class="keyword">const</span> Key&amp; key) {
-<a name="l00953"></a>00953          Node* indice = header-&gt;parent;
-<a name="l00954"></a>00954     <span class="comment">//pepito</span>
-<a name="l00955"></a>00955         <span class="keywordflow">while</span>(indice-&gt;_value-&gt;key() != key){
-<a name="l00956"></a>00956                 <span class="keywordflow">if</span> (indice-&gt;_value-&gt;key() &lt; key)
-<a name="l00957"></a>00957                         indice = indice-&gt;child[0];
-<a name="l00958"></a>00958                 <span class="keywordflow">else</span>
-<a name="l00959"></a>00959                         indice = indice-&gt;child[1];
-<a name="l00960"></a>00960         }
-<a name="l00961"></a>00961         <span class="keywordflow">return</span> indice-&gt;_value.second;
-<a name="l00962"></a>00962    }
-<a name="l00963"></a>00963 
-<a name="l01004"></a><a class="code" href="classaed2_1_1map.html#a96f23896164ab47bee48c26b803f9801">01004</a>     Meaning&amp; <a class="code" href="classaed2_1_1map.html#a96f23896164ab47bee48c26b803f9801" title="Devuelve el significado asociado a {key}, asegurando su existencia.">operator[]</a>(<span class="keyword">const</span> Key&amp; key) {
-<a name="l01014"></a>01014     }
-<a name="l01015"></a>01015 
-<a name="l01045"></a><a class="code" href="classaed2_1_1map.html#afd0fc1a8234888e61e0e615de7e245b8">01045</a>     <a class="code" href="classaed2_1_1map_1_1iterator.html" title="Parte del módulo que implementa los iteradores que permiten la modificación de los significados...">iterator</a> <a class="code" href="classaed2_1_1map.html#afd0fc1a8234888e61e0e615de7e245b8" title="Devuelve un iterador a la posicion del valor con clave {key}.">find</a>(<span class="keyword">const</span> Key&amp; key) {
-<a name="l01046"></a>01046         <span class="comment">//completar</span>
-<a name="l01047"></a>01047     }
-<a name="l01048"></a>01048 
-<a name="l01050"></a><a class="code" href="classaed2_1_1map.html#ab8f3e41b1a0d7b74645836f8d2e1acfc">01050</a>     <a class="code" href="classaed2_1_1map_1_1const__iterator.html" title="Parte del módulo que implementa los iteradores que no permiten la modificación de los significados...">const_iterator</a> <a class="code" href="classaed2_1_1map.html#ab8f3e41b1a0d7b74645836f8d2e1acfc">find</a>(<span class="keyword">const</span> Key&amp; key)<span class="keyword"> const </span>{
-<a name="l01051"></a>01051         <span class="comment">//completar</span>
-<a name="l01052"></a>01052     }
-<a name="l01053"></a>01053 
-<a name="l01077"></a><a class="code" href="classaed2_1_1map.html#a3399d36fdd5a880b494f3a5795d3f18f">01077</a>     <a class="code" href="classaed2_1_1map_1_1const__iterator.html" title="Parte del módulo que implementa los iteradores que no permiten la modificación de los significados...">const_iterator</a> <a class="code" href="classaed2_1_1map.html#a3399d36fdd5a880b494f3a5795d3f18f" title="Devuelve un iterador al primer valor con clave mayor o igual a {key}.">lower_bound</a>(<span class="keyword">const</span> Key&amp; key)<span class="keyword"> const </span>{
-<a name="l01078"></a>01078         <span class="comment">//completar</span>
-<a name="l01079"></a>01079     }
-<a name="l01080"></a>01080 
-<a name="l01082"></a><a class="code" href="classaed2_1_1map.html#a07b3dd65557c59ee085e5f211269c6b3">01082</a>     <a class="code" href="classaed2_1_1map_1_1iterator.html" title="Parte del módulo que implementa los iteradores que permiten la modificación de los significados...">iterator</a> <a class="code" href="classaed2_1_1map.html#a07b3dd65557c59ee085e5f211269c6b3">lower_bound</a>(<span class="keyword">const</span> Key&amp; key)  {
-<a name="l01083"></a>01083         <span class="comment">//completar</span>
-<a name="l01084"></a>01084     }
-<a name="l01086"></a>01086 
-<a name="l01088"></a>01088 
-<a name="l01089"></a>01089 
-<a name="l01090"></a>01090 
-<a name="l01091"></a>01091 
-<a name="l01104"></a><a class="code" href="classaed2_1_1map.html#af5320ca0a7df4d16015441d5d055a7ee">01104</a>     <span class="keywordtype">bool</span> <a class="code" href="classaed2_1_1map.html#af5320ca0a7df4d16015441d5d055a7ee" title="Indica si el diccionario esta vacío.">empty</a>()<span class="keyword"> const </span>{
-<a name="l01105"></a>01105         
-<a name="l01106"></a>01106     }
-<a name="l01107"></a>01107 
-<a name="l01121"></a><a class="code" href="classaed2_1_1map.html#a89f2613f926ac13293eafe65889d6021">01121</a>      <span class="keywordtype">size_t</span> <a class="code" href="classaed2_1_1map.html#a89f2613f926ac13293eafe65889d6021" title="Devuelve la cantidad de valores en el diccionario.">size</a>()<span class="keyword"> const </span>{
-<a name="l01122"></a>01122         <span class="comment">//completar</span>
-<a name="l01123"></a>01123     }
-<a name="l01125"></a>01125 
-<a name="l01127"></a>01127 
-<a name="l01128"></a>01128 
-<a name="l01129"></a>01129 
-<a name="l01130"></a>01130 
-<a name="l01161"></a><a class="code" href="classaed2_1_1map.html#a6941cde9a79c27f054b5c97a587a1854">01161</a>     <a class="code" href="classaed2_1_1map_1_1iterator.html" title="Parte del módulo que implementa los iteradores que permiten la modificación de los significados...">iterator</a> <a class="code" href="classaed2_1_1map.html#a6941cde9a79c27f054b5c97a587a1854" title="Inserta {value} en el diccionario.">insert</a>(<a class="code" href="classaed2_1_1map_1_1const__iterator.html" title="Parte del módulo que implementa los iteradores que no permiten la modificación de los significados...">const_iterator</a> hint, <span class="keyword">const</span> value_type&amp; value) {
-<a name="l01162"></a>01162         
-<a name="l01163"></a>01163 
-<a name="l01164"></a>01164 <span class="comment">/*</span>
-<a name="l01165"></a>01165 <span class="comment">        RB-I NSERT .T;  ́/</span>
-<a name="l01166"></a>01166 <span class="comment">        1 y D T:nil</span>
-<a name="l01167"></a>01167 <span class="comment">        2 x D T:root</span>
-<a name="l01168"></a>01168 <span class="comment">        3 while x ¤ T:nil</span>
-<a name="l01169"></a>01169 <span class="comment">        4</span>
-<a name="l01170"></a>01170 <span class="comment">        y Dx</span>
-<a name="l01171"></a>01171 <span class="comment">        5</span>
-<a name="l01172"></a>01172 <span class="comment">        if  ́:key &lt; x:key</span>
-<a name="l01173"></a>01173 <span class="comment">        6</span>
-<a name="l01174"></a>01174 <span class="comment">x D x:left</span>
-<a name="l01175"></a>01175 <span class="comment">7</span>
-<a name="l01176"></a>01176 <span class="comment">else x D x:right</span>
-<a name="l01177"></a>01177 <span class="comment">8  ́:p D y</span>
-<a name="l01178"></a>01178 <span class="comment">9 if y == T:nil</span>
-<a name="l01179"></a>01179 <span class="comment">10</span>
-<a name="l01180"></a>01180 <span class="comment">T:root D  ́</span>
-<a name="l01181"></a>01181 <span class="comment">11 elseif  ́:key &lt; y:key</span>
-<a name="l01182"></a>01182 <span class="comment">12</span>
-<a name="l01183"></a>01183 <span class="comment">y:left D  ́</span>
-<a name="l01184"></a>01184 <span class="comment">13 else y:right D  ́</span>
-<a name="l01185"></a>01185 <span class="comment">14  ́:left D T:nil</span>
-<a name="l01186"></a>01186 <span class="comment">15  ́:right D T:nil</span>
-<a name="l01187"></a>01187 <span class="comment">16  ́:color D RED</span>
-<a name="l01188"></a>01188 <span class="comment">17 RB-I NSERT-F IXUP .T;  ́/</span>
-<a name="l01189"></a>01189 <span class="comment"></span>
-<a name="l01190"></a>01190 <span class="comment"></span>
-<a name="l01191"></a>01191 <span class="comment"></span>
-<a name="l01192"></a>01192 <span class="comment">RB-I NSERT-F IXUP .T;  ́/</span>
-<a name="l01193"></a>01193 <span class="comment">1 while  ́:p:color == RED</span>
-<a name="l01194"></a>01194 <span class="comment">2</span>
-<a name="l01195"></a>01195 <span class="comment">if  ́:p ==  ́:p:p:left</span>
-<a name="l01196"></a>01196 <span class="comment">3</span>
-<a name="l01197"></a>01197 <span class="comment">y D  ́:p:p:right</span>
-<a name="l01198"></a>01198 <span class="comment">4</span>
-<a name="l01199"></a>01199 <span class="comment">if y:color == RED</span>
-<a name="l01200"></a>01200 <span class="comment">5</span>
-<a name="l01201"></a>01201 <span class="comment"> ́:p:color D BLACK</span>
-<a name="l01202"></a>01202 <span class="comment">6</span>
-<a name="l01203"></a>01203 <span class="comment">y:color D BLACK</span>
-<a name="l01204"></a>01204 <span class="comment">7</span>
-<a name="l01205"></a>01205 <span class="comment"> ́:p:p:color D RED</span>
-<a name="l01206"></a>01206 <span class="comment">8</span>
-<a name="l01207"></a>01207 <span class="comment"> ́ D  ́:p:p</span>
-<a name="l01208"></a>01208 <span class="comment">9</span>
-<a name="l01209"></a>01209 <span class="comment">else if  ́ ==  ́:p:right</span>
-<a name="l01210"></a>01210 <span class="comment">10</span>
-<a name="l01211"></a>01211 <span class="comment"> ́ D  ́:p</span>
-<a name="l01212"></a>01212 <span class="comment">11</span>
-<a name="l01213"></a>01213 <span class="comment">L EFT-ROTATE .T;  ́/</span>
-<a name="l01214"></a>01214 <span class="comment">12</span>
-<a name="l01215"></a>01215 <span class="comment"> ́:p:color D BLACK</span>
-<a name="l01216"></a>01216 <span class="comment">13</span>
-<a name="l01217"></a>01217 <span class="comment"> ́:p:p:color D RED</span>
-<a name="l01218"></a>01218 <span class="comment">14</span>
-<a name="l01219"></a>01219 <span class="comment">R IGHT-ROTATE .T;  ́:p:p/</span>
-<a name="l01220"></a>01220 <span class="comment">15</span>
-<a name="l01221"></a>01221 <span class="comment">else (same as then clause</span>
-<a name="l01222"></a>01222 <span class="comment">with “right” and “left” exchanged)</span>
-<a name="l01223"></a>01223 <span class="comment">16 T:root:color D BLACK</span>
-<a name="l01224"></a>01224 <span class="comment"></span>
-<a name="l01225"></a>01225 <span class="comment"></span>
-<a name="l01226"></a>01226 <span class="comment">L EFT-ROTATE .T; x/</span>
-<a name="l01227"></a>01227 <span class="comment">1 y D x:right</span>
-<a name="l01228"></a>01228 <span class="comment">2 x:right D y:left</span>
-<a name="l01229"></a>01229 <span class="comment">3 if y:left ¤ T:nil</span>
-<a name="l01230"></a>01230 <span class="comment">4</span>
-<a name="l01231"></a>01231 <span class="comment">y:left:p D x</span>
-<a name="l01232"></a>01232 <span class="comment">5 y:p D x:p</span>
-<a name="l01233"></a>01233 <span class="comment">6 if x:p == T:nil</span>
-<a name="l01234"></a>01234 <span class="comment">7</span>
-<a name="l01235"></a>01235 <span class="comment">T:root D y</span>
-<a name="l01236"></a>01236 <span class="comment">8 elseif x == x:p:left</span>
-<a name="l01237"></a>01237 <span class="comment">9</span>
-<a name="l01238"></a>01238 <span class="comment">x:p:left D y</span>
-<a name="l01239"></a>01239 <span class="comment">10 else x:p:right D y</span>
-<a name="l01240"></a>01240 <span class="comment">11 y:left D x</span>
-<a name="l01241"></a>01241 <span class="comment">12 x:p D y</span>
-<a name="l01242"></a>01242 <span class="comment"></span>
-<a name="l01243"></a>01243 <span class="comment"></span>
-<a name="l01244"></a>01244 <span class="comment"></span>
-<a name="l01245"></a>01245 <span class="comment">*/</span>
-<a name="l01246"></a>01246     }
-<a name="l01247"></a>01247 
-<a name="l01249"></a><a class="code" href="classaed2_1_1map.html#a60aacba06b1579630b3c8e996cf248c8">01249</a>     <a class="code" href="classaed2_1_1map_1_1iterator.html" title="Parte del módulo que implementa los iteradores que permiten la modificación de los significados...">iterator</a> <a class="code" href="classaed2_1_1map.html#a60aacba06b1579630b3c8e996cf248c8">insert</a>(<span class="keyword">const</span> value_type&amp; value) {
-<a name="l01250"></a>01250         <span class="comment">//completar</span>
-<a name="l01251"></a>01251     }
-<a name="l01252"></a>01252 
-<a name="l01282"></a><a class="code" href="classaed2_1_1map.html#a2ef6723c183916276b0afc4a4c721475">01282</a>     <a class="code" href="classaed2_1_1map_1_1iterator.html" title="Parte del módulo que implementa los iteradores que permiten la modificación de los significados...">iterator</a> <a class="code" href="classaed2_1_1map.html#a2ef6723c183916276b0afc4a4c721475">insert_or_assign</a>(<a class="code" href="classaed2_1_1map_1_1const__iterator.html" title="Parte del módulo que implementa los iteradores que no permiten la modificación de los significados...">const_iterator</a> hint, <span class="keyword">const</span> value_type&amp; value) {
-<a name="l01283"></a>01283         <span class="comment">//completar</span>
-<a name="l01284"></a>01284     }
-<a name="l01285"></a>01285 
-<a name="l01287"></a><a class="code" href="classaed2_1_1map.html#a9128a806713bcc999ebd8a97ab77e765">01287</a>     <a class="code" href="classaed2_1_1map_1_1iterator.html" title="Parte del módulo que implementa los iteradores que permiten la modificación de los significados...">iterator</a> <a class="code" href="classaed2_1_1map.html#a9128a806713bcc999ebd8a97ab77e765">insert_or_assign</a>(<span class="keyword">const</span> value_type&amp; value) {
-<a name="l01288"></a>01288         <span class="comment">//completar</span>
-<a name="l01289"></a>01289     }
-<a name="l01290"></a>01290 
-<a name="l01308"></a><a class="code" href="classaed2_1_1map.html#ad8e796bf9c9c558e5ce6b61e116253fe">01308</a>     <a class="code" href="classaed2_1_1map_1_1iterator.html" title="Parte del módulo que implementa los iteradores que permiten la modificación de los significados...">iterator</a> <a class="code" href="classaed2_1_1map.html#ad8e796bf9c9c558e5ce6b61e116253fe" title="Elimina el valor apuntado por {pos}.">erase</a>(<a class="code" href="classaed2_1_1map_1_1const__iterator.html" title="Parte del módulo que implementa los iteradores que no permiten la modificación de los significados...">const_iterator</a> pos) {
-<a name="l01309"></a>01309         <span class="comment">//completar</span>
-<a name="l01310"></a>01310     }
-<a name="l01311"></a>01311 
-<a name="l01324"></a><a class="code" href="classaed2_1_1map.html#a2ffadb42cd5f0bc7b3752ff159b75334">01324</a>     <span class="keywordtype">void</span> <a class="code" href="classaed2_1_1map.html#a2ffadb42cd5f0bc7b3752ff159b75334" title="Elimina el valor cuya clave es {key}.">erase</a>(<span class="keyword">const</span> Key&amp; key) {
-<a name="l01325"></a>01325         <span class="comment">//completar</span>
-<a name="l01326"></a>01326     }
-<a name="l01327"></a>01327 
-<a name="l01342"></a><a class="code" href="classaed2_1_1map.html#a2bfa5165825979bf2431db55bc6bc9ca">01342</a>     <span class="keywordtype">void</span> <a class="code" href="classaed2_1_1map.html#a2bfa5165825979bf2431db55bc6bc9ca" title="Vacia el diccionario.">clear</a>() {
-<a name="l01343"></a>01343         <span class="comment">//completar</span>
-<a name="l01344"></a>01344     }
-<a name="l01345"></a>01345 
-<a name="l01369"></a><a class="code" href="classaed2_1_1map.html#a43ddb71cc91e5c6021a7a1f243d6cc4a">01369</a>     <span class="keywordtype">void</span> <a class="code" href="classaed2_1_1map.html#a43ddb71cc91e5c6021a7a1f243d6cc4a" title="Intercambia el contenido de {*this} y {other}.">swap</a>(<a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">map</a>&amp; other) {
-<a name="l01370"></a>01370         <span class="keyword">using</span> <a class="code" href="classaed2_1_1map.html#a43ddb71cc91e5c6021a7a1f243d6cc4a" title="Intercambia el contenido de {*this} y {other}.">std::swap</a>;
-<a name="l01371"></a>01371         <a class="code" href="classaed2_1_1map.html#a43ddb71cc91e5c6021a7a1f243d6cc4a" title="Intercambia el contenido de {*this} y {other}.">swap</a>(lt, other.lt);
-<a name="l01372"></a>01372         <a class="code" href="classaed2_1_1map.html#a43ddb71cc91e5c6021a7a1f243d6cc4a" title="Intercambia el contenido de {*this} y {other}.">swap</a>(count, other.count);
-<a name="l01373"></a>01373 
-<a name="l01374"></a>01374         <a class="code" href="classaed2_1_1map.html#a43ddb71cc91e5c6021a7a1f243d6cc4a" title="Intercambia el contenido de {*this} y {other}.">swap</a>(header.parent, other.header.parent);
-<a name="l01375"></a>01375         <a class="code" href="classaed2_1_1map.html#a43ddb71cc91e5c6021a7a1f243d6cc4a" title="Intercambia el contenido de {*this} y {other}.">swap</a>(header.child[0], other.header.child[0]);
-<a name="l01376"></a>01376         <a class="code" href="classaed2_1_1map.html#a43ddb71cc91e5c6021a7a1f243d6cc4a" title="Intercambia el contenido de {*this} y {other}.">swap</a>(header.child[1], other.header.child[1]);
-<a name="l01377"></a>01377         <span class="keywordflow">if</span>(root() != <span class="keyword">nullptr</span>) root()-&gt;parent = &amp;header;
-<a name="l01378"></a>01378         <span class="keywordflow">if</span>(other.root() != <span class="keyword">nullptr</span>) other.root()-&gt;parent = &amp;other.header;
-<a name="l01379"></a>01379 
-<a name="l01380"></a>01380         <span class="comment">//nota: cuando el arbol es vacio, los child de header apuntan a header.  Notar que quedan apuntando mal despues del swap</span>
-<a name="l01381"></a>01381         <span class="keywordflow">if</span>(root() == <span class="keyword">nullptr</span>) header.child[0] = header.child[1] = &amp;header;
-<a name="l01382"></a>01382         <span class="keywordflow">if</span>(other.root() == <span class="keyword">nullptr</span>) other.header.child[0] = other.header.child[1] = &amp;other.header;
-<a name="l01383"></a>01383     }
-<a name="l01385"></a>01385 
-<a name="l01387"></a>01387 
-<a name="l01388"></a>01388 
-<a name="l01389"></a>01389 
-<a name="l01390"></a>01390 
-<a name="l01406"></a><a class="code" href="classaed2_1_1map.html#a58a95705d54b3dda7f775ce5a22225cb">01406</a>     <a class="code" href="classaed2_1_1map_1_1iterator.html" title="Parte del módulo que implementa los iteradores que permiten la modificación de los significados...">iterator</a> <a class="code" href="classaed2_1_1map.html#a58a95705d54b3dda7f775ce5a22225cb" title="Devuelve un iterador al primer valor del diccionario.">begin</a>() {
-<a name="l01407"></a>01407         <span class="comment">//completar</span>
-<a name="l01408"></a>01408     }
-<a name="l01409"></a>01409 
-<a name="l01411"></a><a class="code" href="classaed2_1_1map.html#a1d10432d305bcb5f1af6ab7b75c27c1c">01411</a>     <a class="code" href="classaed2_1_1map_1_1const__iterator.html" title="Parte del módulo que implementa los iteradores que no permiten la modificación de los significados...">const_iterator</a> <a class="code" href="classaed2_1_1map.html#a1d10432d305bcb5f1af6ab7b75c27c1c">begin</a>()<span class="keyword"> const </span>{
-<a name="l01412"></a>01412         <span class="comment">//completar</span>
-<a name="l01413"></a>01413     }
-<a name="l01414"></a>01414 
-<a name="l01416"></a><a class="code" href="classaed2_1_1map.html#ab96ad892caa28f193481a578f4956a2a">01416</a>     <a class="code" href="classaed2_1_1map_1_1const__iterator.html" title="Parte del módulo que implementa los iteradores que no permiten la modificación de los significados...">const_iterator</a> <a class="code" href="classaed2_1_1map.html#ab96ad892caa28f193481a578f4956a2a">cbegin</a>() {
-<a name="l01417"></a>01417         <span class="comment">//completar</span>
-<a name="l01418"></a>01418     }
-<a name="l01419"></a>01419 
-<a name="l01435"></a><a class="code" href="classaed2_1_1map.html#a76023e6a56cb625513e1b5ea028bf983">01435</a>     <a class="code" href="classaed2_1_1map_1_1iterator.html" title="Parte del módulo que implementa los iteradores que permiten la modificación de los significados...">iterator</a> <a class="code" href="classaed2_1_1map.html#a76023e6a56cb625513e1b5ea028bf983" title="Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario.">end</a>() {
-<a name="l01436"></a>01436         <span class="comment">//completar</span>
-<a name="l01437"></a>01437     }
-<a name="l01438"></a>01438 
-<a name="l01440"></a><a class="code" href="classaed2_1_1map.html#a1f847ad4fd46883ac60d764967172179">01440</a>     <a class="code" href="classaed2_1_1map_1_1const__iterator.html" title="Parte del módulo que implementa los iteradores que no permiten la modificación de los significados...">const_iterator</a> <a class="code" href="classaed2_1_1map.html#a1f847ad4fd46883ac60d764967172179">end</a>()<span class="keyword"> const </span>{
-<a name="l01441"></a>01441         <span class="comment">//completar</span>
-<a name="l01442"></a>01442     }
-<a name="l01443"></a>01443 
-<a name="l01445"></a><a class="code" href="classaed2_1_1map.html#a7bb91e94cbc875f1a011b142ef877912">01445</a>     <a class="code" href="classaed2_1_1map_1_1const__iterator.html" title="Parte del módulo que implementa los iteradores que no permiten la modificación de los significados...">const_iterator</a> <a class="code" href="classaed2_1_1map.html#a7bb91e94cbc875f1a011b142ef877912">cend</a>() {
-<a name="l01446"></a>01446         <span class="comment">//completar</span>
-<a name="l01447"></a>01447     }
-<a name="l01448"></a>01448 
-<a name="l01463"></a><a class="code" href="classaed2_1_1map.html#ac412d3902112122c1bffe2d4283a4e9d">01463</a>     reverse_iterator <a class="code" href="classaed2_1_1map.html#ac412d3902112122c1bffe2d4283a4e9d" title="Devuelve un iterador al primer valor del diccionario, en un recorrido al revés.">rbegin</a>() {
-<a name="l01464"></a>01464         <span class="comment">//completar</span>
-<a name="l01465"></a>01465     }
-<a name="l01466"></a>01466 
-<a name="l01468"></a><a class="code" href="classaed2_1_1map.html#aa68b6888ae3e256203d4ef273c293586">01468</a>     const_reverse_iterator <a class="code" href="classaed2_1_1map.html#aa68b6888ae3e256203d4ef273c293586">rbegin</a>()<span class="keyword"> const </span>{
-<a name="l01469"></a>01469         <span class="comment">//completar</span>
-<a name="l01470"></a>01470     }
-<a name="l01471"></a>01471 
-<a name="l01473"></a><a class="code" href="classaed2_1_1map.html#a6ad62765a2b2e00247b9e35a7542b448">01473</a>     const_reverse_iterator <a class="code" href="classaed2_1_1map.html#a6ad62765a2b2e00247b9e35a7542b448">crbegin</a>() {
-<a name="l01474"></a>01474         <span class="comment">//completar</span>
-<a name="l01475"></a>01475         }
-<a name="l01476"></a>01476 
-<a name="l01491"></a><a class="code" href="classaed2_1_1map.html#a277f03b4f4b6b98879e4e4921081801f">01491</a>     reverse_iterator <a class="code" href="classaed2_1_1map.html#a277f03b4f4b6b98879e4e4921081801f" title="Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario, en un recorrido al re...">rend</a>() {
-<a name="l01492"></a>01492         <span class="comment">//completar</span>
-<a name="l01493"></a>01493     }
-<a name="l01494"></a>01494 
-<a name="l01496"></a><a class="code" href="classaed2_1_1map.html#aafce6e53c53c460897613747fec89f9d">01496</a>     const_reverse_iterator <a class="code" href="classaed2_1_1map.html#aafce6e53c53c460897613747fec89f9d">rend</a>()<span class="keyword"> const </span>{
-<a name="l01497"></a>01497         <span class="comment">//completar</span>
-<a name="l01498"></a>01498     }
-<a name="l01499"></a>01499 
-<a name="l01501"></a><a class="code" href="classaed2_1_1map.html#a40933b2efe1cb479de9195ea947244d1">01501</a>     const_reverse_iterator <a class="code" href="classaed2_1_1map.html#a40933b2efe1cb479de9195ea947244d1">crend</a>() {
-<a name="l01502"></a>01502         <span class="comment">//completar</span>
-<a name="l01503"></a>01503     }
-<a name="l01505"></a>01505 
-<a name="l01535"></a><a class="code" href="classaed2_1_1map_1_1iterator.html">01535</a>     <span class="keyword">class </span><a class="code" href="classaed2_1_1map_1_1iterator.html" title="Parte del módulo que implementa los iteradores que permiten la modificación de los significados...">iterator</a> {
-<a name="l01536"></a>01536         <span class="keyword">using</span> Node = <span class="keyword">typename</span> map::Node;
-<a name="l01537"></a>01537         <span class="keyword">using</span> InnerNode = <span class="keyword">typename</span> map::InnerNode;
-<a name="l01538"></a>01538     <span class="keyword">public</span>:
-<a name="l01539"></a>01539 
-<a name="l01541"></a>01541         <span class="keyword">using</span> iterator_category = std::bidirectional_iterator_tag;
-<a name="l01543"></a>01543         <span class="keyword">using</span> value_type = map::value_type;
-<a name="l01545"></a>01545         <span class="keyword">using</span> reference = map::reference;
-<a name="l01547"></a>01547         <span class="keyword">using</span> pointer = map::pointer;
-<a name="l01549"></a>01549         <span class="keyword">using</span> difference_type = std::ptrdiff_t;
-<a name="l01550"></a>01550 
-<a name="l01579"></a><a class="code" href="classaed2_1_1map_1_1iterator.html#acdd790eb54216601a2e0591776004dba">01579</a>         <a class="code" href="classaed2_1_1map_1_1iterator.html#acdd790eb54216601a2e0591776004dba" title="Crea un iterador nulo.">iterator</a>() {}
-<a name="l01594"></a><a class="code" href="classaed2_1_1map_1_1iterator.html#a48e75896997d516fe69bc18f889222fe">01594</a>         reference <a class="code" href="classaed2_1_1map_1_1iterator.html#a48e75896997d516fe69bc18f889222fe" title="Retorna el valor apuntado por {*this}.">operator*</a>()<span class="keyword"> const </span>{
-<a name="l01595"></a>01595                 <span class="comment">//completar</span>
-<a name="l01596"></a>01596         }
-<a name="l01615"></a><a class="code" href="classaed2_1_1map_1_1iterator.html#a227de3b56a6ff2e6bb6de2d08277ca60">01615</a>         pointer <a class="code" href="classaed2_1_1map_1_1iterator.html#a227de3b56a6ff2e6bb6de2d08277ca60" title="Retorna la dirección del valor apuntado por {*this}.">operator-&gt;</a>()<span class="keyword"> const </span>{
-<a name="l01616"></a>01616                         <span class="comment">//completar</span>
-<a name="l01617"></a>01617                 }
-<a name="l01636"></a><a class="code" href="classaed2_1_1map_1_1iterator.html#a7c44de7f0508186e135ddbcfe782fec5">01636</a>         <a class="code" href="classaed2_1_1map_1_1iterator.html" title="Parte del módulo que implementa los iteradores que permiten la modificación de los significados...">iterator</a>&amp; <a class="code" href="classaed2_1_1map_1_1iterator.html#a7c44de7f0508186e135ddbcfe782fec5" title="Avanza el iterador a la siguiente posición.">operator++</a>() {
-<a name="l01637"></a>01637                 <span class="comment">//completar</span>
-<a name="l01638"></a>01638         }
-<a name="l01657"></a><a class="code" href="classaed2_1_1map_1_1iterator.html#af4fe5565eb478cfccd254b2ef230b974">01657</a>         <a class="code" href="classaed2_1_1map_1_1iterator.html" title="Parte del módulo que implementa los iteradores que permiten la modificación de los significados...">iterator</a> <a class="code" href="classaed2_1_1map_1_1iterator.html#af4fe5565eb478cfccd254b2ef230b974" title="Avanza el iterador a la siguiente posición.">operator++</a>(<span class="keywordtype">int</span>) {
-<a name="l01658"></a>01658                 <span class="comment">//completar</span>
-<a name="l01659"></a>01659         }
-<a name="l01678"></a><a class="code" href="classaed2_1_1map_1_1iterator.html#ae7f70f71545d2a9de17b65edaaec748a">01678</a>         <a class="code" href="classaed2_1_1map_1_1iterator.html" title="Parte del módulo que implementa los iteradores que permiten la modificación de los significados...">iterator</a>&amp; <a class="code" href="classaed2_1_1map_1_1iterator.html#ae7f70f71545d2a9de17b65edaaec748a" title="Retrocede el iterador a la posición anterior.">operator--</a>() {
-<a name="l01679"></a>01679                 <span class="comment">//completar</span>
-<a name="l01680"></a>01680         }
-<a name="l01699"></a><a class="code" href="classaed2_1_1map_1_1iterator.html#add45e9ddbb8eeda99326cdb9ac9dd225">01699</a>         <a class="code" href="classaed2_1_1map_1_1iterator.html" title="Parte del módulo que implementa los iteradores que permiten la modificación de los significados...">iterator</a> <a class="code" href="classaed2_1_1map_1_1iterator.html#add45e9ddbb8eeda99326cdb9ac9dd225" title="Retrocede el iterador a la posición anterior.">operator--</a>(<span class="keywordtype">int</span>) {
-<a name="l01700"></a>01700                 <span class="comment">//completar</span>
-<a name="l01701"></a>01701         }
-<a name="l01722"></a><a class="code" href="classaed2_1_1map_1_1iterator.html#ad052c1ef8477a1613c292202226053a5">01722</a>         <span class="keywordtype">bool</span> <a class="code" href="classaed2_1_1map_1_1iterator.html#ad052c1ef8477a1613c292202226053a5" title="Operador de igualdad.">operator==</a>(<a class="code" href="classaed2_1_1map_1_1iterator.html" title="Parte del módulo que implementa los iteradores que permiten la modificación de los significados...">iterator</a> other)<span class="keyword"> const </span>{
-<a name="l01723"></a>01723                 <span class="comment">//completar</span>
-<a name="l01724"></a>01724         }
-<a name="l01726"></a><a class="code" href="classaed2_1_1map_1_1iterator.html#a836c7a166d63f507c4f79085ae953c51">01726</a>         <span class="keywordtype">bool</span> <a class="code" href="classaed2_1_1map_1_1iterator.html#a836c7a166d63f507c4f79085ae953c51" title="idem !|operator==">operator!=</a>(<a class="code" href="classaed2_1_1map_1_1iterator.html" title="Parte del módulo que implementa los iteradores que permiten la modificación de los significados...">iterator</a> other)<span class="keyword"> const </span>{
-<a name="l01727"></a>01727                 <span class="comment">//completar</span>
-<a name="l01728"></a>01728         }
+<a name="l00915"></a>00915 
+<a name="l00916"></a>00916 
+<a name="l00917"></a>00917 
+<a name="l00918"></a>00918 
+<a name="l00943"></a><a class="code" href="classaed2_1_1map.html#a0b0a11f906da2926f9eb342fcee79fd7">00943</a>     <span class="keyword">const</span> Meaning&amp; <a class="code" href="classaed2_1_1map.html#a0b0a11f906da2926f9eb342fcee79fd7" title="Devuelve el significado asociado a {key}.">at</a>(<span class="keyword">const</span> Key&amp; key)<span class="keyword"> const </span>{
+<a name="l00944"></a>00944        <span class="keywordflow">return</span> <a class="code" href="classaed2_1_1map.html#afd0fc1a8234888e61e0e615de7e245b8" title="Devuelve el significado asociado a {key}, asegurando su existencia.">find</a>(key).n-&gt;value().second;
+<a name="l00945"></a>00945     }
+<a name="l00946"></a>00946 
+<a name="l00948"></a><a class="code" href="classaed2_1_1map.html#a6b21c09f59a83b6ee45432dcfa61f4a1">00948</a>     Meaning&amp; <a class="code" href="classaed2_1_1map.html#a6b21c09f59a83b6ee45432dcfa61f4a1">at</a>(<span class="keyword">const</span> Key&amp; key) {
+<a name="l00949"></a>00949         <span class="keywordflow">return</span> <a class="code" href="classaed2_1_1map.html#afd0fc1a8234888e61e0e615de7e245b8" title="Devuelve el significado asociado a {key}, asegurando su existencia.">find</a>(key).n-&gt;value().second;
+<a name="l00950"></a>00950    }
+<a name="l00951"></a>00951 
+<a name="l01029"></a><a class="code" href="classaed2_1_1map.html#afd0fc1a8234888e61e0e615de7e245b8">01029</a> 
+<a name="l01044"></a><a class="code" href="classaed2_1_1map.html#ab8f3e41b1a0d7b74645836f8d2e1acfc">01044</a> 
+<a name="l01080"></a><a class="code" href="classaed2_1_1map.html#a3399d36fdd5a880b494f3a5795d3f18f">01080</a> 
+<a name="l01096"></a><a class="code" href="classaed2_1_1map.html#a07b3dd65557c59ee085e5f211269c6b3">01096</a> 
+<a name="l01111"></a>01111 
+<a name="l01113"></a>01113 
+<a name="l01114"></a>01114 
+<a name="l01115"></a>01115 
+<a name="l01116"></a>01116 
+<a name="l01129"></a><a class="code" href="classaed2_1_1map.html#af5320ca0a7df4d16015441d5d055a7ee">01129</a> 
+<a name="l01147"></a><a class="code" href="classaed2_1_1map.html#a89f2613f926ac13293eafe65889d6021">01147</a> 
+<a name="l01151"></a>01151 
+<a name="l01153"></a>01153 
+<a name="l01154"></a>01154 
+<a name="l01155"></a>01155 
+<a name="l01156"></a>01156 
+<a name="l01187"></a><a class="code" href="classaed2_1_1map.html#a6941cde9a79c27f054b5c97a587a1854">01187</a> 
+<a name="l01287"></a><a class="code" href="classaed2_1_1map.html#a60aacba06b1579630b3c8e996cf248c8">01287</a> 
+<a name="l01334"></a><a class="code" href="classaed2_1_1map.html#a2ef6723c183916276b0afc4a4c721475">01334</a> 
+<a name="l01348"></a><a class="code" href="classaed2_1_1map.html#a9128a806713bcc999ebd8a97ab77e765">01348</a> 
+<a name="l01376"></a><a class="code" href="classaed2_1_1map.html#ad8e796bf9c9c558e5ce6b61e116253fe">01376</a> 
+<a name="l01494"></a><a class="code" href="classaed2_1_1map.html#a2ffadb42cd5f0bc7b3752ff159b75334">01494</a> 
+<a name="l01512"></a><a class="code" href="classaed2_1_1map.html#a2bfa5165825979bf2431db55bc6bc9ca">01512</a> 
+<a name="l01539"></a><a class="code" href="classaed2_1_1map.html#a43ddb71cc91e5c6021a7a1f243d6cc4a">01539</a> 
+<a name="l01555"></a>01555 
+<a name="l01557"></a>01557 
+<a name="l01558"></a>01558 
+<a name="l01559"></a>01559 
+<a name="l01560"></a>01560 
+<a name="l01575"></a><a class="code" href="classaed2_1_1map.html#a58a95705d54b3dda7f775ce5a22225cb">01575</a> 
+<a name="l01581"></a><a class="code" href="classaed2_1_1map.html#a1d10432d305bcb5f1af6ab7b75c27c1c">01581</a> 
+<a name="l01587"></a><a class="code" href="classaed2_1_1map.html#ab96ad892caa28f193481a578f4956a2a">01587</a> 
+<a name="l01606"></a><a class="code" href="classaed2_1_1map.html#a76023e6a56cb625513e1b5ea028bf983">01606</a> 
+<a name="l01613"></a><a class="code" href="classaed2_1_1map.html#a1f847ad4fd46883ac60d764967172179">01613</a> 
+<a name="l01620"></a><a class="code" href="classaed2_1_1map.html#a7bb91e94cbc875f1a011b142ef877912">01620</a> 
+<a name="l01639"></a><a class="code" href="classaed2_1_1map.html#ac412d3902112122c1bffe2d4283a4e9d">01639</a> 
+<a name="l01645"></a><a class="code" href="classaed2_1_1map.html#aa68b6888ae3e256203d4ef273c293586">01645</a> 
+<a name="l01651"></a><a class="code" href="classaed2_1_1map.html#a6ad62765a2b2e00247b9e35a7542b448">01651</a> 
+<a name="l01670"></a><a class="code" href="classaed2_1_1map.html#a277f03b4f4b6b98879e4e4921081801f">01670</a> 
+<a name="l01676"></a><a class="code" href="classaed2_1_1map.html#aafce6e53c53c460897613747fec89f9d">01676</a> 
+<a name="l01682"></a><a class="code" href="classaed2_1_1map.html#a40933b2efe1cb479de9195ea947244d1">01682</a> 
+<a name="l01687"></a>01687 
+<a name="l01717"></a><a class="code" href="classaed2_1_1map_1_1iterator.html">01717</a> 
+<a name="l01723"></a>01723 
+<a name="l01725"></a>01725 
+<a name="l01727"></a>01727 
 <a name="l01729"></a>01729 
-<a name="l01730"></a>01730     <span class="keyword">private</span>:
-<a name="l01751"></a>01751         <a class="code" href="classaed2_1_1map_1_1iterator.html#acdd790eb54216601a2e0591776004dba" title="Crea un iterador nulo.">iterator</a>(Node* pos) : n(pos) {}
-<a name="l01762"></a>01762         operator Node*()<span class="keyword"> const </span>{<span class="keywordflow">return</span> n;}
-<a name="l01764"></a>01764 
-<a name="l01783"></a>01783 
-<a name="l01784"></a>01784 
-<a name="l01785"></a>01785 
-<a name="l01788"></a><a class="code" href="classaed2_1_1map_1_1iterator.html#aeda338414e516b47761f994fb78056c6">01788</a>         Node* n{<span class="keyword">nullptr</span>};
-<a name="l01790"></a>01790         <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">map</a>;
-<a name="l01791"></a>01791     };
-<a name="l01792"></a>01792 
-<a name="l01799"></a><a class="code" href="classaed2_1_1map_1_1const__iterator.html">01799</a>     <span class="keyword">class </span><a class="code" href="classaed2_1_1map_1_1const__iterator.html" title="Parte del módulo que implementa los iteradores que no permiten la modificación de los significados...">const_iterator</a> {
-<a name="l01800"></a>01800         <span class="keyword">using</span> Node = <span class="keyword">const</span> <span class="keyword">typename</span> map::Node;
-<a name="l01801"></a>01801         <span class="keyword">using</span> InnerNode = <span class="keyword">const</span> <span class="keyword">typename</span> map::InnerNode;
-<a name="l01802"></a>01802     <span class="keyword">public</span>:
-<a name="l01803"></a>01803         <span class="keyword">using</span> iterator_category = std::bidirectional_iterator_tag;
-<a name="l01804"></a>01804         <span class="keyword">using</span> value_type = map::value_type;
-<a name="l01805"></a>01805         <span class="keyword">using</span> reference = map::const_reference;
-<a name="l01806"></a>01806         <span class="keyword">using</span> pointer = map::const_pointer;
-<a name="l01807"></a>01807         <span class="keyword">using</span> difference_type = std::ptrdiff_t;
-<a name="l01808"></a>01808 
-<a name="l01810"></a><a class="code" href="classaed2_1_1map_1_1const__iterator.html#a8add3e4cabbdaf313b0e085064491555">01810</a>         <a class="code" href="classaed2_1_1map_1_1const__iterator.html#a8add3e4cabbdaf313b0e085064491555" title="Ver aed2::map::iterator::iterator()">const_iterator</a>() {}
-<a name="l01828"></a><a class="code" href="classaed2_1_1map_1_1const__iterator.html#ab7924d90cbf6d19bec62514d10b62fb3">01828</a>         <a class="code" href="classaed2_1_1map_1_1const__iterator.html#ab7924d90cbf6d19bec62514d10b62fb3" title="Constructor desde un iterador modificable.">const_iterator</a>(<a class="code" href="classaed2_1_1map_1_1iterator.html" title="Parte del módulo que implementa los iteradores que permiten la modificación de los significados...">iterator</a> it) {
-<a name="l01829"></a>01829           <span class="comment">//completar</span>
-<a name="l01830"></a>01830         }
-<a name="l01832"></a><a class="code" href="classaed2_1_1map_1_1const__iterator.html#a3e8bf3ace171a4156dbf681fac671db9">01832</a>         reference <a class="code" href="classaed2_1_1map_1_1const__iterator.html#a3e8bf3ace171a4156dbf681fac671db9" title="Ver aed2::map::iterator::operator*()">operator*</a>()<span class="keyword"> const  </span>{
-<a name="l01833"></a>01833           <span class="comment">//completar</span>
-<a name="l01834"></a>01834         }
-<a name="l01836"></a><a class="code" href="classaed2_1_1map_1_1const__iterator.html#a5cb0d5307b937d0bcda7d65379ce5208">01836</a>         pointer <a class="code" href="classaed2_1_1map_1_1const__iterator.html#a5cb0d5307b937d0bcda7d65379ce5208" title="Ver aed2::map::iterator::operator-&gt;()">operator-&gt;</a>()<span class="keyword"> const </span>{
-<a name="l01837"></a>01837           <span class="comment">//completar</span>
-<a name="l01838"></a>01838         }
-<a name="l01840"></a><a class="code" href="classaed2_1_1map_1_1const__iterator.html#adaada1d489552555135d2ea89c67c271">01840</a>         <a class="code" href="classaed2_1_1map_1_1const__iterator.html" title="Parte del módulo que implementa los iteradores que no permiten la modificación de los significados...">const_iterator</a>&amp; <a class="code" href="classaed2_1_1map_1_1const__iterator.html#adaada1d489552555135d2ea89c67c271" title="Ver aed2::map::iterator::operator++()">operator++</a>()  {
-<a name="l01841"></a>01841           <span class="comment">//completar</span>
-<a name="l01842"></a>01842         }
-<a name="l01844"></a><a class="code" href="classaed2_1_1map_1_1const__iterator.html#a2fbc216b2f11694bb567ea850bcfdb2e">01844</a>         <a class="code" href="classaed2_1_1map_1_1const__iterator.html" title="Parte del módulo que implementa los iteradores que no permiten la modificación de los significados...">const_iterator</a> <a class="code" href="classaed2_1_1map_1_1const__iterator.html#a2fbc216b2f11694bb567ea850bcfdb2e" title="Ver aed2::map::iterator::operator++(int)">operator++</a>(<span class="keywordtype">int</span>)  {
-<a name="l01845"></a>01845           <span class="comment">//completar</span>
-<a name="l01846"></a>01846         }
-<a name="l01848"></a><a class="code" href="classaed2_1_1map_1_1const__iterator.html#ae12d6608eeca05957fa3de3f50287c90">01848</a>         <a class="code" href="classaed2_1_1map_1_1const__iterator.html" title="Parte del módulo que implementa los iteradores que no permiten la modificación de los significados...">const_iterator</a>&amp; <a class="code" href="classaed2_1_1map_1_1const__iterator.html#ae12d6608eeca05957fa3de3f50287c90" title="Ver aed2::map::iterator::operator--()">operator--</a>()  {
-<a name="l01849"></a>01849           <span class="comment">//completar</span>
-<a name="l01850"></a>01850         }
-<a name="l01852"></a><a class="code" href="classaed2_1_1map_1_1const__iterator.html#ad5ae1cb1d000ac1f528ff32f9af3e228">01852</a>         <a class="code" href="classaed2_1_1map_1_1const__iterator.html" title="Parte del módulo que implementa los iteradores que no permiten la modificación de los significados...">const_iterator</a> <a class="code" href="classaed2_1_1map_1_1const__iterator.html#ad5ae1cb1d000ac1f528ff32f9af3e228" title="Ver aed2::map::iterator::operator--(int)">operator--</a>(<span class="keywordtype">int</span>)  {
-<a name="l01853"></a>01853           <span class="comment">//completar</span>
-<a name="l01854"></a>01854         }
-<a name="l01856"></a><a class="code" href="classaed2_1_1map_1_1const__iterator.html#af837632a6c4a88ec13c4c96153538494">01856</a>         <span class="keywordtype">bool</span> <a class="code" href="classaed2_1_1map_1_1const__iterator.html#af837632a6c4a88ec13c4c96153538494" title="Ver aed2::map::iterator::operator==()">operator==</a>(<a class="code" href="classaed2_1_1map_1_1const__iterator.html" title="Parte del módulo que implementa los iteradores que no permiten la modificación de los significados...">const_iterator</a> other)<span class="keyword"> const  </span>{
-<a name="l01857"></a>01857           <span class="comment">//completar</span>
-<a name="l01858"></a>01858         }
-<a name="l01860"></a><a class="code" href="classaed2_1_1map_1_1const__iterator.html#a40b9e921ad9c25aded17f394b9534510">01860</a>         <span class="keywordtype">bool</span> <a class="code" href="classaed2_1_1map_1_1const__iterator.html#a40b9e921ad9c25aded17f394b9534510" title="Ver aed2::map::iterator::operator!=()">operator!=</a>(<a class="code" href="classaed2_1_1map_1_1const__iterator.html" title="Parte del módulo que implementa los iteradores que no permiten la modificación de los significados...">const_iterator</a> other)<span class="keyword"> const  </span>{
-<a name="l01861"></a>01861           <span class="comment">//completar</span>
-<a name="l01862"></a>01862         }
-<a name="l01863"></a>01863 
-<a name="l01864"></a>01864     <span class="keyword">private</span>:
-<a name="l01866"></a>01866         <a class="code" href="classaed2_1_1map_1_1const__iterator.html#a8add3e4cabbdaf313b0e085064491555" title="Ver aed2::map::iterator::iterator()">const_iterator</a>(Node* pos) : n(pos) {}
-<a name="l01868"></a>01868         operator Node*()<span class="keyword"> const </span>{<span class="keywordflow">return</span> n;}
-<a name="l01870"></a><a class="code" href="classaed2_1_1map_1_1const__iterator.html#aeda338414e516b47761f994fb78056c6">01870</a>         Node* n{<span class="keyword">nullptr</span>};
-<a name="l01871"></a>01871         <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">map</a>;
-<a name="l01872"></a>01872     };
-<a name="l01873"></a>01873 
-<a name="l01874"></a>01874 <span class="keyword">private</span>:
-<a name="l01875"></a>01875     <span class="keyword">friend</span> <span class="keyword">class </span>iterator;
-<a name="l01876"></a>01876     <span class="keyword">friend</span> <span class="keyword">class </span>const_iterator;
-<a name="l01877"></a>01877 
-<a name="l01887"></a>01887     <span class="keyword">enum class</span> Color {Red, Black, Header};
-<a name="l01888"></a>01888 
-<a name="l01905"></a>01905     <span class="keyword">struct </span>Node {
-<a name="l01907"></a>01907         Node* child[2]{<span class="keyword">nullptr</span>,<span class="keyword">nullptr</span>};
-<a name="l01909"></a>01909         Node* parent{<span class="keyword">nullptr</span>};
-<a name="l01911"></a>01911         Color color{Color::Red};
-<a name="l01912"></a>01912 
-<a name="l01914"></a>01914 
-<a name="l01915"></a>01915 
-<a name="l01916"></a>01916 
-<a name="l01917"></a>01917 
-<a name="l01925"></a>01925         Node() : color(Color::Header) {
-<a name="l01926"></a>01926                 child[0] = child[1] = <span class="keyword">this</span>;
-<a name="l01927"></a>01927         }
-<a name="l01928"></a>01928 
-<a name="l01939"></a>01939         Node(Node* p, Color c = Color::Red) : parent(p), color(c) {}
-<a name="l01941"></a>01941         
-<a name="l01956"></a>01956         <span class="keyword">virtual</span> ~Node() {}
-<a name="l01957"></a>01957 
+<a name="l01731"></a>01731 
+<a name="l01761"></a><a class="code" href="classaed2_1_1map_1_1iterator.html#acdd790eb54216601a2e0591776004dba">01761</a> 
+<a name="l01776"></a><a class="code" href="classaed2_1_1map_1_1iterator.html#a48e75896997d516fe69bc18f889222fe">01776</a> 
+<a name="l01797"></a><a class="code" href="classaed2_1_1map_1_1iterator.html#a227de3b56a6ff2e6bb6de2d08277ca60">01797</a> 
+<a name="l01818"></a><a class="code" href="classaed2_1_1map_1_1iterator.html#a7c44de7f0508186e135ddbcfe782fec5">01818</a> 
+<a name="l01846"></a><a class="code" href="classaed2_1_1map_1_1iterator.html#af4fe5565eb478cfccd254b2ef230b974">01846</a> 
+<a name="l01873"></a><a class="code" href="classaed2_1_1map_1_1iterator.html#ae7f70f71545d2a9de17b65edaaec748a">01873</a> 
+<a name="l01900"></a><a class="code" href="classaed2_1_1map_1_1iterator.html#add45e9ddbb8eeda99326cdb9ac9dd225">01900</a> 
+<a name="l01929"></a><a class="code" href="classaed2_1_1map_1_1iterator.html#ad052c1ef8477a1613c292202226053a5">01929</a> 
+<a name="l01933"></a><a class="code" href="classaed2_1_1map_1_1iterator.html#a836c7a166d63f507c4f79085ae953c51">01933</a> 
 <a name="l01958"></a>01958 
-<a name="l01960"></a>01960 
-<a name="l01961"></a>01961 
-<a name="l01962"></a>01962 
-<a name="l01963"></a>01963 
-<a name="l01981"></a>01981         <span class="keywordtype">bool</span> is_header()<span class="keyword"> const </span>{
-<a name="l01982"></a>01982                 <span class="keywordflow">return</span> color == Color::Header;
-<a name="l01983"></a>01983         }
-<a name="l01984"></a>01984 
-<a name="l01997"></a>01997         value_type&amp; value() {
-<a name="l01998"></a>01998                 assert(not is_header());
-<a name="l01999"></a>01999                 <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>InnerNode*<span class="keyword">&gt;</span>(<span class="keyword">this</span>)-&gt;_value;
-<a name="l02000"></a>02000         }
-<a name="l02002"></a>02002         <span class="keyword">const</span> value_type&amp; value()<span class="keyword"> const </span>{
-<a name="l02003"></a>02003                 assert(not is_header());
-<a name="l02004"></a>02004                 <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>InnerNode*<span class="keyword">&gt;</span>(<span class="keyword">this</span>)-&gt;_value;
-<a name="l02005"></a>02005         }
-<a name="l02006"></a>02006 
-<a name="l02019"></a>02019         <span class="keyword">const</span> Key&amp; key()<span class="keyword"> const </span>{
-<a name="l02020"></a>02020                 assert(not is_header());
-<a name="l02021"></a>02021                 <span class="keywordflow">return</span> value().first;
-<a name="l02022"></a>02022         }
-<a name="l02023"></a>02023 
-<a name="l02025"></a>02025 
-<a name="l02026"></a>02026 <span class="preprocessor">#ifdef DEBUG</span>
-<a name="l02027"></a>02027 <span class="preprocessor"></span>
-<a name="l02033"></a>02033         <span class="keywordtype">void</span> print(<span class="keywordtype">int</span> tab = 0)<span class="keyword"> const </span>{
-<a name="l02034"></a>02034                 std::cout &lt;&lt; std::string(tab, <span class="charliteral">&#39; &#39;</span>) &lt;&lt; value().first &lt;&lt; <span class="stringliteral">&quot;-&gt;&quot;</span> &lt;&lt; value().second &lt;&lt; <span class="stringliteral">&quot;   (&quot;</span> &lt;&lt; (color == Color::Red ? <span class="stringliteral">&quot;Red)&quot;</span> : <span class="stringliteral">&quot;Black)&quot;</span>) &lt;&lt; std::endl;
-<a name="l02035"></a>02035                 <span class="keywordflow">if</span>(child[0]) child[0]-&gt;print(tab + 2);
-<a name="l02036"></a>02036                 <span class="keywordflow">if</span>(child[1]) child[1]-&gt;print(tab + 2);
-<a name="l02037"></a>02037         }
-<a name="l02038"></a>02038 
-<a name="l02039"></a>02039 <span class="preprocessor">#endif</span>
-<a name="l02040"></a>02040 <span class="preprocessor"></span>    };
-<a name="l02041"></a>02041 
-<a name="l02058"></a>02058     <span class="keyword">struct </span>InnerNode : <span class="keyword">public</span> Node {
-<a name="l02060"></a>02060         value_type _value;
-<a name="l02061"></a>02061     };
-<a name="l02062"></a>02062 
-<a name="l02064"></a>02064 
-<a name="l02085"></a>02085 
-<a name="l02086"></a>02086 
-<a name="l02087"></a>02087 
-<a name="l02091"></a>02091     Compare lt;
-<a name="l02093"></a>02093     <span class="keywordtype">size_t</span> count{0};
-<a name="l02095"></a>02095     Node header;
-<a name="l02097"></a>02097 
-<a name="l02099"></a>02099 
-<a name="l02100"></a>02100 
-<a name="l02101"></a>02101 
-<a name="l02102"></a>02102 
-<a name="l02107"></a>02107     <span class="keyword">inline</span> InnerNode* root() { <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>InnerNode*<span class="keyword">&gt;</span>(header.parent); }
-<a name="l02108"></a>02108 
-<a name="l02110"></a>02110     <span class="keyword">inline</span> <span class="keyword">const</span> InnerNode* root()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>InnerNode*<span class="keyword">&gt;</span>(header.parent); }
+<a name="l01969"></a>01969 
+<a name="l01971"></a>01971 
+<a name="l01990"></a>01990 
+<a name="l01991"></a>01991 
+<a name="l01992"></a>01992 
+<a name="l01995"></a><a class="code" href="classaed2_1_1map_1_1iterator.html#aeda338414e516b47761f994fb78056c6">01995</a> 
+<a name="l01997"></a>01997 
+<a name="l02006"></a><a class="code" href="classaed2_1_1map_1_1const__iterator.html">02006</a> 
+<a name="l02017"></a><a class="code" href="classaed2_1_1map_1_1const__iterator.html#a8add3e4cabbdaf313b0e085064491555">02017</a> 
+<a name="l02035"></a><a class="code" href="classaed2_1_1map_1_1const__iterator.html#ab7924d90cbf6d19bec62514d10b62fb3">02035</a> 
+<a name="l02039"></a><a class="code" href="classaed2_1_1map_1_1const__iterator.html#a3e8bf3ace171a4156dbf681fac671db9">02039</a> 
+<a name="l02043"></a><a class="code" href="classaed2_1_1map_1_1const__iterator.html#a5cb0d5307b937d0bcda7d65379ce5208">02043</a> 
+<a name="l02047"></a><a class="code" href="classaed2_1_1map_1_1const__iterator.html#adaada1d489552555135d2ea89c67c271">02047</a> 
+<a name="l02051"></a><a class="code" href="classaed2_1_1map_1_1const__iterator.html#a2fbc216b2f11694bb567ea850bcfdb2e">02051</a> 
+<a name="l02055"></a><a class="code" href="classaed2_1_1map_1_1const__iterator.html#ae12d6608eeca05957fa3de3f50287c90">02055</a> 
+<a name="l02059"></a><a class="code" href="classaed2_1_1map_1_1const__iterator.html#ad5ae1cb1d000ac1f528ff32f9af3e228">02059</a> 
+<a name="l02063"></a><a class="code" href="classaed2_1_1map_1_1const__iterator.html#af837632a6c4a88ec13c4c96153538494">02063</a> 
+<a name="l02067"></a><a class="code" href="classaed2_1_1map_1_1const__iterator.html#a40b9e921ad9c25aded17f394b9534510">02067</a> 
+<a name="l02073"></a>02073 
+<a name="l02075"></a>02075 
+<a name="l02077"></a><a class="code" href="classaed2_1_1map_1_1const__iterator.html#aeda338414e516b47761f994fb78056c6">02077</a> 
+<a name="l02094"></a>02094 
 <a name="l02112"></a>02112 
 <a name="l02114"></a>02114 
-<a name="l02115"></a>02115 
 <a name="l02116"></a>02116 
-<a name="l02123"></a>02123     <span class="keyword">inline</span> <span class="keywordtype">bool</span> eq(<span class="keyword">const</span> Key&amp; k1, <span class="keyword">const</span> Key&amp; k2)<span class="keyword"> const </span>{
-<a name="l02124"></a>02124         <span class="keywordflow">return</span> lt(k1, k2) == lt(k2, k1);
-<a name="l02125"></a>02125     }
-<a name="l02126"></a>02126 };
-<a name="l02127"></a>02127 
-<a name="l02129"></a>02129 
-<a name="l02130"></a>02130 
-<a name="l02131"></a>02131 
+<a name="l02118"></a>02118 
+<a name="l02121"></a>02121 
+<a name="l02122"></a>02122 
+<a name="l02123"></a>02123 
+<a name="l02124"></a>02124 
 <a name="l02132"></a>02132 
-<a name="l02155"></a>02155 <span class="keyword">template</span>&lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V, <span class="keyword">class</span> C&gt;
-<a name="l02156"></a><a class="code" href="classaed2_1_1map.html#abfc51b39670220e79037ac067006e933">02156</a> <span class="keywordtype">bool</span> <a class="code" href="classaed2_1_1map.html#abfc51b39670220e79037ac067006e933" title="Operador de igualdad entre dos diccionarios.">operator==</a>(<span class="keyword">const</span> <a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">map&lt;K, V, C&gt;</a>&amp; m1, <span class="keyword">const</span> <a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">map&lt;K, V, C&gt;</a>&amp; m2) {
-<a name="l02157"></a>02157         <span class="keywordflow">return</span> m1.<a class="code" href="classaed2_1_1map.html#a89f2613f926ac13293eafe65889d6021" title="Devuelve la cantidad de valores en el diccionario.">size</a>() == m2.<a class="code" href="classaed2_1_1map.html#a89f2613f926ac13293eafe65889d6021" title="Devuelve la cantidad de valores en el diccionario.">size</a>() and std::equal(m1.<a class="code" href="classaed2_1_1map.html#a58a95705d54b3dda7f775ce5a22225cb" title="Devuelve un iterador al primer valor del diccionario.">begin</a>(), m1.<a class="code" href="classaed2_1_1map.html#a76023e6a56cb625513e1b5ea028bf983" title="Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario.">end</a>(), m2.<a class="code" href="classaed2_1_1map.html#a58a95705d54b3dda7f775ce5a22225cb" title="Devuelve un iterador al primer valor del diccionario.">begin</a>());
-<a name="l02158"></a>02158 }
-<a name="l02159"></a>02159 
-<a name="l02166"></a>02166 <span class="keyword">template</span>&lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V, <span class="keyword">class</span> C&gt;
-<a name="l02167"></a><a class="code" href="classaed2_1_1map.html#abce0fa35c5b25fd67111c2e704616f09">02167</a> <span class="keywordtype">bool</span> <a class="code" href="classaed2_1_1map.html#abce0fa35c5b25fd67111c2e704616f09" title="Renombre de not({m1} == {m2})">operator!=</a>(<span class="keyword">const</span> <a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">map&lt;K, V, C&gt;</a>&amp; m1, <span class="keyword">const</span> <a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">map&lt;K, V, C&gt;</a>&amp; m2) {
-<a name="l02168"></a>02168         <span class="keywordflow">return</span> not(m1 == m2);
-<a name="l02169"></a>02169 }
+<a name="l02146"></a>02146 
+<a name="l02148"></a>02148 
+<a name="l02163"></a>02163 
+<a name="l02167"></a>02167 
+<a name="l02168"></a>02168 
+<a name="l02169"></a>02169 
 <a name="l02170"></a>02170 
-<a name="l02194"></a>02194 <span class="keyword">template</span>&lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V, <span class="keyword">class</span> C&gt;
-<a name="l02195"></a><a class="code" href="classaed2_1_1map.html#a8ff07f6a24c290ea7e8f63ec7ab24f8d">02195</a> <span class="keywordtype">bool</span> operator&lt;(const map&lt;K, V, C&gt;&amp; m1, <span class="keyword">const</span> <a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">map&lt;K, V, C&gt;</a>&amp; m2) {
-<a name="l02196"></a>02196         <span class="comment">//completar.  Vale usar std::lexicographical_compare</span>
-<a name="l02197"></a>02197 }
-<a name="l02198"></a>02198 
-<a name="l02205"></a>02205 <span class="keyword">template</span>&lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V, <span class="keyword">class</span> C&gt;
-<a name="l02206"></a><a class="code" href="classaed2_1_1map.html#a2000cd874b72034ce7fe730c811b6c63">02206</a> <span class="keywordtype">bool</span> <a class="code" href="classaed2_1_1map.html#a2000cd874b72034ce7fe730c811b6c63" title="Renombre de {m2} &lt; {m1}.">operator&gt;</a>(<span class="keyword">const</span> <a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">map&lt;K, V, C&gt;</a>&amp; m1, <span class="keyword">const</span> <a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">map&lt;K, V, C&gt;</a>&amp; m2) {
-<a name="l02207"></a>02207         <span class="keywordflow">return</span> m2 &lt; m1;
-<a name="l02208"></a>02208 }
+<a name="l02188"></a>02188 
+<a name="l02204"></a>02204 
 <a name="l02209"></a>02209 
-<a name="l02216"></a>02216 <span class="keyword">template</span>&lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V, <span class="keyword">class</span> C&gt;
-<a name="l02217"></a><a class="code" href="classaed2_1_1map.html#afe374b37f17263d0cad3ee19a590d208">02217</a> <span class="keywordtype">bool</span> operator&lt;=(const map&lt;K, V, C&gt;&amp; m1, <span class="keyword">const</span> <a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">map&lt;K, V, C&gt;</a>&amp; m2) {
-<a name="l02218"></a>02218         <span class="keywordflow">return</span> not(m2 &lt; m1);
-<a name="l02219"></a>02219 }
-<a name="l02220"></a>02220 
-<a name="l02227"></a>02227 <span class="keyword">template</span>&lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V, <span class="keyword">class</span> C&gt;
-<a name="l02228"></a><a class="code" href="classaed2_1_1map.html#a093a6d1a055339c5fc6297a1d47a9159">02228</a> <span class="keywordtype">bool</span> <a class="code" href="classaed2_1_1map.html#a093a6d1a055339c5fc6297a1d47a9159" title="Renombre de not({m1} &lt; {m2})">operator&gt;=</a>(<span class="keyword">const</span> <a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">map&lt;K, V, C&gt;</a>&amp; m1, <span class="keyword">const</span> <a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">map&lt;K, V, C&gt;</a>&amp; m2) {
-<a name="l02229"></a>02229         <span class="keywordflow">return</span> !(m1 &lt; m2);
-<a name="l02230"></a>02230 }
+<a name="l02226"></a>02226 
 <a name="l02232"></a>02232 
-<a name="l02234"></a>02234 
-<a name="l02235"></a>02235 
-<a name="l02236"></a>02236 
-<a name="l02251"></a>02251 <span class="keyword">template</span>&lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V, <span class="keyword">class</span> C&gt;
-<a name="l02252"></a><a class="code" href="classaed2_1_1map.html#a119cb2938bbc11c25ebd4fb824782a72">02252</a> <span class="keywordtype">void</span> <a class="code" href="classaed2_1_1map.html#a119cb2938bbc11c25ebd4fb824782a72" title="Implementa la función swap para cumplir con el concepto swappable.">swap</a>(<a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">map&lt;K, V, C&gt;</a>&amp; m1, <a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">map&lt;K, V, C&gt;</a>&amp; m2) {
-<a name="l02253"></a>02253         m1.<a class="code" href="classaed2_1_1map.html#a43ddb71cc91e5c6021a7a1f243d6cc4a" title="Intercambia el contenido de {*this} y {other}.">swap</a>(m2);
-<a name="l02254"></a>02254 }
-<a name="l02255"></a>02255 }
-<a name="l02256"></a>02256 
-<a name="l02257"></a>02257 <span class="preprocessor">#endif </span><span class="comment">/* MAP_H_ */</span>
+<a name="l02240"></a>02240 
+<a name="l02265"></a>02265 
+<a name="l02279"></a>02279 
+<a name="l02283"></a>02283 
+<a name="l02304"></a>02304 
+<a name="l02305"></a>02305 
+<a name="l02306"></a>02306 
+<a name="l02310"></a>02310 
+<a name="l02312"></a>02312 
+<a name="l02314"></a>02314 
+<a name="l02316"></a>02316 
+<a name="l02318"></a>02318 
+<a name="l02319"></a>02319 
+<a name="l02320"></a>02320 
+<a name="l02321"></a>02321 
+<a name="l02326"></a>02326 
+<a name="l02329"></a>02329 
+<a name="l02331"></a>02331 
+<a name="l02333"></a>02333 
+<a name="l02334"></a>02334 
+<a name="l02335"></a>02335 
+<a name="l02342"></a>02342 
+<a name="l02348"></a>02348 
+<a name="l02349"></a>02349 
+<a name="l02350"></a>02350 
+<a name="l02351"></a>02351 
+<a name="l02374"></a>02374 
+<a name="l02385"></a>02385 
+<a name="l02413"></a>02413 
+<a name="l02424"></a>02424 
+<a name="l02435"></a>02435 
+<a name="l02446"></a>02446 
+<a name="l02451"></a>02451 
+<a name="l02453"></a>02453 
+<a name="l02454"></a>02454 
+<a name="l02455"></a>02455 
+<a name="l02470"></a>02470 
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -640,7 +328,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 28 2017 15:36:56 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 2 2017 12:23:51 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -1,0 +1,326 @@
+\hypertarget{classaed2_1_1iterator_1_1iterator}{\section{aed2\-:\-:iterator\-:\-:iterator \-Class \-Reference}
+\label{classaed2_1_1iterator_1_1iterator}\index{aed2\-::iterator\-::iterator@{aed2\-::iterator\-::iterator}}
+}
+
+
+\-Parte del módulo que implementa los iteradores que permiten la modificación de los significados.  
+
+
+
+
+{\ttfamily \#include $<$map2.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classaed2_1_1iterator_1_1iterator_ae488782067dfba96b447080b0db1ed2c}{iterator} ()
+\begin{DoxyCompactList}\small\item\em \-Crea un iterador nulo. \end{DoxyCompactList}\item 
+reference \hyperlink{classaed2_1_1iterator_1_1iterator_abc83982866d43a19f4b43e7ea7660402}{operator$\ast$} () const 
+\begin{DoxyCompactList}\small\item\em \-Retorna el valor apuntado por \{$\ast$this\}. \end{DoxyCompactList}\item 
+pointer \hyperlink{classaed2_1_1iterator_1_1iterator_a4d20575249803ebf2604c1e58debc5cf}{operator-\/$>$} () const 
+\begin{DoxyCompactList}\small\item\em \-Retorna la dirección del valor apuntado por \{$\ast$this\}. \end{DoxyCompactList}\item 
+\hyperlink{classaed2_1_1iterator_1_1iterator}{iterator} \& \hyperlink{classaed2_1_1iterator_1_1iterator_a457fdf0ed06c88121b441424f1c99f4f}{operator++} ()
+\begin{DoxyCompactList}\small\item\em \-Avanza el iterador a la siguiente posición. \end{DoxyCompactList}\item 
+\hyperlink{classaed2_1_1iterator_1_1iterator}{iterator} \hyperlink{classaed2_1_1iterator_1_1iterator_aa2023454f3ce45f7da4ef23d7a7f6749}{operator++} (int)
+\begin{DoxyCompactList}\small\item\em \-Avanza el iterador a la siguiente posición. \end{DoxyCompactList}\item 
+\hyperlink{classaed2_1_1iterator_1_1iterator}{iterator} \& \hyperlink{classaed2_1_1iterator_1_1iterator_a260692ee1d51f87ef547b4a798fc2de5}{operator-\/-\/} ()
+\begin{DoxyCompactList}\small\item\em \-Retrocede el iterador a la posición anterior. \end{DoxyCompactList}\item 
+\hyperlink{classaed2_1_1iterator_1_1iterator}{iterator} \hyperlink{classaed2_1_1iterator_1_1iterator_a6bd61026c75767d0d41e45229144e9d0}{operator-\/-\/} (int)
+\begin{DoxyCompactList}\small\item\em \-Retrocede el iterador a la posición anterior. \end{DoxyCompactList}\item 
+bool \hyperlink{classaed2_1_1iterator_1_1iterator_a479ef64daa1f0e82b05fa1f80d57f479}{operator==} (\hyperlink{classaed2_1_1iterator_1_1iterator}{iterator} other) const 
+\begin{DoxyCompactList}\small\item\em \-Operador de igualdad. \end{DoxyCompactList}\item 
+\hypertarget{classaed2_1_1iterator_1_1iterator_a8facdf09114b97042cf3d6403ba1d719}{bool \hyperlink{classaed2_1_1iterator_1_1iterator_a8facdf09114b97042cf3d6403ba1d719}{operator!=} (\hyperlink{classaed2_1_1iterator_1_1iterator}{iterator} other) const }\label{classaed2_1_1iterator_1_1iterator_a8facdf09114b97042cf3d6403ba1d719}
+
+\begin{DoxyCompactList}\small\item\em idem !$|$operator== \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classaed2_1_1iterator_1_1iterator_aeda338414e516b47761f994fb78056c6}{class \hyperlink{classaed2_1_1iterator_1_1iterator_aeda338414e516b47761f994fb78056c6}{map}}\label{classaed2_1_1iterator_1_1iterator_aeda338414e516b47761f994fb78056c6}
+
+\begin{DoxyCompactList}\small\item\em \-Puntero al nodo actual. \-Ver \-Estructura de \-Representación. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Parte del módulo que implementa los iteradores que permiten la modificación de los significados. 
+
+\-Cuando el iterador se encuentra asociado a un diccionario `d`, el rango válido de valores del iterador va desde el primer valor de `d` hasta una posición (ficticia) que se encuentra pasando-\/el-\/último. \-Esta posición no tiene definido un valor para el `operator$\ast$`, y se usa para indicar el fin del recorrido.
+
+\-Este es un iterador que sigue el estándar de \-C++, y por lo tanto es compatible con la bilioteca de algoritmos. \-Asimismo, las operaciones siguen el protocolo estándar, con lo cual no es necesiario describir el resultado de las mismas. \-Sin embargo, siendo este un \-T\-P, vamos a describir el comportamiento en el marco conceptual de la materia.
+
+\begin{DoxyParagraph}{\-Aspectos generales de aliasing}
+\-Vale remarcar que un iterador tiene dos estados posibles\-:
+\begin{DoxyEnumerate}
+\item \-Es valido\-: cuando esta asociado a un diccionario y apunta a un valor existente del diccionario,
+\item \-Es inválido\-: cuando esta asociado a un diccionario (que quiza ya no es accesible), pero el valor al que apunta fue eliminado.
+\item \-Es nulo\-: cuando no está asociado a ningún diccionario; sirve como análogo de `nullptr`. 
+\end{DoxyEnumerate}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{\-Se explica con}
+\-Iterador\-Bidireccional(\-Diccionario(\{\-Key\}, \{\-Meaning\}), tupla(\{\-Key\}, \{\-Meaning\}))
+\end{DoxyParagraph}
+\begin{DoxyAttention}{\-Attention}
+\-En caso de usar los iteradores como punteros, se desaconseja el uso de la posicion pasando-\/el-\/ultimo como valor nulo, ya que queda invalidada luego de aplicar la operación \hyperlink{classaed2_1_1map_a43ddb71cc91e5c6021a7a1f243d6cc4a}{aed2\-::map\-::swap}. \-Conviene usar el iterador nulo (que, lamentablemente, es independiente del diccionario).
+\end{DoxyAttention}
+\begin{DoxySeeAlso}{\-See also}
+\mbox{[}\-Documentacion estándar de iteradores bidireccionales\mbox{]}(\href{http://en.cppreference.com/w/cpp/concept/BidirectionalIterator}{\tt http\-://en.\-cppreference.\-com/w/cpp/concept/\-Bidirectional\-Iterator}) 
+\end{DoxySeeAlso}
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classaed2_1_1iterator_1_1iterator_ae488782067dfba96b447080b0db1ed2c}{\index{aed2\-::iterator\-::iterator@{aed2\-::iterator\-::iterator}!iterator@{iterator}}
+\index{iterator@{iterator}!aed2::iterator::iterator@{aed2\-::iterator\-::iterator}}
+\subsubsection[{iterator}]{\setlength{\rightskip}{0pt plus 5cm}{\bf aed2\-::iterator\-::iterator\-::iterator} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1iterator_1_1iterator_ae488782067dfba96b447080b0db1ed2c}
+
+
+\-Crea un iterador nulo. 
+
+\-Hay dos razones para permitir la existencia de iteradores nulos. \-La primera, más trivial, es permitir la declaracion de iteradores sin necesariamente asignarles un valor inicial. \-Por ejemplo 
+\begin{DoxyCode}
+ {.cpp}
+ aed2::map::iterator it;   //iterador invalido
+ if(...) {
+   it = d.rbegin();
+ } else {
+   it = d.rend();
+ }
+\end{DoxyCode}
+ \-El segundo motivo, más esencial, es permitir el uso de iteradores como {\itshape handles\/} (punteros). \-En este caso, y teniendo en cuenta que el puntero pasando-\/el-\/último podría invalidarse, el iterador nulo nos brinda una forma conveniente de representar el puntero nulo.
+
+
+\begin{DoxyRetVals}{\-Return values}
+{\em res} & iterador recién creado\\
+\hline
+\end{DoxyRetVals}
+\{\-El iterador \{res\} no está asociado a ningún diccionario.\}
+
+\begin{DoxyPrecond}{\-Precondition}
+\{true\} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+\{coleccion(\{res\})    vacia?(\-Secu\-Suby(\{res\}))\}
+\end{DoxyPostcond}
+\{(1)\}
+
+\-Inicia un iterador apuntando a nullptr. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classaed2_1_1iterator_1_1iterator_abc83982866d43a19f4b43e7ea7660402}{\index{aed2\-::iterator\-::iterator@{aed2\-::iterator\-::iterator}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!aed2::iterator::iterator@{aed2\-::iterator\-::iterator}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}reference aed2\-::iterator\-::iterator\-::operator$\ast$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1iterator_1_1iterator_abc83982866d43a19f4b43e7ea7660402}
+
+
+\-Retorna el valor apuntado por \{$\ast$this\}. 
+
+
+\begin{DoxyRetVals}{\-Return values}
+{\em res} & referencia al valor apuntado por \{$\ast$this\}\\
+\hline
+\end{DoxyRetVals}
+\{hay aliasing entre res y \-Siguiente($\ast$this)\}
+
+\begin{DoxyPrecond}{\-Precondition}
+\{\-Siguiente(this) != nullptr\} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+\{res  \-Siguiente($\ast$this)\}
+\end{DoxyPostcond}
+\{(1)\}
+
+\-Devuelve el elemento del nodo al que está apuntando el iterador. \hypertarget{classaed2_1_1iterator_1_1iterator_a457fdf0ed06c88121b441424f1c99f4f}{\index{aed2\-::iterator\-::iterator@{aed2\-::iterator\-::iterator}!operator++@{operator++}}
+\index{operator++@{operator++}!aed2::iterator::iterator@{aed2\-::iterator\-::iterator}}
+\subsubsection[{operator++}]{\setlength{\rightskip}{0pt plus 5cm}{\bf iterator}\& aed2\-::iterator\-::iterator\-::operator++ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1iterator_1_1iterator_a457fdf0ed06c88121b441424f1c99f4f}
+
+
+\-Avanza el iterador a la siguiente posición. 
+
+
+\begin{DoxyRetVals}{\-Return values}
+{\em res} & referencia a \{$\ast$this\}\\
+\hline
+\end{DoxyRetVals}
+\{no hay\}
+
+\begin{DoxyPrecond}{\-Precondition}
+\{\-Hay\-Siguiente?($\ast$this)\} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+\{res  \-Avanzar($\ast$this)\}
+\end{DoxyPostcond}
+\{
+\begin{DoxyItemize}
+\item \-Peor caso\-: ((\-S\-I\-Z\-E({\itshape d\/})) donde {\itshape d\/} es el diccionario asociado a \{$\ast$this\}.
+\item \-Peor caso amortizado\-: (1) \}
+\end{DoxyItemize}
+
+\-Avanza el iterador en una posición y lo devuelve. \hypertarget{classaed2_1_1iterator_1_1iterator_aa2023454f3ce45f7da4ef23d7a7f6749}{\index{aed2\-::iterator\-::iterator@{aed2\-::iterator\-::iterator}!operator++@{operator++}}
+\index{operator++@{operator++}!aed2::iterator::iterator@{aed2\-::iterator\-::iterator}}
+\subsubsection[{operator++}]{\setlength{\rightskip}{0pt plus 5cm}{\bf iterator} aed2\-::iterator\-::iterator\-::operator++ (
+\begin{DoxyParamCaption}
+\item[{int}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1iterator_1_1iterator_aa2023454f3ce45f7da4ef23d7a7f6749}
+
+
+\-Avanza el iterador a la siguiente posición. 
+
+
+\begin{DoxyRetVals}{\-Return values}
+{\em res} & iterador apuntando a la dirección anterior de \{$\ast$this\}\\
+\hline
+\end{DoxyRetVals}
+\{no hay\}
+
+\begin{DoxyPrecond}{\-Precondition}
+\{\-Hay\-Siguiente?($\ast$this)\} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+\{\-C\-O\-N\-S\-U\-L\-T\-A\-R\}
+\end{DoxyPostcond}
+\{
+\begin{DoxyItemize}
+\item \-Peor caso\-: ((\-S\-I\-Z\-E({\itshape d\/})) donde {\itshape d\/} es el diccionario asociado a \{$\ast$this\}.
+\item \-Peor caso amortizado\-: (1) \}
+\end{DoxyItemize}
+
+\-C\-O\-N\-S\-U\-L\-T\-A\-R. \hypertarget{classaed2_1_1iterator_1_1iterator_a260692ee1d51f87ef547b4a798fc2de5}{\index{aed2\-::iterator\-::iterator@{aed2\-::iterator\-::iterator}!operator-\/-\/@{operator-\/-\/}}
+\index{operator-\/-\/@{operator-\/-\/}!aed2::iterator::iterator@{aed2\-::iterator\-::iterator}}
+\subsubsection[{operator-\/-\/}]{\setlength{\rightskip}{0pt plus 5cm}{\bf iterator}\& aed2\-::iterator\-::iterator\-::operator-\/-\/ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1iterator_1_1iterator_a260692ee1d51f87ef547b4a798fc2de5}
+
+
+\-Retrocede el iterador a la posición anterior. 
+
+
+\begin{DoxyRetVals}{\-Return values}
+{\em res} & referencia a \{$\ast$this\}\\
+\hline
+\end{DoxyRetVals}
+\{no hay\}
+
+\begin{DoxyPrecond}{\-Precondition}
+\{\-Hay\-Anterior?($\ast$this)\} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+\{res  \-Retroceder($\ast$this)\}
+\end{DoxyPostcond}
+\{
+\begin{DoxyItemize}
+\item \-Peor caso\-: ((\-S\-I\-Z\-E({\itshape d\/})) donde {\itshape d\/} es el diccionario asociado a \{$\ast$this\}.
+\item \-Peor caso amortizado\-: (1) \}
+\end{DoxyItemize}
+
+\-Retrocede el iterador en una posicion y lo devuelve. \hypertarget{classaed2_1_1iterator_1_1iterator_a6bd61026c75767d0d41e45229144e9d0}{\index{aed2\-::iterator\-::iterator@{aed2\-::iterator\-::iterator}!operator-\/-\/@{operator-\/-\/}}
+\index{operator-\/-\/@{operator-\/-\/}!aed2::iterator::iterator@{aed2\-::iterator\-::iterator}}
+\subsubsection[{operator-\/-\/}]{\setlength{\rightskip}{0pt plus 5cm}{\bf iterator} aed2\-::iterator\-::iterator\-::operator-\/-\/ (
+\begin{DoxyParamCaption}
+\item[{int}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1iterator_1_1iterator_a6bd61026c75767d0d41e45229144e9d0}
+
+
+\-Retrocede el iterador a la posición anterior. 
+
+
+\begin{DoxyRetVals}{\-Return values}
+{\em res} & iterador apuntando a la dirección siguiente de \{$\ast$this\}\\
+\hline
+\end{DoxyRetVals}
+\{no hay\}
+
+\begin{DoxyPrecond}{\-Precondition}
+\{\-Hay\-Anterior?($\ast$this)\} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+\{completar\}
+\end{DoxyPostcond}
+\{
+\begin{DoxyItemize}
+\item \-Peor caso\-: ((\-S\-I\-Z\-E({\itshape d\/})) donde {\itshape d\/} es el diccionario asociado a \{$\ast$this\}.
+\item \-Peor caso amortizado\-: (1) \}
+\end{DoxyItemize}
+
+\-C\-O\-N\-S\-U\-L\-T\-A\-R \hypertarget{classaed2_1_1iterator_1_1iterator_a4d20575249803ebf2604c1e58debc5cf}{\index{aed2\-::iterator\-::iterator@{aed2\-::iterator\-::iterator}!operator-\/$>$@{operator-\/$>$}}
+\index{operator-\/$>$@{operator-\/$>$}!aed2::iterator::iterator@{aed2\-::iterator\-::iterator}}
+\subsubsection[{operator-\/$>$}]{\setlength{\rightskip}{0pt plus 5cm}pointer aed2\-::iterator\-::iterator\-::operator-\/$>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1iterator_1_1iterator_a4d20575249803ebf2604c1e58debc5cf}
+
+
+\-Retorna la dirección del valor apuntado por \{$\ast$this\}. 
+
+
+\begin{DoxyRetVals}{\-Return values}
+{\em res} & puntero al valor apuntado por \{$\ast$this\}\\
+\hline
+\end{DoxyRetVals}
+\{hay aliasing entre res y \-Siguiente($\ast$this)\}
+
+\begin{DoxyPrecond}{\-Precondition}
+\{hay\-Siguiente(\{$\ast$this\})\} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+\{\{$\ast$res\}  siguiente(\{$\ast$this\})\}
+\end{DoxyPostcond}
+\{(1)\}
+
+\begin{DoxyAttention}{\-Attention}
+\-No hay forma de expresar, en el lenguaje de \-T\-A\-Ds, que un puntero apunta a la dirección de otro objeto. \-Es por eso que la postcondición es más débil de lo que debiera. \-Eso no ocurre en las otras funciones del \-T\-P.
+\end{DoxyAttention}
+\-Devuelve la posición de memoria del valor del nodo al que está apuntando el iterador. \hypertarget{classaed2_1_1iterator_1_1iterator_a479ef64daa1f0e82b05fa1f80d57f479}{\index{aed2\-::iterator\-::iterator@{aed2\-::iterator\-::iterator}!operator==@{operator==}}
+\index{operator==@{operator==}!aed2::iterator::iterator@{aed2\-::iterator\-::iterator}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}bool aed2\-::iterator\-::iterator\-::operator== (
+\begin{DoxyParamCaption}
+\item[{{\bf iterator}}]{other}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1iterator_1_1iterator_a479ef64daa1f0e82b05fa1f80d57f479}
+
+
+\-Operador de igualdad. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em other} & iterador a comparar \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{\-Return values}
+{\em res} & indica si \{$\ast$this\} apunta al mismo valor que \{other\}\\
+\hline
+\end{DoxyRetVals}
+\{\-No es necesario que \{$\ast$this\} y \{other\} estén asociados al mismo diccionario. \-Si no lo están, el resultado esta\-:
+\begin{DoxyItemize}
+\item indeterminado, cuando alguno de ellos es inválido,
+\item false, cuando alguno de ellos es no nulo, o
+\item true, cuando ambos son nulos.\}
+\end{DoxyItemize}
+
+\begin{DoxyPrecond}{\-Precondition}
+\{true\} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondition}
+\{res  ($\ast$this  other)\}
+\end{DoxyPostcond}
+\{(1)\}
+
+\-Devuelve true si el nodo al que apunta this es el mismo que al que apunta other. (\-Consultar) 
+
+\-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+map2.\-h\end{DoxyCompactItemize}

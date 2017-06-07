@@ -98,7 +98,7 @@ Resumen</h2>
 Álgebra vs. computadora</h2>
 <p>Hay una diferencia esencial entre las instancias de TADs construidas en las especificaciones algebraicas y los valores que se usan en un programa de computadora. Mientras que las primeras son sólo construcciones de términos cuya igualdad se define a través de un predicado de observación, los segundos son secuencias de bits, guardadas en memoria, cuya interpretación se comprende a través de su tipo (estructura). Asimismo, hay una diferencia fundamental entre los identificadores usados en el lenguaje algebraico y aquellos usados en una máquina RAM. Los primeros se usan únicamente para denotar las instancias que son parámetro de las funciones, mientras que los segundos se refieren a las direcciones de memoria en los que se guarda un valor computacional. En consecuencia, mientras que las operaciones algebraicas transforman términos <em>sin modificar el significado del término dado como parámetro</em>, las operaciones computacionales leen y escriben espacios de memoria y, por lo tanto, <em>modifican el espacio de memoria de sus parámetros (posiblemente de salida), afectando su significado</em>.</p>
 <p>Dado que son conceptos distintos, no es obvio cómo los valores computacional se usan para referirse a términos algebraicos. Es por esto que el apunte de diseño propone el uso de un operador (no definido formalmente ahí), llamado "sombrerito", que transforma cada valor computacional en un término algebraico, bajo la hipótesis de que dicho espacio de memoria representa un valor válido de acuerdo a la interpretación de su tipo.</p>
-<dl class="remark"><dt><b>Remarks:</b></dt><dd>La definición de sombrerito sigue un esquema recursivo. Para cada tipo <em>T</em> provisto por el lenguaje existe una versión de sombrerito que define la interpretación de los valores de <em>T</em> como tipos algebraicos. Por ejemplo, en C++ tenemos una versión de sombrerito que dado un unsigned int nos devuelve un Nat. Asimismo, tenemos una versión de sombrerito que dado un bool nos devuelve una instancia del TAD Booleano. Para ser explícitos con los tipos, vamos a escribir term&lt;<em>T&gt;</em> para designar a la función sombrerito de <em>T</em>. Acá, <em>T</em> es un tipo computacional (i.e., C++) que se interpreta usando un TAD que lo explica. El género de dicho TAD es {T}. Luego, el tipo de term es:<ol type="1">
+<dl class="remark"><dt><b>Remarks:</b></dt><dd>La definición de sombrerito sigue un esquema recursivo. Para cada tipo <em>T</em> provisto por el lenguaje existe una versión de sombrerito que define la interpretación de los valores de <em>T</em> como tipos algebraicos. Por ejemplo, en C++ tenemos una versión de sombrerito que dado un unsigned int nos devuelve un <a class="el" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>. Asimismo, tenemos una versión de sombrerito que dado un bool nos devuelve una instancia del TAD Booleano. Para ser explícitos con los tipos, vamos a escribir term&lt;<em>T&gt;</em> para designar a la función sombrerito de <em>T</em>. Acá, <em>T</em> es un tipo computacional (i.e., C++) que se interpreta usando un TAD que lo explica. El género de dicho TAD es {T}. Luego, el tipo de term es:<ol type="1">
 <li>term : <em>T</em> t  {T} {rep(t)} para cada tipo básico <em>T</em>, donde rep es una restricción definida sobre bits, y</li>
 <li>term : <em>T</em> t  {T} {rep(term&lt;E&gt;(t))} para cada tipo no básico <em>T</em> que se representa con una estructura E.</li>
 </ol>
@@ -121,12 +121,12 @@ Resumen</h2>
 <ul>
 <li>* : puntero()  <br/>
 </li>
-<li>get: puntero()  Nat</li>
+<li>get: puntero()  <a class="el" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a></li>
 </ul>
 <p><b>generadores</b> <br/>
 </p>
 <ul>
-<li>set: Nat    puntero()</li>
+<li>set: <a class="el" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>    puntero()</li>
 </ul>
 <p>Vale remarcar que dicho TAD no es más que un TAD sintáctico, cuyo único propósito es almacenar la información de un puntero. Más aun, cuando  sea de tipo tupla, vamos a suponer la existencia de la función -&gt; que permite acceder a los campos de la tupla apuntada. Luego, la función term queda definida como:</p>
 <ul>
@@ -185,7 +185,7 @@ Especificación de los iteradores y el alias</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 28 2017 15:36:56 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 2 2017 12:23:51 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

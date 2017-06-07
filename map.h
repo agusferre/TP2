@@ -589,6 +589,7 @@
 //#include <iomanip>
 #endif
 
+
 /**
  * \brief Namespace para las clases de AED2.
  *
@@ -766,17 +767,12 @@ public:
 	ambos hijos de header apuntan a null, y padre de header apunta a null
 
     **/
-<<<<<<< HEAD
     explicit map(Compare c = Compare()) {
     	header = Node();
-    	header->parent = nullptr;
-    	header->child[0] = nullptr;
-    	header->child[1] = nullptr;
-=======
-    explicit map(Compare c = Compare()): lt(c) {
-    	//completar
->>>>>>> e16d1b999ddab79993209182dee6d70a24a221c6
-    }
+    	header.parent = nullptr;
+    	header.child[0] = nullptr;
+    	header.child[1] = nullptr;
+     }
 
     /**
      * @brief Constructor por copia
@@ -802,10 +798,7 @@ public:
     **/
     map(const map& other) {
 
-<<<<<<< HEAD
-=======
-    	//completar
->>>>>>> e16d1b999ddab79993209182dee6d70a24a221c6
+
     }
 
     /**
@@ -947,16 +940,13 @@ public:
      */
 
     const Meaning& at(const Key& key) const {
-    Node* indice = header->parent;
-    //pepito
-    	
-    	return indice->_value.second;
-
+        Node* indice = header.parent;
+        return indice->value().second;
     }
 
     /** \overload */
     Meaning& at(const Key& key) {
-    	return find(key).n.second;
+    	return find(key).n->value().second;
    }
 
     /**
@@ -1000,16 +990,12 @@ public:
      o en el caso que la clave no esté definida, la define con el significado default y además incrementa en uno count.
      */
     Meaning& operator[](const Key& key) {
-
         iterator it = lower_bound(key);
-        if (it.n->value_.key() == key)
-            return value_->second;
-	else
-
+        if (it.n->value().first == key)
+            return it.n->value().second;
+	    else
             insert(it, value_type(key, Meaning()));
-
         return at(key);
-
     }
 
     /**
@@ -1042,30 +1028,30 @@ public:
       */
 
     iterator find(const Key& key) {
-    	Node* indice = header->parent;
-    	while(indice->_value->key() != key){
-    		if (indice->_value->key() < key)
+        Node* indice = header.parent;
+    	while(indice->value().first != key){
+    		if (indice->value().first < key)
     			indice = indice->child[0];
     		else
     			indice = indice->child[1];
     	}
-    	Iterator it();
-    	it.node = indice;
+    	iterator it;
+    	it.n = indice;
     	return it;
 
     }
 
     /** \overload */
     const_iterator find(const Key& key) const {
-    		Node* indice = header->parent;
-    	while(indice->_value->key() != key){
-    		if (indice->_value->key() < key)
+    		InnerNode* indice = header.parent;
+    	while(indice->value().first != key){
+    		if (indice->value().first < key)
     			indice = indice->child[0];
     		else
     			indice = indice->child[1];
     	}
-    	Iterator it();
-    	it.node = indice;
+    	iterator it();
+    	it.n = indice;
     	return it;
     }
 
@@ -1093,9 +1079,9 @@ public:
      - Devuelve el Iterador en esa posición.
     */
     const_iterator lower_bound(const Key& key) const {
-        Node* indice = header->parent;
-        while (indice != nullptr && (indice->_value->key() < key || (indice->_value->key() != key && indice->child[0] != nullptr))) {
-            if (indice->_value->key() < key)
+        InnerNode* indice = header.parent;
+        while (indice != nullptr && (indice->value().first < key || (indice->value().first != key && indice->child[0] != nullptr))) {
+            if (indice->value().first < key)
                 indice = indice->child[1];
             else
                 indice = indice->child[0];
@@ -1109,16 +1095,16 @@ public:
 
     /** \overload */
     iterator lower_bound(const Key& key)  {
-        Node* indice = header->parent;
-        while (indice != nullptr && (indice->_value->key() < key || (indice->_value->key() != key && indice->child[0] != nullptr))) {
-            if (indice->_value->key() < key)
+        Node* indice = header.parent;
+        while (indice != nullptr && (indice->value().first < key || (indice->value().first != key && indice->child[0] != nullptr))) {
+            if (indice->value().first < key)
                 indice = indice->child[1];
             else
                 indice = indice->child[0];
         }
         if (indice == nullptr)
             indice = end();
-        iterator it();
+        iterator it = iterator();
         it.n = indice;
         return it;
     }
@@ -1200,69 +1186,68 @@ public:
 
     */
     iterator insert(const_iterator hint, const value_type& value) {
-        if (!(hint.n == nullptr || (hint._value.first > value.first && 
-        	(hint--.n != nullptr && hint.n._value.first < value.first ))))
-        	return insert(value);     
-        else
-       		Node* nuevo = new Nodo(value);
-        	Node* padre = hint.n->parent;
-        	nuevo->parent = padre;
-        	if (padre.is_header())
-            	header->parent = nuevo;
-        	else if (nuevo->key() < padre->key())
-        	    padre->child[0] = nuevo;
-        	else
-        	    padre->child[1] = nuevo;
-        	nuevo.color = Red;
-        	iterator it = find(nuevo);
-        	insert-fixup(it, value);
-        	return it;
-  }
+        if (!(hint.n == nullptr || (hint.n->value().first > value.first && (hint--.n != nullptr && hint.n->value().first < value.first ))))
+            return insert(value);
+        else {
+            InnerNode* nuevo = new InnerNode(value);
+            Node *padre = hint.n->parent;
+            nuevo->parent = padre;
+            if (padre->is_header())
+                header.parent = nuevo;
+            else if (nuevo->key() < padre->key())
+                padre->child[0] = nuevo;
+            else
+                padre->child[1] = nuevo;
+            nuevo->color = Color::Red;
+            iterator it = find(nuevo);
+            insert_fixup(it, value);
+            return it;
+        }
+    }
 
-void insert-fixup(iterator it, const value_type& value){
-	Node* n = it.n;
-	Node* y;
-while (n->parent.color == red){
-	if (n->parent == n->parent->parent->child[0]){
-		y = n->parent->parent->child[1];
-	}
-	if (y.color == red){
-		n.color = black;
-		y.color = black;
-		n->parent->parent.color = red;
-		n = n->parent->parent;
-	} else if(n == n->parent->child[1]){
-		n = n->parent;
-		iterator it2(n);
-		left_rotate(it2);
-		n->parent.color = black;
-		n->parent->parent.color = red;
-		right_rotate(it2);
-		}
-	} else {
-		if (n->parent == n->parent->parent->child[1]){
-		y = n->parent->parent->child[0];
-	}
-	if (y.color == red){
-		n.color = black;
-		y.color = black;
-		n->parent->parent.color = red;
-		n = n->parent->parent;
-	} else if(n == n->parent->child[0]){
-		n = n->parent;
-		iterator it2(n);
-		right-rotate(it2);
-		n->parent.color = black;
-		n->parent->parent.color = red;
-		left-rotate(it2);
-	}
-}
-
-	header->parent.color = black;
+void insert_fixup(iterator it, const value_type& value) {
+    Node *n = it.n;
+    Node *y;
+    while (n->parent->color == Color::Red) {
+        if (n->parent == n->parent->parent->child[0]) {
+            y = n->parent->parent->child[1];
+        }
+        if (y->color == Color::Red) {
+            n->color = Color::Black;
+            y->color = Color::Black;
+            n->parent->parent->color = Color::Red;
+            n = n->parent->parent;
+        } else if (n == n->parent->child[1]) {
+            n = n->parent;
+            iterator it2(n);
+            left_rotate(it2);
+            n->parent->color = Color::Black;
+            n->parent->parent->color = Color::Red;
+            right_rotate(it2);
+        } else {
+            if (n->parent == n->parent->parent->child[1]) {
+                y = n->parent->parent->child[0];
+            }
+            if (y->color == Color::Red) {
+                n->color = Color::Black;
+                y->color = Color::Black;
+                n->parent->parent->color = Color::Red;
+                n = n->parent->parent;
+            } else if (n == n->parent->child[0]) {
+                n = n->parent;
+                iterator it2(n);
+                right_rotate(it2);
+                n->parent->color = Color::Black;
+                n->parent->parent->color = Color::Red;
+                left_rotate(it2);
+            }
+        }
+    }
+	header.parent->color = Color::Black;
 	it.n = n;
 }
 
-void left-rotate(iterator it){
+void left_rotate(iterator it){
 	Node* n = it.n;
 	Node* y = it.n->child[1];
 	n->child[1] = y->child[0];
@@ -1270,7 +1255,7 @@ void left-rotate(iterator it){
 		y->child[0]->parent = n;
 	y->parent = n->parent;
 	if(n->parent.is_header())
-		header->parent = y;
+		header.parent = y;
 	else if (n == n->parent->child[0])
 		n->parent->child[0] = y;
 	else
@@ -1280,7 +1265,7 @@ void left-rotate(iterator it){
 	it.n = n;
 }
 
-void right-rotate(iterator it){
+void right_rotate(iterator it){
 	Node* n = it.n;
 	Node* y = it.n->child[0];
 	n->child[0] = y->child[1];
@@ -1288,7 +1273,7 @@ void right-rotate(iterator it){
 		y->child[1]->parent = n;
 	y->parent = n->parent;
 	if(n->parent.is_header())
-		header->parent = y;
+		header.parent = y;
 	else if (n == n->parent->child[1])
 		n->parent->child[1] = y;
 	else
@@ -1301,20 +1286,20 @@ void right-rotate(iterator it){
 
     /** \overload*/
     iterator insert(const value_type& value) {
-    	Node* nuevo = new Nodo(value);
+    	InnerNode* nuevo = new InnerNode(value);
     	iterator it = lower_bound(value.first);
-        Node* padre = hint.n->parent;
+        Node* padre = it.n->parent;
         nuevo->parent = padre;
-        if (padre.is_header())
-            header->parent = nuevo;
+        if (padre->is_header())
+            header.parent = nuevo;
         else if (nuevo->key() < padre->key())
             padre->child[0] = nuevo;
         else
             padre->child[1] = nuevo;
-        nuevo.color = Red;
-        iterator it = find(nuevo);
-        insert-fixup(it, value);
-        return it;
+        nuevo->color = Color::Red;
+        iterator it2 = find(nuevo->key());
+        insert_fixup(it, value);
+        return it2;
 
     }
 
@@ -1349,12 +1334,12 @@ void right-rotate(iterator it){
      */
     iterator insert_or_assign(const_iterator hint, const value_type& value) {
         iterator it;
-        if (hint.n->value()->first == value.first){
+        if (hint.n->value().first == value.first){
             it = hint;
-            it.n->value()->second = value->second;
+            it.n->value().second = value->second;
             } else if (hint.n->value()->first < value->first() || (hint--.n == nullptr
             || hint.n->value()->first >= value->first)) {
-            it = lower_bound(hint->_value);
+            it = lower_bound(hint->value());
         }
         it = insert(hint, value);
         return it;
@@ -1362,9 +1347,14 @@ void right-rotate(iterator it){
 
     /** \overload */
     iterator insert_or_assign(const value_type& value) {
-
-
-        
+        iterator it;
+        it = lower_bound(value->first);
+        if (value->first == it.n->_value->fisrt) {
+            it->_value = value;
+        } else {
+            insert(it, value);
+        }
+        return it;
     }
 
     /**
@@ -1388,7 +1378,7 @@ void right-rotate(iterator it){
     	Node* z = pos.n;
     	Node* y = pos.n;
     	Node* x;
-    	yColorsito = y.color;
+    	Color yColorsito = y->color;
     	if (z->child[0] == nullptr){
    			x = z->child[1];
    			transplant(z, z->child[1]);
@@ -1397,7 +1387,7 @@ void right-rotate(iterator it){
     		transplant(z, z->child[0]);
     	} else {
     		y = sucesorInmediato(z->child[1]);
-    		yColorsito = y.color;
+    		yColorsito = y->color;
     		x = y->child[1];
     		if (y->parent == z)
     			x->parent = y;
@@ -1409,18 +1399,19 @@ void right-rotate(iterator it){
     		transplant(z, y);
     		y->child[0] = z->child[0];
     		y->child[0]->parent = y;
-    		y.color = z.color;
+    		y->color = z->color;
 
-    		if (yColorsito == black)
-    			iterator it(x);
-    			erase_fixup(it);
+    		if (yColorsito == Color::Black) {
+                iterator it(x);
+                erase_fixup(it);
+            }
     	}
 
 }
 
     void transplant(Node* u, Node* v){
     	if (!u->parent.is_header())
-    		header->parent = v;
+    		header.parent = v;
     	else if (u == u->parent->child[0])
     		u->parent->child[0] = v;
     	else
@@ -1430,64 +1421,64 @@ void right-rotate(iterator it){
     }
 
 
-void erase_fixup(iterator it){
-	Node* x = it.n;
-	Node* w;
-	while (x != header->parent && x.color == black){
-		if (x == x->parent->child[0]){
-			w = x->parent->child[1];
-			if (w.color == red){
-				w.color = black;
-				x->parent.color = red;
-				it.n = x->parent;
-				left_rotate(it);
-				w = x->parent->child[1];
-			}
-			if (w->child[0].color == black && w->child[1].color == black){
-				w.color = red;
-				x = x->parent;
-			} else if (w->child[1].color == black){
-				w->child[0].color = black;
-				w.color = red;
-				iterator it2(w);
-				right_rotate(it2);
-				w = x->parent->child[1];
-			}
-			w.color = x->parent.color;
-			x->parent.color = black;
-			w->child[1].color = black;
-			it.n = x->parent;
-			left_rotate(it);
-			x = header->parent;
-		} else {
-			w = x->parent->child[0];
-			if (w.color == red){
-				w.color = black;
-				x->parent.color = red;
-				it.n = x->parent;
-				right_rotate(it);
-				w = x->parent->child[0];
-			}
-			if (w->child[1].color == black && w->child[0].color == black){
-				w.color = red;
-				x = x->parent;
-			} else if (w->child[0].color == black){
-				w->child[1].color = black;
-				w.color = red;
-				iterator it2(w);
-				left_rotate(it2);
-				w = x->parent->child[0];
-			}
-			w.color = x->parent.color;
-			x->parent.color = black;
-			w->child[0].color = black;
-			it.n = x->parent;
-			right_rotate(it);
-			x = header->parent;
+void erase_fixup(iterator it) {
+    Node *x = it.n;
+    Node *w;
+    while (x != header.parent && x->color == Color::Black) {
+        if (x == x->parent->child[0]) {
+            w = x->parent->child[1];
+            if (w->color == Color::Red) {
+                w->color = Color::Black;
+                x->parent->color = Color::Red;
+                it.n = x->parent;
+                left_rotate(it);
+                w = x->parent->child[1];
+            }
+            if (w->child[0]->color == Color::Black && w->child[1]->color == Color::Black) {
+                w->color = Color::Red;
+                x = x->parent;
+            } else if (w->child[1]->color == Color::Black) {
+                w->child[0]->color = Color::Black;
+                w->color = Color::Red;
+                iterator it2(w);
+                right_rotate(it2);
+                w = x->parent->child[1];
+            }
+            w->color = x->parent->color;
+            x->parent->color = Color::Black;
+            w->child[1]->color = Color::Black;
+            it.n = x->parent;
+            left_rotate(it);
+            x = header.parent;
+        } else {
+            w = x->parent->child[0];
+            if (w->color == Color::Red) {
+                w->color = Color::Black;
+                x->parent->color = Color::Red;
+                it.n = x->parent;
+                right_rotate(it);
+                w = x->parent->child[0];
+            }
+            if (w->child[1]->color == Color::Black && w->child[0]->color == Color::Black) {
+                w->color = Color::Red;
+                x = x->parent;
+            } else if (w->child[0]->color == Color::Black) {
+                w->child[1]->color = Color::Black;
+                w->color = Color::Red;
+                iterator it2(w);
+                left_rotate(it2);
+                w = x->parent->child[0];
+            }
+            w->color = x->parent->color;
+            x->parent->color = Color::Black;
+            w->child[0]->color = Color::Black;
+            it.n = x->parent;
+            right_rotate(it);
+            x = header.parent;
 
-		}
+        }
+    }
 }
-
 
     /**
      * @brief Elimina el valor cuya clave es \P{key}
@@ -1580,22 +1571,22 @@ void erase_fixup(iterator it){
      * \complexity{\O(1)}
      */
     /**
-    Inicia un iterador en header->izq.
+    Inicia un iterador en header.izq.
     */
     iterator begin() {
-    	iterator it(header->child[0]);
+    	iterator it(header.child[0]);
     	return it;
     }
 
     /** \overload */
     const_iterator begin() const {
-    	const_iterator it(header->child[0]);
+    	const_iterator it(header.child[0]);
     	return it;
     }
 
     /** \overload */
     const_iterator cbegin() {
-    	const_iterator it(header->child[0]);
+    	const_iterator it(header.child[0]);
     	return it;
     }
 
@@ -1614,13 +1605,15 @@ void erase_fixup(iterator it){
      * Inicia un iterador en nullptr.
      */
     iterator end() {
-    	iterator it();
+    	iterator it;
+        it.n = nullptr;
     	return it;
     }
 
     /** \overload */
     const_iterator end() const {
-    	const_iterator it();
+    	const_iterator it;
+        it.n = nullptr;
     	return it;
     }
 
@@ -1645,19 +1638,19 @@ void erase_fixup(iterator it){
      * Inicia un reverse_iterator en el hijo derecho de header.
      */
     reverse_iterator rbegin() {
-    	reverse_iterator it = reverse_iterator(header->child[1]);
+    	reverse_iterator it = reverse_iterator(header.child[1]);
     	return it;
     }
 
     /** \overload */
     const_reverse_iterator rbegin() const {
-    	const_reverse_iterator it = reverse_iterator(header->child[1]);
+    	const_reverse_iterator it = reverse_iterator(header.child[1]);
     	return it;
     }
 
     /** \overload */
     const_reverse_iterator crbegin() {
-    	const_reverse_iterator it = reverse_iterator(header->child[1]);
+    	const_reverse_iterator it = reverse_iterator(header.child[1]);
     	return it;
 	}
 
@@ -1782,7 +1775,7 @@ void erase_fixup(iterator it){
          * Devuelve el elemento del nodo al que está apuntando el iterador.
          */
         reference operator*() const {
-        	return n.value();
+        	return n->value();
         }
         /**
          * \brief Retorna la dirección del valor apuntado por \P{*this}
@@ -1803,7 +1796,7 @@ void erase_fixup(iterator it){
          *
          */
         pointer operator->() const {
-			//completar
+			return &n->value();
 		}
         /**
          * \brief Avanza el iterador a la siguiente posición
@@ -2137,7 +2130,7 @@ private:
          *
          * \complexity{\O(1)}
          */
-        Node() : color(Color::Header) {
+        Node() : color(Color::Header), parent(nullptr) {
         	child[0] = child[1] = this;
         }
 
@@ -2211,14 +2204,12 @@ private:
          */
         value_type& value() {
         	assert(not is_header());
-        	return static_cast<InnerNode*>(this)->_value;
+        	return static_cast<InnerNode*>(this)->value();
         }
         /** \overload */
-        const value
-
-                _type& value() const {
+        const value_type& value() const {
         	assert(not is_header());
-        	return static_cast<const InnerNode*>(this)->_value;
+        	return static_cast<const InnerNode*>(this)->value();
         }
 
         /**
@@ -2273,8 +2264,20 @@ private:
      * \remark Como \T{InnerNode} es una estructura privada, no tiene ventajas imporantes implementarla en forma modular.
      */
     struct InnerNode : public Node {
+        InnerNode (value_type value) : Node(), _value(value) {
+            this->color = Color::Red;
+            this->parent = nullptr;
+        }
+
+        InnerNode (Node* nodo) : _value(){
+            this->color = nodo->color;
+            this->parent = nodo->parent;
+            this->child[0] = nodo->child[0];
+            this->child[1] = nodo->child[1];
+        }
+
         /** Valor del nodo */
-        value_type _value;
+        value_type _value;                                              ;
     };
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2369,10 +2372,10 @@ private:
  * \attention  Para determinar la igualdad de las claves no se utiliza el functor de comparación (que podrian
  * ser distintos entre los diccionarios), sino si los valores son los mismos con respecto al operator== de \T{K} y T{V}.
  */
-template<class K, class V, class C>
-bool operator==(const map<K, V, C>& m1, const map<K, V, C>& m2) {
-	return m1.size() == m2.size() and std::equal(m1.begin(), m1.end(), m2.begin());
-}
+    template<class K, class V, class C>
+    bool operator==(const map<K, V, C>& m1, const map<K, V, C>& m2) {
+        return m1.size() == m2.size() and std::equal(m1.begin(), m1.end(), m2.begin());
+    }
 
 /**
  * \relates aed2::map
@@ -2380,10 +2383,10 @@ bool operator==(const map<K, V, C>& m1, const map<K, V, C>& m2) {
  *
  * \sa aed2::operator==()
  */
-template<class K, class V, class C>
-bool operator!=(const map<K, V, C>& m1, const map<K, V, C>& m2) {
-	return not(m1 == m2);
-}
+    template<class K, class V, class C>
+    bool operator!=(const map<K, V, C>& m1, const map<K, V, C>& m2) {
+        return not(m1 == m2);
+    }
 
 /**
  * \relates aed2::map
@@ -2408,11 +2411,10 @@ bool operator!=(const map<K, V, C>& m1, const map<K, V, C>& m2) {
  * \attention  Para determinar la comparación de las claves no se utiliza el functor de comparación (que podrian
  * ser distintos entre los diccionarios), sino si los valores son los mismos con respecto al operator< de \T{K} y T{V}.
  */
-template<class K, class V, class C>
-bool operator<(const map<K, V, C>& m1, const map<K, V, C>& m2) {
-    return (std::lexicographical_compare(m1.begin(), m1.end(), m2.begin(), m2.end(), lt));
-	//completar.  Vale usar std::lexicographical_compare
-}
+    template<class K, class V, class C>
+    bool operator<(const map<K, V, C>& m1, const map<K, V, C>& m2) {
+        //completar.  Vale usar std::lexicographical_compare
+    }
 
 /**
  * \relates aed2::map
@@ -2420,10 +2422,10 @@ bool operator<(const map<K, V, C>& m1, const map<K, V, C>& m2) {
  *
  * \sa aed2::operator<()
  */
-template<class K, class V, class C>
-bool operator>(const map<K, V, C>& m1, const map<K, V, C>& m2) {
-	return m2 < m1;
-}
+    template<class K, class V, class C>
+    bool operator>(const map<K, V, C>& m1, const map<K, V, C>& m2) {
+        return m2 < m1;
+    }
 
 /**
  * \relates aed2::map
@@ -2431,10 +2433,10 @@ bool operator>(const map<K, V, C>& m1, const map<K, V, C>& m2) {
  *
  * \sa aed2::operator<()
  */
-template<class K, class V, class C>
-bool operator<=(const map<K, V, C>& m1, const map<K, V, C>& m2) {
-	return not(m2 < m1);
-}
+    template<class K, class V, class C>
+    bool operator<=(const map<K, V, C>& m1, const map<K, V, C>& m2) {
+        return not(m2 < m1);
+    }
 
 /**
  * \relates aed2::map
@@ -2442,10 +2444,10 @@ bool operator<=(const map<K, V, C>& m1, const map<K, V, C>& m2) {
  *
  * \sa aed2::operator<()
  */
-template<class K, class V, class C>
-bool operator>=(const map<K, V, C>& m1, const map<K, V, C>& m2) {
-	return !(m1 < m2);
-}
+    template<class K, class V, class C>
+    bool operator>=(const map<K, V, C>& m1, const map<K, V, C>& m2) {
+        return !(m1 < m2);
+    }
 //@}
 
 ////////////////////////////////////////
@@ -2470,6 +2472,6 @@ template<class K, class V, class C>
 void swap(map<K, V, C>& m1, map<K, V, C>& m2) {
 	m1.swap(m2);
 }
-}
+};
 
 #endif /* MAP_H_ */

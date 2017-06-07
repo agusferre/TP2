@@ -129,10 +129,10 @@ bool \hyperlink{classaed2_1_1map_1_1iterator_ad052c1ef8477a1613c292202226053a5}{
 \{hay aliasing entre res y \-Siguiente($\ast$this)\}
 
 \begin{DoxyPrecond}{\-Precondition}
-\{true\} 
+\{\-Siguiente(this) != nullptr\} 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{\-Postcondition}
-\{res  \-Siguiente($\ast$this)\}
+\{res = \-Siguiente($\ast$this)\}
 \end{DoxyPostcond}
 \{(1)\}
 
@@ -158,7 +158,7 @@ bool \hyperlink{classaed2_1_1map_1_1iterator_ad052c1ef8477a1613c292202226053a5}{
 \{\-Hay\-Siguiente?($\ast$this)\} 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{\-Postcondition}
-\{res  \-Avanzar($\ast$this)\}
+\{res = \-Avanzar($\ast$this)\}
 \end{DoxyPostcond}
 \{
 \begin{DoxyItemize}
@@ -218,7 +218,7 @@ bool \hyperlink{classaed2_1_1map_1_1iterator_ad052c1ef8477a1613c292202226053a5}{
 \{\-Hay\-Anterior?($\ast$this)\} 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{\-Postcondition}
-\{res  \-Retroceder($\ast$this)\}
+\{res = \-Retroceder($\ast$this)\}
 \end{DoxyPostcond}
 \{
 \begin{DoxyItemize}
@@ -317,7 +317,7 @@ bool \hyperlink{classaed2_1_1map_1_1iterator_ad052c1ef8477a1613c292202226053a5}{
 \{true\} 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{\-Postcondition}
-\{res  ($\ast$this  other)\}
+\{res  ($\ast$this = other)\}
 \end{DoxyPostcond}
 \{(1)\}
 

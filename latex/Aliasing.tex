@@ -18,7 +18,7 @@
 \-Dado que son conceptos distintos, no es obvio cómo los valores computacional se usan para referirse a términos algebraicos. \-Es por esto que el apunte de diseño propone el uso de un operador (no definido formalmente ahí), llamado \char`\"{}sombrerito\char`\"{}, que transforma cada valor computacional en un término algebraico, bajo la hipótesis de que dicho espacio de memoria representa un valor válido de acuerdo a la interpretación de su tipo.
 
 \begin{DoxyRemark}{\-Remarks}
-\-La definición de sombrerito sigue un esquema recursivo. \-Para cada tipo {\itshape \-T\/} provisto por el lenguaje existe una versión de sombrerito que define la interpretación de los valores de {\itshape \-T\/} como tipos algebraicos. \-Por ejemplo, en \-C++ tenemos una versión de sombrerito que dado un unsigned int nos devuelve un \-Nat. \-Asimismo, tenemos una versión de sombrerito que dado un bool nos devuelve una instancia del \-T\-A\-D \-Booleano. \-Para ser explícitos con los tipos, vamos a escribir term$<${\itshape \-T$>$\/} para designar a la función sombrerito de {\itshape \-T\/}. \-Acá, {\itshape \-T\/} es un tipo computacional (i.\-e., \-C++) que se interpreta usando un \-T\-A\-D que lo explica. \-El género de dicho \-T\-A\-D es \{\-T\}. \-Luego, el tipo de term es\-:
+\-La definición de sombrerito sigue un esquema recursivo. \-Para cada tipo {\itshape \-T\/} provisto por el lenguaje existe una versión de sombrerito que define la interpretación de los valores de {\itshape \-T\/} como tipos algebraicos. \-Por ejemplo, en \-C++ tenemos una versión de sombrerito que dado un unsigned int nos devuelve un \hyperlink{classNat}{\-Nat}. \-Asimismo, tenemos una versión de sombrerito que dado un bool nos devuelve una instancia del \-T\-A\-D \-Booleano. \-Para ser explícitos con los tipos, vamos a escribir term$<${\itshape \-T$>$\/} para designar a la función sombrerito de {\itshape \-T\/}. \-Acá, {\itshape \-T\/} es un tipo computacional (i.\-e., \-C++) que se interpreta usando un \-T\-A\-D que lo explica. \-El género de dicho \-T\-A\-D es \{\-T\}. \-Luego, el tipo de term es\-:
 \begin{DoxyEnumerate}
 \item term \-: {\itshape \-T\/} t  \{\-T\} \{rep(t)\} para cada tipo básico {\itshape \-T\/}, donde rep es una restricción definida sobre bits, y
 \item term \-: {\itshape \-T\/} t  \{\-T\} \{rep(term$<$\-E$>$(t))\} para cada tipo no básico {\itshape \-T\/} que se representa con una estructura \-E.
@@ -48,13 +48,13 @@
 \begin{DoxyItemize}
 \item $\ast$ \-: puntero()  \par
 
-\item get\-: puntero()  \-Nat
+\item get\-: puntero()  \hyperlink{classNat}{\-Nat}
 \end{DoxyItemize}
 
 {\bfseries generadores} \par
 
 \begin{DoxyItemize}
-\item set\-: \-Nat    puntero()
+\item set\-: \hyperlink{classNat}{\-Nat}    puntero()
 \end{DoxyItemize}
 
 \-Vale remarcar que dicho \-T\-A\-D no es más que un \-T\-A\-D sintáctico, cuyo único propósito es almacenar la información de un puntero. \-Más aun, cuando  sea de tipo tupla, vamos a suponer la existencia de la función -\/$>$ que permite acceder a los campos de la tupla apuntada. \-Luego, la función term queda definida como\-:

@@ -164,7 +164,7 @@ class aed2::map&lt; Key, Meaning, Compare &gt;::iterator</h3>
 template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classaed2_1_1map.html">aed2::map</a>&lt; Key, Meaning, Compare &gt;::<a class="el" href="classaed2_1_1map_1_1iterator.html#acdd790eb54216601a2e0591776004dba">iterator::iterator</a> </td>
+          <td class="memname"><a class="el" href="classaed2_1_1map.html">aed2::map</a>&lt; Key, Meaning, Compare &gt;::<a class="el" href="classaed2_1_1iterator_1_1iterator.html">iterator::iterator</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td><code> [inline]</code></td>
@@ -222,8 +222,8 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
   </dd>
 </dl>
 <p>{hay aliasing entre res y Siguiente(*this)}</p>
-<dl class="pre"><dt><b>Precondition:</b></dt><dd>{true} </dd></dl>
-<dl class="post"><dt><b>Postcondition:</b></dt><dd>{res  Siguiente(*this)}</dd></dl>
+<dl class="pre"><dt><b>Precondition:</b></dt><dd>{Siguiente(this) != nullptr} </dd></dl>
+<dl class="post"><dt><b>Postcondition:</b></dt><dd>{res = Siguiente(*this)}</dd></dl>
 <p>{(1)}</p>
 <p>Devuelve el elemento del nodo al que está apuntando el iterador. </p>
 
@@ -254,7 +254,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 </dl>
 <p>{no hay}</p>
 <dl class="pre"><dt><b>Precondition:</b></dt><dd>{HaySiguiente?(*this)} </dd></dl>
-<dl class="post"><dt><b>Postcondition:</b></dt><dd>{res  Avanzar(*this)}</dd></dl>
+<dl class="post"><dt><b>Postcondition:</b></dt><dd>{res = Avanzar(*this)}</dd></dl>
 <p>{</p>
 <ul>
 <li>Peor caso: ((SIZE(<em>d</em>)) donde <em>d</em> es el diccionario asociado a {*this}.</li>
@@ -325,7 +325,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 </dl>
 <p>{no hay}</p>
 <dl class="pre"><dt><b>Precondition:</b></dt><dd>{HayAnterior?(*this)} </dd></dl>
-<dl class="post"><dt><b>Postcondition:</b></dt><dd>{res  Retroceder(*this)}</dd></dl>
+<dl class="post"><dt><b>Postcondition:</b></dt><dd>{res = Retroceder(*this)}</dd></dl>
 <p>{</p>
 <ul>
 <li>Peor caso: ((SIZE(<em>d</em>)) donde <em>d</em> es el diccionario asociado a {*this}.</li>
@@ -440,7 +440,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 <li>true, cuando ambos son nulos.}</li>
 </ul>
 <dl class="pre"><dt><b>Precondition:</b></dt><dd>{true} </dd></dl>
-<dl class="post"><dt><b>Postcondition:</b></dt><dd>{res  (*this  other)}</dd></dl>
+<dl class="post"><dt><b>Postcondition:</b></dt><dd>{res  (*this = other)}</dd></dl>
 <p>{(1)}</p>
 <p>Devuelve true si el nodo al que apunta this es el mismo que al que apunta other. (Consultar) </p>
 
@@ -467,7 +467,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 28 2017 15:36:56 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 2 2017 12:23:53 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
