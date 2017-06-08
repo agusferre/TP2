@@ -764,7 +764,8 @@ public:
      * \LT = \P{c}.operator()
      */
     explicit map(Compare c = Compare()) {
-    	//completar
+    	count = 0;
+    	lt = c;
     }
 
     /**
@@ -983,29 +984,38 @@ public:
      *
      */
     iterator find(const Key& key) {
-    	Node* indice = header.parent;
-    	while(indice->value().first != key){
-    		if (indice->value().first < key)
-    			indice = indice->child[0];
-    		else
-    			indice = indice->child[1];
-    	}
+
+    	
     	iterator it;
+    	Node* indice = header.parent;
+    	if ( ! indice->is_header()){
+    		while(indice != nullptr && (!(lt(indice->value().first,key) == lt(key, indice->value().first)))) {
+    			if (lt(indice->value().first, key))
+    				indice = indice->child[0];
+    			else
+    				indice = indice->child[1];
+    		}
+    	
     	it.n = indice;
+    	}
     	return it;
     }
 
     /** \overload */
     const_iterator find(const Key& key) const {
-    			Node* indice = header.parent;
-    	while(indice->value().first != key){
+    	
+    	const_iterator it;
+    	if (count != 0){
+    	Node* indice = header.parent;
+    	while(indice != nullptr && (!(lt(indice->value().first,key) == lt(key, indice->value().first)))) {
     		if (indice->value().first < key)
     			indice = indice->child[0];
     		else
     			indice = indice->child[1];
     	}
-    	const_iterator it;
+    	
     	it.n = indice;
+    	}
     	return it;
     }
 
@@ -1028,8 +1038,10 @@ public:
      *
      */
     const_iterator lower_bound(const Key& key) const {
+
     	Node* indice = header.parent;
-        while (indice != nullptr && (indice->value().first < key || (indice->value().first != key && indice->child[0] != nullptr))) {
+        while (indice != nullptr && (lt(indice->value().first, key) || ( !lt(key, indice->value().first) == lt(indice->value().first, key))
+        	&& indice->child[0] != nullptr)) {
             if (indice->value().first < key)
                 indice = indice->child[1];
             else
@@ -1042,12 +1054,14 @@ public:
 
     /** \overload */
     iterator lower_bound(const Key& key)  {
-  	 	Node* indice = header.parent;
-        while (indice != nullptr && (indice->value().first < key || (indice->value().first != key && indice->child[0] != nullptr))) {
-            if (indice->value().first < key)
-                indice = indice->child[1];
-            else
-                indice = indice->child[0];
+	Node* indice = header.parent;
+
+    while (indice != nullptr && (lt(indice->value().first, key) || ( !lt(key, indice->value().first) == lt(indice->value().first, key)) 
+    	&& indice->child[0] != nullptr)) {
+       if (indice->value().first < key)
+       	indice = indice->child[1];
+       else
+       	indice = indice->child[0];
         }
   		iterator it;
         it.n = indice;
@@ -1120,131 +1134,158 @@ public:
      * \attention Para garantizar que el nuevo elemento se inserte sí o sí, usar aed2::map::insert_or_assign.
      */
     iterator insert(const_iterator hint, const value_type& value) {
-    	  // if (!(hint.n == nullptr || (hint.n->value().first > value.first && (hint--.n != nullptr && hint.n->value().first < value.first ))))
-       //      return insert(value);
-       //  else {
-       //      InnerNode *nuevo = new InnerNode(*value);
-       //      Node *padre = hint.n->parent;
-       //      nuevo->parent = padre;
-       //      if (padre->is_header())
-       //          header.parent = nuevo;
-       //      else if (nuevo->key() < padre->key())
-       //          padre->child[0] = nuevo;
-       //      else
-       //          padre->child[1] = nuevo;
-       //      nuevo->color = Node::Color::Red;
-       //      iterator it = find(nuevo);
-       //      insert_fixup(it, value);
-    	   	// count++;
-       //      return it;
+    	  if (!(hint.n == nullptr || (hint.n->value().first > value.first && (hint--.n != nullptr && hint.n->value().first < value.first ))))
+            return insert(value);
+        // else {
+        //     InnerNode* nuevo = new InnerNode(value);
+
+        //     // nuevo->parent = const_cast<Node*>(hint.n);
+        //     // if (hint.n->is_header())
+        //     //     header.parent = nuevo;
+        //     // else if (nuevo->key() < hint.n->key())
+        //     //     *hint.n->child[0] = nuevo;
+                
+        //     // else
+        //     //     *hint.n->child[1] = nuevo;
+        //     // nuevo->color = Color::Red;
+        //    	iterator it = iterator(nuevo);
+        //     insert_fixup(it);
+    	   // 	count++;
+        //     return it;
         //  }
     }
 
 
-    /*
-oid insert_fixup(iterator it, const value_type& value){
-	Node* n = it.n;
+    
+void insert_fixup(const_iterator it){
+	Node* n = const_cast<Node*>(it.n);
 	Node* y;
-while (n->parent->color == red){
+while (n->parent->color == Color::Red){
 	if (n->parent == n->parent->parent->child[0]){
 		y = n->parent->parent->child[1];
-	}
-	if (y->color == red){
-		n->color = black;
-		y->color = black;
-		n->parent->parent->color = red;
-		n = n->parent->parent;
-	} else if(n == n->parent->child[1]){
-		n = n->parent;
-		iterator it2(n);
-		left_rotate(it2);
-		n->parent->color = black;
-		n->parent->parent->color = red;
-		right_rotate(it2);
+	
+		if (y->color == Color::Red){
+			n->color = Color::Black;
+			y->color = Color::Black;
+			n->parent->parent->color = Color::Red;
+			n = n->parent->parent;
+		} else if(n == n->parent->child[1]){
+			n = n->parent;
+			iterator it2(n);
+			left_rotate(it2);
+			n->parent->color = Color::Black;
+			n->parent->parent->color = Color::Red;
+			right_rotate(it2);
 		}
 	} else {
-		if (n->parent == n->parent->parent->child[1]){
-		y = n->parent->parent->child[0];
+		if (n->parent == n->parent->parent->child[1])
+			y = n->parent->parent->child[0];
+		
+		if (y->color == Color::Red){
+			n->color = Color::Black;
+			y->color = Color::Black;
+			n->parent->parent->color = Color::Red;
+			n = n->parent->parent;
+		} else if(n == n->parent->child[0]){
+			n = n->parent;
+			iterator it2(n);
+			right_rotate(it2);
+			n->parent->color = Color::Black;
+			n->parent->parent->color = Color::Red;
+			left_rotate(it2);
+		}
 	}
-	if (y->color == red){
-		n->color = black;
-		y->color = black;
-		n->parent->parent->color = red;
-		n = n->parent->parent;
-	} else if(n == n->parent->child[0]){
-		n = n->parent;
-		iterator it2(n);
-		right_rotate(it2);
-		n->parent->color = black;
-		n->parent->parent->color = red;
-		left_rotate(it2);
-	}
+}
+	header.parent->color = Color::Black;
+	it.n = n;
 }
 
-	header->parent->color = black;
-	it.n = n;
-}
-*/
+
 void left_rotate(iterator it){
-	/*
+	
 	Node* n = it.n;
 	Node* y = it.n->child[1];
-	n->child[1] = y->child[0];
+	*n->child[1] = y->child[0];
 	if (y->child[0] != nullptr)
-		y->child[0]->parent = n;
+		*y->child[0]->parent = n;
 	y->parent = n->parent;
-	if(n->parent.is_header())
-		header->parent = y;
+	if(n->parent->is_header())
+		header.parent = y;
 	else if (n == n->parent->child[0])
-		n->parent->child[0] = y;
+		*n->parent->child[0] = y;
 	else
-		n->parent->child[1] = y;
-	y->child[0] = n;
+		*n->parent->child[1] = y;
+	*y->child[0] = n;
 	n->parent = y;
 	it.n = n;
-	*/
+	
 }
 
 void right_rotate(iterator it){
-	/*
+	
 	Node* n = it.n;
 	Node* y = it.n->child[0];
-	n->child[0] = y->child[1];
+	*n->child[0] = y->child[1];
 	if (y->child[1] != nullptr)
-		y->child[1]->parent = n;
+		*y->child[1]->parent = n;
 	y->parent = n->parent;
-	if(n->parent.is_header())
-		header->parent = y;
+	if(n->parent->is_header())
+		header.parent = y;
 	else if (n == n->parent->child[1])
-		n->parent->child[1] = y;
+		*n->parent->child[1] = y;
 	else
-		n->parent->child[0] = y;
-	y->child[1] = n;
+		*n->parent->child[0] = y;
+	*y->child[1] = n;
 	n->parent = y;
 	it.n = n;
-	*/
+	
 }
     
 
 
     iterator insert(const value_type& value) {
-    /*	InnerNode* nuevo = new InnerNode(*value);
-    	iterator it = lower_bound(value.first);
-        Node* padre = hint.n->parent;
-        nuevo->parent = padre;
-        if (padre.is_header())
-            header->parent = nuevo;
-        else if (nuevo->key() < padre->key())
-            padre->child[0] = nuevo;
-        else
-            padre->child[1] = nuevo;
-        nuevo->color = Red;
-        iterator it = find(nuevo);
-        insert_fixup(it, value);
-        count++;
-        return it;
+    	
+    	 InnerNode* nuevo = new InnerNode(value);
+    	 Node* head = new Node(header);
+    	 iterator it = lower_bound(value.first);
+    	 if (! (lt(it.n->key(), value.first) == lt(value.first, it.n->key())) ){
+    	 bool esElMenor = false;
+    	 bool esElMayor = false;
+    	  if (it.n == begin().n)
+    	  	esElMenor = true;
+       	 Node* padre;
+    	if (it.n == nullptr && count > 0){
+    		padre = header.child[1];
+    		esElMayor = true;
+    	}
+    	else
+    	 	padre = it.n;
+        
+     //    nuevo->parent = padre;
+         if (count == 0){
+         	nuevo->parent = head;
+            header.parent = nuevo;
+            header.child[0] = nuevo;
+            header.child[1] = nuevo;  
+         } else {
+       		nuevo->parent = padre;
+       	if (nuevo->key() < padre->key())
+            *padre->child[0] = nuevo;
+         else
+            *padre->child[1] = nuevo;
+       }
+     //    nuevo->color = Color::Red;
 
-    */
+       count++;
+   	
+   }
+       iterator it2 = find(value.first);
+       assert(it2.n != nullptr);
+       // insert_fixup(it2);
+        
+        return it2;
+
+    
     }
 
 
@@ -1252,10 +1293,10 @@ void right_rotate(iterator it){
    
 
     /**
-     * @brief Inserta o redefine \P{value} en el diccionario
+     * @brief Inserta o Color::Redefine \P{value} en el diccionario
      *
      * Inserta un valor en el diccionario.  Si \P{*this} ya tiene un valor con clave
-     * \P{value}.first, entonces se redefine.  El iterador de retorno apunta al elemento
+     * \P{value}.first, entonces se Color::Redefine.  El iterador de retorno apunta al elemento
      * recien insertado o redefinido.
      *
      * @param value valor a insertar
@@ -1284,7 +1325,9 @@ void right_rotate(iterator it){
     	// Hacer insert Node
         iterator it2;
         if (hint.n->value().first == value.first){
+
             it2.n = const_cast<Node*>(hint.n);
+
             it2.n->value().second = value.second;
             } else if (hint.n->value().first < value.first || (hint--.n == nullptr
             || hint.n->value().first >= value.first)) {
@@ -2233,11 +2276,17 @@ private:
      */
     struct InnerNode : public Node {
     	value_type _value;
-
-  //   InnerNode(): Node(), _value() {}
-    	
+		Node* child[2]{nullptr,nullptr};
+        /** \brief Puntero al padre: garantiza insercion con puntero en O(1) amortizado e iteracion en O(1) memoria */
+        Node* parent{nullptr};
+        /** \brief Color del nodo */
+    	Color color{Color::Red};
  	// InnerNode (value_type value) : Node() {
- 		
+ 	
+ 	InnerNode(const value_type& v): Node(), color(Color::Red), _value(v) {
+ 		child[0] = child[1] = nullptr;
+ 	}
+ 	 	
  	// 	_value = value;
  	// 	color = Color::Red;
   //       parent = nullptr;
