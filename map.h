@@ -1136,23 +1136,25 @@ public:
     iterator insert(const_iterator hint, const value_type& value) {
     	  if (!(hint.n == nullptr || (hint.n->value().first > value.first && (hint--.n != nullptr && hint.n->value().first < value.first ))))
             return insert(value);
-        // else {
-        //     InnerNode* nuevo = new InnerNode(value);
-
-        //     // nuevo->parent = const_cast<Node*>(hint.n);
-        //     // if (hint.n->is_header())
-        //     //     header.parent = nuevo;
-        //     // else if (nuevo->key() < hint.n->key())
-        //     //     *hint.n->child[0] = nuevo;
+         else {
+             InnerNode* nuevo = new InnerNode(value);
+             Node* head = new Node(header);
+        	 nuevo->parent = const_cast<Node*>(hint.n);
+             if (hint.n == nullptr || hint.n->is_header()){
+                  header.parent = nuevo;
+                  nuevo-> parent = head;
+             }
+              else if (nuevo->key() < hint.n->key())
+                  *hint.n->child[0] = nuevo;
                 
-        //     // else
-        //     //     *hint.n->child[1] = nuevo;
-        //     // nuevo->color = Color::Red;
-        //    	iterator it = iterator(nuevo);
-        //     insert_fixup(it);
-    	   // 	count++;
-        //     return it;
-        //  }
+              else
+                  *hint.n->child[1] = nuevo;
+              	
+            iterator it = iterator(nuevo);
+            insert_fixup(it);
+    	    	count++;
+             return it;
+          }
     }
 
 
@@ -1247,20 +1249,23 @@ void right_rotate(iterator it){
     	
     	 InnerNode* nuevo = new InnerNode(value);
     	 Node* head = new Node(header);
+       	 Node* padre;
     	 iterator it = lower_bound(value.first);
-    	 if (! (lt(it.n->key(), value.first) == lt(value.first, it.n->key())) ){
     	 bool esElMenor = false;
     	 bool esElMayor = false;
+    	 if (it.n != nullptr){
+    	  	 if (! (lt(it.n->key(), value.first) == lt(value.first, it.n->key())) ){
+
     	  if (it.n == begin().n)
     	  	esElMenor = true;
-       	 Node* padre;
+    	}
     	if (it.n == nullptr && count > 0){
     		padre = header.child[1];
     		esElMayor = true;
     	}
     	else
     	 	padre = it.n;
-        
+        }
      //    nuevo->parent = padre;
          if (count == 0){
          	nuevo->parent = head;
@@ -1278,9 +1283,9 @@ void right_rotate(iterator it){
 
        count++;
    	
-   }
+   
        iterator it2 = find(value.first);
-       assert(it2.n != nullptr);
+       //assert(it2.n != nullptr);
        // insert_fixup(it2);
         
         return it2;
