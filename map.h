@@ -908,8 +908,8 @@ public:
      * recurrir a la función find.
      */
     const Meaning& at(const Key& key) const {
-    	Node* indice = header.parent;
-        return indice->value().second;
+
+    	return find(key)->second;
     }
 
     /** \overload */
@@ -984,39 +984,19 @@ public:
      *
      */
     iterator find(const Key& key) {
-
-    	
-    	iterator it;
-    	Node* indice = header.parent;
-    	if ( ! indice->is_header()){
-    		while(indice != nullptr && (!(lt(indice->value().first,key) == lt(key, indice->value().first)))) {
-    			if (lt(indice->value().first, key))
-    				indice = indice->child[0];
-    			else
-    				indice = indice->child[1];
-    		}
-    	
-    	it.n = indice;
-    	}
-    	return it;
+    	auto r = const_cast<const map*>(this)->find(key);
+    	return iterator(const_cast<Node*>(r.n));
     }
 
     /** \overload */
     const_iterator find(const Key& key) const {
-    	
-    	const_iterator it;
-    	if (count != 0){
-    	Node* indice = header.parent;
-    	while(indice != nullptr && (!(lt(indice->value().first,key) == lt(key, indice->value().first)))) {
-    		if (indice->value().first < key)
-    			indice = indice->child[0];
-    		else
-    			indice = indice->child[1];
-    	}
-    	
-    	it.n = indice;
-    	}
-    	return it;
+    	Node* n;
+    	if (eq(lower_bound(key).n->key(), key))
+    		n = const_cast<Node*>(bounds(key).second);
+    	else
+    		n = const_cast<Node*>(&header);   	
+    	return const_iterator(n);
+
     }
 
     /**
@@ -1642,7 +1622,7 @@ Node* sucesorInmediato(Node* y){
      * \complexity{\O(1)}
      */
     iterator end() {
-    	iterator it;
+    	iterator it(&header);
     	return it;
     }
 
@@ -1700,19 +1680,19 @@ Node* sucesorInmediato(Node* y){
      * \complexity{\O(1)}
      */
     reverse_iterator rend() {
-    	   	reverse_iterator it = reverse_iterator();
+    	   	reverse_iterator it = reverse_iterator(&header);
     	return it;
     }
 
     /** \overload */
     const_reverse_iterator rend() const {
-    	   	const_reverse_iterator it = const_reverse_iterator();
+    	   	const_reverse_iterator it = const_reverse_iterator(&header);
     	return it;
     }
 
     /** \overload */
     const_reverse_iterator crend() {
-    	   	const_reverse_iterator it = const_reverse_iterator();
+    	   	const_reverse_iterator it = const_reverse_iterator(&header);
     	return it;
     }
     //@}
