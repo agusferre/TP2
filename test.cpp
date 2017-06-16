@@ -121,9 +121,13 @@ TEST_F(BasicMapInstances, size) {
 ////////////////////////////////////////////////////////
 
 TEST_F(BasicMapInstances, at) {
+	
 	EXPECT_EQ(singleton.at(1), "uno");
+	
 	EXPECT_EQ(cinco_elementos.at(1), "uno");
+	
 	EXPECT_EQ(cinco_elementos.at(3), "tres");
+	
 	EXPECT_EQ(cinco_elementos.at(5), "cinco");
 }
 
