@@ -763,9 +763,7 @@ public:
      * \attention El parámetro formal \LT del TAD diccionario se establece en esta función.
      * \LT = \P{c}.operator()
      */
-
-
-    explicit map(Compare c = Compare()) : header(){
+    explicit map(Compare c = Compare()) {
     	count = 0;
     	lt = c;
     }
@@ -916,7 +914,7 @@ public:
 
     /** \overload */
     Meaning& at(const Key& key) {
-    	return find(key)->second;
+    	return find(key).n->value().second;
     }
 
     /**
@@ -998,6 +996,7 @@ public:
     	else
     		n = const_cast<Node*>(&header);   	
     	return const_iterator(n);
+
     }
 
     /**
@@ -1092,232 +1091,109 @@ public:
      *
      * \attention Para garantizar que el nuevo elemento se inserte sí o sí, usar aed2::map::insert_or_assign.
      */
-   /* iterator insert(const_iterator hint, const value_type& value) {
-    	if (!(hint.n == nullptr || (hint.n->value().first > value.first && (hint--.n != nullptr && hint.n->value().first < value.first ))))
-            return insert(value);
-        else {
-  	 	if (hint.n == nullptr || ! (lt(hint.n->key(), value.first) == lt(value.first, hint.n->key()))){
-       		Node* padre = const_cast<Node*>(hint.n);
-        	bool esElMenor = false;
-    		bool esElMayor = false;
-    		if (hint.n == begin().n)
-    			esElMenor = true;
-    		if (hint.n == nullptr && count > 0){
-    			padre = header.child[1];
-    			esElMayor = true;
-    		}
-    		InnerNode* nuevo = new InnerNode(padre, value);
-    	    if (count == 0)
-        	   header.parent = nuevo;
-        	else if (nuevo->key() < padre->key())
-            	*padre->child[0] = nuevo;
-         	else
-            	*padre->child[1] = nuevo;
-       
-       		if (esElMenor)
-            	header.child[0] = nuevo;
-       		if (esElMayor)
-            	header.child[1] = nuevo;  
-         
-       	
-        count++;
+    iterator insert(const_iterator hint, const value_type& value) {
+    iterator it;
+    if 	( ! ( (hint == begin() && lt(value.first, hint.n->key()) )|| 
+    	(lt((--hint).n->key(), value.first)) && 
+     	((++hint).n->is_header() || lt(value.first, hint.n->key()) )) )
+           it = lower_bound(value.first);
+    else
+    	it = iterator(const_cast<Node*>(hint.n));
+  	if (it.n->is_header() || !eq(it.n->key(), value.first)) {
+   		Node* padre = it.n;
+   	   	InnerNode* nuevo = new InnerNode(padre, value);
+   	   	bool esElMenor = ((count == 0) || lt(value.first, begin().n->key())); 
+   		bool esElMayor = ((count == 0) || lt(header.child[1]->key(), value.first));
+   		if (esElMenor)
+           	header.child[0] = nuevo;
+   		if (esElMayor)
+           	header.child[1] = nuevo; 
+   		
+   		if (padre->is_header())
+       		header.parent = nuevo;
+       	else if (lt(nuevo->key(),padre->key()))
+       		padre->child[0] = nuevo;
+       	else
+       		padre->child[1] = nuevo;
+      	
+       	count++;
    	
    	
-       iterator it2 = find(value.first);
-       //assert(it2.n != nullptr);
-       // insert_fixup(it2);
+       	it.n = nuevo;
+       	//assert(it2.n != nullptr);
+       	//insert_fixup(it);
+     
         
-        return it2;
+        return it;
 
     
     }
-    }
- }*/
-
-
-/*
-   if ((hint.n->is_header() && (count == 0 || lt(header.child[1]->key(), value.first))) || (hint == begin() && lt(value.first, hint.n->key())) ||
-    (lt(hint.n->key(), value.first) && lt(value.first, (--hint).n->key())))
-*/
-
-   iterator insert(const_iterator hint, const value_type& value) {
-       iterator it;
-       if ( hint.n != nullptr && ((hint.n->is_header() && (count == 0 || lt(header.child[1]->key(), value.first))) || (hint == begin() && lt(value.first, hint.n->key())) || (lt(hint.n->key(), value.first) && lt(value.first, (--hint).n->key())))) {
-           if(not hint.n->is_header())
-              hint++;
-           it = iterator(const_cast<Node *>(hint.n));
-       } else
-           it = lower_bound(value.first);
-        if (it.n->is_header() || !eq(it.n->key(), value.first)) {
-               Node* padre = it.n;
-               InnerNode* nuevo = new InnerNode(padre, value);
-               bool esElMenor = (count == 0) || lt(value.first, begin().n->key());
-               bool esElMayor = (count == 0) || lt(header.child[1]->key(), value.first);
-               if (esElMenor)
-                   header.child[0] = nuevo;
-               if (esElMayor)
-                   header.child[1] = nuevo;
-               if (padre->is_header()) {
-                   header.parent = nuevo;
-                   nuevo->color = Color::Black;
-               } else if (lt(nuevo->key(),padre->key()))
-                   padre->child[0] = nuevo;
-               else
-                   padre->child[1] = nuevo;
-
-               count++;
-               it.n = nuevo;
-               insert_fixup(it);
-               return it;
-
-       }
-   }
+ }
 
 
     
 void insert_fixup(const_iterator it){
 	Node* n = const_cast<Node*>(it.n);
 	Node* y;
-    while (n->parent->color == Color::Red){
-        auto dir = n->parent == n->parent->parent->child[0];
-        y = n->parent->parent->child[dir];
-	    if (y->color == Color::Red){
-		    n->parent->color = Color::Black;
-		    y->color = Color::Black;
-		    n->parent->parent->color = Color::Red;
-		    n = n->parent->parent;
-	    } else if(n == n->parent->child[dir]) {
-            n = n->parent;
-            iterator it2(n);
-            dir_rotate(it2, 1-dir);
-        } else {
-            n->parent->color = Color::Black;
-            n->parent->parent->color = Color::Red;
-            iterator it3(n->parent->parent);
-            dir_rotate(it3, dir);
-            }
-
-    }
-	header.parent->color = Color::Black;
-	it.n = n;
+	while (n->parent->color == Color::Red){
+		int dir = (n->parent == n->parent->parent->child[1]);
+	//	if (n->parent == n->parent->parent->child[0]){
+		y = n->parent->parent->child[1-dir];
+		//y = n->parent->parent->child[1];
+		
+		if (y->color == Color::Red){
+			n->parent->color = Color::Black;
+			y->color = Color::Black;
+			n->parent->parent->color = Color::Red;
+			n = n->parent->parent;
+		} else if(n == n->parent->child[1-dir]){
+			//} else if(n == n->parent->child[1]){
+			n = n->parent;
+			iterator it2(n);
+			dir_rotate(it2, dir);
+				//left_rotate(it2);
+			n->parent->color = Color::Black;
+			n->parent->parent->color = Color::Red;
+			dir_rotate(it2, 1 - dir);
+				//right_rotate(it2);
+		}
+	}
+		header.parent->color = Color::Black;
+		it.n = n;
 }
 
-    void dir_rotate(iterator it, int dir){
-        Node* n = it.n;
-        Node* y = it.n->child[1-dir];
-        n->child[1-dir] = y->child[dir];
-        if (y->child[dir] != nullptr)
-            y->child[dir]->parent = n;
-        y->parent = n->parent;
-        if(n->parent->is_header())
-            header.parent = y;
-        else if (n == n->parent->child[dir])
-            n->parent->child[dir] = y;
-        else
-            n->parent->child[1-dir] = y;
-        y->child[dir] = n;
-        n->parent = y;
-        it.n = n;
-    }
-
-/*
-void dir_rotate(iterator it){
+void dir_rotate(iterator it, int dir){
 	
 	Node* n = it.n;
-	Node* y = it.n->child[1];
-	*n->child[1] = y->child[0];
-	if (y->child[0] != nullptr)
-		*y->child[0]->parent = n;
+	Node* y = it.n->child[1-dir];
+	*n->child[1-dir] = y->child[dir];
+	if (y->child[dir] != nullptr)
+		*y->child[dir]->parent = n;
 	y->parent = n->parent;
 	if(n->parent->is_header())
 		header.parent = y;
-	else if (n == n->parent->child[0])
-		*n->parent->child[0] = y;
+	else if (n == n->parent->child[dir])
+		*n->parent->child[dir] = y;
 	else
-		*n->parent->child[1] = y;
-	*y->child[0] = n;
-	n->parent = y;
-	it.n = n;
-	
-}
-
-void right_rotate(iterator it){
-	
-	Node* n = it.n;
-	Node* y = it.n->child[0];
-	*n->child[0] = y->child[1];
-	if (y->child[1] != nullptr)
-		*y->child[1]->parent = n;
-	y->parent = n->parent;
-	if(n->parent->is_header())
-		header.parent = y;
-	else if (n == n->parent->child[1])
-		*n->parent->child[1] = y;
-	else
-		*n->parent->child[0] = y;
-	*y->child[1] = n;
+		*n->parent->child[1-dir] = y;
+	*y->child[dir] = n;
 	n->parent = y;
 	it.n = n;
 	
 }
     
-*/
 
- /*   iterator insert(const value_type& value) {
+
+    iterator insert(const value_type& value) {
     	
     	iterator it = lower_bound(value.first);
     	
-  	 	if (it.n == nullptr || it.n->is_header() || ! (lt(it.n->key(), value.first) == lt(value.first, it.n->key()))){
-    		Node* padre = it.n;
-    		bool esElMenor = false;
-    		bool esElMayor = false;
-    		if (it.n == begin().n)
-    			esElMenor = true;
-    		if (it.n == nullptr && count > 0){
-    			padre = header.child[1];
-    			esElMayor = true;
-    		} else if (count == 0)
-    			padre = &header;
-    		InnerNode* nuevo = new InnerNode(padre, value);
-    		Node* hijo0 = padre->child[0];
-    		Node* hijo1 = padre->child[1];
-    	    if (padre->is_header())
-        	   header.parent = nuevo;
-        	else if (nuevo->key() < padre->key())
-            	padre->child[0] = nuevo;
-         	else
-            	padre->child[1] = nuevo;
-      
-       		if (esElMenor)
-            	header.child[0] = nuevo;
-       		if (esElMayor)
-            	header.child[1] = nuevo;  
-         	nuevo->child[0] = hijo0;
-         	nuevo->child[1] = hijo1;       	
-        count++;
-   	
-   	
-       iterator it2 = find(value.first);
-       //assert(it2.n != nullptr);
-       // insert_fixup(it2);
-        
-        return it2;
-
-    
-    }
+    	return insert(it, value);
+  	 	
 }
-*/
-
- iterator insert(const value_type& value) {
-
-     iterator it = lower_bound(value.first);
-
-     return insert(it, value);
-
- }
 
 
-
+   
 
     /**
      * @brief Inserta o Color::Redefine \P{value} en el diccionario
@@ -1411,7 +1287,7 @@ void right_rotate(iterator it){
     		x = z->child[0];
     		transplant(z, z->child[0]);
     	} else {
-    		y = z->sucesorInmediato();
+    		y = sucesorInmediato(z->child[1]);
     		yColorsito = y->color;
     		x = y->child[1];
     		if (y->parent == z)
@@ -1512,7 +1388,13 @@ void erase_fixup(iterator it){
 }
 
 
-
+Node* sucesorInmediato(Node* y){
+	Node* res = y;
+	while (res->child[0] != nullptr){
+		res = res->child[0];
+	}
+	return res;
+}
 
     /**
      * @brief Elimina el valor cuya clave es \P{key}
@@ -1539,7 +1421,7 @@ void erase_fixup(iterator it){
     		x = z->child[0];
     		transplant(z, z->child[0]);
     	} else {
-    		y = z->sucesorInmediato();
+    		y = sucesorInmediato(z->child[1]);
     		yColorsito = y->color;
     		x = y->child[1];
     		if (y->parent == z)
@@ -1862,9 +1744,21 @@ void erase_fixup(iterator it){
          * }
          */
         iterator& operator++() {
-            n = n->sucesorInmediato();
-            return *this;
+        	assert(n != nullptr);
+        	assert(n->parent != nullptr);
+        	 if(n->child[1] == nullptr){
 
+                while (! (n->parent->is_header()) &&  n->parent->child[1] == n)
+                    n = n->parent;
+            
+            if (n->parent->is_header())
+            	n = nullptr;
+            else
+            	n = n->parent;
+
+        	} else
+        		n = n->child[1];
+            return *this;
         }
         /**
          * \brief Avanza el iterador a la siguiente posición
@@ -1940,7 +1834,20 @@ void erase_fixup(iterator it){
          * }
          */
         iterator operator--(int) {
+        	if(n->child[0] == nullptr){
 
+               while (! (n->parent->is_header()) &&  n->parent->child[1] == n)
+                   n = n->parent;
+            
+            if (n->parent->is_header())
+            	n = nullptr;
+            else
+            	n = n->parent;
+           
+           } else
+        	n = n->child[0];
+         
+        return *this;
         }
 
         /**
@@ -2048,7 +1955,7 @@ void erase_fixup(iterator it){
         using difference_type = std::ptrdiff_t;
 
         /** \brief Ver aed2::map::iterator::iterator() */
-        const_iterator() : n() {}
+        const_iterator() {}
         /**
          * \brief Constructor desde un iterador modificable
          *
@@ -2067,7 +1974,7 @@ void erase_fixup(iterator it){
          * \complexity{\O(1)}
          */
         const_iterator(iterator it) {
-            n = const_cast<Node*>(it.n);
+          //completar
         }
         /** \brief Ver aed2::map::iterator::operator*() */
         reference operator*() const  {
@@ -2083,18 +1990,7 @@ void erase_fixup(iterator it){
         }
         /** \brief Ver aed2::map::iterator::operator++(int) */
         const_iterator operator++(int)  {
-            if(n->child[1] == nullptr){
-
-                while (! (n->parent->is_header()) &&  n->parent->child[1] == n)
-                    n = n->parent;
-
-                if (n->parent->is_header())
-                    n = nullptr;
-                else
-                    n = n->parent;
-            } else
-                n = n->child[1];
-            return *this;
+          //completar
         }
         /** \brief Ver aed2::map::iterator::operator--() */
         const_iterator& operator--()  {
@@ -2102,20 +1998,7 @@ void erase_fixup(iterator it){
         }
         /** \brief Ver aed2::map::iterator::operator--(int) */
         const_iterator operator--(int)  {
-            if(n->child[0] == nullptr){
-
-                while (! (n->parent->is_header()) &&  n->parent->child[1] == n)
-                    n = n->parent;
-
-                if (n->parent->is_header())
-                    n = nullptr;
-                else
-                    n = n->parent;
-
-            } else
-                n = n->child[0];
-
-            return *this;
+          //completar
         }
         /** \brief Ver aed2::map::iterator::operator==() */
         bool operator==(const_iterator other) const  {
@@ -2288,20 +2171,6 @@ private:
 
         //@}
 
-
-        Node* sucesorInmediato(){
-            Node* res = this;
-            if (res->child[1] != nullptr) {
-                res = res->child[1];
-                while (res->child[0] != nullptr)
-                    res = res->child[0];
-            } else {
-                while (!res->parent->is_header() && res == res->parent->child[1])
-                    res = res->parent;
-                res = res->parent;
-            }
-            return res;
-        }
 #ifdef DEBUG
 
         /**
@@ -2344,6 +2213,7 @@ private:
  	// InnerNode (value_type value) : Node() {
  	
  	InnerNode(Node* p, const value_type& v): Node(p, Color::Red), _value(v) {
+ 		child[0] = child[1] = nullptr;
  	}
  	 	
  	// 	_value = value;
@@ -2362,7 +2232,8 @@ private:
 	Node* sucesorInmediato(Node* y);    
   	void transplant(Node* u, Node* v);
   	void erase_fixup(iterator it);
-	void dir_rotate(iterator it, int dir);
+  	void left_rotate(iterator it);
+	void right_rotate(iterator it);
 	*/
 	////////////////////////////////////////////////////////////////////////////////////////////////////
     /** \name Estructura de representación
@@ -2426,11 +2297,7 @@ private:
     		res[1-dir] = indice;
     		indice = indice->child[dir];
     	}
-    	if (indice != nullptr
-
-
-
-                ){
+    	if (indice != nullptr){
     		res[0] = res[1] = indice;
     	}
     	return std::make_pair(res[0], res[1]);    	

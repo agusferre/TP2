@@ -125,7 +125,8 @@ TEST_F(BasicMapInstances, at) {
 	EXPECT_EQ(singleton.at(1), "uno");
 	
 	EXPECT_EQ(cinco_elementos.at(1), "uno");
-	
+
+	EXPECT_EQ(cinco_elementos.at(1), "uno");
 	EXPECT_EQ(cinco_elementos.at(3), "tres");
 	
 	EXPECT_EQ(cinco_elementos.at(5), "cinco");
@@ -229,13 +230,13 @@ TEST_F(BasicMapInstances, insertOrAssignSinHint) {
 }
 
 TEST_F(BasicMapInstances, insertOrAssignConHintBueno) {
-	// auto hint = vacio.insert({1, "uno"});
+ 	auto hint = vacio.insert({1, "uno"});
 	vacio.insert_or_assign(++hint, {1, "diez"});
 	EXPECT_EQ(vacio.at(1), "diez");
 }
 
 TEST_F(BasicMapInstances, insertOrAssignConHintMalo) {
-	// auto hint = cinco_elementos.insert({7, "siete"});
+	auto hint = cinco_elementos.insert({7, "siete"});
 	cinco_elementos.insert_or_assign(hint, {1, "diez"});
 	EXPECT_EQ(cinco_elementos.at(1), "diez");
 	cinco_elementos.insert_or_assign(cinco_elementos.begin(), {7, "setenta"});
@@ -263,12 +264,12 @@ TEST_F(BasicMapInstances, erasePorIterador) {
 	//singleton.erase( singleton.begin() );
 	EXPECT_TRUE( singleton.empty() );
 
-	//auto it = cinco_elementos.insert({7, "siete"});
-	//it = cinco_elementos.erase( it );
+	auto it = cinco_elementos.insert({7, "siete"});
+	it = cinco_elementos.erase( it );
 	EXPECT_EQ(it, cinco_elementos.end());
 
-	//it = cinco_elementos.insert({0, "cero"});
-	//it = cinco_elementos.erase( it );
+	it = cinco_elementos.insert({0, "cero"});
+	it = cinco_elementos.erase( it );
 	EXPECT_EQ(it, cinco_elementos.begin());
 }
 
