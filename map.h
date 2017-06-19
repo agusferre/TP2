@@ -1142,13 +1142,13 @@ public:
 
    iterator insert(const_iterator hint, const value_type& value) {
        iterator it;
-       if ( hint.n != nullptr && ((hint.n->is_header() && (count == 0 || lt(header.child[1]->key(), value.first))) ||
-		  (hint == begin() && lt(value.first, hint.n->key())) || (lt(hint.n->key(), value.first) && lt(value.first, (--hint).n->key())))) {
-           if(not hint.n->is_header())
-              hint++;
-           it = iterator(const_cast<Node *>(hint.n));
-       } else
-           it = lower_bound(value.first);
+        if ( hint.n != nullptr && ((hint.n->is_header() && (count == 0 || lt(header.child[1]->key(), value.first))) ||
+           (hint == begin() && lt(value.first, hint.n->key())) || (lt(hint.n->key(), value.first) && lt(value.first, (--hint).n->key())))) {
+            if(not hint.n->is_header())
+               hint++;
+            it = iterator(const_cast<Node *>(hint.n));
+        } else
+            it = lower_bound(value.first);
         if (it.n->is_header() || !eq(it.n->key(), value.first)) {
                Node* padre = it.n;
                InnerNode* nuevo = new InnerNode(padre, value);
@@ -1170,12 +1170,9 @@ public:
                it.n = nuevo;
                insert_fixup(it);
                return it;
-
        }
    }
 
-
-    
 void insert_fixup(const_iterator it){
 	Node* n = const_cast<Node*>(it.n);
 	Node* y;
@@ -1189,9 +1186,8 @@ void insert_fixup(const_iterator it){
 		    n = n->parent->parent;
 	    } else if(n == n->parent->child[dir]) {
             n = n->parent;
-            iterator it2(n);
+            iterator it2 = iterator(n);
             dir_rotate(it2, 1-dir);
-        } else {
             n->parent->color = Color::Black;
             n->parent->parent->color = Color::Red;
             iterator it3(n->parent->parent);
@@ -1199,7 +1195,6 @@ void insert_fixup(const_iterator it){
             }
     }
 	header.parent->color = Color::Black;
-	it.n = n;
 }
 
     void dir_rotate(iterator it, int dir){
@@ -1217,7 +1212,6 @@ void insert_fixup(const_iterator it){
             n->parent->child[1-dir] = y;
         y->child[dir] = n;
         n->parent = y;
-        it.n = n;
     }
 
 /*
