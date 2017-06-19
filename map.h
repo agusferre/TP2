@@ -1142,7 +1142,8 @@ public:
 
    iterator insert(const_iterator hint, const value_type& value) {
        iterator it;
-       if ( hint.n != nullptr && ((hint.n->is_header() && (count == 0 || lt(header.child[1]->key(), value.first))) || (hint == begin() && lt(value.first, hint.n->key())) || (lt(hint.n->key(), value.first) && lt(value.first, (--hint).n->key())))) {
+       if ( hint.n != nullptr && ((hint.n->is_header() && (count == 0 || lt(header.child[1]->key(), value.first))) ||
+		  (hint == begin() && lt(value.first, hint.n->key())) || (lt(hint.n->key(), value.first) && lt(value.first, (--hint).n->key())))) {
            if(not hint.n->is_header())
               hint++;
            it = iterator(const_cast<Node *>(hint.n));
@@ -1196,7 +1197,6 @@ void insert_fixup(const_iterator it){
             iterator it3(n->parent->parent);
             dir_rotate(it3, dir);
             }
-
     }
 	header.parent->color = Color::Black;
 	it.n = n;
@@ -1862,8 +1862,9 @@ void erase_fixup(iterator it){
          * }
          */
         iterator& operator++() {
+			iterator it = iterator(n);
             n = n->sucesorInmediato();
-            return *this;
+            return it;
 
         }
         /**
@@ -1882,17 +1883,18 @@ void erase_fixup(iterator it){
          * }
          */
         iterator operator++(int) {
-        	if(n->child[1] == nullptr){
+        /*	if(n->child[1] == nullptr){
 
                 while (! (n->parent->is_header()) &&  n->parent->child[1] == n)
                     n = n->parent;
-            
+
                if (n->parent->is_header())
             	n = nullptr;
             else
             	n = n->parent;
         } else
-        	n = n->child[1];
+        	n = n->child[1];*/
+		n = n->sucesorInmediato();
         return *this;
         }
         /**
@@ -1911,18 +1913,17 @@ void erase_fixup(iterator it){
          * }
          */
         iterator& operator--() {
+            iterator it = iterator(n);
         	if(n->child[0] == nullptr){
-
                 while (! (n->parent->is_header()) &&  n->parent->child[1] == n)
                     n = n->parent;
-            
             if (n->parent->is_header())
             	n = nullptr;
             else
             	n = n->parent;
         	} else
         		n = n->child[0];
-        return *this;
+        return it;
         }
         /**
          * \brief Retrocede el iterador a la posición anterior
@@ -1940,7 +1941,17 @@ void erase_fixup(iterator it){
          * }
          */
         iterator operator--(int) {
+            if(n->child[0] == nullptr){
+                while (! (n->parent->is_header()) &&  n->parent->child[1] == n)
+                    n = n->parent;
 
+                if (n->parent->is_header())
+                    n = nullptr;
+                else
+                    n = n->parent;
+            } else
+                n = n->child[0];
+            return *this;
         }
 
         /**
@@ -2048,7 +2059,7 @@ void erase_fixup(iterator it){
         using difference_type = std::ptrdiff_t;
 
         /** \brief Ver aed2::map::iterator::iterator() */
-        const_iterator() : n() {}
+        const_iterator() : n(nullptr) {}
         /**
          * \brief Constructor desde un iterador modificable
          *
@@ -2067,27 +2078,43 @@ void erase_fixup(iterator it){
          * \complexity{\O(1)}
          */
         const_iterator(iterator it) {
-            n = const_cast<Node*>(it.n);
+           // n = const_cast<Node*>(it.n);
+			n = it.n;
         }
         /** \brief Ver aed2::map::iterator::operator*() */
         reference operator*() const  {
-          //completar
+			return n->value();
         }
         /** \brief Ver aed2::map::iterator::operator->() */
         pointer operator->() const {
-          //completar
+			return &n->value();
         }
         /** \brief Ver aed2::map::iterator::operator++() */
         const_iterator& operator++()  {
-          //completar
+            const_iterator it;
+            it.n = n;
+            Node* res = const_cast<Node*>(n);
+            if (res->child[1] != nullptr) {
+                res = res->child[1];
+                while (res->child[0] != nullptr)
+                    res = res->child[0];
+            } else {
+                while (not res->parent->is_header() && res == res->parent->child[1])
+                    res = res->parent;
+                res = res->parent;
+            }
+            n = res;
+            return it;
         }
+            /*const_iterator it(n);
+			n = const_cast<Node*>(n)->sucesorInmediato();
+			return it;
+        }*/
         /** \brief Ver aed2::map::iterator::operator++(int) */
         const_iterator operator++(int)  {
             if(n->child[1] == nullptr){
-
                 while (! (n->parent->is_header()) &&  n->parent->child[1] == n)
                     n = n->parent;
-
                 if (n->parent->is_header())
                     n = nullptr;
                 else
@@ -2098,7 +2125,18 @@ void erase_fixup(iterator it){
         }
         /** \brief Ver aed2::map::iterator::operator--() */
         const_iterator& operator--()  {
-          //completar
+			const_iterator it;
+            it.n = n;
+			if(n->child[0] == nullptr){
+				while (! (n->parent->is_header()) &&  n->parent->child[1] == n)
+					n = n->parent;
+				if (n->parent->is_header())
+					n = nullptr;
+				else
+					n = n->parent;
+			} else
+				n = n->child[0];
+			return it;
         }
         /** \brief Ver aed2::map::iterator::operator--(int) */
         const_iterator operator--(int)  {
@@ -2119,11 +2157,11 @@ void erase_fixup(iterator it){
         }
         /** \brief Ver aed2::map::iterator::operator==() */
         bool operator==(const_iterator other) const  {
-          //completar
-        }
+			return (n == other.n);
+		}
         /** \brief Ver aed2::map::iterator::operator!=() */
         bool operator!=(const_iterator other) const  {
-          //completar
+          return (n != other.n);
         }
 
     private:
@@ -2289,7 +2327,7 @@ private:
         //@}
 
 
-        Node* sucesorInmediato(){
+        Node* sucesorInmediato() {
             Node* res = this;
             if (res->child[1] != nullptr) {
                 res = res->child[1];
@@ -2426,11 +2464,7 @@ private:
     		res[1-dir] = indice;
     		indice = indice->child[dir];
     	}
-    	if (indice != nullptr
-
-
-
-                ){
+    	if (indice != nullptr){
     		res[0] = res[1] = indice;
     	}
     	return std::make_pair(res[0], res[1]);    	
