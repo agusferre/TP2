@@ -1826,7 +1826,7 @@ void erase_fixup(iterator it){
          * \complexity{\O(1)}
          */
         reference operator*() const {
-            	return n->value();
+            return n->value();
         }
         /**
          * \brief Retorna la dirección del valor apuntado por \P{*this}
@@ -1862,10 +1862,8 @@ void erase_fixup(iterator it){
          * }
          */
         iterator& operator++() {
-			iterator it = iterator(n);
             n = n->sucesorInmediato();
-            return it;
-
+            return *this;
         }
         /**
          * \brief Avanza el iterador a la siguiente posición
@@ -1883,19 +1881,9 @@ void erase_fixup(iterator it){
          * }
          */
         iterator operator++(int) {
-        /*	if(n->child[1] == nullptr){
-
-                while (! (n->parent->is_header()) &&  n->parent->child[1] == n)
-                    n = n->parent;
-
-               if (n->parent->is_header())
-            	n = nullptr;
-            else
-            	n = n->parent;
-        } else
-        	n = n->child[1];*/
-		n = n->sucesorInmediato();
-        return *this;
+            iterator it = iterator(n);
+		    n = n->sucesorInmediato();
+            return it;
         }
         /**
          * \brief Retrocede el iterador a la posición anterior
@@ -1913,7 +1901,6 @@ void erase_fixup(iterator it){
          * }
          */
         iterator& operator--() {
-            iterator it = iterator(n);
         	if(n->child[0] == nullptr){
                 while (! (n->parent->is_header()) &&  n->parent->child[1] == n)
                     n = n->parent;
@@ -1923,7 +1910,7 @@ void erase_fixup(iterator it){
             	n = n->parent;
         	} else
         		n = n->child[0];
-        return it;
+            return *this;
         }
         /**
          * \brief Retrocede el iterador a la posición anterior
@@ -1941,6 +1928,7 @@ void erase_fixup(iterator it){
          * }
          */
         iterator operator--(int) {
+            iterator it = iterator(n);
             if(n->child[0] == nullptr){
                 while (! (n->parent->is_header()) &&  n->parent->child[1] == n)
                     n = n->parent;
@@ -1951,7 +1939,7 @@ void erase_fixup(iterator it){
                     n = n->parent;
             } else
                 n = n->child[0];
-            return *this;
+            return it;
         }
 
         /**
@@ -2090,9 +2078,7 @@ void erase_fixup(iterator it){
 			return &n->value();
         }
         /** \brief Ver aed2::map::iterator::operator++() */
-        const_iterator& operator++()  {
-            const_iterator it;
-            it.n = n;
+        const_iterator& operator++() {
             Node* res = const_cast<Node*>(n);
             if (res->child[1] != nullptr) {
                 res = res->child[1];
@@ -2104,7 +2090,7 @@ void erase_fixup(iterator it){
                 res = res->parent;
             }
             n = res;
-            return it;
+            return *this;
         }
             /*const_iterator it(n);
 			n = const_cast<Node*>(n)->sucesorInmediato();
@@ -2112,6 +2098,8 @@ void erase_fixup(iterator it){
         }*/
         /** \brief Ver aed2::map::iterator::operator++(int) */
         const_iterator operator++(int)  {
+            const_iterator it;
+            it.n = n;
             if(n->child[1] == nullptr){
                 while (! (n->parent->is_header()) &&  n->parent->child[1] == n)
                     n = n->parent;
@@ -2121,12 +2109,10 @@ void erase_fixup(iterator it){
                     n = n->parent;
             } else
                 n = n->child[1];
-            return *this;
+            return it;
         }
         /** \brief Ver aed2::map::iterator::operator--() */
         const_iterator& operator--()  {
-			const_iterator it;
-            it.n = n;
 			if(n->child[0] == nullptr){
 				while (! (n->parent->is_header()) &&  n->parent->child[1] == n)
 					n = n->parent;
@@ -2136,12 +2122,13 @@ void erase_fixup(iterator it){
 					n = n->parent;
 			} else
 				n = n->child[0];
-			return it;
+			return *this;
         }
         /** \brief Ver aed2::map::iterator::operator--(int) */
-        const_iterator operator--(int)  {
+        const_iterator operator--(int) {
+            const_iterator it;
+            it.n = n;
             if(n->child[0] == nullptr){
-
                 while (! (n->parent->is_header()) &&  n->parent->child[1] == n)
                     n = n->parent;
 
@@ -2149,11 +2136,9 @@ void erase_fixup(iterator it){
                     n = nullptr;
                 else
                     n = n->parent;
-
             } else
                 n = n->child[0];
-
-            return *this;
+            return it;
         }
         /** \brief Ver aed2::map::iterator::operator==() */
         bool operator==(const_iterator other) const  {
