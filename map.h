@@ -1092,80 +1092,42 @@ public:
      *
      * \attention Para garantizar que el nuevo elemento se inserte sí o sí, usar aed2::map::insert_or_assign.
      */
-   /* iterator insert(const_iterator hint, const value_type& value) {
-    	if (!(hint.n == nullptr || (hint.n->value().first > value.first && (hint--.n != nullptr && hint.n->value().first < value.first ))))
-            return insert(value);
-        else {
-  	 	if (hint.n == nullptr || ! (lt(hint.n->key(), value.first) == lt(value.first, hint.n->key()))){
-       		Node* padre = const_cast<Node*>(hint.n);
-        	bool esElMenor = false;
-    		bool esElMayor = false;
-    		if (hint.n == begin().n)
-    			esElMenor = true;
-    		if (hint.n == nullptr && count > 0){
-    			padre = header.child[1];
-    			esElMayor = true;
-    		}
-    		InnerNode* nuevo = new InnerNode(padre, value);
-    	    if (count == 0)
-        	   header.parent = nuevo;
-        	else if (nuevo->key() < padre->key())
-            	*padre->child[0] = nuevo;
-         	else
-            	*padre->child[1] = nuevo;
-       
-       		if (esElMenor)
-            	header.child[0] = nuevo;
-       		if (esElMayor)
-            	header.child[1] = nuevo;  
-         
-       	
-        count++;
-   	
-   	
-       iterator it2 = find(value.first);
-       //assert(it2.n != nullptr);
-       // insert_fixup(it2);
-        
-        return it2;
-
-    
-    }
-    }
- }*/
-
-
-/*
-   if ((hint.n->is_header() && (count == 0 || lt(header.child[1]->key(), value.first))) || (hint == begin() && lt(value.first, hint.n->key())) ||
-    (lt(hint.n->key(), value.first) && lt(value.first, (--hint).n->key())))
-*/
-
    iterator insert(const_iterator hint, const value_type& value) {
-       iterator it;
-        if ( hint.n != nullptr && ((hint.n->is_header() && (count == 0 || lt(header.child[1]->key(), value.first))) ||
-           (hint == begin() && lt(value.first, hint.n->key())) || (lt(hint.n->key(), value.first) && lt(value.first, (--hint).n->key())))) {
-            if(not hint.n->is_header())
-               hint++;
+        iterator it;
+        if (hint.n != nullptr && ((hint.n->is_header() && (count == 0 || lt(header.child[1]->key(), value.first))) ||
+            (hint == begin() && lt(value.first, hint.n->key())) || (lt(hint.n->key(), value.first) && lt(value.first, (--hint).n->key())))) {
+            //if(not hint.n->is_header())
+                //hint++;
             it = iterator(const_cast<Node *>(hint.n));
         } else
             it = lower_bound(value.first);
         if (it.n->is_header() || !eq(it.n->key(), value.first)) {
-               Node* padre = it.n;
-               InnerNode* nuevo = new InnerNode(padre, value);
-               nuevo->parent = padre;
-               bool esElMenor = (count == 0) || lt(value.first, begin().n->key());
-               bool esElMayor = (count == 0) || lt(header.child[1]->key(), value.first);
-               if (esElMenor)
-                   header.child[0] = nuevo;
-               if (esElMayor)
-                   header.child[1] = nuevo;
-               if (padre->is_header()) {
-                   header.parent = nuevo;
-                   nuevo->color = Color::Black;
-               } else if (lt(nuevo->key(),padre->key()))
-                   padre->child[0] = nuevo;
-               else
-                   padre->child[1] = nuevo;
+            if (it.n->is_header()) {
+                while (it.n->child[1] != nullptr && not it.n->child[0]->is_header())
+                    it.n = it.n->child[1];
+            } else {
+                if (it.n->child[0] != nullptr) {
+                    it.n = it.n->child[0];
+                    while (it.n->child[1] != nullptr && not it.n->child[0]->is_header())
+                        it.n = it.n->child[1];
+                }
+            }
+            Node* padre = it.n;
+            InnerNode* nuevo = new InnerNode(padre, value);
+            nuevo->parent = padre;
+            bool esElMenor = (count == 0) || lt(value.first, begin().n->key());
+            bool esElMayor = (count == 0) || lt(header.child[1]->key(), value.first);
+            if (esElMenor)
+                header.child[0] = nuevo;
+            if (esElMayor)
+                header.child[1] = nuevo;
+            if (padre->is_header()) {
+                header.parent = nuevo;
+                nuevo->color = Color::Black;
+            } else if (lt(nuevo->key(),padre->key()))
+                padre->child[0] = nuevo;
+            else
+                padre->child[1] = nuevo;
 
                count++;
                it.n = nuevo;
