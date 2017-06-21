@@ -894,6 +894,8 @@ public:
     /**
      * @brief Devuelve el significado asociado a \P{key}
      *
+     *
+     *
      * @param key clave a buscar.
      * @retval res referencia al significado asociado a \P{key}.
      *
@@ -924,6 +926,7 @@ public:
      *
      * Devuelve el significado asociado a \P{key}.  Si \P{key} no está definido en \P{*this},
      * entonces se inserta un nuevo valor con clave \P{key} y significado \T{Meaning}().  De esta
+     *
      * forma, podemos usar `operator[]` para definir nuevos valores o modificar los
      * existentes.
      *
@@ -954,13 +957,12 @@ public:
      *
      */
     Meaning& operator[](const Key& key) {
-    	     iterator it = lower_bound(key);
-        if (it.n->value().first == key)
+        iterator it = lower_bound(key);
+        if (not it.n->is_header() && it.n->value().first == key)
             return it.n->value().second;
 	    else
             insert(it, value_type(key, Meaning()));
         return at(key);
-    
     }
 
     /**
@@ -992,11 +994,7 @@ public:
 
     /** \overload */
     const_iterator find(const Key& key) const {
-    	Node* n;
-    	//if (eq(lower_bound(key).n->key(), key))
-    		n = const_cast<Node*>(bounds(key).first);
-    //	else
-    //		n = const_cast<Node*>(&header);
+        Node* n = const_cast<Node*>(bounds(key).second);
     	return const_iterator(n);
     }
 
@@ -1094,10 +1092,10 @@ public:
      */
    iterator insert(const_iterator hint, const value_type& value) {
         iterator it;
+        const_iterator indice = hint;
         if (hint.n != nullptr && ((hint.n->is_header() && (count == 0 || lt(header.child[1]->key(), value.first))) ||
-            (hint == begin() && lt(value.first, hint.n->key())) || (lt(hint.n->key(), value.first) && lt(value.first, (--hint).n->key())))) {
-            //if(not hint.n->is_header())
-                //hint++;
+           (hint == begin() && lt(value.first, hint.n->key())) || (not hint.n->is_header() && lt(hint.n->key(), value.first)
+           && lt(value.first, (--indice.n)->key())))) {
             it = iterator(const_cast<Node *>(hint.n));
         } else
             it = lower_bound(value.first);
@@ -1123,16 +1121,15 @@ public:
                 header.child[1] = nuevo;
             if (padre->is_header()) {
                 header.parent = nuevo;
-                nuevo->color = Color::Black;
             } else if (lt(nuevo->key(),padre->key()))
                 padre->child[0] = nuevo;
             else
                 padre->child[1] = nuevo;
-
-               count++;
-               it.n = nuevo;
-               insert_fixup(it);
-               return it;
+            nuevo->color = Color::Red;
+            count++;
+            it.n = nuevo;
+            insert_fixup(it);
+            return it;
        }
    }
 
@@ -1142,20 +1139,23 @@ void insert_fixup(const_iterator it){
     while (n->parent->color == Color::Red) {
         auto dir = n->parent == n->parent->parent->child[0];
         y = n->parent->parent->child[dir];
+        if (y == nullptr)
+            y = &header;
         if (y->color == Color::Red) {
             n->parent->color = Color::Black;
             y->color = Color::Black;
             n->parent->parent->color = Color::Red;
             n = n->parent->parent;
-        } else if (n == n->parent->child[dir]) {
-            n = n->parent;
-            iterator it2 = iterator(n);
-            dir_rotate(it2, 1 - dir);
-
-      n->parent->color = Color::Black;
-            n->parent->parent->color = Color::Red;
-            iterator it3(n->parent->parent);
-            dir_rotate(it3, dir);
+        } else {
+            if (n == n->parent->child[dir]) {
+                n = n->parent;
+                iterator it2 = iterator(n);
+                dir_rotate(it2, 1 - dir);
+            }
+                n->parent->color = Color::Black;
+                n->parent->parent->color = Color::Red;
+                iterator it3(n->parent->parent);
+                dir_rotate(it3, dir);
         }
     }
 	header.parent->color = Color::Black;
@@ -1244,20 +1244,23 @@ void right_rotate(iterator it){
      * \T{Meaning} tenga constructor sin parámetros.  La desventaja es que la notación no es tan bonita.
      */
     iterator insert_or_assign(const_iterator hint, const value_type& value) {
-    	// Hacer insert Node
-        iterator it2;
-        if (hint.n->value().first == value.first){
+        const_iterator indice = hint;
+        iterator it;
+        iterator res;
+        if (hint.n != nullptr && ((hint.n->is_header() && (count == 0 || lt(header.child[1]->key(), value.first))) ||
+           (hint == begin() && lt(value.first, hint.n->key())) || (not hint.n->is_header() && lt(hint.n->key(), value.first)
+           && lt(value.first, (--indice.n)->key()))))
+            it.n = hint.n;
+        else
+            it = lower_bound(value.first);
 
-            it2.n = const_cast<Node*>(hint.n);
-
-            it2.n->value().second = value.second;
-            } else if (hint.n->value().first < value.first || (hint--.n == nullptr
-            || hint.n->value().first >= value.first)) {
-            iterator it2 = lower_bound(hint.n->value().first);
+        if (hint.n->is_header() || !eq(hint.n->key(), value.first))
+            res = insert(it, value);
+        else {
+            it = erase(it);
+            res = insert(it, value);
         }
-
-       // it = insert(hint, value);
-        return it2;
+        return res;
     }
  
     
@@ -1294,20 +1297,19 @@ void right_rotate(iterator it){
      *
      */
     iterator erase(const_iterator pos) {
-        /*
-    	Node* z = const_cast<Node*>(pos.n);
+        Node* z = const_cast<Node*>(pos.n);
     	Node* y = const_cast<Node*>(pos.n);
     	Node* x;
+        iterator res = iterator(++pos);
     	Color yColorsito = y->color;
-    	iterator it = iterator(const_cast<Node*>(pos--.n));
     	if (z->child[0] == nullptr){
    			x = z->child[1];
    			transplant(z, z->child[1]);
-    	} else if (x->child[1] == nullptr) {
+    	} else if (z->child[1] == nullptr) {
     		x = z->child[0];
     		transplant(z, z->child[0]);
     	} else {
-    		y = z->sucesorInmediato();
+    		y = header->child[0];
     		yColorsito = y->color;
     		x = y->child[1];
     		if (y->parent == z)
@@ -1322,91 +1324,57 @@ void right_rotate(iterator it){
     		y->child[0]->parent = y;
     		y->color = z->color;
 
-    		iterator it2 = iterator(x);
-
-
-
-
     		if (yColorsito == Color::Black)
-    			erase_fixup(it2);
+    			//erase_fixup(iterator(x));
 
 		}
 		count--;
-    	return it;
-         */
+    	return res;
     }
 
         void transplant(Node* u, Node* v){
-    	if (!u->parent->is_header())
+    	if (u->parent->is_header())
     		header.parent = v;
     	else if (u == u->parent->child[0])
     		u->parent->child[0] = v;
     	else
     		u->parent->child[1] = v;
     	v->parent = u->parent;
-
-
     }
-
-
 
 void erase_fixup(iterator it){
 	Node* x = it.n;
 	Node* w;
 	while (x != header.parent && x->color == Color::Black){
-		if (x == x->parent->child[0]){
-			w = x->parent->child[1];
-			if (w->color == Color::Red){
-				w->color = Color::Black;
-				x->parent->color = Color::Red;
-				it.n = x->parent;
-				dir_rotate(it, 0);
-				w = x->parent->child[1];
-			}
-			if (w->child[0]->color == Color::Black && w->child[1]->color == Color::Black){
-				w->color = Color::Red;
-				x = x->parent;
-			} else if (w->child[1]->color == Color::Black){
-				w->child[0]->color = Color::Black;
-				w->color = Color::Red;
-				iterator it2(w);
-				dir_rotate(it2, 1);
-				w = x->parent->child[1];
-			}
-			w->color = x->parent->color;
-			x->parent->color = Color::Black;
-			w->child[1]->color = Color::Black;
+        auto dir = (x == x->parent->child[0]);
+        w = x->parent->child[dir];
+		if (w->color == Color::Red){
+			w->color = Color::Black;
+			x->parent->color = Color::Red;
 			it.n = x->parent;
-			dir_rotate(it, 0);
-			x = header.parent;
-		} else {
-			w = x->parent->child[0];
-			if (w->color == Color::Red){
-				w->color = Color::Black;
-				x->parent->color = Color::Red;
-				it.n = x->parent;
-				dir_rotate(it, 1);
-				w = x->parent->child[0];
-			}
-			if (w->child[1]->color == Color::Black && w->child[0]->color == Color::Black){
-				w->color = Color::Red;
-				x = x->parent;
-			} else if (w->child[0]->color == Color::Black){
-				w->child[1]->color = Color::Black;
-				w->color = Color::Red;
-				iterator it2(w);
-				dir_rotate(it2, 0);
-				w = x->parent->child[0];
-			}
-			w->color = x->parent->color;
-			x->parent->color = Color::Black;
-			w->child[0]->color = Color::Black;
-			it.n = x->parent;
-			dir_rotate(it, 1);
-			x = header.parent;
+			dir_rotate(it, 1-dir);
+            w = x->parent->child[dir];
+        }
+		if (w->child[1-dir]->color == Color::Black && w->child[dir]->color == Color::Black){
+			w->color = Color::Red;
+			x = x->parent;
+        } else if (w->child[dir]->color == Color::Black){
+			w->child[1-dir]->color = Color::Black;
+			w->color = Color::Red;
+			dir_rotate(iterator(w), dir);
+            w = x->parent->child[1];
+        } else {
+            w->color = x->parent->color;
+            x->parent->color = Color::Black;
+            w->child[dir]->color = Color::Black;
+            it.n = x->parent;
+            dir_rotate(it, 1 - dir);
+            x = header.parent;
+        }
 
 		}
-}
+
+x.color = Color::Black;
 }
 
 
