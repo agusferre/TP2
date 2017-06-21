@@ -202,9 +202,9 @@ TEST_F(BasicMapInstances, insertElMismoElementoConHint) {
 }
 
 TEST_F(BasicMapInstances, insertConHintBueno) {
-	// auto hint = vacio.insert({1, "uno"});
+	auto hint = vacio.insert({1, "uno"});
 
-	// vacio.insert(++hint, {2, "dos"});
+	vacio.insert(++hint, {2, "dos"});
 	EXPECT_EQ(vacio.at(1), "uno");
 	EXPECT_EQ(vacio.at(2), "dos");
 }
