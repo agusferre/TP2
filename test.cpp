@@ -188,7 +188,7 @@ TEST_F(BasicMapInstances, lowerBoundExtenso) {
 ///////////////////////////////////////////////////////////
 
 // Esto lo testea el Fixture y los tests de observadores básicos.
-//TEST_F(BasicMapInstances, insertSinHint) {}
+TEST_F(BasicMapInstances, insertSinHint) {}
 
 TEST_F(BasicMapInstances, insertElMismoElementoSinHint) {
 	singleton.insert({1, "diez"});
@@ -244,24 +244,24 @@ TEST_F(BasicMapInstances, insertOrAssignConHintMalo) {
 }
 
 TEST_F(BasicMapInstances, erasePorClave) {
-	//singleton.erase( 1 );
+	singleton.erase( 1 );
 	EXPECT_TRUE( singleton.empty() );
 
-	//cinco_elementos.erase(1);
+	cinco_elementos.erase(1);
 	EXPECT_EQ(cinco_elementos.size(), 4);
 	EXPECT_EQ(cinco_elementos.find(1), cinco_elementos.end());
 
-	//cinco_elementos.erase(5);
+	cinco_elementos.erase(5);
 	EXPECT_EQ(cinco_elementos.size(), 3);
 	EXPECT_EQ(cinco_elementos.find(5), cinco_elementos.end());
 
-	//cinco_elementos.erase(3);
+	cinco_elementos.erase(3);
 	EXPECT_EQ(cinco_elementos.size(), 2);
 	EXPECT_EQ(cinco_elementos.find(3), cinco_elementos.end());
 }
 
 TEST_F(BasicMapInstances, erasePorIterador) {
-	//singleton.erase( singleton.begin() );
+	singleton.erase( singleton.begin() );
 	EXPECT_TRUE( singleton.empty() );
 
 	auto it = cinco_elementos.insert({7, "siete"});
