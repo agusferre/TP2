@@ -1097,6 +1097,12 @@ public:
      *
      * \attention Para garantizar que el nuevo elemento se inserte sí o sí, usar aed2::map::insert_or_assign.
      */
+
+   iterator insert(const value_type& value) {
+       iterator it = lower_bound(value.first);
+       return insert(it, value);
+   }
+
    iterator insert(const_iterator hint, const value_type& value) {
         iterator it;
         const_iterator indice = hint;
@@ -1140,33 +1146,33 @@ public:
        }
    }
 
-void insert_fixup(const_iterator it){
-	Node* n = const_cast<Node*>(it.n);
-	Node* y;
-    while (n->parent->color == Color::Red) {
-        auto dir = n->parent == n->parent->parent->child[0];
-        y = n->parent->parent->child[dir];
-        if (y == nullptr)
-            y = &header;
-        if (y->color == Color::Red) {
-            n->parent->color = Color::Black;
-            y->color = Color::Black;
-            n->parent->parent->color = Color::Red;
-            n = n->parent->parent;
-        } else {
-            if (n == n->parent->child[dir]) {
-                n = n->parent;
-                iterator it2 = iterator(n);
-                dir_rotate(it2, 1 - dir);
-            }
+    void insert_fixup(const_iterator it){
+	    Node* n = const_cast<Node*>(it.n);
+	    Node* y;
+        while (n->parent->color == Color::Red) {
+            auto dir = n->parent == n->parent->parent->child[0];
+            y = n->parent->parent->child[dir];
+            if (y == nullptr)
+                y = &header;
+            if (y->color == Color::Red) {
                 n->parent->color = Color::Black;
+                y->color = Color::Black;
                 n->parent->parent->color = Color::Red;
-                iterator it3(n->parent->parent);
-                dir_rotate(it3, dir);
+                n = n->parent->parent;
+            } else {
+                if (n == n->parent->child[dir]) {
+                    n = n->parent;
+                    iterator it2 = iterator(n);
+                    dir_rotate(it2, 1 - dir);
+                }
+                    n->parent->color = Color::Black;
+                    n->parent->parent->color = Color::Red;
+                    iterator it3(n->parent->parent);
+                    dir_rotate(it3, dir);
+            }
         }
+        header.parent->color = Color::Black;
     }
-	header.parent->color = Color::Black;
-}
 
     void dir_rotate(iterator it, int dir){
         Node* n = it.n;
@@ -1184,42 +1190,6 @@ void insert_fixup(const_iterator it){
         y->child[dir] = n;
         n->parent = y;
     }
-
-/*
-
-void right_rotate(iterator it){
-	
-	Node* n = it.n;
-	Node* y = it.n->child[0];
-	*n->child[0] = y->child[1];
-	if (y->child[1] != nullptr)
-		*y->child[1]->parent = n;
-	y->parent = n->parent;
-	if(n->parent->is_header())
-		header.parent = y;
-	else if (n == n->parent->child[1])
-		*n->parent->child[1] = y;
-	else
-		*n->parent->child[0] = y;
-	*y->child[1] = n;
-	n->parent = y;
-	it.n = n;
-	
-}
-    
-*/
-
-
- iterator insert(const value_type& value) {
-
-     iterator it = lower_bound(value.first);
-
-     return insert(it, value);
-
- }
-
-
-
 
     /**
      * @brief Inserta o Color::Redefine \P{value} en el diccionario
@@ -1250,6 +1220,7 @@ void right_rotate(iterator it){
      * Las ventajas es que 1. se puede indicar un \P{hint} para la búsqueda y 2. no es necesario que
      * \T{Meaning} tenga constructor sin parámetros.  La desventaja es que la notación no es tan bonita.
      */
+
     iterator insert_or_assign(const_iterator hint, const value_type& value) {
         const_iterator indice = hint;
         iterator it;
@@ -1270,6 +1241,7 @@ void right_rotate(iterator it){
     }
 
     /** \overload */
+
     iterator insert_or_assign(const value_type& value) {
         iterator it = lower_bound(value.first);
         return insert_or_assign(it, value);
@@ -1418,11 +1390,32 @@ void erase_fixup(iterator it){
      *
      * \complexity{\O(\DEL(\P{*this}))}
      */
+
     void clear() {
         while (count > 0){
-            auto raiz = header.parent->value();
         	erase(begin());
         }
+    }
+
+    std::vector<value_type> show() {
+        iterator it(header.parent);
+        std::vector<value_type> res;
+        while (it.n != nullptr) {
+            res.push_back(it.n->value());
+            if (it.n->child[0] != nullptr)
+                it.n = it.n->child[0];
+            else
+                it.n = it.n->child[1];
+        }
+        it.n = header.parent->child[1];
+        while (it.n != nullptr) {
+            res.push_back(it.n->value());
+            if (it.n->child[0] != nullptr)
+                it.n = it.n->child[0];
+            else
+                it.n = it.n->child[1];
+        }
+        return res;
     }
 
     /**
@@ -1452,10 +1445,12 @@ void erase_fixup(iterator it){
     	using std::swap;
         swap(lt, other.lt);
         swap(count, other.count);
-
+        //Agregué el swap de los headers porque en el if de abajo no estaba asignando bien los headers.
+        swap(header, other.header);
         swap(header.parent, other.header.parent);
         swap(header.child[0], other.header.child[0]);
         swap(header.child[1], other.header.child[1]);
+        //Acá
         if(root() != nullptr) root()->parent = &header;
         if(other.root() != nullptr) other.root()->parent = &other.header;
 
@@ -2073,10 +2068,9 @@ private:
          * \complexity{\O(1)}
          */
         Node(Node* p, Color c = Color::Red) : color(c) {
-            parent = p;
             child[0] = child[1] = nullptr;
+            parent = p;
         }
-
 
         //@}
         
@@ -2164,7 +2158,6 @@ private:
 
         //@}
 
-
         Node* sucesorInmediato() {
             Node* res = this;
             if (res->child[1] != nullptr) {
@@ -2217,20 +2210,11 @@ private:
         Node* parent{nullptr};
         /** \brief Color del nodo */
     	Color color{Color::Red};
- 	// InnerNode (value_type value) : Node() {
  	
- 	InnerNode(Node* p, const value_type& v): Node(p, Color::Red), _value(v) {
-        child[0] = child[1] = nullptr;
- 	}
- 	 	
- 	// 	_value = value;
- 	// 	color = Color::Red;
-  //       parent = nullptr;
-  //       };
-
-
-        
-
+ 	    InnerNode(Node* p, const value_type& v): Node(p, Color::Red), _value(v) {
+            parent = p;
+            child[0] = child[1] = nullptr;
+ 	    }
     };
 
 
@@ -2394,7 +2378,6 @@ bool operator!=(const map<K, V, C>& m1, const map<K, V, C>& m2) {
 template<class K, class V, class C>
 bool operator<(const map<K, V, C>& m1, const map<K, V, C>& m2) {
 	return (std::lexicographical_compare(m1.begin(), m1.end(), m2.begin(), m2.end()));
-	//completar.  Vale usar std::lexicographical_compare
 }
 
 /**
