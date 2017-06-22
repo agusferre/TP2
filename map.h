@@ -1678,8 +1678,8 @@ void erase_fixup(iterator it){
          *
          * \aliasing{completar}
          *
-         * \pre \aedpre{completar}
-         * \post \aedpost{completar}
+         * \pre \aedpre{HaySiguiente(this)}
+         * \post \aedpost{res \IGOBS *this chequear como se escribe}
          *
          * \complexity{\O(1)}
          */
@@ -1711,8 +1711,8 @@ void erase_fixup(iterator it){
          *
          * \aliasing{completar}
          *
-         * \pre \aedpre{completar}
-         * \post \aedpost{completar}
+         * \pre \aedpre{this \IGOBS it_0 \LAND HaySiguiente(this)}
+         * \post \aedpost{this \IGOBS res \LAND res \IGOBS Avanzar(it_0)}
          *
          * \complexity{
          * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
@@ -1730,8 +1730,8 @@ void erase_fixup(iterator it){
          *
          * \aliasing{completar}
          *
-         * \pre \aedpre{completar}
-         * \post \aedpost{completar}
+         * \pre \aedpre{this \IGOBS it_0 \LAND HaySiguiente(it_0)}
+         * \post \aedpost{res \IGOBS it_0 \LAND this \IGOBS Avanzar(it_0)}
          *
          * \complexity{
          * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
@@ -1750,8 +1750,8 @@ void erase_fixup(iterator it){
          *
          * \aliasing{completar}
          *
-         * \pre \aedpre{completar}
-         * \post \aedpost{completar}
+         * \pre \aedpre{this \IGOBS it_0 \LAND HayAnterior(this)}
+         * \post \aedpost{this \IGOBS res \LAND res \IGOBS Retroceder(d_0)}
          *
          * \complexity{
          * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
@@ -1769,8 +1769,8 @@ void erase_fixup(iterator it){
          *
          * \aliasing{completar}
          *
-         * \pre \aedpre{completar}
-         * \post \aedpost{completar}
+         * \pre \aedpre{this \IGOBS it_0 \LAND HayAnterior(this)}
+         * \post \aedpost{res \IGOBS it_0 \LAND this \IGOBS Retroceder(it_0)}
          *
          * \complexity{
          * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
@@ -1795,8 +1795,8 @@ void erase_fixup(iterator it){
          * - false, cuando alguno de ellos es no nulo, o
          * - true, cuando ambos son nulos.}
          *
-         * \pre \aedpre{completar}
-         * \post \aedpost{completar}
+         * \pre \aedpre{true}
+         * \post \aedpost{res \IGOBS Siguiente(this) \IGOBS Siguiente(other)}
          *
          * \complexity{\O(1)}
          */
@@ -2283,8 +2283,8 @@ private:
  * @param m2 diccionario a comparar
  * @retval res true si los diccionarios son iguales
  *
- * \pre \aedpre{completar}
- * \post \aedpost{completar}
+ * \pre \aedpre{true}
+ * \post \aedpost{\res \IGOBS (m1 \IGOBS m2)}
  *
  * \complexity{ \O((\SIZE(m1) + \SIZE(m2)) \CDOT (\CMP(m1) + \CMP(m2)))}
  *
@@ -2322,7 +2322,7 @@ bool operator!=(const map<K, V, C>& m1, const map<K, V, C>& m2) {
  * @param m2 diccionario a comparar
  * @retval res true si m1 es menor a m2 en el orden lexicografico
  *
- * \pre \aedpre{completar}
+ * \pre \aedpre{true}
  * \post \aedpost{completar}
  *
  * \complexity{ \O((\SIZE(m1) + \SIZE(m2)) \CDOT (\CMP(m1) + \CMP(m2)))}
