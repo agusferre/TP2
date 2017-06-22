@@ -849,7 +849,7 @@ public:
      * @param other diccionario a copiar
      * @retval res referencia a *this
      *
-     * \aliasing{completar}
+     * \aliasing{no hay}
      *
      * \pre \aedpre{true}
      * \post \aedpost{res \IGOBS other}
@@ -900,7 +900,7 @@ public:
      * @param key clave a buscar.
      * @retval res referencia al significado asociado a \P{key}.
      *
-     * \aliasing{completar}
+     * \aliasing{res es referencia al significado correspondiente a key}
      *
      * \pre \aedpre{def?(key,this)}
      *
@@ -976,11 +976,11 @@ public:
      * @param key clave a buscar
      * @retval res iterador apuntando al valor con clave \P{key} (o a \P{this}->end() si dicho elemento no existe)
      *
-     * \aliasing{completar}
+     * \aliasing{res apunta al nodo cuyo key() es key. Se invalida si se elimina el nodo sin usar res como pos}
      *
      * \pre \aedpre{true}
      * \post \aedpost{def?(key, this) \IMPLIES Siguiente(res) \IGOBS \langle key, obtener(key, this) \rangle 
-     					\LAND \neg def?(key,this) \IMPLIES res \IGOBS completar }
+     					\LAND (\neg def?(key,this) \IMPLIES \NEG HaySiguiente?(res)) }
      *
      * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
      *
@@ -1013,11 +1013,12 @@ public:
      * @param key clave a buscar
      * @retval res iterador apuntando al valor con clave al menos \P{key} (o a \P{this}->end() si dicho elemento no existe)
      *
-     * \aliasing{completar}
+     * \aliasing{res apunta al nodo cuyo key() es key. Se invalida si se elimina el nodo sin usar res como pos}
      *
      * \pre \aedpre{true}
      * \post \aedpost{(def?(key, this) \LAND Siguiente(res) \IGOBS \RANGLE key, obtener(key, this) \LANGLE ) \LOR
-     					(\NEG def?(key, this) \LAND \NEG HaySiguiente(res))}
+     				  (\NEG def?(key, this) \LAND 
+     				  (\NEG HaySiguiente(res) \LOR Siguiente(res) \IGOBS PrimerMayorOigual(key, this)))}
      *
      * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
      *
@@ -1042,7 +1043,7 @@ public:
      * @retval res denota true si y solo si el diccionario está vacío
      *
      * \pre \aedpre{true}
-     * \post \aedpost{res \IGOBS \#Claves(this) = 0}
+     * \post \aedpost{res \IGOBS \#Claves(this) \IGOBS 0}
      *
      * \complexity{\O(1)}
      */
@@ -1082,11 +1083,12 @@ public:
      * Igualmente, la función es robusta y funciona correctamente aunque esto no ocurra.
      * @retval res iterador apuntando al elemento insertado o que previno la inserción
      *
-     * \aliasing{completar}
+     * \aliasing{res apunta al elemento insertado. Se invalida sólo si se elimina dicho elemento 
+     			 sin usar res como pos}
      *
      *
      * \pre \aedpre{this \IGOBS d_0}
-     * \post  \aedpost{(def?(key, this) \IMPLIES this \igobs d_0) \LAND \NEG def?(key, this) \IMPLIES 
+     * \post  \aedpost{(def?(key, this) \IMPLIES this \igobs d_0) \LAND (\NEG def?(key, this) \IMPLIES 
      					(this \IGOBS definir(key, d_0) \LAND Siguiente(res) \IGOBS \RANGLE key, obtener(key, this) \LANGLE ))}
      *
      * \complexity{
@@ -1215,7 +1217,8 @@ public:
      * Igualmente, la función es robusta y funciona correctamente aunque esto no ocurra.
      * @retval res iterador apuntando al elemento insertado o redefinido
      *
-     * \aliasing{completar}
+     * \aliasing{res apunta al elemento insertado. Se invalida sólo si se elimina dicho elemento 
+     			 sin usar res como pos}
      *
      * \pre \aedpre{this \IGOBS d_0}
      * \post  \aedpost{this \IGOBS definir(key, this) \LAND Siguiente(res) \IGOBS value}
@@ -1263,10 +1266,11 @@ public:
      * @param pos iterador apuntando al valor a eliminar.
      * @retval res iterador apuntando al primer valor con clave mayor a \P{pos} (o \P{this}->end(), si dicho valor no existe).
      *
-     * \aliasing{completar}.
+     * \aliasing{res queda apuntando al siguiente elemento al borrado. Se invalida si se borra ese elemento
+     			 sin usar res como pos}.
      *
-     * \pre \aedpre{this \IGOBS d_0 \LAND def?(Siguiente(pos).key, d_0) chequear}
-     * \post \aedpost{post}
+     * \pre \aedpre{this \IGOBS d_0 \LAND HaySiguiente?(pos)}
+     * \post \aedpost{res \IGOBS EliminarSiguiente(pos) \LAND this \IGOBS borrar(pos.key (chequear), this)}
      *
      * \complexity{
      * - Peor caso: \O(\DEL(\P{*pos}) + \LOG(\SIZE(\P{*this})))
@@ -1391,7 +1395,7 @@ void erase_fixup(iterator it){
      *
      * @param key clave del elemento a eliminar
      *
-     * \aliasing{completar}
+     * \aliasing{se invalidan los iteradores que estaban apuntando a un nodo cuyo key() es key}
      *
      * \pre \aedpre{this \IGOBS d_0 \LAND def?(this, key)}
      * \post \aedpost{this \IGOBS borrar(key, d_0)}
@@ -1488,7 +1492,7 @@ void erase_fixup(iterator it){
     /**
      * @brief Devuelve un iterador al primer valor del diccionario
      *
-     * \aliasing{completar}
+     * \aliasing{res se invalida solo si se elimina el nodo apuntado sin usar res como pos}
      *
      * @retval res iterador al primer valor
      *
@@ -1517,7 +1521,7 @@ void erase_fixup(iterator it){
     /**
      * @brief Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario
      *
-     * \aliasing{completar}
+     * \aliasing{no hay chequear}
      *
      * @retval res iterador a la posicion pasando-al-ultimo
      *
@@ -1546,7 +1550,7 @@ void erase_fixup(iterator it){
     /**
      * @brief Devuelve un iterador al primer valor del diccionario, en un recorrido al revés
      *
-     * \aliasing{completar}
+     * \aliasing{no hay chequear}
      *
      * @retval res iterador a la primer posicion en un recorrido al revés
      *
@@ -1573,7 +1577,7 @@ void erase_fixup(iterator it){
     /**
      * @brief Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario, en un recorrido al revés
      *
-     * \aliasing{completar}
+     * \aliasing{res se invalida solo si se elimina el nodo apuntado sin usar res como pos}
      *
      * @retval res iterador a la posicion pasando-al-ultimo, en un recorrido al revés
      *
@@ -1676,7 +1680,7 @@ void erase_fixup(iterator it){
          *
          * @retval res referencia al valor apuntado por \P{*this}
          *
-         * \aliasing{completar}
+         * \aliasing{Se invalida si el elemento apuntado es eliminado}
          *
          * \pre \aedpre{HaySiguiente(this)}
          * \post \aedpost{res \IGOBS *this chequear como se escribe}
@@ -1691,7 +1695,7 @@ void erase_fixup(iterator it){
          *
          * @retval res puntero al valor apuntado por \P{*this}
          *
-         * \aliasing{completar}
+         * \aliasing{res referencia al valor apuntado}
          *
          * \pre \aedpre{haySiguiente(\P{*this})}
          * \post \aedpost{\P{*res} \IGOBS siguiente(\P{*this})}
@@ -1709,7 +1713,7 @@ void erase_fixup(iterator it){
          *
          * @retval res referencia a \P{*this}
          *
-         * \aliasing{completar}
+         * \aliasing{res se invalida si se elimina el elemento apuntado sin usar res como pos}
          *
          * \pre \aedpre{this \IGOBS it_0 \LAND HaySiguiente(this)}
          * \post \aedpost{this \IGOBS res \LAND res \IGOBS Avanzar(it_0)}
@@ -1728,7 +1732,7 @@ void erase_fixup(iterator it){
          *
          * @retval res iterador apuntando a la dirección anterior de \P{*this}
          *
-         * \aliasing{completar}
+         * \aliasing{res se invalida si se elimina el elemento apuntado sin usar res como pos}
          *
          * \pre \aedpre{this \IGOBS it_0 \LAND HaySiguiente(it_0)}
          * \post \aedpost{res \IGOBS it_0 \LAND this \IGOBS Avanzar(it_0)}
@@ -1748,7 +1752,7 @@ void erase_fixup(iterator it){
          *
          * @retval res referencia a \P{*this}
          *
-         * \aliasing{completar}
+         * \aliasing{res se invalida si se elimina el elemento apuntado sin usar res como pos}
          *
          * \pre \aedpre{this \IGOBS it_0 \LAND HayAnterior(this)}
          * \post \aedpost{this \IGOBS res \LAND res \IGOBS Retroceder(d_0)}
@@ -1767,7 +1771,7 @@ void erase_fixup(iterator it){
          *
          * @retval res iterador apuntando a la dirección siguiente de \P{*this}
          *
-         * \aliasing{completar}
+         * \aliasing{res se invalida si se elimina el elemento apuntado sin usar res como pos}
          *
          * \pre \aedpre{this \IGOBS it_0 \LAND HayAnterior(this)}
          * \post \aedpost{res \IGOBS it_0 \LAND this \IGOBS Retroceder(it_0)}
@@ -1899,10 +1903,10 @@ void erase_fixup(iterator it){
          * @param it iterator a "transformar"
          * @retval res iterator creado en la transformación
          *
-         * \aliasing{completar}
+         * \aliasing{res se invalida si se elimina el elemento apuntado sin usar res como pos}
          *
-         * \pre \aedpre{completar}
-         * \post \aedpost{completar}
+         * \pre \aedpre{true}
+         * \post \aedpost{Siguiente(res) \IGOBS Siguiente(it)}
          *
          * \complexity{\O(1)}
          */
