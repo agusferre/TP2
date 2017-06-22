@@ -5,10 +5,8 @@
  * terminología de la biblioteca estándar.
  *
  * Autores:
- * - Nombre y Apellido (mail)
- * - Nombre y Apellido (mail)
- * - Nombre y Apellido (mail)
- * - Nombre y Apellido (mail)
+ * - Agustín Ferré (agusferrex@gmail.com)
+ * - Paula González (paula.cgs@hotmail.com)
  *
  * Algoritmos y Estructuras de Datos II -- FCEN -- UBA.
  */
@@ -17,8 +15,7 @@
  *
  * \tableofcontents
  *
- * - \b Autores: Nombre y Apellido (mail), Nombre y Apellido (mail),
- * Nombre y Apellido (mail), Nombre y Apellido (mail)
+ * - \b Autores: Agustín Ferré (agusferrex@gmail.com) y Paula González (paula.cgs@hotmail.com)
  * - \b Materia: Algoritmos y Estructuras de Datos II
  *
  * El presente documento describe la implementación de un módulo diccionario dentro
@@ -733,6 +730,7 @@ public:
      * \see [Documentación de `std::reverse_iterator`](http://en.cppreference.com/w/cpp/iterator/reverse_iterator)
      */
     using reverse_iterator = std::reverse_iterator<iterator>;
+
     /**
      * \brief Iterador para recorrer un diccionario constante en orden inverso
      *
@@ -755,16 +753,14 @@ public:
      * @param c comparador (functor de orden) a utilizar
      * @retval res diccionario recién construido
      *
-     * \pre \aedpre{completar}
-     * \post \aedpost{completar}
+     * \pre \aedpre{true}
+     * \post \aedpost{Completar}
      *
      * \complexity{\O(1)}
      *
      * \attention El parámetro formal \LT del TAD diccionario se establece en esta función.
      * \LT = \P{c}.operator()
      */
-
-
     explicit map(Compare c = Compare()) : header(){
     	count = 0;
     	lt = c;
@@ -776,8 +772,8 @@ public:
      * @param other diccionario a copiar
      * @retval res diccionario recien construido
      *
-     * \pre \aedpre{completar}
-     * \post \aedpost{completar}
+     * \pre \aedpre{true}
+     * \post \aedpost{res == other Completar}
      *
      * \complexity{\O(\COPY(\P{other}))}
      *
@@ -785,7 +781,9 @@ public:
      * \LT es igual al operator() del comparador de \P{other}
      *
      */
-    map(const map& other) {
+    map(const map& other) : header(){
+        count = 0;
+        lt = other.lt;
         const_iterator it = other.begin();
         while (it.n != &other.header) {
             insert(it.n->value());
@@ -845,8 +843,7 @@ public:
     	}
     }
 
-    /**Node* indice = header.parent;
-        return indice->value().second;
+    /**
      * @brief Operador de asignación
      *
      * @param other diccionario a copiar
@@ -854,7 +851,7 @@ public:
      *
      * \aliasing{completar}
      *
-     * \pre \aedpre{completar}
+     * \pre \aedpre{true}
      * \post \aedpost{completar}
      *
      * \complexity{\O(\DEL(\P{*this}) \PLUS \COPY(\P{other}))}
@@ -869,7 +866,6 @@ public:
     /**
      * @brief Destructor
      *
-     *
      * \aliasing{completar}
      *
      * \pre \aedpre{true}
@@ -878,7 +874,7 @@ public:
      * \complexity{\O(\DEL(\P{*this}))}
      *
      * \attention Como se explicita, esta función no hace nada, porque
-     * no tiene un objetivo funcional.  De hecho, su implementación es innecesaria bajo
+     * no tiene un objetivo funcional. De hecho, su implementación es innecesaria bajo
      * la hipótesis de infinitud de memoria (que muchos sistemas de especificación, e.g.
      * nuestros TADs, asumen por simplicidad).  Sin embargo, esta función tiene un
      * comportamiento real y es liberar la memoria usada.  Claramente, esta funcionalidad
@@ -888,7 +884,7 @@ public:
      * liberación de la memoria
      */
     ~map() {
-        //completar
+        clear();
     }
     ///@}
 
@@ -1125,7 +1121,7 @@ public:
             }
             Node* padre = it.n;
             InnerNode* nuevo = new InnerNode(padre, value);
-            nuevo->parent = padre;
+            //nuevo->parent = padre;
             bool esElMenor = (count == 0) || lt(value.first, begin().n->key());
             bool esElMayor = (count == 0) || lt(header.child[1]->key(), value.first);
             if (esElMenor)
@@ -1311,6 +1307,7 @@ public:
         count--;
         if (y_colorcito == Color::Black && x != nullptr)
             erase_fixup(iterator(x));
+        delete z;
     	return res;
     }
 
@@ -1323,6 +1320,7 @@ public:
             u->parent->child[1] = v;
         if (v != nullptr)
             v->parent = u->parent;
+        //delete u;
     }
 
 void erase_fixup(iterator it){
@@ -1392,9 +1390,10 @@ void erase_fixup(iterator it){
      */
 
     void clear() {
-        while (count > 0){
-        	erase(begin());
+        while (count > 0) {
+            erase(begin());
         }
+
     }
 
     std::vector<value_type> show() {
@@ -1445,12 +1444,9 @@ void erase_fixup(iterator it){
     	using std::swap;
         swap(lt, other.lt);
         swap(count, other.count);
-        //Agregué el swap de los headers porque en el if de abajo no estaba asignando bien los headers.
-        swap(header, other.header);
         swap(header.parent, other.header.parent);
         swap(header.child[0], other.header.child[0]);
         swap(header.child[1], other.header.child[1]);
-        //Acá
         if(root() != nullptr) root()->parent = &header;
         if(other.root() != nullptr) other.root()->parent = &other.header;
 
@@ -1535,23 +1531,18 @@ void erase_fixup(iterator it){
      * \complexity{\O(1)}
      */
     reverse_iterator rbegin() {
-        reverse_iterator it;
-        //it.operator[](count-1);
-        return it;
+        return reverse_iterator(iterator(&header));
     }
 
     /** \overload */
     const_reverse_iterator rbegin() const {
-        const_reverse_iterator it;
-        //it.operator[](count-1);
-        return it;
+        return const_reverse_iterator(const_iterator(&header));
+
     }
 
     /** \overload */
     const_reverse_iterator crbegin() {
-        const_reverse_iterator it;
-        //it.operator[](count-1);
-        return it;
+        return const_reverse_iterator(const_iterator(&header));
 	}
 
     /**
@@ -1567,20 +1558,17 @@ void erase_fixup(iterator it){
      * \complexity{\O(1)}
      */
     reverse_iterator rend() {
-        reverse_iterator it = reverse_iterator(&header);
-    	return it;
+    	return reverse_iterator(iterator(header.child[0]));
     }
 
     /** \overload */
     const_reverse_iterator rend() const {
-    	const_reverse_iterator it = const_reverse_iterator(&header);
-    	return it;
+        return const_reverse_iterator(const_iterator(header.child[0]));
     }
 
     /** \overload */
     const_reverse_iterator crend() {
-    	const_reverse_iterator it = const_reverse_iterator(&header);
-    	return it;
+        return const_reverse_iterator(const_iterator(header.child[0]));
     }
     //@}
 
@@ -1707,7 +1695,7 @@ void erase_fixup(iterator it){
          * }
          */
         iterator& operator++() {
-            n = n->sucesorInmediato();
+            n = const_cast<Node*>(n->inmediato(1));
             return *this;
         }
         /**
@@ -1727,7 +1715,7 @@ void erase_fixup(iterator it){
          */
         iterator operator++(int) {
             iterator it = iterator(n);
-		    n = n->sucesorInmediato();
+		    n = const_cast<Node*>(n->inmediato(1));
             return it;
         }
         /**
@@ -1746,15 +1734,7 @@ void erase_fixup(iterator it){
          * }
          */
         iterator& operator--() {
-        	if(n->child[0] == nullptr){
-                while (! (n->parent->is_header()) &&  n->parent->child[1] == n)
-                    n = n->parent;
-            if (n->parent->is_header())
-            	n = nullptr;
-            else
-            	n = n->parent;
-        	} else
-        		n = n->child[0];
+            n = const_cast<Node*>(n->inmediato(0));
             return *this;
         }
         /**
@@ -1774,15 +1754,7 @@ void erase_fixup(iterator it){
          */
         iterator operator--(int) {
             iterator it = iterator(n);
-            if(n->child[0] == nullptr){
-                while (! (n->parent->is_header()) &&  n->parent->child[0] == n)
-                    n = n->parent;
-                if (n->parent->is_header())
-                    n = nullptr;
-                else
-                    n = n->parent;
-            } else
-                n = n->child[0];
+            n = const_cast<Node*>(n->inmediato(0));
             return it;
         }
 
@@ -1910,7 +1882,7 @@ void erase_fixup(iterator it){
          * \complexity{\O(1)}
          */
         const_iterator(iterator it) {
-           // n = const_cast<Node*>(it.n);
+
 			n = it.n;
         }
         /** \brief Ver aed2::map::iterator::operator*() */
@@ -1923,64 +1895,24 @@ void erase_fixup(iterator it){
         }
         /** \brief Ver aed2::map::iterator::operator++() */
         const_iterator& operator++() {
-            Node* res = const_cast<Node*>(n);
-            if (res->child[1] != nullptr) {
-                res = res->child[1];
-                while (res->child[0] != nullptr)
-                    res = res->child[0];
-            } else {
-                while (not res->parent->is_header() && res == res->parent->child[1])
-                    res = res->parent;
-                res = res->parent;
-            }
-            n = res;
-            return *this;
+			n = n->inmediato(1);
+			return *this;
         }
-            /*const_iterator it(n);
-			n = const_cast<Node*>(n)->sucesorInmediato();
-			return it;
-        }*/
         /** \brief Ver aed2::map::iterator::operator++(int) */
         const_iterator operator++(int)  {
-            const_iterator it;
-            it.n = n;
-            if(n->child[1] == nullptr){
-                while (! (n->parent->is_header()) &&  n->parent->child[1] == n)
-                    n = n->parent;
-                if (n->parent->is_header())
-                    n = nullptr;
-                else
-                    n = n->parent;
-            } else
-                n = n->child[1];
+            const_iterator it(n);
+            n = n->inmediato(1);
             return it;
         }
         /** \brief Ver aed2::map::iterator::operator--() */
         const_iterator& operator--()  {
-			if(n->child[0] == nullptr){
-				if (! (n->parent->is_header()) &&  n->parent->child[0] == n)
-					n = n->parent;
-				if (n->parent->is_header())
-					n = nullptr;
-				else
-					n = n->parent;
-			} else
-				n = n->child[0];
+            n = n->inmediato(0);
 			return *this;
         }
         /** \brief Ver aed2::map::iterator::operator--(int) */
         const_iterator operator--(int) {
-            const_iterator it;
-            it.n = n;
-            if(n->child[0] == nullptr){
-                while (! (n->parent->is_header()) &&  n->parent->child[0] == n)
-                    n = n->parent;
-                if (n->parent->is_header())
-                    n = nullptr;
-                else
-                    n = n->parent;
-            } else
-                n = n->child[0];
+            const_iterator it(n);
+            n = n->inmediato(0);
             return it;
         }
         /** \brief Ver aed2::map::iterator::operator==() */
@@ -2088,8 +2020,11 @@ private:
          * que el destructor sea virtual.  Además, así no es necesario que hagan el `static_cast` y evitamos
          * errores de memoria difíciles de debugguear.
          */
-        virtual ~Node() {}
-
+        virtual ~Node() {
+          //  parent = nullptr;
+           // child[0] = child[1] = nullptr;
+            //delete this;
+            }
 
 		/////////////////////////////////////////////////
         /** \name Acceso a la información en los nodos */
@@ -2133,6 +2068,7 @@ private:
         	assert(not is_header());
         	return static_cast<InnerNode*>(this)->_value;
         }
+
         /** \overload */
         const value_type& value() const {
         	assert(not is_header());
@@ -2158,16 +2094,20 @@ private:
 
         //@}
 
-        Node* sucesorInmediato() {
-            Node* res = this;
-            if (res->child[1] != nullptr) {
-                res = res->child[1];
-                while (res->child[0] != nullptr)
-                    res = res->child[0];
-            } else {
-                while (!res->parent->is_header() && res == res->parent->child[1])
+        const Node* inmediato(int dir) const {
+            const Node* res = this;
+            if (res->is_header())
+                res = res->child[1-dir];
+            else {
+                if (res->child[dir] != nullptr) {
+                    res = res->child[dir];
+                    while (res->child[1-dir] != nullptr)
+                        res = res->child[1-dir];
+                } else {
+                    while (not res->parent->is_header() && res == res->parent->child[dir])
+                        res = res->parent;
                     res = res->parent;
-                res = res->parent;
+                }
             }
             return res;
         }
@@ -2205,18 +2145,9 @@ private:
      */
     struct InnerNode : public Node {
     	value_type _value;
-		Node* child[2]{nullptr,nullptr};
-        /** \brief Puntero al padre: garantiza insercion con puntero en O(1) amortizado e iteracion en O(1) memoria */
-        Node* parent{nullptr};
-        /** \brief Color del nodo */
-    	Color color{Color::Red};
  	
- 	    InnerNode(Node* p, const value_type& v): Node(p, Color::Red), _value(v) {
-            parent = p;
-            child[0] = child[1] = nullptr;
- 	    }
+ 	    InnerNode(Node* p, const value_type& v): Node(p, Color::Red), _value(v) {}
     };
-
 
     //AUXS
     /*
@@ -2292,7 +2223,6 @@ private:
     	}
     	return std::make_pair(res[0], res[1]);
     }
-
 
 	/////////////////////////////////
 	/** \name Funciones auxiliares */

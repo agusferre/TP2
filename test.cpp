@@ -188,7 +188,7 @@ TEST_F(BasicMapInstances, lowerBoundExtenso) {
 ///////////////////////////////////////////////////////////
 
 // Esto lo testea el Fixture y los tests de observadores básicos.
-TEST_F(BasicMapInstances, insertSinHint) {}
+//TEST_F(BasicMapInstances, insertSinHint) {}
 
 TEST_F(BasicMapInstances, insertElMismoElementoSinHint) {
 	singleton.insert({1, "diez"});
@@ -330,18 +330,18 @@ TEST_F(BasicMapInstances, CBegin) {
 }
 
 TEST_F(BasicMapInstances, RBegin) {
-	//EXPECT_TRUE(std::equal(cinco_elementos.rbegin(), cinco_elementos.rend(), cinco_elementos_std.rbegin()));
+	EXPECT_TRUE(std::equal(cinco_elementos.rbegin(), cinco_elementos.rend(), cinco_elementos_std.rbegin()));
 }
 
 TEST_F(BasicMapInstances, ConstRBegin) {
 	const auto& cinco_elementos_const = cinco_elementos;
 	const auto& cinco_elementos_std_const = cinco_elementos_std;
-	//EXPECT_TRUE(std::equal(cinco_elementos_const.rbegin(), cinco_elementos_const.rend(), cinco_elementos_std_const.rbegin()));
+	EXPECT_TRUE(std::equal(cinco_elementos_const.rbegin(), cinco_elementos_const.rend(), cinco_elementos_std_const.rbegin()));
 }
 
 TEST_F(BasicMapInstances, CRBegin) {
 	const auto& cinco_elementos_std_const = cinco_elementos_std;
-	//EXPECT_TRUE(std::equal(cinco_elementos.crbegin(), cinco_elementos.crend(), cinco_elementos_std_const.rbegin()));
+	EXPECT_TRUE(std::equal(cinco_elementos.crbegin(), cinco_elementos.crend(), cinco_elementos_std_const.rbegin()));
 }
 
 //////////////////////////////////////
