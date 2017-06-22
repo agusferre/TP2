@@ -980,7 +980,7 @@ public:
      *
      * \pre \aedpre{true}
      * \post \aedpost{def?(key, this) \IMPLIES Siguiente(res) \IGOBS \langle key, obtener(key, this) \rangle 
-     					\LAND (\neg def?(key,this) \IMPLIES \NEG HaySiguiente?(res)) }
+     					\LAND (\neg def?(key,this) \IMPLIES \LNOT HaySiguiente?(res)) }
      *
      * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
      *
@@ -1017,8 +1017,8 @@ public:
      *
      * \pre \aedpre{true}
      * \post \aedpost{(def?(key, this) \LAND Siguiente(res) \IGOBS \RANGLE key, obtener(key, this) \LANGLE ) \LOR
-     				  (\NEG def?(key, this) \LAND 
-     				  (\NEG HaySiguiente(res) \LOR Siguiente(res) \IGOBS PrimerMayorOigual(key, this)))}
+     				  (\LNOT def?(key, this) \LAND 
+     				  (\LNOT HaySiguiente(res) \LOR Siguiente(res) \IGOBS PrimerMayorOigual(key, this)))}
      *
      * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
      *
@@ -1088,7 +1088,7 @@ public:
      *
      *
      * \pre \aedpre{this \IGOBS d_0}
-     * \post  \aedpost{(def?(key, this) \IMPLIES this \igobs d_0) \LAND (\NEG def?(key, this) \IMPLIES 
+     * \post  \aedpost{(def?(key, this) \IMPLIES this \igobs d_0) \LAND (\LNOT def?(key, this) \IMPLIES 
      					(this \IGOBS definir(key, d_0) \LAND Siguiente(res) \IGOBS \RANGLE key, obtener(key, this) \LANGLE ))}
      *
      * \complexity{
@@ -1488,8 +1488,8 @@ public:
      *
      * @retval res iterador al primer valor
      *
-     * \pre \aedpre{true chequear}
-     * \post \aedpost{\NEG hayAnterior(res) chequear}
+     * \pre \aedpre{\# Claves(this) > 0}
+     * \post \aedpost{\LNOT hayAnterior(res)}
      *
      * \complexity{\O(1)}
      */
@@ -1513,12 +1513,12 @@ public:
     /**
      * @brief Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario
      *
-     * \aliasing{no hay chequear}
+     * \aliasing{no hay}
      *
      * @retval res iterador a la posicion pasando-al-ultimo
      *
      * \pre \aedpre{true}
-     * \post \aedpost{\NEG HaySiguiente(res)}
+     * \post \aedpost{\LNOT HaySiguiente(res)}
      *
      * \complexity{\O(1)}
      */
@@ -1547,7 +1547,7 @@ public:
      * @retval res iterador a la primer posicion en un recorrido al revés
      *
      * \pre \aedpre{true}
-     * \post \aedpost{\NEG HayAnterior(res)}
+     * \post \aedpost{\LNOT HayAnterior(res)}
      *
      * \complexity{\O(1)}
      */
@@ -1573,8 +1573,8 @@ public:
      *
      * @retval res iterador a la posicion pasando-al-ultimo, en un recorrido al revés
      *
-     * \pre \aedpre{completar}
-     * \post \aedpost{completar}
+     * \pre \aedpre{\# Claves(this) > 0}
+     * \post \aedpost{\LNOT HaySiguiente?(res)}
      *
      * \complexity{\O(1)}
      */
