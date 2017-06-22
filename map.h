@@ -1320,7 +1320,6 @@ public:
             u->parent->child[1] = v;
         if (v != nullptr)
             v->parent = u->parent;
-        //delete u;
     }
 
 void erase_fixup(iterator it){
@@ -1357,9 +1356,6 @@ void erase_fixup(iterator it){
     x->color = Color::Black;
 }
 
-
-
-
     /**
      * @brief Elimina el valor cuya clave es \P{key}
      *
@@ -1393,7 +1389,6 @@ void erase_fixup(iterator it){
         while (count > 0) {
             erase(begin());
         }
-
     }
 
     std::vector<value_type> show() {
