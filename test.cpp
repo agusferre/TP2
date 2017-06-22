@@ -1,4 +1,4 @@
-//#define DEBUG
+#define DEBUG
 #include "map.h"
 #include <gtest/gtest.h>
 
@@ -121,14 +121,9 @@ TEST_F(BasicMapInstances, size) {
 ////////////////////////////////////////////////////////
 
 TEST_F(BasicMapInstances, at) {
-	
 	EXPECT_EQ(singleton.at(1), "uno");
-	
-	EXPECT_EQ(cinco_elementos.at(1), "uno");
-
 	EXPECT_EQ(cinco_elementos.at(1), "uno");
 	EXPECT_EQ(cinco_elementos.at(3), "tres");
-	
 	EXPECT_EQ(cinco_elementos.at(5), "cinco");
 }
 
@@ -230,7 +225,7 @@ TEST_F(BasicMapInstances, insertOrAssignSinHint) {
 }
 
 TEST_F(BasicMapInstances, insertOrAssignConHintBueno) {
- 	auto hint = vacio.insert({1, "uno"});
+	auto hint = vacio.insert({1, "uno"});
 	vacio.insert_or_assign(++hint, {1, "diez"});
 	EXPECT_EQ(vacio.at(1), "diez");
 }
@@ -295,7 +290,7 @@ TEST_F(BasicMapInstances, swapConVacio) {
 
 	vacio.swap( cinco_elementos );
 
-    EXPECT_EQ(vacio, copia_cinco_elementos);
+	EXPECT_EQ(vacio, copia_cinco_elementos);
 	EXPECT_EQ(copia_vacio, cinco_elementos);
 }
 

@@ -1108,11 +1108,9 @@ public:
    iterator insert(const_iterator hint, const value_type& value) {
         iterator it;
         const_iterator indice = hint;
-        if (hint.n != nullptr && ((hint.n->is_header() && (count == 0 || lt(header.child[1]->key(), value.first))) ||
-           (hint == begin() && lt(value.first, hint.n->key())) || (not hint.n->is_header() && lt(hint.n->key(), value.first)
-           && lt(value.first, (--indice.n)->key())))) {
+        if (hintValido(hint, value))
             it = iterator(const_cast<Node *>(hint.n));
-        } else
+        else
             it = lower_bound(value.first);
         if (it.n->is_header() || !eq(it.n->key(), value.first)) {
             if (it.n->is_header()) {
@@ -1127,7 +1125,6 @@ public:
             }
             Node* padre = it.n;
             InnerNode* nuevo = new InnerNode(padre, value);
-            //nuevo->parent = padre;
             bool esElMenor = (count == 0) || lt(value.first, begin().n->key());
             bool esElMayor = (count == 0) || lt(header.child[1]->key(), value.first);
             if (esElMenor)
@@ -1237,20 +1234,17 @@ public:
     iterator insert_or_assign(const_iterator hint, const value_type& value) {
         const_iterator indice = hint;
         iterator it;
-        iterator res;
-        if (hint.n != nullptr && ((hint.n->is_header() && (count == 0 || lt(header.child[1]->key(), value.first))) ||
-           (hint == begin() && lt(value.first, hint.n->key())) || (not hint.n->is_header() && hint != begin() && lt(hint.n->key(), value.first)
-           && lt(value.first, (--indice.n)->key()))))
+        if (hintValido(hint, value))
             it.n = const_cast<Node*>(hint.n);
         else
             it = lower_bound(value.first);
         if (it.n->is_header() || !eq(it.n->key(), value.first))
-            res = insert(it, value);
+            it = insert(it, value);
         else {
             it = erase(it);
-            res = insert(it, value);
+            it = insert(it, value);
         }
-        return res;
+        return it;
     }
 
     /** \overload */
@@ -1280,7 +1274,7 @@ public:
      */
     iterator erase(const_iterator pos) {
         Node* z = const_cast<Node*>(pos.n);
-    	Node* y = const_cast<Node*>(pos.n);
+    	Node* y = z;
     	Node* x;
         if (pos.n == begin()){
             if (count == 1)
@@ -1336,7 +1330,6 @@ public:
 
 
     **/
-
     void transplant(Node* u, Node* v){
     	if (u->parent->is_header())
     		header.parent = v;
@@ -1355,40 +1348,39 @@ public:
 
 
     **/
-
-void erase_fixup(iterator it){
-	Node* x = it.n;
-	Node* w;
-	while (x != header.parent && x->color == Color::Black){
-        auto dir = (x == x->parent->child[0]);
-        w = x->parent->child[dir];
-		if (w->color == Color::Red){
-			w->color = Color::Black;
-			x->parent->color = Color::Red;
-			it.n = x->parent;
-			dir_rotate(it, 1-dir);
+    void erase_fixup(iterator it){
+        Node* x = it.n;
+        Node* w;
+        while (x != header.parent && x->color == Color::Black){
+            auto dir = (x == x->parent->child[0]);
             w = x->parent->child[dir];
-        }
-		if (w->child[1-dir]->color == Color::Black && w->child[dir]->color == Color::Black){
-			w->color = Color::Red;
-			x = x->parent;
-        } else {
-            if (w->child[dir]->color == Color::Black){
-                w->child[1-dir]->color = Color::Black;
-                w->color = Color::Red;
-                dir_rotate(iterator(w), dir);
+            if (w->color == Color::Red){
+                w->color = Color::Black;
+                x->parent->color = Color::Red;
+                it.n = x->parent;
+                dir_rotate(it, 1-dir);
                 w = x->parent->child[dir];
             }
-            w->color = x->parent->color;
-            x->parent->color = Color::Black;
-            w->child[dir]->color = Color::Black;
-            it.n = x->parent;
-            dir_rotate(it, 1-dir);
-            x = header.parent;
+            if (w->child[1-dir]->color == Color::Black && w->child[dir]->color == Color::Black){
+                w->color = Color::Red;
+                x = x->parent;
+            } else {
+                if (w->child[dir]->color == Color::Black){
+                    w->child[1-dir]->color = Color::Black;
+                    w->color = Color::Red;
+                    dir_rotate(iterator(w), dir);
+                    w = x->parent->child[dir];
+                }
+                w->color = x->parent->color;
+                x->parent->color = Color::Black;
+                w->child[dir]->color = Color::Black;
+                it.n = x->parent;
+                dir_rotate(it, 1-dir);
+                x = header.parent;
+            }
         }
-	}
-    x->color = Color::Black;
-}
+        x->color = Color::Black;
+    }
 
     /**
      * @brief Elimina el valor cuya clave es \P{key}
@@ -2049,11 +2041,7 @@ private:
          * que el destructor sea virtual.  Además, así no es necesario que hagan el `static_cast` y evitamos
          * errores de memoria difíciles de debugguear.
          */
-        virtual ~Node() {
-          //  parent = nullptr;
-           // child[0] = child[1] = nullptr;
-            //delete this;
-            }
+        virtual ~Node() {}
 
 		/////////////////////////////////////////////////
         /** \name Acceso a la información en los nodos */
@@ -2251,6 +2239,19 @@ private:
     		res[0] = res[1] = indice;
     	}
     	return std::make_pair(res[0], res[1]);
+    }
+
+    bool hintValido(const_iterator hint, const value_type value) {
+        bool res;
+        if (hint.n == nullptr)
+            res = false;
+        else if (hint.n->is_header())
+            res = (count == 0 || lt(header.child[1]->key(), value.first));
+        else if (hint == begin())
+            res = lt(value.first, hint.n->key());
+        else
+            res = lt(hint.n->key(), value.first) && lt(value.first, (--hint.n)->key());
+        return res;
     }
 
 	/////////////////////////////////
