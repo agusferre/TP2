@@ -2015,11 +2015,7 @@ private:
          * que el destructor sea virtual.  Además, así no es necesario que hagan el `static_cast` y evitamos
          * errores de memoria difíciles de debugguear.
          */
-        virtual ~Node() {
-          //  parent = nullptr;
-           // child[0] = child[1] = nullptr;
-            //delete this;
-            }
+        virtual ~Node() {}
 
 		/////////////////////////////////////////////////
         /** \name Acceso a la información en los nodos */
