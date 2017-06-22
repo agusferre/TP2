@@ -12,8 +12,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27c471db-531e-4441-a3a4-3f261feeee45" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests.cpp" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test" afterPath="$PROJECT_DIR$/test" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/map.h" afterPath="$PROJECT_DIR$/map.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.cpp" afterPath="$PROJECT_DIR$/test.cpp" />
     </list>
     <ignored path="TP 2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,36 +35,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="map.h" pinned="false" current-in-tab="false">
+      <file leaf-file-name="map.h" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/map.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="1290" column="64" selection-start-line="1290" selection-start-column="64" selection-end-line="1290" selection-end-column="64" />
+            <state relative-caret-position="259">
+              <caret line="1321" column="8" selection-start-line="1321" selection-start-column="8" selection-end-line="1321" selection-end-column="8" />
               <folding>
                 <element signature="e#36828#36849#0" expanded="true" />
                 <element signature="e#36963#37083#0" expanded="true" />
-                <marker date="1498158144505" expanded="true" signature="44176:44389" ph="/**...*/" />
-                <marker date="1498158144505" expanded="false" signature="47424:47448" ph="&lt;iterator&gt;" />
+                <marker date="1498169847341" expanded="true" signature="44176:44389" ph="/**...*/" />
+                <marker date="1498169847341" expanded="false" signature="47424:47448" ph="&lt;iterator&gt;" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stl_pair.h" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/include/c++/5/bits/stl_pair.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-801">
-              <caret line="178" column="11" selection-start-line="178" selection-start-column="11" selection-end-line="178" selection-end-column="11" />
+            <state relative-caret-position="-738">
+              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -346,12 +338,12 @@
       <workItem from="1497990626410" duration="27216000" />
       <workItem from="1498028954720" duration="4087000" />
       <workItem from="1498062598260" duration="21679000" />
-      <workItem from="1498156043732" duration="2267000" />
+      <workItem from="1498156043732" duration="5024000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="130737000" />
+    <option name="totallyTimeSpent" value="133494000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="24" width="1317" height="744" extended-state="6" />
@@ -409,8 +401,8 @@
           <folding>
             <element signature="e#36828#36849#0" expanded="true" />
             <element signature="e#36963#37083#0" expanded="true" />
-            <marker date="1498158144505" expanded="true" signature="44176:44389" ph="/**...*/" />
-            <marker date="1498158144505" expanded="false" signature="47424:47448" ph="&lt;iterator&gt;" />
+            <marker date="1498169847341" expanded="true" signature="44176:44389" ph="/**...*/" />
+            <marker date="1498169847341" expanded="false" signature="47424:47448" ph="&lt;iterator&gt;" />
           </folding>
         </state>
       </provider>
@@ -422,8 +414,8 @@
           <folding>
             <element signature="e#36828#36849#0" expanded="true" />
             <element signature="e#36963#37083#0" expanded="true" />
-            <marker date="1498158144505" expanded="true" signature="44176:44389" ph="/**...*/" />
-            <marker date="1498158144505" expanded="false" signature="47424:47448" ph="&lt;iterator&gt;" />
+            <marker date="1498169847341" expanded="true" signature="44176:44389" ph="/**...*/" />
+            <marker date="1498169847341" expanded="false" signature="47424:47448" ph="&lt;iterator&gt;" />
           </folding>
         </state>
       </provider>
@@ -472,8 +464,8 @@
           <folding>
             <element signature="e#36828#36849#0" expanded="true" />
             <element signature="e#36963#37083#0" expanded="true" />
-            <marker date="1498158144505" expanded="true" signature="44176:44389" ph="/**...*/" />
-            <marker date="1498158144505" expanded="false" signature="47424:47448" ph="&lt;iterator&gt;" />
+            <marker date="1498169847341" expanded="true" signature="44176:44389" ph="/**...*/" />
+            <marker date="1498169847341" expanded="false" signature="47424:47448" ph="&lt;iterator&gt;" />
           </folding>
         </state>
       </provider>
@@ -500,8 +492,8 @@
           <folding>
             <element signature="e#36828#36849#0" expanded="true" />
             <element signature="e#36963#37083#0" expanded="true" />
-            <marker date="1498158144505" expanded="true" signature="44176:44389" ph="/**...*/" />
-            <marker date="1498158144505" expanded="false" signature="47424:47448" ph="&lt;iterator&gt;" />
+            <marker date="1498169847341" expanded="true" signature="44176:44389" ph="/**...*/" />
+            <marker date="1498169847341" expanded="false" signature="47424:47448" ph="&lt;iterator&gt;" />
           </folding>
         </state>
       </provider>
@@ -528,8 +520,8 @@
           <folding>
             <element signature="e#36828#36849#0" expanded="true" />
             <element signature="e#36963#37083#0" expanded="true" />
-            <marker date="1498158144505" expanded="true" signature="44176:44389" ph="/**...*/" />
-            <marker date="1498158144505" expanded="false" signature="47424:47448" ph="&lt;iterator&gt;" />
+            <marker date="1498169847341" expanded="true" signature="44176:44389" ph="/**...*/" />
+            <marker date="1498169847341" expanded="false" signature="47424:47448" ph="&lt;iterator&gt;" />
           </folding>
         </state>
       </provider>
@@ -570,8 +562,8 @@
           <folding>
             <element signature="e#36828#36849#0" expanded="true" />
             <element signature="e#36963#37083#0" expanded="true" />
-            <marker date="1498158144505" expanded="true" signature="44176:44389" ph="/**...*/" />
-            <marker date="1498158144505" expanded="false" signature="47424:47448" ph="&lt;iterator&gt;" />
+            <marker date="1498169847341" expanded="true" signature="44176:44389" ph="/**...*/" />
+            <marker date="1498169847341" expanded="false" signature="47424:47448" ph="&lt;iterator&gt;" />
           </folding>
         </state>
       </provider>
@@ -605,8 +597,8 @@
           <folding>
             <element signature="e#36828#36849#0" expanded="true" />
             <element signature="e#36963#37083#0" expanded="true" />
-            <marker date="1498158144505" expanded="true" signature="44176:44389" ph="/**...*/" />
-            <marker date="1498158144505" expanded="false" signature="47424:47448" ph="&lt;iterator&gt;" />
+            <marker date="1498169847341" expanded="true" signature="44176:44389" ph="/**...*/" />
+            <marker date="1498169847341" expanded="false" signature="47424:47448" ph="&lt;iterator&gt;" />
           </folding>
         </state>
       </provider>
@@ -618,8 +610,8 @@
           <folding>
             <element signature="e#36828#36849#0" expanded="true" />
             <element signature="e#36963#37083#0" expanded="true" />
-            <marker date="1498158144505" expanded="true" signature="44176:44389" ph="/**...*/" />
-            <marker date="1498158144505" expanded="false" signature="47424:47448" ph="&lt;iterator&gt;" />
+            <marker date="1498169847341" expanded="true" signature="44176:44389" ph="/**...*/" />
+            <marker date="1498169847341" expanded="false" signature="47424:47448" ph="&lt;iterator&gt;" />
           </folding>
         </state>
       </provider>
@@ -631,8 +623,8 @@
           <folding>
             <element signature="e#36828#36849#0" expanded="true" />
             <element signature="e#36963#37083#0" expanded="true" />
-            <marker date="1498158144505" expanded="true" signature="44176:44389" ph="/**...*/" />
-            <marker date="1498158144505" expanded="false" signature="47424:47448" ph="&lt;iterator&gt;" />
+            <marker date="1498169847341" expanded="true" signature="44176:44389" ph="/**...*/" />
+            <marker date="1498169847341" expanded="false" signature="47424:47448" ph="&lt;iterator&gt;" />
           </folding>
         </state>
       </provider>
@@ -807,24 +799,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/map.h">
+    <entry file="file://$PROJECT_DIR$/test.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="1290" column="64" selection-start-line="1290" selection-start-column="64" selection-end-line="1290" selection-end-column="64" />
-          <folding>
-            <element signature="e#36828#36849#0" expanded="true" />
-            <element signature="e#36963#37083#0" expanded="true" />
-            <marker date="1498158144505" expanded="true" signature="44176:44389" ph="/**...*/" />
-            <marker date="1498158144505" expanded="false" signature="47424:47448" ph="&lt;iterator&gt;" />
-          </folding>
+        <state relative-caret-position="-738">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.cpp">
+    <entry file="file://$PROJECT_DIR$/map.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-801">
-          <caret line="178" column="11" selection-start-line="178" selection-start-column="11" selection-end-line="178" selection-end-column="11" />
-          <folding />
+        <state relative-caret-position="259">
+          <caret line="1321" column="8" selection-start-line="1321" selection-start-column="8" selection-end-line="1321" selection-end-column="8" />
+          <folding>
+            <element signature="e#36828#36849#0" expanded="true" />
+            <element signature="e#36963#37083#0" expanded="true" />
+            <marker date="1498169847341" expanded="true" signature="44176:44389" ph="/**...*/" />
+            <marker date="1498169847341" expanded="false" signature="47424:47448" ph="&lt;iterator&gt;" />
+          </folding>
         </state>
       </provider>
     </entry>
