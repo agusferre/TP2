@@ -1551,7 +1551,7 @@ void erase_fixup(iterator it){
      * @retval res iterador a la primer posicion en un recorrido al revés
      *
      * \pre \aedpre{true}
-     * \post \aedpost{res \IGOBS crearItBi(d , vacio)}
+     * \post \aedpost{\NEG HayAnterior(res)}
      *
      * \complexity{\O(1)}
      */
