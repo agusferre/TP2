@@ -849,7 +849,7 @@ public:
      * @param other diccionario a copiar
      * @retval res referencia a *this
      *
-     * \aliasing{no hay}
+     * \aliasing{ no hay. }
      *
      * \pre \aedpre{true}
      * \post \aedpost{res \IGOBS other}
