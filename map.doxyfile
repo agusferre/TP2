@@ -241,7 +241,8 @@ TAB_SIZE = 4
 
 #SE PUEDE MODIFICAR
 #Aliases para poder escribir en forma latex
-ALIASES += IGOBS="\f$=_{\rm obs}\f$"
+ALIASES += IGOBS="\f$=_{obs}\f$"
+#ALIASES += IGOBS="\f$\=_{\rm obs}\f$"
 ALIASES += LAND="\f$\land\f$"
 ALIASES += LAND_L="\f$\land_{\rm L}\f$"
 ALIASES += LOR="\f$\lor\f$"
@@ -282,6 +283,8 @@ ALIASES += BULLET="\f$\bullet\f$"
 ALIASES += PI1="\f$\pi_1\f$"
 ALIASES += BOTTOM="\f$\bot\f$"
 ALIASES += HAT{1}="\f$\widehat{\1}\f$"
+ALIASES += LANGLE="\f$\langle\f$"
+ALIASES += LANGLE="\f$\rangle\f$"
 
 
 #alias de formato (Mejor no modificar)
