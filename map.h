@@ -754,7 +754,7 @@ public:
      * @retval res diccionario recién construido
      *
      * \pre \aedpre{true}
-     * \post \aedpost{Completar}
+     * \post \aedpost{res = vacio}
      *
      * \complexity{\O(1)}
      *
@@ -852,7 +852,7 @@ public:
      * \aliasing{completar}
      *
      * \pre \aedpre{true}
-     * \post \aedpost{completar}
+     * \post \aedpost{res \IGOBS other}
      *
      * \complexity{\O(\DEL(\P{*this}) \PLUS \COPY(\P{other}))}
      *
@@ -866,7 +866,7 @@ public:
     /**
      * @brief Destructor
      *
-     * \aliasing{completar}
+     * \aliasing{se invalidan todos los iteradores apuntando a algun elemento del diccionario}
      *
      * \pre \aedpre{true}
      * \post \aedpost{true}
@@ -902,9 +902,9 @@ public:
      *
      * \aliasing{completar}
      *
-     * \pre \aedpre{completar}
+     * \pre \aedpre{def?(key,this)}
      *
-     * \post \aedpost{completar}
+     * \post \aedpost{res \IGOBS obtener(key,this)}
      *
      * \complexity{\O(\LOG(\SIZE(\P{*this}) \CDOT \CMP(\P{*this}))}
      *
@@ -946,10 +946,11 @@ public:
      * \par Requerimientos sobre el tipo \T{Meaning}
      * Requiere que \T{Meaning} tenga un constructor sin parámetros con complejidad \O(\a c)
      *
-     * \aliasing{completar}
+     * \aliasing{la operación se invalida si se elimina el elemento cuyo key() = key}
      *
-     * \pre \aedpre{completar}
-     * \post \aedpost{completar}
+     * \pre \aedpre{this \IGOBS d_0}
+     * \post \aedpost{(def?(key, d_0) \LOR this \IGOBS definir(key, this, Meaning()) \LAND res \IGOBS obtener(key, d_0))
+
 	 *
      * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}) + \a x) donde
      * - \a x = 1 si def?(\a self, \P{key}), y
@@ -977,8 +978,9 @@ public:
      *
      * \aliasing{completar}
      *
-     * \pre \aedpre{completar}
-     * \post \aedpost{completar}
+     * \pre \aedpre{true}
+     * \post \aedpost{def?(key, this) \IMPLIES Siguiente(res) \IGOBS \langle key, obtener(key, this) \rangle 
+     					\LAND \neg def?(key,this) \IMPLIES res \IGOBS completar }
      *
      * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
      *
@@ -1013,8 +1015,9 @@ public:
      *
      * \aliasing{completar}
      *
-     * \pre \aedpre{completar}
-     * \post \aedpost{completar}
+     * \pre \aedpre{true}
+     * \post \aedpost{(def?(key, this) \LAND Siguiente(res) \IGOBS \RANGLE key, obtener(key, this) \LANGLE ) \LOR
+     					(\NEG def?(key, this) \LAND \NEG HaySiguiente(res))}
      *
      * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
      *
@@ -1038,8 +1041,8 @@ public:
      *
      * @retval res denota true si y solo si el diccionario está vacío
      *
-     * \pre \aedpre{completar}
-     * \post \aedpost{completar}
+     * \pre \aedpre{true}
+     * \post \aedpost{res \IGOBS \#Claves(this) = 0}
      *
      * \complexity{\O(1)}
      */
@@ -1052,8 +1055,8 @@ public:
      *
      * @retval res cantidad de valores
 	 *
-     * \pre \aedpre{completar}
-     * \post \aedpost{completar}
+     * \pre \aedpre{true}
+     * \post \aedpost{res \IGOBS \#Claves(this)}
      *
      * \complexity{\O(1)}
      */
@@ -1082,8 +1085,9 @@ public:
      * \aliasing{completar}
      *
      *
-     * \pre \aedpre{completar}
-     * \post  \aedpost{completar}
+     * \pre \aedpre{this \IGOBS d_0}
+     * \post  \aedpost{(def?(key, this) \IMPLIES this \igobs d_0) \LAND \NEG def?(key, this) \IMPLIES 
+     					(this \IGOBS definir(key, d_0) \LAND Siguiente(res) \IGOBS \RANGLE key, obtener(key, this) \LANGLE ))}
      *
      * \complexity{
      *  - Peor caso: \O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}) \PLUS \COPY(\P{value}))
@@ -1142,6 +1146,12 @@ public:
        }
    }
 
+   /**
+
+	Completar especificacion coloquialmente
+
+    **/
+
     void insert_fixup(const_iterator it){
 	    Node* n = const_cast<Node*>(it.n);
 	    Node* y;
@@ -1169,6 +1179,11 @@ public:
         }
         header.parent->color = Color::Black;
     }
+    /**
+
+	Completar especificacion coloquialmente
+
+    **/
 
     void dir_rotate(iterator it, int dir){
         Node* n = it.n;
@@ -1202,8 +1217,8 @@ public:
      *
      * \aliasing{completar}
      *
-     * \pre \aedpre{completar}
-     * \post  \aedpost{completar}
+     * \pre \aedpre{this \IGOBS d_0}
+     * \post  \aedpost{this \IGOBS definir(key, this) \LAND Siguiente(res) \IGOBS value}
      *
      * \complexity{
      *  - Peor caso: \O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}) \PLUS \COPY(\P{value}))
@@ -1216,7 +1231,6 @@ public:
      * Las ventajas es que 1. se puede indicar un \P{hint} para la búsqueda y 2. no es necesario que
      * \T{Meaning} tenga constructor sin parámetros.  La desventaja es que la notación no es tan bonita.
      */
-
     iterator insert_or_assign(const_iterator hint, const value_type& value) {
         const_iterator indice = hint;
         iterator it;
@@ -1251,8 +1265,8 @@ public:
      *
      * \aliasing{completar}.
      *
-     * \pre \aedpre{completar}
-     * \post \aedpost{completar}
+     * \pre \aedpre{this \IGOBS d_0 \LAND def?(Siguiente(pos).key, d_0) chequear}
+     * \post \aedpost{post}
      *
      * \complexity{
      * - Peor caso: \O(\DEL(\P{*pos}) + \LOG(\SIZE(\P{*this})))
@@ -1311,6 +1325,14 @@ public:
     	return res;
     }
 
+     /**
+	
+
+	Completar especificacion coloquialmente
+
+
+    **/
+
     void transplant(Node* u, Node* v){
     	if (u->parent->is_header())
     		header.parent = v;
@@ -1321,6 +1343,14 @@ public:
         if (v != nullptr)
             v->parent = u->parent;
     }
+
+    /**
+	
+
+	Completar especificacion coloquialmente
+
+
+    **/
 
 void erase_fixup(iterator it){
 	Node* x = it.n;
@@ -1363,8 +1393,8 @@ void erase_fixup(iterator it){
      *
      * \aliasing{completar}
      *
-     * \pre \aedpre{completar}
-     * \post \aedpost{completar}
+     * \pre \aedpre{this \IGOBS d_0 \LAND def?(this, key)}
+     * \post \aedpost{this \IGOBS borrar(key, d_0)}
      *
      * \complexity{\O(\DEL(\P{*pos}) + \LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
      */
@@ -1462,8 +1492,8 @@ void erase_fixup(iterator it){
      *
      * @retval res iterador al primer valor
      *
-     * \pre \aedpre{completar}
-     * \post \aedpost{completar}
+     * \pre \aedpre{true chequear}
+     * \post \aedpost{\NEG hayAnterior(res) chequear}
      *
      * \complexity{\O(1)}
      */
@@ -1491,8 +1521,8 @@ void erase_fixup(iterator it){
      *
      * @retval res iterador a la posicion pasando-al-ultimo
      *
-     * \pre \aedpre{completar}
-     * \post \aedpost{completar}
+     * \pre \aedpre{true}
+     * \post \aedpost{\NEG HaySiguiente(res)}
      *
      * \complexity{\O(1)}
      */
@@ -1520,8 +1550,8 @@ void erase_fixup(iterator it){
      *
      * @retval res iterador a la primer posicion en un recorrido al revés
      *
-     * \pre \aedpre{completar}
-     * \post \aedpost{completar}
+     * \pre \aedpre{true}
+     * \post \aedpost{\NEG HayAnterior(res)}
      *
      * \complexity{\O(1)}
      */
@@ -1648,8 +1678,8 @@ void erase_fixup(iterator it){
          *
          * \aliasing{completar}
          *
-         * \pre \aedpre{completar}
-         * \post \aedpost{completar}
+         * \pre \aedpre{HaySiguiente(this)}
+         * \post \aedpost{res \IGOBS *this chequear como se escribe}
          *
          * \complexity{\O(1)}
          */
@@ -1681,8 +1711,8 @@ void erase_fixup(iterator it){
          *
          * \aliasing{completar}
          *
-         * \pre \aedpre{completar}
-         * \post \aedpost{completar}
+         * \pre \aedpre{this \IGOBS it_0 \LAND HaySiguiente(this)}
+         * \post \aedpost{this \IGOBS res \LAND res \IGOBS Avanzar(it_0)}
          *
          * \complexity{
          * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
@@ -1700,8 +1730,8 @@ void erase_fixup(iterator it){
          *
          * \aliasing{completar}
          *
-         * \pre \aedpre{completar}
-         * \post \aedpost{completar}
+         * \pre \aedpre{this \IGOBS it_0 \LAND HaySiguiente(it_0)}
+         * \post \aedpost{res \IGOBS it_0 \LAND this \IGOBS Avanzar(it_0)}
          *
          * \complexity{
          * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
@@ -1720,8 +1750,8 @@ void erase_fixup(iterator it){
          *
          * \aliasing{completar}
          *
-         * \pre \aedpre{completar}
-         * \post \aedpost{completar}
+         * \pre \aedpre{this \IGOBS it_0 \LAND HayAnterior(this)}
+         * \post \aedpost{this \IGOBS res \LAND res \IGOBS Retroceder(d_0)}
          *
          * \complexity{
          * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
@@ -1739,8 +1769,8 @@ void erase_fixup(iterator it){
          *
          * \aliasing{completar}
          *
-         * \pre \aedpre{completar}
-         * \post \aedpost{completar}
+         * \pre \aedpre{this \IGOBS it_0 \LAND HayAnterior(this)}
+         * \post \aedpost{res \IGOBS it_0 \LAND this \IGOBS Retroceder(it_0)}
          *
          * \complexity{
          * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
@@ -1765,8 +1795,8 @@ void erase_fixup(iterator it){
          * - false, cuando alguno de ellos es no nulo, o
          * - true, cuando ambos son nulos.}
          *
-         * \pre \aedpre{completar}
-         * \post \aedpost{completar}
+         * \pre \aedpre{true}
+         * \post \aedpost{res \IGOBS Siguiente(this) \IGOBS Siguiente(other)}
          *
          * \complexity{\O(1)}
          */
@@ -2249,8 +2279,8 @@ private:
  * @param m2 diccionario a comparar
  * @retval res true si los diccionarios son iguales
  *
- * \pre \aedpre{completar}
- * \post \aedpost{completar}
+ * \pre \aedpre{true}
+ * \post \aedpost{\res \IGOBS (m1 \IGOBS m2)}
  *
  * \complexity{ \O((\SIZE(m1) + \SIZE(m2)) \CDOT (\CMP(m1) + \CMP(m2)))}
  *
@@ -2288,7 +2318,7 @@ bool operator!=(const map<K, V, C>& m1, const map<K, V, C>& m2) {
  * @param m2 diccionario a comparar
  * @retval res true si m1 es menor a m2 en el orden lexicografico
  *
- * \pre \aedpre{completar}
+ * \pre \aedpre{true}
  * \post \aedpost{completar}
  *
  * \complexity{ \O((\SIZE(m1) + \SIZE(m2)) \CDOT (\CMP(m1) + \CMP(m2)))}
