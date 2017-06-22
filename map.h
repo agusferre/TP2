@@ -1106,9 +1106,7 @@ public:
    iterator insert(const_iterator hint, const value_type& value) {
         iterator it;
         const_iterator indice = hint;
-        if (hint.n != nullptr && ((hint.n->is_header() && (count == 0 || lt(header.child[1]->key(), value.first))) ||
-           (hint == begin() && lt(value.first, hint.n->key())) || (not hint.n->is_header() && lt(hint.n->key(), value.first)
-           && lt(value.first, (--indice.n)->key())))) {
+        if () {
             it = iterator(const_cast<Node *>(hint.n));
         } else
             it = lower_bound(value.first);
@@ -2243,6 +2241,19 @@ private:
     		res[0] = res[1] = indice;
     	}
     	return std::make_pair(res[0], res[1]);
+    }
+
+    bool hintValido(const const_iterator hint) {
+        bool res;
+        if (hint.n == nullptr)
+            res = false;
+        else if (hint.n->is_header())
+            res = (count == 0 || lt(header.child[1]->key(), value.first));
+        else if (hint == begin())
+            res = lt(value.first, hing.n->key());
+        else
+            res = lt(hint.n->key(), value.first) && lt(value.first, (--indice.n)->key());
+        return res;
     }
 
 	/////////////////////////////////
