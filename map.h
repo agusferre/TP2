@@ -1029,7 +1029,7 @@ public:
      * @param key clave a buscar.
      * @retval res referencia al significado asociado a \P{key}.
      *
-     * \aliasing{res es referencia al significado correspondiente a key}
+     * \aliasing{res es referencia al significado correspondiente a \P{key}.}
      *
      * \pre \aedpre{def?(key,this)}
      *
@@ -1124,8 +1124,8 @@ public:
      * resultado puede ser usado como hint, mejorando la complejidad de la inserción.
      *
      * La función verifica si los bounds de key son iguales. Si esto pasa, el elemento esta definido
-     * y se retorna un iterador apuntando a de los bounds. Por el contrario, se retorna un iterador
-     * inicializado en end().
+     * y se retorna un iterador apuntando a uno de los bounds. Por el contrario, si son distintos se
+     * retorna un iterador inicializado en end().
      */
     iterator find(const Key& key) {
     	auto r = const_cast<const map*>(this)->find(key);
@@ -1160,6 +1160,7 @@ public:
      *
      * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
      *
+     * Devuelve el segundo elemento de la tupla de bounds de la key buscada.
      */
     const_iterator lower_bound(const Key& key) const {
     	return bounds(key).second;
@@ -1379,12 +1380,20 @@ public:
      * \complexity{
      * - Peor caso: \O(\DEL(\P{*pos}) + \LOG(\SIZE(\P{*this})))
      * - Peor caso amortizado: \O(\DEL(\P{*pos})
+     *
+     * Primero se fija si pos apunta al primero o al ultimo y en tal caso modifica el hijo correspondiente del
+     * header para que no quede apuntando a un nodo inválido (porque lo vamos a borrar).
+     * Luego, podemos dividir al erase en tres casos.
+     * Cuando el hijo derecho del nodo a eliminar es null, entonces transplantamos a pos con su hijo izquierdo.
+     * Lo análogo con el hijo izquierdo, esta vez con la certeza de que el hijo derecho no es null.
+     * Y el caso donde ninguno de los dos es null.
+     *
      */
     iterator erase(const_iterator pos) {
         Node* z = const_cast<Node*>(pos.n);
     	Node* y = z;
     	Node* x;
-        if (pos.n == begin()){
+        if (pos.n == header.child[0]){
             if (count == 1)
                 header.child[0] = &header;
             else {
@@ -1432,12 +1441,8 @@ public:
     }
 
      /**
-	
-
-	Completar especificacion coloquialmente
-
-
-    **/
+      *
+      */
     void transplant(Node* u, Node* v){
     	if (u->parent->is_header())
     		header.parent = v;
@@ -2329,6 +2334,12 @@ private:
         return lt(k1, k2) == lt(k2, k1);
     }
 
+    /**
+     * Por defecto setea el arreglo res de dos posiciones con una referencia al header en ambas posiciones.
+     * Luego va iterando hasta encontrar el key o el primer elemento mayor o igual a key.
+     * Si existe un nodo definido con key, devuelve la tupla con ese nodo en ambas posiciones.
+     * De lo contrario, devuelve el primer menor en la primera posicion y el primer mayor en la segunda de la tupla.
+     */
     std::pair<Node*, Node*> bounds(const Key& key) {
         auto r = const_cast<const map*>(this)->bounds(key);
         return std::make_pair(const_cast<Node*>(r.first), const_cast<Node*>(r.second));
