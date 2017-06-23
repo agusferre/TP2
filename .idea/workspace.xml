@@ -12,176 +12,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27c471db-531e-4441-a3a4-3f261feeee45" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/map2.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/map3.h" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/bc_s.png" afterPath="$PROJECT_DIR$/html/bc_s.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/closed.png" afterPath="$PROJECT_DIR$/html/closed.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/doxygen.png" afterPath="$PROJECT_DIR$/html/doxygen.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/nav_f.png" afterPath="$PROJECT_DIR$/html/nav_f.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/nav_h.png" afterPath="$PROJECT_DIR$/html/nav_h.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/open.png" afterPath="$PROJECT_DIR$/html/open.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/tab_a.png" afterPath="$PROJECT_DIR$/html/tab_a.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/tab_b.png" afterPath="$PROJECT_DIR$/html/tab_b.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/tab_h.png" afterPath="$PROJECT_DIR$/html/tab_h.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/tab_s.png" afterPath="$PROJECT_DIR$/html/tab_s.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test" afterPath="$PROJECT_DIR$/test" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/Aliasing.html" afterPath="$PROJECT_DIR$/html/Aliasing.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/Castellano.html" afterPath="$PROJECT_DIR$/html/Castellano.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/Enunciado.html" afterPath="$PROJECT_DIR$/html/Enunciado.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/Implementacion.html" afterPath="$PROJECT_DIR$/html/Implementacion.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/Interfaz.html" afterPath="$PROJECT_DIR$/html/Interfaz.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/annotated.html" afterPath="$PROJECT_DIR$/html/annotated.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/axiomas.html" afterPath="$PROJECT_DIR$/html/axiomas.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/classNat-members.html" afterPath="$PROJECT_DIR$/html/classNat-members.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/classNat.html" afterPath="$PROJECT_DIR$/html/classNat.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/classaed2_1_1iterator-members.html" afterPath="$PROJECT_DIR$/html/classaed2_1_1iterator-members.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/classaed2_1_1iterator.html" afterPath="$PROJECT_DIR$/html/classaed2_1_1iterator.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/classaed2_1_1iterator_1_1const__iterator-members.html" afterPath="$PROJECT_DIR$/html/classaed2_1_1iterator_1_1const__iterator-members.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/classaed2_1_1iterator_1_1const__iterator.html" afterPath="$PROJECT_DIR$/html/classaed2_1_1iterator_1_1const__iterator.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/classaed2_1_1iterator_1_1iterator-members.html" afterPath="$PROJECT_DIR$/html/classaed2_1_1iterator_1_1iterator-members.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/classaed2_1_1iterator_1_1iterator.html" afterPath="$PROJECT_DIR$/html/classaed2_1_1iterator_1_1iterator.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/classaed2_1_1map-members.html" afterPath="$PROJECT_DIR$/html/classaed2_1_1map-members.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/classaed2_1_1map.html" afterPath="$PROJECT_DIR$/html/classaed2_1_1map.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/classaed2_1_1map_1_1const__iterator-members.html" afterPath="$PROJECT_DIR$/html/classaed2_1_1map_1_1const__iterator-members.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/classaed2_1_1map_1_1const__iterator.html" afterPath="$PROJECT_DIR$/html/classaed2_1_1map_1_1const__iterator.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/classaed2_1_1map_1_1iterator-members.html" afterPath="$PROJECT_DIR$/html/classaed2_1_1map_1_1iterator-members.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/classaed2_1_1map_1_1iterator.html" afterPath="$PROJECT_DIR$/html/classaed2_1_1map_1_1iterator.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/classes.html" afterPath="$PROJECT_DIR$/html/classes.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/doxygen.css" afterPath="$PROJECT_DIR$/html/doxygen.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/dynsections.js" afterPath="$PROJECT_DIR$/html/dynsections.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/files.html" afterPath="$PROJECT_DIR$/html/files.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/functions.html" afterPath="$PROJECT_DIR$/html/functions.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/functions_func.html" afterPath="$PROJECT_DIR$/html/functions_func.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/functions_type.html" afterPath="$PROJECT_DIR$/html/functions_type.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/index.html" afterPath="$PROJECT_DIR$/html/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/jquery.js" afterPath="$PROJECT_DIR$/html/jquery.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/map2_8h_source.html" afterPath="$PROJECT_DIR$/html/map2_8h_source.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/map_8h.html" afterPath="$PROJECT_DIR$/html/map_8h.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/map_8h_source.html" afterPath="$PROJECT_DIR$/html/map_8h_source.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/namespaceaed2.html" afterPath="$PROJECT_DIR$/html/namespaceaed2.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/namespacemembers.html" afterPath="$PROJECT_DIR$/html/namespacemembers.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/namespacemembers_func.html" afterPath="$PROJECT_DIR$/html/namespacemembers_func.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/namespaces.html" afterPath="$PROJECT_DIR$/html/namespaces.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/pages.html" afterPath="$PROJECT_DIR$/html/pages.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_0.html" afterPath="$PROJECT_DIR$/html/search/all_0.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_0.js" afterPath="$PROJECT_DIR$/html/search/all_0.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_1.html" afterPath="$PROJECT_DIR$/html/search/all_1.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_1.js" afterPath="$PROJECT_DIR$/html/search/all_1.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_10.html" afterPath="$PROJECT_DIR$/html/search/all_10.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_10.js" afterPath="$PROJECT_DIR$/html/search/all_10.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_2.html" afterPath="$PROJECT_DIR$/html/search/all_2.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_2.js" afterPath="$PROJECT_DIR$/html/search/all_2.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_3.html" afterPath="$PROJECT_DIR$/html/search/all_3.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_3.js" afterPath="$PROJECT_DIR$/html/search/all_3.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_4.html" afterPath="$PROJECT_DIR$/html/search/all_4.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_4.js" afterPath="$PROJECT_DIR$/html/search/all_4.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_5.html" afterPath="$PROJECT_DIR$/html/search/all_5.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_5.js" afterPath="$PROJECT_DIR$/html/search/all_5.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_6.html" afterPath="$PROJECT_DIR$/html/search/all_6.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_6.js" afterPath="$PROJECT_DIR$/html/search/all_6.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_7.html" afterPath="$PROJECT_DIR$/html/search/all_7.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_7.js" afterPath="$PROJECT_DIR$/html/search/all_7.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_8.html" afterPath="$PROJECT_DIR$/html/search/all_8.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_8.js" afterPath="$PROJECT_DIR$/html/search/all_8.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_9.html" afterPath="$PROJECT_DIR$/html/search/all_9.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_9.js" afterPath="$PROJECT_DIR$/html/search/all_9.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_a.html" afterPath="$PROJECT_DIR$/html/search/all_a.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_a.js" afterPath="$PROJECT_DIR$/html/search/all_a.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_b.html" afterPath="$PROJECT_DIR$/html/search/all_b.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_b.js" afterPath="$PROJECT_DIR$/html/search/all_b.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_c.html" afterPath="$PROJECT_DIR$/html/search/all_c.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_c.js" afterPath="$PROJECT_DIR$/html/search/all_c.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_d.html" afterPath="$PROJECT_DIR$/html/search/all_d.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_d.js" afterPath="$PROJECT_DIR$/html/search/all_d.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_e.html" afterPath="$PROJECT_DIR$/html/search/all_e.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_e.js" afterPath="$PROJECT_DIR$/html/search/all_e.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_f.html" afterPath="$PROJECT_DIR$/html/search/all_f.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/all_f.js" afterPath="$PROJECT_DIR$/html/search/all_f.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/classes_0.html" afterPath="$PROJECT_DIR$/html/search/classes_0.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/classes_0.js" afterPath="$PROJECT_DIR$/html/search/classes_0.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/classes_1.html" afterPath="$PROJECT_DIR$/html/search/classes_1.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/classes_1.js" afterPath="$PROJECT_DIR$/html/search/classes_1.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/classes_2.html" afterPath="$PROJECT_DIR$/html/search/classes_2.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/classes_2.js" afterPath="$PROJECT_DIR$/html/search/classes_2.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/files_0.html" afterPath="$PROJECT_DIR$/html/search/files_0.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/functions_0.html" afterPath="$PROJECT_DIR$/html/search/functions_0.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/functions_0.js" afterPath="$PROJECT_DIR$/html/search/functions_0.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/functions_1.html" afterPath="$PROJECT_DIR$/html/search/functions_1.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/functions_1.js" afterPath="$PROJECT_DIR$/html/search/functions_1.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/functions_2.html" afterPath="$PROJECT_DIR$/html/search/functions_2.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/functions_2.js" afterPath="$PROJECT_DIR$/html/search/functions_2.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/functions_3.html" afterPath="$PROJECT_DIR$/html/search/functions_3.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/functions_3.js" afterPath="$PROJECT_DIR$/html/search/functions_3.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/functions_4.html" afterPath="$PROJECT_DIR$/html/search/functions_4.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/functions_4.js" afterPath="$PROJECT_DIR$/html/search/functions_4.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/functions_5.html" afterPath="$PROJECT_DIR$/html/search/functions_5.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/functions_5.js" afterPath="$PROJECT_DIR$/html/search/functions_5.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/functions_6.html" afterPath="$PROJECT_DIR$/html/search/functions_6.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/functions_6.js" afterPath="$PROJECT_DIR$/html/search/functions_6.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/functions_7.html" afterPath="$PROJECT_DIR$/html/search/functions_7.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/functions_7.js" afterPath="$PROJECT_DIR$/html/search/functions_7.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/functions_8.html" afterPath="$PROJECT_DIR$/html/search/functions_8.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/functions_8.js" afterPath="$PROJECT_DIR$/html/search/functions_8.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/functions_9.html" afterPath="$PROJECT_DIR$/html/search/functions_9.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/functions_9.js" afterPath="$PROJECT_DIR$/html/search/functions_9.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/functions_a.html" afterPath="$PROJECT_DIR$/html/search/functions_a.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/functions_a.js" afterPath="$PROJECT_DIR$/html/search/functions_a.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/functions_b.html" afterPath="$PROJECT_DIR$/html/search/functions_b.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/functions_b.js" afterPath="$PROJECT_DIR$/html/search/functions_b.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/namespaces_0.html" afterPath="$PROJECT_DIR$/html/search/namespaces_0.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/nomatches.html" afterPath="$PROJECT_DIR$/html/search/nomatches.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/pages_0.html" afterPath="$PROJECT_DIR$/html/search/pages_0.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/pages_1.html" afterPath="$PROJECT_DIR$/html/search/pages_1.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/pages_2.html" afterPath="$PROJECT_DIR$/html/search/pages_2.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/pages_3.html" afterPath="$PROJECT_DIR$/html/search/pages_3.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/pages_4.html" afterPath="$PROJECT_DIR$/html/search/pages_4.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/pages_5.html" afterPath="$PROJECT_DIR$/html/search/pages_5.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/pages_5.js" afterPath="$PROJECT_DIR$/html/search/pages_5.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/search.css" afterPath="$PROJECT_DIR$/html/search/search.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/search.js" afterPath="$PROJECT_DIR$/html/search/search.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/searchdata.js" afterPath="$PROJECT_DIR$/html/search/searchdata.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/typedefs_0.html" afterPath="$PROJECT_DIR$/html/search/typedefs_0.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/typedefs_0.js" afterPath="$PROJECT_DIR$/html/search/typedefs_0.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/typedefs_1.html" afterPath="$PROJECT_DIR$/html/search/typedefs_1.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/typedefs_1.js" afterPath="$PROJECT_DIR$/html/search/typedefs_1.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/typedefs_2.html" afterPath="$PROJECT_DIR$/html/search/typedefs_2.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/typedefs_2.js" afterPath="$PROJECT_DIR$/html/search/typedefs_2.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/typedefs_3.html" afterPath="$PROJECT_DIR$/html/search/typedefs_3.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/typedefs_3.js" afterPath="$PROJECT_DIR$/html/search/typedefs_3.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/typedefs_4.html" afterPath="$PROJECT_DIR$/html/search/typedefs_4.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/typedefs_4.js" afterPath="$PROJECT_DIR$/html/search/typedefs_4.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/typedefs_5.html" afterPath="$PROJECT_DIR$/html/search/typedefs_5.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/typedefs_5.js" afterPath="$PROJECT_DIR$/html/search/typedefs_5.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/typedefs_6.html" afterPath="$PROJECT_DIR$/html/search/typedefs_6.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/typedefs_6.js" afterPath="$PROJECT_DIR$/html/search/typedefs_6.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/typedefs_7.html" afterPath="$PROJECT_DIR$/html/search/typedefs_7.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/typedefs_7.js" afterPath="$PROJECT_DIR$/html/search/typedefs_7.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/typedefs_8.html" afterPath="$PROJECT_DIR$/html/search/typedefs_8.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/search/typedefs_8.js" afterPath="$PROJECT_DIR$/html/search/typedefs_8.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/tabs.css" afterPath="$PROJECT_DIR$/html/tabs.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex/Aliasing.tex" afterPath="$PROJECT_DIR$/latex/Aliasing.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex/Castellano.tex" afterPath="$PROJECT_DIR$/latex/Castellano.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex/Enunciado.tex" afterPath="$PROJECT_DIR$/latex/Enunciado.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex/Implementacion.tex" afterPath="$PROJECT_DIR$/latex/Implementacion.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex/Interfaz.tex" afterPath="$PROJECT_DIR$/latex/Interfaz.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex/Makefile" afterPath="$PROJECT_DIR$/latex/Makefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex/annotated.tex" afterPath="$PROJECT_DIR$/latex/annotated.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex/axiomas.tex" afterPath="$PROJECT_DIR$/latex/axiomas.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex/classNat.tex" afterPath="$PROJECT_DIR$/latex/classNat.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex/classaed2_1_1iterator.tex" afterPath="$PROJECT_DIR$/latex/classaed2_1_1iterator.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex/classaed2_1_1iterator_1_1const__iterator.tex" afterPath="$PROJECT_DIR$/latex/classaed2_1_1iterator_1_1const__iterator.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex/classaed2_1_1iterator_1_1iterator.tex" afterPath="$PROJECT_DIR$/latex/classaed2_1_1iterator_1_1iterator.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex/classaed2_1_1map.tex" afterPath="$PROJECT_DIR$/latex/classaed2_1_1map.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex/classaed2_1_1map_1_1const__iterator.tex" afterPath="$PROJECT_DIR$/latex/classaed2_1_1map_1_1const__iterator.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex/classaed2_1_1map_1_1iterator.tex" afterPath="$PROJECT_DIR$/latex/classaed2_1_1map_1_1iterator.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex/doxygen.sty" afterPath="$PROJECT_DIR$/latex/doxygen.sty" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex/files.tex" afterPath="$PROJECT_DIR$/latex/files.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex/index.tex" afterPath="$PROJECT_DIR$/latex/index.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex/map_8h.tex" afterPath="$PROJECT_DIR$/latex/map_8h.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex/namespaceaed2.tex" afterPath="$PROJECT_DIR$/latex/namespaceaed2.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex/namespaces.tex" afterPath="$PROJECT_DIR$/latex/namespaces.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latex/refman.tex" afterPath="$PROJECT_DIR$/latex/refman.tex" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/map.h" afterPath="$PROJECT_DIR$/map.h" />
     </list>
     <ignored path="TP 2.iws" />
@@ -205,12 +35,13 @@
       <file leaf-file-name="map.h" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/map.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
-              <caret line="2190" column="26" selection-start-line="2190" selection-start-column="26" selection-end-line="2190" selection-end-column="26" />
+            <state relative-caret-position="265">
+              <caret line="1159" column="7" selection-start-line="1159" selection-start-column="7" selection-end-line="1159" selection-end-column="7" />
               <folding>
-                <element signature="e#36828#36849#0" expanded="true" />
-                <marker date="1498184940362" expanded="true" signature="44176:44389" ph="/**...*/" />
-                <marker date="1498184940362" expanded="false" signature="47523:47547" ph="&lt;iterator&gt;" />
+                <element signature="e#42356#42422#0" expanded="true" />
+                <element signature="e#49217#49233#0" expanded="true" />
+                <element signature="e#103349#103376#0" expanded="true" />
+                <element signature="e#103638#103665#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -507,12 +338,12 @@
       <workItem from="1497990626410" duration="27216000" />
       <workItem from="1498028954720" duration="4087000" />
       <workItem from="1498062598260" duration="21679000" />
-      <workItem from="1498156043732" duration="16034000" />
+      <workItem from="1498156043732" duration="16273000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144504000" />
+    <option name="totallyTimeSpent" value="144743000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="24" width="1317" height="744" extended-state="6" />
@@ -561,9 +392,10 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#36828#36849#0" expanded="true" />
-            <marker date="1498184940362" expanded="true" signature="44176:44389" ph="/**...*/" />
-            <marker date="1498184940362" expanded="false" signature="47523:47547" ph="&lt;iterator&gt;" />
+            <element signature="e#42356#42422#0" expanded="true" />
+            <element signature="e#49217#49233#0" expanded="true" />
+            <element signature="e#103349#103376#0" expanded="true" />
+            <element signature="e#103638#103665#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -573,9 +405,10 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#36828#36849#0" expanded="true" />
-            <marker date="1498184940362" expanded="true" signature="44176:44389" ph="/**...*/" />
-            <marker date="1498184940362" expanded="false" signature="47523:47547" ph="&lt;iterator&gt;" />
+            <element signature="e#42356#42422#0" expanded="true" />
+            <element signature="e#49217#49233#0" expanded="true" />
+            <element signature="e#103349#103376#0" expanded="true" />
+            <element signature="e#103638#103665#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -625,9 +458,10 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#36828#36849#0" expanded="true" />
-            <marker date="1498184940362" expanded="true" signature="44176:44389" ph="/**...*/" />
-            <marker date="1498184940362" expanded="false" signature="47523:47547" ph="&lt;iterator&gt;" />
+            <element signature="e#42356#42422#0" expanded="true" />
+            <element signature="e#49217#49233#0" expanded="true" />
+            <element signature="e#103349#103376#0" expanded="true" />
+            <element signature="e#103638#103665#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -655,9 +489,10 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#36828#36849#0" expanded="true" />
-            <marker date="1498184940362" expanded="true" signature="44176:44389" ph="/**...*/" />
-            <marker date="1498184940362" expanded="false" signature="47523:47547" ph="&lt;iterator&gt;" />
+            <element signature="e#42356#42422#0" expanded="true" />
+            <element signature="e#49217#49233#0" expanded="true" />
+            <element signature="e#103349#103376#0" expanded="true" />
+            <element signature="e#103638#103665#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -685,9 +520,10 @@
         <state relative-caret-position="23634">
           <caret line="1313" column="27" selection-start-line="1313" selection-start-column="27" selection-end-line="1313" selection-end-column="27" />
           <folding>
-            <element signature="e#36828#36849#0" expanded="true" />
-            <marker date="1498184940362" expanded="true" signature="44176:44389" ph="/**...*/" />
-            <marker date="1498184940362" expanded="false" signature="47523:47547" ph="&lt;iterator&gt;" />
+            <element signature="e#42356#42422#0" expanded="true" />
+            <element signature="e#49217#49233#0" expanded="true" />
+            <element signature="e#103349#103376#0" expanded="true" />
+            <element signature="e#103638#103665#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -729,9 +565,10 @@
         <state relative-caret-position="19692">
           <caret line="1094" column="14" selection-start-line="1094" selection-start-column="14" selection-end-line="1094" selection-end-column="14" />
           <folding>
-            <element signature="e#36828#36849#0" expanded="true" />
-            <marker date="1498184940362" expanded="true" signature="44176:44389" ph="/**...*/" />
-            <marker date="1498184940362" expanded="false" signature="47523:47547" ph="&lt;iterator&gt;" />
+            <element signature="e#42356#42422#0" expanded="true" />
+            <element signature="e#49217#49233#0" expanded="true" />
+            <element signature="e#103349#103376#0" expanded="true" />
+            <element signature="e#103638#103665#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -766,9 +603,10 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#36828#36849#0" expanded="true" />
-            <marker date="1498184940362" expanded="true" signature="44176:44389" ph="/**...*/" />
-            <marker date="1498184940362" expanded="false" signature="47523:47547" ph="&lt;iterator&gt;" />
+            <element signature="e#42356#42422#0" expanded="true" />
+            <element signature="e#49217#49233#0" expanded="true" />
+            <element signature="e#103349#103376#0" expanded="true" />
+            <element signature="e#103638#103665#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -778,9 +616,10 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#36828#36849#0" expanded="true" />
-            <marker date="1498184940362" expanded="true" signature="44176:44389" ph="/**...*/" />
-            <marker date="1498184940362" expanded="false" signature="47523:47547" ph="&lt;iterator&gt;" />
+            <element signature="e#42356#42422#0" expanded="true" />
+            <element signature="e#49217#49233#0" expanded="true" />
+            <element signature="e#103349#103376#0" expanded="true" />
+            <element signature="e#103638#103665#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -790,9 +629,10 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#36828#36849#0" expanded="true" />
-            <marker date="1498184940362" expanded="true" signature="44176:44389" ph="/**...*/" />
-            <marker date="1498184940362" expanded="false" signature="47523:47547" ph="&lt;iterator&gt;" />
+            <element signature="e#42356#42422#0" expanded="true" />
+            <element signature="e#49217#49233#0" expanded="true" />
+            <element signature="e#103349#103376#0" expanded="true" />
+            <element signature="e#103638#103665#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -982,12 +822,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/map.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="2190" column="26" selection-start-line="2190" selection-start-column="26" selection-end-line="2190" selection-end-column="26" />
+        <state relative-caret-position="265">
+          <caret line="1159" column="7" selection-start-line="1159" selection-start-column="7" selection-end-line="1159" selection-end-column="7" />
           <folding>
-            <element signature="e#36828#36849#0" expanded="true" />
-            <marker date="1498184940362" expanded="true" signature="44176:44389" ph="/**...*/" />
-            <marker date="1498184940362" expanded="false" signature="47523:47547" ph="&lt;iterator&gt;" />
+            <element signature="e#42356#42422#0" expanded="true" />
+            <element signature="e#49217#49233#0" expanded="true" />
+            <element signature="e#103349#103376#0" expanded="true" />
+            <element signature="e#103638#103665#0" expanded="true" />
           </folding>
         </state>
       </provider>
