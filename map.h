@@ -612,14 +612,12 @@
  * \par minimoAux
  * \parblock
  * \axioma{mínimoAux}: Conj(\ALPHA, \BETA) x (\ALPHA, \BETA) \TO (\ALPHA, \BETA)\n
- * minimoAux(claves, e) \EQUIV \IF \# claves = 0 \THEN e \ELSE
- * minimoAux(sinUno(claves), max(e, dameUno(claves))) \FI
+ * minimoAux(claves, e) \EQUIV \IF \# claves = 0 \THEN e \ELSE minimoAux(sinUno(claves), max(e, dameUno(claves))) \FI
  * \endparblock
  *
  **/
 #ifndef MAP_H_
 #define MAP_H_
-
 
 #include <functional>
 #include <iterator>
@@ -801,7 +799,7 @@ public:
      * @retval res diccionario recién construido
      *
      * \pre \aedpre{true}
-     * \post \aedpost{res = vacio}
+     * \post \aedpost{this \IGOBS vacio}
      *
      * \complexity{\O(1)}
      *
@@ -817,7 +815,7 @@ public:
      * @retval res diccionario recien construido
      *
      * \pre \aedpre{true}
-     * \post \aedpost{res == other Completar}
+     * \post \aedpost{this \IGOBS other}
      *
      * \complexity{\O(\COPY(\P{other}))}
      *
@@ -1141,11 +1139,19 @@ public:
      * }
      *
      * \attention Para garantizar que el nuevo elemento se inserte sí o sí, usar aed2::map::insert_or_assign.
+     *
+     * Crea un iterador en la posición en la que insertar, buscandola con lower bound.
+     * Llama a insert pasandole el iterador como hint.
      */
     iterator insert(const value_type& value) {
         iterator it = lower_bound(value.first);
         return insert(it, value);
     }
+
+     /**
+      * Evalúa si hint apunta al primer valor con clave al menos \P{value}.
+      * Si es así, llama a insert_rapido con hint, de lo contrario llama a insert_rapido con el lower_bound como parametro.
+      */
 
     iterator insert(const_iterator hint, const value_type& value) {
         if (hintValido(hint, value))
@@ -1154,12 +1160,11 @@ public:
     }
 
    /**
-
-	Completar especificacion coloquialmente
-
-    **/
-    void insert_fixup(const_iterator it){
-	    Node* n = const_cast<Node*>(it.n);
+    * Lo que hace esta función es re-organizar el arbol de modo tal que se cumplan las propiedades de un red-black tree.
+    * Para ello, analiza
+    */
+    void insert_fixup(iterator it){
+	    Node* n = it.n;
 	    Node* y;
         while (n->parent->color == Color::Red) {
             auto dir = n->parent == n->parent->parent->child[0];
@@ -2231,6 +2236,15 @@ private:
         return std::make_pair(res[0], res[1]);
     }
 
+    /**
+     * Primero descarta la posibilidad de que el hint sea null lo que haria indefinir la funcion.
+     * Luego, si hint fuese el header seria el hint adecuado si no hubiese elementos en el arbol,
+     * o si todos los elementos fuesen menores que el value.
+     * En el caso que el hint fuese el primer elemento del arbol estaria bien si todos los elementos
+     * del mismo fuesen mayores.
+     * Por ultimo, si no pasa ninguno de estos casos tenemos que chequear que el elemento sea menor
+     * que el hint pero mayor que el anterior a este para que el hint este en la posicion adecuada.
+     */
     bool hintValido(const_iterator hint, const value_type& value) const {
         bool res;
         if (hint.n == nullptr)
@@ -2240,10 +2254,23 @@ private:
         else if (hint == begin())
             res = lt(value.first, hint.n->key());
         else
-            res = lt(hint.n->key(), value.first) && lt(value.first, (--hint.n)->key());
+            res = lt(value.first, hint.n->key()) && lt(hint.n->key(), value.first);
         return res;
     }
 
+    /**
+    * Crea un iterador con el hint para que pase a ser iterator y pueda utilizarse para insertar.
+    * Chequea si el elemento no estaba definido, para proceder, en caso contrario no inserta nada.
+    * A partir del nodo en el que se encuentra busca la hoja en la que insertar el elemento.
+    * Crea un InnerNode "nuevo" con este nodo encontrado (hoja) como padre, de color rojo, por defecto,
+    * y con el value pasado por parametro.
+    * Evalua si es el menor o el mayor de todos los nodos del arbol respectivamente y de ser asi setea
+    * a los hijos del header con este nuevo nodo.
+    * Luego ve si el padre es el header entonces lo ubica como raíz, de otra manera se fija si es mayor
+    * o menor que el padre y lo ubica como el hijo correspondiente.
+    * Por ultimo, aumenta la variable count del arbol en 1, crea un iterador apuntando al nuevo nodo y
+    * llama a insert_fixup con este iterador.
+    */
     iterator insert_rapido(const_iterator hint, const value_type& value) {
         iterator it(const_cast<Node*>(hint.n));
         if (it.n->is_header() || !eq(it.n->key(), value.first)) {
@@ -2271,7 +2298,6 @@ private:
                 padre->child[0] = nuevo;
             else
                 padre->child[1] = nuevo;
-            nuevo->color = Color::Red;
             count++;
             it.n = nuevo;
             insert_fixup(it);
