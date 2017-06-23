@@ -582,7 +582,7 @@
  * \par DesdeElem
  * \parblock
  * Devuelve una secuencia ordenada con elementos del diccionario desde el elemento e inclusive.
- * \axioma{DesdeElem}: Conj(\ALPHA) x \TO secu(\ALPHA, \BETA)\n
+ * \axioma{DesdeElem}: Conj(\ALPHA) x \ALPHA \TO secu(\ALPHA, \BETA)\n
  * DesdeElem(claves, e) \EQUIV \IF minimo(d) < e \THEN <> \ELSE minimo(d) \BULLET DesdeElem(claves - {minimo}, e)
  * \endparblock
  *
@@ -619,13 +619,13 @@
  * Para cada nodo interno, sus ramas descendientes tienen la misma cantidad de nodos negros, y
  * y el subarbol que tiene como raiz ese nodo cumple el invariante de Arbol binario de busqueda.
  * Si es rojo, su o sus hijos son negros.
- * (\FORALL n: Node) NodoInterno(n, e.header) \IMPLIES ((n.child[0] = NULL \LOR n.chiild[0].color = Black) 
- * \LAND (n.child[1] = NULL \LOR n.chiild[1].color = Black) 
+ * (\FORALL n: Node) NodoInterno(n, e.header) \IMPLIES ((get(n.child[0]) = 0 \LOR n.chiild[0].color = Black) 
+ * \LAND (get(n.child[1]) = 0 \LOR n.chiild[1].color = Black) 
  * \LAND nodosNegros(n.child[0]) = nodosNegros(n.child[1]) \LAND arbolBinarioDeBusqueda(n))
  * \endparblock
  *
  * 
- *
+ * \
  *
  * \par arbolBinarioDeBusqueda
  * Todos los nodos de la rama izquierda de n tienen valor menor al de n y todos los de la derecha, mayor.
@@ -637,21 +637,30 @@
  * \par nodosNegros
  * \parblock
  *
- * \axioma{nodosNegros} : Node \TO int\n
+ * \axioma{nodosNegros} : puntero(Node) \TO int\n
  * Devuelve la cantidad de nodos negros en un subarbol.
- * nodosNegros(n) \EQUIV \IF n = NULL \LOR_L n.color = Red \THEN 0 \ELSE 1 \FI + nodosNegros(n.child[0])
+ * nodosNegros(n) \EQUIV \IF get(n) = 0 \LOR_L n.color = Red \THEN 0 \ELSE 1 \FI + nodosNegros(n.child[0])
  * + nodosNegros(n.child[1])
  * \endparblock
  *
  *    \\ ** Auxiliares para Rep y Abs ** //
  *
- *\par nodoInterno
+ *\par nodoHijo
  *\parblock
  * Devuelve true si el n1 es hijo de n2 en la estructura.
  *
  * \axioma{nodoHijo} : Node n1 x Node n2 \TO bool\n
- * nodoHijo(n, h) \EQUIV \LNOT nothing?(n.value) \LAND_L (n.parent == e.header \LOR nodoHijo(*n.parent, e))
+ * nodoHijo(n, h) \EQUIV \LNOT nothing?(n.value) \LAND_L (n.parent = e.header \LOR nodoHijo(*n.parent, e))
  * \endparblock
+ *
+ *
+ * \par MapAConjunto
+ * \parblock Crea un conjunto con los elementos de map.
+ *
+ * \axioma{MapAConjunto}: Node n \TO Conj(\ALPHA)\n
+ * MapAConjunto(n) \EQUIV \IF n.color = Header \THEN MapAConjunto(\PI2(h)) \ELSE {*n} \CUP \IF
+ * get(n.child[0]) \NEQ 0 THEN MapAConjunto(*n.child[0]) \FI \CUP \IF
+ * get(n.child[1]) \NEQ 0 THEN MapAConjunto(*n.child[1]) \FI
  *
  *
  *\par minimo
@@ -2270,7 +2279,7 @@ private:
 	 * \parblock
 	 * abs: map m \TO Diccionario(\T{Key}, \T{Meaning})  {rep(n)}\n
 	 * abs(m) \EQUIV d: Diccionario(\T{Key}, \T{Meaning}) / (\FORALL a: \T{Key}) def?(a,m) \IFF
-	 * esta?(a, primeros(DiccASecuencia(m))) \LAND_L def?(a, m) \IMPLIES obtener(a, m) \IGOBS EncontrarValor(m)
+	 * esta?(a, primeros(DesdeElem(MapAConjunto(m)), ) \LAND_L def?(a, m) \IMPLIES obtener(a, m) \IGOBS EncontrarValor(m)
 	 * \endparblock
      */
     //////////////////////////////////////////////////////////////////////////////////////////////////////
