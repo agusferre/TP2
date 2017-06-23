@@ -659,8 +659,18 @@
  *
  * \axioma{MapAConjunto}: Node n \TO Conj(\ALPHA)\n
  * MapAConjunto(n) \EQUIV \IF n.color = Header \THEN MapAConjunto(\PI2(h)) \ELSE {*n} \CUP \IF
- * get(n.child[0]) \NEQ 0 THEN MapAConjunto(*n.child[0]) \FI \CUP \IF
- * get(n.child[1]) \NEQ 0 THEN MapAConjunto(*n.child[1]) \FI
+ * get(n.child[0]) \NEQ 0 \THEN MapAConjunto(*n.child[0]) \FI \CUP \IF
+ * get(n.child[1]) \NEQ 0 \THEN MapAConjunto(*n.child[1]) \FI \FI
+ * \endparblock
+ *
+ *
+ * \par EncontrarValor
+ * \parblock 
+ * 
+ * \axioma{EncontrarValor} : Puntero(Node) n x \ALPHA key \TO \BETA {get(n) \NEQ 0}\n
+ * EncontrarValor(n, key) \EQUIV \IF \PI1(*n) = key \THEN \PI2 \ELSE \IF \PI1(*n) < key \THEN
+ * EncontrarValor(n.child[1], key) \ELSE EncontrarValor(n.child[0]) \FI \FI
+ *
  *
  *
  *\par minimo
@@ -2278,8 +2288,8 @@ private:
 	 * \par Función de abstracción
 	 * \parblock
 	 * abs: map m \TO Diccionario(\T{Key}, \T{Meaning})  {rep(n)}\n
-	 * abs(m) \EQUIV d: Diccionario(\T{Key}, \T{Meaning}) / (\FORALL a: \T{Key}) def?(a,m) \IFF
-	 * esta?(a, primeros(DesdeElem(MapAConjunto(m)), ) \LAND_L def?(a, m) \IMPLIES obtener(a, m) \IGOBS EncontrarValor(m)
+	 * abs(m) \EQUIV d: Diccionario(\T{Key}, \T{Meaning}) \SHORTMID ( \FORALL a: \T{Key}) def?(a,m) \IFF
+	 * a \IN MapAConjunto(m) \LAND_L def?(a, m) \IMPLIES obtener(a, m) \IGOBS EncontrarValor(m)
 	 * \endparblock
      */
     //////////////////////////////////////////////////////////////////////////////////////////////////////
