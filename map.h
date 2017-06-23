@@ -570,20 +570,12 @@
  * \endparblock
  *
  *   \\ ** Auxiliares para pre y post ** //
- * \par HastaElem
+ * \par DiccSecu
  * \parblock
- * Devuelve una secuencia ordenada con elementos del diccionario hasta el elemento e, no inclusive.
- * \axioma{HastaElem}: Conj(\ALPHA, \BETA) x \TO secu(\ALPHA, \BETA)\n
- * HastaElem(claves, e) \EQUIV \IF minimo(d) = e \THEN <> \ELSE HastaElem(claves - {minimo}, e)
- * \endparblock
- *
- *
- *
- * \par DesdeElem
- * \parblock
- * Devuelve una secuencia ordenada con elementos del diccionario desde el elemento e inclusive.
- * \axioma{DesdeElem}: Conj(\ALPHA) x \ALPHA \TO secu(\ALPHA, \BETA)\n
- * DesdeElem(claves, e) \EQUIV \IF minimo(d) < e \THEN <> \ELSE minimo(d) \BULLET DesdeElem(claves - {minimo}, e)
+ * Devuelve una secuencia ordenada con elementos del diccionario.
+ * \axioma{DiccSecu}: Conj(\ALPHA, \BETA) \TO secu(\ALPHA, \BETA)\n
+ * DiccSecu(elems) \EQUIV \IF \EMPTYSET ?(elems) \THEN < > \ELSE DiccSecu(elems - minimo(elems)) \BOTTOM
+ * dameUno(elems) \FI
  * \endparblock
  *
  *
@@ -595,11 +587,12 @@
  * \endparblock
  *
  *
- * \par compararClaves
+ * \par compararElems
  * \parblock
- * \axioma{compararClaves}: Conj() cs1 x Conj() cs2 \TO bool\n
- * compararClaves(cs1, cs2) \EQUIV \IF \# cs1 == 0 \THEN true \ELSE \IF (\# cs2 == 0 \LOR
- * minimo(cs1) \GT minimo(cs2) ) \THEN false \FI ELSE compararClaves(cs1 - {minimo}, cs2 - {minimo}) \FI
+ * \axioma{compararElems}: Conj(\ALPHA, \BETA) cs1 x Conj(\ALPHA, \BETA) cs2 \TO bool\n
+ * compararElems(cs1, cs2) \EQUIV \IF \# cs1 == 0 \THEN true \ELSE \IF (\# cs2 == 0 \LOR
+ * \PI1(minimo(cs1)) \GT \PI1(minimo(cs2)) || \PI2(minimo(cs1)) \GT \PI2(minimo(cs2))) \THEN false \FI
+ * \ELSE compararElems(cs1 - {minimo}, cs2 - {minimo}) \FI
  * \endparblock
  *
  *
@@ -610,7 +603,7 @@
  * El nodo header no tiene valor. Su padre es la raíz, de color negro, y sus hijos derecho e izquierdo
  * son el mayor y el menor valor del arbol respectivamente.\n
  * e.header.color == Header \LAND nothing?(e.header.value) \LAND e.header.parent.color == Black 
- * \LAND completar
+ * \LAND *e.header.child[0] =minimo(MapAConjunto(e)) \LAND *e.header.child[1] = maximo(MapAConjunto(e))
  * \endparblock
  *
  *
@@ -676,28 +669,30 @@
  *\par minimo
  *\parblock
  * Devuelve el elemento del diccionario con la menor clave
- * \axioma{minimo}: Conj(\ALPHA, \BETA) \TO (\ALPHA, \BETA)\n
- * minimo(claves) \EQUIV minimoAux(claves, dameUno(claves))
+ * \axioma{minimo}: Conj(\ALPHA, \BETA) \TO (\ALPHA, \BETA) {\LNOT \EMPTYSET?(elems)}\n
+ * minimo(elems) \EQUIV minimoAux(elems, \PI1(dameUno(elems)))
  * \endparblock
  *
  * \par minimoAux
  * \parblock
- * \axioma{mínimoAux}: Conj(\ALPHA, \BETA) x (\ALPHA, \BETA) \TO (\ALPHA, \BETA)\n
- * minimoAux(claves, e) \EQUIV \IF \# claves = 0 \THEN e \ELSE minimoAux(sinUno(claves), min(e, dameUno(claves))) \FI
+ * \axioma{minimoAux}: Conj(\ALPHA, \BETA) x (\ALPHA, \BETA) \TO (\ALPHA, \BETA)\n
+ * minimoAux(elems, e) \EQUIV \IF \#elems = 0 \THEN e \ELSE \IF e > \PI1(dameUno(elems)) \THEN minimoAux(sinUno(elems), e)
+ * \ELSE minimoAux(sinUno(elems), dameUno(elems)) \FI
  * \endparblock
  *
  *
- *\par maximo
+  *\par maximo
  *\parblock
  * Devuelve el elemento del diccionario con la menor clave
- * \axioma{maximo}: Conj(\ALPHA, \BETA) \TO (\ALPHA, \BETA)\n
- * maximo(claves) \EQUIV maximoAux(claves, dameUno(claves))
+ * \axioma{maximo}: Conj(\ALPHA, \BETA) \TO (\ALPHA, \BETA) {\LNOT \EMPTYSET?(elems)}\n
+ * maximo(elems) \EQUIV maximoAux(elems, \PI1(dameUno(elems)))
  * \endparblock
  *
  * \par maximoAux
  * \parblock
  * \axioma{maximoAux}: Conj(\ALPHA, \BETA) x (\ALPHA, \BETA) \TO (\ALPHA, \BETA)\n
- * maximoAux(claves, e) \EQUIV \IF \# claves = 0 \THEN e \ELSE minimoAux(sinUno(claves), max(e, dameUno(claves))) \FI
+ * maximoAux(elems, e) \EQUIV \IF \#elems = 0 \THEN e \ELSE \IF e > \PI1(dameUno(elems)) \THEN maximoAux(sinUno(elems), e)
+ * \ELSE maximoAux(sinUno(elems), dameUno(elems)) \FI
  * \endparblock
  **/
 #ifndef MAP_H_
