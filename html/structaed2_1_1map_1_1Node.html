@@ -98,8 +98,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 Métodos públicos</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaed2_1_1map_1_1Node_a4f3cb2cc4302fe96432e624ced147540.html#a4f3cb2cc4302fe96432e624ced147540">~Node</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor de <a class="el" href="structaed2_1_1map_1_1Node.html" title="Estructura (privada) de un nodo del árbol red-black.">Node</a>.  <a href="#a4f3cb2cc4302fe96432e624ced147540"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaed2_1_1map_1_1Node_a1c56c9d119479b77b8abb7343a224c7a.html#a1c56c9d119479b77b8abb7343a224c7a">print</a> (int tab=0) const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">imprime el subarbol apuntado por this  <a href="#a1c56c9d119479b77b8abb7343a224c7a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structaed2_1_1map_1_1Node.html">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaed2_1_1map_1_1Node_a4d5263c74ea5f78025fea331267730ce.html#a4d5263c74ea5f78025fea331267730ce">inmediato</a> (int dir) const </td></tr>
 <tr><td colspan="2"><div class="groupHeader">Creación de nodos (constructores)</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>Punteros a los hijos izquierdo (child[0]) y derecho (child[1])</p>
 <p>Puntero al padre: garantiza insercion con puntero en O(1) amortizado e iteracion en O(1) memoria Color del nodo </p>
@@ -126,7 +125,7 @@ struct aed2::map&lt; Key, Meaning, Compare &gt;::Node</h3>
 <p>Además de definir los campos de la estructura de un nodo, esta clase podría usarse para implementar una especie de submodulo que incluya funciones para manipular el arbol red-black. Las funciones incluidas en esta estructura deberían ser aquellas que, si bien no requieren conocer el resto de la estructura red-black, explotan el conocimiento de que el árbol red-black tiene un único nodo sentinela que sirve de cabecera. (Ver ejemplos)</p>
 <dl class="remark"><dt><b>Comentarios:</b></dt><dd>Como <span class="paramname"><a class="el" href="structaed2_1_1map_1_1Node.html" title="Estructura (privada) de un nodo del árbol red-black.">Node</a></span> es una estructura privada, no tiene ventajas imporantes implementarla en forma modular. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="map_8h_source.html#l01964">1964</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p>Definición en la línea <a class="el" href="map_8h_source.html#l02076">2076</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
 </div><hr/>La documentación para esta estructura fue generada a partir del siguiente fichero:<ul>
 <li><a class="el" href="map_8h_source.html">map.h</a></li>
 </ul>
@@ -137,7 +136,7 @@ struct aed2::map&lt; Key, Meaning, Compare &gt;::Node</h3>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Amigas</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Amigas</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -148,11 +147,11 @@ struct aed2::map&lt; Key, Meaning, Compare &gt;::Node</h3>
 
   <div id="nav-path" class="navpath">
     <ul>
-      <li class="navelem"><b>aed2</b>      </li>
+      <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a>      </li>
       <li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a>      </li>
       <li class="navelem"><a class="el" href="structaed2_1_1map_1_1Node.html">Node</a>      </li>
 
-    <li class="footer">Generado el Viernes, 23 de Junio de 2017 02:18:10 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 23 de Junio de 2017 12:29:29 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

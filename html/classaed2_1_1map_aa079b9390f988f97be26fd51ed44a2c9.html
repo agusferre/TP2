@@ -98,18 +98,9 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
       </table>
 </div>
 <div class="memdoc">
+<p>Por defecto setea el arreglo res de dos posiciones con una referencia al header en ambas posiciones. Luego va iterando hasta encontrar el key o el primer elemento mayor o igual a key. Si existe un nodo definido con key, devuelve la tupla con ese nodo en ambas posiciones. De lo contrario, devuelve el primer menor en la primera posicion y el primer mayor en la segunda de la tupla. </p>
 
-<p>Retorna true si las claves son iguales con respecto a <b class="paramname">this</b>-&gt;lt. </p>
-<dl class="params"><dt><b>Parámetros:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">k1</td><td>clave a comparar </td></tr>
-    <tr><td class="paramname">k2</td><td>clave a comparar </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Devuelve:</b></dt><dd>true cuando <b class="paramname">k1</b> y <b class="paramname">k2</b> son iguales con respecto a <b class="paramname">this</b>-&gt;lt. </dd></dl>
-
-<p>Definición en la línea <a class="el" href="map_8h_source.html#l02208">2208</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p>Definición en la línea <a class="el" href="map_8h_source.html#l02339">2339</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
 </div>
 </div>
@@ -120,7 +111,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Amigas</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Amigas</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -131,10 +122,10 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 
   <div id="nav-path" class="navpath">
     <ul>
-      <li class="navelem"><b>aed2</b>      </li>
+      <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a>      </li>
       <li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a>      </li>
 
-    <li class="footer">Generado el Viernes, 23 de Junio de 2017 02:18:09 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 23 de Junio de 2017 12:29:28 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

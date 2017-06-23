@@ -306,6 +306,13 @@ ALIASES += primeros="\refax{primeros}"
 ALIASES += esDiccionario="\refax{esDiccionario?}"
 ALIASES += HastaElem="\refax{HastaElem}"
 ALIASES += DesdeElem="\refax{DesdeElem}"
+ALIASES += headerValido="\refax{headerValido}"
+ALIASES += nodosInternosValidos="\refax{nodosInternosValidos}"
+ALIASES += arbolBinarioDeBusqueda="\refax{arbolBinarioDeBusqueda}"
+ALIASES += nodosNegros="\refax{nodosNegros}"
+ALIASES += nodoHijo="\refax{nodoHijo}"
+ALIASES += MapAConjunto="\refax{MapAConjunto}"
+ALIASES += EncontrarValor="\refax{EncontrarValor}"
 
 
 

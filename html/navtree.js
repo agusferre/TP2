@@ -3,6 +3,9 @@ var NAVTREE =
   [ "Trabajo práctico 2: diccionario sobre RB-tree", "index.html", [
     [ "Modulo aed2::map", "index.html", "index" ],
     [ "Páginas relacionadas", "pages.html", "pages" ],
+    [ "Namespaces", null, [
+      [ "Lista de 'namespaces'", "namespaces.html", "namespaces" ]
+    ] ],
     [ "Clases", null, [
       [ "Lista de clases", "annotated.html", "annotated" ],
       [ "Índice de clases", "classes.html", null ],

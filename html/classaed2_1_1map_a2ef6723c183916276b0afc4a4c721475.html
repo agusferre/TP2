@@ -136,9 +136,10 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 </dd>
 </dl>
 <dl class="attention"><dt><b>Atención:</b></dt><dd>Para prevenir que el nuevo valor redefina uno ya existente, usar <a class="el" href="classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8.html#a60aacba06b1579630b3c8e996cf248c8" title="Inserta value en el diccionario.">aed2::map::insert</a>. </dd></dl>
-<dl class="remark"><dt><b>Comentarios:</b></dt><dd>Esta función es similar al operator[], pero tiene dos ventajas y una desventaja. Las ventajas es que 1. se puede indicar un <b class="paramname">hint</b> para la búsqueda y 2. no es necesario que <span class="paramname">Meaning</span> tenga constructor sin parámetros. La desventaja es que la notación no es tan bonita. </dd></dl>
+<dl class="remark"><dt><b>Comentarios:</b></dt><dd>Esta función es similar al operator[], pero tiene dos ventajas y una desventaja. Las ventajas es que 1. se puede indicar un <b class="paramname">hint</b> para la búsqueda y 2. no es necesario que <span class="paramname">Meaning</span> tenga constructor sin parámetros. La desventaja es que la notación no es tan bonita.</dd></dl>
+<p>Busca el valor de manera similar al operator[] Si lo encuentra, borra el elemento encontrado. Inserta un nuevo valor llamando a insert_rapido, con la seguridad de que it esta correctamente ubicado. </p>
 
-<p>Definición en la línea <a class="el" href="map_8h_source.html#l01235">1235</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p>Definición en la línea <a class="el" href="map_8h_source.html#l01346">1346</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
 </div>
 </div>
@@ -149,7 +150,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Amigas</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Amigas</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -160,10 +161,10 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 
   <div id="nav-path" class="navpath">
     <ul>
-      <li class="navelem"><b>aed2</b>      </li>
+      <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a>      </li>
       <li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a>      </li>
 
-    <li class="footer">Generado el Viernes, 23 de Junio de 2017 02:18:09 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 23 de Junio de 2017 12:29:28 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

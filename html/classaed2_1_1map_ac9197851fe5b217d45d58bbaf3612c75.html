@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Trabajo práctico 2: diccionario sobre RB-tree: aed2::map::insert</title>
+<title>Trabajo práctico 2: diccionario sobre RB-tree: aed2::map::insert_fixup</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -82,35 +82,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </script>
 <div id="doc-content">
 <div class="contents">
-<a class="anchor" id="a6941cde9a79c27f054b5c97a587a1854"></a><!-- doxytag: member="aed2::map::insert" ref="a6941cde9a79c27f054b5c97a587a1854" args="(const_iterator hint, const value_type &amp;value)" -->
+<a class="anchor" id="ac9197851fe5b217d45d58bbaf3612c75"></a><!-- doxytag: member="aed2::map::insert_fixup" ref="ac9197851fe5b217d45d58bbaf3612c75" args="(iterator it)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classaed2_1_1map_1_1iterator.html">iterator</a> <a class="el" href="classaed2_1_1map.html">aed2::map</a>&lt; Key, Meaning, Compare &gt;::<a class="el" href="classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8.html#a60aacba06b1579630b3c8e996cf248c8">insert</a> </td>
+          <td class="memname">void <a class="el" href="classaed2_1_1map.html">aed2::map</a>&lt; Key, Meaning, Compare &gt;::<a class="el" href="classaed2_1_1map_ac9197851fe5b217d45d58bbaf3612c75.html#ac9197851fe5b217d45d58bbaf3612c75">insert_fixup</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classaed2_1_1map_1_1const__iterator.html">const_iterator</a>&#160;</td>
-          <td class="paramname"><em>hint</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const value_type &amp;&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [inline]</code></td>
+          <td class="paramtype"><a class="el" href="classaed2_1_1map_1_1iterator.html">iterator</a>&#160;</td>
+          <td class="paramname"><em>it</em></td><td>)</td>
+          <td><code> [inline]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Evalúa si hint apunta al primer valor con clave al menos <b class="paramname">value</b>. Si es así, llama a insert_rapido con hint, de lo contrario llama a insert_rapido con el lower_bound como parametro. </p>
+<p>Lo que hace esta función es re-organizar el arbol de modo tal que se cumplan las propiedades de un red-black tree. Para ello, analiza </p>
 
-<p>Definición en la línea <a class="el" href="map_8h_source.html#l01253">1253</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p>Definición en la línea <a class="el" href="map_8h_source.html#l01263">1263</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
 </div>
 </div>

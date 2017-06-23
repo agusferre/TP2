@@ -108,9 +108,34 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
       </table>
 </div>
 <div class="memdoc">
-<p>Completar especificacion coloquialmente </p>
 
-<p>Definición en la línea <a class="el" href="map_8h_source.html#l01331">1331</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p>Inserta <b class="paramname">value</b> en el diccionario. </p>
+<p>Inserta un <b>nuevo</b> valor en el diccionario. Si <b class="paramname">*this</b> ya tiene un valor con clave <b class="paramname">value</b>.first, entonces la función no tiene efectos. El iterador de retorno apunta al elemento recien insertado (o aquel que previno la insercion).</p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>valor a insertar </td></tr>
+    <tr><td class="paramname">hint</td><td>iterador apuntando al diccionario. Se espera que apunte al minimo valor mayor o igual a <b class="paramname">value</b>.first (i.e., a lower_bound(<b class="paramname">value</b>.first)). Igualmente, la función es robusta y funciona correctamente aunque esto no ocurra. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt><b>Valores devueltos:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">res</td><td>iterador apuntando al elemento insertado o que previno la inserción</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="user"><dt><b>Aspectos de aliasing:</b></dt><dd>\1</dd></dl>
+<dl class="pre"><dt><b>Precondición:</b></dt><dd>{this  d_{ 0} </dd></dl>
+<dl class="post"><dt><b>Postcondición:</b></dt><dd>{(def?(key, this)  this  d_0)  ( def?(key, this)  (this  definir(key, d_0)  Siguiente(res)   key, obtener(key, this)  ))}</dd></dl>
+<p>{</p>
+<ul>
+<li>Peor caso: ((({*this}))  ({*this})  ({value}))</li>
+<li>Si {hint} apunta al primer valor con clave al menos {value}.first (o {this}-&gt;<a class="el" href="classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983.html#a76023e6a56cb625513e1b5ea028bf983" title="Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario.">end()</a> en caso de no existir): (({*this})  ({value})) amortizado. }</li>
+</ul>
+<dl class="attention"><dt><b>Atención:</b></dt><dd>Para garantizar que el nuevo elemento se inserte sí o sí, usar <a class="el" href="classaed2_1_1map_a2ef6723c183916276b0afc4a4c721475.html#a2ef6723c183916276b0afc4a4c721475" title="Inserta o Color::Redefine value en el diccionario.">aed2::map::insert_or_assign</a>.</dd></dl>
+<p>Crea un iterador en la posición en la que insertar, buscandola con lower bound. Llama a insert pasandole el iterador como hint. </p>
+
+<p>Definición en la línea <a class="el" href="map_8h_source.html#l01443">1443</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
 </div>
 </div>
@@ -121,7 +146,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Amigas</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Amigas</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -132,10 +157,10 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 
   <div id="nav-path" class="navpath">
     <ul>
-      <li class="navelem"><b>aed2</b>      </li>
+      <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a>      </li>
       <li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a>      </li>
 
-    <li class="footer">Generado el Viernes, 23 de Junio de 2017 02:18:09 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 23 de Junio de 2017 12:29:28 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>
