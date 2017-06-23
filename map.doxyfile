@@ -254,6 +254,7 @@ ALIASES += TIMES="\f$\times\f$"
 ALIASES += LOG="\f$\log\f$"
 ALIASES += LEQ="\f$\leq\f$"
 ALIASES += GEQ="\f$\geq\f$"
+ALIASES += NEQ="\f$\neq\f$"
 ALIASES += LT="\f$<\f$"
 ALIASES += GT="\f$>\f$"
 ALIASES += MINUS="\f$-\f$"
@@ -285,7 +286,8 @@ ALIASES += BOTTOM="\f$\bot\f$"
 ALIASES += HAT{1}="\f$\widehat{\1}\f$"
 ALIASES += LANGLE="\f$\langle\f$"
 ALIASES += RANGLE="\f$\rangle\f$"
-
+ALIASES += CUP="\f$\cup\f$"
+ALIASES += SHORTMID="\f$\shortmid\f$"
 
 #alias de formato (Mejor no modificar)
 ALIASES += aedPQ{2}="\b \1 \EQUIV \{\2\}"
