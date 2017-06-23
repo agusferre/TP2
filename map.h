@@ -586,15 +586,9 @@
  * \endparblock
  *
  *
- *
- *
- *
- *
  * \par MenorQue
  * \parblock
  * Devuelve true si y solo si m1 es lexicograficamente menor que m2.
- * 
- *
  * \axioma{MenorQue}: Dicc(\ALPHA, \BETA) d1 x Dicc(\ALPHA, \BETA) d2 \TO bool\n
  * MenorQue(d1, d2) \EQUIV compararClaves(claves(d1), claves(d2))
  * \endparblock
@@ -606,7 +600,6 @@
  * compararClaves(cs1, cs2) \EQUIV \IF \# cs1 == 0 \THEN true \ELSE \IF (\# cs2 == 0 \LOR
  * minimo(cs1) \GT minimo(cs2) ) \THEN false \FI ELSE compararClaves(cs1 - {minimo}, cs2 - {minimo}) \FI
  * \endparblock
- *
  *
  *
  *\par minimo
@@ -621,7 +614,8 @@
  * \axioma{mínimoAux}: Conj(\ALPHA, \BETA) x (\ALPHA, \BETA) \TO (\ALPHA, \BETA)\n
  * minimoAux(claves, e) \EQUIV \IF \# claves = 0 \THEN e \ELSE
  * minimoAux(sinUno(claves), max(e, dameUno(claves))) \FI
- * \endparblockunctional>
+ * \endparblock
+#include <functional>
 #include <iterator>
 #include <utility>
 #include <cassert>
