@@ -822,6 +822,9 @@ public:
      * \attention El parámetro formal \LT del TAD diccionario se establece en esta función.
      * \LT es igual al operator() del comparador de \P{other}
      *
+     * Para que este constructor tome tiempo lineal, se copian los elementos de other a this desde el
+     * ultimo hasta el primero, de forma que el iterador resultante (que es utilizado en el siguiente insert)
+     * siempre quede en el lower_bound del key a insertar.
      */
     map(const map& other) : header(), count(0), lt(other.lt) {
         if (not other.empty()) {
@@ -892,7 +895,7 @@ public:
      * @param other diccionario a copiar
      * @retval res referencia a *this
      *
-     * \aliasing{ no hay. }
+     * \aliasing{ No hay. }
      *
      * \pre \aedpre{true}
      * \post \aedpost{res \IGOBS other}
@@ -953,6 +956,9 @@ public:
      * \remark Esta función, que se asemeja más a la forma de programar propuesta en AED2
      * que al estándar C++, fue incluida en el estándar C++11.  Antes era obligación
      * recurrir a la función find.
+     * 
+     * La funcion tiene el  prerrequisito de tener definido un valor con clave = key, por lo que invoca
+     * directamente a find, sabiendo que este retornará un nodo interno con value. 
      */
     const Meaning& at(const Key& key) const {
     	return find(key)->second;
@@ -998,10 +1004,14 @@ public:
      * - \a x = 1 si def?(\a self, \P{key}), y
      * - \a x = \a c en caso contrario.}
      *
+     *
+     * La función primero verifica si el valor esta definido o no. Para esto usa la funcion lower_bound
+     * y no find, ya que la primera nos sirve para insertar un valor en caso de que no este definido, y la segunda no.
+     * Una vez encontrado o insertado el elemento, podemos llamar a at sin riesgo alguno.
      */
     Meaning& operator[](const Key& key) {
         iterator it = lower_bound(key);
-        if (not it.n->is_header() && it.n->value().first == key)
+        if (not it.n->is_header() && eq(it.n->value().first, key))
             return it.n->value().second;
         insert_rapido(it, value_type(key, Meaning()));
         return at(key);
@@ -1029,6 +1039,9 @@ public:
      * entonces conviene usar aed2::map::lower_bound para la búsqueda, dado que el
      * resultado puede ser usado como hint, mejorando la complejidad de la inserción.
      *
+     * La función verifica si los bounds de key son iguales. Si esto pasa, el elemento esta definido
+     * y se retorna un iterador apuntando a de los bounds. Por el contrario, se retorna un iterador
+     * inicializado en end().
      */
     iterator find(const Key& key) {
     	auto r = const_cast<const map*>(this)->find(key);
@@ -2237,13 +2250,15 @@ private:
     }
 
     /**
+     * Esta función verifica si el iterador está parado en el lower_bound de value.first para resolver
+     * si es utilizado en las funciones Insert e Insert_or_assign o no.
      * Primero descarta la posibilidad de que el hint sea null lo que haria indefinir la funcion.
-     * Luego, si hint fuese el header seria el hint adecuado si no hubiese elementos en el arbol,
-     * o si todos los elementos fuesen menores que el value.
-     * En el caso que el hint fuese el primer elemento del arbol estaria bien si todos los elementos
-     * del mismo fuesen mayores.
+     * Luego, si hint esta parado en la posicion pasando el ultimo, es el hint adecuado si no hay elementos en el arbol,
+     * o si todos los estos son menores que el value.
+     * En el caso que el hint esta parado al principio, es correcto si todos los elementos del arbol
+     * son mayores.
      * Por ultimo, si no pasa ninguno de estos casos tenemos que chequear que el elemento sea menor
-     * que el hint pero mayor que el anterior a este para que el hint este en la posicion adecuada.
+     * que el hint pero mayor que el anterior a este.
      */
     bool hintValido(const_iterator hint, const value_type& value) const {
         bool res;
@@ -2254,7 +2269,7 @@ private:
         else if (hint == begin())
             res = lt(value.first, hint.n->key());
         else
-            res = lt(value.first, hint.n->key()) && lt(hint.n->key(), value.first);
+            res = lt(value.first, hint.n->key()) && lt((--hint).n->key(), value.first);
         return res;
     }
 
