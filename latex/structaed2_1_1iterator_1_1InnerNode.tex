@@ -1,0 +1,47 @@
+\hypertarget{structaed2_1_1iterator_1_1InnerNode}{}\subsection{Referencia de la Estructura aed2\+:\+:iterator\+:\+:Inner\+Node}
+\label{structaed2_1_1iterator_1_1InnerNode}\index{aed2\+::iterator\+::\+Inner\+Node@{aed2\+::iterator\+::\+Inner\+Node}}
+
+
+Estructura (privada) de un nodo no cabecera del árbol red-\/black.  
+
+
+\subsubsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classaed2_1_1iterator_a6411a2c08b2b7c52f063bef1a168acb6_a6411a2c08b2b7c52f063bef1a168acb6}{value\+\_\+type} \hyperlink{structaed2_1_1iterator_1_1InnerNode_a3d80723a2dd1b746c0687f39fbc3d5e2_a3d80723a2dd1b746c0687f39fbc3d5e2}{\+\_\+value}
+\end{DoxyCompactItemize}
+\subsubsection*{Otros miembros heredados}
+
+
+\subsubsection{Descripción detallada}
+Estructura (privada) de un nodo no cabecera del árbol red-\/black. 
+
+Tal como sugiere Cormen et al. {\bfseries [Cormen\+Leiserson\+Rivest\+Stein2009]}, como se implementa en G\+CC, y cómo explicamos en \hyperlink{Implementacion}{Implementación del árbol red-\/black}, el árbol tiene dos tipos de nodos. Aquellos que tienen un valor e implementan el árbol y aquellos que se usan como centinelas. La estructura \hyperlink{structaed2_1_1iterator_1_1InnerNode}{Inner\+Node} hereda de la estructura \hyperlink{structaed2_1_1map_1_1Node}{aed2\+::map\+::\+Node}, agregando el valor, para representar a los nodos no cabecera.
+
+Además de definir los campos de la estructura de un nodo, esta clase podría implementar una especie de submodulo que incluya funciones para manipular el árbol red-\/black. Se sugiere incluir en esta estructura aquellas funciones que, si bien no requieren conocer el resto de la estructura red-\/black, explotan el conocimiento de que el árbol red-\/black tiene un unico nodo sentinela que sirve de cabecera.
+
+\begin{DoxyRemark}{Comentarios}
+Como \hyperlink{structaed2_1_1iterator_1_1InnerNode}{Inner\+Node} es una estructura privada, no tiene ventajas imporantes implementarla en forma modular. 
+\end{DoxyRemark}
+
+
+Definición en la línea \hyperlink{map2_8h_source_l03310}{3310} del archivo \hyperlink{map2_8h_source}{map2.\+h}.
+
+
+
+\subsubsection{Documentación de los datos miembro}
+\mbox{\Hypertarget{structaed2_1_1iterator_1_1InnerNode_a3d80723a2dd1b746c0687f39fbc3d5e2_a3d80723a2dd1b746c0687f39fbc3d5e2}\label{structaed2_1_1iterator_1_1InnerNode_a3d80723a2dd1b746c0687f39fbc3d5e2_a3d80723a2dd1b746c0687f39fbc3d5e2}} 
+\index{aed2\+::iterator\+::\+Inner\+Node@{aed2\+::iterator\+::\+Inner\+Node}!\+\_\+value@{\+\_\+value}}
+\index{\+\_\+value@{\+\_\+value}!aed2\+::iterator\+::\+Inner\+Node@{aed2\+::iterator\+::\+Inner\+Node}}
+\paragraph{\texorpdfstring{\+\_\+value}{\_value}}
+{\footnotesize\ttfamily \hyperlink{classaed2_1_1iterator_a6411a2c08b2b7c52f063bef1a168acb6_a6411a2c08b2b7c52f063bef1a168acb6}{value\+\_\+type} aed2\+::iterator\+::\+Inner\+Node\+::\+\_\+value}
+
+Valor del nodo 
+
+Definición en la línea \hyperlink{map2_8h_source_l03312}{3312} del archivo \hyperlink{map2_8h_source}{map2.\+h}.
+
+
+
+La documentación para esta estructura fue generada a partir del siguiente fichero\+:\begin{DoxyCompactItemize}
+\item 
+map2.\+h\end{DoxyCompactItemize}

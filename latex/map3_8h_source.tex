@@ -1,0 +1,843 @@
+\hypertarget{map3_8h_source}{}\subsection{map3.\+h}
+
+\begin{DoxyCode}
+00001 
+00577 \textcolor{preprocessor}{#ifndef MAP\_H\_}
+00578 \textcolor{preprocessor}{#define MAP\_H\_}
+00579 
+00580 \textcolor{preprocessor}{#include <functional>}
+00581 \textcolor{preprocessor}{#include <iterator>}
+00582 \textcolor{preprocessor}{#include <utility>}
+00583 \textcolor{preprocessor}{#include <cassert>}
+00584 \textcolor{preprocessor}{#include <algorithm>}
+00585 \textcolor{preprocessor}{#include <iostream>}
+00586 
+00587 \textcolor{preprocessor}{#ifdef DEBUG}
+00588 \textcolor{comment}{//Aca se puede incluir cualquier cosa que consideren que necesitan para debug}
+00589 \textcolor{comment}{//#include <iostream>}
+00590 \textcolor{comment}{//#include <iomanip>}
+00591 \textcolor{preprocessor}{#endif}
+00592 
+00600 \textcolor{keyword}{namespace }\hyperlink{namespaceaed2}{aed2}\{
+00601 
+00670 \textcolor{keyword}{template}<
+00671   \textcolor{keyword}{class }Key,
+00672   \textcolor{keyword}{class }Meaning,
+00673   \textcolor{keyword}{class }Compare = std::less<Key>
+00674 >
+00675 \textcolor{keyword}{class }map \{
+00676     \textcolor{comment}{//forward declarations (innecesario, pero ayuda al analizador semantico de Eclipse)}
+00677     \textcolor{keyword}{class }Node;
+00678     \textcolor{keyword}{class }InnerNode;
+00679 \textcolor{keyword}{public}:
+00680     \textcolor{comment}{//forward declarations}
+00681     \textcolor{keyword}{class }iterator;
+00682     \textcolor{keyword}{class }const\_iterator;
+00683 
+\Hypertarget{map3_8h_source_l00687}\hyperlink{classaed2_1_1map_a4273e8812e7105a618df58a2c8b72b7d_a4273e8812e7105a618df58a2c8b72b7d}{00687}     \textcolor{keyword}{using} \hyperlink{classaed2_1_1map_a4273e8812e7105a618df58a2c8b72b7d_a4273e8812e7105a618df58a2c8b72b7d}{key\_type} = Key;
+\Hypertarget{map3_8h_source_l00691}\hyperlink{classaed2_1_1map_aa3e34bf624f3009884a71b18f4ddae40_aa3e34bf624f3009884a71b18f4ddae40}{00691}     \textcolor{keyword}{using} \hyperlink{classaed2_1_1map_aa3e34bf624f3009884a71b18f4ddae40_aa3e34bf624f3009884a71b18f4ddae40}{mapped\_type} = Meaning;
+\Hypertarget{map3_8h_source_l00695}\hyperlink{classaed2_1_1map_a719db98e0ff9a837610f76be33264680_a719db98e0ff9a837610f76be33264680}{00695}     \textcolor{keyword}{using} \hyperlink{classaed2_1_1map_a719db98e0ff9a837610f76be33264680_a719db98e0ff9a837610f76be33264680}{value\_type} = std::pair<const Key, Meaning>;
+\Hypertarget{map3_8h_source_l00699}\hyperlink{classaed2_1_1map_a3efa081d3379ab76f33a5ef9fe697523_a3efa081d3379ab76f33a5ef9fe697523}{00699}     \textcolor{keyword}{using} \hyperlink{classaed2_1_1map_a3efa081d3379ab76f33a5ef9fe697523_a3efa081d3379ab76f33a5ef9fe697523}{key\_compare} = Compare;
+\Hypertarget{map3_8h_source_l00703}\hyperlink{classaed2_1_1map_af4f147533b3c0207ab036c86ce13ec0d_af4f147533b3c0207ab036c86ce13ec0d}{00703}     \textcolor{keyword}{using} \hyperlink{classaed2_1_1map_af4f147533b3c0207ab036c86ce13ec0d_af4f147533b3c0207ab036c86ce13ec0d}{reference} = \hyperlink{classaed2_1_1map_a719db98e0ff9a837610f76be33264680_a719db98e0ff9a837610f76be33264680}{value\_type}&;
+\Hypertarget{map3_8h_source_l00707}\hyperlink{classaed2_1_1map_a277080d3db76f19df9319ecba16475a9_a277080d3db76f19df9319ecba16475a9}{00707}     \textcolor{keyword}{using} \hyperlink{classaed2_1_1map_a277080d3db76f19df9319ecba16475a9_a277080d3db76f19df9319ecba16475a9}{const\_reference} = \textcolor{keyword}{const} \hyperlink{classaed2_1_1map_a719db98e0ff9a837610f76be33264680_a719db98e0ff9a837610f76be33264680}{value\_type}&;
+\Hypertarget{map3_8h_source_l00711}\hyperlink{classaed2_1_1map_a7394e98a23b86bc008ad73326b273fd5_a7394e98a23b86bc008ad73326b273fd5}{00711}     \textcolor{keyword}{using} \hyperlink{classaed2_1_1map_a7394e98a23b86bc008ad73326b273fd5_a7394e98a23b86bc008ad73326b273fd5}{pointer} = \hyperlink{classaed2_1_1map_a719db98e0ff9a837610f76be33264680_a719db98e0ff9a837610f76be33264680}{value\_type}*;
+\Hypertarget{map3_8h_source_l00715}\hyperlink{classaed2_1_1map_a1366fc3e227a49777cb748fc6d4e022b_a1366fc3e227a49777cb748fc6d4e022b}{00715}     \textcolor{keyword}{using} \hyperlink{classaed2_1_1map_a1366fc3e227a49777cb748fc6d4e022b_a1366fc3e227a49777cb748fc6d4e022b}{const\_pointer} = \textcolor{keyword}{const} \hyperlink{classaed2_1_1map_a719db98e0ff9a837610f76be33264680_a719db98e0ff9a837610f76be33264680}{value\_type}*;
+\Hypertarget{map3_8h_source_l00719}\hyperlink{classaed2_1_1map_a8cf1c570f605e9c0ad6feb8ce12c9400_a8cf1c570f605e9c0ad6feb8ce12c9400}{00719}     \textcolor{keyword}{using} \hyperlink{classaed2_1_1map_a8cf1c570f605e9c0ad6feb8ce12c9400_a8cf1c570f605e9c0ad6feb8ce12c9400}{size\_type} = std::size\_t;
+\Hypertarget{map3_8h_source_l00723}\hyperlink{classaed2_1_1map_a2f55b88809000fcbfce1c6cfef1ba74d_a2f55b88809000fcbfce1c6cfef1ba74d}{00723}     \textcolor{keyword}{using} \hyperlink{classaed2_1_1map_a2f55b88809000fcbfce1c6cfef1ba74d_a2f55b88809000fcbfce1c6cfef1ba74d}{difference\_type} = std::ptrdiff\_t;
+00724 
+\Hypertarget{map3_8h_source_l00735}\hyperlink{classaed2_1_1map_a8e6a592062260177fd73b2f9897b1dd5_a8e6a592062260177fd73b2f9897b1dd5}{00735}     \textcolor{keyword}{using} \hyperlink{classaed2_1_1map_a8e6a592062260177fd73b2f9897b1dd5_a8e6a592062260177fd73b2f9897b1dd5}{reverse\_iterator} = std::reverse\_iterator<iterator>;
+\Hypertarget{map3_8h_source_l00746}\hyperlink{classaed2_1_1map_aed66a216549d13078a3ea6978ea0b768_aed66a216549d13078a3ea6978ea0b768}{00746}     \textcolor{keyword}{using} \hyperlink{classaed2_1_1map_aed66a216549d13078a3ea6978ea0b768_aed66a216549d13078a3ea6978ea0b768}{const\_reverse\_iterator} = std::reverse\_iterator<const\_iterator>;
+00747 
+00749 
+00750 
+\Hypertarget{map3_8h_source_l00766}\hyperlink{classaed2_1_1map_a64da1d965b13eb28cdb3837bc17a18cf_a64da1d965b13eb28cdb3837bc17a18cf}{00766}     \textcolor{keyword}{explicit} \hyperlink{classaed2_1_1map_a64da1d965b13eb28cdb3837bc17a18cf_a64da1d965b13eb28cdb3837bc17a18cf}{map}(Compare c = Compare()) \{
+00767         \hyperlink{classaed2_1_1map_a44236c4f16cdc20a10759862b198bde4_a44236c4f16cdc20a10759862b198bde4}{count} = 0;
+00768         \hyperlink{classaed2_1_1map_a0e5be36fae0693e4665bd2a615e7550a_a0e5be36fae0693e4665bd2a615e7550a}{lt} = c;
+00769     \}
+00770 
+\Hypertarget{map3_8h_source_l00786}\hyperlink{classaed2_1_1map_a7a77950a3d8e637bfa7cf5dcd904f257_a7a77950a3d8e637bfa7cf5dcd904f257}{00786}     \hyperlink{classaed2_1_1map_a7a77950a3d8e637bfa7cf5dcd904f257_a7a77950a3d8e637bfa7cf5dcd904f257}{map}(\textcolor{keyword}{const} \hyperlink{classaed2_1_1map}{map}& other) \{
+00787         \textcolor{comment}{//completar}
+00788     \}
+00789 
+00833     \textcolor{keyword}{template}<\textcolor{keyword}{class} iterator>
+\Hypertarget{map3_8h_source_l00834}\hyperlink{classaed2_1_1map_a5d336f3248572beb56be383dcc95cfeb_a5d336f3248572beb56be383dcc95cfeb}{00834}     \hyperlink{classaed2_1_1map_a5d336f3248572beb56be383dcc95cfeb_a5d336f3248572beb56be383dcc95cfeb}{map}(\hyperlink{classaed2_1_1iterator}{iterator} first, \hyperlink{classaed2_1_1iterator}{iterator} last, Compare c = Compare()) : 
+      \hyperlink{classaed2_1_1map_a0e5be36fae0693e4665bd2a615e7550a_a0e5be36fae0693e4665bd2a615e7550a}{lt}(c) \{
+00835         \textcolor{keyword}{auto} it = \hyperlink{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983_a76023e6a56cb625513e1b5ea028bf983}{end}();
+00836         \textcolor{keywordflow}{while}(first != last) \{
+00837             \hyperlink{classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8_a60aacba06b1579630b3c8e996cf248c8}{insert}(it, *first);
+00838             ++first;
+00839         \}
+00840     \}
+00841 
+\Hypertarget{map3_8h_source_l00858}\hyperlink{classaed2_1_1map_ac606d334809066929522964d45e76317_ac606d334809066929522964d45e76317}{00858}     \hyperlink{classaed2_1_1map}{map}& \hyperlink{classaed2_1_1map_ac606d334809066929522964d45e76317_ac606d334809066929522964d45e76317}{operator=}(\hyperlink{classaed2_1_1map}{map} other) \{
+00859         \textcolor{comment}{//completar}
+00860     \}
+00861 
+\Hypertarget{map3_8h_source_l00883}\hyperlink{classaed2_1_1map_ab22c9a85c2dadbc286cd30e97069a8e6_ab22c9a85c2dadbc286cd30e97069a8e6}{00883}     \hyperlink{classaed2_1_1map_ab22c9a85c2dadbc286cd30e97069a8e6_ab22c9a85c2dadbc286cd30e97069a8e6}{~map}() \{
+00884         \textcolor{comment}{//completar}
+00885     \}
+00887 
+00889 
+00890 
+\Hypertarget{map3_8h_source_l00910}\hyperlink{classaed2_1_1map_a579c9179b42175c23a1013ac7f1b876c_a579c9179b42175c23a1013ac7f1b876c}{00910}     \textcolor{keyword}{const} Meaning& \hyperlink{classaed2_1_1map_a579c9179b42175c23a1013ac7f1b876c_a579c9179b42175c23a1013ac7f1b876c}{at}(\textcolor{keyword}{const} Key& key)\textcolor{keyword}{ const }\{
+00911 
+00912         \textcolor{keywordflow}{return} \hyperlink{classaed2_1_1map_afd0fc1a8234888e61e0e615de7e245b8_afd0fc1a8234888e61e0e615de7e245b8}{find}(key)->second;
+00913     \}
+00914 
+\Hypertarget{map3_8h_source_l00916}\hyperlink{classaed2_1_1map_a6b21c09f59a83b6ee45432dcfa61f4a1_a6b21c09f59a83b6ee45432dcfa61f4a1}{00916}     Meaning& \hyperlink{classaed2_1_1map_a6b21c09f59a83b6ee45432dcfa61f4a1_a6b21c09f59a83b6ee45432dcfa61f4a1}{at}(\textcolor{keyword}{const} Key& key) \{
+00917         \textcolor{keywordflow}{return} \hyperlink{classaed2_1_1map_afd0fc1a8234888e61e0e615de7e245b8_afd0fc1a8234888e61e0e615de7e245b8}{find}(key).\hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->\hyperlink{structaed2_1_1map_1_1Node_af4ada8e79dabb4849fc87de63d3970fb_af4ada8e79dabb4849fc87de63d3970fb}{value}().second;
+00918     \}
+00919 
+\Hypertarget{map3_8h_source_l00954}\hyperlink{classaed2_1_1map_a96f23896164ab47bee48c26b803f9801_a96f23896164ab47bee48c26b803f9801}{00954}     Meaning& \hyperlink{classaed2_1_1map_a96f23896164ab47bee48c26b803f9801_a96f23896164ab47bee48c26b803f9801}{operator[]}(\textcolor{keyword}{const} Key& key) \{
+00955              \hyperlink{classaed2_1_1iterator}{iterator} it = \hyperlink{classaed2_1_1map_a62075a47afdf89267c5462f88164af3d_a62075a47afdf89267c5462f88164af3d}{lower\_bound}(key);
+00956         \textcolor{keywordflow}{if} (it.n->value().first == key)
+00957             \textcolor{keywordflow}{return} it.n->value().second;
+00958         \textcolor{keywordflow}{else}
+00959             \hyperlink{classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8_a60aacba06b1579630b3c8e996cf248c8}{insert}(it, \hyperlink{classaed2_1_1map_a719db98e0ff9a837610f76be33264680_a719db98e0ff9a837610f76be33264680}{value\_type}(key, Meaning()));
+00960         \textcolor{keywordflow}{return} \hyperlink{classaed2_1_1map_a579c9179b42175c23a1013ac7f1b876c_a579c9179b42175c23a1013ac7f1b876c}{at}(key);
+00961     
+00962     \}
+00963 
+\Hypertarget{map3_8h_source_l00986}\hyperlink{classaed2_1_1map_afd0fc1a8234888e61e0e615de7e245b8_afd0fc1a8234888e61e0e615de7e245b8}{00986}     \hyperlink{classaed2_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_afd0fc1a8234888e61e0e615de7e245b8_afd0fc1a8234888e61e0e615de7e245b8}{find}(\textcolor{keyword}{const} Key& key) \{
+00987         \textcolor{keyword}{auto} r = \textcolor{keyword}{const\_cast<}\textcolor{keyword}{const }\hyperlink{classaed2_1_1map}{map}*\textcolor{keyword}{>}(\textcolor{keyword}{this})->\hyperlink{classaed2_1_1map_afd0fc1a8234888e61e0e615de7e245b8_afd0fc1a8234888e61e0e615de7e245b8}{find}(key);
+00988         \textcolor{keywordflow}{return} \hyperlink{classaed2_1_1iterator}{iterator}(const\_cast<Node*>(r.n));
+00989     \}
+00990 
+\Hypertarget{map3_8h_source_l00992}\hyperlink{classaed2_1_1map_adbf6f4ce01a16ca506e3c75fc2843882_adbf6f4ce01a16ca506e3c75fc2843882}{00992}     const\_iterator \hyperlink{classaed2_1_1map_adbf6f4ce01a16ca506e3c75fc2843882_adbf6f4ce01a16ca506e3c75fc2843882}{find}(\textcolor{keyword}{const} Key& key)\textcolor{keyword}{ const }\{
+00993         Node* n;
+00994         \textcolor{keywordflow}{if} (\hyperlink{classaed2_1_1map_aebf6c09c424c39a874798165401b309e_aebf6c09c424c39a874798165401b309e}{eq}(\hyperlink{classaed2_1_1map_a62075a47afdf89267c5462f88164af3d_a62075a47afdf89267c5462f88164af3d}{lower\_bound}(key).n->key(), key))
+00995             n = \textcolor{keyword}{const\_cast<}Node*\textcolor{keyword}{>}(bounds(key).second);
+00996         \textcolor{keywordflow}{else}
+00997             n = \textcolor{keyword}{const\_cast<}Node*\textcolor{keyword}{>}(&\hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header});       
+00998         \textcolor{keywordflow}{return} const\_iterator(n);
+00999 
+01000     \}
+01001 
+\Hypertarget{map3_8h_source_l01020}\hyperlink{classaed2_1_1map_a62075a47afdf89267c5462f88164af3d_a62075a47afdf89267c5462f88164af3d}{01020}     const\_iterator \hyperlink{classaed2_1_1map_a62075a47afdf89267c5462f88164af3d_a62075a47afdf89267c5462f88164af3d}{lower\_bound}(\textcolor{keyword}{const} Key& key)\textcolor{keyword}{ const }\{
+01021         \textcolor{keywordflow}{return} bounds(key).second;
+01022     \}
+01023 
+\Hypertarget{map3_8h_source_l01025}\hyperlink{classaed2_1_1map_a07b3dd65557c59ee085e5f211269c6b3_a07b3dd65557c59ee085e5f211269c6b3}{01025}     \hyperlink{classaed2_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a07b3dd65557c59ee085e5f211269c6b3_a07b3dd65557c59ee085e5f211269c6b3}{lower\_bound}(\textcolor{keyword}{const} Key& key)  \{
+01026         \textcolor{keywordflow}{return} bounds(key).second;
+01027     \}
+01029 
+01031 
+01032 
+\Hypertarget{map3_8h_source_l01044}\hyperlink{classaed2_1_1map_a0dcb39283f4877ae59cb756ed1d0c048_a0dcb39283f4877ae59cb756ed1d0c048}{01044}     \textcolor{keywordtype}{bool} \hyperlink{classaed2_1_1map_a0dcb39283f4877ae59cb756ed1d0c048_a0dcb39283f4877ae59cb756ed1d0c048}{empty}()\textcolor{keyword}{ const }\{
+01045         \textcolor{keywordflow}{return} (\hyperlink{classaed2_1_1map_a44236c4f16cdc20a10759862b198bde4_a44236c4f16cdc20a10759862b198bde4}{count} == 0);
+01046     \}
+01047 
+\Hypertarget{map3_8h_source_l01058}\hyperlink{classaed2_1_1map_aa6e806b3be6dc0da79adbfae08b571bf_aa6e806b3be6dc0da79adbfae08b571bf}{01058}     \textcolor{keywordtype}{size\_t} \hyperlink{classaed2_1_1map_aa6e806b3be6dc0da79adbfae08b571bf_aa6e806b3be6dc0da79adbfae08b571bf}{size}()\textcolor{keyword}{ const }\{
+01059         \textcolor{keywordflow}{return} \hyperlink{classaed2_1_1map_a44236c4f16cdc20a10759862b198bde4_a44236c4f16cdc20a10759862b198bde4}{count};
+01060     \}
+01062 
+01064 
+01065 
+01067 
+\Hypertarget{map3_8h_source_l01094}\hyperlink{classaed2_1_1map_a6941cde9a79c27f054b5c97a587a1854_a6941cde9a79c27f054b5c97a587a1854}{01094}     \hyperlink{classaed2_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a6941cde9a79c27f054b5c97a587a1854_a6941cde9a79c27f054b5c97a587a1854}{insert}(const\_iterator hint, \textcolor{keyword}{const} \hyperlink{classaed2_1_1map_a719db98e0ff9a837610f76be33264680_a719db98e0ff9a837610f76be33264680}{value\_type}& value) \{
+01095     \hyperlink{classaed2_1_1iterator}{iterator} it;
+01096     \textcolor{keywordflow}{if}  ( ! ( (hint == \hyperlink{classaed2_1_1map_a58a95705d54b3dda7f775ce5a22225cb_a58a95705d54b3dda7f775ce5a22225cb}{begin}() && \hyperlink{classaed2_1_1map_a0e5be36fae0693e4665bd2a615e7550a_a0e5be36fae0693e4665bd2a615e7550a}{lt}(value.first, hint.n->key()) )|| 
+01097         (\hyperlink{classaed2_1_1map_a0e5be36fae0693e4665bd2a615e7550a_a0e5be36fae0693e4665bd2a615e7550a}{lt}((--hint).n->key(), value.first)) && 
+01098         ((++hint).n->is\_header() || \hyperlink{classaed2_1_1map_a0e5be36fae0693e4665bd2a615e7550a_a0e5be36fae0693e4665bd2a615e7550a}{lt}(value.first, hint.n->key()) )) )
+01099            it = \hyperlink{classaed2_1_1map_a62075a47afdf89267c5462f88164af3d_a62075a47afdf89267c5462f88164af3d}{lower\_bound}(value.first);
+01100     \textcolor{keywordflow}{else}
+01101         it = \hyperlink{classaed2_1_1iterator}{iterator}(const\_cast<Node*>(hint.n));
+01102     \textcolor{keywordflow}{if} (it.n->is\_header() || !\hyperlink{classaed2_1_1map_aebf6c09c424c39a874798165401b309e_aebf6c09c424c39a874798165401b309e}{eq}(it.n->key(), value.first)) \{
+01103         Node* padre = it.n;
+01104         InnerNode* nuevo = \textcolor{keyword}{new} InnerNode(padre, value);
+01105         \textcolor{keywordtype}{bool} esElMenor = ((\hyperlink{classaed2_1_1map_a44236c4f16cdc20a10759862b198bde4_a44236c4f16cdc20a10759862b198bde4}{count} == 0) || \hyperlink{classaed2_1_1map_a0e5be36fae0693e4665bd2a615e7550a_a0e5be36fae0693e4665bd2a615e7550a}{lt}(value.first, \hyperlink{classaed2_1_1map_a58a95705d54b3dda7f775ce5a22225cb_a58a95705d54b3dda7f775ce5a22225cb}{begin}().\hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->
+      \hyperlink{structaed2_1_1map_1_1Node_a08fd071b9bba8048526b8da7e8d73831_a08fd071b9bba8048526b8da7e8d73831}{key}())); 
+01106         \textcolor{keywordtype}{bool} esElMayor = ((\hyperlink{classaed2_1_1map_a44236c4f16cdc20a10759862b198bde4_a44236c4f16cdc20a10759862b198bde4}{count} == 0) || \hyperlink{classaed2_1_1map_a0e5be36fae0693e4665bd2a615e7550a_a0e5be36fae0693e4665bd2a615e7550a}{lt}(\hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header}.\hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[1]->
+      \hyperlink{structaed2_1_1map_1_1Node_a08fd071b9bba8048526b8da7e8d73831_a08fd071b9bba8048526b8da7e8d73831}{key}(), value.first));
+01107         \textcolor{keywordflow}{if} (esElMenor)
+01108             \hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header}.\hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[0] = nuevo;
+01109         \textcolor{keywordflow}{if} (esElMayor)
+01110             \hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header}.\hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[1] = nuevo; 
+01111         
+01112         \textcolor{keywordflow}{if} (padre->is\_header())
+01113             \hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header}.\hyperlink{structaed2_1_1map_1_1Node_a91a1855da19d22344bc89c2f8b998a7a_a91a1855da19d22344bc89c2f8b998a7a}{parent} = nuevo;
+01114         \textcolor{keywordflow}{else} if (\hyperlink{classaed2_1_1map_a0e5be36fae0693e4665bd2a615e7550a_a0e5be36fae0693e4665bd2a615e7550a}{lt}(nuevo->key(),padre->key()))
+01115             padre->\hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[0] = nuevo;
+01116         \textcolor{keywordflow}{else}
+01117             padre->\hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[1] = nuevo;
+01118         
+01119         \hyperlink{classaed2_1_1map_a44236c4f16cdc20a10759862b198bde4_a44236c4f16cdc20a10759862b198bde4}{count}++;
+01120     
+01121     
+01122         it.n = nuevo;
+01123         \textcolor{comment}{//assert(it2.n != nullptr);}
+01124         \textcolor{comment}{//insert\_fixup(it);}
+01125      
+01126         
+01127         \textcolor{keywordflow}{return} it;
+01128 
+01129     
+01130     \}
+01131  \}
+01132 
+01133 
+01134     
+\Hypertarget{map3_8h_source_l01135}\hyperlink{classaed2_1_1map_ae4e5e735407f463bade9eeab6a553c53_ae4e5e735407f463bade9eeab6a553c53}{01135} \textcolor{keywordtype}{void} \hyperlink{classaed2_1_1map_ae4e5e735407f463bade9eeab6a553c53_ae4e5e735407f463bade9eeab6a553c53}{insert\_fixup}(const\_iterator it)\{
+01136     Node* n = \textcolor{keyword}{const\_cast<}Node*\textcolor{keyword}{>}(it.n);
+01137     Node* y;
+01138     \textcolor{keywordflow}{while} (n->parent->color == Color::Red)\{
+01139         \textcolor{keywordtype}{int} dir = (n->parent == n->parent->parent->child[1]);
+01140     \textcolor{comment}{//  if (n->parent == n->parent->parent->child[0])\{}
+01141         y = n->parent->parent->child[1-dir];
+01142         \textcolor{comment}{//y = n->parent->parent->child[1];}
+01143         
+01144         \textcolor{keywordflow}{if} (y->color == Color::Red)\{
+01145             n->parent->color = Color::Black;
+01146             y->color = Color::Black;
+01147             n->parent->parent->color = Color::Red;
+01148             n = n->parent->parent;
+01149         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(n == n->parent->child[1-dir])\{
+01150             \textcolor{comment}{//\} else if(n == n->parent->child[1])\{}
+01151             n = n->parent;
+01152             \hyperlink{classaed2_1_1iterator}{iterator} it2(n);
+01153             \hyperlink{classaed2_1_1map_a94f2862ada0c9ed4f4457eac42ea8f23_a94f2862ada0c9ed4f4457eac42ea8f23}{dir\_rotate}(it2, dir);
+01154                 \textcolor{comment}{//left\_rotate(it2);}
+01155             n->parent->color = Color::Black;
+01156             n->parent->parent->color = Color::Red;
+01157             \hyperlink{classaed2_1_1map_a94f2862ada0c9ed4f4457eac42ea8f23_a94f2862ada0c9ed4f4457eac42ea8f23}{dir\_rotate}(it2, 1 - dir);
+01158                 \textcolor{comment}{//right\_rotate(it2);}
+01159         \}
+01160     \}
+01161         \hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header}.\hyperlink{structaed2_1_1map_1_1Node_a91a1855da19d22344bc89c2f8b998a7a_a91a1855da19d22344bc89c2f8b998a7a}{parent}->\hyperlink{structaed2_1_1map_1_1Node_a58dd9993fee8ee3eaa5716b72a3eca47_a58dd9993fee8ee3eaa5716b72a3eca47}{color} = Color::Black;
+01162         it.n = n;
+01163 \}
+01164 
+\Hypertarget{map3_8h_source_l01165}\hyperlink{classaed2_1_1map_a94f2862ada0c9ed4f4457eac42ea8f23_a94f2862ada0c9ed4f4457eac42ea8f23}{01165} \textcolor{keywordtype}{void} \hyperlink{classaed2_1_1map_a94f2862ada0c9ed4f4457eac42ea8f23_a94f2862ada0c9ed4f4457eac42ea8f23}{dir\_rotate}(\hyperlink{classaed2_1_1iterator}{iterator} it, \textcolor{keywordtype}{int} dir)\{
+01166     
+01167     Node* n = it.n;
+01168     Node* y = it.n->child[1-dir];
+01169     *n->child[1-dir] = y->child[dir];
+01170     \textcolor{keywordflow}{if} (y->child[dir] != \textcolor{keyword}{nullptr})
+01171         *y->child[dir]->parent = n;
+01172     y->parent = n->parent;
+01173     \textcolor{keywordflow}{if}(n->parent->is\_header())
+01174         \hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header}.\hyperlink{structaed2_1_1map_1_1Node_a91a1855da19d22344bc89c2f8b998a7a_a91a1855da19d22344bc89c2f8b998a7a}{parent} = y;
+01175     \textcolor{keywordflow}{else} if (n == n->parent->child[dir])
+01176         *n->\hyperlink{structaed2_1_1map_1_1Node_a91a1855da19d22344bc89c2f8b998a7a_a91a1855da19d22344bc89c2f8b998a7a}{parent}->\hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[dir] = y;
+01177     \textcolor{keywordflow}{else}
+01178         *n->\hyperlink{structaed2_1_1map_1_1Node_a91a1855da19d22344bc89c2f8b998a7a_a91a1855da19d22344bc89c2f8b998a7a}{parent}->\hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[1-dir] = y;
+01179     *y->\hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[dir] = n;
+01180     n->\hyperlink{structaed2_1_1map_1_1Node_a91a1855da19d22344bc89c2f8b998a7a_a91a1855da19d22344bc89c2f8b998a7a}{parent} = y;
+01181     it.n = n;
+01182     
+01183 \}
+01184     
+01185 
+01186 
+\Hypertarget{map3_8h_source_l01187}\hyperlink{classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8_a60aacba06b1579630b3c8e996cf248c8}{01187}     \hyperlink{classaed2_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8_a60aacba06b1579630b3c8e996cf248c8}{insert}(\textcolor{keyword}{const} \hyperlink{classaed2_1_1map_a719db98e0ff9a837610f76be33264680_a719db98e0ff9a837610f76be33264680}{value\_type}& value) \{
+01188         
+01189         \hyperlink{classaed2_1_1iterator}{iterator} it = \hyperlink{classaed2_1_1map_a62075a47afdf89267c5462f88164af3d_a62075a47afdf89267c5462f88164af3d}{lower\_bound}(value.first);
+01190         
+01191         \textcolor{keywordflow}{return} \hyperlink{classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8_a60aacba06b1579630b3c8e996cf248c8}{insert}(it, value);
+01192         
+01193 \}
+01194 
+01195 
+01196    
+01197 
+\Hypertarget{map3_8h_source_l01227}\hyperlink{classaed2_1_1map_a2ef6723c183916276b0afc4a4c721475_a2ef6723c183916276b0afc4a4c721475}{01227}     \hyperlink{classaed2_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a2ef6723c183916276b0afc4a4c721475_a2ef6723c183916276b0afc4a4c721475}{insert\_or\_assign}(const\_iterator hint, \textcolor{keyword}{const} 
+      \hyperlink{classaed2_1_1map_a719db98e0ff9a837610f76be33264680_a719db98e0ff9a837610f76be33264680}{value\_type}& value) \{
+01228         \textcolor{comment}{// Hacer insert Node}
+01229         \hyperlink{classaed2_1_1iterator}{iterator} it2;
+01230         \textcolor{keywordflow}{if} (hint.n->value().first == value.first)\{
+01231 
+01232             it2.n = \textcolor{keyword}{const\_cast<}Node*\textcolor{keyword}{>}(hint.n);
+01233 
+01234             it2.n->value().second = value.second;
+01235             \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (hint.n->value().first < value.first || (hint--.n == \textcolor{keyword}{nullptr}
+01236             || hint.n->value().first >= value.first)) \{
+01237             \hyperlink{classaed2_1_1iterator}{iterator} it2 = \hyperlink{classaed2_1_1map_a62075a47afdf89267c5462f88164af3d_a62075a47afdf89267c5462f88164af3d}{lower\_bound}(hint.n->value().first);
+01238         \}
+01239 
+01240        \textcolor{comment}{// it = insert(hint, value);}
+01241         \textcolor{keywordflow}{return} it2;
+01242     \}
+01243  
+01244     
+01245 
+\Hypertarget{map3_8h_source_l01247}\hyperlink{classaed2_1_1map_a9128a806713bcc999ebd8a97ab77e765_a9128a806713bcc999ebd8a97ab77e765}{01247}     \hyperlink{classaed2_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a9128a806713bcc999ebd8a97ab77e765_a9128a806713bcc999ebd8a97ab77e765}{insert\_or\_assign}(\textcolor{keyword}{const} \hyperlink{classaed2_1_1map_a719db98e0ff9a837610f76be33264680_a719db98e0ff9a837610f76be33264680}{value\_type}& value) \{
+01248                 \textcolor{comment}{// Hacer insert Node}
+01249 
+01250           \hyperlink{classaed2_1_1iterator}{iterator} it;
+01251         it = \hyperlink{classaed2_1_1map_a62075a47afdf89267c5462f88164af3d_a62075a47afdf89267c5462f88164af3d}{lower\_bound}(value.first);
+01252         \textcolor{keywordflow}{if} (value.first == it.n->value().first) \{
+01253             \textcolor{comment}{//it.n->\_value = value;}
+01254         \} \textcolor{keywordflow}{else} \{
+01255            \textcolor{comment}{// insert(it, value);}
+01256         \}
+01257         \textcolor{keywordflow}{return} it;
+01258     \}
+01259 
+\Hypertarget{map3_8h_source_l01277}\hyperlink{classaed2_1_1map_ad8e796bf9c9c558e5ce6b61e116253fe_ad8e796bf9c9c558e5ce6b61e116253fe}{01277}     \hyperlink{classaed2_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_ad8e796bf9c9c558e5ce6b61e116253fe_ad8e796bf9c9c558e5ce6b61e116253fe}{erase}(const\_iterator pos) \{
+01278         Node* z = \textcolor{keyword}{const\_cast<}Node*\textcolor{keyword}{>}(pos.n);
+01279         Node* y = \textcolor{keyword}{const\_cast<}Node*\textcolor{keyword}{>}(pos.n);
+01280         Node* x;
+01281         \hyperlink{classaed2_1_1map_a6d62a415a4b9d320b30cada4ebcf9f5b_a6d62a415a4b9d320b30cada4ebcf9f5b}{Color} yColorsito = y->color;
+01282         \hyperlink{classaed2_1_1iterator}{iterator} it = \hyperlink{classaed2_1_1iterator}{iterator}(const\_cast<Node*>(pos--.n));
+01283         \textcolor{keywordflow}{if} (z->child[0] == \textcolor{keyword}{nullptr})\{
+01284             x = z->child[1];
+01285             \hyperlink{classaed2_1_1map_a98b9f200c64ce02dfb67902ee00e375a_a98b9f200c64ce02dfb67902ee00e375a}{transplant}(z, z->child[1]);
+01286         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (x->child[1] == \textcolor{keyword}{nullptr}) \{
+01287             x = z->child[0];
+01288             \hyperlink{classaed2_1_1map_a98b9f200c64ce02dfb67902ee00e375a_a98b9f200c64ce02dfb67902ee00e375a}{transplant}(z, z->child[0]);
+01289         \} \textcolor{keywordflow}{else} \{
+01290             y = \hyperlink{classaed2_1_1map_a51169c7d557dc5cf26eac59e6e5e6d98_a51169c7d557dc5cf26eac59e6e5e6d98}{sucesorInmediato}(z->child[1]);
+01291             yColorsito = y->color;
+01292             x = y->child[1];
+01293             \textcolor{keywordflow}{if} (y->parent == z)
+01294                 x->parent = y;
+01295             \textcolor{keywordflow}{else} \{
+01296                 \hyperlink{classaed2_1_1map_a98b9f200c64ce02dfb67902ee00e375a_a98b9f200c64ce02dfb67902ee00e375a}{transplant}(y, y->child[1]);
+01297                 y->child[1] = z->child[1];
+01298                 y->child[1]->parent = y;
+01299             \}
+01300             \hyperlink{classaed2_1_1map_a98b9f200c64ce02dfb67902ee00e375a_a98b9f200c64ce02dfb67902ee00e375a}{transplant}(z, y);
+01301             y->child[0] = z->child[0];
+01302             y->child[0]->parent = y;
+01303             y->color = z->color;
+01304 
+01305             \hyperlink{classaed2_1_1iterator}{iterator} it2 = \hyperlink{classaed2_1_1iterator}{iterator}(x);
+01306 
+01307 
+01308 
+01309 
+01310             \textcolor{keywordflow}{if} (yColorsito == Color::Black)
+01311                 \hyperlink{classaed2_1_1map_a7870c8f26e82b00d0aeb2e9f331dfec6_a7870c8f26e82b00d0aeb2e9f331dfec6}{erase\_fixup}(it2);
+01312 
+01313         \}
+01314         \hyperlink{classaed2_1_1map_a44236c4f16cdc20a10759862b198bde4_a44236c4f16cdc20a10759862b198bde4}{count}--;
+01315         \textcolor{keywordflow}{return} it;
+01316     \}
+01317 
+\Hypertarget{map3_8h_source_l01318}\hyperlink{classaed2_1_1map_a98b9f200c64ce02dfb67902ee00e375a_a98b9f200c64ce02dfb67902ee00e375a}{01318}         \textcolor{keywordtype}{void} \hyperlink{classaed2_1_1map_a98b9f200c64ce02dfb67902ee00e375a_a98b9f200c64ce02dfb67902ee00e375a}{transplant}(Node* u, Node* v)\{
+01319         \textcolor{keywordflow}{if} (!u->parent->is\_header())
+01320             \hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header}.\hyperlink{structaed2_1_1map_1_1Node_a91a1855da19d22344bc89c2f8b998a7a_a91a1855da19d22344bc89c2f8b998a7a}{parent} = v;
+01321         \textcolor{keywordflow}{else} if (u == u->parent->child[0])
+01322             u->\hyperlink{structaed2_1_1map_1_1Node_a91a1855da19d22344bc89c2f8b998a7a_a91a1855da19d22344bc89c2f8b998a7a}{parent}->\hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[0] = v;
+01323         \textcolor{keywordflow}{else}
+01324             u->\hyperlink{structaed2_1_1map_1_1Node_a91a1855da19d22344bc89c2f8b998a7a_a91a1855da19d22344bc89c2f8b998a7a}{parent}->\hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[1] = v;
+01325         v->\hyperlink{structaed2_1_1map_1_1Node_a91a1855da19d22344bc89c2f8b998a7a_a91a1855da19d22344bc89c2f8b998a7a}{parent} = u->\hyperlink{structaed2_1_1map_1_1Node_a91a1855da19d22344bc89c2f8b998a7a_a91a1855da19d22344bc89c2f8b998a7a}{parent};
+01326 
+01327     \}
+01328 
+01329 
+01330 
+\Hypertarget{map3_8h_source_l01331}\hyperlink{classaed2_1_1map_a7870c8f26e82b00d0aeb2e9f331dfec6_a7870c8f26e82b00d0aeb2e9f331dfec6}{01331} \textcolor{keywordtype}{void} \hyperlink{classaed2_1_1map_a7870c8f26e82b00d0aeb2e9f331dfec6_a7870c8f26e82b00d0aeb2e9f331dfec6}{erase\_fixup}(\hyperlink{classaed2_1_1iterator}{iterator} it)\{
+01332     Node* x = it.n;
+01333     Node* w;
+01334     \textcolor{keywordflow}{while} (x != \hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header}.\hyperlink{structaed2_1_1map_1_1Node_a91a1855da19d22344bc89c2f8b998a7a_a91a1855da19d22344bc89c2f8b998a7a}{parent} && x->\hyperlink{structaed2_1_1map_1_1Node_a58dd9993fee8ee3eaa5716b72a3eca47_a58dd9993fee8ee3eaa5716b72a3eca47}{color} == Color::Black)\{
+01335         \textcolor{keywordflow}{if} (x == x->parent->child[0])\{
+01336             w = x->parent->child[1];
+01337             \textcolor{keywordflow}{if} (w->color == Color::Red)\{
+01338                 w->color = Color::Black;
+01339                 x->parent->color = Color::Red;
+01340                 it.n = x->parent;
+01341                 \hyperlink{classaed2_1_1map_a94f2862ada0c9ed4f4457eac42ea8f23_a94f2862ada0c9ed4f4457eac42ea8f23}{dir\_rotate}(it, 0);
+01342                 w = x->parent->child[1];
+01343             \}
+01344             \textcolor{keywordflow}{if} (w->child[0]->color == Color::Black && w->child[1]->color == Color::Black)\{
+01345                 w->color = Color::Red;
+01346                 x = x->parent;
+01347             \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (w->child[1]->color == Color::Black)\{
+01348                 w->child[0]->color = Color::Black;
+01349                 w->color = Color::Red;
+01350                 \hyperlink{classaed2_1_1iterator}{iterator} it2(w);
+01351                 \hyperlink{classaed2_1_1map_a94f2862ada0c9ed4f4457eac42ea8f23_a94f2862ada0c9ed4f4457eac42ea8f23}{dir\_rotate}(it2, 1);
+01352                 w = x->parent->child[1];
+01353             \}
+01354             w->color = x->parent->color;
+01355             x->parent->color = Color::Black;
+01356             w->child[1]->color = Color::Black;
+01357             it.n = x->parent;
+01358             \hyperlink{classaed2_1_1map_a94f2862ada0c9ed4f4457eac42ea8f23_a94f2862ada0c9ed4f4457eac42ea8f23}{dir\_rotate}(it, 0);
+01359             x = \hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header}.\hyperlink{structaed2_1_1map_1_1Node_a91a1855da19d22344bc89c2f8b998a7a_a91a1855da19d22344bc89c2f8b998a7a}{parent};
+01360         \} \textcolor{keywordflow}{else} \{
+01361             w = x->\hyperlink{structaed2_1_1map_1_1Node_a91a1855da19d22344bc89c2f8b998a7a_a91a1855da19d22344bc89c2f8b998a7a}{parent}->\hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[0];
+01362             \textcolor{keywordflow}{if} (w->color == Color::Red)\{
+01363                 w->\hyperlink{structaed2_1_1map_1_1Node_a58dd9993fee8ee3eaa5716b72a3eca47_a58dd9993fee8ee3eaa5716b72a3eca47}{color} = Color::Black;
+01364                 x->parent->color = Color::Red;
+01365                 it.n = x->parent;
+01366                 \hyperlink{classaed2_1_1map_a94f2862ada0c9ed4f4457eac42ea8f23_a94f2862ada0c9ed4f4457eac42ea8f23}{dir\_rotate}(it, 1);
+01367                 w = x->parent->child[0];
+01368             \}
+01369             \textcolor{keywordflow}{if} (w->child[1]->color == Color::Black && w->child[0]->color == Color::Black)\{
+01370                 w->color = Color::Red;
+01371                 x = x->parent;
+01372             \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (w->child[0]->color == Color::Black)\{
+01373                 w->child[1]->color = Color::Black;
+01374                 w->color = Color::Red;
+01375                 \hyperlink{classaed2_1_1iterator}{iterator} it2(w);
+01376                 \hyperlink{classaed2_1_1map_a94f2862ada0c9ed4f4457eac42ea8f23_a94f2862ada0c9ed4f4457eac42ea8f23}{dir\_rotate}(it2, 0);
+01377                 w = x->parent->child[0];
+01378             \}
+01379             w->color = x->parent->color;
+01380             x->parent->color = Color::Black;
+01381             w->child[0]->color = Color::Black;
+01382             it.n = x->parent;
+01383             \hyperlink{classaed2_1_1map_a94f2862ada0c9ed4f4457eac42ea8f23_a94f2862ada0c9ed4f4457eac42ea8f23}{dir\_rotate}(it, 1);
+01384             x = \hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header}.\hyperlink{structaed2_1_1map_1_1Node_a91a1855da19d22344bc89c2f8b998a7a_a91a1855da19d22344bc89c2f8b998a7a}{parent};
+01385 
+01386         \}
+01387 \}
+01388 \}
+01389 
+01390 
+\Hypertarget{map3_8h_source_l01391}\hyperlink{classaed2_1_1map_a51169c7d557dc5cf26eac59e6e5e6d98_a51169c7d557dc5cf26eac59e6e5e6d98}{01391} Node* \hyperlink{classaed2_1_1map_a51169c7d557dc5cf26eac59e6e5e6d98_a51169c7d557dc5cf26eac59e6e5e6d98}{sucesorInmediato}(Node* y)\{
+01392     Node* res = y;
+01393     \textcolor{keywordflow}{while} (res->child[0] != \textcolor{keyword}{nullptr})\{
+01394         res = res->\hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[0];
+01395     \}
+01396     \textcolor{keywordflow}{return} res;
+01397 \}
+01398 
+\Hypertarget{map3_8h_source_l01411}\hyperlink{classaed2_1_1map_a2ffadb42cd5f0bc7b3752ff159b75334_a2ffadb42cd5f0bc7b3752ff159b75334}{01411}     \textcolor{keywordtype}{void} \hyperlink{classaed2_1_1map_a2ffadb42cd5f0bc7b3752ff159b75334_a2ffadb42cd5f0bc7b3752ff159b75334}{erase}(\textcolor{keyword}{const} Key& key) \{
+01412         \hyperlink{classaed2_1_1iterator}{iterator} it = \hyperlink{classaed2_1_1map_afd0fc1a8234888e61e0e615de7e245b8_afd0fc1a8234888e61e0e615de7e245b8}{find}(key);
+01413         Node* z = it.n;
+01414         Node* y = it.n;
+01415         Node* x;
+01416         \hyperlink{classaed2_1_1map_a6d62a415a4b9d320b30cada4ebcf9f5b_a6d62a415a4b9d320b30cada4ebcf9f5b}{Color} yColorsito = y->color;
+01417         \textcolor{keywordflow}{if} (z->child[0] == \textcolor{keyword}{nullptr})\{
+01418             x = z->child[1];
+01419             \hyperlink{classaed2_1_1map_a98b9f200c64ce02dfb67902ee00e375a_a98b9f200c64ce02dfb67902ee00e375a}{transplant}(z, z->child[1]);
+01420         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (x->child[1] == \textcolor{keyword}{nullptr}) \{
+01421             x = z->child[0];
+01422             \hyperlink{classaed2_1_1map_a98b9f200c64ce02dfb67902ee00e375a_a98b9f200c64ce02dfb67902ee00e375a}{transplant}(z, z->child[0]);
+01423         \} \textcolor{keywordflow}{else} \{
+01424             y = \hyperlink{classaed2_1_1map_a51169c7d557dc5cf26eac59e6e5e6d98_a51169c7d557dc5cf26eac59e6e5e6d98}{sucesorInmediato}(z->child[1]);
+01425             yColorsito = y->color;
+01426             x = y->child[1];
+01427             \textcolor{keywordflow}{if} (y->parent == z)
+01428                 x->parent = y;
+01429             \textcolor{keywordflow}{else} \{
+01430                 \hyperlink{classaed2_1_1map_a98b9f200c64ce02dfb67902ee00e375a_a98b9f200c64ce02dfb67902ee00e375a}{transplant}(y, y->child[1]);
+01431                 y->child[1] = z->child[1];
+01432                 y->child[1]->parent = y;
+01433             \}
+01434             \hyperlink{classaed2_1_1map_a98b9f200c64ce02dfb67902ee00e375a_a98b9f200c64ce02dfb67902ee00e375a}{transplant}(z, y);
+01435             y->child[0] = z->child[0];
+01436             y->child[0]->parent = y;
+01437             y->color = z->color;
+01438 
+01439             \hyperlink{classaed2_1_1iterator}{iterator} it2 = \hyperlink{classaed2_1_1iterator}{iterator}(x);
+01440 
+01441             \textcolor{keywordflow}{if} (yColorsito == Color::Black)
+01442                 \hyperlink{classaed2_1_1map_a7870c8f26e82b00d0aeb2e9f331dfec6_a7870c8f26e82b00d0aeb2e9f331dfec6}{erase\_fixup}(it2);
+01443 
+01444         \}
+01445         \hyperlink{classaed2_1_1map_a44236c4f16cdc20a10759862b198bde4_a44236c4f16cdc20a10759862b198bde4}{count}--;
+01446     \}
+01447 
+\Hypertarget{map3_8h_source_l01459}\hyperlink{classaed2_1_1map_a2bfa5165825979bf2431db55bc6bc9ca_a2bfa5165825979bf2431db55bc6bc9ca}{01459}     \textcolor{keywordtype}{void} \hyperlink{classaed2_1_1map_a2bfa5165825979bf2431db55bc6bc9ca_a2bfa5165825979bf2431db55bc6bc9ca}{clear}() \{
+01460         \textcolor{keywordflow}{while} (\hyperlink{classaed2_1_1map_a44236c4f16cdc20a10759862b198bde4_a44236c4f16cdc20a10759862b198bde4}{count} > 0)\{
+01461             \hyperlink{classaed2_1_1map_ad8e796bf9c9c558e5ce6b61e116253fe_ad8e796bf9c9c558e5ce6b61e116253fe}{erase}(\hyperlink{classaed2_1_1map_a58a95705d54b3dda7f775ce5a22225cb_a58a95705d54b3dda7f775ce5a22225cb}{begin}().n->value().first);
+01462         \}
+01463     \}
+01464 
+\Hypertarget{map3_8h_source_l01488}\hyperlink{classaed2_1_1map_a43ddb71cc91e5c6021a7a1f243d6cc4a_a43ddb71cc91e5c6021a7a1f243d6cc4a}{01488}     \textcolor{keywordtype}{void} \hyperlink{classaed2_1_1map_a43ddb71cc91e5c6021a7a1f243d6cc4a_a43ddb71cc91e5c6021a7a1f243d6cc4a}{swap}(\hyperlink{classaed2_1_1map}{map}& other) \{
+01489         \textcolor{keyword}{using} std::swap;
+01490         \hyperlink{classaed2_1_1map_a43ddb71cc91e5c6021a7a1f243d6cc4a_a43ddb71cc91e5c6021a7a1f243d6cc4a}{swap}(\hyperlink{classaed2_1_1map_a0e5be36fae0693e4665bd2a615e7550a_a0e5be36fae0693e4665bd2a615e7550a}{lt}, other.lt);
+01491         \hyperlink{classaed2_1_1map_a43ddb71cc91e5c6021a7a1f243d6cc4a_a43ddb71cc91e5c6021a7a1f243d6cc4a}{swap}(\hyperlink{classaed2_1_1map_a44236c4f16cdc20a10759862b198bde4_a44236c4f16cdc20a10759862b198bde4}{count}, other.count);
+01492 
+01493         \hyperlink{classaed2_1_1map_a43ddb71cc91e5c6021a7a1f243d6cc4a_a43ddb71cc91e5c6021a7a1f243d6cc4a}{swap}(\hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header}.\hyperlink{structaed2_1_1map_1_1Node_a91a1855da19d22344bc89c2f8b998a7a_a91a1855da19d22344bc89c2f8b998a7a}{parent}, other.header.parent);
+01494         \hyperlink{classaed2_1_1map_a43ddb71cc91e5c6021a7a1f243d6cc4a_a43ddb71cc91e5c6021a7a1f243d6cc4a}{swap}(\hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header}.\hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[0], other.header.child[0]);
+01495         \hyperlink{classaed2_1_1map_a43ddb71cc91e5c6021a7a1f243d6cc4a_a43ddb71cc91e5c6021a7a1f243d6cc4a}{swap}(\hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header}.\hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[1], other.header.child[1]);
+01496         \textcolor{keywordflow}{if}(\hyperlink{classaed2_1_1map_a07ab50eda249a57858a34037d4c4c7b2_a07ab50eda249a57858a34037d4c4c7b2}{root}() != \textcolor{keyword}{nullptr}) \hyperlink{classaed2_1_1map_a07ab50eda249a57858a34037d4c4c7b2_a07ab50eda249a57858a34037d4c4c7b2}{root}()->\hyperlink{structaed2_1_1map_1_1InnerNode_a316c40ca779ddf0b6ee816965243d850_a316c40ca779ddf0b6ee816965243d850}{parent} = &\hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header};
+01497         \textcolor{keywordflow}{if}(other.root() != \textcolor{keyword}{nullptr}) other.root()->parent = &other.header;
+01498 
+01499         \textcolor{comment}{//nota: cuando el arbol es vacio, los child de header apuntan a header.  Notar que quedan apuntando
+       mal despues del swap}
+01500         \textcolor{keywordflow}{if}(\hyperlink{classaed2_1_1map_a07ab50eda249a57858a34037d4c4c7b2_a07ab50eda249a57858a34037d4c4c7b2}{root}() == \textcolor{keyword}{nullptr}) \hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header}.\hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[0] = \hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header}.
+      \hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[1] = &\hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header};
+01501         \textcolor{keywordflow}{if}(other.root() == \textcolor{keyword}{nullptr}) other.header.child[0] = other.header.child[1] = &other.header;
+01502     \}
+01504 
+01506 
+01507 
+01509 
+\Hypertarget{map3_8h_source_l01521}\hyperlink{classaed2_1_1map_a58a95705d54b3dda7f775ce5a22225cb_a58a95705d54b3dda7f775ce5a22225cb}{01521}     \hyperlink{classaed2_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a58a95705d54b3dda7f775ce5a22225cb_a58a95705d54b3dda7f775ce5a22225cb}{begin}() \{
+01522         \hyperlink{classaed2_1_1iterator}{iterator} it(\hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header}.\hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[0]);
+01523         \textcolor{keywordflow}{return} it;
+01524     \}
+01525 
+\Hypertarget{map3_8h_source_l01527}\hyperlink{classaed2_1_1map_af3b1818c2b44e37221cc3b131768555b_af3b1818c2b44e37221cc3b131768555b}{01527}     const\_iterator \hyperlink{classaed2_1_1map_af3b1818c2b44e37221cc3b131768555b_af3b1818c2b44e37221cc3b131768555b}{begin}()\textcolor{keyword}{ const }\{
+01528         const\_iterator it(\hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header}.\hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[0]);
+01529         \textcolor{keywordflow}{return} it;
+01530     \}
+01531 
+\Hypertarget{map3_8h_source_l01533}\hyperlink{classaed2_1_1map_ab96ad892caa28f193481a578f4956a2a_ab96ad892caa28f193481a578f4956a2a}{01533}     const\_iterator \hyperlink{classaed2_1_1map_ab96ad892caa28f193481a578f4956a2a_ab96ad892caa28f193481a578f4956a2a}{cbegin}() \{
+01534         const\_iterator it(\hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header}.\hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[0]);
+01535         \textcolor{keywordflow}{return} it;
+01536     \}
+01537 
+\Hypertarget{map3_8h_source_l01550}\hyperlink{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983_a76023e6a56cb625513e1b5ea028bf983}{01550}     \hyperlink{classaed2_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983_a76023e6a56cb625513e1b5ea028bf983}{end}() \{
+01551         \hyperlink{classaed2_1_1iterator}{iterator} it(&\hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header});
+01552         \textcolor{keywordflow}{return} it;
+01553     \}
+01554 
+\Hypertarget{map3_8h_source_l01556}\hyperlink{classaed2_1_1map_a91e7cad1a638c55659c169d5574cd5d7_a91e7cad1a638c55659c169d5574cd5d7}{01556}     const\_iterator \hyperlink{classaed2_1_1map_a91e7cad1a638c55659c169d5574cd5d7_a91e7cad1a638c55659c169d5574cd5d7}{end}()\textcolor{keyword}{ const }\{
+01557         const\_iterator it(&\hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header});
+01558         \textcolor{keywordflow}{return} it;
+01559     \}
+01560 
+\Hypertarget{map3_8h_source_l01562}\hyperlink{classaed2_1_1map_a7bb91e94cbc875f1a011b142ef877912_a7bb91e94cbc875f1a011b142ef877912}{01562}     const\_iterator \hyperlink{classaed2_1_1map_a7bb91e94cbc875f1a011b142ef877912_a7bb91e94cbc875f1a011b142ef877912}{cend}() \{
+01563         const\_iterator it(&\hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header});
+01564         \textcolor{keywordflow}{return} it;
+01565     \}
+01566 
+\Hypertarget{map3_8h_source_l01579}\hyperlink{classaed2_1_1map_ac412d3902112122c1bffe2d4283a4e9d_ac412d3902112122c1bffe2d4283a4e9d}{01579}     \hyperlink{classaed2_1_1map_a8e6a592062260177fd73b2f9897b1dd5_a8e6a592062260177fd73b2f9897b1dd5}{reverse\_iterator} \hyperlink{classaed2_1_1map_ac412d3902112122c1bffe2d4283a4e9d_ac412d3902112122c1bffe2d4283a4e9d}{rbegin}() \{
+01580         \hyperlink{classaed2_1_1map_a8e6a592062260177fd73b2f9897b1dd5_a8e6a592062260177fd73b2f9897b1dd5}{reverse\_iterator} it = \hyperlink{classaed2_1_1map_a8e6a592062260177fd73b2f9897b1dd5_a8e6a592062260177fd73b2f9897b1dd5}{reverse\_iterator}(
+      \hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header}.\hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[1]);
+01581         \textcolor{keywordflow}{return} it;
+01582     \}
+01583 
+\Hypertarget{map3_8h_source_l01585}\hyperlink{classaed2_1_1map_a71ab53ab04f5e35a189c6576fddeb483_a71ab53ab04f5e35a189c6576fddeb483}{01585}     \hyperlink{classaed2_1_1map_aed66a216549d13078a3ea6978ea0b768_aed66a216549d13078a3ea6978ea0b768}{const\_reverse\_iterator} \hyperlink{classaed2_1_1map_a71ab53ab04f5e35a189c6576fddeb483_a71ab53ab04f5e35a189c6576fddeb483}{rbegin}()\textcolor{keyword}{ const }\{
+01586         \hyperlink{classaed2_1_1map_aed66a216549d13078a3ea6978ea0b768_aed66a216549d13078a3ea6978ea0b768}{const\_reverse\_iterator} it = \hyperlink{classaed2_1_1map_aed66a216549d13078a3ea6978ea0b768_aed66a216549d13078a3ea6978ea0b768}{const\_reverse\_iterator}(
+      \hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header}.\hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[1]);
+01587         \textcolor{keywordflow}{return} it;
+01588     \}
+01589 
+\Hypertarget{map3_8h_source_l01591}\hyperlink{classaed2_1_1map_a6ad62765a2b2e00247b9e35a7542b448_a6ad62765a2b2e00247b9e35a7542b448}{01591}     \hyperlink{classaed2_1_1map_aed66a216549d13078a3ea6978ea0b768_aed66a216549d13078a3ea6978ea0b768}{const\_reverse\_iterator} \hyperlink{classaed2_1_1map_a6ad62765a2b2e00247b9e35a7542b448_a6ad62765a2b2e00247b9e35a7542b448}{crbegin}() \{
+01592         \hyperlink{classaed2_1_1map_aed66a216549d13078a3ea6978ea0b768_aed66a216549d13078a3ea6978ea0b768}{const\_reverse\_iterator} it = \hyperlink{classaed2_1_1map_aed66a216549d13078a3ea6978ea0b768_aed66a216549d13078a3ea6978ea0b768}{const\_reverse\_iterator}(
+      \hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header}.\hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[1]);
+01593         \textcolor{keywordflow}{return} it;
+01594     \}
+01595 
+\Hypertarget{map3_8h_source_l01608}\hyperlink{classaed2_1_1map_a277f03b4f4b6b98879e4e4921081801f_a277f03b4f4b6b98879e4e4921081801f}{01608}     \hyperlink{classaed2_1_1map_a8e6a592062260177fd73b2f9897b1dd5_a8e6a592062260177fd73b2f9897b1dd5}{reverse\_iterator} \hyperlink{classaed2_1_1map_a277f03b4f4b6b98879e4e4921081801f_a277f03b4f4b6b98879e4e4921081801f}{rend}() \{
+01609             \hyperlink{classaed2_1_1map_a8e6a592062260177fd73b2f9897b1dd5_a8e6a592062260177fd73b2f9897b1dd5}{reverse\_iterator} it = \hyperlink{classaed2_1_1map_a8e6a592062260177fd73b2f9897b1dd5_a8e6a592062260177fd73b2f9897b1dd5}{reverse\_iterator}(&
+      \hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header});
+01610         \textcolor{keywordflow}{return} it;
+01611     \}
+01612 
+\Hypertarget{map3_8h_source_l01614}\hyperlink{classaed2_1_1map_a7cf14a4b505505d0f074034b7399fb24_a7cf14a4b505505d0f074034b7399fb24}{01614}     \hyperlink{classaed2_1_1map_aed66a216549d13078a3ea6978ea0b768_aed66a216549d13078a3ea6978ea0b768}{const\_reverse\_iterator} \hyperlink{classaed2_1_1map_a7cf14a4b505505d0f074034b7399fb24_a7cf14a4b505505d0f074034b7399fb24}{rend}()\textcolor{keyword}{ const }\{
+01615             \hyperlink{classaed2_1_1map_aed66a216549d13078a3ea6978ea0b768_aed66a216549d13078a3ea6978ea0b768}{const\_reverse\_iterator} it = 
+      \hyperlink{classaed2_1_1map_aed66a216549d13078a3ea6978ea0b768_aed66a216549d13078a3ea6978ea0b768}{const\_reverse\_iterator}(&\hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header});
+01616         \textcolor{keywordflow}{return} it;
+01617     \}
+01618 
+\Hypertarget{map3_8h_source_l01620}\hyperlink{classaed2_1_1map_a40933b2efe1cb479de9195ea947244d1_a40933b2efe1cb479de9195ea947244d1}{01620}     \hyperlink{classaed2_1_1map_aed66a216549d13078a3ea6978ea0b768_aed66a216549d13078a3ea6978ea0b768}{const\_reverse\_iterator} \hyperlink{classaed2_1_1map_a40933b2efe1cb479de9195ea947244d1_a40933b2efe1cb479de9195ea947244d1}{crend}() \{
+01621             \hyperlink{classaed2_1_1map_aed66a216549d13078a3ea6978ea0b768_aed66a216549d13078a3ea6978ea0b768}{const\_reverse\_iterator} it = 
+      \hyperlink{classaed2_1_1map_aed66a216549d13078a3ea6978ea0b768_aed66a216549d13078a3ea6978ea0b768}{const\_reverse\_iterator}(&\hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header});
+01622         \textcolor{keywordflow}{return} it;
+01623     \}
+01625 
+01655     \textcolor{keyword}{class }\hyperlink{classaed2_1_1iterator}{iterator} \{
+01656         \textcolor{keyword}{using} Node = \textcolor{keyword}{typename} \hyperlink{structaed2_1_1map_1_1Node}{map::Node};
+01657         \textcolor{keyword}{using} InnerNode = \textcolor{keyword}{typename} \hyperlink{structaed2_1_1map_1_1InnerNode}{map::InnerNode};
+01658     \textcolor{keyword}{public}:
+01659 
+\Hypertarget{map3_8h_source_l01661}\hyperlink{classaed2_1_1map_1_1iterator_a709df3d8aef6fd1eeb839616b554ff0b_a709df3d8aef6fd1eeb839616b554ff0b}{01661}         \textcolor{keyword}{using} \hyperlink{classaed2_1_1map_1_1iterator_a709df3d8aef6fd1eeb839616b554ff0b_a709df3d8aef6fd1eeb839616b554ff0b}{iterator\_category} = std::bidirectional\_iterator\_tag;
+\Hypertarget{map3_8h_source_l01663}\hyperlink{classaed2_1_1map_1_1iterator_a4e1d954ef5c6a64bbcd881854f039a16_a4e1d954ef5c6a64bbcd881854f039a16}{01663}         \textcolor{keyword}{using} \hyperlink{classaed2_1_1map_1_1iterator_a4e1d954ef5c6a64bbcd881854f039a16_a4e1d954ef5c6a64bbcd881854f039a16}{value\_type} = \hyperlink{classaed2_1_1map_a719db98e0ff9a837610f76be33264680_a719db98e0ff9a837610f76be33264680}{map::value\_type};
+\Hypertarget{map3_8h_source_l01665}\hyperlink{classaed2_1_1map_1_1iterator_ac19788914a3110897e44c53f1318f6af_ac19788914a3110897e44c53f1318f6af}{01665}         \textcolor{keyword}{using} \hyperlink{classaed2_1_1map_1_1iterator_ac19788914a3110897e44c53f1318f6af_ac19788914a3110897e44c53f1318f6af}{reference} = \hyperlink{classaed2_1_1map_af4f147533b3c0207ab036c86ce13ec0d_af4f147533b3c0207ab036c86ce13ec0d}{map::reference};
+\Hypertarget{map3_8h_source_l01667}\hyperlink{classaed2_1_1map_1_1iterator_a52ea7bdbf1dc6b252aec76633564bdf5_a52ea7bdbf1dc6b252aec76633564bdf5}{01667}         \textcolor{keyword}{using} \hyperlink{classaed2_1_1map_1_1iterator_a52ea7bdbf1dc6b252aec76633564bdf5_a52ea7bdbf1dc6b252aec76633564bdf5}{pointer} = \hyperlink{classaed2_1_1map_a7394e98a23b86bc008ad73326b273fd5_a7394e98a23b86bc008ad73326b273fd5}{map::pointer};
+\Hypertarget{map3_8h_source_l01669}\hyperlink{classaed2_1_1map_1_1iterator_a803083681db1f62aed5138194abc1f06_a803083681db1f62aed5138194abc1f06}{01669}         \textcolor{keyword}{using} \hyperlink{classaed2_1_1map_1_1iterator_a803083681db1f62aed5138194abc1f06_a803083681db1f62aed5138194abc1f06}{difference\_type} = std::ptrdiff\_t;
+01670 
+\Hypertarget{map3_8h_source_l01697}\hyperlink{classaed2_1_1map_1_1iterator_acdd790eb54216601a2e0591776004dba_acdd790eb54216601a2e0591776004dba}{01697}         \hyperlink{classaed2_1_1map_1_1iterator_acdd790eb54216601a2e0591776004dba_acdd790eb54216601a2e0591776004dba}{iterator}() \{\}
+\Hypertarget{map3_8h_source_l01710}\hyperlink{classaed2_1_1map_1_1iterator_ab115711d0295146906830840590d900a_ab115711d0295146906830840590d900a}{01710}         \hyperlink{classaed2_1_1map_1_1iterator_ac19788914a3110897e44c53f1318f6af_ac19788914a3110897e44c53f1318f6af}{reference} \hyperlink{classaed2_1_1map_1_1iterator_ab115711d0295146906830840590d900a_ab115711d0295146906830840590d900a}{operator*}()\textcolor{keyword}{ const }\{
+01711                 \textcolor{keywordflow}{return} \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->value();
+01712         \}
+\Hypertarget{map3_8h_source_l01728}\hyperlink{classaed2_1_1map_1_1iterator_a712522d62f461c1eb9b02ecf248bae8c_a712522d62f461c1eb9b02ecf248bae8c}{01728}         \hyperlink{classaed2_1_1map_1_1iterator_a52ea7bdbf1dc6b252aec76633564bdf5_a52ea7bdbf1dc6b252aec76633564bdf5}{pointer} \hyperlink{classaed2_1_1map_1_1iterator_a712522d62f461c1eb9b02ecf248bae8c_a712522d62f461c1eb9b02ecf248bae8c}{operator->}()\textcolor{keyword}{ const }\{
+01729             \textcolor{keywordflow}{return} &\hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->value();
+01730         \}
+\Hypertarget{map3_8h_source_l01746}\hyperlink{classaed2_1_1map_1_1iterator_a7c44de7f0508186e135ddbcfe782fec5_a7c44de7f0508186e135ddbcfe782fec5}{01746}         \hyperlink{classaed2_1_1map_1_1iterator}{iterator}& \hyperlink{classaed2_1_1map_1_1iterator_a7c44de7f0508186e135ddbcfe782fec5_a7c44de7f0508186e135ddbcfe782fec5}{operator++}() \{
+01747             assert(\hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n} != \textcolor{keyword}{nullptr});
+01748             assert(\hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->parent != \textcolor{keyword}{nullptr});
+01749              \textcolor{keywordflow}{if}(\hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->child[1] == \textcolor{keyword}{nullptr})\{
+01750 
+01751                 \textcolor{keywordflow}{while} (! (\hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->parent->is\_header()) &&  \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->parent->child[1] == \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n})
+01752                     \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n} = \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->parent;
+01753             
+01754             \textcolor{keywordflow}{if} (\hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->parent->is\_header())
+01755                 \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n} = \textcolor{keyword}{nullptr};
+01756             \textcolor{keywordflow}{else}
+01757                 \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n} = \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->parent;
+01758 
+01759             \} \textcolor{keywordflow}{else}
+01760                 \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n} = \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->child[1];
+01761             \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+01762         \}
+\Hypertarget{map3_8h_source_l01778}\hyperlink{classaed2_1_1map_1_1iterator_af4fe5565eb478cfccd254b2ef230b974_af4fe5565eb478cfccd254b2ef230b974}{01778}         \hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_1_1iterator_af4fe5565eb478cfccd254b2ef230b974_af4fe5565eb478cfccd254b2ef230b974}{operator++}(\textcolor{keywordtype}{int}) \{
+01779             \textcolor{keywordflow}{if}(\hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->child[1] == \textcolor{keyword}{nullptr})\{
+01780 
+01781                 \textcolor{keywordflow}{while} (! (\hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->parent->is\_header()) &&  \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->parent->child[1] == \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n})
+01782                     \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n} = \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->parent;
+01783             
+01784                \textcolor{keywordflow}{if} (\hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->parent->is\_header())
+01785                 \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n} = \textcolor{keyword}{nullptr};
+01786             \textcolor{keywordflow}{else}
+01787                 \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n} = \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->parent;
+01788         \} \textcolor{keywordflow}{else}
+01789             \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n} = \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->child[1];
+01790         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+01791         \}
+\Hypertarget{map3_8h_source_l01807}\hyperlink{classaed2_1_1map_1_1iterator_ae7f70f71545d2a9de17b65edaaec748a_ae7f70f71545d2a9de17b65edaaec748a}{01807}         \hyperlink{classaed2_1_1map_1_1iterator}{iterator}& \hyperlink{classaed2_1_1map_1_1iterator_ae7f70f71545d2a9de17b65edaaec748a_ae7f70f71545d2a9de17b65edaaec748a}{operator--}() \{
+01808             \textcolor{keywordflow}{if}(\hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->child[0] == \textcolor{keyword}{nullptr})\{
+01809 
+01810                 \textcolor{keywordflow}{while} (! (\hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->parent->is\_header()) &&  \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->parent->child[1] == \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n})
+01811                     \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n} = \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->parent;
+01812             
+01813             \textcolor{keywordflow}{if} (\hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->parent->is\_header())
+01814                 \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n} = \textcolor{keyword}{nullptr};
+01815             \textcolor{keywordflow}{else}
+01816                 \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n} = \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->parent;
+01817             \} \textcolor{keywordflow}{else}
+01818                 \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n} = \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->child[0];
+01819         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+01820         \}
+\Hypertarget{map3_8h_source_l01836}\hyperlink{classaed2_1_1map_1_1iterator_add45e9ddbb8eeda99326cdb9ac9dd225_add45e9ddbb8eeda99326cdb9ac9dd225}{01836}         \hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_1_1iterator_add45e9ddbb8eeda99326cdb9ac9dd225_add45e9ddbb8eeda99326cdb9ac9dd225}{operator--}(\textcolor{keywordtype}{int}) \{
+01837             \textcolor{keywordflow}{if}(\hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->child[0] == \textcolor{keyword}{nullptr})\{
+01838 
+01839                \textcolor{keywordflow}{while} (! (\hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->parent->is\_header()) &&  \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->parent->child[1] == \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n})
+01840                    \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n} = \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->parent;
+01841             
+01842             \textcolor{keywordflow}{if} (\hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->parent->is\_header())
+01843                 \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n} = \textcolor{keyword}{nullptr};
+01844             \textcolor{keywordflow}{else}
+01845                 \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n} = \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->parent;
+01846            
+01847            \} \textcolor{keywordflow}{else}
+01848             \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n} = \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}->child[0];
+01849          
+01850         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+01851         \}
+01852 
+\Hypertarget{map3_8h_source_l01870}\hyperlink{classaed2_1_1map_1_1iterator_a34f6622845af93ca42f1be8516eeafa2_a34f6622845af93ca42f1be8516eeafa2}{01870}         \textcolor{keywordtype}{bool} \hyperlink{classaed2_1_1map_1_1iterator_a34f6622845af93ca42f1be8516eeafa2_a34f6622845af93ca42f1be8516eeafa2}{operator==}(\hyperlink{classaed2_1_1map_1_1iterator}{iterator} other)\textcolor{keyword}{ const }\{
+01871              \textcolor{keywordflow}{return} (\hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n} == other.\hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n});
+01872         \}
+\Hypertarget{map3_8h_source_l01874}\hyperlink{classaed2_1_1map_1_1iterator_a748cdf8c35707d1c2e9ef8ef9d862d37_a748cdf8c35707d1c2e9ef8ef9d862d37}{01874}         \textcolor{keywordtype}{bool} \hyperlink{classaed2_1_1map_1_1iterator_a748cdf8c35707d1c2e9ef8ef9d862d37_a748cdf8c35707d1c2e9ef8ef9d862d37}{operator!=}(\hyperlink{classaed2_1_1map_1_1iterator}{iterator} other)\textcolor{keyword}{ const }\{
+01875              \textcolor{keywordflow}{return} (\hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n} != other.\hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n});
+01876         \}
+01877 
+01878     \textcolor{keyword}{private}:
+\Hypertarget{map3_8h_source_l01899}\hyperlink{classaed2_1_1map_1_1iterator_ab0ea21abcb32b6d5a72cf341b9029838_ab0ea21abcb32b6d5a72cf341b9029838}{01899}         \hyperlink{classaed2_1_1map_1_1iterator_ab0ea21abcb32b6d5a72cf341b9029838_ab0ea21abcb32b6d5a72cf341b9029838}{iterator}(Node* pos) : \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}(pos) \{\}
+\Hypertarget{map3_8h_source_l01910}\hyperlink{classaed2_1_1map_1_1iterator_af609b04effc1c7ff9ec33b40c31bdc95_af609b04effc1c7ff9ec33b40c31bdc95}{01910}         \textcolor{keyword}{operator} Node*() \textcolor{keyword}{const} \{\textcolor{keywordflow}{return} \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n};\}
+01912 
+01931 
+01933 
+01936         \hyperlink{structaed2_1_1map_1_1Node}{Node}* \hyperlink{classaed2_1_1map_1_1iterator_a1eb67290cc33d9739e0efaf02bbdab9f_a1eb67290cc33d9739e0efaf02bbdab9f}{n}\{\textcolor{keyword}{nullptr}\};
+01938         \textcolor{keyword}{friend} \textcolor{keyword}{class }\hyperlink{classaed2_1_1map}{map};
+01939     \};
+01940 
+01947     \textcolor{keyword}{class }const\_iterator \{
+01948         \textcolor{keyword}{using} Node = \textcolor{keyword}{const} \textcolor{keyword}{typename} map::Node;
+01949         \textcolor{keyword}{using} InnerNode = \textcolor{keyword}{const} \textcolor{keyword}{typename} map::InnerNode;
+01950     \textcolor{keyword}{public}:
+01951         \textcolor{keyword}{using} iterator\_category = std::bidirectional\_iterator\_tag;
+01952         \textcolor{keyword}{using} value\_type = \hyperlink{classaed2_1_1map_a719db98e0ff9a837610f76be33264680_a719db98e0ff9a837610f76be33264680}{map::value\_type};
+01953         \textcolor{keyword}{using} reference = \hyperlink{classaed2_1_1map_a277080d3db76f19df9319ecba16475a9_a277080d3db76f19df9319ecba16475a9}{map::const\_reference};
+01954         \textcolor{keyword}{using} pointer = \hyperlink{classaed2_1_1map_a1366fc3e227a49777cb748fc6d4e022b_a1366fc3e227a49777cb748fc6d4e022b}{map::const\_pointer};
+01955         \textcolor{keyword}{using} difference\_type = std::ptrdiff\_t;
+01956 
+\Hypertarget{map3_8h_source_l01958}\hyperlink{classaed2_1_1map_1_1const__iterator_a8add3e4cabbdaf313b0e085064491555_a8add3e4cabbdaf313b0e085064491555}{01958}         \hyperlink{classaed2_1_1map_1_1const__iterator_a8add3e4cabbdaf313b0e085064491555_a8add3e4cabbdaf313b0e085064491555}{const\_iterator}() \{\}
+\Hypertarget{map3_8h_source_l01976}\hyperlink{classaed2_1_1map_1_1const__iterator_ab7924d90cbf6d19bec62514d10b62fb3_ab7924d90cbf6d19bec62514d10b62fb3}{01976}         \hyperlink{classaed2_1_1map_1_1const__iterator_ab7924d90cbf6d19bec62514d10b62fb3_ab7924d90cbf6d19bec62514d10b62fb3}{const\_iterator}(\hyperlink{classaed2_1_1map_1_1iterator}{iterator} it) \{
+01977           \textcolor{comment}{//completar}
+01978         \}
+\Hypertarget{map3_8h_source_l01980}\hyperlink{classaed2_1_1map_1_1const__iterator_a174e7b81e88253d936fb14512f00ef69_a174e7b81e88253d936fb14512f00ef69}{01980}         reference \hyperlink{classaed2_1_1map_1_1const__iterator_a174e7b81e88253d936fb14512f00ef69_a174e7b81e88253d936fb14512f00ef69}{operator*}()\textcolor{keyword}{ const  }\{
+01981           \textcolor{comment}{//completar}
+01982         \}
+\Hypertarget{map3_8h_source_l01984}\hyperlink{classaed2_1_1map_1_1const__iterator_a07700cccc763da67d42c84d20f4e1d1b_a07700cccc763da67d42c84d20f4e1d1b}{01984}         pointer \hyperlink{classaed2_1_1map_1_1const__iterator_a07700cccc763da67d42c84d20f4e1d1b_a07700cccc763da67d42c84d20f4e1d1b}{operator->}()\textcolor{keyword}{ const }\{
+01985           \textcolor{comment}{//completar}
+01986         \}
+\Hypertarget{map3_8h_source_l01988}\hyperlink{classaed2_1_1map_1_1const__iterator_adaada1d489552555135d2ea89c67c271_adaada1d489552555135d2ea89c67c271}{01988}         \hyperlink{classaed2_1_1map_1_1const__iterator}{const\_iterator}& \hyperlink{classaed2_1_1map_1_1const__iterator_adaada1d489552555135d2ea89c67c271_adaada1d489552555135d2ea89c67c271}{operator++}()  \{
+01989           \textcolor{comment}{//completar}
+01990         \}
+\Hypertarget{map3_8h_source_l01992}\hyperlink{classaed2_1_1map_1_1const__iterator_a2fbc216b2f11694bb567ea850bcfdb2e_a2fbc216b2f11694bb567ea850bcfdb2e}{01992}         \hyperlink{classaed2_1_1map_1_1const__iterator}{const\_iterator} \hyperlink{classaed2_1_1map_1_1const__iterator_a2fbc216b2f11694bb567ea850bcfdb2e_a2fbc216b2f11694bb567ea850bcfdb2e}{operator++}(\textcolor{keywordtype}{int})  \{
+01993           \textcolor{comment}{//completar}
+01994         \}
+\Hypertarget{map3_8h_source_l01996}\hyperlink{classaed2_1_1map_1_1const__iterator_ae12d6608eeca05957fa3de3f50287c90_ae12d6608eeca05957fa3de3f50287c90}{01996}         \hyperlink{classaed2_1_1map_1_1const__iterator}{const\_iterator}& \hyperlink{classaed2_1_1map_1_1const__iterator_ae12d6608eeca05957fa3de3f50287c90_ae12d6608eeca05957fa3de3f50287c90}{operator--}()  \{
+01997           \textcolor{comment}{//completar}
+01998         \}
+\Hypertarget{map3_8h_source_l02000}\hyperlink{classaed2_1_1map_1_1const__iterator_ad5ae1cb1d000ac1f528ff32f9af3e228_ad5ae1cb1d000ac1f528ff32f9af3e228}{02000}         \hyperlink{classaed2_1_1map_1_1const__iterator}{const\_iterator} \hyperlink{classaed2_1_1map_1_1const__iterator_ad5ae1cb1d000ac1f528ff32f9af3e228_ad5ae1cb1d000ac1f528ff32f9af3e228}{operator--}(\textcolor{keywordtype}{int})  \{
+02001           \textcolor{comment}{//completar}
+02002         \}
+\Hypertarget{map3_8h_source_l02004}\hyperlink{classaed2_1_1map_1_1const__iterator_a2ad68c35012e0c6b67d67c04d96585be_a2ad68c35012e0c6b67d67c04d96585be}{02004}         \textcolor{keywordtype}{bool} \hyperlink{classaed2_1_1map_1_1const__iterator_a2ad68c35012e0c6b67d67c04d96585be_a2ad68c35012e0c6b67d67c04d96585be}{operator==}(\hyperlink{classaed2_1_1map_1_1const__iterator}{const\_iterator} other)\textcolor{keyword}{ const  }\{
+02005           \textcolor{comment}{//completar}
+02006         \}
+\Hypertarget{map3_8h_source_l02008}\hyperlink{classaed2_1_1map_1_1const__iterator_aeb4721e5da865908c541f2a77a2ffab2_aeb4721e5da865908c541f2a77a2ffab2}{02008}         \textcolor{keywordtype}{bool} \hyperlink{classaed2_1_1map_1_1const__iterator_aeb4721e5da865908c541f2a77a2ffab2_aeb4721e5da865908c541f2a77a2ffab2}{operator!=}(\hyperlink{classaed2_1_1map_1_1const__iterator}{const\_iterator} other)\textcolor{keyword}{ const  }\{
+02009           \textcolor{comment}{//completar}
+02010         \}
+02011 
+02012     \textcolor{keyword}{private}:
+\Hypertarget{map3_8h_source_l02014}\hyperlink{classaed2_1_1map_1_1const__iterator_a195d395708167dca23f9ce49f7c604f3_a195d395708167dca23f9ce49f7c604f3}{02014}         \hyperlink{classaed2_1_1map_1_1const__iterator_a195d395708167dca23f9ce49f7c604f3_a195d395708167dca23f9ce49f7c604f3}{const\_iterator}(Node* pos) : \hyperlink{classaed2_1_1map_1_1const__iterator_a2ec887391aabf6c3c31918d8b0267ec7_a2ec887391aabf6c3c31918d8b0267ec7}{n}(pos) \{\}
+\Hypertarget{map3_8h_source_l02016}\hyperlink{classaed2_1_1map_1_1const__iterator_ab408eb7252948dd8b8df540303ab5906_ab408eb7252948dd8b8df540303ab5906}{02016}         \textcolor{keyword}{operator} Node*() \textcolor{keyword}{const} \{\textcolor{keywordflow}{return} \hyperlink{classaed2_1_1map_1_1const__iterator_a2ec887391aabf6c3c31918d8b0267ec7_a2ec887391aabf6c3c31918d8b0267ec7}{n};\}
+02018         \hyperlink{structaed2_1_1map_1_1Node}{Node}* \hyperlink{classaed2_1_1map_1_1const__iterator_a2ec887391aabf6c3c31918d8b0267ec7_a2ec887391aabf6c3c31918d8b0267ec7}{n}\{\textcolor{keyword}{nullptr}\};
+02019         \textcolor{keyword}{friend} \textcolor{keyword}{class }\hyperlink{classaed2_1_1map}{map};
+02020     \};
+02021 
+02022 \textcolor{keyword}{private}:
+02023     \textcolor{keyword}{friend} \textcolor{keyword}{class }iterator;
+02024     \textcolor{keyword}{friend} \textcolor{keyword}{class }const\_iterator;
+02025 
+\Hypertarget{map3_8h_source_l02035}\hyperlink{classaed2_1_1map_a6d62a415a4b9d320b30cada4ebcf9f5b_a6d62a415a4b9d320b30cada4ebcf9f5b}{02035}     \textcolor{keyword}{enum class} \hyperlink{classaed2_1_1map_a6d62a415a4b9d320b30cada4ebcf9f5b_a6d62a415a4b9d320b30cada4ebcf9f5b}{Color} \{Red, Black, Header\};
+02036 
+02053     \textcolor{keyword}{struct }Node \{
+02055         \hyperlink{structaed2_1_1map_1_1Node_a9c1a600491066ce7eb669b1cb76d56c6_a9c1a600491066ce7eb669b1cb76d56c6}{Node}* \hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[2]\{\textcolor{keyword}{nullptr},\textcolor{keyword}{nullptr}\};
+02057         \hyperlink{structaed2_1_1map_1_1Node_a9c1a600491066ce7eb669b1cb76d56c6_a9c1a600491066ce7eb669b1cb76d56c6}{Node}* \hyperlink{structaed2_1_1map_1_1Node_a91a1855da19d22344bc89c2f8b998a7a_a91a1855da19d22344bc89c2f8b998a7a}{parent}\{\textcolor{keyword}{nullptr}\};
+02059         \hyperlink{classaed2_1_1map_a6d62a415a4b9d320b30cada4ebcf9f5b_a6d62a415a4b9d320b30cada4ebcf9f5b}{Color} \hyperlink{structaed2_1_1map_1_1Node_a58dd9993fee8ee3eaa5716b72a3eca47_a58dd9993fee8ee3eaa5716b72a3eca47}{color}\{Color::Red\};
+02060 
+02062 
+02063 
+02065 
+\Hypertarget{map3_8h_source_l02073}\hyperlink{structaed2_1_1map_1_1Node_a9c1a600491066ce7eb669b1cb76d56c6_a9c1a600491066ce7eb669b1cb76d56c6}{02073}         \hyperlink{structaed2_1_1map_1_1Node_a9c1a600491066ce7eb669b1cb76d56c6_a9c1a600491066ce7eb669b1cb76d56c6}{Node}() : \hyperlink{structaed2_1_1map_1_1Node_a58dd9993fee8ee3eaa5716b72a3eca47_a58dd9993fee8ee3eaa5716b72a3eca47}{color}(\hyperlink{classaed2_1_1map_a6d62a415a4b9d320b30cada4ebcf9f5b_a6d62a415a4b9d320b30cada4ebcf9f5b}{Color}::Header) \{
+02074             \hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[0] = \hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[1] = \textcolor{keyword}{this};
+02075         \}
+02076 
+\Hypertarget{map3_8h_source_l02087}\hyperlink{structaed2_1_1map_1_1Node_a62b5a42e88e219d53af8237a9ebedb6e_a62b5a42e88e219d53af8237a9ebedb6e}{02087}         \hyperlink{structaed2_1_1map_1_1Node_a62b5a42e88e219d53af8237a9ebedb6e_a62b5a42e88e219d53af8237a9ebedb6e}{Node}(\hyperlink{structaed2_1_1map_1_1Node}{Node}* p, \hyperlink{classaed2_1_1map_a6d62a415a4b9d320b30cada4ebcf9f5b_a6d62a415a4b9d320b30cada4ebcf9f5b}{Color} c = Color::Red) : \hyperlink{structaed2_1_1map_1_1Node_a91a1855da19d22344bc89c2f8b998a7a_a91a1855da19d22344bc89c2f8b998a7a}{parent}(p), 
+      \hyperlink{structaed2_1_1map_1_1Node_a58dd9993fee8ee3eaa5716b72a3eca47_a58dd9993fee8ee3eaa5716b72a3eca47}{color}(c) \{\}
+02089         
+\Hypertarget{map3_8h_source_l02104}\hyperlink{structaed2_1_1map_1_1Node_a4f3cb2cc4302fe96432e624ced147540_a4f3cb2cc4302fe96432e624ced147540}{02104}         \textcolor{keyword}{virtual} \hyperlink{structaed2_1_1map_1_1Node_a4f3cb2cc4302fe96432e624ced147540_a4f3cb2cc4302fe96432e624ced147540}{~Node}() \{\}
+02105 
+02106 
+02108 
+02109 
+02111 
+\Hypertarget{map3_8h_source_l02129}\hyperlink{structaed2_1_1map_1_1Node_ab684678442a3c5f53eb00ed48a9270a9_ab684678442a3c5f53eb00ed48a9270a9}{02129}         \textcolor{keywordtype}{bool} \hyperlink{structaed2_1_1map_1_1Node_ab684678442a3c5f53eb00ed48a9270a9_ab684678442a3c5f53eb00ed48a9270a9}{is\_header}()\textcolor{keyword}{ const }\{
+02130             \textcolor{keywordflow}{return} \hyperlink{structaed2_1_1map_1_1Node_a58dd9993fee8ee3eaa5716b72a3eca47_a58dd9993fee8ee3eaa5716b72a3eca47}{color} == Color::Header;
+02131         \}
+02132 
+\Hypertarget{map3_8h_source_l02145}\hyperlink{structaed2_1_1map_1_1Node_af4ada8e79dabb4849fc87de63d3970fb_af4ada8e79dabb4849fc87de63d3970fb}{02145}         \hyperlink{classaed2_1_1map_a719db98e0ff9a837610f76be33264680_a719db98e0ff9a837610f76be33264680}{value\_type}& \hyperlink{structaed2_1_1map_1_1Node_af4ada8e79dabb4849fc87de63d3970fb_af4ada8e79dabb4849fc87de63d3970fb}{value}() \{
+02146             assert(not \hyperlink{structaed2_1_1map_1_1Node_ab684678442a3c5f53eb00ed48a9270a9_ab684678442a3c5f53eb00ed48a9270a9}{is\_header}());
+02147             \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\hyperlink{structaed2_1_1map_1_1InnerNode}{InnerNode}*\textcolor{keyword}{>}(\textcolor{keyword}{this})->\_value;
+02148         \}
+\Hypertarget{map3_8h_source_l02150}\hyperlink{structaed2_1_1map_1_1Node_ab66a33cedd0ba5cc20e366d4769184ae_ab66a33cedd0ba5cc20e366d4769184ae}{02150}         \textcolor{keyword}{const} \hyperlink{classaed2_1_1map_a719db98e0ff9a837610f76be33264680_a719db98e0ff9a837610f76be33264680}{value\_type}& \hyperlink{structaed2_1_1map_1_1Node_ab66a33cedd0ba5cc20e366d4769184ae_ab66a33cedd0ba5cc20e366d4769184ae}{value}()\textcolor{keyword}{ const }\{
+02151             assert(not \hyperlink{structaed2_1_1map_1_1Node_ab684678442a3c5f53eb00ed48a9270a9_ab684678442a3c5f53eb00ed48a9270a9}{is\_header}());
+02152             \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keyword}{const }\hyperlink{structaed2_1_1map_1_1InnerNode}{InnerNode}*\textcolor{keyword}{>}(\textcolor{keyword}{this})->\_value;
+02153         \}
+02154 
+\Hypertarget{map3_8h_source_l02167}\hyperlink{structaed2_1_1map_1_1Node_a08fd071b9bba8048526b8da7e8d73831_a08fd071b9bba8048526b8da7e8d73831}{02167}         \textcolor{keyword}{const} Key& \hyperlink{structaed2_1_1map_1_1Node_a08fd071b9bba8048526b8da7e8d73831_a08fd071b9bba8048526b8da7e8d73831}{key}()\textcolor{keyword}{ const }\{
+02168             assert(not \hyperlink{structaed2_1_1map_1_1Node_ab684678442a3c5f53eb00ed48a9270a9_ab684678442a3c5f53eb00ed48a9270a9}{is\_header}());
+02169             \textcolor{keywordflow}{return} \hyperlink{structaed2_1_1map_1_1Node_af4ada8e79dabb4849fc87de63d3970fb_af4ada8e79dabb4849fc87de63d3970fb}{value}().first;
+02170         \}
+02171 
+02173 
+02174 \textcolor{preprocessor}{#ifdef DEBUG}
+02175 
+02181         \textcolor{keywordtype}{void} print(\textcolor{keywordtype}{int} tab = 0)\textcolor{keyword}{ const }\{
+02182             std::cout << std::string(tab, \textcolor{charliteral}{' '}) << \hyperlink{structaed2_1_1map_1_1Node_af4ada8e79dabb4849fc87de63d3970fb_af4ada8e79dabb4849fc87de63d3970fb}{value}().first << \textcolor{stringliteral}{"->"} << 
+      \hyperlink{structaed2_1_1map_1_1Node_af4ada8e79dabb4849fc87de63d3970fb_af4ada8e79dabb4849fc87de63d3970fb}{value}().second << \textcolor{stringliteral}{"   ("} << (\hyperlink{structaed2_1_1map_1_1Node_a58dd9993fee8ee3eaa5716b72a3eca47_a58dd9993fee8ee3eaa5716b72a3eca47}{color} == Color::Red ? \textcolor{stringliteral}{"Red)"} : \textcolor{stringliteral}{"Black)"}) << std::endl;
+02183             \textcolor{keywordflow}{if}(\hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[0]) \hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[0]->print(tab + 2);
+02184             \textcolor{keywordflow}{if}(\hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[1]) \hyperlink{structaed2_1_1map_1_1Node_acac3478cefbd8bebe0c3f3abb9a2935e_acac3478cefbd8bebe0c3f3abb9a2935e}{child}[1]->print(tab + 2);
+02185         \}
+02186 
+02187 \textcolor{preprocessor}{#endif}
+02188     \};
+02189 
+02206     \textcolor{keyword}{struct }InnerNode : \textcolor{keyword}{public} Node \{
+02207         value\_type \_value;
+02208         \hyperlink{structaed2_1_1map_1_1Node_a9c1a600491066ce7eb669b1cb76d56c6_a9c1a600491066ce7eb669b1cb76d56c6}{Node}* child[2]\{\textcolor{keyword}{nullptr},\textcolor{keyword}{nullptr}\};
+\Hypertarget{map3_8h_source_l02210}\hyperlink{structaed2_1_1map_1_1InnerNode_a316c40ca779ddf0b6ee816965243d850_a316c40ca779ddf0b6ee816965243d850}{02210}         \hyperlink{structaed2_1_1map_1_1Node}{Node}* \hyperlink{structaed2_1_1map_1_1InnerNode_a316c40ca779ddf0b6ee816965243d850_a316c40ca779ddf0b6ee816965243d850}{parent}\{\textcolor{keyword}{nullptr}\};
+\Hypertarget{map3_8h_source_l02212}\hyperlink{structaed2_1_1map_1_1InnerNode_ad85a4b4bbae90052eca67c701b288f2d_ad85a4b4bbae90052eca67c701b288f2d}{02212}         \hyperlink{classaed2_1_1map_a6d62a415a4b9d320b30cada4ebcf9f5b_a6d62a415a4b9d320b30cada4ebcf9f5b}{Color} \hyperlink{structaed2_1_1map_1_1InnerNode_ad85a4b4bbae90052eca67c701b288f2d_ad85a4b4bbae90052eca67c701b288f2d}{color}\{Color::Red\};
+02213     \textcolor{comment}{// InnerNode (value\_type value) : Node() \{}
+02214     
+02215     \hyperlink{structaed2_1_1map_1_1InnerNode}{InnerNode}(\hyperlink{structaed2_1_1map_1_1Node}{Node}* p, \textcolor{keyword}{const} \hyperlink{classaed2_1_1map_a719db98e0ff9a837610f76be33264680_a719db98e0ff9a837610f76be33264680}{value\_type}& v): \hyperlink{structaed2_1_1map_1_1Node}{Node}(p, 
+      \hyperlink{classaed2_1_1map_a6d62a415a4b9d320b30cada4ebcf9f5b_a6d62a415a4b9d320b30cada4ebcf9f5b}{Color}::Red), \_value(v) \{
+02216         child[0] = child[1] = \textcolor{keyword}{nullptr};
+02217     \}
+02218         
+02219     \textcolor{comment}{//  \_value = value;}
+02220     \textcolor{comment}{//  color = Color::Red;}
+02221   \textcolor{comment}{//       parent = nullptr;}
+02222   \textcolor{comment}{//       \};}
+02223 
+02224 
+02225         
+02226 
+02227     \};
+02228 
+02229 
+02230     \textcolor{comment}{//AUXS}
+02231     \textcolor{comment}{/*}
+02232 \textcolor{comment}{    Node* sucesorInmediato(Node* y);    }
+02233 \textcolor{comment}{    void transplant(Node* u, Node* v);}
+02234 \textcolor{comment}{    void erase\_fixup(iterator it);}
+02235 \textcolor{comment}{    void left\_rotate(iterator it);}
+02236 \textcolor{comment}{    void right\_rotate(iterator it);}
+02237 \textcolor{comment}{    */}
+02239 
+02260 
+02262 
+02266     Compare \hyperlink{classaed2_1_1map_a0e5be36fae0693e4665bd2a615e7550a_a0e5be36fae0693e4665bd2a615e7550a}{lt};
+02268     \textcolor{keywordtype}{size\_t} \hyperlink{classaed2_1_1map_a44236c4f16cdc20a10759862b198bde4_a44236c4f16cdc20a10759862b198bde4}{count}\{0\};
+02270     Node \hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header};
+02272 
+02274 
+02275 
+02277 
+\Hypertarget{map3_8h_source_l02282}\hyperlink{classaed2_1_1map_a07ab50eda249a57858a34037d4c4c7b2_a07ab50eda249a57858a34037d4c4c7b2}{02282}     \textcolor{keyword}{inline} InnerNode* \hyperlink{classaed2_1_1map_a07ab50eda249a57858a34037d4c4c7b2_a07ab50eda249a57858a34037d4c4c7b2}{root}() \{ \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}InnerNode*\textcolor{keyword}{>}(header.parent); \}
+02283 
+\Hypertarget{map3_8h_source_l02285}\hyperlink{classaed2_1_1map_a66fe019d885578cc52949409f80858eb_a66fe019d885578cc52949409f80858eb}{02285}     \textcolor{keyword}{inline} \textcolor{keyword}{const} InnerNode* \hyperlink{classaed2_1_1map_a66fe019d885578cc52949409f80858eb_a66fe019d885578cc52949409f80858eb}{root}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keyword}{const }InnerNode*\textcolor{keyword}{>}(header.parent); \}
+02287 
+02288     std::pair<Node*, Node*> bounds(\textcolor{keyword}{const} Key& key) \{
+02289         \textcolor{keyword}{auto} r = \textcolor{keyword}{const\_cast<}\textcolor{keyword}{const }\hyperlink{classaed2_1_1map}{map}*\textcolor{keyword}{>}(\textcolor{keyword}{this})->bounds(key);
+02290         \textcolor{keywordflow}{return} std::make\_pair(const\_cast<Node*>(r.first), const\_cast<Node*>(r.second));
+02291     \}
+02292 
+02293     std::pair<const Node*, const Node*> bounds(\textcolor{keyword}{const} Key& key)\textcolor{keyword}{ const }\{
+02294         \textcolor{keyword}{const} Node* res[2] = \{&\hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header}, &header\}, *indice = \hyperlink{classaed2_1_1map_a07ab50eda249a57858a34037d4c4c7b2_a07ab50eda249a57858a34037d4c4c7b2}{root}();
+02295         \textcolor{keywordflow}{while} (indice != \textcolor{keyword}{nullptr} && !\hyperlink{classaed2_1_1map_aebf6c09c424c39a874798165401b309e_aebf6c09c424c39a874798165401b309e}{eq}(indice->key(), key))\{
+02296             \textcolor{keyword}{auto} dir = \hyperlink{classaed2_1_1map_a0e5be36fae0693e4665bd2a615e7550a_a0e5be36fae0693e4665bd2a615e7550a}{lt}(indice->key(), key);
+02297             res[1-dir] = indice;
+02298             indice = indice->child[dir];
+02299         \}
+02300         \textcolor{keywordflow}{if} (indice != \textcolor{keyword}{nullptr})\{
+02301             res[0] = res[1] = indice;
+02302         \}
+02303         \textcolor{keywordflow}{return} std::make\_pair(res[0], res[1]);      
+02304     \}
+02305 
+02306 
+02308 
+02309 
+\Hypertarget{map3_8h_source_l02317}\hyperlink{classaed2_1_1map_aebf6c09c424c39a874798165401b309e_aebf6c09c424c39a874798165401b309e}{02317}     \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} \hyperlink{classaed2_1_1map_aebf6c09c424c39a874798165401b309e_aebf6c09c424c39a874798165401b309e}{eq}(\textcolor{keyword}{const} Key& k1, \textcolor{keyword}{const} Key& k2)\textcolor{keyword}{ const }\{
+02318         \textcolor{keywordflow}{return} \hyperlink{classaed2_1_1map_a0e5be36fae0693e4665bd2a615e7550a_a0e5be36fae0693e4665bd2a615e7550a}{lt}(k1, k2) == \hyperlink{classaed2_1_1map_a0e5be36fae0693e4665bd2a615e7550a_a0e5be36fae0693e4665bd2a615e7550a}{lt}(k2, k1);
+02319     \}
+02320 \};
+02321 
+02323 
+02324 
+02326 
+02349 \textcolor{keyword}{template}<\textcolor{keyword}{class} K, \textcolor{keyword}{class} V, \textcolor{keyword}{class} C>
+\Hypertarget{map3_8h_source_l02350}\hyperlink{classaed2_1_1map_abfc51b39670220e79037ac067006e933_abfc51b39670220e79037ac067006e933}{02350} \textcolor{keywordtype}{bool} \hyperlink{classaed2_1_1map_abfc51b39670220e79037ac067006e933_abfc51b39670220e79037ac067006e933}{operator==}(\textcolor{keyword}{const} \hyperlink{classaed2_1_1map}{map<K, V, C>}& m1, \textcolor{keyword}{const} \hyperlink{classaed2_1_1map}{map<K, V, C>}& m2) \{
+02351     \textcolor{keywordflow}{return} m1.size() == m2.size() and std::equal(m1.begin(), m1.end(), m2.begin());
+02352 \}
+02353 
+02360 \textcolor{keyword}{template}<\textcolor{keyword}{class} K, \textcolor{keyword}{class} V, \textcolor{keyword}{class} C>
+\Hypertarget{map3_8h_source_l02361}\hyperlink{classaed2_1_1map_abce0fa35c5b25fd67111c2e704616f09_abce0fa35c5b25fd67111c2e704616f09}{02361} \textcolor{keywordtype}{bool} \hyperlink{classaed2_1_1map_abce0fa35c5b25fd67111c2e704616f09_abce0fa35c5b25fd67111c2e704616f09}{operator!=}(\textcolor{keyword}{const} \hyperlink{classaed2_1_1map}{map<K, V, C>}& m1, \textcolor{keyword}{const} \hyperlink{classaed2_1_1map}{map<K, V, C>}& m2) \{
+02362     \textcolor{keywordflow}{return} not(m1 == m2);
+02363 \}
+02364 
+02388 \textcolor{keyword}{template}<\textcolor{keyword}{class} K, \textcolor{keyword}{class} V, \textcolor{keyword}{class} C>
+\Hypertarget{map3_8h_source_l02389}\hyperlink{classaed2_1_1map_a8ff07f6a24c290ea7e8f63ec7ab24f8d_a8ff07f6a24c290ea7e8f63ec7ab24f8d}{02389} \textcolor{keywordtype}{bool} operator<(const map<K, V, C>& m1, \textcolor{keyword}{const} \hyperlink{classaed2_1_1map}{map<K, V, C>}& m2) \{
+02390     \textcolor{keywordflow}{return} (std::lexicographical\_compare(m1.begin(), m1.end(), m2.begin(), m2.end()));
+02391     \textcolor{comment}{//completar.  Vale usar std::lexicographical\_compare}
+02392 \}
+02393 
+02400 \textcolor{keyword}{template}<\textcolor{keyword}{class} K, \textcolor{keyword}{class} V, \textcolor{keyword}{class} C>
+\Hypertarget{map3_8h_source_l02401}\hyperlink{classaed2_1_1map_a2000cd874b72034ce7fe730c811b6c63_a2000cd874b72034ce7fe730c811b6c63}{02401} \textcolor{keywordtype}{bool} \hyperlink{classaed2_1_1map_a2000cd874b72034ce7fe730c811b6c63_a2000cd874b72034ce7fe730c811b6c63}{operator>}(\textcolor{keyword}{const} \hyperlink{classaed2_1_1map}{map<K, V, C>}& m1, \textcolor{keyword}{const} \hyperlink{classaed2_1_1map}{map<K, V, C>}& m2) \{
+02402     \textcolor{keywordflow}{return} m2 < m1;
+02403 \}
+02404 
+02411 \textcolor{keyword}{template}<\textcolor{keyword}{class} K, \textcolor{keyword}{class} V, \textcolor{keyword}{class} C>
+\Hypertarget{map3_8h_source_l02412}\hyperlink{classaed2_1_1map_afe374b37f17263d0cad3ee19a590d208_afe374b37f17263d0cad3ee19a590d208}{02412} \textcolor{keywordtype}{bool} operator<=(const map<K, V, C>& m1, \textcolor{keyword}{const} \hyperlink{classaed2_1_1map}{map<K, V, C>}& m2) \{
+02413     \textcolor{keywordflow}{return} not(m2 < m1);
+02414 \}
+02415 
+02422 \textcolor{keyword}{template}<\textcolor{keyword}{class} K, \textcolor{keyword}{class} V, \textcolor{keyword}{class} C>
+\Hypertarget{map3_8h_source_l02423}\hyperlink{classaed2_1_1map_a093a6d1a055339c5fc6297a1d47a9159_a093a6d1a055339c5fc6297a1d47a9159}{02423} \textcolor{keywordtype}{bool} \hyperlink{classaed2_1_1map_a093a6d1a055339c5fc6297a1d47a9159_a093a6d1a055339c5fc6297a1d47a9159}{operator>=}(\textcolor{keyword}{const} \hyperlink{classaed2_1_1map}{map<K, V, C>}& m1, \textcolor{keyword}{const} \hyperlink{classaed2_1_1map}{map<K, V, C>}& m2) \{
+02424     \textcolor{keywordflow}{return} !(m1 < m2);
+02425 \}
+02427 
+02429 
+02430 
+02446 \textcolor{keyword}{template}<\textcolor{keyword}{class} K, \textcolor{keyword}{class} V, \textcolor{keyword}{class} C>
+\Hypertarget{map3_8h_source_l02447}\hyperlink{classaed2_1_1map_a119cb2938bbc11c25ebd4fb824782a72_a119cb2938bbc11c25ebd4fb824782a72}{02447} \textcolor{keywordtype}{void} \hyperlink{classaed2_1_1map_a119cb2938bbc11c25ebd4fb824782a72_a119cb2938bbc11c25ebd4fb824782a72}{swap}(\hyperlink{classaed2_1_1map}{map<K, V, C>}& m1, \hyperlink{classaed2_1_1map}{map<K, V, C>}& m2) \{
+02448     m1.swap(m2);
+02449 \}
+02450 \}
+02451 
+02452 \textcolor{preprocessor}{#endif }\textcolor{comment}{/* MAP\_H\_ */}\textcolor{preprocessor}{}
+\end{DoxyCode}
