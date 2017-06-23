@@ -569,6 +569,7 @@
  * primeros(s) \EQUIV \IF vacia?(s) \THEN <> \ELSE \PI1(prim(s)) \BULLET \primeros(fin(s)) \FI
  * \endparblock
  *
+ *   \\ ** Auxiliares para pre y post ** //
  * \par HastaElem
  * \parblock
  * Devuelve una secuencia ordenada con elementos del diccionario hasta el elemento e, no inclusive.
@@ -602,6 +603,57 @@
  * \endparblock
  *
  *
+ *    \\ ** Proposiciones para Rep y Abs ** //
+ *
+ * \par headerValido
+ * \parblock
+ * El nodo header no tiene valor. Su padre es la raíz, de color negro, y sus hijos derecho e izquierdo
+ * son el mayor y el menor valor del arbol respectivamente.\n
+ * e.header.color == Header \LAND nothing?(e.header.value) \LAND e.header.parent.color == Black 
+ * \LAND completar
+ * \endparblock
+ *
+ *
+ * \par nodosInternosValidos
+ * \parblock
+ * Para cada nodo interno, sus ramas descendientes tienen la misma cantidad de nodos negros, y
+ * y el subarbol que tiene como raiz ese nodo cumple el invariante de Arbol binario de busqueda.
+ * Si es rojo, su o sus hijos son negros.
+ * (\FORALL n: Node) NodoInterno(n, e.header) \IMPLIES ((n.child[0] = NULL \LOR n.chiild[0].color = Black) 
+ * \LAND (n.child[1] = NULL \LOR n.chiild[1].color = Black) 
+ * \LAND nodosNegros(n.child[0]) = nodosNegros(n.child[1]) \LAND arbolBinarioDeBusqueda(n))
+ * \endparblock
+ *
+ * 
+ *
+ *
+ * \par arbolBinarioDeBusqueda
+ * Todos los nodos de la rama izquierda de n tienen valor menor al de n y todos los de la derecha, mayor.
+ * ((\FORALL n':Node) (NodoHijo(n', n) \LAND NodoHijo(n', n.child[0])) \IMPLIES 
+ * n'.value.clave < n.value.clave ) \LAND ((\FORALL n':Node) (NodoHijo(n', n) \LAND NodoHijo(n', n.child[1]))
+ * \IMPLIES n'.value.clave > n.value.clave )
+ *
+ *
+ * \par nodosNegros
+ * \parblock
+ *
+ * \axioma{nodosNegros} : Node \TO int\n
+ * Devuelve la cantidad de nodos negros en un subarbol.
+ * nodosNegros(n) \EQUIV \IF n = NULL \LOR_L n.color = Red \THEN 0 \ELSE 1 \FI + nodosNegros(n.child[0])
+ * + nodosNegros(n.child[1])
+ * \endparblock
+ *
+ *    \\ ** Auxiliares para Rep y Abs ** //
+ *
+ *\par nodoInterno
+ *\parblock
+ * Devuelve true si el n1 es hijo de n2 en la estructura.
+ *
+ * \axioma{nodoHijo} : Node n1 x Node n2 \TO bool\n
+ * nodoHijo(n, h) \EQUIV \LNOT nothing?(n.value) \LAND_L (n.parent == e.header \LOR nodoHijo(*n.parent, e))
+ * \endparblock
+ *
+ *
  *\par minimo
  *\parblock
  * Devuelve el elemento del diccionario con la menor clave
@@ -612,9 +664,22 @@
  * \par minimoAux
  * \parblock
  * \axioma{mínimoAux}: Conj(\ALPHA, \BETA) x (\ALPHA, \BETA) \TO (\ALPHA, \BETA)\n
- * minimoAux(claves, e) \EQUIV \IF \# claves = 0 \THEN e \ELSE minimoAux(sinUno(claves), max(e, dameUno(claves))) \FI
+ * minimoAux(claves, e) \EQUIV \IF \# claves = 0 \THEN e \ELSE minimoAux(sinUno(claves), min(e, dameUno(claves))) \FI
  * \endparblock
  *
+ *
+ *\par maximo
+ *\parblock
+ * Devuelve el elemento del diccionario con la menor clave
+ * \axioma{maximo}: Conj(\ALPHA, \BETA) \TO (\ALPHA, \BETA)\n
+ * maximo(claves) \EQUIV maximoAux(claves, dameUno(claves))
+ * \endparblock
+ *
+ * \par maximoAux
+ * \parblock
+ * \axioma{maximoAux}: Conj(\ALPHA, \BETA) x (\ALPHA, \BETA) \TO (\ALPHA, \BETA)\n
+ * maximoAux(claves, e) \EQUIV \IF \# claves = 0 \THEN e \ELSE minimoAux(sinUno(claves), max(e, dameUno(claves))) \FI
+ * \endparblock
  **/
 #ifndef MAP_H_
 #define MAP_H_
@@ -1052,9 +1117,9 @@ public:
     const_iterator find(const Key& key) const {
         std::pair<const Node*, const Node*> res = bounds(key);
     	if (res.first == res.second)
-            return iterator(const_cast<Node*>(res.first));
+            return const_iterator(res.first);
         else
-            return iterator(const_cast<Node*>(&header));
+            return end();
     }
 
     /**
@@ -1255,6 +1320,10 @@ public:
      * \remark Esta función es similar al operator[], pero tiene dos ventajas y una desventaja.
      * Las ventajas es que 1. se puede indicar un \P{hint} para la búsqueda y 2. no es necesario que
      * \T{Meaning} tenga constructor sin parámetros.  La desventaja es que la notación no es tan bonita.
+     * 
+	 * Busca el valor de manera similar al operator[]
+	 * Si lo encuentra, borra el elemento encontrado.
+	 * Inserta un nuevo valor llamando a insert_rapido, con la seguridad de que it esta correctamente ubicado.
      */
     iterator insert_or_assign(const_iterator hint, const value_type& value) {
         const_iterator indice = hint;
@@ -1263,12 +1332,9 @@ public:
             it.n = const_cast<Node*>(hint.n);
         else
             it = lower_bound(value.first);
-        if (it.n->is_header() || !eq(it.n->key(), value.first))
-            it = insert(it, value);
-        else {
+        if (not it.n->is_header() && eq(it.n->key(), value.first))
             it = erase(it);
-            it = insert(it, value);
-        }
+        it = insert_rapido(it, value);
         return it;
     }
 
@@ -1289,7 +1355,7 @@ public:
      			 sin usar res como pos}.
      *
      * \pre \aedpre{this \IGOBS d_0 \LAND HaySiguiente?(pos)}
-     * \post \aedpost{res \IGOBS EliminarSiguiente(pos) \LAND this \IGOBS borrar(pos.key (chequear), this)}
+     * \post \aedpost{res \IGOBS Avanzar(pos) \LAND this \IGOBS borrar(pos.key (chequear), this)}
      *
      * \complexity{
      * - Peor caso: \O(\DEL(\P{*pos}) + \LOG(\SIZE(\P{*this})))
@@ -1851,7 +1917,7 @@ public:
          * \par Función de abstracción
          *
          * abs_iter: puntero(Node) n \TO IteradorBidireccional(Diccionario(\T{Key}, \T{Meaning}), tupla(\T{Key}, \T{Meaning}))  {rep_iter(n)}\n
-         * abs_iter(n) \EQUIV completar
+         * abs_iter(n) \EQUIV it: IteradorBidireccional(\ALPHA) / Siguientes(it) \IGOBS COMPLETAR \LAND Anteriores(it) \IGOBS COMPLETAR
          *
          * Nota: se puede usar `d` para referirse al valor computacional del diccionario definido desde la cabecera (como en el constructor).
          *
@@ -2111,6 +2177,18 @@ private:
         }
 
         //@}
+        /**
+        * COMPLETAR COMPLEJIDAD
+		* La funcion inmediato devuelve el predecesor con dir = 0 y el sucesor inmediato dir = 1.
+		* En el primer caso se verifica si this esta parado en header, ya que para buscar el 
+		* predecesor en ese caso debe simplemente ir a su hijo derecho.
+		* Si no, this esta sobre un nodo interno y quedan dos casos:
+		* Si el child[dir] de this existe, el inmediato es el ultimo child[1-dir] de este.
+		* Si no, el inmediato se encuentra con un nodo indice que sube hacia el header hasta encontrarse el primer 
+		* nodo en el que el indice sea su child[1-dir].
+		* Notar que esta funcion incluye el caso en el inmediato es el header.
+
+        **/
 
         const Node* inmediato(int dir) const {
             const Node* res = this;
@@ -2180,13 +2258,14 @@ private:
      * \par Invariante de representacion
 	 * \parblock
 	 * rep: map \TO bool\n
-	 * rep(m) \EQUIV completar
+	 * rep(m) \EQUIV headerValido \LAND nodosInternosValidos
 	 * \endparblock
 	 *
 	 * \par Función de abstracción
 	 * \parblock
 	 * abs: map m \TO Diccionario(\T{Key}, \T{Meaning})  {rep(n)}\n
-	 * abs(m) \EQUIV completar
+	 * abs(m) \EQUIV d: Diccionario(\T{Key}, \T{Meaning}) / (\FORALL a: \T{Key}) def?(a,m) \IFF
+	 * esta?(a, primeros(DiccASecuencia(m))) \LAND_L def?(a, m) \IMPLIES obtener(a, m) \IGOBS EncontrarValor(m)
 	 * \endparblock
      */
     //////////////////////////////////////////////////////////////////////////////////////////////////////
