@@ -574,6 +574,7 @@
  * \par DiccSecu
  * \parblock
  * Devuelve una secuencia ordenada con elementos del diccionario.
+ *
  * \axioma{DiccSecu}: Conj(\ALPHA, \BETA) \TO secu(\ALPHA, \BETA)\n
  * DiccSecu(elems) \EQUIV \IF \EMPTYSET ?(elems) \THEN < > \ELSE DiccSecu(elems - minimo(elems)) \BOTTOM
  * dameUno(elems) \FI
@@ -583,6 +584,7 @@
  * \par MenorQue
  * \parblock
  * Devuelve true si y solo si m1 es lexicograficamente menor que m2.
+ *
  * \axioma{MenorQue}: Dicc(\ALPHA, \BETA) d1 x Dicc(\ALPHA, \BETA) d2 \TO bool\n
  * MenorQue(d1, d2) \EQUIV compararClaves(claves(d1), claves(d2))
  * \endparblock
@@ -591,18 +593,19 @@
  * \par compararElems
  * \parblock
  * \axioma{compararElems}: Conj(\ALPHA, \BETA) cs1 x Conj(\ALPHA, \BETA) cs2 \TO bool\n
- * compararElems(cs1, cs2) \EQUIV \IF \# cs1 == 0 \THEN true \ELSE \IF (\# cs2 == 0 \LOR
+ * compararElems(cs1, cs2) \EQUIV \IF \# cs1 = 0 \THEN true \ELSE \IF (\# cs2 = 0 \LOR
  * \PI1(minimo(cs1)) \GT \PI1(minimo(cs2)) || \PI2(minimo(cs1)) \GT \PI2(minimo(cs2))) \THEN false \FI
  * \ELSE compararElems(cs1 - {minimo}, cs2 - {minimo}) \FI
  * \endparblock
  *
  *
- *    \\ ** Proposiciones para Rep y Abs ** //
+ *   Proposiciones para Rep y Abs
  *
  * \par headerValido
  * \parblock
  * El nodo header no tiene valor. Su padre es la raíz, de color negro, y sus hijos derecho e izquierdo
  * son el mayor y el menor valor del arbol respectivamente.\n
+ *
  * e.header.color == Header \LAND nothing?(e.header.value) \LAND e.header.parent.color == Black 
  * \LAND ((e.count == 0 \LAND e.header.child[0] == header) \LOR (e.count > 0 \IMPLIES_L *e.header.child[0] = minimo(MapAConjunto(e))))
  * \LAND ((e.count == 0 \LAND e.header.child[1] == header) \LOR (e.count > 0 \IMPLIES_L *e.header.child[1] = maximo(MapAConjunto(e))))
@@ -614,17 +617,19 @@
  * Para cada nodo interno, sus ramas descendientes tienen la misma cantidad de nodos negros, y
  * y el subarbol que tiene como raiz ese nodo cumple el invariante de Arbol binario de busqueda.
  * Si es rojo, su o sus hijos son negros.
- * (\FORALL n: Node) NodoInterno(n, e.header) \IMPLIES ((get(n.child[0]) = 0 \LOR n.chiild[0].color = Black) 
+ *
+ * (\FORALL n: Node) NodoHijo(n, e.header) \IMPLIES ((get(n.child[0]) = 0 \LOR n.chiild[0].color = Black) 
  * \LAND (get(n.child[1]) = 0 \LOR n.chiild[1].color = Black) 
  * \LAND nodosNegros(n.child[0]) = nodosNegros(n.child[1]) \LAND arbolBinarioDeBusqueda(n))
  * \endparblock
  *
- *
  * \par arbolBinarioDeBusqueda
+ * \parblock
  * Todos los nodos de la rama izquierda de n tienen valor menor al de n y todos los de la derecha, mayor.
  * ((\FORALL n':Node) (NodoHijo(n', n) \LAND NodoHijo(n', n.child[0])) \IMPLIES 
  * n'.value.clave < n.value.clave ) \LAND ((\FORALL n':Node) (NodoHijo(n', n) \LAND NodoHijo(n', n.child[1]))
  * \IMPLIES n'.value.clave > n.value.clave )
+ * \endparblock
  *
  * \par nodosNegros
  * \parblock
@@ -635,6 +640,7 @@
  * + nodosNegros(n.child[1])
  * \endparblock
  *
+ *     Auxiliares para Rep y Abs
  *
  * \par nodoHijo
  * \parblock
@@ -645,11 +651,20 @@
  * \endparblock
  *
  *
+ * \par llegarAHeader
+ * \parblock
+ * Dado un puntero nodo (de un arbol), devuelve un puntero al header.
+ *
+ * \tadAxioma{llegarAlHeader}: puntero(Node) \TO puntero(Node){get(n) \NEQ 0}\n
+ * \llegarAlHeader(n) \EQUIV \IF \PI3(*n) = Header \THEN n \ELSE llegarAlHeader(\PI2(*n)) \FI
+ *
+ *
+ * 
  * \par MapAConjunto
- * \parblock Crea un conjunto con los elementos de map.
+ * \parblock Crea un conjunto con los elementos de map.\n
  *
  * \axioma{MapAConjunto}: Node n \TO Conj(\ALPHA)\n
- * MapAConjunto(n) \EQUIV \IF n.color = Header \THEN MapAConjunto(\PI2(h)) \ELSE {*n} \CUP \IF
+ * MapAConjunto(n) \EQUIV \IF n.color = Header \THEN MapAConjunto(* \PI2(n)) \ELSE {*n} \CUP \IF
  * get(n.child[0]) \NEQ 0 \THEN MapAConjunto(*n.child[0]) \FI \CUP \IF
  * get(n.child[1]) \NEQ 0 \THEN MapAConjunto(*n.child[1]) \FI \FI
  * \endparblock
@@ -659,14 +674,14 @@
  * \parblock 
  * 
  * \axioma{EncontrarValor} : Puntero(Node) n x \ALPHA key \TO \BETA {get(n) \NEQ 0}\n
- * EncontrarValor(n, key) \EQUIV \IF \PI1(*n) = key \THEN \PI2 \ELSE \IF \PI1(*n) < key \THEN
+ * EncontrarValor(n, key) \EQUIV \IF \PI1(*n) = key \THEN \PI2(*n) \ELSE \IF \PI1(*n) < key \THEN
  * EncontrarValor(n.child[1], key) \ELSE EncontrarValor(n.child[0]) \FI \FI
  * \endparblock
  *
  *
  * \par minimo
  * \parblock
- * Devuelve el elemento del diccionario con la menor clave
+ * Devuelve el elemento del diccionario con la menor clave \n
  * \axioma{minimo}: Conj(\ALPHA, \BETA) \TO (\ALPHA, \BETA) {\LNOT \EMPTYSET?(elems)}\n
  * minimo(elems) \EQUIV minimoAux(elems, \PI1(dameUno(elems)))
  * \endparblock
@@ -680,9 +695,9 @@
  * \endparblock
  *
  *
-  *\par maximo
- *\parblock
- * Devuelve el elemento del diccionario con la menor clave
+ * \par maximo
+ * \parblock
+ * Devuelve el elemento del diccionario con la menor clave\n
  * \axioma{maximo}: Conj(\ALPHA, \BETA) \TO (\ALPHA, \BETA) {\LNOT \EMPTYSET?(elems)}\n
  * maximo(elems) \EQUIV maximoAux(elems, \PI1(dameUno(elems)))
  * \endparblock
@@ -1373,10 +1388,10 @@ public:
      * - Peor caso: \O(\DEL(\P{*pos}) + \LOG(\SIZE(\P{*this})))
      * - Peor caso amortizado: \O(\DEL(\P{*pos})
      *
-     * Primero se fija si pos apunta al primero o al ultimo y en tal caso modifica el hijo correspondiente del
-     * header para que no quede apuntando a un nodo inválido (porque lo vamos a borrar).
-     * Luego, podemos dividir al erase en tres casos.
-     * Cuando el hijo derecho del nodo a eliminar es null, entonces transplantamos a pos con su hijo izquierdo.
+     * Primero se fija si pos apunta al primero o al ultimo y modifica el hijo correspondiente del
+     * header para que no quede apuntando a un nodo inválido.
+     * Luego, se divide en tres casos.
+     * Cuando el hijo derecho del nodo a eliminar es null,transplanta a pos con su hijo izquierdo.
      * Lo análogo con el hijo izquierdo, esta vez con la certeza de que el hijo derecho no es null.
      * Y el caso donde ninguno de los dos es null, se encuentra el sucesor del nodo a borrar, se transplantan los valores
      * y se elimina el sucesor.
@@ -1924,12 +1939,18 @@ public:
          * \par Invariante de representación
          *
          * rep_iter: puntero(Node) \TO bool\n
-         * rep_iter(n) \EQUIV
+         * rep_iter(n) \EQUIV headerValido(*llegarAlHeader(n)) \LAND nodosInternosValidos(*llegarAlHeader(n)) \LAND
+         * arbolBinarioDeBusqueda(\(PI2*llegarAlHeader(n)))
+         * rep_iter(n) \EQUIV 1 \LAND 2 \LAND 3 \LAND 4
          *
+         * 1) El nodo pertenece arbol
+         * 2) El arbol es abb
+         * 3) Es Roji-negro válido
+         * 4) Los hijos del header apuntan al mínimo y al máximo.
          * \par Función de abstracción
          *
          * abs_iter: puntero(Node) n \TO IteradorBidireccional(Diccionario(\T{Key}, \T{Meaning}), tupla(\T{Key}, \T{Meaning}))  {rep_iter(n)}\n
-         * abs_iter(n) \EQUIV it: IteradorBidireccional(\ALPHA) / Siguientes(it) \IGOBS COMPLETAR \LAND Anteriores(it) \IGOBS COMPLETAR
+         * abs_iter(n) \EQUIV it: IteradorBidireccional(\ALPHA) / Siguientes(it) \IGOBS DiccSecu(MapAConjunto(d)) \LAND Anteriores(it) \IGOBS 
          *
          * Nota: se puede usar `d` para referirse al valor computacional del diccionario definido desde la cabecera (como en el constructor).
          *
