@@ -426,6 +426,7 @@
  * \b generadores \n
  * - set: Nat \TIMES \ALPHA \TO puntero(\ALPHA)
  *
+ *
  * Vale remarcar que dicho TAD no es más que un TAD sintáctico, cuyo único propósito es almacenar la información de un puntero.  Más aun, cuando
  * \ALPHA sea de tipo tupla, vamos a suponer la existencia de la función -> que permite acceder a los campos de la tupla apuntada.
  * Luego, la función term queda definida como:
@@ -570,20 +571,12 @@
  * \endparblock
  *
  *   \\ ** Auxiliares para pre y post ** //
- * \par HastaElem
+ * \par DiccSecu
  * \parblock
- * Devuelve una secuencia ordenada con elementos del diccionario hasta el elemento e, no inclusive.
- * \axioma{HastaElem}: Conj(\ALPHA, \BETA) x \TO secu(\ALPHA, \BETA)\n
- * HastaElem(claves, e) \EQUIV \IF minimo(d) = e \THEN <> \ELSE HastaElem(claves - {minimo}, e)
- * \endparblock
- *
- *
- *
- * \par DesdeElem
- * \parblock
- * Devuelve una secuencia ordenada con elementos del diccionario desde el elemento e inclusive.
- * \axioma{DesdeElem}: Conj(\ALPHA) x \ALPHA \TO secu(\ALPHA, \BETA)\n
- * DesdeElem(claves, e) \EQUIV \IF minimo(d) < e \THEN <> \ELSE minimo(d) \BULLET DesdeElem(claves - {minimo}, e)
+ * Devuelve una secuencia ordenada con elementos del diccionario.
+ * \axioma{DiccSecu}: Conj(\ALPHA, \BETA) \TO secu(\ALPHA, \BETA)\n
+ * DiccSecu(elems) \EQUIV \IF \EMPTYSET ?(elems) \THEN < > \ELSE DiccSecu(elems - minimo(elems)) \BOTTOM
+ * dameUno(elems) \FI
  * \endparblock
  *
  *
@@ -595,11 +588,12 @@
  * \endparblock
  *
  *
- * \par compararClaves
+ * \par compararElems
  * \parblock
- * \axioma{compararClaves}: Conj() cs1 x Conj() cs2 \TO bool\n
- * compararClaves(cs1, cs2) \EQUIV \IF \# cs1 == 0 \THEN true \ELSE \IF (\# cs2 == 0 \LOR
- * minimo(cs1) \GT minimo(cs2) ) \THEN false \FI ELSE compararClaves(cs1 - {minimo}, cs2 - {minimo}) \FI
+ * \axioma{compararElems}: Conj(\ALPHA, \BETA) cs1 x Conj(\ALPHA, \BETA) cs2 \TO bool\n
+ * compararElems(cs1, cs2) \EQUIV \IF \# cs1 == 0 \THEN true \ELSE \IF (\# cs2 == 0 \LOR
+ * \PI1(minimo(cs1)) \GT \PI1(minimo(cs2)) || \PI2(minimo(cs1)) \GT \PI2(minimo(cs2))) \THEN false \FI
+ * \ELSE compararElems(cs1 - {minimo}, cs2 - {minimo}) \FI
  * \endparblock
  *
  *
@@ -610,7 +604,8 @@
  * El nodo header no tiene valor. Su padre es la raíz, de color negro, y sus hijos derecho e izquierdo
  * son el mayor y el menor valor del arbol respectivamente.\n
  * e.header.color == Header \LAND nothing?(e.header.value) \LAND e.header.parent.color == Black 
- * \LAND completar
+ * \LAND ((e.count == 0 \LAND e.header.child[0] == header) \LOR (e.count > 0 \IMPLIES_L *e.header.child[0] = minimo(MapAConjunto(e))))
+ * \LAND ((e.count == 0 \LAND e.header.child[1] == header) \LOR (e.count > 0 \IMPLIES_L *e.header.child[1] = maximo(MapAConjunto(e))))
  * \endparblock
  *
  *
@@ -624,15 +619,12 @@
  * \LAND nodosNegros(n.child[0]) = nodosNegros(n.child[1]) \LAND arbolBinarioDeBusqueda(n))
  * \endparblock
  *
- * 
- * \
  *
  * \par arbolBinarioDeBusqueda
  * Todos los nodos de la rama izquierda de n tienen valor menor al de n y todos los de la derecha, mayor.
  * ((\FORALL n':Node) (NodoHijo(n', n) \LAND NodoHijo(n', n.child[0])) \IMPLIES 
  * n'.value.clave < n.value.clave ) \LAND ((\FORALL n':Node) (NodoHijo(n', n) \LAND NodoHijo(n', n.child[1]))
  * \IMPLIES n'.value.clave > n.value.clave )
- *
  *
  * \par nodosNegros
  * \parblock
@@ -643,10 +635,9 @@
  * + nodosNegros(n.child[1])
  * \endparblock
  *
- *    \\ ** Auxiliares para Rep y Abs ** //
  *
- *\par nodoHijo
- *\parblock
+ * \par nodoHijo
+ * \parblock
  * Devuelve true si el n1 es hijo de n2 en la estructura.
  *
  * \axioma{nodoHijo} : Node n1 x Node n2 \TO bool\n
@@ -670,33 +661,37 @@
  * \axioma{EncontrarValor} : Puntero(Node) n x \ALPHA key \TO \BETA {get(n) \NEQ 0}\n
  * EncontrarValor(n, key) \EQUIV \IF \PI1(*n) = key \THEN \PI2 \ELSE \IF \PI1(*n) < key \THEN
  * EncontrarValor(n.child[1], key) \ELSE EncontrarValor(n.child[0]) \FI \FI
- *
- *
- *\par minimo
- *\parblock
- * Devuelve el elemento del diccionario con la menor clave
- * \axioma{minimo}: Conj(\ALPHA, \BETA) \TO (\ALPHA, \BETA)\n
- * minimo(claves) \EQUIV minimoAux(claves, dameUno(claves))
  * \endparblock
+ *
+ *
+ * \par minimo
+ * \parblock
+ * Devuelve el elemento del diccionario con la menor clave
+ * \axioma{minimo}: Conj(\ALPHA, \BETA) \TO (\ALPHA, \BETA) {\LNOT \EMPTYSET?(elems)}\n
+ * minimo(elems) \EQUIV minimoAux(elems, \PI1(dameUno(elems)))
+ * \endparblock
+ *
  *
  * \par minimoAux
  * \parblock
- * \axioma{mínimoAux}: Conj(\ALPHA, \BETA) x (\ALPHA, \BETA) \TO (\ALPHA, \BETA)\n
- * minimoAux(claves, e) \EQUIV \IF \# claves = 0 \THEN e \ELSE minimoAux(sinUno(claves), min(e, dameUno(claves))) \FI
+ * \axioma{minimoAux}: Conj(\ALPHA, \BETA) x (\ALPHA, \BETA) \TO (\ALPHA, \BETA)\n
+ * minimoAux(elems, e) \EQUIV \IF \#elems = 0 \THEN e \ELSE \IF e > \PI1(dameUno(elems)) \THEN minimoAux(sinUno(elems), e)
+ * \ELSE minimoAux(sinUno(elems), dameUno(elems)) \FI
  * \endparblock
  *
  *
- *\par maximo
+  *\par maximo
  *\parblock
  * Devuelve el elemento del diccionario con la menor clave
- * \axioma{maximo}: Conj(\ALPHA, \BETA) \TO (\ALPHA, \BETA)\n
- * maximo(claves) \EQUIV maximoAux(claves, dameUno(claves))
+ * \axioma{maximo}: Conj(\ALPHA, \BETA) \TO (\ALPHA, \BETA) {\LNOT \EMPTYSET?(elems)}\n
+ * maximo(elems) \EQUIV maximoAux(elems, \PI1(dameUno(elems)))
  * \endparblock
  *
  * \par maximoAux
  * \parblock
  * \axioma{maximoAux}: Conj(\ALPHA, \BETA) x (\ALPHA, \BETA) \TO (\ALPHA, \BETA)\n
- * maximoAux(claves, e) \EQUIV \IF \# claves = 0 \THEN e \ELSE minimoAux(sinUno(claves), max(e, dameUno(claves))) \FI
+ * maximoAux(elems, e) \EQUIV \IF \#elems = 0 \THEN e \ELSE \IF e > \PI1(dameUno(elems)) \THEN maximoAux(sinUno(elems), e)
+ * \ELSE maximoAux(sinUno(elems), dameUno(elems)) \FI
  * \endparblock
  **/
 #ifndef MAP_H_
@@ -1383,31 +1378,29 @@ public:
      * Luego, podemos dividir al erase en tres casos.
      * Cuando el hijo derecho del nodo a eliminar es null, entonces transplantamos a pos con su hijo izquierdo.
      * Lo análogo con el hijo izquierdo, esta vez con la certeza de que el hijo derecho no es null.
-     * Y el caso donde ninguno de los dos es null.
-     *
+     * Y el caso donde ninguno de los dos es null, se encuentra el sucesor del nodo a borrar, se transplantan los valores
+     * y se elimina el sucesor.
+     * Se decrementa la variable count del arbol.
+     * Por ultimo, en el caso en que el color original del nodo a borrar fuese negro y el nodo x (nodo transplantado con z,
+     * nodo a borrar) distinto de null se llama a erase_fixup, para reorganizar el arbol, ya que en el caso en que el nodo
+     * fuese rojo no lo desordenaria.
+     * Borramos la memoria reservada para el nodo a eliminar.
      */
     iterator erase(const_iterator pos) {
         Node* z = const_cast<Node*>(pos.n);
     	Node* y = z;
     	Node* x;
-        if (pos.n == header.child[0]){
-            if (count == 1)
-                header.child[0] = &header;
-            else {
-                header.child[0] = const_cast<Node *>((++pos).n);
-                --pos;
-            }
-        }
-        if (pos.n == header.child[1]) {
-            if (count == 1)
-                header.child[1] = &header;
-            else {
-                header.child[1] = const_cast<Node *>((--pos).n);
-                ++pos;
+        for (int i = 0; i < 2; i++) {
+            if (pos.n == header.child[i]) {
+                if (count == 1)
+                    header.child[i] = &header;
+                else {
+                    header.child[i] = const_cast<Node *>(pos.n->inmediato(1-i));
+                }
             }
         }
         iterator res = iterator(const_cast<Node*>((++pos).n));
-    	Color y_colorcito = y->color;
+    	Color y_color_original = y->color;
     	if (z->child[0] == nullptr){
    			x = z->child[1];
    			transplant(z, z->child[1]);
@@ -1415,12 +1408,10 @@ public:
     		x = z->child[0];
     		transplant(z, z->child[0]);
     	} else {
-            y = header.child[0];
-            y_colorcito = y->color;
+            y = z->child[1]->sub_minimo();
+            y_color_original = y->color;
             x = y->child[1];
-            if (y->parent == z)
-                x->parent = y;
-            else {
+            if (y->parent != z) {
                 transplant(y, y->child[1]);
                 y->child[1] = z->child[1];
                 y->child[1]->parent = y;
@@ -1431,7 +1422,7 @@ public:
             y->color = z->color;
         }
         count--;
-        if (y_colorcito == Color::Black && x != nullptr)
+        if (y_color_original == Color::Black && x != nullptr)
             erase_fixup(iterator(x));
         delete z;
     	return res;
@@ -1933,7 +1924,7 @@ public:
          * \par Invariante de representación
          *
          * rep_iter: puntero(Node) \TO bool\n
-         * rep_iter(n) \EQUIV completar
+         * rep_iter(n) \EQUIV
          *
          * \par Función de abstracción
          *
@@ -2199,7 +2190,6 @@ private:
 
         //@}
         /**
-         * COMPLETAR COMPLEJIDAD
 		 * La funcion inmediato devuelve el predecesor con dir = 0 y el sucesor inmediato dir = 1.
 		 * En el primer caso se verifica si this esta parado en header, ya que para buscar el
 		 * predecesor en ese caso debe simplemente ir a su hijo derecho.
@@ -2233,7 +2223,16 @@ private:
             }
             return res;
         }
-#ifdef DEBUG
+
+        /**
+         * Encuentra el minimo nodo en un "sub arbol" a partir de un nodo dado.
+         */
+        Node* sub_minimo() const {
+            Node* res = const_cast<Node*>(this);
+            while (res->child[0] != nullptr)
+                res = res->child[0];
+            return res;
+        }
 
         /**
          * @brief imprime el subarbol apuntado por this
@@ -2245,8 +2244,6 @@ private:
         	if(child[0]) child[0]->print(tab + 2);
         	if(child[1]) child[1]->print(tab + 2);
         }
-
-#endif
     };
 
     /**

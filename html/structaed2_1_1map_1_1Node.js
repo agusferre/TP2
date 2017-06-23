@@ -8,6 +8,8 @@ var structaed2_1_1map_1_1Node =
     [ "value", "structaed2_1_1map_1_1Node_ab66a33cedd0ba5cc20e366d4769184ae.html#ab66a33cedd0ba5cc20e366d4769184ae", null ],
     [ "key", "structaed2_1_1map_1_1Node_a08fd071b9bba8048526b8da7e8d73831.html#a08fd071b9bba8048526b8da7e8d73831", null ],
     [ "inmediato", "structaed2_1_1map_1_1Node_af812885685c8c3285136d444d5169b28.html#af812885685c8c3285136d444d5169b28", null ],
+    [ "sub_minimo", "structaed2_1_1map_1_1Node_a0457bc1ad6576f02057d9e9996cc3e5d.html#a0457bc1ad6576f02057d9e9996cc3e5d", null ],
+    [ "print", "structaed2_1_1map_1_1Node_a26f1400bc53e5ac9a5b3ad6250a4f832.html#a26f1400bc53e5ac9a5b3ad6250a4f832", null ],
     [ "child", "structaed2_1_1map_1_1Node_a7d65c374c73c443a46d8fc224aff9e82.html#a7d65c374c73c443a46d8fc224aff9e82", null ],
     [ "parent", "structaed2_1_1map_1_1Node_ab6a5f9e471b311755e4a56834086cb90.html#ab6a5f9e471b311755e4a56834086cb90", null ],
     [ "color", "structaed2_1_1map_1_1Node_a58dd9993fee8ee3eaa5716b72a3eca47.html#a58dd9993fee8ee3eaa5716b72a3eca47", null ]

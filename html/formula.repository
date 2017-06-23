@@ -26,7 +26,9 @@
 \form#25:$\rangle$
 \form#26:$\langle$
 \form#27:$\lor_{\rm L}$
-\form#28:$\cup$
-\form#29:$\_linebr eq$
-\form#30:$\shortmid$
-\form#31:$\in$
+\form#28:$\emptyset$
+\form#29:$\Rightarrow_{\rm L}$
+\form#30:$\cup$
+\form#31:$\_linebr eq$
+\form#32:$\shortmid$
+\form#33:$\in$

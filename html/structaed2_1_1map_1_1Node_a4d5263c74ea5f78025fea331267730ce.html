@@ -82,6 +82,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </script>
 <div id="doc-content">
 <div class="contents">
+<a class="anchor" id="a4d5263c74ea5f78025fea331267730ce"></a><!-- doxytag: member="aed2::map::Node::inmediato" ref="a4d5263c74ea5f78025fea331267730ce" args="(int dir) const " -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structaed2_1_1map_1_1Node.html">Node</a>* <a class="el" href="classaed2_1_1map.html">aed2::map</a>&lt; Key, Meaning, Compare &gt;::<a class="el" href="structaed2_1_1map_1_1Node_a4d5263c74ea5f78025fea331267730ce.html#a4d5263c74ea5f78025fea331267730ce">Node::inmediato</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dir</em></td><td>)</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>COMPLETAR COMPLEJIDAD La funcion inmediato devuelve el predecesor con dir = 0 y el sucesor inmediato dir = 1. En el primer caso se verifica si this esta parado en header, ya que para buscar el predecesor en ese caso debe simplemente ir a su hijo derecho. Si no, this esta sobre un nodo interno y quedan dos casos: Si el child[dir] de this existe, el inmediato es el ultimo child[1-dir] de este. Si no, el inmediato se encuentra con un nodo indice que sube hacia el header hasta encontrarse el primer nodo en el que el indice sea su child[1-dir]. Notar que esta funcion incluye el caso en el inmediato es el header. </p>
+
+<p>Definición en la línea <a class="el" href="map_8h_source.html#l02213">2213</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div>
 <!-- window showing the filter options -->
@@ -89,7 +111,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Amigas</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Amigas</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -100,11 +122,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 
   <div id="nav-path" class="navpath">
     <ul>
-      <li class="navelem"><b>aed2</b>      </li>
+      <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a>      </li>
       <li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a>      </li>
       <li class="navelem"><a class="el" href="structaed2_1_1map_1_1Node.html">Node</a>      </li>
 
-    <li class="footer">Generado el Viernes, 23 de Junio de 2017 02:18:10 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 23 de Junio de 2017 12:29:29 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>
