@@ -303,7 +303,7 @@ Atributos privados</h2></td></tr>
 <dl class="section user"><dt>Invariante de representacion</dt><dd>rep: map <img class="formulaInl" alt="$\to$" src="form_4.png"/> bool<br />
 rep(m) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> headerValido <img class="formulaInl" alt="$\land$" src="form_16.png"/> nodosInternosValidos </dd></dl>
 <dl class="section user"><dt>Función de abstracción</dt><dd>abs: map m <img class="formulaInl" alt="$\to$" src="form_4.png"/> Diccionario(<span class="paramname">Key</span>, <span class="paramname">Meaning</span>) {rep(n)}<br />
-abs(m) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> d: Diccionario(<span class="paramname">Key</span>, <span class="paramname">Meaning</span>) / ( <img class="formulaInl" alt="$\forall$" src="form_18.png"/> a: <span class="paramname">Key</span>) def?(a,m) <img class="formulaInl" alt="$\Leftrightarrow$" src="form_20.png"/> esta?(a, primeros(DesdeElem(MapAConjunto(m)), ) <img class="formulaInl" alt="$\land_{\rm L}$" src="form_19.png"/> def?(a, m) <img class="formulaInl" alt="$\Rightarrow$" src="form_23.png"/> obtener(a, m) <img class="formulaInl" alt="$=_{obs}$" src="form_2.png"/> EncontrarValor(m) </dd></dl>
+abs(m) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> d: Diccionario(<span class="paramname">Key</span>, <span class="paramname">Meaning</span>) <img class="formulaInl" alt="$\shortmid$" src="form_30.png"/> ( <img class="formulaInl" alt="$\forall$" src="form_18.png"/> a: <span class="paramname">Key</span>) def?(a,m) <img class="formulaInl" alt="$\Leftrightarrow$" src="form_20.png"/> a <img class="formulaInl" alt="$\in$" src="form_31.png"/> MapAConjunto(m) <img class="formulaInl" alt="$\land_{\rm L}$" src="form_19.png"/> def?(a, m) <img class="formulaInl" alt="$\Rightarrow$" src="form_23.png"/> obtener(a, m) <img class="formulaInl" alt="$=_{obs}$" src="form_2.png"/> EncontrarValor(m) </dd></dl>
 </div></td></tr>
 <tr class="memitem:a0e5be36fae0693e4665bd2a615e7550a"><td class="memItemLeft" align="right" valign="top">Compare&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_a0e5be36fae0693e4665bd2a615e7550a.html#a0e5be36fae0693e4665bd2a615e7550a">lt</a></td></tr>
 <tr class="memdesc:a0e5be36fae0693e4665bd2a615e7550a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Orden total para comparar claves.  <a href="classaed2_1_1map_a0e5be36fae0693e4665bd2a615e7550a.html#a0e5be36fae0693e4665bd2a615e7550a">Más...</a><br /></td></tr>
@@ -381,7 +381,7 @@ class aed2::map&lt; Key, Meaning, Compare &gt;</h3>
 <dl class="section user"><dt>Se explica con</dt><dd>Diccionario(<span class="paramname">Key</span>, <span class="paramname">Meaning</span>) con parámetro formal <img class="formulaInl" alt="$&lt;$" src="form_0.png"/> = f.operator() para algún f de tipo <span class="paramname">Compare</span>.</dd></dl>
 <dl class="section attention"><dt>Atención</dt><dd>No tenemos forma en AED2 de decir que el parámetro formal se define en tiempo de ejecución, como ocurre en este caso. </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="map_8h_source.html#l00791">791</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="map_8h_source.html#l00801">801</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
 </div><hr/>La documentación para esta clase fue generada a partir del siguiente fichero:<ul>
 <li><a class="el" href="map_8h_source.html">map.h</a></li>
 </ul>
@@ -391,7 +391,7 @@ class aed2::map&lt; Key, Meaning, Compare &gt;</h3>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a></li><li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a></li>
-    <li class="footer">Generado el Viernes, 23 de Junio de 2017 12:12:02 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 23 de Junio de 2017 12:23:12 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
   </ul>

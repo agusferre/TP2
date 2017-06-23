@@ -146,8 +146,12 @@ Axiomas y proposiciones auxiliares</h1>
  nodoHijo(n, h) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> <img class="formulaInl" alt="$\lnot$" src="form_24.png"/> nothing?(n.value) <img class="formulaInl" alt="$\land_{\rm L}$" src="form_19.png"/> (n.parent = e.header <img class="formulaInl" alt="$\lor$" src="form_13.png"/> nodoHijo(*n.parent, e)) </p>
 </dd></dl>
 <dl class="section user"><dt>MapAConjunto</dt><dd><p class="startdd">Crea un conjunto con los elementos de map.</p>
-<p><span id="MapAConjunto">MapAConjunto</span>: Node n <img class="formulaInl" alt="$\to$" src="form_4.png"/> Conj( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>)<br />
- MapAConjunto(n) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> <b>if</b> n.color = Header <b>then</b> MapAConjunto((h)) <b>else</b> {*n}  <b>if</b> get(n.child[0])  0 THEN MapAConjunto(*n.child[0]) <b>fi</b>  <b>if</b> get(n.child[1])  0 THEN MapAConjunto(*n.child[1]) <b>fi</b> </p>
+<p class="enddd"><span id="MapAConjunto">MapAConjunto</span>: Node n <img class="formulaInl" alt="$\to$" src="form_4.png"/> Conj( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>)<br />
+ MapAConjunto(n) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> <b>if</b> n.color = Header <b>then</b> MapAConjunto((h)) <b>else</b> {*n} <img class="formulaInl" alt="$\cup$" src="form_28.png"/> <b>if</b> get(n.child[0]) <img class="formulaInl" alt="$\_linebr eq$" src="form_29.png"/> 0 <b>then</b> MapAConjunto(*n.child[0]) <b>fi</b> <img class="formulaInl" alt="$\cup$" src="form_28.png"/> <b>if</b> get(n.child[1]) <img class="formulaInl" alt="$\_linebr eq$" src="form_29.png"/> 0 <b>then</b> MapAConjunto(*n.child[1]) <b>fi</b> <b>fi</b> </p>
+</dd></dl>
+<dl class="section user"><dt>EncontrarValor</dt><dd><p class="startdd"></p>
+<p><span id="EncontrarValor">EncontrarValor</span> : Puntero(Node) n x <img class="formulaInl" alt="$\alpha$" src="form_5.png"/> key <img class="formulaInl" alt="$\to$" src="form_4.png"/> <img class="formulaInl" alt="$\beta$" src="form_10.png"/> {get(n) <img class="formulaInl" alt="$\_linebr eq$" src="form_29.png"/> 0}<br />
+ EncontrarValor(n, key) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> <b>if</b> <img class="formulaInl" alt="$\pi_1$" src="form_12.png"/>(*n) = key <b>then</b>  <b>else</b> <b>if</b> <img class="formulaInl" alt="$\pi_1$" src="form_12.png"/>(*n) &lt; key <b>then</b> EncontrarValor(n.child[1], key) <b>else</b> EncontrarValor(n.child[0]) <b>fi</b> <b>fi</b> </p>
 <p class="enddd"></p>
 </dd></dl>
 <dl class="section user"><dt>minimo</dt><dd>Devuelve el elemento del diccionario con la menor clave <span id="minimo">minimo</span>: Conj( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>) <img class="formulaInl" alt="$\to$" src="form_4.png"/> ( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>)<br />
@@ -163,7 +167,7 @@ Axiomas y proposiciones auxiliares</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generado el Viernes, 23 de Junio de 2017 12:12:01 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 23 de Junio de 2017 12:23:12 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
   </ul>

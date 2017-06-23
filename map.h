@@ -672,7 +672,6 @@
  * EncontrarValor(n.child[1], key) \ELSE EncontrarValor(n.child[0]) \FI \FI
  *
  *
- *
  *\par minimo
  *\parblock
  * Devuelve el elemento del diccionario con la menor clave
@@ -1041,7 +1040,7 @@ public:
      * que al estándar C++, fue incluida en el estándar C++11.  Antes era obligación
      * recurrir a la función find.
      * 
-     * La funcion tiene el  prerrequisito de tener definido un valor con clave = key, por lo que invoca
+     * La funcion tiene el prerrequisito de tener definido un valor con clave = key, por lo que invoca
      * directamente a find, sabiendo que este retornará un nodo interno con value. 
      */
     const Meaning& at(const Key& key) const {
@@ -1087,7 +1086,6 @@ public:
      * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}) + \a x) donde
      * - \a x = 1 si def?(\a self, \P{key}), y
      * - \a x = \a c en caso contrario.}
-     *
      *
      * La función primero verifica si el valor esta definido o no. Para esto usa la funcion lower_bound
      * y no find, ya que la primera nos sirve para insertar un valor en caso de que no este definido, y la segunda no.
@@ -1346,7 +1344,6 @@ public:
 	 * Inserta un nuevo valor llamando a insert_rapido, con la seguridad de que it esta correctamente ubicado.
      */
     iterator insert_or_assign(const_iterator hint, const value_type& value) {
-        const_iterator indice = hint;
         iterator it;
         if (hintValido(hint, value))
             it.n = const_cast<Node*>(hint.n);
@@ -1442,6 +1439,7 @@ public:
 
      /**
       *
+      *
       */
     void transplant(Node* u, Node* v){
     	if (u->parent->is_header())
@@ -1455,12 +1453,9 @@ public:
     }
 
     /**
-	
-
-	Completar especificacion coloquialmente
-
-
-    **/
+     *
+     *
+     */
     void erase_fixup(iterator it){
         Node* x = it.n;
         Node* w;
@@ -1522,6 +1517,8 @@ public:
      * \post \aedpost{\P{*this} \IGOBS vacio}
      *
      * \complexity{\O(\DEL(\P{*this}))}
+     *
+     * Mientras el arbol tenga elementos va eliminando el primero del mismo.
      */
     void clear() {
         while (not empty()) {
@@ -2202,18 +2199,23 @@ private:
 
         //@}
         /**
-        * COMPLETAR COMPLEJIDAD
-		* La funcion inmediato devuelve el predecesor con dir = 0 y el sucesor inmediato dir = 1.
-		* En el primer caso se verifica si this esta parado en header, ya que para buscar el 
-		* predecesor en ese caso debe simplemente ir a su hijo derecho.
-		* Si no, this esta sobre un nodo interno y quedan dos casos:
-		* Si el child[dir] de this existe, el inmediato es el ultimo child[1-dir] de este.
-		* Si no, el inmediato se encuentra con un nodo indice que sube hacia el header hasta encontrarse el primer 
-		* nodo en el que el indice sea su child[1-dir].
-		* Notar que esta funcion incluye el caso en el inmediato es el header.
-
-        **/
-
+         * COMPLETAR COMPLEJIDAD
+		 * La funcion inmediato devuelve el predecesor con dir = 0 y el sucesor inmediato dir = 1.
+		 * En el primer caso se verifica si this esta parado en header, ya que para buscar el
+		 * predecesor en ese caso debe simplemente ir a su hijo derecho.
+		 * Si no, this esta sobre un nodo interno y quedan dos casos:
+		 * Si el child[dir] de this existe, el inmediato es el ultimo child[1-dir] de este.
+		 * Si no, el inmediato se encuentra con un nodo indice que sube hacia el header hasta encontrarse el primer
+   		 * nodo en el que el indice sea su child[1-dir].
+ 		 * Notar que esta funcion incluye el caso en el inmediato es el header.
+         *
+         * \complexity{
+         * - Peor caso: \O(\LOG(\SIZE(this))) porque puede llegar a tener que subir hasta la raiz del arbol y eso en un
+         * red black tree es logaritmico.
+         * - En cambio si se encuentra en el header o el nodo al que apunta el iterador tiene el hijo correspondiente
+         * y a su vez este no tiene hijo opuesto (si se incrementa el hijo correspondiente seria el izquierdo y este,
+         * a su vez, no deberia tener hijo derecho. Invertido para el caso en que se decrementa), la complejidad sera \O(1)}
+         **/
         const Node* inmediato(int dir) const {
             const Node* res = this;
             if (res->is_header())

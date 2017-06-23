@@ -111,7 +111,15 @@ nodo\+Hijo \+: Node n1 x Node n2 $\to$ bool~\newline
 Crea un conjunto con los elementos de map.
 
 Map\+A\+Conjunto\+: Node n $\to$ Conj( $\alpha$)~\newline
- Map\+A\+Conjunto(n) $\equiv$ {\bfseries if} n.\+color = Header {\bfseries then} Map\+A\+Conjunto((h)) {\bfseries else} \{$\ast$n\}  {\bfseries if} get(n.\+child\mbox{[}0\mbox{]})  0 T\+H\+EN Map\+A\+Conjunto($\ast$n.child\mbox{[}0\mbox{]}) {\bfseries fi}  {\bfseries if} get(n.\+child\mbox{[}1\mbox{]})  0 T\+H\+EN Map\+A\+Conjunto($\ast$n.child\mbox{[}1\mbox{]}) {\bfseries fi} 
+ Map\+A\+Conjunto(n) $\equiv$ {\bfseries if} n.\+color = Header {\bfseries then} Map\+A\+Conjunto((h)) {\bfseries else} \{$\ast$n\} $\cup$ {\bfseries if} get(n.\+child\mbox{[}0\mbox{]}) $\_linebr eq$ 0 {\bfseries then} Map\+A\+Conjunto($\ast$n.child\mbox{[}0\mbox{]}) {\bfseries fi} $\cup$ {\bfseries if} get(n.\+child\mbox{[}1\mbox{]}) $\_linebr eq$ 0 {\bfseries then} Map\+A\+Conjunto($\ast$n.child\mbox{[}1\mbox{]}) {\bfseries fi} {\bfseries fi} 
+\end{DoxyParagraph}
+
+
+\begin{DoxyParagraph}{Encontrar\+Valor}
+
+
+Encontrar\+Valor \+: Puntero(\+Node) n x $\alpha$ key $\to$ $\beta$ \{get(n) $\_linebr eq$ 0\}~\newline
+ Encontrar\+Valor(n, key) $\equiv$ {\bfseries if} $\pi_1$($\ast$n) = key {\bfseries then}  {\bfseries else} {\bfseries if} $\pi_1$($\ast$n) $<$ key {\bfseries then} Encontrar\+Valor(n.\+child\mbox{[}1\mbox{]}, key) {\bfseries else} Encontrar\+Valor(n.\+child\mbox{[}0\mbox{]}) {\bfseries fi} {\bfseries fi} 
 
 
 \end{DoxyParagraph}
