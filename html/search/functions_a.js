@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['node',['Node',['../structaed2_1_1map_1_1Node_a9c1a600491066ce7eb669b1cb76d56c6.html#a9c1a600491066ce7eb669b1cb76d56c6',1,'aed2::map::Node::Node()'],['../structaed2_1_1map_1_1Node_a62b5a42e88e219d53af8237a9ebedb6e.html#a62b5a42e88e219d53af8237a9ebedb6e',1,'aed2::map::Node::Node(Node *p, Color c=Color::Red)']]]
+  ['map',['map',['../classaed2_1_1map_a64da1d965b13eb28cdb3837bc17a18cf.html#a64da1d965b13eb28cdb3837bc17a18cf',1,'aed2::map::map(Compare c=Compare())'],['../classaed2_1_1map_a7a77950a3d8e637bfa7cf5dcd904f257.html#a7a77950a3d8e637bfa7cf5dcd904f257',1,'aed2::map::map(const map &amp;other)'],['../classaed2_1_1map_a5d336f3248572beb56be383dcc95cfeb.html#a5d336f3248572beb56be383dcc95cfeb',1,'aed2::map::map(iterator first, iterator last, Compare c=Compare())']]]
 ];

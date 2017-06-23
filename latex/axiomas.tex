@@ -1,69 +1,139 @@
-\-Namespace para las clases de \-A\-E\-D2.
+En esta pagina, y por conveniencia, se listan todos los axiomas y proposiciones auxiliares requeridos para formalizar los invariantes de representación y las funciones de abstracción. Previamente se presentan los renombres de los tipos usados.
 
-\-En esta pagina, y por conveniencia, se listan todos los axiomas y proposiciones auxiliares requeridos para formalizar los invariantes de representación y las funciones de abstracción. \-Previamente se presentan los renombres de los tipos usados.
-
-\begin{DoxyParagraph}{\-Renombres de tipos}
+\begin{DoxyParagraph}{Renombres de tipos}
 
 \end{DoxyParagraph}
 
 \begin{DoxyItemize}
-\item \-Node es tupla(child\-: arreglo\mbox{[}2\mbox{]} de puntero(\-Node), parent\-: puntero(\-Node), color\-: \-Color, value\-: \-Value)
-\item \-Value es \-Maybe(value\-\_\-type)
-\item value\-\_\-type es tupla(clave\-: \-Key, significado\-: \-Meaning)
+\item Node es tupla(child\+: arreglo\mbox{[}2\mbox{]} de puntero(\+Node), parent\+: puntero(\+Node), color\+: Color, value\+: Value)
+\item Value es Maybe(value\+\_\+type)
+\item value\+\_\+type es tupla(clave\+: Key, significado\+: Meaning)
 \end{DoxyItemize}
 
-\-El \-T\-A\-D \-Maybe( $\alpha$) representa un tipo $\alpha$ extendido con un valor nulo. \-En otras palabras, el \-T\-A\-D \-Maybe se puede usar para representar los valores de los nodos, donde el nodo cabecera no tiene valor y los nodos internos sí tienen valor. (\-Esto independientemente de si se implementa con herencia o con un puntero o de otra forma.) \-Tiene dos observadores\-:
+El T\+AD Maybe( $\alpha$) representa un tipo $\alpha$ extendido con un valor nulo. En otras palabras, el T\+AD Maybe se puede usar para representar los valores de los nodos, donde el nodo cabecera no tiene valor y los nodos internos sí tienen valor. (Esto independientemente de si se implementa con herencia o con un puntero o de otra forma.) Tiene dos observadores\+:
 \begin{DoxyItemize}
-\item nothing?(x)\-: que indica si x tiene un valor nulo, y
-\item data(x)\-: que devuelve el valor de x, suponiendo que no es inválido.
+\item nothing?(x)\+: que indica si x tiene un valor nulo, y
+\item data(x)\+: que devuelve el valor de x, suponiendo que no es inválido.
 \end{DoxyItemize}
 
-\-La especificación de este \-T\-A\-D queda como ejercicio (no obligatorio).\hypertarget{axiomas_sec-Axiomas}{}\subsection{\-Axiomas y proposiciones auxiliares}\label{axiomas_sec-Axiomas}
-\-En esta sección se deben incluir todos los axiomas y proposiciones auxiliares que se usen para describir los invariantes de representación, las funciones de abstracción, las precondiciones y las postcondiciones.
+La especificación de este T\+AD queda como ejercicio (no obligatorio).\hypertarget{axiomas_sec-Axiomas}{}\subsection{Axiomas y proposiciones auxiliares}\label{axiomas_sec-Axiomas}
+En esta sección se deben incluir todos los axiomas y proposiciones auxiliares que se usen para describir los invariantes de representación, las funciones de abstracción, las precondiciones y las postcondiciones.
 
-\begin{DoxyRemark}{\-Comentarios}
-\-Recordar incluir un alias en el archivo doxyfile a fin de poder referenciar automaticamente a cada axioma desde las otras páginas.
+\begin{DoxyRemark}{Comentarios}
+Recordar incluir un alias en el archivo doxyfile a fin de poder referenciar automaticamente a cada axioma desde las otras páginas.
 \end{DoxyRemark}
-\-Se muestran algunos ejemplos a continuación.
+Se muestran algunos ejemplos a continuación.
 
-\begin{DoxyParagraph}{es\-Diccionario?}
-\-Retorna true si la secuencia representa un diccionario
+\begin{DoxyParagraph}{es\+Diccionario?}
+Retorna true si la secuencia representa un diccionario
+
+es\+Diccionario?\+: secu(tupla( $\alpha$, $\beta$)) $\to$ bool~\newline
+ es\+Diccionario?(s) $\equiv$ sin\+Repetidos?(\href{axiomas.html#primeros}{\tt primeros}(s)) 
 \end{DoxyParagraph}
-es\-Diccionario?\-: secu(tupla( $\alpha$, $\beta$)) $\to$ bool\par
- es\-Diccionario?(s) $\equiv$ sin\-Repetidos?(\href{axiomas.html#primeros}{\tt primeros}(s)) 
+
 
 \begin{DoxyParagraph}{primeros}
-\-Proyecta las primeras componentes de una secuencia de pares
-\end{DoxyParagraph}
-primeros\-: secu(tupla( $\alpha$, $\beta$)) $\to$ secu( $\alpha$)\par
- primeros(s) $\equiv$ {\bfseries if} vacia?(s) {\bfseries then} $<$$>$ {\bfseries else} $\pi_1$(prim(s)) $\bullet$ \href{axiomas.html#primeros}{\tt primeros}(fin(s)) {\bfseries fi} 
+Proyecta las primeras componentes de una secuencia de pares
 
-\begin{DoxyParagraph}{\-Hasta\-Elem}
-\-Devuelve una secuencia ordenada con elementos del diccionario hasta el elemento e, no inclusive. \-Hasta\-Elem\-: \-Conj( $\alpha$, $\beta$) x $\to$ secu( $\alpha$, $\beta$)\par
- \-Hasta\-Elem(claves, e) $\equiv$ {\bfseries if} minimo(d) = e {\bfseries then} $<$$>$ {\bfseries else} \-Hasta\-Elem(claves -\/ \{minimo\}, e) 
+primeros\+: secu(tupla( $\alpha$, $\beta$)) $\to$ secu( $\alpha$)~\newline
+ primeros(s) $\equiv$ {\bfseries if} vacia?(s) {\bfseries then} $<$$>$ {\bfseries else} $\pi_1$(prim(s)) $\bullet$ \href{axiomas.html#primeros}{\tt primeros}(fin(s)) {\bfseries fi} 
 \end{DoxyParagraph}
-\begin{DoxyParagraph}{\-Desde\-Elem}
-\-Devuelve una secuencia ordenada con elementos del diccionario desde el elemento e inclusive. \-Desde\-Elem\-: \-Conj( $\alpha$) x $\to$ secu( $\alpha$, $\beta$)\par
- \-Desde\-Elem(claves, e) $\equiv$ {\bfseries if} minimo(d) $<$ e {\bfseries then} $<$$>$ {\bfseries else} minimo(d) $\bullet$ \-Desde\-Elem(claves -\/ \{minimo\}, e) 
+
+
+\textbackslash{} $\ast$$\ast$ Auxiliares para pre y post $\ast$$\ast$ // \begin{DoxyParagraph}{Hasta\+Elem}
+Devuelve una secuencia ordenada con elementos del diccionario hasta el elemento e, no inclusive. Hasta\+Elem\+: Conj( $\alpha$, $\beta$) x $\to$ secu( $\alpha$, $\beta$)~\newline
+ Hasta\+Elem(claves, e) $\equiv$ {\bfseries if} minimo(d) = e {\bfseries then} $<$$>$ {\bfseries else} Hasta\+Elem(claves -\/ \{minimo\}, e) 
 \end{DoxyParagraph}
-\begin{DoxyParagraph}{\-Menor\-Que}
-\-Devuelve true si y solo si m1 es lexicograficamente menor que m2. \-Menor\-Que\-: \-Dicc( $\alpha$, $\beta$) d1 x \-Dicc( $\alpha$, $\beta$) d2 $\to$ bool\par
- \-Menor\-Que(d1, d2) $\equiv$ comparar\-Claves(claves(d1), claves(d2)) 
+
+
+\begin{DoxyParagraph}{Desde\+Elem}
+Devuelve una secuencia ordenada con elementos del diccionario desde el elemento e inclusive. Desde\+Elem\+: Conj( $\alpha$) x $\alpha$ $\to$ secu( $\alpha$, $\beta$)~\newline
+ Desde\+Elem(claves, e) $\equiv$ {\bfseries if} minimo(d) $<$ e {\bfseries then} $<$$>$ {\bfseries else} minimo(d) $\bullet$ Desde\+Elem(claves -\/ \{minimo\}, e) 
 \end{DoxyParagraph}
-\begin{DoxyParagraph}{comparar\-Claves}
-comparar\-Claves\-: \-Conj() cs1 x \-Conj() cs2 $\to$ bool\par
- comparar\-Claves(cs1, cs2) $\equiv$ {\bfseries if} \# cs1 == 0 {\bfseries then} true {\bfseries else} {\bfseries if} (\# cs2 == 0 $\lor$ minimo(cs1) $>$ minimo(cs2) ) {\bfseries then} false {\bfseries fi} \-E\-L\-S\-E comparar\-Claves(cs1 -\/ \{minimo\}, cs2 -\/ \{minimo\}) {\bfseries fi} 
+
+
+\begin{DoxyParagraph}{Menor\+Que}
+Devuelve true si y solo si m1 es lexicograficamente menor que m2. Menor\+Que\+: Dicc( $\alpha$, $\beta$) d1 x Dicc( $\alpha$, $\beta$) d2 $\to$ bool~\newline
+ Menor\+Que(d1, d2) $\equiv$ comparar\+Claves(claves(d1), claves(d2)) 
+\end{DoxyParagraph}
+
+
+\begin{DoxyParagraph}{comparar\+Claves}
+comparar\+Claves\+: Conj() cs1 x Conj() cs2 $\to$ bool~\newline
+ comparar\+Claves(cs1, cs2) $\equiv$ {\bfseries if} \# cs1 == 0 {\bfseries then} true {\bfseries else} {\bfseries if} (\# cs2 == 0 $\lor$ minimo(cs1) $>$ minimo(cs2) ) {\bfseries then} false {\bfseries fi} E\+L\+SE comparar\+Claves(cs1 -\/ \{minimo\}, cs2 -\/ \{minimo\}) {\bfseries fi} 
+\end{DoxyParagraph}
+
+
+\begin{DoxyVerb}\\ ** Proposiciones para Rep y Abs ** //
+\end{DoxyVerb}
+
+
+\begin{DoxyParagraph}{header\+Valido}
+El nodo header no tiene valor. Su padre es la raíz, de color negro, y sus hijos derecho e izquierdo son el mayor y el menor valor del arbol respectivamente.~\newline
+ e.\+header.\+color == Header $\land$ nothing?(e.\+header.\+value) $\land$ e.\+header.\+parent.\+color == Black $\land$ completar 
+\end{DoxyParagraph}
+
+
+\begin{DoxyParagraph}{nodos\+Internos\+Validos}
+Para cada nodo interno, sus ramas descendientes tienen la misma cantidad de nodos negros, y y el subarbol que tiene como raiz ese nodo cumple el invariante de Arbol binario de busqueda. Si es rojo, su o sus hijos son negros. ( $\forall$ n\+: Node) Nodo\+Interno(n, e.\+header) $\Rightarrow$ ((get(n.\+child\mbox{[}0\mbox{]}) = 0 $\lor$ n.\+chiild\mbox{[}0\mbox{]}.color = Black) $\land$ (get(n.\+child\mbox{[}1\mbox{]}) = 0 $\lor$ n.\+chiild\mbox{[}1\mbox{]}.color = Black) $\land$ nodos\+Negros(n.\+child\mbox{[}0\mbox{]}) = nodos\+Negros(n.\+child\mbox{[}1\mbox{]}) $\land$ arbol\+Binario\+De\+Busqueda(n)) 
+\end{DoxyParagraph}
+
+
+\textbackslash{}
+
+\begin{DoxyParagraph}{arbol\+Binario\+De\+Busqueda}
+Todos los nodos de la rama izquierda de n tienen valor menor al de n y todos los de la derecha, mayor. (( $\forall$ n\textquotesingle{}\+:Node) (Nodo\+Hijo(n\textquotesingle{}, n) $\land$ Nodo\+Hijo(n\textquotesingle{}, n.\+child\mbox{[}0\mbox{]})) $\Rightarrow$ n\textquotesingle{}.value.\+clave $<$ n.\+value.\+clave ) $\land$ (( $\forall$ n\textquotesingle{}\+:Node) (Nodo\+Hijo(n\textquotesingle{}, n) $\land$ Nodo\+Hijo(n\textquotesingle{}, n.\+child\mbox{[}1\mbox{]})) $\Rightarrow$ n\textquotesingle{}.value.\+clave $>$ n.\+value.\+clave )
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{nodos\+Negros}
+
+
+nodos\+Negros \+: puntero(\+Node) $\to$ int~\newline
+ Devuelve la cantidad de nodos negros en un subarbol. nodos\+Negros(n) $\equiv$ {\bfseries if} get(n) = 0 $\lor_{\rm L}$ n.\+color = Red {\bfseries then} 0 {\bfseries else} 1 {\bfseries fi} + nodos\+Negros(n.\+child\mbox{[}0\mbox{]})
+\begin{DoxyItemize}
+\item nodos\+Negros(n.\+child\mbox{[}1\mbox{]}) 
+\end{DoxyItemize}
+\end{DoxyParagraph}
+
+
+\begin{DoxyVerb}\\ ** Auxiliares para Rep y Abs ** //
+\end{DoxyVerb}
+
+
+\begin{DoxyParagraph}{nodo\+Hijo}
+Devuelve true si el n1 es hijo de n2 en la estructura.
+
+nodo\+Hijo \+: Node n1 x Node n2 $\to$ bool~\newline
+ nodo\+Hijo(n, h) $\equiv$ $\lnot$ nothing?(n.\+value) $\land_{\rm L}$ (n.\+parent = e.\+header $\lor$ nodo\+Hijo($\ast$n.parent, e)) 
+\end{DoxyParagraph}
+
+
+\begin{DoxyParagraph}{Map\+A\+Conjunto}
+Crea un conjunto con los elementos de map.
+
+Map\+A\+Conjunto\+: Node n $\to$ Conj( $\alpha$)~\newline
+ Map\+A\+Conjunto(n) $\equiv$ {\bfseries if} n.\+color = Header {\bfseries then} Map\+A\+Conjunto((h)) {\bfseries else} \{$\ast$n\}  {\bfseries if} get(n.\+child\mbox{[}0\mbox{]})  0 T\+H\+EN Map\+A\+Conjunto($\ast$n.child\mbox{[}0\mbox{]}) {\bfseries fi}  {\bfseries if} get(n.\+child\mbox{[}1\mbox{]})  0 T\+H\+EN Map\+A\+Conjunto($\ast$n.child\mbox{[}1\mbox{]}) {\bfseries fi} 
+
+
 \end{DoxyParagraph}
 \begin{DoxyParagraph}{minimo}
-\-Devuelve el elemento del diccionario con la menor clave minimo\-: \-Conj( $\alpha$, $\beta$) $\to$ ( $\alpha$, $\beta$)\par
- minimo(claves) $\equiv$ minimo\-Aux(claves, dame\-Uno(claves)) 
+Devuelve el elemento del diccionario con la menor clave minimo\+: Conj( $\alpha$, $\beta$) $\to$ ( $\alpha$, $\beta$)~\newline
+ minimo(claves) $\equiv$ minimo\+Aux(claves, dame\+Uno(claves)) 
 \end{DoxyParagraph}
-\begin{DoxyParagraph}{minimo\-Aux}
-mínimo\-Aux\-: \-Conj( $\alpha$, $\beta$) x ( $\alpha$, $\beta$) $\to$ ( $\alpha$, $\beta$)\par
- minimo\-Aux(claves, e) $\equiv$ {\bfseries if} \# claves = 0 {\bfseries then} e {\bfseries else} minimo\-Aux(sin\-Uno(claves), max(e, dame\-Uno(claves))) {\bfseries fi} 
+
+
+\begin{DoxyParagraph}{minimo\+Aux}
+mínimo\+Aux\+: Conj( $\alpha$, $\beta$) x ( $\alpha$, $\beta$) $\to$ ( $\alpha$, $\beta$)~\newline
+ minimo\+Aux(claves, e) $\equiv$ {\bfseries if} \# claves = 0 {\bfseries then} e {\bfseries else} minimo\+Aux(sin\+Uno(claves), min(e, dame\+Uno(claves))) {\bfseries fi} 
 \end{DoxyParagraph}
-\#include $<$functional$>$ \#include $<$iterator$>$ \#include $<$utility$>$ \#include $<$cassert$>$ \#include $<$algorithm$>$ \#include $<$iostream$>$
 
-\#ifdef \-D\-E\-B\-U\-G \-Aca se puede incluir cualquier cosa que consideren que necesitan para debug \#include $<$iostream$>$ \#include $<$iomanip$>$ \#endif
 
-/$\ast$$\ast$ \-Para evitar cualquier tipo de conflictos, todas las clases de \-A\-E\-D2 se implementan en el namespace aed2. \-Recordar el uso de `namespace`, el keyword `using`, y el método \-A\-D\-L para la busqueda de las funciones. 
+\begin{DoxyParagraph}{maximo}
+Devuelve el elemento del diccionario con la menor clave maximo\+: Conj( $\alpha$, $\beta$) $\to$ ( $\alpha$, $\beta$)~\newline
+ maximo(claves) $\equiv$ maximo\+Aux(claves, dame\+Uno(claves)) 
+\end{DoxyParagraph}
+
+
+\begin{DoxyParagraph}{maximo\+Aux}
+maximo\+Aux\+: Conj( $\alpha$, $\beta$) x ( $\alpha$, $\beta$) $\to$ ( $\alpha$, $\beta$)~\newline
+ maximo\+Aux(claves, e) $\equiv$ {\bfseries if} \# claves = 0 {\bfseries then} e {\bfseries else} minimo\+Aux(sin\+Uno(claves), max(e, dame\+Uno(claves))) {\bfseries fi} 
+\end{DoxyParagraph}
