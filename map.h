@@ -560,7 +560,7 @@
  * \axioma{esDiccionario?}: secu(tupla(\ALPHA, \BETA)) \TO bool\n
  * esDiccionario?(s) \EQUIV sinRepetidos?(\primeros(s))
  * \endparblock
- *
+ * 
  * \par primeros
  * \parblock
  * Proyecta las primeras componentes de una secuencia de pares
@@ -569,12 +569,59 @@
  * primeros(s) \EQUIV \IF vacia?(s) \THEN <> \ELSE \PI1(prim(s)) \BULLET \primeros(fin(s)) \FI
  * \endparblock
  *
- */
-
-#ifndef MAP_H_
-#define MAP_H_
-
-#include <functional>
+ * \par HastaElem
+ * \parblock
+ * Devuelve una secuencia ordenada con elementos del diccionario hasta el elemento e, no inclusive.
+ * \axioma{HastaElem}: Conj(\ALPHA, \BETA) x \TO secu(\ALPHA, \BETA)\n
+ * HastaElem(claves, e) \EQUIV \IF minimo(d) = e \THEN <> \ELSE HastaElem(claves - {minimo}, e)
+ * \endparblock
+ *
+ *
+ *
+ * \par DesdeElem
+ * \parblock
+ * Devuelve una secuencia ordenada con elementos del diccionario desde el elemento e inclusive.
+ * \axioma{DesdeElem}: Conj(\ALPHA) x \TO secu(\ALPHA, \BETA)\n
+ * DesdeElem(claves, e) \EQUIV \IF minimo(d) < e \THEN <> \ELSE minimo(d) \BULLET DesdeElem(claves - {minimo}, e)
+ * \endparblock
+ *
+ *
+ *
+ *
+ *
+ *
+ * \par MenorQue
+ * \parblock
+ * Devuelve true si y solo si m1 es lexicograficamente menor que m2.
+ * 
+ *
+ * \axioma{MenorQue}: Dicc(\ALPHA, \BETA) d1 x Dicc(\ALPHA, \BETA) d2 \TO bool\n
+ * MenorQue(d1, d2) \EQUIV compararClaves(claves(d1), claves(d2))
+ * \endparblock
+ *
+ *
+ * \par compararClaves
+ * \parblock
+ * \axioma{compararClaves}: Conj() cs1 x Conj() cs2 \TO bool\n
+ * compararClaves(cs1, cs2) \EQUIV \IF \# cs1 == 0 \THEN true \ELSE \IF (\# cs2 == 0 \LOR
+ * minimo(cs1) \GT minimo(cs2) ) \THEN false \FI ELSE compararClaves(cs1 - {minimo}, cs2 - {minimo}) \FI
+ * \endparblock
+ *
+ *
+ *
+ *\par minimo
+ *\parblock
+ * Devuelve el elemento del diccionario con la menor clave
+ * \axioma{minimo}: Conj(\ALPHA, \BETA) \TO (\ALPHA, \BETA)\n
+ * minimo(claves) \EQUIV minimoAux(claves, dameUno(claves))
+ * \endparblock
+ *
+ * \par minimoAux
+ * \parblock
+ * \axioma{mínimoAux}: Conj(\ALPHA, \BETA) x (\ALPHA, \BETA) \TO (\ALPHA, \BETA)\n
+ * minimoAux(claves, e) \EQUIV \IF \# claves = 0 \THEN e \ELSE
+ * minimoAux(sinUno(claves), max(e, dameUno(claves))) \FI
+ * \endparblockunctional>
 #include <iterator>
 #include <utility>
 #include <cassert>
@@ -948,8 +995,8 @@ public:
      *
      * \aliasing{la operación se invalida si se elimina el elemento cuyo key() = key}
      *
-     * \pre \aedpre{this \IGOBS d_0}
-     * \post \aedpost{(def?(key, d_0) \LOR this \IGOBS definir(key, this, Meaning()) \LAND res \IGOBS obtener(key, d_0))
+     * \pre \aedpre{this \IGOBS d_\rm{0}}
+     * \post \aedpost{(def?(key, d_\rm{0}) \LOR this \IGOBS definir(key, this, Meaning()) \LAND res \IGOBS obtener(key, d_0))
 
 	 *
      * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}) + \a x) donde
@@ -1150,6 +1197,7 @@ public:
 	Completar especificacion coloquialmente
 
     **/
+
 
     void insert_fixup(const_iterator it){
 	    Node* n = const_cast<Node*>(it.n);
@@ -1815,7 +1863,7 @@ public:
          * El iterador \P{res} queda asociado a `d` y permite modificar el significado del valor que apunte.}
          *
          * \pre \aedpre{rep_iter(n)}
-         * \post \aedpost{res \IGOBS CrearItBi(&`d`, completar, completar)}
+         * \post \aedpost{res \IGOBS CrearItBi(&`d`, HastaElem(d, n.value.clave), DesdeElem(d, n.value.clave))}
          *
          * \complexity{\O(1)}
          *
@@ -2328,7 +2376,7 @@ bool operator!=(const map<K, V, C>& m1, const map<K, V, C>& m2) {
  * @retval res true si m1 es menor a m2 en el orden lexicografico
  *
  * \pre \aedpre{true}
- * \post \aedpost{completar}
+ * \post \aedpost{res \IGOBS MenorQue(m1, m2)}
  *
  * \complexity{ \O((\SIZE(m1) + \SIZE(m2)) \CDOT (\CMP(m1) + \CMP(m2)))}
  *
