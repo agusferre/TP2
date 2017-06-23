@@ -118,11 +118,12 @@ Axiomas y proposiciones auxiliares</h2>
 <dl class="user"><dt><b>MenorQue</b></dt><dd>Devuelve true si y solo si m1 es lexicograficamente menor que m2. <span id="MenorQue">MenorQue</span>: Dicc( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>) d1 x Dicc( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>) d2 <img class="formulaInl" alt="$\to$" src="form_4.png"/> bool<br/>
  MenorQue(d1, d2) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> compararClaves(claves(d1), claves(d2)) </dd></dl>
 <dl class="user"><dt><b>compararClaves</b></dt><dd><span id="compararClaves">compararClaves</span>: Conj() cs1 x Conj() cs2 <img class="formulaInl" alt="$\to$" src="form_4.png"/> bool<br/>
- compararClaves(cs1, cs2) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> <b>if</b> # cs1 == 0 <b>then</b> true <b>else</b> <b>if</b> (# cs2 == 0 <img class="formulaInl" alt="$\lor$" src="form_28.png"/> minimo(cs1) <img class="formulaInl" alt="$>$" src="form_30.png"/> minimo(cs2) ) <b>then</b> false <b>fi</b> ELSE compararClaves(cs1 - {minimo}, cs2 - {minimo}) <b>fi</b> </dd></dl>
+ compararClaves(cs1, cs2) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> <b>if</b> # cs1 == 0 <b>then</b> true <b>else</b> <b>if</b> (# cs2 == 0 <img class="formulaInl" alt="$\lor$" src="form_13.png"/> minimo(cs1) <img class="formulaInl" alt="$>$" src="form_14.png"/> minimo(cs2) ) <b>then</b> false <b>fi</b> ELSE compararClaves(cs1 - {minimo}, cs2 - {minimo}) <b>fi</b> </dd></dl>
 <dl class="user"><dt><b>minimo</b></dt><dd>Devuelve el elemento del diccionario con la menor clave <span id="minimo">minimo</span>: Conj( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>) <img class="formulaInl" alt="$\to$" src="form_4.png"/> ( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>)<br/>
  minimo(claves) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> minimoAux(claves, dameUno(claves)) </dd></dl>
 <dl class="user"><dt><b>minimoAux</b></dt><dd><span id="mínimoAux">mínimoAux</span>: Conj( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>) x ( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>) <img class="formulaInl" alt="$\to$" src="form_4.png"/> ( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>)<br/>
- minimoAux(claves, e) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> <b>if</b> # claves = 0 <b>then</b> e <b>else</b> minimoAux(sinUno(claves), max(e, dameUno(claves))) <b>fi</b>  #include &lt;functional&gt; #include &lt;iterator&gt; #include &lt;utility&gt; #include &lt;cassert&gt; #include &lt;algorithm&gt; #include &lt;iostream&gt;</dd></dl>
+ minimoAux(claves, e) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> <b>if</b> # claves = 0 <b>then</b> e <b>else</b> minimoAux(sinUno(claves), max(e, dameUno(claves))) <b>fi</b> </dd></dl>
+<p>#include &lt;functional&gt; #include &lt;iterator&gt; #include &lt;utility&gt; #include &lt;cassert&gt; #include &lt;algorithm&gt; #include &lt;iostream&gt;</p>
 <p>#ifdef DEBUG Aca se puede incluir cualquier cosa que consideren que necesitan para debug #include &lt;iostream&gt; #include &lt;iomanip&gt; #endif</p>
 <p>/** Para evitar cualquier tipo de conflictos, todas las clases de AED2 se implementan en el namespace aed2. Recordar el uso de `namespace`, el keyword `using`, y el método ADL para la busqueda de las funciones. </p>
 </div></div><!-- contents -->
@@ -144,7 +145,7 @@ Axiomas y proposiciones auxiliares</h2>
   <div id="nav-path" class="navpath">
     <ul>
 
-    <li class="footer">Generado el Viernes, 23 de Junio de 2017 02:09:58 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 23 de Junio de 2017 02:18:08 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

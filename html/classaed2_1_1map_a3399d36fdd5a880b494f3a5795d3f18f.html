@@ -115,13 +115,13 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 </dl>
 <dl class="user"><dt><b>Aspectos de aliasing:</b></dt><dd>\1</dd></dl>
 <dl class="pre"><dt><b>Precondición:</b></dt><dd><b>P</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {true} </dd></dl>
-<dl class="post"><dt><b>Postcondición:</b></dt><dd>{(def?(key, this) <img class="formulaInl" alt="$\land$" src="form_14.png"/> Siguiente(res) <img class="formulaInl" alt="$=_{obs}$" src="form_25.png"/> <img class="formulaInl" alt="$\rangle$" src="form_27.png"/> key, obtener(key, this) <img class="formulaInl" alt="$\langle$" src="form_31.png"/> ) <img class="formulaInl" alt="$\lor$" src="form_28.png"/> ( <img class="formulaInl" alt="$\lnot$" src="form_29.png"/> def?(key, this) <img class="formulaInl" alt="$\land$" src="form_14.png"/> ( <img class="formulaInl" alt="$\lnot$" src="form_29.png"/> HaySiguiente(res) <img class="formulaInl" alt="$\lor$" src="form_28.png"/> Siguiente(res) <img class="formulaInl" alt="$=_{obs}$" src="form_25.png"/> PrimerMayorOigual(key, this)))}</dd></dl>
+<dl class="post"><dt><b>Postcondición:</b></dt><dd>{(def?(key, this) <img class="formulaInl" alt="$\land$" src="form_16.png"/> Siguiente(res) <img class="formulaInl" alt="$=_{obs}$" src="form_2.png"/> <img class="formulaInl" alt="$\rangle$" src="form_25.png"/> key, obtener(key, this) <img class="formulaInl" alt="$\langle$" src="form_26.png"/> ) <img class="formulaInl" alt="$\lor$" src="form_13.png"/> ( <img class="formulaInl" alt="$\lnot$" src="form_24.png"/> def?(key, this) <img class="formulaInl" alt="$\land$" src="form_16.png"/> ( <img class="formulaInl" alt="$\lnot$" src="form_24.png"/> HaySiguiente(res) <img class="formulaInl" alt="$\lor$" src="form_13.png"/> Siguiente(res) <img class="formulaInl" alt="$=_{obs}$" src="form_2.png"/> PrimerMayorOigual(key, this)))}</dd></dl>
 <dl class="section complexity">
 <dt>Complejidad Temporal</dt>
-<dd><img class="formulaInl" alt="$O$" src="form_1.png"/>( <img class="formulaInl" alt="$\log$" src="form_19.png"/>(<b>size</b>(<b class="paramname">*this</b>)) <img class="formulaInl" alt="$\cdot$" src="form_13.png"/> <b>cmp</b>(<b class="paramname">*this</b>))</dd>
+<dd><img class="formulaInl" alt="$O$" src="form_1.png"/>( <img class="formulaInl" alt="$\log$" src="form_21.png"/>(<b>size</b>(<b class="paramname">*this</b>)) <img class="formulaInl" alt="$\cdot$" src="form_15.png"/> <b>cmp</b>(<b class="paramname">*this</b>))</dd>
 </dl>
 
-<p>Definición en la línea <a class="el" href="map_8h_source.html#l01067">1067</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p>Definición en la línea <a class="el" href="map_8h_source.html#l01065">1065</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
 </div>
 </div>
@@ -146,7 +146,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
       <li class="navelem"><b>aed2</b>      </li>
       <li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a>      </li>
 
-    <li class="footer">Generado el Viernes, 23 de Junio de 2017 02:09:59 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 23 de Junio de 2017 02:18:09 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

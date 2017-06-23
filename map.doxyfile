@@ -302,6 +302,9 @@ ALIASES += refax{1}="<a href=\"axiomas.html#\1\">\1</a>"
 #Por cada axioma, escribir como en el ejemplo
 ALIASES += primeros="\refax{primeros}"
 ALIASES += esDiccionario="\refax{esDiccionario?}"
+ALIASES += HastaElem="\refax{HastaElem}"
+ALIASES += DesdeElem="\refax{DesdeElem}"
+
 
 
 # This tag can be used to specify a number of word-keyword mappings (TCL only).

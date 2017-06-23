@@ -615,6 +615,12 @@
  * minimoAux(claves, e) \EQUIV \IF \# claves = 0 \THEN e \ELSE
  * minimoAux(sinUno(claves), max(e, dameUno(claves))) \FI
  * \endparblock
+ *
+ **/
+#ifndef MAP_H_
+#define MAP_H_
+
+
 #include <functional>
 #include <iterator>
 #include <utility>
@@ -802,10 +808,7 @@ public:
      * \attention El parámetro formal \LT del TAD diccionario se establece en esta función.
      * \LT = \P{c}.operator()
      */
-    explicit map(Compare c = Compare()) : header(){
-    	count = 0;
-    	lt = c;
-    }
+    explicit map(Compare c = Compare()) : header(), count(0), lt(c) {}
 
     /**
      * @brief Constructor por copia
@@ -822,13 +825,14 @@ public:
      * \LT es igual al operator() del comparador de \P{other}
      *
      */
-    map(const map& other) : header(){
-        count = 0;
-        lt = other.lt;
-        const_iterator it = other.begin();
-        while (it.n != &other.header) {
-            insert(it.n->value());
-            ++it;
+    map(const map& other) : header(), count(0), lt(other.lt) {
+        if (not other.empty()) {
+            auto it_other = iterator(other.header.child[1]);
+            iterator it = end();
+            while ((it_other) != other.end()) {
+                it = insert_rapido(it, *it_other);
+                it_other--;
+            }
         }
     }
 
@@ -878,7 +882,7 @@ public:
     template<class iterator>
     map(iterator first, iterator last, Compare c = Compare()) : lt(c) {
     	auto it = end();
-    	while(first != last) {
+    	while (first != last) {
     		insert(it, *first);
     		++first;
     	}
@@ -927,6 +931,7 @@ public:
     ~map() {
         clear();
     }
+
     ///@}
 
     ////////////////////////////////////////////
@@ -935,8 +940,6 @@ public:
     ///@{
     /**
      * @brief Devuelve el significado asociado a \P{key}
-     *
-     *
      *
      * @param key clave a buscar.
      * @retval res referencia al significado asociado a \P{key}.
@@ -1002,8 +1005,7 @@ public:
         iterator it = lower_bound(key);
         if (not it.n->is_header() && it.n->value().first == key)
             return it.n->value().second;
-	    else
-            insert(it, value_type(key, Meaning()));
+        insert_rapido(it, value_type(key, Meaning()));
         return at(key);
     }
 
@@ -1124,12 +1126,12 @@ public:
      * Igualmente, la función es robusta y funciona correctamente aunque esto no ocurra.
      * @retval res iterador apuntando al elemento insertado o que previno la inserción
      *
-     * \aliasing{res apunta al elemento insertado. Se invalida sólo si se elimina dicho elemento 
+     * \aliasing{res apunta al elemento insertado. Se invalida sólo si se elimina dicho elemento
      			 sin usar res como pos}
      *
      *
-     * \pre \aedpre{this \IGOBS d_0}
-     * \post  \aedpost{(def?(key, this) \IMPLIES this \igobs d_0) \LAND (\LNOT def?(key, this) \IMPLIES 
+     * \pre \aedpre{this \IGOBS d_{\rm 0}
+     * \post  \aedpost{(def?(key, this) \IMPLIES this \igobs d_0) \LAND (\LNOT def?(key, this) \IMPLIES
      					(this \IGOBS definir(key, d_0) \LAND Siguiente(res) \IGOBS \RANGLE key, obtener(key, this) \LANGLE ))}
      *
      * \complexity{
@@ -1140,59 +1142,22 @@ public:
      *
      * \attention Para garantizar que el nuevo elemento se inserte sí o sí, usar aed2::map::insert_or_assign.
      */
+    iterator insert(const value_type& value) {
+        iterator it = lower_bound(value.first);
+        return insert(it, value);
+    }
 
-   iterator insert(const value_type& value) {
-       iterator it = lower_bound(value.first);
-       return insert(it, value);
-   }
-
-   iterator insert(const_iterator hint, const value_type& value) {
-        iterator it;
-        const_iterator indice = hint;
+    iterator insert(const_iterator hint, const value_type& value) {
         if (hintValido(hint, value))
-            it = iterator(const_cast<Node *>(hint.n));
-        else
-            it = lower_bound(value.first);
-        if (it.n->is_header() || !eq(it.n->key(), value.first)) {
-            if (it.n->is_header()) {
-                while (it.n->child[1] != nullptr && not it.n->child[0]->is_header())
-                    it.n = it.n->child[1];
-            } else {
-                if (it.n->child[0] != nullptr) {
-                    it.n = it.n->child[0];
-                    while (it.n->child[1] != nullptr && not it.n->child[0]->is_header())
-                        it.n = it.n->child[1];
-                }
-            }
-            Node* padre = it.n;
-            InnerNode* nuevo = new InnerNode(padre, value);
-            bool esElMenor = (count == 0) || lt(value.first, begin().n->key());
-            bool esElMayor = (count == 0) || lt(header.child[1]->key(), value.first);
-            if (esElMenor)
-                header.child[0] = nuevo;
-            if (esElMayor)
-                header.child[1] = nuevo;
-            if (padre->is_header()) {
-                header.parent = nuevo;
-            } else if (lt(nuevo->key(),padre->key()))
-                padre->child[0] = nuevo;
-            else
-                padre->child[1] = nuevo;
-            nuevo->color = Color::Red;
-            count++;
-            it.n = nuevo;
-            insert_fixup(it);
-            return it;
-       }
-   }
+            return insert_rapido(hint, value);
+        return insert_rapido(lower_bound(value.first), value);
+    }
 
    /**
 
 	Completar especificacion coloquialmente
 
     **/
-
-
     void insert_fixup(const_iterator it){
 	    Node* n = const_cast<Node*>(it.n);
 	    Node* y;
@@ -1310,9 +1275,7 @@ public:
      *
      * \complexity{
      * - Peor caso: \O(\DEL(\P{*pos}) + \LOG(\SIZE(\P{*this})))
-     * - Peor caso amortizado: \O(\DEL(\P{*pos}))
-     * }
-     *
+     * - Peor caso amortizado: \O(\DEL(\P{*pos})
      */
     iterator erase(const_iterator pos) {
         Node* z = const_cast<Node*>(pos.n);
@@ -1452,32 +1415,10 @@ public:
      *
      * \complexity{\O(\DEL(\P{*this}))}
      */
-
     void clear() {
-        while (count > 0) {
+        while (not empty()) {
             erase(begin());
         }
-    }
-
-    std::vector<value_type> show() {
-        iterator it(header.parent);
-        std::vector<value_type> res;
-        while (it.n != nullptr) {
-            res.push_back(it.n->value());
-            if (it.n->child[0] != nullptr)
-                it.n = it.n->child[0];
-            else
-                it.n = it.n->child[1];
-        }
-        it.n = header.parent->child[1];
-        while (it.n != nullptr) {
-            res.push_back(it.n->value());
-            if (it.n->child[0] != nullptr)
-                it.n = it.n->child[0];
-            else
-                it.n = it.n->child[1];
-        }
-        return res;
     }
 
     /**
@@ -2204,17 +2145,10 @@ private:
      */
     struct InnerNode : public Node {
     	value_type _value;
- 	
+
  	    InnerNode(Node* p, const value_type& v): Node(p, Color::Red), _value(v) {}
     };
 
-    //AUXS
-    /*
-	Node* sucesorInmediato(Node* y);    
-  	void transplant(Node* u, Node* v);
-  	void erase_fixup(iterator it);
-	void dir_rotate(iterator it, int dir);
-	*/
 	////////////////////////////////////////////////////////////////////////////////////////////////////
     /** \name Estructura de representación
      *
@@ -2265,37 +2199,6 @@ private:
     inline const InnerNode* root() const { return static_cast<const InnerNode*>(header.parent); }
 	//@}
 
-    std::pair<Node*, Node*> bounds(const Key& key) {
-    	auto r = const_cast<const map*>(this)->bounds(key);
-    	return std::make_pair(const_cast<Node*>(r.first), const_cast<Node*>(r.second));
-    }
-
-    std::pair<const Node*, const Node*> bounds(const Key& key) const {
-    	const Node* res[2] = {&header, &header}, *indice = root();
-    	while (indice != nullptr && !eq(indice->key(), key)){
-    		auto dir = lt(indice->key(), key);
-    		res[1-dir] = indice;
-    		indice = indice->child[dir];
-    	}
-    	if (indice != nullptr){
-    		res[0] = res[1] = indice;
-    	}
-    	return std::make_pair(res[0], res[1]);
-    }
-
-    bool hintValido(const_iterator hint, const value_type value) {
-        bool res;
-        if (hint.n == nullptr)
-            res = false;
-        else if (hint.n->is_header())
-            res = (count == 0 || lt(header.child[1]->key(), value.first));
-        else if (hint == begin())
-            res = lt(value.first, hint.n->key());
-        else
-            res = lt(hint.n->key(), value.first) && lt(value.first, (--hint.n)->key());
-        return res;
-    }
-
 	/////////////////////////////////
 	/** \name Funciones auxiliares */
 	/////////////////////////////////
@@ -2308,6 +2211,72 @@ private:
      */
     inline bool eq(const Key& k1, const Key& k2) const {
         return lt(k1, k2) == lt(k2, k1);
+    }
+
+    std::pair<Node*, Node*> bounds(const Key& key) {
+        auto r = const_cast<const map*>(this)->bounds(key);
+        return std::make_pair(const_cast<Node*>(r.first), const_cast<Node*>(r.second));
+    }
+
+    std::pair<const Node*, const Node*> bounds(const Key& key) const {
+        const Node* res[2] = {&header, &header}, *indice = root();
+        while (indice != nullptr && !eq(indice->key(), key)){
+            auto dir = lt(indice->key(), key);
+            res[1-dir] = indice;
+            indice = indice->child[dir];
+        }
+        if (indice != nullptr){
+            res[0] = res[1] = indice;
+        }
+        return std::make_pair(res[0], res[1]);
+    }
+
+    bool hintValido(const_iterator hint, const value_type& value) const {
+        bool res;
+        if (hint.n == nullptr)
+            res = false;
+        else if (hint == end())
+            res = (count == 0 || lt(header.child[1]->key(), value.first));
+        else if (hint == begin())
+            res = lt(value.first, hint.n->key());
+        else
+            res = lt(hint.n->key(), value.first) && lt(value.first, (--hint.n)->key());
+        return res;
+    }
+
+    iterator insert_rapido(const_iterator hint, const value_type& value) {
+        iterator it(const_cast<Node*>(hint.n));
+        if (it.n->is_header() || !eq(it.n->key(), value.first)) {
+            if (it.n->is_header()) {
+                while (it.n->child[1] != nullptr && not it.n->child[0]->is_header())
+                    it.n = it.n->child[1];
+            } else {
+                if (it.n->child[0] != nullptr) {
+                    it.n = it.n->child[0];
+                    while (it.n->child[1] != nullptr && not it.n->child[0]->is_header())
+                        it.n = it.n->child[1];
+                }
+            }
+            Node* padre = it.n;
+            InnerNode* nuevo = new InnerNode(padre, value);
+            bool esElMenor = (count == 0) || lt(value.first, begin().n->key());
+            bool esElMayor = (count == 0) || lt(header.child[1]->key(), value.first);
+            if (esElMenor)
+                header.child[0] = nuevo;
+            if (esElMayor)
+                header.child[1] = nuevo;
+            if (padre->is_header()) {
+                header.parent = nuevo;
+            } else if (lt(nuevo->key(),padre->key()))
+                padre->child[0] = nuevo;
+            else
+                padre->child[1] = nuevo;
+            nuevo->color = Color::Red;
+            count++;
+            it.n = nuevo;
+            insert_fixup(it);
+            return it;
+        }
     }
 };
 

@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['pointer',['pointer',['../classaed2_1_1map.html#a7394e98a23b86bc008ad73326b273fd5',1,'aed2::map::pointer()'],['../classaed2_1_1map_1_1iterator.html#a52ea7bdbf1dc6b252aec76633564bdf5',1,'aed2::map::iterator::pointer()'],['../classaed2_1_1map.html#a7394e98a23b86bc008ad73326b273fd5',1,'aed2::map::pointer()'],['../classaed2_1_1iterator.html#a07466e8d020a80e2deb80364f28d4fa0',1,'aed2::iterator::pointer()'],['../classaed2_1_1iterator_1_1iterator.html#add8c8243f6b0e3cb7b67ce06757df53b',1,'aed2::iterator::iterator::pointer()']]]
+  ['n',['n',['../classaed2_1_1map_1_1iterator_adf8633ef71bb6c1fc01c0abe8728fd93.html#adf8633ef71bb6c1fc01c0abe8728fd93',1,'aed2::map::iterator::n()'],['../classaed2_1_1map_1_1const__iterator_a921e123f9c7f94610cf9fee3ab55d277.html#a921e123f9c7f94610cf9fee3ab55d277',1,'aed2::map::const_iterator::n()']]],
+  ['nat',['Nat',['../classNat.html',1,'']]],
+  ['node',['Node',['../structaed2_1_1map_1_1Node.html',1,'aed2::map&lt; Key, Meaning, Compare &gt;::Node'],['../structaed2_1_1map_1_1Node_a9c1a600491066ce7eb669b1cb76d56c6.html#a9c1a600491066ce7eb669b1cb76d56c6',1,'aed2::map::Node::Node()'],['../structaed2_1_1map_1_1Node_a62b5a42e88e219d53af8237a9ebedb6e.html#a62b5a42e88e219d53af8237a9ebedb6e',1,'aed2::map::Node::Node(Node *p, Color c=Color::Red)']]]
 ];

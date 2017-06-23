@@ -125,19 +125,16 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
   </dd>
 </dl>
 <dl class="user"><dt><b>Aspectos de aliasing:</b></dt><dd>\1</dd></dl>
-<dl class="pre"><dt><b>Precondición:</b></dt><dd><b>P</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {this <img class="formulaInl" alt="$=_{obs}$" src="form_25.png"/> d_0} </dd></dl>
-<dl class="post"><dt><b>Postcondición:</b></dt><dd>{(def?(key, this) <img class="formulaInl" alt="$\Rightarrow$" src="form_26.png"/> this  d_0) <img class="formulaInl" alt="$\land$" src="form_14.png"/> ( <img class="formulaInl" alt="$\lnot$" src="form_29.png"/> def?(key, this) <img class="formulaInl" alt="$\Rightarrow$" src="form_26.png"/> (this <img class="formulaInl" alt="$=_{obs}$" src="form_25.png"/> definir(key, d_0) <img class="formulaInl" alt="$\land$" src="form_14.png"/> Siguiente(res) <img class="formulaInl" alt="$=_{obs}$" src="form_25.png"/> <img class="formulaInl" alt="$\rangle$" src="form_27.png"/> key, obtener(key, this) <img class="formulaInl" alt="$\langle$" src="form_31.png"/> ))}</dd></dl>
-<dl class="section complexity">
-<dt>Complejidad Temporal</dt>
-<dd><ul>
-<li>Peor caso: <img class="formulaInl" alt="$O$" src="form_1.png"/>( <img class="formulaInl" alt="$\log$" src="form_19.png"/>(<b>size</b>(<b class="paramname">*this</b>)) <img class="formulaInl" alt="$\cdot$" src="form_13.png"/> <b>cmp</b>(<b class="paramname">*this</b>) <img class="formulaInl" alt="$+$" src="form_20.png"/> <b>copy</b>(<b class="paramname">value</b>))</li>
-<li>Si <b class="paramname">hint</b> apunta al primer valor con clave al menos <b class="paramname">value</b>.first (o <b class="paramname">this</b>-&gt;<a class="el" href="classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983.html#a76023e6a56cb625513e1b5ea028bf983" title="Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario.">end()</a> en caso de no existir): <img class="formulaInl" alt="$O$" src="form_1.png"/>(<b>cmp</b>(<b class="paramname">*this</b>) <img class="formulaInl" alt="$+$" src="form_20.png"/> <b>copy</b>(<b class="paramname">value</b>)) amortizado. </li>
+<dl class="pre"><dt><b>Precondición:</b></dt><dd>{this  d_{ 0} </dd></dl>
+<dl class="post"><dt><b>Postcondición:</b></dt><dd>{(def?(key, this)  this  d_0)  ( def?(key, this)  (this  definir(key, d_0)  Siguiente(res)   key, obtener(key, this)  ))}</dd></dl>
+<p>{</p>
+<ul>
+<li>Peor caso: ((({*this}))  ({*this})  ({value}))</li>
+<li>Si {hint} apunta al primer valor con clave al menos {value}.first (o {this}-&gt;<a class="el" href="classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983.html#a76023e6a56cb625513e1b5ea028bf983" title="Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario.">end()</a> en caso de no existir): (({*this})  ({value})) amortizado. }</li>
 </ul>
-</dd>
-</dl>
 <dl class="attention"><dt><b>Atención:</b></dt><dd>Para garantizar que el nuevo elemento se inserte sí o sí, usar <a class="el" href="classaed2_1_1map_a2ef6723c183916276b0afc4a4c721475.html#a2ef6723c183916276b0afc4a4c721475" title="Inserta o Color::Redefine value en el diccionario.">aed2::map::insert_or_assign</a>. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="map_8h_source.html#l01148">1148</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p>Definición en la línea <a class="el" href="map_8h_source.html#l01145">1145</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
 </div>
 </div>
@@ -162,7 +159,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
       <li class="navelem"><b>aed2</b>      </li>
       <li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a>      </li>
 
-    <li class="footer">Generado el Viernes, 23 de Junio de 2017 02:09:59 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 23 de Junio de 2017 02:18:09 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

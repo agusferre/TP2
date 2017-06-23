@@ -156,8 +156,6 @@ Métodos públicos</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Elimina el valor cuya clave es <b class="paramname">key</b>  <a href="#a2ffadb42cd5f0bc7b3752ff159b75334"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_a2bfa5165825979bf2431db55bc6bc9ca.html#a2bfa5165825979bf2431db55bc6bc9ca">clear</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Vacia el diccionario.  <a href="#a2bfa5165825979bf2431db55bc6bc9ca"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::vector&lt; value_type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_a865d7b8ec5694fb73e187ebf84a35b63.html#a865d7b8ec5694fb73e187ebf84a35b63">show</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserta <b class="paramname">value</b> en el diccionario.  <a href="#a865d7b8ec5694fb73e187ebf84a35b63"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_a43ddb71cc91e5c6021a7a1f243d6cc4a.html#a43ddb71cc91e5c6021a7a1f243d6cc4a">swap</a> (<a class="el" href="classaed2_1_1map.html">map</a> &amp;other)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Intercambia el contenido de <b class="paramname">*this</b> y <b class="paramname">other</b>  <a href="#a43ddb71cc91e5c6021a7a1f243d6cc4a"></a><br/></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Recorridos e iteradores</div></td></tr>
@@ -190,6 +188,15 @@ Métodos privados</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Funciones auxiliares</div></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_ab45cb28bb215cd229383d88b96b3f624.html#ab45cb28bb215cd229383d88b96b3f624">eq</a> (const Key &amp;k1, const Key &amp;k2) const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna true si las claves son iguales con respecto a <b class="paramname">this</b>-&gt;lt.  <a href="#ab45cb28bb215cd229383d88b96b3f624"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::pair&lt; <a class="el" href="structaed2_1_1map_1_1Node.html">Node</a> *, <a class="el" href="structaed2_1_1map_1_1Node.html">Node</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_aa079b9390f988f97be26fd51ed44a2c9.html#aa079b9390f988f97be26fd51ed44a2c9">bounds</a> (const Key &amp;key)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna true si las claves son iguales con respecto a <b class="paramname">this</b>-&gt;lt.  <a href="#aa079b9390f988f97be26fd51ed44a2c9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::pair&lt; const <a class="el" href="structaed2_1_1map_1_1Node.html">Node</a> *, const <br class="typebreak"/>
+<a class="el" href="structaed2_1_1map_1_1Node.html">Node</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_a4d903414b3f1f1e6f785342bb3900572.html#a4d903414b3f1f1e6f785342bb3900572">bounds</a> (const Key &amp;key) const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna true si las claves son iguales con respecto a <b class="paramname">this</b>-&gt;lt.  <a href="#a4d903414b3f1f1e6f785342bb3900572"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_a45b04533e9acf27438813ab4a2604443.html#a45b04533e9acf27438813ab4a2604443">hintValido</a> (<a class="el" href="classaed2_1_1map_1_1const__iterator.html">const_iterator</a> hint, const value_type &amp;value) const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna true si las claves son iguales con respecto a <b class="paramname">this</b>-&gt;lt.  <a href="#a45b04533e9acf27438813ab4a2604443"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classaed2_1_1map_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_a4b4f1e65ee9aeccee4046d53fd5fd8a4.html#a4b4f1e65ee9aeccee4046d53fd5fd8a4">insert_rapido</a> (<a class="el" href="classaed2_1_1map_1_1const__iterator.html">const_iterator</a> hint, const value_type &amp;value)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna true si las claves son iguales con respecto a <b class="paramname">this</b>-&gt;lt.  <a href="#a4b4f1e65ee9aeccee4046d53fd5fd8a4"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Atributos privados</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Estructura de representación</div></td></tr>
@@ -276,7 +283,7 @@ class aed2::map&lt; Key, Meaning, Compare &gt;</h3>
 <dl class="user"><dt><b>Se explica con</b></dt><dd>Diccionario(<span class="paramname">Key</span>, <span class="paramname">Meaning</span>) con parámetro formal <img class="formulaInl" alt="$<$" src="form_0.png"/> = f.operator() para algún f de tipo <span class="paramname">Compare</span>.</dd></dl>
 <dl class="attention"><dt><b>Atención:</b></dt><dd>No tenemos forma en AED2 de decir que el parámetro formal se define en tiempo de ejecución, como ocurre en este caso. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="map_8h_source.html#l00713">713</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p>Definición en la línea <a class="el" href="map_8h_source.html#l00715">715</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
 </div><hr/>La documentación para esta clase fue generada a partir del siguiente fichero:<ul>
 <li><a class="el" href="map_8h_source.html">map.h</a></li>
 </ul>
@@ -301,7 +308,7 @@ class aed2::map&lt; Key, Meaning, Compare &gt;</h3>
       <li class="navelem"><b>aed2</b>      </li>
       <li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a>      </li>
 
-    <li class="footer">Generado el Viernes, 23 de Junio de 2017 02:09:58 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 23 de Junio de 2017 02:18:08 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

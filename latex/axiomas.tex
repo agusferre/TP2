@@ -60,8 +60,10 @@ comparar\-Claves\-: \-Conj() cs1 x \-Conj() cs2 $\to$ bool\par
 \end{DoxyParagraph}
 \begin{DoxyParagraph}{minimo\-Aux}
 mínimo\-Aux\-: \-Conj( $\alpha$, $\beta$) x ( $\alpha$, $\beta$) $\to$ ( $\alpha$, $\beta$)\par
- minimo\-Aux(claves, e) $\equiv$ {\bfseries if} \# claves = 0 {\bfseries then} e {\bfseries else} minimo\-Aux(sin\-Uno(claves), max(e, dame\-Uno(claves))) {\bfseries fi}  \#include $<$functional$>$ \#include $<$iterator$>$ \#include $<$utility$>$ \#include $<$cassert$>$ \#include $<$algorithm$>$ \#include $<$iostream$>$
+ minimo\-Aux(claves, e) $\equiv$ {\bfseries if} \# claves = 0 {\bfseries then} e {\bfseries else} minimo\-Aux(sin\-Uno(claves), max(e, dame\-Uno(claves))) {\bfseries fi} 
 \end{DoxyParagraph}
+\#include $<$functional$>$ \#include $<$iterator$>$ \#include $<$utility$>$ \#include $<$cassert$>$ \#include $<$algorithm$>$ \#include $<$iostream$>$
+
 \#ifdef \-D\-E\-B\-U\-G \-Aca se puede incluir cualquier cosa que consideren que necesitan para debug \#include $<$iostream$>$ \#include $<$iomanip$>$ \#endif
 
 /$\ast$$\ast$ \-Para evitar cualquier tipo de conflictos, todas las clases de \-A\-E\-D2 se implementan en el namespace aed2. \-Recordar el uso de `namespace`, el keyword `using`, y el método \-A\-D\-L para la busqueda de las funciones. 

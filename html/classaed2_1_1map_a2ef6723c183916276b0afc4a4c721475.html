@@ -125,20 +125,20 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
   </dd>
 </dl>
 <dl class="user"><dt><b>Aspectos de aliasing:</b></dt><dd>\1</dd></dl>
-<dl class="pre"><dt><b>Precondición:</b></dt><dd><b>P</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {this <img class="formulaInl" alt="$=_{obs}$" src="form_25.png"/> d_0} </dd></dl>
-<dl class="post"><dt><b>Postcondición:</b></dt><dd>{this <img class="formulaInl" alt="$=_{obs}$" src="form_25.png"/> definir(key, this) <img class="formulaInl" alt="$\land$" src="form_14.png"/> Siguiente(res) <img class="formulaInl" alt="$=_{obs}$" src="form_25.png"/> value}</dd></dl>
+<dl class="pre"><dt><b>Precondición:</b></dt><dd><b>P</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {this <img class="formulaInl" alt="$=_{obs}$" src="form_2.png"/> d_0} </dd></dl>
+<dl class="post"><dt><b>Postcondición:</b></dt><dd>{this <img class="formulaInl" alt="$=_{obs}$" src="form_2.png"/> definir(key, this) <img class="formulaInl" alt="$\land$" src="form_16.png"/> Siguiente(res) <img class="formulaInl" alt="$=_{obs}$" src="form_2.png"/> value}</dd></dl>
 <dl class="section complexity">
 <dt>Complejidad Temporal</dt>
 <dd><ul>
-<li>Peor caso: <img class="formulaInl" alt="$O$" src="form_1.png"/>( <img class="formulaInl" alt="$\log$" src="form_19.png"/>(<b>size</b>(<b class="paramname">*this</b>)) <img class="formulaInl" alt="$\cdot$" src="form_13.png"/> <b>cmp</b>(<b class="paramname">*this</b>) <img class="formulaInl" alt="$+$" src="form_20.png"/> <b>copy</b>(<b class="paramname">value</b>))</li>
-<li>Si <b class="paramname">hint</b> apunta al primer valor con clave al menos <b class="paramname">value</b>.first (o <b class="paramname">this</b>-&gt;<a class="el" href="classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983.html#a76023e6a56cb625513e1b5ea028bf983" title="Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario.">end()</a> en caso de no existir): <img class="formulaInl" alt="$O$" src="form_1.png"/>(<b>cmp</b>(<b class="paramname">*this</b>) <img class="formulaInl" alt="$+$" src="form_20.png"/> <b>copy</b>(<b class="paramname">value</b>)) amortizado. </li>
+<li>Peor caso: <img class="formulaInl" alt="$O$" src="form_1.png"/>( <img class="formulaInl" alt="$\log$" src="form_21.png"/>(<b>size</b>(<b class="paramname">*this</b>)) <img class="formulaInl" alt="$\cdot$" src="form_15.png"/> <b>cmp</b>(<b class="paramname">*this</b>) <img class="formulaInl" alt="$+$" src="form_22.png"/> <b>copy</b>(<b class="paramname">value</b>))</li>
+<li>Si <b class="paramname">hint</b> apunta al primer valor con clave al menos <b class="paramname">value</b>.first (o <b class="paramname">this</b>-&gt;<a class="el" href="classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983.html#a76023e6a56cb625513e1b5ea028bf983" title="Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario.">end()</a> en caso de no existir): <img class="formulaInl" alt="$O$" src="form_1.png"/>(<b>cmp</b>(<b class="paramname">*this</b>) <img class="formulaInl" alt="$+$" src="form_22.png"/> <b>copy</b>(<b class="paramname">value</b>)) amortizado. </li>
 </ul>
 </dd>
 </dl>
 <dl class="attention"><dt><b>Atención:</b></dt><dd>Para prevenir que el nuevo valor redefina uno ya existente, usar <a class="el" href="classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8.html#a60aacba06b1579630b3c8e996cf248c8" title="Inserta value en el diccionario.">aed2::map::insert</a>. </dd></dl>
 <dl class="remark"><dt><b>Comentarios:</b></dt><dd>Esta función es similar al operator[], pero tiene dos ventajas y una desventaja. Las ventajas es que 1. se puede indicar un <b class="paramname">hint</b> para la búsqueda y 2. no es necesario que <span class="paramname">Meaning</span> tenga constructor sin parámetros. La desventaja es que la notación no es tan bonita. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="map_8h_source.html#l01274">1274</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p>Definición en la línea <a class="el" href="map_8h_source.html#l01235">1235</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
 </div>
 </div>
@@ -163,7 +163,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
       <li class="navelem"><b>aed2</b>      </li>
       <li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a>      </li>
 
-    <li class="footer">Generado el Viernes, 23 de Junio de 2017 02:09:59 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 23 de Junio de 2017 02:18:09 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

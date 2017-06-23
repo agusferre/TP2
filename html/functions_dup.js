@@ -1,6 +1,7 @@
 var functions_dup =
 [
     [ "_", "functions.html", null ],
+<<<<<<< HEAD
     [ "a", "functions_0x61.html", null ],
     [ "b", "functions_0x62.html", null ],
     [ "c", "functions_0x63.html", null ],
@@ -18,5 +19,25 @@ var functions_dup =
     [ "s", "functions_0x73.html", null ],
     [ "t", "functions_0x74.html", null ],
     [ "v", "functions_0x76.html", null ],
+=======
+    [ "a", "functions_a.html", null ],
+    [ "b", "functions_b.html", null ],
+    [ "c", "functions_c.html", null ],
+    [ "d", "functions_d.html", null ],
+    [ "e", "functions_e.html", null ],
+    [ "f", "functions_f.html", null ],
+    [ "h", "functions_h.html", null ],
+    [ "i", "functions_i.html", null ],
+    [ "k", "functions_k.html", null ],
+    [ "l", "functions_l.html", null ],
+    [ "m", "functions_m.html", null ],
+    [ "n", "functions_n.html", null ],
+    [ "o", "functions_o.html", null ],
+    [ "p", "functions_p.html", null ],
+    [ "r", "functions_r.html", null ],
+    [ "s", "functions_s.html", null ],
+    [ "t", "functions_t.html", null ],
+    [ "v", "functions_v.html", null ],
+>>>>>>> d5f30837b23c557aacdddcbfc53bfb8b38a94c5c
     [ "~", "functions_0x7e.html", null ]
 ];

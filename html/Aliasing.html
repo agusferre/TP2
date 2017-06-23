@@ -96,7 +96,7 @@ Resumen</h2>
 <li>'get': que retorna el entero con la dirección de memoria.</li>
 </ol>
 </li>
-<li>Para saber si dos variables computacionales `x` e `y` son alias a la misma posición de memoria alcanza con verificar que &amp;`x` <img class="formulaInl" alt="$=_{obs}$" src="form_25.png"/> &amp;`y`.</li>
+<li>Para saber si dos variables computacionales `x` e `y` son alias a la misma posición de memoria alcanza con verificar que &amp;`x` <img class="formulaInl" alt="$=_{obs}$" src="form_2.png"/> &amp;`y`.</li>
 <li>Los aspectos de aliasing, que describen los efectos de una operación en aliases a los que no tenemos acceso, se describen en castellano.</li>
 <li>Los iteradores cuentan con un observador `coleccion` que retorna un puntero a la colección recorrida. En consecuencia, podemos saber si dos iteradores recorrer la misma colección verificando la igualdad observacional de este observador.</li>
 </ul>
@@ -147,7 +147,7 @@ Resumen</h2>
 </ul>
 <p>indicando que se satisfacen las siguientes propiedades:</p>
 <ol type="1">
-<li>*(&amp;<em>x</em>) <img class="formulaInl" alt="$=_{obs}$" src="form_25.png"/> term&lt;<em>T&gt;</em>(<em>y</em>) para cualquier variable computacional <em>x</em> de tipo <em>T</em> cuyo valor es <em>y</em>, y</li>
+<li>*(&amp;<em>x</em>) <img class="formulaInl" alt="$=_{obs}$" src="form_2.png"/> term&lt;<em>T&gt;</em>(<em>y</em>) para cualquier variable computacional <em>x</em> de tipo <em>T</em> cuyo valor es <em>y</em>, y</li>
 <li>&amp;<em>x</em> es invariante para cualquier variable computacional <em>x</em>.</li>
 </ol>
 <p>En resumen, podemos observar que las variables computacionales forman, en cierto sentido informal, un tipo nuevo distinto al del valor que denotan. En efecto, una variable computacional <em>v</em> tiene dos operaciones:</p>
@@ -155,7 +155,7 @@ Resumen</h2>
 <li>&amp;<em>v:</em> para acceder al valor, y</li>
 <li>eval(<em>v</em>): que denota el valor "almacenado" en la posición de memoria de <em>v</em>. Esta función suele ser implícita, ya que uno suele escribir <em>v</em> para referirse a su valor.</li>
 </ol>
-<p>La existencia del operador &amp; sobre variables computacionales nos permite definir lo que seria el símil de la igualdad observacional de estos objetos, i.e., el alias. Es decir, cuándo dos variables refieren a la misma posición de memoria. En este caso, <em>v</em> y <em>w</em> tiene alias si y sólo si &amp;<em>v</em> <img class="formulaInl" alt="$=_{obs}$" src="form_25.png"/> &amp;<em>w</em>.</p>
+<p>La existencia del operador &amp; sobre variables computacionales nos permite definir lo que seria el símil de la igualdad observacional de estos objetos, i.e., el alias. Es decir, cuándo dos variables refieren a la misma posición de memoria. En este caso, <em>v</em> y <em>w</em> tiene alias si y sólo si &amp;<em>v</em> <img class="formulaInl" alt="$=_{obs}$" src="form_2.png"/> &amp;<em>w</em>.</p>
 <h3><a class="anchor" id="sec-invalido"></a>
 Variables y punteros inválidos y el problema de la memoria finita</h3>
 <p>Claramente, no todas las combinaciones de bits representan información válida, cuando queremos interpretar una posición de memoria con un tipo <em>T</em>. El comportamiento de la función sombrerito sobre dichas variables está indefinido (ver restricción). Sin embargo, no podemos especificar nada de las variables <em>antes</em> de aplicar sombrerito. Por ello, simplemente asumimos que las variables de nuestro mundo computacional son <em>válidas</em>. En términos formales, suponemos que sombrerito de <em>x</em> siempre denota un valor correcto, más allá de la restricción.</p>
@@ -173,7 +173,7 @@ Los aspectos de aliasing</h2>
 <h2><a class="anchor" id="sec-iteradores"></a>
 Especificación de los iteradores y el alias</h2>
 <p>De forma similar al TAD puntero de más arriba, los TADs para especificar iteradores son más bien construcciones sintácticas que sirven para expresar la secuencia recorrida. Nuevamente, la idea es poder expresar las pre y postcondiciones en términos algebraicos. Sin embargo, los TADs del apunte de Módulos básicos son insuficientes para este TP, porque no conocen cuál es la colección que están iterando. El problema surge cuando queremos especificar una función como, digamos, swap. Supongamos que queremos una función de swap que intercambie las posiciones apuntadas por dos iteradores `it1` e `it2`. ¿Cómo hacemos para expresar que `it1` e `it2` recorren la misma colección? Claramente, no alcanza con decir que la secuencia subyacente es la misma, porque podrían ser iteradores a listas observacionalmente iguales, pero en posiciones distintas de la memoria.</p>
-<p>El problema con la especificación de los iteradores es que no explotan el concepto de puntero acá descripto. Aunque dejamos como ejercicio (no obligatorio) su especificación, vamos a suponer que los generadores de iteradores reciben un parámetro adicional de tipo puntero(T) que determina la variable de tipo T que se está recorriendo. Asimismo, tiene un observador, llamado colección que retorna el puntero al objeto recorrido. Así pues, podemos expresar que `it1` e `it2` recorren la misma coleccion verificando que coleccion(`it1`) <img class="formulaInl" alt="$=_{obs}$" src="form_25.png"/> coleccion(`it2`). </p>
+<p>El problema con la especificación de los iteradores es que no explotan el concepto de puntero acá descripto. Aunque dejamos como ejercicio (no obligatorio) su especificación, vamos a suponer que los generadores de iteradores reciben un parámetro adicional de tipo puntero(T) que determina la variable de tipo T que se está recorriendo. Asimismo, tiene un observador, llamado colección que retorna el puntero al objeto recorrido. Así pues, podemos expresar que `it1` e `it2` recorren la misma coleccion verificando que coleccion(`it1`) <img class="formulaInl" alt="$=_{obs}$" src="form_2.png"/> coleccion(`it2`). </p>
 </div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -193,7 +193,7 @@ Especificación de los iteradores y el alias</h2>
   <div id="nav-path" class="navpath">
     <ul>
 
-    <li class="footer">Generado el Viernes, 23 de Junio de 2017 02:09:58 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 23 de Junio de 2017 02:18:08 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

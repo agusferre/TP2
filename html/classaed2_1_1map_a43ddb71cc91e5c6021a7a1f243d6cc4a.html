@@ -113,15 +113,15 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
   </table>
   </dd>
 </dl>
-<dl class="pre"><dt><b>Precondición:</b></dt><dd><b>P</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {<em>self</em> = <b class="paramname">*this</b> <img class="formulaInl" alt="$\land$" src="form_14.png"/> <em>oth</em> = <b class="paramname">other</b>} </dd></dl>
-<dl class="post"><dt><b>Postcondición:</b></dt><dd><b>Q</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {<b class="paramname">*this</b> <img class="formulaInl" alt="$=_{obs}$" src="form_25.png"/> <em>oth</em> <img class="formulaInl" alt="$\land$" src="form_14.png"/> <b class="paramname">other</b> = <em>self}</em> </dd></dl>
+<dl class="pre"><dt><b>Precondición:</b></dt><dd><b>P</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {<em>self</em> = <b class="paramname">*this</b> <img class="formulaInl" alt="$\land$" src="form_16.png"/> <em>oth</em> = <b class="paramname">other</b>} </dd></dl>
+<dl class="post"><dt><b>Postcondición:</b></dt><dd><b>Q</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {<b class="paramname">*this</b> <img class="formulaInl" alt="$=_{obs}$" src="form_2.png"/> <em>oth</em> <img class="formulaInl" alt="$\land$" src="form_16.png"/> <b class="paramname">other</b> = <em>self}</em> </dd></dl>
 <dl class="section complexity">
 <dt>Complejidad Temporal</dt>
 <dd><img class="formulaInl" alt="$O$" src="form_1.png"/>(1)</dd>
 </dl>
 <dl class="note"><dt><b>Nota:</b></dt><dd>La razón por la que se "invalidan" los iteradores pasando-el-fin tiene que ver con la forma en que se implementa el módulo (que emula la implementacion de C++). No hay ninguna razón técnica que impida mantener los iteradores pasando el fin, salvo por un pequeño ahorro de memoria y tiempo. En caso de querer usar los iteradores como punteros, se recomienda usar el iterador nulo de diccionario para representar al valor inválido, en lugar de usar los iteradores pasando-el-ultimo. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="map_8h_source.html#l01503">1503</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p>Definición en la línea <a class="el" href="map_8h_source.html#l01440">1440</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
 </div>
 </div>
@@ -146,7 +146,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
       <li class="navelem"><b>aed2</b>      </li>
       <li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a>      </li>
 
-    <li class="footer">Generado el Viernes, 23 de Junio de 2017 02:09:59 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 23 de Junio de 2017 02:18:09 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

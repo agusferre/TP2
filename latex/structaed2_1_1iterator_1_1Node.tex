@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 \hypertarget{structaed2_1_1iterator_1_1Node}{\subsection{\-Referencia de la \-Estructura aed2\-:\-:iterator\-:\-:\-Node}
 \label{structaed2_1_1iterator_1_1Node}\index{aed2\-::iterator\-::\-Node@{aed2\-::iterator\-::\-Node}}
 }
@@ -88,6 +89,101 @@ const \-Key \& \hyperlink{structaed2_1_1iterator_1_1Node_a528f5bd09da14392bf6416
 
 
 \begin{DoxyParams}{\-Parámetros}
+=======
+\hypertarget{structaed2_1_1iterator_1_1Node}{}\subsection{Referencia de la Estructura aed2\+:\+:iterator\+:\+:Node}
+\label{structaed2_1_1iterator_1_1Node}\index{aed2\+::iterator\+::\+Node@{aed2\+::iterator\+::\+Node}}
+
+
+Estructura (privada) de un nodo del árbol red-\/black.  
+
+
+\subsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{structaed2_1_1iterator_1_1Node_ab9a8f2970d15b72a4d1d20f8bf853d4b_ab9a8f2970d15b72a4d1d20f8bf853d4b}{$\sim$\+Node} ()
+\begin{DoxyCompactList}\small\item\em Destructor de \hyperlink{structaed2_1_1iterator_1_1Node}{Node}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Creación de nodos (constructores)}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structaed2_1_1iterator_1_1Node_a143f108a38e8990d7d60ad48dd521654_a143f108a38e8990d7d60ad48dd521654}{Node} ()
+\begin{DoxyCompactList}\small\item\em Constructor para crear el nodo header. \end{DoxyCompactList}\item 
+\hyperlink{structaed2_1_1iterator_1_1Node_a1f7307020ba416915f60d2dd938df845_a1f7307020ba416915f60d2dd938df845}{Node} (\hyperlink{structaed2_1_1iterator_1_1Node}{Node} $\ast$p, \hyperlink{classaed2_1_1iterator_aaa188f82ba585d8de525b1400242cf4f_aaa188f82ba585d8de525b1400242cf4f}{Color} c=Color\+::\+Red)
+\begin{DoxyCompactList}\small\item\em Constructor para nodos del arbol red-\/black, sin enlaces. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Acceso a la información en los nodos}\par
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{structaed2_1_1iterator_1_1Node_ac65ed5331c97b4a00f435c169283f92f_ac65ed5331c97b4a00f435c169283f92f}{is\+\_\+header} () const
+\begin{DoxyCompactList}\small\item\em Devuelve true si el nodo actual es el header de la estructura. \end{DoxyCompactList}\item 
+\hyperlink{classaed2_1_1iterator_a6411a2c08b2b7c52f063bef1a168acb6_a6411a2c08b2b7c52f063bef1a168acb6}{value\+\_\+type} \& \hyperlink{structaed2_1_1iterator_1_1Node_a968601069822105337814f963d79d635_a968601069822105337814f963d79d635}{value} ()
+\begin{DoxyCompactList}\small\item\em Devuelve el valor asociado a un nodo no cabecera. \end{DoxyCompactList}\item 
+const value \+\_\+type \& \hyperlink{structaed2_1_1iterator_1_1Node_ad96bf1d32de8726678dd95c687f7ee36_ad96bf1d32de8726678dd95c687f7ee36}{value} () const
+\item 
+const Key \& \hyperlink{structaed2_1_1iterator_1_1Node_ac97fa35ede63ba3d4ba1988b5f16cc00_ac97fa35ede63ba3d4ba1988b5f16cc00}{key} () const
+\begin{DoxyCompactList}\small\item\em Devuelve la clave del valor de un nodo no cabecera. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsubsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structaed2_1_1iterator_1_1Node}{Node} $\ast$ \hyperlink{structaed2_1_1iterator_1_1Node_aaf0597e2d3402329e0c30db030777f04_aaf0597e2d3402329e0c30db030777f04}{child} \mbox{[}2\mbox{]} \{nullptr, nullptr\}
+\begin{DoxyCompactList}\small\item\em Punteros a los hijos izquierdo (child\mbox{[}0\mbox{]}) y derecho (child\mbox{[}1\mbox{]}) \end{DoxyCompactList}\item 
+\hyperlink{structaed2_1_1iterator_1_1Node}{Node} $\ast$ \hyperlink{structaed2_1_1iterator_1_1Node_a7f097f76a613a17fc9d03c8f153cb5e4_a7f097f76a613a17fc9d03c8f153cb5e4}{parent} \{nullptr\}
+\begin{DoxyCompactList}\small\item\em Puntero al padre\+: garantiza insercion con puntero en O(1) amortizado e iteracion en O(1) memoria. \end{DoxyCompactList}\item 
+\hyperlink{classaed2_1_1iterator_aaa188f82ba585d8de525b1400242cf4f_aaa188f82ba585d8de525b1400242cf4f}{Color} \hyperlink{structaed2_1_1iterator_1_1Node_a07d4b83de27938ece64e1a6db4a055cc_a07d4b83de27938ece64e1a6db4a055cc}{color} \{Color\+::\+Red\}
+\begin{DoxyCompactList}\small\item\em Color del nodo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Descripción detallada}
+Estructura (privada) de un nodo del árbol red-\/black. 
+
+Tal como sugiere Cormen et al. {\bfseries [Cormen\+Leiserson\+Rivest\+Stein2009]}, como se implementa en gcc, y cómo explicamos en \hyperlink{Implementacion}{Implementación del árbol red-\/black}, el arbol tiene dos tipos de nodos. Aquellos que tienen un valor e implementan el árbol y aquellos que se usan como sentinelas. La estructura \hyperlink{structaed2_1_1iterator_1_1Node}{Node} es la base para representar a ambos tipos de nodos, ya que omite los valores. La clase \hyperlink{structaed2_1_1map_1_1InnerNode}{aed2\+::map\+::\+Inner\+Node}, que hereda de \hyperlink{structaed2_1_1iterator_1_1Node}{Node}, extiende la representación incluyendo el valor.
+
+Además de definir los campos de la estructura de un nodo, esta clase podría usarse para implementar una especie de submodulo que incluya funciones para manipular el arbol red-\/black. Las funciones incluidas en esta estructura deberían ser aquellas que, si bien no requieren conocer el resto de la estructura red-\/black, explotan el conocimiento de que el árbol red-\/black tiene un único nodo sentinela que sirve de cabecera. (Ver ejemplos)
+
+\begin{DoxyRemark}{Comentarios}
+Como \hyperlink{structaed2_1_1iterator_1_1Node}{Node} es una estructura privada, no tiene ventajas imporantes implementarla en forma modular. 
+\end{DoxyRemark}
+
+
+Definición en la línea \hyperlink{map2_8h_source_l03151}{3151} del archivo \hyperlink{map2_8h_source}{map2.\+h}.
+
+
+
+\subsubsection{Documentación del constructor y destructor}
+\mbox{\Hypertarget{structaed2_1_1iterator_1_1Node_a143f108a38e8990d7d60ad48dd521654_a143f108a38e8990d7d60ad48dd521654}\label{structaed2_1_1iterator_1_1Node_a143f108a38e8990d7d60ad48dd521654_a143f108a38e8990d7d60ad48dd521654}} 
+\index{aed2\+::iterator\+::\+Node@{aed2\+::iterator\+::\+Node}!Node@{Node}}
+\index{Node@{Node}!aed2\+::iterator\+::\+Node@{aed2\+::iterator\+::\+Node}}
+\paragraph{\texorpdfstring{Node()}{Node()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily aed2\+::iterator\+::\+Node\+::\+Node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor para crear el nodo header. 
+
+Construye un nodo con color Header y cuyos hijos apuntan al nodo creado. Esta es la definicion del nodo cabecera cuando el arbol está vacío.
+
+
+\begin{DoxyDescription}
+\item[Complejidad Temporal]$O$(1)
+\end{DoxyDescription}
+
+Definición en la línea \hyperlink{map2_8h_source_l03171}{3171} del archivo \hyperlink{map2_8h_source}{map2.\+h}.
+
+\mbox{\Hypertarget{structaed2_1_1iterator_1_1Node_a1f7307020ba416915f60d2dd938df845_a1f7307020ba416915f60d2dd938df845}\label{structaed2_1_1iterator_1_1Node_a1f7307020ba416915f60d2dd938df845_a1f7307020ba416915f60d2dd938df845}} 
+\index{aed2\+::iterator\+::\+Node@{aed2\+::iterator\+::\+Node}!Node@{Node}}
+\index{Node@{Node}!aed2\+::iterator\+::\+Node@{aed2\+::iterator\+::\+Node}}
+\paragraph{\texorpdfstring{Node()}{Node()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily aed2\+::iterator\+::\+Node\+::\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{structaed2_1_1iterator_1_1Node}{Node} $\ast$}]{p,  }\item[{\hyperlink{classaed2_1_1iterator_aaa188f82ba585d8de525b1400242cf4f_aaa188f82ba585d8de525b1400242cf4f}{Color}}]{c = {\ttfamily Color\+:\+:Red} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor para nodos del arbol red-\/black, sin enlaces. 
+
+Crea un nodo con padre {\bfseries p}, color {\bfseries c} y sin hijos.
+
+
+\begin{DoxyParams}{Parámetros}
+>>>>>>> d5f30837b23c557aacdddcbfc53bfb8b38a94c5c
 {\em p} & puntero al padre \\
 \hline
 {\em c} & color del nodo\\
@@ -95,6 +191,7 @@ const \-Key \& \hyperlink{structaed2_1_1iterator_1_1Node_a528f5bd09da14392bf6416
 \end{DoxyParams}
 
 \begin{DoxyDescription}
+<<<<<<< HEAD
 \item[\-Complejidad \-Temporal]$O$(1)
 \end{DoxyDescription}
 
@@ -215,3 +312,165 @@ clave del valor asociado al nodo.
 \-La documentación para esta estructura fue generada a partir del siguiente fichero\-:\begin{DoxyCompactItemize}
 \item 
 map2.\-h\end{DoxyCompactItemize}
+=======
+\item[Complejidad Temporal]$O$(1)
+\end{DoxyDescription}
+
+Definición en la línea \hyperlink{map2_8h_source_l03185}{3185} del archivo \hyperlink{map2_8h_source}{map2.\+h}.
+
+\mbox{\Hypertarget{structaed2_1_1iterator_1_1Node_ab9a8f2970d15b72a4d1d20f8bf853d4b_ab9a8f2970d15b72a4d1d20f8bf853d4b}\label{structaed2_1_1iterator_1_1Node_ab9a8f2970d15b72a4d1d20f8bf853d4b_ab9a8f2970d15b72a4d1d20f8bf853d4b}} 
+\index{aed2\+::iterator\+::\+Node@{aed2\+::iterator\+::\+Node}!````~Node@{$\sim$\+Node}}
+\index{````~Node@{$\sim$\+Node}!aed2\+::iterator\+::\+Node@{aed2\+::iterator\+::\+Node}}
+\paragraph{\texorpdfstring{$\sim$\+Node()}{~Node()}}
+{\footnotesize\ttfamily virtual aed2\+::iterator\+::\+Node\+::$\sim$\+Node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destructor de \hyperlink{structaed2_1_1iterator_1_1Node}{Node}. 
+
+Como \hyperlink{structaed2_1_1iterator_1_1Node}{Node} funciona de clase base, el destructor es virtual, asi se puede invocar delete de un Node$\ast$ que apunta a un \hyperlink{structaed2_1_1iterator_1_1InnerNode}{Inner\+Node}, destruyendo el valor contenido en el \hyperlink{structaed2_1_1iterator_1_1InnerNode}{Inner\+Node}.
+
+\begin{DoxyRemark}{Comentarios}
+En rigor, nunca deberíamos invocar new \hyperlink{structaed2_1_1iterator_1_1Node}{Node}, asi que no tiene sentido hacer delete de un Node$\ast$. Podemos evitar esta invocación poniendo el destructor como protegido y no virtual. De esa forma, nos obliga a tener un Inner\+Node$\ast$ para el delete, lo cual efectivamente llama al destructor del valor. Sin embargo, por simplicidad, vamos a permitir que el destructor sea virtual. Además, así no es necesario que hagan el {\ttfamily static\+\_\+cast} y evitamos errores de memoria difíciles de debugguear. 
+\end{DoxyRemark}
+
+
+Definición en la línea \hyperlink{map2_8h_source_l03202}{3202} del archivo \hyperlink{map2_8h_source}{map2.\+h}.
+
+
+
+\subsubsection{Documentación de las funciones miembro}
+\mbox{\Hypertarget{structaed2_1_1iterator_1_1Node_ac65ed5331c97b4a00f435c169283f92f_ac65ed5331c97b4a00f435c169283f92f}\label{structaed2_1_1iterator_1_1Node_ac65ed5331c97b4a00f435c169283f92f_ac65ed5331c97b4a00f435c169283f92f}} 
+\index{aed2\+::iterator\+::\+Node@{aed2\+::iterator\+::\+Node}!is\+\_\+header@{is\+\_\+header}}
+\index{is\+\_\+header@{is\+\_\+header}!aed2\+::iterator\+::\+Node@{aed2\+::iterator\+::\+Node}}
+\paragraph{\texorpdfstring{is\+\_\+header()}{is\_header()}}
+{\footnotesize\ttfamily bool aed2\+::iterator\+::\+Node\+::is\+\_\+header (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Devuelve true si el nodo actual es el header de la estructura. 
+
+\begin{DoxyRemark}{Comentarios}
+Vale destacar que hay exactamente dos nodos n con n-\/$>$parent-\/$>$parent = \&n\+: la cabecera y la raíz. En la implementación del árbol red-\/black de G\+CC, el nodo cabecera tiene color Rojo. De esta forma, se puede distinguir la cabecera de la raíz, que siempre es negra. Para ello, alcanza con verificar que {\ttfamily color == Color\+::\+Red and (parent == nullptr or parent-\/$>$parent = this)}. Sin embargo, esta condicion también podría ser satisfecha por la raíz algún {\ttfamily fixup}. Por simplicidad, y para evitar bugs, acá tomamos como solucion que el header tiene un color particular, llamado Color\+::\+Header. Si bien se necesita mas de un bit para el color, lo cierto es que ningun procesador admite direccionamiento a bit, asi que no se pierde nada en la practica. El objetivo de esta función es poder reemplazar el chequeo de la condición para determinar si el nodo es la cabecera, en caso en que queramos evitar el nuevo color.
+\end{DoxyRemark}
+\begin{DoxyReturn}{Devuelve}
+true si el nodo actual tiene color aed2\+::map\+::\+Color\+::\+Header.
+\end{DoxyReturn}
+
+\begin{DoxyDescription}
+\item[Complejidad Temporal]$O$(1)
+\end{DoxyDescription}
+
+Definición en la línea \hyperlink{map2_8h_source_l03227}{3227} del archivo \hyperlink{map2_8h_source}{map2.\+h}.
+
+\mbox{\Hypertarget{structaed2_1_1iterator_1_1Node_a968601069822105337814f963d79d635_a968601069822105337814f963d79d635}\label{structaed2_1_1iterator_1_1Node_a968601069822105337814f963d79d635_a968601069822105337814f963d79d635}} 
+\index{aed2\+::iterator\+::\+Node@{aed2\+::iterator\+::\+Node}!value@{value}}
+\index{value@{value}!aed2\+::iterator\+::\+Node@{aed2\+::iterator\+::\+Node}}
+\paragraph{\texorpdfstring{value()}{value()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classaed2_1_1iterator_a6411a2c08b2b7c52f063bef1a168acb6_a6411a2c08b2b7c52f063bef1a168acb6}{value\+\_\+type}\& aed2\+::iterator\+::\+Node\+::value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Devuelve el valor asociado a un nodo no cabecera. 
+
+Esta funcion es un shortcut para acceder al valor de un nodo no centinela. Recordar que dicho valor no está definido para la cabecera.
+
+\begin{DoxyReturn}{Devuelve}
+valor asociado al nodo.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondición}
+{\bfseries this} no es el nodo cabecera (y por ende su tipo es \hyperlink{structaed2_1_1iterator_1_1InnerNode}{Inner\+Node})
+\end{DoxyPrecond}
+
+\begin{DoxyDescription}
+\item[Complejidad Temporal]$O$(1)
+\end{DoxyDescription}
+
+Definición en la línea \hyperlink{map2_8h_source_l03243}{3243} del archivo \hyperlink{map2_8h_source}{map2.\+h}.
+
+\mbox{\Hypertarget{structaed2_1_1iterator_1_1Node_ad96bf1d32de8726678dd95c687f7ee36_ad96bf1d32de8726678dd95c687f7ee36}\label{structaed2_1_1iterator_1_1Node_ad96bf1d32de8726678dd95c687f7ee36_ad96bf1d32de8726678dd95c687f7ee36}} 
+\index{aed2\+::iterator\+::\+Node@{aed2\+::iterator\+::\+Node}!value@{value}}
+\index{value@{value}!aed2\+::iterator\+::\+Node@{aed2\+::iterator\+::\+Node}}
+\paragraph{\texorpdfstring{value()}{value()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const value \+\_\+type\& aed2\+::iterator\+::\+Node\+::value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Esta es una función miembro sobrecargada que se suministra por conveniencia. Difiere de la anterior función solamente en los argumentos que acepta. 
+
+Definición en la línea \hyperlink{map2_8h_source_l03254}{3254} del archivo \hyperlink{map2_8h_source}{map2.\+h}.
+
+\mbox{\Hypertarget{structaed2_1_1iterator_1_1Node_ac97fa35ede63ba3d4ba1988b5f16cc00_ac97fa35ede63ba3d4ba1988b5f16cc00}\label{structaed2_1_1iterator_1_1Node_ac97fa35ede63ba3d4ba1988b5f16cc00_ac97fa35ede63ba3d4ba1988b5f16cc00}} 
+\index{aed2\+::iterator\+::\+Node@{aed2\+::iterator\+::\+Node}!key@{key}}
+\index{key@{key}!aed2\+::iterator\+::\+Node@{aed2\+::iterator\+::\+Node}}
+\paragraph{\texorpdfstring{key()}{key()}}
+{\footnotesize\ttfamily const Key\& aed2\+::iterator\+::\+Node\+::key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Devuelve la clave del valor de un nodo no cabecera. 
+
+Esta funcion es un shortcut para acceder a la clave de un nodo no centinela. Recordar que dicha clave no está definida para la cabecera.
+
+\begin{DoxyReturn}{Devuelve}
+clave del valor asociado al nodo.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondición}
+{\bfseries this} no es el nodo cabecera (y por ende su tipo es \hyperlink{structaed2_1_1iterator_1_1InnerNode}{Inner\+Node})
+\end{DoxyPrecond}
+
+\begin{DoxyDescription}
+\item[Complejidad Temporal]$O$(1)
+\end{DoxyDescription}
+
+Definición en la línea \hyperlink{map2_8h_source_l03271}{3271} del archivo \hyperlink{map2_8h_source}{map2.\+h}.
+
+
+
+\subsubsection{Documentación de los datos miembro}
+\mbox{\Hypertarget{structaed2_1_1iterator_1_1Node_aaf0597e2d3402329e0c30db030777f04_aaf0597e2d3402329e0c30db030777f04}\label{structaed2_1_1iterator_1_1Node_aaf0597e2d3402329e0c30db030777f04_aaf0597e2d3402329e0c30db030777f04}} 
+\index{aed2\+::iterator\+::\+Node@{aed2\+::iterator\+::\+Node}!child@{child}}
+\index{child@{child}!aed2\+::iterator\+::\+Node@{aed2\+::iterator\+::\+Node}}
+\paragraph{\texorpdfstring{child}{child}}
+{\footnotesize\ttfamily \hyperlink{structaed2_1_1iterator_1_1Node}{Node}$\ast$ aed2\+::iterator\+::\+Node\+::child\mbox{[}2\mbox{]} \{nullptr, nullptr\}}
+
+
+
+Punteros a los hijos izquierdo (child\mbox{[}0\mbox{]}) y derecho (child\mbox{[}1\mbox{]}) 
+
+
+
+Definición en la línea \hyperlink{map2_8h_source_l03153}{3153} del archivo \hyperlink{map2_8h_source}{map2.\+h}.
+
+\mbox{\Hypertarget{structaed2_1_1iterator_1_1Node_a7f097f76a613a17fc9d03c8f153cb5e4_a7f097f76a613a17fc9d03c8f153cb5e4}\label{structaed2_1_1iterator_1_1Node_a7f097f76a613a17fc9d03c8f153cb5e4_a7f097f76a613a17fc9d03c8f153cb5e4}} 
+\index{aed2\+::iterator\+::\+Node@{aed2\+::iterator\+::\+Node}!parent@{parent}}
+\index{parent@{parent}!aed2\+::iterator\+::\+Node@{aed2\+::iterator\+::\+Node}}
+\paragraph{\texorpdfstring{parent}{parent}}
+{\footnotesize\ttfamily \hyperlink{structaed2_1_1iterator_1_1Node}{Node}$\ast$ aed2\+::iterator\+::\+Node\+::parent \{nullptr\}}
+
+
+
+Puntero al padre\+: garantiza insercion con puntero en O(1) amortizado e iteracion en O(1) memoria. 
+
+
+
+Definición en la línea \hyperlink{map2_8h_source_l03155}{3155} del archivo \hyperlink{map2_8h_source}{map2.\+h}.
+
+\mbox{\Hypertarget{structaed2_1_1iterator_1_1Node_a07d4b83de27938ece64e1a6db4a055cc_a07d4b83de27938ece64e1a6db4a055cc}\label{structaed2_1_1iterator_1_1Node_a07d4b83de27938ece64e1a6db4a055cc_a07d4b83de27938ece64e1a6db4a055cc}} 
+\index{aed2\+::iterator\+::\+Node@{aed2\+::iterator\+::\+Node}!color@{color}}
+\index{color@{color}!aed2\+::iterator\+::\+Node@{aed2\+::iterator\+::\+Node}}
+\paragraph{\texorpdfstring{color}{color}}
+{\footnotesize\ttfamily \hyperlink{classaed2_1_1iterator_aaa188f82ba585d8de525b1400242cf4f_aaa188f82ba585d8de525b1400242cf4f}{Color} aed2\+::iterator\+::\+Node\+::color \{Color\+::\+Red\}}
+
+
+
+Color del nodo. 
+
+
+
+Definición en la línea \hyperlink{map2_8h_source_l03157}{3157} del archivo \hyperlink{map2_8h_source}{map2.\+h}.
+
+
+
+La documentación para esta estructura fue generada a partir del siguiente fichero\+:\begin{DoxyCompactItemize}
+\item 
+map2.\+h\end{DoxyCompactItemize}
+>>>>>>> d5f30837b23c557aacdddcbfc53bfb8b38a94c5c
