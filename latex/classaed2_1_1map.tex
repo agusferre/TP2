@@ -1,4 +1,4 @@
-\hypertarget{classaed2_1_1map}{\section{aed2\-:\-:map$<$ \-Key, \-Meaning, \-Compare $>$ \-Class \-Template \-Reference}
+\hypertarget{classaed2_1_1map}{\subsection{\-Referencia de la plantilla de la \-Clase aed2\-:\-:map$<$ \-Key, \-Meaning, \-Compare $>$}
 \label{classaed2_1_1map}\index{aed2\-::map$<$ Key, Meaning, Compare $>$@{aed2\-::map$<$ Key, Meaning, Compare $>$}}
 }
 
@@ -8,222 +8,186 @@
 
 
 
-{\ttfamily \#include $<$map.\-h$>$}
+{\ttfamily \#include \char`\"{}map.\-h\char`\"{}}
 
-\subsection*{\-Classes}
+\subsubsection*{\-Clases}
 \begin{DoxyCompactItemize}
 \item 
 class \hyperlink{classaed2_1_1map_1_1const__iterator}{const\-\_\-iterator}
 \begin{DoxyCompactList}\small\item\em \-Parte del módulo que implementa los iteradores que no permiten la modificación de los significados. \end{DoxyCompactList}\item 
-struct {\bfseries \-Inner\-Node}
+struct \hyperlink{structaed2_1_1map_1_1InnerNode}{\-Inner\-Node}
 \begin{DoxyCompactList}\small\item\em \-Estructura (privada) de un nodo no cabecera del árbol red-\/black. \end{DoxyCompactList}\item 
 class \hyperlink{classaed2_1_1map_1_1iterator}{iterator}
 \begin{DoxyCompactList}\small\item\em \-Parte del módulo que implementa los iteradores que permiten la modificación de los significados. \end{DoxyCompactList}\item 
-struct {\bfseries \-Node}
+struct \hyperlink{structaed2_1_1map_1_1Node}{\-Node}
 \begin{DoxyCompactList}\small\item\em \-Estructura (privada) de un nodo del árbol red-\/black. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{\-Public \-Member \-Functions}
-\begin{DoxyCompactItemize}
-\item 
-\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a2ef6723c183916276b0afc4a4c721475}{insert\-\_\-or\-\_\-assign} (\hyperlink{classaed2_1_1map_1_1const__iterator}{const\-\_\-iterator} hint, const value\-\_\-type \&value)
-\item 
-\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a9128a806713bcc999ebd8a97ab77e765}{insert\-\_\-or\-\_\-assign} (const value\-\_\-type \&value)
-\item 
-\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_ad8e796bf9c9c558e5ce6b61e116253fe}{erase} (\hyperlink{classaed2_1_1map_1_1const__iterator}{const\-\_\-iterator} pos)
-\begin{DoxyCompactList}\small\item\em \-Elimina el valor apuntado por \{pos\}. \end{DoxyCompactList}\item 
-\hypertarget{classaed2_1_1map_a98b9f200c64ce02dfb67902ee00e375a}{void {\bfseries transplant} (\-Node $\ast$u, \-Node $\ast$v)}\label{classaed2_1_1map_a98b9f200c64ce02dfb67902ee00e375a}
-
-\item 
-\hypertarget{classaed2_1_1map_a7870c8f26e82b00d0aeb2e9f331dfec6}{void {\bfseries erase\-\_\-fixup} (\hyperlink{classaed2_1_1map_1_1iterator}{iterator} it)}\label{classaed2_1_1map_a7870c8f26e82b00d0aeb2e9f331dfec6}
-
-\item 
-void \hyperlink{classaed2_1_1map_a2ffadb42cd5f0bc7b3752ff159b75334}{erase} (const \-Key \&key)
-\begin{DoxyCompactList}\small\item\em \-Elimina el valor cuya clave es \{key\}. \end{DoxyCompactList}\item 
-void \hyperlink{classaed2_1_1map_a2bfa5165825979bf2431db55bc6bc9ca}{clear} ()
-\begin{DoxyCompactList}\small\item\em \-Vacia el diccionario. \end{DoxyCompactList}\item 
-void \hyperlink{classaed2_1_1map_a43ddb71cc91e5c6021a7a1f243d6cc4a}{swap} (\hyperlink{classaed2_1_1map}{map} \&other)
-\begin{DoxyCompactList}\small\item\em \-Intercambia el contenido de \{$\ast$this\} y \{other\}. \end{DoxyCompactList}\item 
-\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a2ef6723c183916276b0afc4a4c721475}{insert\-\_\-or\-\_\-assign} (\hyperlink{classaed2_1_1map_1_1const__iterator}{const\-\_\-iterator} hint, const value\-\_\-type \&value)
-\item 
-\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a9128a806713bcc999ebd8a97ab77e765}{insert\-\_\-or\-\_\-assign} (const value\-\_\-type \&value)
-\item 
-\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_ad8e796bf9c9c558e5ce6b61e116253fe}{erase} (\hyperlink{classaed2_1_1map_1_1const__iterator}{const\-\_\-iterator} pos)
-\begin{DoxyCompactList}\small\item\em \-Elimina el valor apuntado por \{pos\}. \end{DoxyCompactList}\item 
-\hypertarget{classaed2_1_1map_a98b9f200c64ce02dfb67902ee00e375a}{void {\bfseries transplant} (\-Node $\ast$u, \-Node $\ast$v)}\label{classaed2_1_1map_a98b9f200c64ce02dfb67902ee00e375a}
-
-\end{DoxyCompactItemize}
+\subsubsection*{\-Métodos públicos}
 \begin{Indent}{\bf \-Construcción, asignación y destrucción}\par
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classaed2_1_1map_a64da1d965b13eb28cdb3837bc17a18cf}{map} (\-Compare c=\-Compare())
+\hyperlink{classaed2_1_1map_a64da1d965b13eb28cdb3837bc17a18cf_a64da1d965b13eb28cdb3837bc17a18cf}{map} (\-Compare c=\-Compare())
 \begin{DoxyCompactList}\small\item\em \-Crea un diccionario vacio. \end{DoxyCompactList}\item 
-\hyperlink{classaed2_1_1map_a7a77950a3d8e637bfa7cf5dcd904f257}{map} (const \hyperlink{classaed2_1_1map}{map} \&other)
+\hyperlink{classaed2_1_1map_a7a77950a3d8e637bfa7cf5dcd904f257_a7a77950a3d8e637bfa7cf5dcd904f257}{map} (const \hyperlink{classaed2_1_1map}{map} \&other)
 \begin{DoxyCompactList}\small\item\em \-Constructor por copia. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class iterator $>$ }\\\hyperlink{classaed2_1_1map_a5d336f3248572beb56be383dcc95cfeb}{map} (\hyperlink{classaed2_1_1map_1_1iterator}{iterator} first, \hyperlink{classaed2_1_1map_1_1iterator}{iterator} last, \-Compare c=\-Compare())
-\begin{DoxyCompactList}\small\item\em \-Crea un diccionario con los elementos del rango \mbox{[}\{first\}, \{last\}) \end{DoxyCompactList}\item 
-\hyperlink{classaed2_1_1map}{map} \& \hyperlink{classaed2_1_1map_ac606d334809066929522964d45e76317}{operator=} (\hyperlink{classaed2_1_1map}{map} other)
+{\footnotesize template$<$class iterator $>$ }\\\hyperlink{classaed2_1_1map_a5d336f3248572beb56be383dcc95cfeb_a5d336f3248572beb56be383dcc95cfeb}{map} (\hyperlink{classaed2_1_1map_1_1iterator}{iterator} first, \hyperlink{classaed2_1_1map_1_1iterator}{iterator} last, \-Compare c=\-Compare())
+\begin{DoxyCompactList}\small\item\em \-Crea un diccionario con los elementos del rango \mbox{[}{\bfseries first}, {\bfseries last}) \end{DoxyCompactList}\item 
+\hyperlink{classaed2_1_1map}{map} \& \hyperlink{classaed2_1_1map_ac606d334809066929522964d45e76317_ac606d334809066929522964d45e76317}{operator=} (\hyperlink{classaed2_1_1map}{map} other)
 \begin{DoxyCompactList}\small\item\em \-Operador de asignación. \end{DoxyCompactList}\item 
-\hyperlink{classaed2_1_1map_ab22c9a85c2dadbc286cd30e97069a8e6}{$\sim$map} ()
-\begin{DoxyCompactList}\small\item\em \-Destructor. \end{DoxyCompactList}\item 
-\hyperlink{classaed2_1_1map_a64da1d965b13eb28cdb3837bc17a18cf}{map} (\-Compare c=\-Compare())
-\begin{DoxyCompactList}\small\item\em \-Crea un diccionario vacio. \end{DoxyCompactList}\item 
-\hyperlink{classaed2_1_1map_a7a77950a3d8e637bfa7cf5dcd904f257}{map} (const \hyperlink{classaed2_1_1map}{map} \&other)
-\begin{DoxyCompactList}\small\item\em \-Constructor por copia. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class iterator $>$ }\\\hyperlink{classaed2_1_1map_a5d336f3248572beb56be383dcc95cfeb}{map} (\hyperlink{classaed2_1_1map_1_1iterator}{iterator} first, \hyperlink{classaed2_1_1map_1_1iterator}{iterator} last, \-Compare c=\-Compare())
-\begin{DoxyCompactList}\small\item\em \-Crea un diccionario con los elementos del rango \mbox{[}\{first\}, \{last\}) \end{DoxyCompactList}\item 
-\hyperlink{classaed2_1_1map}{map} \& \hyperlink{classaed2_1_1map_ac606d334809066929522964d45e76317}{operator=} (\hyperlink{classaed2_1_1map}{map} other)
-\begin{DoxyCompactList}\small\item\em \-Operador de asignación. \end{DoxyCompactList}\item 
-\hyperlink{classaed2_1_1map_ab22c9a85c2dadbc286cd30e97069a8e6}{$\sim$map} ()
+\hyperlink{classaed2_1_1map_ab22c9a85c2dadbc286cd30e97069a8e6_ab22c9a85c2dadbc286cd30e97069a8e6}{$\sim$map} ()
 \begin{DoxyCompactList}\small\item\em \-Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}{\bf \-Busqueda y acceso a los valores}\par
 \begin{DoxyCompactItemize}
 \item 
-const \-Meaning \& \hyperlink{classaed2_1_1map_a0b0a11f906da2926f9eb342fcee79fd7}{at} (const \-Key \&key) const 
-\begin{DoxyCompactList}\small\item\em \-Devuelve el significado asociado a \{key\}. \end{DoxyCompactList}\item 
-\-Meaning \& \hyperlink{classaed2_1_1map_a6b21c09f59a83b6ee45432dcfa61f4a1}{at} (const \-Key \&key)
+const \-Meaning \& \hyperlink{classaed2_1_1map_a0b0a11f906da2926f9eb342fcee79fd7_a0b0a11f906da2926f9eb342fcee79fd7}{at} (const \-Key \&key) const 
+\begin{DoxyCompactList}\small\item\em \-Devuelve el significado asociado a {\bfseries key} \end{DoxyCompactList}\item 
+\-Meaning \& \hyperlink{classaed2_1_1map_a6b21c09f59a83b6ee45432dcfa61f4a1_a6b21c09f59a83b6ee45432dcfa61f4a1}{at} (const \-Key \&key)
 \item 
-\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_afd0fc1a8234888e61e0e615de7e245b8}{find} (const \-Key \&key)
-\begin{DoxyCompactList}\small\item\em \-Devuelve el significado asociado a \{key\}, asegurando su existencia. \end{DoxyCompactList}\item 
-\hyperlink{classaed2_1_1map_1_1const__iterator}{const\-\_\-iterator} \hyperlink{classaed2_1_1map_ab8f3e41b1a0d7b74645836f8d2e1acfc}{find} (const \-Key \&key) const 
+\-Meaning \& \hyperlink{classaed2_1_1map_a96f23896164ab47bee48c26b803f9801_a96f23896164ab47bee48c26b803f9801}{operator\mbox{[}$\,$\mbox{]}} (const \-Key \&key)
+\begin{DoxyCompactList}\small\item\em \-Devuelve el significado asociado a {\bfseries key}, asegurando su existencia. \end{DoxyCompactList}\item 
+\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_afd0fc1a8234888e61e0e615de7e245b8_afd0fc1a8234888e61e0e615de7e245b8}{find} (const \-Key \&key)
+\begin{DoxyCompactList}\small\item\em \-Devuelve un iterador a la posicion del valor con clave {\bfseries key} \end{DoxyCompactList}\item 
+\hyperlink{classaed2_1_1map_1_1const__iterator}{const\-\_\-iterator} \hyperlink{classaed2_1_1map_ab8f3e41b1a0d7b74645836f8d2e1acfc_ab8f3e41b1a0d7b74645836f8d2e1acfc}{find} (const \-Key \&key) const 
 \item 
-\hyperlink{classaed2_1_1map_1_1const__iterator}{const\-\_\-iterator} \hyperlink{classaed2_1_1map_a3399d36fdd5a880b494f3a5795d3f18f}{lower\-\_\-bound} (const \-Key \&key) const 
-\begin{DoxyCompactList}\small\item\em \-Devuelve un iterador al primer valor con clave mayor o igual a \{key\}. \end{DoxyCompactList}\item 
-\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a07b3dd65557c59ee085e5f211269c6b3}{lower\-\_\-bound} (const \-Key \&key)
-\item 
-const \-Meaning \& \hyperlink{classaed2_1_1map_a0b0a11f906da2926f9eb342fcee79fd7}{at} (const \-Key \&key) const 
-\begin{DoxyCompactList}\small\item\em \-Devuelve el significado asociado a \{key\}. \end{DoxyCompactList}\item 
-\-Meaning \& \hyperlink{classaed2_1_1map_a6b21c09f59a83b6ee45432dcfa61f4a1}{at} (const \-Key \&key)
-\item 
-\-Meaning \& \hyperlink{classaed2_1_1map_a96f23896164ab47bee48c26b803f9801}{operator\mbox{[}$\,$\mbox{]}} (const \-Key \&key)
-\begin{DoxyCompactList}\small\item\em \-Devuelve el significado asociado a \{key\}, asegurando su existencia. \end{DoxyCompactList}\item 
-\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_afd0fc1a8234888e61e0e615de7e245b8}{find} (const \-Key \&key)
-\begin{DoxyCompactList}\small\item\em \-Devuelve un iterador a la posicion del valor con clave \{key\}. \end{DoxyCompactList}\item 
-\hyperlink{classaed2_1_1map_1_1const__iterator}{const\-\_\-iterator} \hyperlink{classaed2_1_1map_ab8f3e41b1a0d7b74645836f8d2e1acfc}{find} (const \-Key \&key) const 
-\item 
-\hyperlink{classaed2_1_1map_1_1const__iterator}{const\-\_\-iterator} \hyperlink{classaed2_1_1map_a3399d36fdd5a880b494f3a5795d3f18f}{lower\-\_\-bound} (const \-Key \&key) const 
-\begin{DoxyCompactList}\small\item\em \-Devuelve un iterador al primer valor con clave mayor o igual a \{key\}. \end{DoxyCompactList}\item 
-\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a07b3dd65557c59ee085e5f211269c6b3}{lower\-\_\-bound} (const \-Key \&key)
+\hyperlink{classaed2_1_1map_1_1const__iterator}{const\-\_\-iterator} \hyperlink{classaed2_1_1map_a3399d36fdd5a880b494f3a5795d3f18f_a3399d36fdd5a880b494f3a5795d3f18f}{lower\-\_\-bound} (const \-Key \&key) const 
+\begin{DoxyCompactList}\small\item\em \-Devuelve un iterador al primer valor con clave mayor o igual a {\bfseries key} \end{DoxyCompactList}\item 
+\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a07b3dd65557c59ee085e5f211269c6b3_a07b3dd65557c59ee085e5f211269c6b3}{lower\-\_\-bound} (const \-Key \&key)
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}{\bf \-Tamaño del diccionario}\par
 \begin{DoxyCompactItemize}
 \item 
-bool \hyperlink{classaed2_1_1map_af5320ca0a7df4d16015441d5d055a7ee}{empty} () const 
+bool \hyperlink{classaed2_1_1map_af5320ca0a7df4d16015441d5d055a7ee_af5320ca0a7df4d16015441d5d055a7ee}{empty} () const 
 \begin{DoxyCompactList}\small\item\em \-Indica si el diccionario esta vacío. \end{DoxyCompactList}\item 
-size\-\_\-t \hyperlink{classaed2_1_1map_a89f2613f926ac13293eafe65889d6021}{size} () const 
-\begin{DoxyCompactList}\small\item\em \-Devuelve la cantidad de valores en el diccionario. \end{DoxyCompactList}\item 
-bool \hyperlink{classaed2_1_1map_af5320ca0a7df4d16015441d5d055a7ee}{empty} () const 
-\begin{DoxyCompactList}\small\item\em \-Indica si el diccionario esta vacío. \end{DoxyCompactList}\item 
-size\-\_\-t \hyperlink{classaed2_1_1map_a89f2613f926ac13293eafe65889d6021}{size} () const 
+size\-\_\-t \hyperlink{classaed2_1_1map_a89f2613f926ac13293eafe65889d6021_a89f2613f926ac13293eafe65889d6021}{size} () const 
 \begin{DoxyCompactList}\small\item\em \-Devuelve la cantidad de valores en el diccionario. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}{\bf \-Inserción, borrado y modificación}\par
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a6941cde9a79c27f054b5c97a587a1854}{insert} (\hyperlink{classaed2_1_1map_1_1const__iterator}{const\-\_\-iterator} hint, const value\-\_\-type \&value)
-\begin{DoxyCompactList}\small\item\em \-Inserta \{value\} en el diccionario. \end{DoxyCompactList}\item 
-\hypertarget{classaed2_1_1map_a71e3ecf911958188e1e2fd7d76b2b1e9}{void {\bfseries insert\-\_\-fixup} (\hyperlink{classaed2_1_1map_1_1iterator}{iterator} it, const value\-\_\-type \&value)}\label{classaed2_1_1map_a71e3ecf911958188e1e2fd7d76b2b1e9}
-
+\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8_a60aacba06b1579630b3c8e996cf248c8}{insert} (const value\-\_\-type \&value)
+\begin{DoxyCompactList}\small\item\em \-Inserta {\bfseries value} en el diccionario. \end{DoxyCompactList}\item 
+\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a6941cde9a79c27f054b5c97a587a1854_a6941cde9a79c27f054b5c97a587a1854}{insert} (\hyperlink{classaed2_1_1map_1_1const__iterator}{const\-\_\-iterator} hint, const value\-\_\-type \&value)
+\begin{DoxyCompactList}\small\item\em \-Inserta {\bfseries value} en el diccionario. \end{DoxyCompactList}\item 
+void \hyperlink{classaed2_1_1map_ae4e5e735407f463bade9eeab6a553c53_ae4e5e735407f463bade9eeab6a553c53}{insert\-\_\-fixup} (\hyperlink{classaed2_1_1map_1_1const__iterator}{const\-\_\-iterator} it)
 \item 
-\hypertarget{classaed2_1_1map_a1f4b383ece3e22680802d27aa11b623a}{void {\bfseries left\-\_\-rotate} (\hyperlink{classaed2_1_1map_1_1iterator}{iterator} it)}\label{classaed2_1_1map_a1f4b383ece3e22680802d27aa11b623a}
-
+void \hyperlink{classaed2_1_1map_a94f2862ada0c9ed4f4457eac42ea8f23_a94f2862ada0c9ed4f4457eac42ea8f23}{dir\-\_\-rotate} (\hyperlink{classaed2_1_1map_1_1iterator}{iterator} it, int dir)
 \item 
-\hypertarget{classaed2_1_1map_af339eb8e0af78bc07ad55ddd97938ee7}{void {\bfseries right\-\_\-rotate} (\hyperlink{classaed2_1_1map_1_1iterator}{iterator} it)}\label{classaed2_1_1map_af339eb8e0af78bc07ad55ddd97938ee7}
-
+\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a2ef6723c183916276b0afc4a4c721475_a2ef6723c183916276b0afc4a4c721475}{insert\-\_\-or\-\_\-assign} (\hyperlink{classaed2_1_1map_1_1const__iterator}{const\-\_\-iterator} hint, const value\-\_\-type \&value)
+\begin{DoxyCompactList}\small\item\em \-Inserta o \-Color\-::\-Redefine {\bfseries value} en el diccionario. \end{DoxyCompactList}\item 
+\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a9128a806713bcc999ebd8a97ab77e765_a9128a806713bcc999ebd8a97ab77e765}{insert\-\_\-or\-\_\-assign} (const value\-\_\-type \&value)
 \item 
-\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8}{insert} (const value\-\_\-type \&value)
+\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_ad8e796bf9c9c558e5ce6b61e116253fe_ad8e796bf9c9c558e5ce6b61e116253fe}{erase} (\hyperlink{classaed2_1_1map_1_1const__iterator}{const\-\_\-iterator} pos)
+\begin{DoxyCompactList}\small\item\em \-Elimina el valor apuntado por {\bfseries pos} \end{DoxyCompactList}\item 
+void \hyperlink{classaed2_1_1map_a98b9f200c64ce02dfb67902ee00e375a_a98b9f200c64ce02dfb67902ee00e375a}{transplant} (\hyperlink{structaed2_1_1map_1_1Node}{\-Node} $\ast$u, \hyperlink{structaed2_1_1map_1_1Node}{\-Node} $\ast$v)
 \item 
-\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a6941cde9a79c27f054b5c97a587a1854}{insert} (\hyperlink{classaed2_1_1map_1_1const__iterator}{const\-\_\-iterator} hint, const value\-\_\-type \&value)
-\begin{DoxyCompactList}\small\item\em \-Inserta \{value\} en el diccionario. \end{DoxyCompactList}\item 
-\hypertarget{classaed2_1_1map_a905aa80287bf2a97cca5a9dda1c8ab12}{void \hyperlink{classaed2_1_1map_a6941cde9a79c27f054b5c97a587a1854}{insert} {\bfseries fixup} (\hyperlink{classaed2_1_1map_1_1iterator}{iterator} it, const value\-\_\-type \&value)}\label{classaed2_1_1map_a905aa80287bf2a97cca5a9dda1c8ab12}
-
+void \hyperlink{classaed2_1_1map_a7870c8f26e82b00d0aeb2e9f331dfec6_a7870c8f26e82b00d0aeb2e9f331dfec6}{erase\-\_\-fixup} (\hyperlink{classaed2_1_1map_1_1iterator}{iterator} it)
 \item 
-\hypertarget{classaed2_1_1map_a1f4b383ece3e22680802d27aa11b623a}{void {\bfseries left\-\_\-rotate} (\hyperlink{classaed2_1_1map_1_1iterator}{iterator} it)}\label{classaed2_1_1map_a1f4b383ece3e22680802d27aa11b623a}
-
-\item 
-\hypertarget{classaed2_1_1map_af339eb8e0af78bc07ad55ddd97938ee7}{void {\bfseries right\-\_\-rotate} (\hyperlink{classaed2_1_1map_1_1iterator}{iterator} it)}\label{classaed2_1_1map_af339eb8e0af78bc07ad55ddd97938ee7}
-
-\item 
-\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8}{insert} (const value\-\_\-type \&value)
-\end{DoxyCompactItemize}
+void \hyperlink{classaed2_1_1map_a2ffadb42cd5f0bc7b3752ff159b75334_a2ffadb42cd5f0bc7b3752ff159b75334}{erase} (const \-Key \&key)
+\begin{DoxyCompactList}\small\item\em \-Elimina el valor cuya clave es {\bfseries key} \end{DoxyCompactList}\item 
+void \hyperlink{classaed2_1_1map_a2bfa5165825979bf2431db55bc6bc9ca_a2bfa5165825979bf2431db55bc6bc9ca}{clear} ()
+\begin{DoxyCompactList}\small\item\em \-Vacia el diccionario. \end{DoxyCompactList}\item 
+std\-::vector$<$ value\-\_\-type $>$ \hyperlink{classaed2_1_1map_a865d7b8ec5694fb73e187ebf84a35b63_a865d7b8ec5694fb73e187ebf84a35b63}{show} ()
+\begin{DoxyCompactList}\small\item\em \-Inserta {\bfseries value} en el diccionario. \end{DoxyCompactList}\item 
+void \hyperlink{classaed2_1_1map_a43ddb71cc91e5c6021a7a1f243d6cc4a_a43ddb71cc91e5c6021a7a1f243d6cc4a}{swap} (\hyperlink{classaed2_1_1map}{map} \&other)
+\begin{DoxyCompactList}\small\item\em \-Intercambia el contenido de {\bfseries $\ast$this} y {\bfseries other} \end{DoxyCompactList}\end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}{\bf \-Recorridos e iteradores}\par
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a58a95705d54b3dda7f775ce5a22225cb}{begin} ()
+\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a58a95705d54b3dda7f775ce5a22225cb_a58a95705d54b3dda7f775ce5a22225cb}{begin} ()
 \begin{DoxyCompactList}\small\item\em \-Devuelve un iterador al primer valor del diccionario. \end{DoxyCompactList}\item 
-\hyperlink{classaed2_1_1map_1_1const__iterator}{const\-\_\-iterator} \hyperlink{classaed2_1_1map_a1d10432d305bcb5f1af6ab7b75c27c1c}{begin} () const 
+\hyperlink{classaed2_1_1map_1_1const__iterator}{const\-\_\-iterator} \hyperlink{classaed2_1_1map_a1d10432d305bcb5f1af6ab7b75c27c1c_a1d10432d305bcb5f1af6ab7b75c27c1c}{begin} () const 
 \item 
-\hyperlink{classaed2_1_1map_1_1const__iterator}{const\-\_\-iterator} \hyperlink{classaed2_1_1map_ab96ad892caa28f193481a578f4956a2a}{cbegin} ()
+\hyperlink{classaed2_1_1map_1_1const__iterator}{const\-\_\-iterator} \hyperlink{classaed2_1_1map_ab96ad892caa28f193481a578f4956a2a_ab96ad892caa28f193481a578f4956a2a}{cbegin} ()
 \item 
-\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983}{end} ()
+\hyperlink{classaed2_1_1map_1_1iterator}{iterator} \hyperlink{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983_a76023e6a56cb625513e1b5ea028bf983}{end} ()
 \begin{DoxyCompactList}\small\item\em \-Devuelve un iterador apuntando a la posición pasando-\/el-\/ultimo del diccionario. \end{DoxyCompactList}\item 
-\hyperlink{classaed2_1_1map_1_1const__iterator}{const\-\_\-iterator} \hyperlink{classaed2_1_1map_a1f847ad4fd46883ac60d764967172179}{end} () const 
+\hyperlink{classaed2_1_1map_1_1const__iterator}{const\-\_\-iterator} \hyperlink{classaed2_1_1map_a1f847ad4fd46883ac60d764967172179_a1f847ad4fd46883ac60d764967172179}{end} () const 
 \item 
-\hyperlink{classaed2_1_1map_1_1const__iterator}{const\-\_\-iterator} \hyperlink{classaed2_1_1map_a7bb91e94cbc875f1a011b142ef877912}{cend} ()
+\hyperlink{classaed2_1_1map_1_1const__iterator}{const\-\_\-iterator} \hyperlink{classaed2_1_1map_a7bb91e94cbc875f1a011b142ef877912_a7bb91e94cbc875f1a011b142ef877912}{cend} ()
 \item 
-reverse\-\_\-iterator \hyperlink{classaed2_1_1map_ac412d3902112122c1bffe2d4283a4e9d}{rbegin} ()
+reverse\-\_\-iterator \hyperlink{classaed2_1_1map_ac412d3902112122c1bffe2d4283a4e9d_ac412d3902112122c1bffe2d4283a4e9d}{rbegin} ()
 \begin{DoxyCompactList}\small\item\em \-Devuelve un iterador al primer valor del diccionario, en un recorrido al revés. \end{DoxyCompactList}\item 
-const\-\_\-reverse\-\_\-iterator \hyperlink{classaed2_1_1map_aa68b6888ae3e256203d4ef273c293586}{rbegin} () const 
+const\-\_\-reverse\-\_\-iterator \hyperlink{classaed2_1_1map_aa68b6888ae3e256203d4ef273c293586_aa68b6888ae3e256203d4ef273c293586}{rbegin} () const 
 \item 
-const\-\_\-reverse\-\_\-iterator \hyperlink{classaed2_1_1map_a6ad62765a2b2e00247b9e35a7542b448}{crbegin} ()
+const\-\_\-reverse\-\_\-iterator \hyperlink{classaed2_1_1map_a6ad62765a2b2e00247b9e35a7542b448_a6ad62765a2b2e00247b9e35a7542b448}{crbegin} ()
 \item 
-reverse\-\_\-iterator \hyperlink{classaed2_1_1map_a277f03b4f4b6b98879e4e4921081801f}{rend} ()
+reverse\-\_\-iterator \hyperlink{classaed2_1_1map_a277f03b4f4b6b98879e4e4921081801f_a277f03b4f4b6b98879e4e4921081801f}{rend} ()
 \begin{DoxyCompactList}\small\item\em \-Devuelve un iterador apuntando a la posición pasando-\/el-\/ultimo del diccionario, en un recorrido al revés. \end{DoxyCompactList}\item 
-const\-\_\-reverse\-\_\-iterator \hyperlink{classaed2_1_1map_aafce6e53c53c460897613747fec89f9d}{rend} () const 
+const\-\_\-reverse\-\_\-iterator \hyperlink{classaed2_1_1map_aafce6e53c53c460897613747fec89f9d_aafce6e53c53c460897613747fec89f9d}{rend} () const 
 \item 
-const\-\_\-reverse\-\_\-iterator \hyperlink{classaed2_1_1map_a40933b2efe1cb479de9195ea947244d1}{crend} ()
+const\-\_\-reverse\-\_\-iterator \hyperlink{classaed2_1_1map_a40933b2efe1cb479de9195ea947244d1_a40933b2efe1cb479de9195ea947244d1}{crend} ()
 \end{DoxyCompactItemize}
 \end{Indent}
-\subsection*{\-Friends}
+\subsubsection*{\-Tipos privados}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classaed2_1_1map_a67171474c4da6cc8efe0c7fafefd2b2d}{class {\bfseries iterator}}\label{classaed2_1_1map_a67171474c4da6cc8efe0c7fafefd2b2d}
-
+enum \hyperlink{classaed2_1_1map_a6d62a415a4b9d320b30cada4ebcf9f5b_a6d62a415a4b9d320b30cada4ebcf9f5b}{\-Color} 
+\begin{DoxyCompactList}\small\item\em \-Colores de los nodos en un árbol red-\/black. \-Ver \hyperlink{Implementacion}{\-Implementación del árbol red-\/black}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{\-Métodos privados}
+\begin{Indent}{\bf \-Acceso y consulta del árbol}\par
+\begin{DoxyCompactItemize}
 \item 
-\hypertarget{classaed2_1_1map_ac220ce1c155db1ac44146c12d178056f}{class {\bfseries const\-\_\-iterator}}\label{classaed2_1_1map_ac220ce1c155db1ac44146c12d178056f}
-
+\hyperlink{structaed2_1_1map_1_1InnerNode}{\-Inner\-Node} $\ast$ \hyperlink{classaed2_1_1map_a07ab50eda249a57858a34037d4c4c7b2_a07ab50eda249a57858a34037d4c4c7b2}{root} ()
+\begin{DoxyCompactList}\small\item\em \-Devuelve un puntero al nodo raíz. \end{DoxyCompactList}\item 
+const \hyperlink{structaed2_1_1map_1_1InnerNode}{\-Inner\-Node} $\ast$ \hyperlink{classaed2_1_1map_a89cf44cf0661a97f5dd0985160dcc0e7_a89cf44cf0661a97f5dd0985160dcc0e7}{root} () const 
 \end{DoxyCompactItemize}
-\subsection*{\-Related \-Functions}
-(\-Note that these are not member functions.) \begin{Indent}{\bf \-Operadores de comparación}\par
+\end{Indent}
+\begin{Indent}{\bf \-Funciones auxiliares}\par
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$class K , class V , class C $>$ }\\bool \hyperlink{classaed2_1_1map_abfc51b39670220e79037ac067006e933}{operator==} (const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m1, const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m2)
+bool \hyperlink{classaed2_1_1map_ab45cb28bb215cd229383d88b96b3f624_ab45cb28bb215cd229383d88b96b3f624}{eq} (const \-Key \&k1, const \-Key \&k2) const 
+\begin{DoxyCompactList}\small\item\em \-Retorna true si las claves son iguales con respecto a {\bfseries this}-\/$>$lt. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsubsection*{\-Atributos privados}
+\begin{Indent}{\bf \-Estructura de representación}\par
+{\em \-Nota\-: vamos a omitir la discusión del functor de comparación, ya que no entra dentro del contexto de los \-T\-A\-Ds de la materia. \-Para poder definirlos, habría que 1. especificar el tipo functor y 2. extender el \-T\-A\-D \-Diccionario para que pueda crearse con una instancia del \-T\-A\-D functor.
+
+\begin{DoxyParagraph}{\-Representación}
+\-Diccionario se representa con map\-: tupla(header\-: Node, count\-: Nat). \-Ver \hyperlink{axiomas}{\-Axiomas y proposiciones auxiliares}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{\-Invariante de representacion}
+rep\-: map $\to$ bool\par
+ rep(m) $\equiv$ completar 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{\-Función de abstracción}
+abs\-: map m $\to$ \-Diccionario(\-Key, \-Meaning) \{rep(n)\}\par
+ abs(m) $\equiv$ completar  
+\end{DoxyParagraph}
+}\begin{DoxyCompactItemize}
+\item 
+\-Compare \hyperlink{classaed2_1_1map_a0e5be36fae0693e4665bd2a615e7550a_a0e5be36fae0693e4665bd2a615e7550a}{lt}
+\begin{DoxyCompactList}\small\item\em \-Orden total para comparar claves. \end{DoxyCompactList}\item 
+\hyperlink{structaed2_1_1map_1_1Node}{\-Node} \hyperlink{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{header}
+\begin{DoxyCompactList}\small\item\em \-Cantidad de elementos en el diccionario. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsubsection*{\-Funciones relacionadas}
+(\-Observar que estas no son funciones miembro.) \begin{Indent}{\bf \-Operadores de comparación}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class K , class V , class C $>$ }\\bool \hyperlink{classaed2_1_1map_abfc51b39670220e79037ac067006e933_abfc51b39670220e79037ac067006e933}{operator==} (const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m1, const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m2)
 \begin{DoxyCompactList}\small\item\em \-Operador de igualdad entre dos diccionarios. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class K , class V , class C $>$ }\\bool \hyperlink{classaed2_1_1map_abce0fa35c5b25fd67111c2e704616f09}{operator!=} (const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m1, const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m2)
-\begin{DoxyCompactList}\small\item\em \-Renombre de not(\{m1\} == \{m2\}) \end{DoxyCompactList}\item 
-{\footnotesize template$<$class K , class V , class C $>$ }\\bool \hyperlink{classaed2_1_1map_a8ff07f6a24c290ea7e8f63ec7ab24f8d}{operator$<$} (const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m1, const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m2)
+{\footnotesize template$<$class K , class V , class C $>$ }\\bool \hyperlink{classaed2_1_1map_abce0fa35c5b25fd67111c2e704616f09_abce0fa35c5b25fd67111c2e704616f09}{operator!=} (const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m1, const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m2)
+\begin{DoxyCompactList}\small\item\em \-Renombre de not({\bfseries m1} == {\bfseries m2}) \end{DoxyCompactList}\item 
+{\footnotesize template$<$class K , class V , class C $>$ }\\bool \hyperlink{classaed2_1_1map_a8ff07f6a24c290ea7e8f63ec7ab24f8d_a8ff07f6a24c290ea7e8f63ec7ab24f8d}{operator$<$} (const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m1, const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m2)
 \begin{DoxyCompactList}\small\item\em \-Operador de orden lexicografico entre diccionarios. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class K , class V , class C $>$ }\\bool \hyperlink{classaed2_1_1map_a2000cd874b72034ce7fe730c811b6c63}{operator$>$} (const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m1, const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m2)
-\begin{DoxyCompactList}\small\item\em \-Renombre de \{m2\} $<$ \{m1\}. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class K , class V , class C $>$ }\\bool \hyperlink{classaed2_1_1map_afe374b37f17263d0cad3ee19a590d208}{operator$<$=} (const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m1, const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m2)
-\begin{DoxyCompactList}\small\item\em \-Renombre de not(\{m2\} $<$ \{m1\}) \end{DoxyCompactList}\item 
-{\footnotesize template$<$class K , class V , class C $>$ }\\bool \hyperlink{classaed2_1_1map_a093a6d1a055339c5fc6297a1d47a9159}{operator$>$=} (const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m1, const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m2)
-\begin{DoxyCompactList}\small\item\em \-Renombre de not(\{m1\} $<$ \{m2\}) \end{DoxyCompactList}\item 
-{\footnotesize template$<$class K , class V , class C $>$ }\\bool \hyperlink{classaed2_1_1map_ab32f94f4767358534ab704c98d23ad89}{operator==} (const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m)
-\begin{DoxyCompactList}\small\item\em \-Operador de igualdad entre dos diccionarios. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class K , class V , class C $>$ }\\bool \hyperlink{classaed2_1_1map_a11627296a0eb71c87e69caa89fbd94eb}{operator!=} (const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m)
-\begin{DoxyCompactList}\small\item\em \-Renombre de not(\{m1\} == \{m2\}) \end{DoxyCompactList}\item 
-{\footnotesize template$<$class K , class V , class C $>$ }\\bool \hyperlink{classaed2_1_1map_a4d766795e9a996ed79f8c08fbd1676cd}{operator$<$} (const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m)
-\begin{DoxyCompactList}\small\item\em \-Operador de orden lexicografico entre diccionarios. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class K , class V , class C $>$ }\\bool \hyperlink{classaed2_1_1map_a964e8d831c17d77f457eb87a2f22d0d0}{operator$>$} (const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m)
-\begin{DoxyCompactList}\small\item\em \-Renombre de \{m2\} $<$ \{m1\}. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class K , class V , class C $>$ }\\bool \hyperlink{classaed2_1_1map_a42f66578aa7e80b91eded54ac6b745cf}{operator$<$=} (const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m)
-\begin{DoxyCompactList}\small\item\em \-Renombre de not(\{m2\} $<$ \{m1\}) \end{DoxyCompactList}\item 
-{\footnotesize template$<$class K , class V , class C $>$ }\\bool \hyperlink{classaed2_1_1map_a68bf5a52b77446e43584fb67d22c365e}{operator$>$=} (const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m)
-\begin{DoxyCompactList}\small\item\em \-Renombre de not(\{m1\} $<$ \{m2\}) \end{DoxyCompactList}\end{DoxyCompactItemize}
+{\footnotesize template$<$class K , class V , class C $>$ }\\bool \hyperlink{classaed2_1_1map_a2000cd874b72034ce7fe730c811b6c63_a2000cd874b72034ce7fe730c811b6c63}{operator$>$} (const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m1, const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m2)
+\begin{DoxyCompactList}\small\item\em \-Renombre de {\bfseries m2} $<$ {\bfseries m1} \end{DoxyCompactList}\item 
+{\footnotesize template$<$class K , class V , class C $>$ }\\bool \hyperlink{classaed2_1_1map_afe374b37f17263d0cad3ee19a590d208_afe374b37f17263d0cad3ee19a590d208}{operator$<$=} (const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m1, const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m2)
+\begin{DoxyCompactList}\small\item\em \-Renombre de not({\bfseries m2} $<$ {\bfseries m1}) \end{DoxyCompactList}\item 
+{\footnotesize template$<$class K , class V , class C $>$ }\\bool \hyperlink{classaed2_1_1map_a093a6d1a055339c5fc6297a1d47a9159_a093a6d1a055339c5fc6297a1d47a9159}{operator$>$=} (const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m1, const \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m2)
+\begin{DoxyCompactList}\small\item\em \-Renombre de not({\bfseries m1} $<$ {\bfseries m2}) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}{\bf \-Implementación de swappable}\par
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$class K , class V , class C $>$ }\\void \hyperlink{classaed2_1_1map_a119cb2938bbc11c25ebd4fb824782a72}{swap} (\hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m1, \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m2)
-\begin{DoxyCompactList}\small\item\em \-Implementa la función swap para cumplir con el concepto swappable. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class K , class V , class C $>$ }\\void \hyperlink{classaed2_1_1map_ae9604c72935a908c0c98a9f40bc38eda}{swap} (\hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m)
+{\footnotesize template$<$class K , class V , class C $>$ }\\void \hyperlink{classaed2_1_1map_a119cb2938bbc11c25ebd4fb824782a72_a119cb2938bbc11c25ebd4fb824782a72}{swap} (\hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m1, \hyperlink{classaed2_1_1map}{map}$<$ \-K, \-V, \-C $>$ \&m2)
 \begin{DoxyCompactList}\small\item\em \-Implementa la función swap para cumplir con el concepto swappable. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \end{Indent}
 
 
-\subsection{\-Detailed \-Description}
+\subsubsection{\-Descripción detallada}
 \subsubsection*{template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$class aed2\-::map$<$ Key, Meaning, Compare $>$}
 
 \-Modulo que implementa un diccionario. 
@@ -244,13 +208,13 @@ const\-\_\-reverse\-\_\-iterator \hyperlink{classaed2_1_1map_a40933b2efe1cb479de
 \begin{DoxyParagraph}{\-Terminología para describir las complejidades temporales}
 \-Para describir la complejidad temporal de las operaciones, vamos a llamar\-:
 \begin{DoxyItemize}
-\item ({\itshape d\/})\-: a la cantidad de elementos del diccionario {\itshape d\/} 
-\item ({\itshape v1\/}, {\itshape v2\/})\-: al costo de comparar dos valores {\itshape v1\/} y {\itshape v2\/} 
-\item ({\itshape d\/})\-: al maximo costo posible para las comparaciones de elementos en {\itshape d\/} 
-\item ({\itshape v\/})\-: al costo de copiar un valor {\itshape v\/} 
-\item ({\itshape d\/})\-: a la sumatoria de los costo de copiar todos los elementos de {\itshape d\/} 
-\item ({\itshape v\/})\-: al costo de destruir un valor {\itshape v\/} 
-\item ({\itshape d\/})\-: a la sumatoria de los costos de destruir todos los elementos de {\itshape d\/} 
+\item {\bfseries size}({\itshape d\/})\-: a la cantidad de elementos del diccionario {\itshape d\/} 
+\item {\bfseries cmp}({\itshape v1\/}, {\itshape v2\/})\-: al costo de comparar dos valores {\itshape v1\/} y {\itshape v2\/} 
+\item {\bfseries cmp}({\itshape d\/})\-: al maximo costo posible para las comparaciones de elementos en {\itshape d\/} 
+\item {\bfseries copy}({\itshape v\/})\-: al costo de copiar un valor {\itshape v\/} 
+\item {\bfseries copy}({\itshape d\/})\-: a la sumatoria de los costo de copiar todos los elementos de {\itshape d\/} 
+\item {\bfseries del}({\itshape v\/})\-: al costo de destruir un valor {\itshape v\/} 
+\item {\bfseries del}({\itshape d\/})\-: a la sumatoria de los costos de destruir todos los elementos de {\itshape d\/} 
 \end{DoxyItemize}
 \end{DoxyParagraph}
 \begin{DoxyParagraph}{\-Funciones esperadas en los parámetros del template}
@@ -258,20 +222,20 @@ const\-\_\-reverse\-\_\-iterator \hyperlink{classaed2_1_1map_a40933b2efe1cb479de
 \end{DoxyParagraph}
 
 \begin{DoxyCode}
- {.cpp}
- //Constructor por copia de valores.
- //Complejidad: O(copy(other))
- value_type(const value_type& other);
+ \{.cpp\}
+ \textcolor{comment}{//Constructor por copia de valores.}
+ \textcolor{comment}{//Complejidad: O(copy(other))}
+ value\_type(\textcolor{keyword}{const} value\_type& other);
 
- //Destructor de los valores
- //Complejidad: O(del(*this))
- ~value_type();
+ \textcolor{comment}{//Destructor de los valores}
+ \textcolor{comment}{//Complejidad: O(del(*this))}
+ ~value\_type();
 
- struct Compare {
-   //Comparacion de dos valores
-   //Complejidad: O(cmp(v1, v2))
-   bool operator()(const value_type& v1, const value_type& v2) const;
- };
+ \textcolor{keyword}{struct }Compare \{
+   \textcolor{comment}{//Comparacion de dos valores}
+   \textcolor{comment}{//Complejidad: O(cmp(v1, v2))}
+   \textcolor{keywordtype}{bool} operator()(\textcolor{keyword}{const} value\_type& v1, \textcolor{keyword}{const} value\_type& v2) \textcolor{keyword}{const};
+ \};
 \end{DoxyCode}
  
 
@@ -279,101 +243,138 @@ const\-\_\-reverse\-\_\-iterator \hyperlink{classaed2_1_1map_a40933b2efe1cb479de
 \-Ninguna operación invalida un iterador asociado a un valor de la estructura, salvo que se elimine el valor apuntado por dicho iterador. \-Asimismo, niguna operación, salvo swap y el destructor, invalida el puntero pasando-\/el-\/último.
 \end{DoxyParagraph}
 \begin{DoxyParagraph}{\-Se explica con}
-\-Diccionario(\{\-Key\}, \{\-Meaning\}) con parámetro formal  = f.\-operator() para algún f de tipo \{\-Compare\}.
+\-Diccionario(\-Key, \-Meaning) con parámetro formal $<$ = f.\-operator() para algún f de tipo \-Compare.
 \end{DoxyParagraph}
-\begin{DoxyAttention}{\-Attention}
+\begin{DoxyAttention}{\-Atención}
 \-No tenemos forma en \-A\-E\-D2 de decir que el parámetro formal se define en tiempo de ejecución, como ocurre en este caso. 
 \end{DoxyAttention}
 
 
-\subsection{\-Constructor \& \-Destructor \-Documentation}
-\hypertarget{classaed2_1_1map_a64da1d965b13eb28cdb3837bc17a18cf}{\index{aed2\-::map@{aed2\-::map}!map@{map}}
+\-Definición en la línea \hyperlink{map_8h_source_l00713}{713} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+
+
+\subsubsection{\-Documentación de las enumeraciones miembro de la clase}
+\hypertarget{classaed2_1_1map_a6d62a415a4b9d320b30cada4ebcf9f5b_a6d62a415a4b9d320b30cada4ebcf9f5b}{\index{aed2\-::map@{aed2\-::map}!\-Color@{\-Color}}
+\index{\-Color@{\-Color}!aed2::map@{aed2\-::map}}
+\paragraph[{\-Color}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ enum {\bf aed2\-::map\-::\-Color}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classaed2_1_1map_a6d62a415a4b9d320b30cada4ebcf9f5b_a6d62a415a4b9d320b30cada4ebcf9f5b}
+
+
+\-Colores de los nodos en un árbol red-\/black. \-Ver \hyperlink{Implementacion}{\-Implementación del árbol red-\/black}. 
+
+\-Valores validos\-: \begin{DoxyItemize}
+\item \-Color\-::\-Red (color rojo) \item \-Color\-::\-Black (color negro) \item \-Color\-::\-Header (color azul, reservado para la cabecera)\end{DoxyItemize}
+\begin{DoxySeeAlso}{\-Ver también}
+\-Cormen et al. \cite{CormenLeisersonRivestStein2009} e \hyperlink{Implementacion}{\-Implementación del árbol red-\/black} 
+\end{DoxySeeAlso}
+
+
+\-Definición en la línea \hyperlink{map_8h_source_l02009}{2009} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+
+
+\subsubsection{\-Documentación del constructor y destructor}
+\hypertarget{classaed2_1_1map_a64da1d965b13eb28cdb3837bc17a18cf_a64da1d965b13eb28cdb3837bc17a18cf}{\index{aed2\-::map@{aed2\-::map}!map@{map}}
 \index{map@{map}!aed2::map@{aed2\-::map}}
-\subsubsection[{map}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf map} (
+\paragraph[{map}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf map} (
 \begin{DoxyParamCaption}
 \item[{\-Compare}]{c = {\ttfamily \-Compare()}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, explicit\mbox{]}}}}\label{classaed2_1_1map_a64da1d965b13eb28cdb3837bc17a18cf}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, explicit\mbox{]}}}}\label{classaed2_1_1map_a64da1d965b13eb28cdb3837bc17a18cf_a64da1d965b13eb28cdb3837bc17a18cf}
 
 
 \-Crea un diccionario vacio. 
 
 
-\begin{DoxyParams}{\-Parameters}
+\begin{DoxyParams}{\-Parámetros}
 {\em c} & comparador (functor de orden) a utilizar \\
 \hline
 \end{DoxyParams}
 
-\begin{DoxyRetVals}{\-Return values}
+\begin{DoxyRetVals}{\-Valores devueltos}
 {\em res} & diccionario recién construido\\
 \hline
 \end{DoxyRetVals}
-\begin{DoxyPrecond}{\-Precondition}
-\{true\} 
+\begin{DoxyPrecond}{\-Precondición}
+{\bfseries \-P} $\equiv$ \{true\} 
 \end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{res = vacio()\}
+\begin{DoxyPostcond}{\-Postcondición}
+{\bfseries \-Q} $\equiv$ \{res = vacio\}
 \end{DoxyPostcond}
-\{(1)\}
 
-\begin{DoxyAttention}{\-Attention}
-\-El parámetro formal  del \-T\-A\-D diccionario se establece en esta función.  = \{c\}.operator() ambos hijos de header apuntan a null, y padre de header apunta a null 
+\begin{DoxyDescription}
+\item[\-Complejidad \-Temporal]$O$(1)
+\end{DoxyDescription}
+
+\begin{DoxyAttention}{\-Atención}
+\-El parámetro formal $<$ del \-T\-A\-D diccionario se establece en esta función. $<$ = {\bfseries c}.operator() 
 \end{DoxyAttention}
-\hypertarget{classaed2_1_1map_a7a77950a3d8e637bfa7cf5dcd904f257}{\index{aed2\-::map@{aed2\-::map}!map@{map}}
+
+
+\-Definición en la línea \hyperlink{map_8h_source_l00805}{805} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a7a77950a3d8e637bfa7cf5dcd904f257_a7a77950a3d8e637bfa7cf5dcd904f257}{\index{aed2\-::map@{aed2\-::map}!map@{map}}
 \index{map@{map}!aed2::map@{aed2\-::map}}
-\subsubsection[{map}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf map} (
+\paragraph[{map}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf map} (
 \begin{DoxyParamCaption}
 \item[{const {\bf map}$<$ \-Key, \-Meaning, \-Compare $>$ \&}]{other}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a7a77950a3d8e637bfa7cf5dcd904f257}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a7a77950a3d8e637bfa7cf5dcd904f257_a7a77950a3d8e637bfa7cf5dcd904f257}
 
 
 \-Constructor por copia. 
 
 
-\begin{DoxyParams}{\-Parameters}
+\begin{DoxyParams}{\-Parámetros}
 {\em other} & diccionario a copiar \\
 \hline
 \end{DoxyParams}
 
-\begin{DoxyRetVals}{\-Return values}
+\begin{DoxyRetVals}{\-Valores devueltos}
 {\em res} & diccionario recien construido\\
 \hline
 \end{DoxyRetVals}
-\begin{DoxyPrecond}{\-Precondition}
-\{true\} 
+\begin{DoxyPrecond}{\-Precondición}
+{\bfseries \-P} $\equiv$ \{true\} 
 \end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{res = other\}
+\begin{DoxyPostcond}{\-Postcondición}
+{\bfseries \-Q} $\equiv$ \{res == other \-Completar\}
 \end{DoxyPostcond}
-\{((\{other\}))\}
 
-\begin{DoxyAttention}{\-Attention}
-\-El parámetro formal  del \-T\-A\-D diccionario se establece en esta función.  es igual al operator() del comparador de \{other\} \hyperlink{classaed2_1_1map_a58a95705d54b3dda7f775ce5a22225cb}{begin()} iterador en other. mientras haya \-Siguiente en el iterador de other, insertar siguiente, y avanzar. 
+\begin{DoxyDescription}
+\item[\-Complejidad \-Temporal]$O$({\bfseries copy}({\bfseries other}))
+\end{DoxyDescription}
+
+\begin{DoxyAttention}{\-Atención}
+\-El parámetro formal $<$ del \-T\-A\-D diccionario se establece en esta función. $<$ es igual al operator() del comparador de {\bfseries other} 
 \end{DoxyAttention}
-\hypertarget{classaed2_1_1map_a5d336f3248572beb56be383dcc95cfeb}{\index{aed2\-::map@{aed2\-::map}!map@{map}}
+
+
+\-Definición en la línea \hyperlink{map_8h_source_l00825}{825} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a5d336f3248572beb56be383dcc95cfeb_a5d336f3248572beb56be383dcc95cfeb}{\index{aed2\-::map@{aed2\-::map}!map@{map}}
 \index{map@{map}!aed2::map@{aed2\-::map}}
-\subsubsection[{map}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ template$<$class iterator $>$ {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf map} (
+\paragraph[{map}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ template$<$class iterator $>$ {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf map} (
 \begin{DoxyParamCaption}
 \item[{{\bf iterator}}]{first, }
 \item[{{\bf iterator}}]{last, }
 \item[{\-Compare}]{c = {\ttfamily \-Compare()}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a5d336f3248572beb56be383dcc95cfeb}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a5d336f3248572beb56be383dcc95cfeb_a5d336f3248572beb56be383dcc95cfeb}
 
 
-\-Crea un diccionario con los elementos del rango \mbox{[}\{first\}, \{last\}) 
+\-Crea un diccionario con los elementos del rango \mbox{[}{\bfseries first}, {\bfseries last}) 
 
 
 \begin{DoxyTemplParams}{\-Template Parameters}
 {\em iterator} & clase del iterador a recorrer\\
 \hline
 \end{DoxyTemplParams}
-\begin{DoxyParagraph}{\-Requerimientos sobre el tipo \{iterator\}}
-\-El tipo \{iterator\} debe tener todas las funcionalidades de un {\itshape \-Input\-Iterator\/} de \-C++. \-En términos de la materia, vamos a suponer que \{iterator\} se explica con el \-T\-A\-D \-Iterador \-Unidireccional(puntero(\-C), \{value\-\_\-type\}) para alguna colección de tipo \-C.
+\begin{DoxyParagraph}{\-Requerimientos sobre el tipo iterator}
+\-El tipo iterator debe tener todas las funcionalidades de un {\itshape \-Input\-Iterator\/} de \-C++. \-En términos de la materia, vamos a suponer que iterator se explica con el \-T\-A\-D \-Iterador \-Unidireccional(puntero(\-C), value\-\_\-type) para alguna colección de tipo \-C.
 \end{DoxyParagraph}
 
-\begin{DoxyParams}{\-Parameters}
+\begin{DoxyParams}{\-Parámetros}
 {\em first} & iterador al primer elemento del rango \\
 \hline
 {\em last} & iterador pasando el ultimo elemento del rango \\
@@ -382,1344 +383,1073 @@ const\-\_\-reverse\-\_\-iterator \hyperlink{classaed2_1_1map_a40933b2efe1cb479de
 \hline
 \end{DoxyParams}
 
-\begin{DoxyRetVals}{\-Return values}
+\begin{DoxyRetVals}{\-Valores devueltos}
 {\em res} & diccionario recien construido\\
 \hline
 \end{DoxyRetVals}
-\{\{first\} y \{last\} son iteradores que recorren la misma secuencia definida por una colección.\}
-
-\begin{DoxyPrecond}{\-Precondition}
-\{last\} debe ser alcanzable desde \{first\} y en el rango \mbox{[}\{first\}, \{last\}) no pueden haber valores repetidos.
+\begin{DoxyParagraph}{\-Aspectos de aliasing\-:}
+$\backslash$1
+\end{DoxyParagraph}
+\begin{DoxyPrecond}{\-Precondición}
+{\bfseries last} debe ser alcanzable desde {\bfseries first} y en el rango \mbox{[}{\bfseries first}, {\bfseries last}) no pueden haber valores repetidos.
 \end{DoxyPrecond}
-\{coleccion(\{first\})  coleccion(\{last\})  es\-Sufijo(\-Siguientes(\{last\}), \-Siguientes(\{first\}))  (\-Siguientes(\{first\})  \-Siguientes(\{last\}))\} 
+\{coleccion({\bfseries first}) $=_{obs}$ coleccion({\bfseries last}) $\land$ es\-Sufijo(\-Siguientes({\bfseries last}), \-Siguientes({\bfseries first})) $\land$ \href{axiomas.html#esDiccionario?}{\tt es\-Diccionario?}(\-Siguientes({\bfseries first}) $-$ \-Siguientes({\bfseries last}))\} 
 
-\begin{DoxyPostcond}{\-Postcondition}
-\-Los valores definidos en \{res\} son aquellos que aparecen en \mbox{[}\{first\}, \{last\})
+\begin{DoxyPostcond}{\-Postcondición}
+\-Los valores definidos en {\bfseries res} son aquellos que aparecen en \mbox{[}{\bfseries first}, {\bfseries last})
 \end{DoxyPostcond}
-\{( k\-: \{\-Key\})( s\-: \{\-Meaning\}) (def?(\{res\}, k)  significado(\{res\}, k)  s  esta((k,s), \-Siguientes(\{first\})  \-Siguientes(\{last\}))) \} 
+\{( $\forall$ k\-: \-Key)( $\forall$ s\-: \-Meaning) (def?({\bfseries res}, k) $\land_{\rm L}$ significado({\bfseries res}, k) $=_{obs}$ s $\Leftrightarrow$ esta((k,s), \-Siguientes({\bfseries first}) $-$ \-Siguientes({\bfseries last}))) \} 
 
 \{
 \begin{DoxyItemize}
-\item \-En el peor caso\-: ((\{res\})  (((\{res\}))  (\{res\}) + (\{res\})))
-\item \-Si el rango \mbox{[}\{first\}, \{last\}) está ordenado\-: ((\{res\})  ((\{res\})+ (\{res\}))) \}
+\item \-En el peor caso\-: $O$({\bfseries size}({\bfseries res}) $\cdot$ ( $\log$({\bfseries size}({\bfseries res})) $\cdot$ {\bfseries cmp}({\bfseries res}) + {\bfseries copy}({\bfseries res})))
+\item \-Si el rango \mbox{[}{\bfseries first}, {\bfseries last}) está ordenado\-: $O$({\bfseries size}({\bfseries res}) $\cdot$ ({\bfseries cmp}({\bfseries res})+ {\bfseries copy}({\bfseries res}))) \}
 \end{DoxyItemize}
 
-\begin{DoxyAttention}{\-Attention}
-\-El parámetro formal  del \-T\-A\-D diccionario se establece en esta función.  = \{c\}.operator()
+\begin{DoxyAttention}{\-Atención}
+\-El parámetro formal $<$ del \-T\-A\-D diccionario se establece en esta función. $<$ = {\bfseries c}.operator()
 \end{DoxyAttention}
-\begin{DoxySeeAlso}{\-See also}
+\begin{DoxySeeAlso}{\-Ver también}
 \mbox{[}\-Documentación de \-Input\-Iterator\mbox{]}(\href{http://en.cppreference.com/w/cpp/concept/InputIterator}{\tt http\-://en.\-cppreference.\-com/w/cpp/concept/\-Input\-Iterator}) 
 \end{DoxySeeAlso}
-\hypertarget{classaed2_1_1map_ab22c9a85c2dadbc286cd30e97069a8e6}{\index{aed2\-::map@{aed2\-::map}!$\sim$map@{$\sim$map}}
+
+
+\-Definición en la línea \hyperlink{map_8h_source_l00879}{879} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_ab22c9a85c2dadbc286cd30e97069a8e6_ab22c9a85c2dadbc286cd30e97069a8e6}{\index{aed2\-::map@{aed2\-::map}!$\sim$map@{$\sim$map}}
 \index{$\sim$map@{$\sim$map}!aed2::map@{aed2\-::map}}
-\subsubsection[{$\sim$map}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::$\sim${\bf map} (
+\paragraph[{$\sim$map}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::$\sim${\bf map} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_ab22c9a85c2dadbc286cd30e97069a8e6}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_ab22c9a85c2dadbc286cd30e97069a8e6_ab22c9a85c2dadbc286cd30e97069a8e6}
 
 
 \-Destructor. 
 
-\{completar\}
-
-\begin{DoxyPrecond}{\-Precondition}
-\{true\} 
+\begin{DoxyParagraph}{\-Aspectos de aliasing\-:}
+$\backslash$1
+\end{DoxyParagraph}
+\begin{DoxyPrecond}{\-Precondición}
+{\bfseries \-P} $\equiv$ \{true\} 
 \end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{true\}
+\begin{DoxyPostcond}{\-Postcondición}
+{\bfseries \-Q} $\equiv$ \{true\}
 \end{DoxyPostcond}
-\{((\{$\ast$this\}))\}
 
-\begin{DoxyAttention}{\-Attention}
-\-Como se explicita, esta función no hace nada, porque no tiene un objetivo funcional. \-De hecho, su implementación es innecesaria bajo la hipótesis de infinitud de memoria (que muchos sistemas de especificación, e.\-g. nuestros \-T\-A\-Ds, asumen por simplicidad). \-Sin embargo, esta función tiene un comportamiento real y es liberar la memoria usada. \-Claramente, esta funcionalidad depende del sistema en que estemos trabajando. \-Suponiendo que tuvieramos acceso a la implementación de las tablas de memoria del sistema operativo (o al mapa de memoria de la computadora), podríamos expresar la funcionalidad estableciendo la liberación de la memoria inicializa iterador con \hyperlink{classaed2_1_1map_a58a95705d54b3dda7f775ce5a22225cb}{begin()} mientras hay \-Siguiente, borra (siguiente) 
+\begin{DoxyDescription}
+\item[\-Complejidad \-Temporal]$O$({\bfseries del}({\bfseries $\ast$this}))
+\end{DoxyDescription}
+
+\begin{DoxyAttention}{\-Atención}
+\-Como se explicita, esta función no hace nada, porque no tiene un objetivo funcional. \-De hecho, su implementación es innecesaria bajo la hipótesis de infinitud de memoria (que muchos sistemas de especificación, e.\-g. nuestros \-T\-A\-Ds, asumen por simplicidad). \-Sin embargo, esta función tiene un comportamiento real y es liberar la memoria usada. \-Claramente, esta funcionalidad depende del sistema en que estemos trabajando. \-Suponiendo que tuvieramos acceso a la implementación de las tablas de memoria del sistema operativo (o al mapa de memoria de la computadora), podríamos expresar la funcionalidad estableciendo la liberación de la memoria 
 \end{DoxyAttention}
-\hypertarget{classaed2_1_1map_a64da1d965b13eb28cdb3837bc17a18cf}{\index{aed2\-::map@{aed2\-::map}!map@{map}}
-\index{map@{map}!aed2::map@{aed2\-::map}}
-\subsubsection[{map}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf map} (
+
+
+\-Definición en la línea \hyperlink{map_8h_source_l00927}{927} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+
+
+\subsubsection{\-Documentación de las funciones miembro}
+\hypertarget{classaed2_1_1map_ac606d334809066929522964d45e76317_ac606d334809066929522964d45e76317}{\index{aed2\-::map@{aed2\-::map}!operator=@{operator=}}
+\index{operator=@{operator=}!aed2::map@{aed2\-::map}}
+\paragraph[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf map}\& {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::operator= (
 \begin{DoxyParamCaption}
-\item[{\-Compare}]{c = {\ttfamily \-Compare()}}
+\item[{{\bf map}$<$ \-Key, \-Meaning, \-Compare $>$}]{other}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, explicit\mbox{]}}}}\label{classaed2_1_1map_a64da1d965b13eb28cdb3837bc17a18cf}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_ac606d334809066929522964d45e76317_ac606d334809066929522964d45e76317}
 
 
-\-Crea un diccionario vacio. 
+\-Operador de asignación. 
 
 
-\begin{DoxyParams}{\-Parameters}
-{\em c} & comparador (functor de orden) a utilizar \\
-\hline
-\end{DoxyParams}
-
-\begin{DoxyRetVals}{\-Return values}
-{\em res} & diccionario recién construido\\
-\hline
-\end{DoxyRetVals}
-\begin{DoxyPrecond}{\-Precondition}
-\{true\} 
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{res  vacio()\}
-\end{DoxyPostcond}
-\{(1)\}
-
-\begin{DoxyAttention}{\-Attention}
-\-El parámetro formal  del \-T\-A\-D diccionario se establece en esta función.  = \{c\}.operator() ambos hijos de header apuntan a null, y padre de header apunta a null 
-\end{DoxyAttention}
-\hypertarget{classaed2_1_1map_a7a77950a3d8e637bfa7cf5dcd904f257}{\index{aed2\-::map@{aed2\-::map}!map@{map}}
-\index{map@{map}!aed2::map@{aed2\-::map}}
-\subsubsection[{map}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf map} (
-\begin{DoxyParamCaption}
-\item[{const {\bf map}$<$ \-Key, \-Meaning, \-Compare $>$ \&}]{other}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a7a77950a3d8e637bfa7cf5dcd904f257}
-
-
-\-Constructor por copia. 
-
-
-\begin{DoxyParams}{\-Parameters}
+\begin{DoxyParams}{\-Parámetros}
 {\em other} & diccionario a copiar \\
 \hline
 \end{DoxyParams}
 
-\begin{DoxyRetVals}{\-Return values}
-{\em res} & diccionario recien construido\\
+\begin{DoxyRetVals}{\-Valores devueltos}
+{\em res} & referencia a $\ast$this\\
 \hline
 \end{DoxyRetVals}
-\begin{DoxyPrecond}{\-Precondition}
-\{true\} 
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{res  other\}
-\end{DoxyPostcond}
-\{((\{other\}))\}
-
-\begin{DoxyAttention}{\-Attention}
-\-El parámetro formal  del \-T\-A\-D diccionario se establece en esta función.  es igual al operator() del comparador de \{other\} \hyperlink{classaed2_1_1map_a58a95705d54b3dda7f775ce5a22225cb}{begin()} iterador en other. mientras haya \-Siguiente en el iterador de other, insertar siguiente, y avanzar. 
-\end{DoxyAttention}
-\hypertarget{classaed2_1_1map_a5d336f3248572beb56be383dcc95cfeb}{\index{aed2\-::map@{aed2\-::map}!map@{map}}
-\index{map@{map}!aed2::map@{aed2\-::map}}
-\subsubsection[{map}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ template$<$class iterator $>$ {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf map} (
-\begin{DoxyParamCaption}
-\item[{{\bf iterator}}]{first, }
-\item[{{\bf iterator}}]{last, }
-\item[{\-Compare}]{c = {\ttfamily \-Compare()}}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a5d336f3248572beb56be383dcc95cfeb}
-
-
-\-Crea un diccionario con los elementos del rango \mbox{[}\{first\}, \{last\}) 
-
-
-\begin{DoxyTemplParams}{\-Template Parameters}
-{\em iterator} & clase del iterador a recorrer\\
-\hline
-\end{DoxyTemplParams}
-\begin{DoxyParagraph}{\-Requerimientos sobre el tipo \{iterator\}}
-\-El tipo \{iterator\} debe tener todas las funcionalidades de un {\itshape \-Input\-Iterator\/} de \-C++. \-En términos de la materia, vamos a suponer que \{iterator\} se explica con el \-T\-A\-D \-Iterador \-Unidireccional(puntero(\-C), \{value\-\_\-type\}) para alguna colección de tipo \-C.
+\begin{DoxyParagraph}{\-Aspectos de aliasing\-:}
+$\backslash$1
 \end{DoxyParagraph}
+\begin{DoxyPrecond}{\-Precondición}
+{\bfseries \-P} $\equiv$ \{true\} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondición}
+{\bfseries \-Q} $\equiv$ \{res $=_{obs}$ other\}
+\end{DoxyPostcond}
 
-\begin{DoxyParams}{\-Parameters}
-{\em first} & iterador al primer elemento del rango \\
-\hline
-{\em last} & iterador pasando el ultimo elemento del rango \\
-\hline
-{\em c} & comparador a utilizar \\
+\begin{DoxyDescription}
+\item[\-Complejidad \-Temporal]$O$({\bfseries del}({\bfseries $\ast$this}) $+$ {\bfseries copy}({\bfseries other}))
+\end{DoxyDescription}
+
+\begin{DoxyNote}{\-Nota}
+\-Es importante remarcar que no se realiza ninguna comparación entre los elementos. 
+\end{DoxyNote}
+
+
+\-Definición en la línea \hyperlink{map_8h_source_l00902}{902} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a0b0a11f906da2926f9eb342fcee79fd7_a0b0a11f906da2926f9eb342fcee79fd7}{\index{aed2\-::map@{aed2\-::map}!at@{at}}
+\index{at@{at}!aed2::map@{aed2\-::map}}
+\paragraph[{at}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ const \-Meaning\& {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf at} (
+\begin{DoxyParamCaption}
+\item[{const \-Key \&}]{key}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a0b0a11f906da2926f9eb342fcee79fd7_a0b0a11f906da2926f9eb342fcee79fd7}
+
+
+\-Devuelve el significado asociado a {\bfseries key} 
+
+
+\begin{DoxyParams}{\-Parámetros}
+{\em key} & clave a buscar. \\
 \hline
 \end{DoxyParams}
 
-\begin{DoxyRetVals}{\-Return values}
-{\em res} & diccionario recien construido\\
+\begin{DoxyRetVals}{\-Valores devueltos}
+{\em res} & referencia al significado asociado a {\bfseries key}.\\
 \hline
 \end{DoxyRetVals}
-\{\{first\} y \{last\} son iteradores que recorren la misma secuencia definida por una colección.\}
-
-\begin{DoxyPrecond}{\-Precondition}
-\{last\} debe ser alcanzable desde \{first\} y en el rango \mbox{[}\{first\}, \{last\}) no pueden haber valores repetidos.
+\begin{DoxyParagraph}{\-Aspectos de aliasing\-:}
+$\backslash$1
+\end{DoxyParagraph}
+\begin{DoxyPrecond}{\-Precondición}
+\{def?(key,this)\}
 \end{DoxyPrecond}
-\{coleccion(\{first\})  coleccion(\{last\})  es\-Sufijo(\-Siguientes(\{last\}), \-Siguientes(\{first\}))  (\-Siguientes(\{first\})  \-Siguientes(\{last\}))\} 
-
-\begin{DoxyPostcond}{\-Postcondition}
-\-Los valores definidos en \{res\} son aquellos que aparecen en \mbox{[}\{first\}, \{last\})
+\begin{DoxyPostcond}{\-Postcondición}
+\{res $=_{obs}$ obtener(key,this)\}
 \end{DoxyPostcond}
-\{( k\-: \{\-Key\})( s\-: \{\-Meaning\}) (def?(\{res\}, k)  significado(\{res\}, k)  s  esta((k,s), \-Siguientes(\{first\})  \-Siguientes(\{last\}))) \} 
 
-\{
+\begin{DoxyDescription}
+\item[\-Complejidad \-Temporal]$O$( $\log$({\bfseries size}({\bfseries $\ast$this}) $\cdot$ {\bfseries cmp}({\bfseries $\ast$this}))
+\end{DoxyDescription}
+
+\begin{DoxyRemark}{\-Comentarios}
+\-Esta función, que se asemeja más a la forma de programar propuesta en \-A\-E\-D2 que al estándar \-C++, fue incluida en el estándar \-C++11. \-Antes era obligación recurrir a la función find. 
+\end{DoxyRemark}
+
+
+\-Definición en la línea \hyperlink{map_8h_source_l00956}{956} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a6b21c09f59a83b6ee45432dcfa61f4a1_a6b21c09f59a83b6ee45432dcfa61f4a1}{\index{aed2\-::map@{aed2\-::map}!at@{at}}
+\index{at@{at}!aed2::map@{aed2\-::map}}
+\paragraph[{at}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ \-Meaning\& {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf at} (
+\begin{DoxyParamCaption}
+\item[{const \-Key \&}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a6b21c09f59a83b6ee45432dcfa61f4a1_a6b21c09f59a83b6ee45432dcfa61f4a1}
+\-Esta es una función miembro sobrecargada que se suministra por conveniencia. \-Difiere de la anterior función solamente en los argumentos que acepta. 
+
+\-Definición en la línea \hyperlink{map_8h_source_l00961}{961} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a96f23896164ab47bee48c26b803f9801_a96f23896164ab47bee48c26b803f9801}{\index{aed2\-::map@{aed2\-::map}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!aed2::map@{aed2\-::map}}
+\paragraph[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ \-Meaning\& {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{const \-Key \&}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a96f23896164ab47bee48c26b803f9801_a96f23896164ab47bee48c26b803f9801}
+
+
+\-Devuelve el significado asociado a {\bfseries key}, asegurando su existencia. 
+
+\-Devuelve el significado asociado a {\bfseries key}. \-Si {\bfseries key} no está definido en {\bfseries $\ast$this}, entonces se inserta un nuevo valor con clave {\bfseries key} y significado \-Meaning(). \-De esta
+
+forma, podemos usar `operator\mbox{[}\mbox{]}` para definir nuevos valores o modificar los existentes.
+
+\-Ejemplo\-: 
+\begin{DoxyCode}
+ \{.cpp\}
+ \hyperlink{classaed2_1_1map}{aed2::map<int, int>} d;
+ d[1] = 2;      \textcolor{comment}{//define 1 -> 2}
+ d[1] = 3;      \textcolor{comment}{//redefine 1 -> 3}
+
+ \hyperlink{classaed2_1_1map}{aed2::map<int, int>} m;
+ \textcolor{keywordflow}{if}(m[1] == 3) \{...\} \textcolor{comment}{//posible bug: define 1 -> basura (que puede o no ser 3).}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}{\-Parámetros}
+{\em key} & clave a buscar. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{\-Valores devueltos}
+{\em res} & referencia al significado asociado a {\bfseries key}.\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyParagraph}{\-Requerimientos sobre el tipo \-Meaning}
+\-Requiere que \-Meaning tenga un constructor sin parámetros con complejidad $O$({\itshape c\/})
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{\-Aspectos de aliasing\-:}
+$\backslash$1
+\end{DoxyParagraph}
+\begin{DoxyPrecond}{\-Precondición}
+{\bfseries \-P} $\equiv$ \{this $=_{obs}$ d\-\_\-\{0\}\} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondición}
+\{(def?(key, d\-\_\-\{0\})  this  definir(key, this, \-Meaning())  res  obtener(key, d\-\_\-0))
+\end{DoxyPostcond}
+\{(((\{$\ast$this\}))  (\{$\ast$this\}) + {\itshape x\/}) donde
 \begin{DoxyItemize}
-\item \-En el peor caso\-: ((\{res\})  (((\{res\}))  (\{res\}) + (\{res\})))
-\item \-Si el rango \mbox{[}\{first\}, \{last\}) está ordenado\-: ((\{res\})  ((\{res\})+ (\{res\}))) \}
+\item {\itshape x\/} = 1 si def?({\itshape self\/}, \{key\}), y
+\item {\itshape x\/} = {\itshape c\/} en caso contrario.\} 
 \end{DoxyItemize}
 
-\begin{DoxyAttention}{\-Attention}
-\-El parámetro formal  del \-T\-A\-D diccionario se establece en esta función.  = \{c\}.operator()
-\end{DoxyAttention}
-\begin{DoxySeeAlso}{\-See also}
-\mbox{[}\-Documentación de \-Input\-Iterator\mbox{]}(\href{http://en.cppreference.com/w/cpp/concept/InputIterator}{\tt http\-://en.\-cppreference.\-com/w/cpp/concept/\-Input\-Iterator}) 
-\end{DoxySeeAlso}
-\hypertarget{classaed2_1_1map_ab22c9a85c2dadbc286cd30e97069a8e6}{\index{aed2\-::map@{aed2\-::map}!$\sim$map@{$\sim$map}}
-\index{$\sim$map@{$\sim$map}!aed2::map@{aed2\-::map}}
-\subsubsection[{$\sim$map}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::$\sim${\bf map} (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_ab22c9a85c2dadbc286cd30e97069a8e6}
+\-Definición en la línea \hyperlink{map_8h_source_l01001}{1001} del archivo \hyperlink{map_8h_source}{map.\-h}.
 
-
-\-Destructor. 
-
-\{completar\}
-
-\begin{DoxyPrecond}{\-Precondition}
-\{true\} 
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{true\}
-\end{DoxyPostcond}
-\{((\{$\ast$this\}))\}
-
-\begin{DoxyAttention}{\-Attention}
-\-Como se explicita, esta función no hace nada, porque no tiene un objetivo funcional. \-De hecho, su implementación es innecesaria bajo la hipótesis de infinitud de memoria (que muchos sistemas de especificación, e.\-g. nuestros \-T\-A\-Ds, asumen por simplicidad). \-Sin embargo, esta función tiene un comportamiento real y es liberar la memoria usada. \-Claramente, esta funcionalidad depende del sistema en que estemos trabajando. \-Suponiendo que tuvieramos acceso a la implementación de las tablas de memoria del sistema operativo (o al mapa de memoria de la computadora), podríamos expresar la funcionalidad estableciendo la liberación de la memoria inicializa iterador con \hyperlink{classaed2_1_1map_a58a95705d54b3dda7f775ce5a22225cb}{begin()} mientras hay \-Siguiente, borra (siguiente) 
-\end{DoxyAttention}
-
-
-\subsection{\-Member \-Function \-Documentation}
-\hypertarget{classaed2_1_1map_a0b0a11f906da2926f9eb342fcee79fd7}{\index{aed2\-::map@{aed2\-::map}!at@{at}}
-\index{at@{at}!aed2::map@{aed2\-::map}}
-\subsubsection[{at}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ const \-Meaning\& {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf at} (
+\hypertarget{classaed2_1_1map_afd0fc1a8234888e61e0e615de7e245b8_afd0fc1a8234888e61e0e615de7e245b8}{\index{aed2\-::map@{aed2\-::map}!find@{find}}
+\index{find@{find}!aed2::map@{aed2\-::map}}
+\paragraph[{find}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf find} (
 \begin{DoxyParamCaption}
 \item[{const \-Key \&}]{key}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a0b0a11f906da2926f9eb342fcee79fd7}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_afd0fc1a8234888e61e0e615de7e245b8_afd0fc1a8234888e61e0e615de7e245b8}
 
 
-\-Devuelve el significado asociado a \{key\}. 
+\-Devuelve un iterador a la posicion del valor con clave {\bfseries key} 
+
+\-Retorna un iterador apuntando a la posicion del valor con clave {\bfseries key}. \-Si dicho valor no existe, porque la clave no fue definida, entonces el iterador retornado apunta a la posición {\itshape pasando-\/el-\/ultimo\/}.
 
 
-\begin{DoxyParams}{\-Parameters}
-{\em key} & clave a buscar. \\
+\begin{DoxyParams}{\-Parámetros}
+{\em key} & clave a buscar \\
 \hline
 \end{DoxyParams}
 
-\begin{DoxyRetVals}{\-Return values}
-{\em res} & referencia al significado asociado a \{key\}.\\
+\begin{DoxyRetVals}{\-Valores devueltos}
+{\em res} & iterador apuntando al valor con clave {\bfseries key} (o a {\bfseries this}-\/$>$\hyperlink{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983_a76023e6a56cb625513e1b5ea028bf983}{end()} si dicho elemento no existe)\\
 \hline
 \end{DoxyRetVals}
-\{completar\}
-
-\begin{DoxyPrecond}{\-Precondition}
-\{def?(key,$\ast$this)\}
+\begin{DoxyParagraph}{\-Aspectos de aliasing\-:}
+$\backslash$1
+\end{DoxyParagraph}
+\begin{DoxyPrecond}{\-Precondición}
+{\bfseries \-P} $\equiv$ \{true\} 
 \end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{res  obtener(key,$\ast$this)\}
+\begin{DoxyPostcond}{\-Postcondición}
+\{def?(key, this) $\Rightarrow$ \-Siguiente(res) $=_{obs}$  key, obtener(key, this)  $\land$ ( def?(key,this) $\Rightarrow$ $\lnot$ \-Hay\-Siguiente?(res)) \}
 \end{DoxyPostcond}
-\{(((\{$\ast$this\})  (\{$\ast$this\}))\}
 
-\begin{DoxyRemark}{\-Remarks}
-\-Esta función, que se asemeja más a la forma de programar propuesta en \-A\-E\-D2 que al estándar \-C++, fue incluida en el estándar \-C++11. \-Antes era obligación recurrir a la función find. \-Comienza en la raiz y si el valor es menor sigue la recursión hacia la izquierda, sino a la derecha, hasta que encuentra un nodo con la clave (key) pasada por parámetro y devuelve el significado almacenado en ese nodo. 
-\end{DoxyRemark}
-\hypertarget{classaed2_1_1map_a0b0a11f906da2926f9eb342fcee79fd7}{\index{aed2\-::map@{aed2\-::map}!at@{at}}
-\index{at@{at}!aed2::map@{aed2\-::map}}
-\subsubsection[{at}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ const \-Meaning\& {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf at} (
+\begin{DoxyDescription}
+\item[\-Complejidad \-Temporal]$O$( $\log$({\bfseries size}({\bfseries $\ast$this})) $\cdot$ {\bfseries cmp}({\bfseries $\ast$this}))
+\end{DoxyDescription}
+
+\begin{DoxyAttention}{\-Atención}
+\-Si el objetivo es insertar un valor con clave {\bfseries key} de acuerdo a alguna condición, entonces conviene usar \hyperlink{classaed2_1_1map_a3399d36fdd5a880b494f3a5795d3f18f_a3399d36fdd5a880b494f3a5795d3f18f}{aed2\-::map\-::lower\-\_\-bound} para la búsqueda, dado que el resultado puede ser usado como hint, mejorando la complejidad de la inserción. 
+\end{DoxyAttention}
+
+
+\-Definición en la línea \hyperlink{map_8h_source_l01033}{1033} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_ab8f3e41b1a0d7b74645836f8d2e1acfc_ab8f3e41b1a0d7b74645836f8d2e1acfc}{\index{aed2\-::map@{aed2\-::map}!find@{find}}
+\index{find@{find}!aed2::map@{aed2\-::map}}
+\paragraph[{find}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf const\-\_\-iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf find} (
 \begin{DoxyParamCaption}
 \item[{const \-Key \&}]{key}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a0b0a11f906da2926f9eb342fcee79fd7}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_ab8f3e41b1a0d7b74645836f8d2e1acfc_ab8f3e41b1a0d7b74645836f8d2e1acfc}
+\-Esta es una función miembro sobrecargada que se suministra por conveniencia. \-Difiere de la anterior función solamente en los argumentos que acepta. 
+
+\-Definición en la línea \hyperlink{map_8h_source_l01039}{1039} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a3399d36fdd5a880b494f3a5795d3f18f_a3399d36fdd5a880b494f3a5795d3f18f}{\index{aed2\-::map@{aed2\-::map}!lower\-\_\-bound@{lower\-\_\-bound}}
+\index{lower\-\_\-bound@{lower\-\_\-bound}!aed2::map@{aed2\-::map}}
+\paragraph[{lower\-\_\-bound}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf const\-\_\-iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf lower\-\_\-bound} (
+\begin{DoxyParamCaption}
+\item[{const \-Key \&}]{key}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a3399d36fdd5a880b494f3a5795d3f18f_a3399d36fdd5a880b494f3a5795d3f18f}
 
 
-\-Devuelve el significado asociado a \{key\}. 
+\-Devuelve un iterador al primer valor con clave mayor o igual a {\bfseries key} 
+
+\-Retorna un iterador apuntando a la primer posición cuyo valor tenga clave al menos {\bfseries key}. \-Si dicho valor no existe, porque {\bfseries key} es mayor a todas las claves de {\bfseries $\ast$this}, entonces el iterador retornado apunta a la posición {\itshape pasando-\/el-\/último\/}.
 
 
-\begin{DoxyParams}{\-Parameters}
-{\em key} & clave a buscar. \\
+\begin{DoxyParams}{\-Parámetros}
+{\em key} & clave a buscar \\
 \hline
 \end{DoxyParams}
 
-\begin{DoxyRetVals}{\-Return values}
-{\em res} & referencia al significado asociado a \{key\}.\\
+\begin{DoxyRetVals}{\-Valores devueltos}
+{\em res} & iterador apuntando al valor con clave al menos {\bfseries key} (o a {\bfseries this}-\/$>$\hyperlink{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983_a76023e6a56cb625513e1b5ea028bf983}{end()} si dicho elemento no existe)\\
 \hline
 \end{DoxyRetVals}
-\{completar\}
-
-\begin{DoxyPrecond}{\-Precondition}
-\{def?(key,$\ast$this)\}
+\begin{DoxyParagraph}{\-Aspectos de aliasing\-:}
+$\backslash$1
+\end{DoxyParagraph}
+\begin{DoxyPrecond}{\-Precondición}
+{\bfseries \-P} $\equiv$ \{true\} 
 \end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{res = obtener(key,$\ast$this)\}
+\begin{DoxyPostcond}{\-Postcondición}
+\{(def?(key, this) $\land$ \-Siguiente(res) $=_{obs}$ $\rangle$ key, obtener(key, this) $\langle$ ) $\lor$ ( $\lnot$ def?(key, this) $\land$ ( $\lnot$ \-Hay\-Siguiente(res) $\lor$ \-Siguiente(res) $=_{obs}$ \-Primer\-Mayor\-Oigual(key, this)))\}
 \end{DoxyPostcond}
-\{(((\{$\ast$this\})  (\{$\ast$this\}))\}
 
-\begin{DoxyRemark}{\-Remarks}
-\-Esta función, que se asemeja más a la forma de programar propuesta en \-A\-E\-D2 que al estándar \-C++, fue incluida en el estándar \-C++11. \-Antes era obligación recurrir a la función find. \-Comienza en la raiz y si el valor es menor sigue la recursión hacia la izquierda, sino a la derecha, hasta que encuentra un nodo con la clave (key) pasada por parámetro y devuelve el significado almacenado en ese nodo. 
+\begin{DoxyDescription}
+\item[\-Complejidad \-Temporal]$O$( $\log$({\bfseries size}({\bfseries $\ast$this})) $\cdot$ {\bfseries cmp}({\bfseries $\ast$this}))
+\end{DoxyDescription}
+
+\-Definición en la línea \hyperlink{map_8h_source_l01067}{1067} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a07b3dd65557c59ee085e5f211269c6b3_a07b3dd65557c59ee085e5f211269c6b3}{\index{aed2\-::map@{aed2\-::map}!lower\-\_\-bound@{lower\-\_\-bound}}
+\index{lower\-\_\-bound@{lower\-\_\-bound}!aed2::map@{aed2\-::map}}
+\paragraph[{lower\-\_\-bound}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf lower\-\_\-bound} (
+\begin{DoxyParamCaption}
+\item[{const \-Key \&}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a07b3dd65557c59ee085e5f211269c6b3_a07b3dd65557c59ee085e5f211269c6b3}
+\-Esta es una función miembro sobrecargada que se suministra por conveniencia. \-Difiere de la anterior función solamente en los argumentos que acepta. 
+
+\-Definición en la línea \hyperlink{map_8h_source_l01072}{1072} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_af5320ca0a7df4d16015441d5d055a7ee_af5320ca0a7df4d16015441d5d055a7ee}{\index{aed2\-::map@{aed2\-::map}!empty@{empty}}
+\index{empty@{empty}!aed2::map@{aed2\-::map}}
+\paragraph[{empty}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ bool {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf empty} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_af5320ca0a7df4d16015441d5d055a7ee_af5320ca0a7df4d16015441d5d055a7ee}
+
+
+\-Indica si el diccionario esta vacío. 
+
+
+\begin{DoxyRetVals}{\-Valores devueltos}
+{\em res} & denota true si y solo si el diccionario está vacío\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyPrecond}{\-Precondición}
+{\bfseries \-P} $\equiv$ \{true\} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondición}
+{\bfseries \-Q} $\equiv$ \{res $=_{obs}$ \#\-Claves(this) $=_{obs}$ 0\}
+\end{DoxyPostcond}
+
+\begin{DoxyDescription}
+\item[\-Complejidad \-Temporal]$O$(1)
+\end{DoxyDescription}
+
+\-Definición en la línea \hyperlink{map_8h_source_l01091}{1091} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a89f2613f926ac13293eafe65889d6021_a89f2613f926ac13293eafe65889d6021}{\index{aed2\-::map@{aed2\-::map}!size@{size}}
+\index{size@{size}!aed2::map@{aed2\-::map}}
+\paragraph[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ size\-\_\-t {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf size} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a89f2613f926ac13293eafe65889d6021_a89f2613f926ac13293eafe65889d6021}
+
+
+\-Devuelve la cantidad de valores en el diccionario. 
+
+
+\begin{DoxyRetVals}{\-Valores devueltos}
+{\em res} & cantidad de valores\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyPrecond}{\-Precondición}
+{\bfseries \-P} $\equiv$ \{true\} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondición}
+{\bfseries \-Q} $\equiv$ \{res $=_{obs}$ \#\-Claves(this)\}
+\end{DoxyPostcond}
+
+\begin{DoxyDescription}
+\item[\-Complejidad \-Temporal]$O$(1)
+\end{DoxyDescription}
+
+\-Definición en la línea \hyperlink{map_8h_source_l01105}{1105} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8_a60aacba06b1579630b3c8e996cf248c8}{\index{aed2\-::map@{aed2\-::map}!insert@{insert}}
+\index{insert@{insert}!aed2::map@{aed2\-::map}}
+\paragraph[{insert}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf insert} (
+\begin{DoxyParamCaption}
+\item[{const value\-\_\-type \&}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8_a60aacba06b1579630b3c8e996cf248c8}
+
+
+\-Inserta {\bfseries value} en el diccionario. 
+
+\-Inserta un {\bfseries nuevo} valor en el diccionario. \-Si {\bfseries $\ast$this} ya tiene un valor con clave {\bfseries value}.first, entonces la función no tiene efectos. \-El iterador de retorno apunta al elemento recien insertado (o aquel que previno la insercion).
+
+
+\begin{DoxyParams}{\-Parámetros}
+{\em value} & valor a insertar \\
+\hline
+{\em hint} & iterador apuntando al diccionario. \-Se espera que apunte al minimo valor mayor o igual a {\bfseries value}.first (i.\-e., a lower\-\_\-bound({\bfseries value}.first)). \-Igualmente, la función es robusta y funciona correctamente aunque esto no ocurra. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{\-Valores devueltos}
+{\em res} & iterador apuntando al elemento insertado o que previno la inserción\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyParagraph}{\-Aspectos de aliasing\-:}
+$\backslash$1
+\end{DoxyParagraph}
+\begin{DoxyPrecond}{\-Precondición}
+{\bfseries \-P} $\equiv$ \{this $=_{obs}$ d\-\_\-0\} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondición}
+\{(def?(key, this) $\Rightarrow$ this  d\-\_\-0) $\land$ ( $\lnot$ def?(key, this) $\Rightarrow$ (this $=_{obs}$ definir(key, d\-\_\-0) $\land$ \-Siguiente(res) $=_{obs}$ $\rangle$ key, obtener(key, this) $\langle$ ))\}
+\end{DoxyPostcond}
+
+\begin{DoxyDescription}
+\item[\-Complejidad \-Temporal]
+\begin{DoxyItemize}
+\item \-Peor caso\-: $O$( $\log$({\bfseries size}({\bfseries $\ast$this})) $\cdot$ {\bfseries cmp}({\bfseries $\ast$this}) $+$ {\bfseries copy}({\bfseries value}))
+\item \-Si {\bfseries hint} apunta al primer valor con clave al menos {\bfseries value}.first (o {\bfseries this}-\/$>$\hyperlink{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983_a76023e6a56cb625513e1b5ea028bf983}{end()} en caso de no existir)\-: $O$({\bfseries cmp}({\bfseries $\ast$this}) $+$ {\bfseries copy}({\bfseries value})) amortizado. 
+\end{DoxyItemize}
+\end{DoxyDescription}
+
+\begin{DoxyAttention}{\-Atención}
+\-Para garantizar que el nuevo elemento se inserte sí o sí, usar \hyperlink{classaed2_1_1map_a2ef6723c183916276b0afc4a4c721475_a2ef6723c183916276b0afc4a4c721475}{aed2\-::map\-::insert\-\_\-or\-\_\-assign}. 
+\end{DoxyAttention}
+
+
+\-Definición en la línea \hyperlink{map_8h_source_l01143}{1143} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a6941cde9a79c27f054b5c97a587a1854_a6941cde9a79c27f054b5c97a587a1854}{\index{aed2\-::map@{aed2\-::map}!insert@{insert}}
+\index{insert@{insert}!aed2::map@{aed2\-::map}}
+\paragraph[{insert}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf insert} (
+\begin{DoxyParamCaption}
+\item[{{\bf const\-\_\-iterator}}]{hint, }
+\item[{const value\-\_\-type \&}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a6941cde9a79c27f054b5c97a587a1854_a6941cde9a79c27f054b5c97a587a1854}
+
+
+\-Inserta {\bfseries value} en el diccionario. 
+
+\-Inserta un {\bfseries nuevo} valor en el diccionario. \-Si {\bfseries $\ast$this} ya tiene un valor con clave {\bfseries value}.first, entonces la función no tiene efectos. \-El iterador de retorno apunta al elemento recien insertado (o aquel que previno la insercion).
+
+
+\begin{DoxyParams}{\-Parámetros}
+{\em value} & valor a insertar \\
+\hline
+{\em hint} & iterador apuntando al diccionario. \-Se espera que apunte al minimo valor mayor o igual a {\bfseries value}.first (i.\-e., a lower\-\_\-bound({\bfseries value}.first)). \-Igualmente, la función es robusta y funciona correctamente aunque esto no ocurra. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{\-Valores devueltos}
+{\em res} & iterador apuntando al elemento insertado o que previno la inserción\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyParagraph}{\-Aspectos de aliasing\-:}
+$\backslash$1
+\end{DoxyParagraph}
+\begin{DoxyPrecond}{\-Precondición}
+{\bfseries \-P} $\equiv$ \{this $=_{obs}$ d\-\_\-0\} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondición}
+\{(def?(key, this) $\Rightarrow$ this  d\-\_\-0) $\land$ ( $\lnot$ def?(key, this) $\Rightarrow$ (this $=_{obs}$ definir(key, d\-\_\-0) $\land$ \-Siguiente(res) $=_{obs}$ $\rangle$ key, obtener(key, this) $\langle$ ))\}
+\end{DoxyPostcond}
+
+\begin{DoxyDescription}
+\item[\-Complejidad \-Temporal]
+\begin{DoxyItemize}
+\item \-Peor caso\-: $O$( $\log$({\bfseries size}({\bfseries $\ast$this})) $\cdot$ {\bfseries cmp}({\bfseries $\ast$this}) $+$ {\bfseries copy}({\bfseries value}))
+\item \-Si {\bfseries hint} apunta al primer valor con clave al menos {\bfseries value}.first (o {\bfseries this}-\/$>$\hyperlink{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983_a76023e6a56cb625513e1b5ea028bf983}{end()} en caso de no existir)\-: $O$({\bfseries cmp}({\bfseries $\ast$this}) $+$ {\bfseries copy}({\bfseries value})) amortizado. 
+\end{DoxyItemize}
+\end{DoxyDescription}
+
+\begin{DoxyAttention}{\-Atención}
+\-Para garantizar que el nuevo elemento se inserte sí o sí, usar \hyperlink{classaed2_1_1map_a2ef6723c183916276b0afc4a4c721475_a2ef6723c183916276b0afc4a4c721475}{aed2\-::map\-::insert\-\_\-or\-\_\-assign}. 
+\end{DoxyAttention}
+
+
+\-Definición en la línea \hyperlink{map_8h_source_l01148}{1148} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_ae4e5e735407f463bade9eeab6a553c53_ae4e5e735407f463bade9eeab6a553c53}{\index{aed2\-::map@{aed2\-::map}!insert\-\_\-fixup@{insert\-\_\-fixup}}
+\index{insert\-\_\-fixup@{insert\-\_\-fixup}!aed2::map@{aed2\-::map}}
+\paragraph[{insert\-\_\-fixup}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ void {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf insert\-\_\-fixup} (
+\begin{DoxyParamCaption}
+\item[{{\bf const\-\_\-iterator}}]{it}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_ae4e5e735407f463bade9eeab6a553c53_ae4e5e735407f463bade9eeab6a553c53}
+\-Completar especificacion coloquialmente 
+
+\-Definición en la línea \hyperlink{map_8h_source_l01195}{1195} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a94f2862ada0c9ed4f4457eac42ea8f23_a94f2862ada0c9ed4f4457eac42ea8f23}{\index{aed2\-::map@{aed2\-::map}!dir\-\_\-rotate@{dir\-\_\-rotate}}
+\index{dir\-\_\-rotate@{dir\-\_\-rotate}!aed2::map@{aed2\-::map}}
+\paragraph[{dir\-\_\-rotate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ void {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf dir\-\_\-rotate} (
+\begin{DoxyParamCaption}
+\item[{{\bf iterator}}]{it, }
+\item[{int}]{dir}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a94f2862ada0c9ed4f4457eac42ea8f23_a94f2862ada0c9ed4f4457eac42ea8f23}
+\-Completar especificacion coloquialmente 
+
+\-Definición en la línea \hyperlink{map_8h_source_l01228}{1228} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a2ef6723c183916276b0afc4a4c721475_a2ef6723c183916276b0afc4a4c721475}{\index{aed2\-::map@{aed2\-::map}!insert\-\_\-or\-\_\-assign@{insert\-\_\-or\-\_\-assign}}
+\index{insert\-\_\-or\-\_\-assign@{insert\-\_\-or\-\_\-assign}!aed2::map@{aed2\-::map}}
+\paragraph[{insert\-\_\-or\-\_\-assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf insert\-\_\-or\-\_\-assign} (
+\begin{DoxyParamCaption}
+\item[{{\bf const\-\_\-iterator}}]{hint, }
+\item[{const value\-\_\-type \&}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a2ef6723c183916276b0afc4a4c721475_a2ef6723c183916276b0afc4a4c721475}
+
+
+\-Inserta o \-Color\-::\-Redefine {\bfseries value} en el diccionario. 
+
+\-Inserta un valor en el diccionario. \-Si {\bfseries $\ast$this} ya tiene un valor con clave {\bfseries value}.first, entonces se \-Color\-::\-Redefine. \-El iterador de retorno apunta al elemento recien insertado o redefinido.
+
+
+\begin{DoxyParams}{\-Parámetros}
+{\em value} & valor a insertar \\
+\hline
+{\em hint} & iterador apuntando al diccionario. \-Se espera que apunte al mínimo valor mayor o igual a {\bfseries value}.first (i.\-e., a lower\-\_\-bound({\bfseries value}.first)). \-Igualmente, la función es robusta y funciona correctamente aunque esto no ocurra. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{\-Valores devueltos}
+{\em res} & iterador apuntando al elemento insertado o redefinido\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyParagraph}{\-Aspectos de aliasing\-:}
+$\backslash$1
+\end{DoxyParagraph}
+\begin{DoxyPrecond}{\-Precondición}
+{\bfseries \-P} $\equiv$ \{this $=_{obs}$ d\-\_\-0\} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondición}
+\{this $=_{obs}$ definir(key, this) $\land$ \-Siguiente(res) $=_{obs}$ value\}
+\end{DoxyPostcond}
+
+\begin{DoxyDescription}
+\item[\-Complejidad \-Temporal]
+\begin{DoxyItemize}
+\item \-Peor caso\-: $O$( $\log$({\bfseries size}({\bfseries $\ast$this})) $\cdot$ {\bfseries cmp}({\bfseries $\ast$this}) $+$ {\bfseries copy}({\bfseries value}))
+\item \-Si {\bfseries hint} apunta al primer valor con clave al menos {\bfseries value}.first (o {\bfseries this}-\/$>$\hyperlink{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983_a76023e6a56cb625513e1b5ea028bf983}{end()} en caso de no existir)\-: $O$({\bfseries cmp}({\bfseries $\ast$this}) $+$ {\bfseries copy}({\bfseries value})) amortizado. 
+\end{DoxyItemize}
+\end{DoxyDescription}
+
+\begin{DoxyAttention}{\-Atención}
+\-Para prevenir que el nuevo valor redefina uno ya existente, usar \hyperlink{classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8_a60aacba06b1579630b3c8e996cf248c8}{aed2\-::map\-::insert}. 
+\end{DoxyAttention}
+\begin{DoxyRemark}{\-Comentarios}
+\-Esta función es similar al operator\mbox{[}\mbox{]}, pero tiene dos ventajas y una desventaja. \-Las ventajas es que 1. se puede indicar un {\bfseries hint} para la búsqueda y 2. no es necesario que \-Meaning tenga constructor sin parámetros. \-La desventaja es que la notación no es tan bonita. 
 \end{DoxyRemark}
-\hypertarget{classaed2_1_1map_a6b21c09f59a83b6ee45432dcfa61f4a1}{\index{aed2\-::map@{aed2\-::map}!at@{at}}
-\index{at@{at}!aed2::map@{aed2\-::map}}
-\subsubsection[{at}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ \-Meaning\& {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf at} (
+
+
+\-Definición en la línea \hyperlink{map_8h_source_l01274}{1274} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a9128a806713bcc999ebd8a97ab77e765_a9128a806713bcc999ebd8a97ab77e765}{\index{aed2\-::map@{aed2\-::map}!insert\-\_\-or\-\_\-assign@{insert\-\_\-or\-\_\-assign}}
+\index{insert\-\_\-or\-\_\-assign@{insert\-\_\-or\-\_\-assign}!aed2::map@{aed2\-::map}}
+\paragraph[{insert\-\_\-or\-\_\-assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf insert\-\_\-or\-\_\-assign} (
 \begin{DoxyParamCaption}
-\item[{const \-Key \&}]{key}
+\item[{const value\-\_\-type \&}]{value}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a6b21c09f59a83b6ee45432dcfa61f4a1}
-\-This is an overloaded member function, provided for convenience. \-It differs from the above function only in what argument(s) it accepts. \hypertarget{classaed2_1_1map_a6b21c09f59a83b6ee45432dcfa61f4a1}{\index{aed2\-::map@{aed2\-::map}!at@{at}}
-\index{at@{at}!aed2::map@{aed2\-::map}}
-\subsubsection[{at}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ \-Meaning\& {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf at} (
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a9128a806713bcc999ebd8a97ab77e765_a9128a806713bcc999ebd8a97ab77e765}
+\-Esta es una función miembro sobrecargada que se suministra por conveniencia. \-Difiere de la anterior función solamente en los argumentos que acepta. 
+
+\-Definición en la línea \hyperlink{map_8h_source_l01292}{1292} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_ad8e796bf9c9c558e5ce6b61e116253fe_ad8e796bf9c9c558e5ce6b61e116253fe}{\index{aed2\-::map@{aed2\-::map}!erase@{erase}}
+\index{erase@{erase}!aed2::map@{aed2\-::map}}
+\paragraph[{erase}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf erase} (
 \begin{DoxyParamCaption}
-\item[{const \-Key \&}]{key}
+\item[{{\bf const\-\_\-iterator}}]{pos}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a6b21c09f59a83b6ee45432dcfa61f4a1}
-\-This is an overloaded member function, provided for convenience. \-It differs from the above function only in what argument(s) it accepts. \hypertarget{classaed2_1_1map_a58a95705d54b3dda7f775ce5a22225cb}{\index{aed2\-::map@{aed2\-::map}!begin@{begin}}
-\index{begin@{begin}!aed2::map@{aed2\-::map}}
-\subsubsection[{begin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf begin} (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a58a95705d54b3dda7f775ce5a22225cb}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_ad8e796bf9c9c558e5ce6b61e116253fe_ad8e796bf9c9c558e5ce6b61e116253fe}
 
 
-\-Devuelve un iterador al primer valor del diccionario. 
-
-\{no hay\}
+\-Elimina el valor apuntado por {\bfseries pos} 
 
 
-\begin{DoxyRetVals}{\-Return values}
-{\em res} & iterador al primer valor\\
+\begin{DoxyParams}{\-Parámetros}
+{\em pos} & iterador apuntando al valor a eliminar. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{\-Valores devueltos}
+{\em res} & iterador apuntando al primer valor con clave mayor a {\bfseries pos} (o {\bfseries this}-\/$>$\hyperlink{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983_a76023e6a56cb625513e1b5ea028bf983}{end()}, si dicho valor no existe).\\
 \hline
 \end{DoxyRetVals}
-\begin{DoxyPrecond}{\-Precondition}
-\{true\} 
+\begin{DoxyParagraph}{\-Aspectos de aliasing\-:}
+$\backslash$1.
+\end{DoxyParagraph}
+\begin{DoxyPrecond}{\-Precondición}
+{\bfseries \-P} $\equiv$ \{this $=_{obs}$ d\-\_\-0 $\land$ \-Hay\-Siguiente?(pos)\} 
 \end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{res = \-Crear\-It\-Mod(inorder($\ast$this))\}
+\begin{DoxyPostcond}{\-Postcondición}
+\{res $=_{obs}$ \-Eliminar\-Siguiente(pos) $\land$ this $=_{obs}$ borrar(pos.\-key (chequear), this)\}
 \end{DoxyPostcond}
-\{(1)\} \-Inicia un iterador en header.\-izq. \hypertarget{classaed2_1_1map_a1d10432d305bcb5f1af6ab7b75c27c1c}{\index{aed2\-::map@{aed2\-::map}!begin@{begin}}
-\index{begin@{begin}!aed2::map@{aed2\-::map}}
-\subsubsection[{begin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf const\-\_\-iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf begin} (
+
+\begin{DoxyDescription}
+\item[\-Complejidad \-Temporal]
+\begin{DoxyItemize}
+\item \-Peor caso\-: $O$({\bfseries del}({\bfseries $\ast$pos}) + $\log$({\bfseries size}({\bfseries $\ast$this})))
+\item \-Peor caso amortizado\-: $O$({\bfseries del}({\bfseries $\ast$pos})) 
+\end{DoxyItemize}
+\end{DoxyDescription}
+
+\-Definición en la línea \hyperlink{map_8h_source_l01314}{1314} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a98b9f200c64ce02dfb67902ee00e375a_a98b9f200c64ce02dfb67902ee00e375a}{\index{aed2\-::map@{aed2\-::map}!transplant@{transplant}}
+\index{transplant@{transplant}!aed2::map@{aed2\-::map}}
+\paragraph[{transplant}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ void {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf transplant} (
 \begin{DoxyParamCaption}
-{}
+\item[{{\bf \-Node} $\ast$}]{u, }
+\item[{{\bf \-Node} $\ast$}]{v}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a1d10432d305bcb5f1af6ab7b75c27c1c}
-\-This is an overloaded member function, provided for convenience. \-It differs from the above function only in what argument(s) it accepts. \hypertarget{classaed2_1_1map_ab96ad892caa28f193481a578f4956a2a}{\index{aed2\-::map@{aed2\-::map}!cbegin@{cbegin}}
-\index{cbegin@{cbegin}!aed2::map@{aed2\-::map}}
-\subsubsection[{cbegin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf const\-\_\-iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf cbegin} (
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a98b9f200c64ce02dfb67902ee00e375a_a98b9f200c64ce02dfb67902ee00e375a}
+\-Completar especificacion coloquialmente 
+
+\-Definición en la línea \hyperlink{map_8h_source_l01372}{1372} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a7870c8f26e82b00d0aeb2e9f331dfec6_a7870c8f26e82b00d0aeb2e9f331dfec6}{\index{aed2\-::map@{aed2\-::map}!erase\-\_\-fixup@{erase\-\_\-fixup}}
+\index{erase\-\_\-fixup@{erase\-\_\-fixup}!aed2::map@{aed2\-::map}}
+\paragraph[{erase\-\_\-fixup}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ void {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf erase\-\_\-fixup} (
 \begin{DoxyParamCaption}
-{}
+\item[{{\bf iterator}}]{it}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_ab96ad892caa28f193481a578f4956a2a}
-\-This is an overloaded member function, provided for convenience. \-It differs from the above function only in what argument(s) it accepts. \hypertarget{classaed2_1_1map_a7bb91e94cbc875f1a011b142ef877912}{\index{aed2\-::map@{aed2\-::map}!cend@{cend}}
-\index{cend@{cend}!aed2::map@{aed2\-::map}}
-\subsubsection[{cend}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf const\-\_\-iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf cend} (
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a7870c8f26e82b00d0aeb2e9f331dfec6_a7870c8f26e82b00d0aeb2e9f331dfec6}
+\-Completar especificacion coloquialmente 
+
+\-Definición en la línea \hyperlink{map_8h_source_l01390}{1390} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a2ffadb42cd5f0bc7b3752ff159b75334_a2ffadb42cd5f0bc7b3752ff159b75334}{\index{aed2\-::map@{aed2\-::map}!erase@{erase}}
+\index{erase@{erase}!aed2::map@{aed2\-::map}}
+\paragraph[{erase}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ void {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf erase} (
 \begin{DoxyParamCaption}
-{}
+\item[{const \-Key \&}]{key}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a7bb91e94cbc875f1a011b142ef877912}
-\-This is an overloaded member function, provided for convenience. \-It differs from the above function only in what argument(s) it accepts. \hypertarget{classaed2_1_1map_a2bfa5165825979bf2431db55bc6bc9ca}{\index{aed2\-::map@{aed2\-::map}!clear@{clear}}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a2ffadb42cd5f0bc7b3752ff159b75334_a2ffadb42cd5f0bc7b3752ff159b75334}
+
+
+\-Elimina el valor cuya clave es {\bfseries key} 
+
+
+\begin{DoxyParams}{\-Parámetros}
+{\em key} & clave del elemento a eliminar\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{\-Aspectos de aliasing\-:}
+$\backslash$1
+\end{DoxyParagraph}
+\begin{DoxyPrecond}{\-Precondición}
+\{this $=_{obs}$ d\-\_\-0 $\land$ def?(this, key)\} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondición}
+\{this $=_{obs}$ borrar(key, d\-\_\-0)\}
+\end{DoxyPostcond}
+
+\begin{DoxyDescription}
+\item[\-Complejidad \-Temporal]$O$({\bfseries del}({\bfseries $\ast$pos}) + $\log$({\bfseries size}({\bfseries $\ast$this})) $\cdot$ {\bfseries cmp}({\bfseries $\ast$this}))
+\end{DoxyDescription}
+
+\-Definición en la línea \hyperlink{map_8h_source_l01436}{1436} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a2bfa5165825979bf2431db55bc6bc9ca_a2bfa5165825979bf2431db55bc6bc9ca}{\index{aed2\-::map@{aed2\-::map}!clear@{clear}}
 \index{clear@{clear}!aed2::map@{aed2\-::map}}
-\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ void {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf clear} (
+\paragraph[{clear}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ void {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf clear} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a2bfa5165825979bf2431db55bc6bc9ca}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a2bfa5165825979bf2431db55bc6bc9ca_a2bfa5165825979bf2431db55bc6bc9ca}
 
 
 \-Vacia el diccionario. 
 
-\{\-Se invalidan todos los iteradores asociados a \{$\ast$this\}, con excepcion de aquellos que apuntan a la posicion pasando-\/el-\/ultimo.\}
+\{\-Se invalidan todos los iteradores asociados a {\bfseries $\ast$this}, con excepcion de aquellos que apuntan a la posicion pasando-\/el-\/ultimo.\}
 
-\begin{DoxyPrecond}{\-Precondition}
-\{true\} 
+\begin{DoxyPrecond}{\-Precondición}
+{\bfseries \-P} $\equiv$ \{true\} 
 \end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{\{$\ast$this\}  vacio\}
+\begin{DoxyPostcond}{\-Postcondición}
+{\bfseries \-Q} $\equiv$ \{{\bfseries $\ast$this} $=_{obs}$ vacio\}
 \end{DoxyPostcond}
-\{((\{$\ast$this\}))\} \-Mientras count sea distinto de 0, va eliminando con la función erase todos los elementos del árbol. \hypertarget{classaed2_1_1map_a6ad62765a2b2e00247b9e35a7542b448}{\index{aed2\-::map@{aed2\-::map}!crbegin@{crbegin}}
-\index{crbegin@{crbegin}!aed2::map@{aed2\-::map}}
-\subsubsection[{crbegin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ const\-\_\-reverse\-\_\-iterator {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf crbegin} (
+
+\begin{DoxyDescription}
+\item[\-Complejidad \-Temporal]$O$({\bfseries del}({\bfseries $\ast$this}))
+\end{DoxyDescription}
+
+\-Definición en la línea \hyperlink{map_8h_source_l01453}{1453} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a865d7b8ec5694fb73e187ebf84a35b63_a865d7b8ec5694fb73e187ebf84a35b63}{\index{aed2\-::map@{aed2\-::map}!show@{show}}
+\index{show@{show}!aed2::map@{aed2\-::map}}
+\paragraph[{show}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ std\-::vector$<$value\-\_\-type$>$ {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf show} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a6ad62765a2b2e00247b9e35a7542b448}
-\-This is an overloaded member function, provided for convenience. \-It differs from the above function only in what argument(s) it accepts. \hypertarget{classaed2_1_1map_a40933b2efe1cb479de9195ea947244d1}{\index{aed2\-::map@{aed2\-::map}!crend@{crend}}
-\index{crend@{crend}!aed2::map@{aed2\-::map}}
-\subsubsection[{crend}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ const\-\_\-reverse\-\_\-iterator {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf crend} (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a40933b2efe1cb479de9195ea947244d1}
-\-This is an overloaded member function, provided for convenience. \-It differs from the above function only in what argument(s) it accepts. \hypertarget{classaed2_1_1map_af5320ca0a7df4d16015441d5d055a7ee}{\index{aed2\-::map@{aed2\-::map}!empty@{empty}}
-\index{empty@{empty}!aed2::map@{aed2\-::map}}
-\subsubsection[{empty}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ bool {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf empty} (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_af5320ca0a7df4d16015441d5d055a7ee}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a865d7b8ec5694fb73e187ebf84a35b63_a865d7b8ec5694fb73e187ebf84a35b63}
 
 
-\-Indica si el diccionario esta vacío. 
+\-Inserta {\bfseries value} en el diccionario. 
+
+\-Inserta un {\bfseries nuevo} valor en el diccionario. \-Si {\bfseries $\ast$this} ya tiene un valor con clave {\bfseries value}.first, entonces la función no tiene efectos. \-El iterador de retorno apunta al elemento recien insertado (o aquel que previno la insercion).
 
 
-\begin{DoxyRetVals}{\-Return values}
-{\em res} & denota true si y solo si el diccionario está vacío\\
-\hline
-\end{DoxyRetVals}
-\begin{DoxyPrecond}{\-Precondition}
-\{true\} 
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{res =  ?(claves($\ast$this))\}
-\end{DoxyPostcond}
-\{(1)\} \-Inicia en raíz, y si la misma es distinta de null devuelve false. \hypertarget{classaed2_1_1map_af5320ca0a7df4d16015441d5d055a7ee}{\index{aed2\-::map@{aed2\-::map}!empty@{empty}}
-\index{empty@{empty}!aed2::map@{aed2\-::map}}
-\subsubsection[{empty}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ bool {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf empty} (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_af5320ca0a7df4d16015441d5d055a7ee}
-
-
-\-Indica si el diccionario esta vacío. 
-
-
-\begin{DoxyRetVals}{\-Return values}
-{\em res} & denota true si y solo si el diccionario está vacío\\
-\hline
-\end{DoxyRetVals}
-\begin{DoxyPrecond}{\-Precondition}
-\{true\} 
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{res   ?(claves($\ast$this))\}
-\end{DoxyPostcond}
-\{(1)\} \-Inicia en raíz, y si la misma es distinta de null devuelve false. \hypertarget{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983}{\index{aed2\-::map@{aed2\-::map}!end@{end}}
-\index{end@{end}!aed2::map@{aed2\-::map}}
-\subsubsection[{end}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf end} (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983}
-
-
-\-Devuelve un iterador apuntando a la posición pasando-\/el-\/ultimo del diccionario. 
-
-\{no hay\}
-
-
-\begin{DoxyRetVals}{\-Return values}
-{\em res} & iterador a la posicion pasando-\/al-\/ultimo\\
-\hline
-\end{DoxyRetVals}
-\begin{DoxyPrecond}{\-Precondition}
-\{true\} 
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{res = \-Crear\-It\-Mod(inorder($\ast$this),  )\}
-\end{DoxyPostcond}
-\{(1)\}
-
-\-Inicia un iterador en nullptr. \hypertarget{classaed2_1_1map_a1f847ad4fd46883ac60d764967172179}{\index{aed2\-::map@{aed2\-::map}!end@{end}}
-\index{end@{end}!aed2::map@{aed2\-::map}}
-\subsubsection[{end}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf const\-\_\-iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf end} (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a1f847ad4fd46883ac60d764967172179}
-\-This is an overloaded member function, provided for convenience. \-It differs from the above function only in what argument(s) it accepts. \hypertarget{classaed2_1_1map_ad8e796bf9c9c558e5ce6b61e116253fe}{\index{aed2\-::map@{aed2\-::map}!erase@{erase}}
-\index{erase@{erase}!aed2::map@{aed2\-::map}}
-\subsubsection[{erase}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf erase} (
-\begin{DoxyParamCaption}
-\item[{{\bf const\-\_\-iterator}}]{pos}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_ad8e796bf9c9c558e5ce6b61e116253fe}
-
-
-\-Elimina el valor apuntado por \{pos\}. 
-
-
-\begin{DoxyParams}{\-Parameters}
-{\em pos} & iterador apuntando al valor a eliminar. \\
-\hline
-\end{DoxyParams}
-
-\begin{DoxyRetVals}{\-Return values}
-{\em res} & iterador apuntando al primer valor con clave mayor a \{pos\} (o \{this\}-\/$>$\hyperlink{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983}{end()}, si dicho valor no existe).\\
-\hline
-\end{DoxyRetVals}
-\{complertar\}.
-
-\begin{DoxyPrecond}{\-Precondition}
-\{\-Hay\-Mas?(pos)\} 
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{\-Eliminar(pos)\}
-\end{DoxyPostcond}
-\{
-\begin{DoxyItemize}
-\item \-Peor caso\-: ((\{$\ast$pos\}) + ((\{$\ast$this\})))
-\item \-Peor caso amortizado\-: ((\{$\ast$pos\})) \} 
-\end{DoxyItemize}\hypertarget{classaed2_1_1map_ad8e796bf9c9c558e5ce6b61e116253fe}{\index{aed2\-::map@{aed2\-::map}!erase@{erase}}
-\index{erase@{erase}!aed2::map@{aed2\-::map}}
-\subsubsection[{erase}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf erase} (
-\begin{DoxyParamCaption}
-\item[{{\bf const\-\_\-iterator}}]{pos}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_ad8e796bf9c9c558e5ce6b61e116253fe}
-
-
-\-Elimina el valor apuntado por \{pos\}. 
-
-
-\begin{DoxyParams}{\-Parameters}
-{\em pos} & iterador apuntando al valor a eliminar. \\
-\hline
-\end{DoxyParams}
-
-\begin{DoxyRetVals}{\-Return values}
-{\em res} & iterador apuntando al primer valor con clave mayor a \{pos\} (o \{this\}-\/$>$\hyperlink{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983}{end()}, si dicho valor no existe).\\
-\hline
-\end{DoxyRetVals}
-\{complertar\}.
-
-\begin{DoxyPrecond}{\-Precondition}
-\{\-Hay\-Mas?(pos)\} 
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{\-Eliminar(pos)\}
-\end{DoxyPostcond}
-\{
-\begin{DoxyItemize}
-\item \-Peor caso\-: ((\{$\ast$pos\}) + ((\{$\ast$this\})))
-\item \-Peor caso amortizado\-: ((\{$\ast$pos\})) \} 
-\end{DoxyItemize}\hypertarget{classaed2_1_1map_a2ffadb42cd5f0bc7b3752ff159b75334}{\index{aed2\-::map@{aed2\-::map}!erase@{erase}}
-\index{erase@{erase}!aed2::map@{aed2\-::map}}
-\subsubsection[{erase}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ void {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf erase} (
-\begin{DoxyParamCaption}
-\item[{const \-Key \&}]{key}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a2ffadb42cd5f0bc7b3752ff159b75334}
-
-
-\-Elimina el valor cuya clave es \{key\}. 
-
-
-\begin{DoxyParams}{\-Parameters}
-{\em key} & clave del elemento a eliminar\\
-\hline
-\end{DoxyParams}
-\{completar\}
-
-\begin{DoxyPrecond}{\-Precondition}
-\{$\ast$this = $\ast$this0  def?(key, $\ast$this)\} 
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{$\ast$this = borrar(key, $\ast$this0)\}
-\end{DoxyPostcond}
-\{((\{$\ast$pos\}) + ((\{$\ast$this\}))  (\{$\ast$this\}))\} \hypertarget{classaed2_1_1map_afd0fc1a8234888e61e0e615de7e245b8}{\index{aed2\-::map@{aed2\-::map}!find@{find}}
-\index{find@{find}!aed2::map@{aed2\-::map}}
-\subsubsection[{find}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf find} (
-\begin{DoxyParamCaption}
-\item[{const \-Key \&}]{key}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_afd0fc1a8234888e61e0e615de7e245b8}
-
-
-\-Devuelve el significado asociado a \{key\}, asegurando su existencia. 
-
-\-Devuelve el significado asociado a \{key\}. \-Si \{key\} no está definido en \{$\ast$this\}, entonces se inserta un nuevo valor con clave \{key\} y significado \{\-Meaning\}(). \-De esta forma, podemos usar `operator\mbox{[}\mbox{]}` para definir nuevos valores o modificar los existentes.
-
-\-Ejemplo\-: 
-\begin{DoxyCode}
- {.cpp}
- aed2::map<int, int> d;
- d[1] = 2;      //define 1 -> 2
- d[1] = 3;      //redefine 1 -> 3
-
- aed2::map<int, int> m;
- if(m[1] == 3) {...} //posible bug: define 1 -> basura (que puede o no ser 3).
-\end{DoxyCode}
-
-
-
-\begin{DoxyParams}{\-Parameters}
-{\em key} & clave a buscar. \\
-\hline
-\end{DoxyParams}
-
-\begin{DoxyRetVals}{\-Return values}
-{\em res} & referencia al significado asociado a \{key\}.\\
-\hline
-\end{DoxyRetVals}
-\begin{DoxyParagraph}{\-Requerimientos sobre el tipo \{\-Meaning\}}
-\-Requiere que \{\-Meaning\} tenga un constructor sin parámetros con complejidad ({\itshape c\/})
-\end{DoxyParagraph}
-\{hay aliasing entre res y obtener(key, $\ast$this)\}
-
-\begin{DoxyPrecond}{\-Precondition}
-\{true\} 
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{def?(key, $\ast$this)  res = obtener(key, $\ast$this)\}
-\end{DoxyPostcond}
-\{(((\{$\ast$this\}))  (\{$\ast$this\}) + {\itshape x\/}) donde
-\begin{DoxyItemize}
-\item {\itshape x\/} = 1 si def?({\itshape self\/}, \{key\}), y
-\item {\itshape x\/} = {\itshape c\/} en caso contrario.\} -\/\-Se encuentra el menor elemento mayor o igual a key. -\/\-Si key esta definida, devuelve el valor almacenado en .second. \-Si no, devuelve el valor que crea por defecto el constructor \-Meaning(). \-Meaning\& \hyperlink{classaed2_1_1map_a96f23896164ab47bee48c26b803f9801}{operator\mbox{[}$\,$\mbox{]}(const Key\& key)} \{ iterator it = lower\-\_\-bound(key); if (it.\-n-\/$>$value().first == key) return it.\-n-\/$>$value().second; else insert(it, value\-\_\-type(key, \-Meaning())); return at(key); \}
-\end{DoxyItemize}
-
-/$\ast$$\ast$ \-Devuelve un iterador a la posicion del valor con clave \{key\}
-
-\-Retorna un iterador apuntando a la posicion del valor con clave \{key\}. \-Si dicho valor no existe, porque la clave no fue definida, entonces el iterador retornado apunta a la posición {\itshape pasando-\/el-\/ultimo\/}.
-
-
-\begin{DoxyParams}{\-Parameters}
-{\em key} & clave a buscar \\
-\hline
-\end{DoxyParams}
-
-\begin{DoxyRetVals}{\-Return values}
-{\em res} & iterador apuntando al valor con clave \{key\} (o a \{this\}-\/$>$\hyperlink{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983}{end()} si dicho elemento no existe)\\
-\hline
-\end{DoxyRetVals}
-\{\-Hay aliasing entre el actual(iterador) y obtener(key, $\ast$this)\}
-
-\begin{DoxyPrecond}{\-Precondition}
-\{true\} 
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{def?(key, $\ast$this)  res = crearit\-Aux(key,inorder($\ast$this))\}
-\end{DoxyPostcond}
-\{(((\{$\ast$this\}))  (\{$\ast$this\}))\}
-
-\begin{DoxyAttention}{\-Attention}
-\-Si el objetivo es insertar un valor con clave \{key\} de acuerdo a alguna condición, entonces conviene usar \hyperlink{classaed2_1_1map_a3399d36fdd5a880b494f3a5795d3f18f}{aed2\-::map\-::lower\-\_\-bound} para la búsqueda, dado que el resultado puede ser usado como hint, mejorando la complejidad de la inserción.
-\begin{DoxyItemize}
-\item \-Inicia el iterador en el hijo izquierdo de header.
-\item \-Avanzo hasta que la clave sea key o, en caso de que no esté definida, hasta la posición pasando-\/el-\/último.
-\item \-Devuelve el \-Iterador en esa posición. 
-\end{DoxyItemize}
-\end{DoxyAttention}
-\hypertarget{classaed2_1_1map_afd0fc1a8234888e61e0e615de7e245b8}{\index{aed2\-::map@{aed2\-::map}!find@{find}}
-\index{find@{find}!aed2::map@{aed2\-::map}}
-\subsubsection[{find}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf find} (
-\begin{DoxyParamCaption}
-\item[{const \-Key \&}]{key}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_afd0fc1a8234888e61e0e615de7e245b8}
-
-
-\-Devuelve un iterador a la posicion del valor con clave \{key\}. 
-
-\-Retorna un iterador apuntando a la posicion del valor con clave \{key\}. \-Si dicho valor no existe, porque la clave no fue definida, entonces el iterador retornado apunta a la posición {\itshape pasando-\/el-\/ultimo\/}.
-
-
-\begin{DoxyParams}{\-Parameters}
-{\em key} & clave a buscar \\
-\hline
-\end{DoxyParams}
-
-\begin{DoxyRetVals}{\-Return values}
-{\em res} & iterador apuntando al valor con clave \{key\} (o a \{this\}-\/$>$\hyperlink{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983}{end()} si dicho elemento no existe)\\
-\hline
-\end{DoxyRetVals}
-\{\-Hay aliasing entre el actual(iterador) y obtener(key, $\ast$this)\}
-
-\begin{DoxyPrecond}{\-Precondition}
-\{true\} 
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{def?(key, $\ast$this)  res  crearit\-Aux(key,inorder($\ast$this))\}
-\end{DoxyPostcond}
-\{(((\{$\ast$this\}))  (\{$\ast$this\}))\}
-
-\begin{DoxyAttention}{\-Attention}
-\-Si el objetivo es insertar un valor con clave \{key\} de acuerdo a alguna condición, entonces conviene usar \hyperlink{classaed2_1_1map_a3399d36fdd5a880b494f3a5795d3f18f}{aed2\-::map\-::lower\-\_\-bound} para la búsqueda, dado que el resultado puede ser usado como hint, mejorando la complejidad de la inserción.
-\begin{DoxyItemize}
-\item \-Inicia el iterador en el hijo izquierdo de header.
-\item \-Avanzo hasta que la clave sea key o, en caso de que no esté definida, hasta la posición pasando-\/el-\/último.
-\item \-Devuelve el \-Iterador en esa posición. 
-\end{DoxyItemize}
-\end{DoxyAttention}
-\hypertarget{classaed2_1_1map_ab8f3e41b1a0d7b74645836f8d2e1acfc}{\index{aed2\-::map@{aed2\-::map}!find@{find}}
-\index{find@{find}!aed2::map@{aed2\-::map}}
-\subsubsection[{find}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf const\-\_\-iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf find} (
-\begin{DoxyParamCaption}
-\item[{const \-Key \&}]{key}
-\end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_ab8f3e41b1a0d7b74645836f8d2e1acfc}
-\-This is an overloaded member function, provided for convenience. \-It differs from the above function only in what argument(s) it accepts. \hypertarget{classaed2_1_1map_ab8f3e41b1a0d7b74645836f8d2e1acfc}{\index{aed2\-::map@{aed2\-::map}!find@{find}}
-\index{find@{find}!aed2::map@{aed2\-::map}}
-\subsubsection[{find}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf const\-\_\-iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf find} (
-\begin{DoxyParamCaption}
-\item[{const \-Key \&}]{key}
-\end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_ab8f3e41b1a0d7b74645836f8d2e1acfc}
-\-This is an overloaded member function, provided for convenience. \-It differs from the above function only in what argument(s) it accepts. \hypertarget{classaed2_1_1map_a6941cde9a79c27f054b5c97a587a1854}{\index{aed2\-::map@{aed2\-::map}!insert@{insert}}
-\index{insert@{insert}!aed2::map@{aed2\-::map}}
-\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf insert} (
-\begin{DoxyParamCaption}
-\item[{{\bf const\-\_\-iterator}}]{hint, }
-\item[{const value\-\_\-type \&}]{value}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a6941cde9a79c27f054b5c97a587a1854}
-
-
-\-Inserta \{value\} en el diccionario. 
-
-\-Inserta un {\bfseries nuevo} valor en el diccionario. \-Si \{$\ast$this\} ya tiene un valor con clave \{value\}.first, entonces la función no tiene efectos. \-El iterador de retorno apunta al elemento recien insertado (o aquel que previno la insercion).
-
-
-\begin{DoxyParams}{\-Parameters}
+\begin{DoxyParams}{\-Parámetros}
 {\em value} & valor a insertar \\
 \hline
-{\em hint} & iterador apuntando al diccionario. \-Se espera que apunte al minimo valor mayor o igual a \{value\}.first (i.\-e., a lower\-\_\-bound(\{value\}.first)). \-Igualmente, la función es robusta y funciona correctamente aunque esto no ocurra. \\
+{\em hint} & iterador apuntando al diccionario. \-Se espera que apunte al minimo valor mayor o igual a {\bfseries value}.first (i.\-e., a lower\-\_\-bound({\bfseries value}.first)). \-Igualmente, la función es robusta y funciona correctamente aunque esto no ocurra. \\
 \hline
 \end{DoxyParams}
 
-\begin{DoxyRetVals}{\-Return values}
+\begin{DoxyRetVals}{\-Valores devueltos}
 {\em res} & iterador apuntando al elemento insertado o que previno la inserción\\
 \hline
 \end{DoxyRetVals}
-\{\}
-
-\begin{DoxyPrecond}{\-Precondition}
-\{true\} 
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{def?(value.\-first, $\ast$this)  crearit\-Aux($\ast$this.first, inorder($\ast$this) )   def?(value.\-first, $\ast$this)  res = agregar(crear\-It(inorder($\ast$this)), value)\}
-\end{DoxyPostcond}
-\{
-\begin{DoxyItemize}
-\item \-Peor caso\-: (((\{$\ast$this\}))  (\{$\ast$this\})  (\{value\}))
-\item \-Si \{hint\} apunta al primer valor con clave al menos \{value\}.first (o \{this\}-\/$>$\hyperlink{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983}{end()} en caso de no existir)\-: ((\{$\ast$this\})  (\{value\})) amortizado. \}
-\end{DoxyItemize}
-
-\begin{DoxyAttention}{\-Attention}
-\-Para garantizar que el nuevo elemento se inserte sí o sí, usar \hyperlink{classaed2_1_1map_a2ef6723c183916276b0afc4a4c721475}{aed2\-::map\-::insert\-\_\-or\-\_\-assign}. 
-\end{DoxyAttention}
-\hypertarget{classaed2_1_1map_a6941cde9a79c27f054b5c97a587a1854}{\index{aed2\-::map@{aed2\-::map}!insert@{insert}}
-\index{insert@{insert}!aed2::map@{aed2\-::map}}
-\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf insert} (
-\begin{DoxyParamCaption}
-\item[{{\bf const\-\_\-iterator}}]{hint, }
-\item[{const value\-\_\-type \&}]{value}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a6941cde9a79c27f054b5c97a587a1854}
-
-
-\-Inserta \{value\} en el diccionario. 
-
-\-Inserta un {\bfseries nuevo} valor en el diccionario. \-Si \{$\ast$this\} ya tiene un valor con clave \{value\}.first, entonces la función no tiene efectos. \-El iterador de retorno apunta al elemento recien insertado (o aquel que previno la insercion).
-
-
-\begin{DoxyParams}{\-Parameters}
-{\em value} & valor a insertar \\
-\hline
-{\em hint} & iterador apuntando al diccionario. \-Se espera que apunte al minimo valor mayor o igual a \{value\}.first (i.\-e., a lower\-\_\-bound(\{value\}.first)). \-Igualmente, la función es robusta y funciona correctamente aunque esto no ocurra. \\
-\hline
-\end{DoxyParams}
-
-\begin{DoxyRetVals}{\-Return values}
-{\em res} & iterador apuntando al elemento insertado o que previno la inserción\\
-\hline
-\end{DoxyRetVals}
-\{hay aliasing???\}
-
-\begin{DoxyPrecond}{\-Precondition}
-\{true\} 
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{def?(value.\-first, $\ast$this)  crearit\-Aux($\ast$this.first, inorder($\ast$this) )   def?(value.\-first, $\ast$this)  res  agregar(crear\-It(inorder($\ast$this)), value)\}
-\end{DoxyPostcond}
-\{
-\begin{DoxyItemize}
-\item \-Peor caso\-: (((\{$\ast$this\}))  (\{$\ast$this\})  (\{value\}))
-\item \-Si \{hint\} apunta al primer valor con clave al menos \{value\}.first (o \{this\}-\/$>$\hyperlink{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983}{end()} en caso de no existir)\-: ((\{$\ast$this\})  (\{value\})) amortizado. \}
-\end{DoxyItemize}
-
-\begin{DoxyAttention}{\-Attention}
-\-Para garantizar que el nuevo elemento se inserte sí o sí, usar \hyperlink{classaed2_1_1map_a2ef6723c183916276b0afc4a4c721475}{aed2\-::map\-::insert\-\_\-or\-\_\-assign}. 
-\end{DoxyAttention}
-\hypertarget{classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8}{\index{aed2\-::map@{aed2\-::map}!insert@{insert}}
-\index{insert@{insert}!aed2::map@{aed2\-::map}}
-\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf insert} (
-\begin{DoxyParamCaption}
-\item[{const value\-\_\-type \&}]{value}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8}
-\-This is an overloaded member function, provided for convenience. \-It differs from the above function only in what argument(s) it accepts. \hypertarget{classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8}{\index{aed2\-::map@{aed2\-::map}!insert@{insert}}
-\index{insert@{insert}!aed2::map@{aed2\-::map}}
-\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf insert} (
-\begin{DoxyParamCaption}
-\item[{const value\-\_\-type \&}]{value}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8}
-\-This is an overloaded member function, provided for convenience. \-It differs from the above function only in what argument(s) it accepts. \hypertarget{classaed2_1_1map_a2ef6723c183916276b0afc4a4c721475}{\index{aed2\-::map@{aed2\-::map}!insert\-\_\-or\-\_\-assign@{insert\-\_\-or\-\_\-assign}}
-\index{insert\-\_\-or\-\_\-assign@{insert\-\_\-or\-\_\-assign}!aed2::map@{aed2\-::map}}
-\subsubsection[{insert\-\_\-or\-\_\-assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf insert\-\_\-or\-\_\-assign} (
-\begin{DoxyParamCaption}
-\item[{{\bf const\-\_\-iterator}}]{hint, }
-\item[{const value\-\_\-type \&}]{value}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a2ef6723c183916276b0afc4a4c721475}
-\{
-\begin{DoxyItemize}
-\item \-Peor caso\-: (((\{$\ast$this\}))  (\{$\ast$this\})  (\{value\}))
-\item \-Si \{hint\} apunta al primer valor con clave al menos \{value\}.first (o \{this\}-\/$>$\hyperlink{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983}{end()} en caso de no existir)\-: ((\{$\ast$this\})  (\{value\})) amortizado. \}
-\end{DoxyItemize}
-
-\begin{DoxyAttention}{\-Attention}
-\-Para prevenir que el nuevo valor redefina uno ya existente, usar \hyperlink{classaed2_1_1map_a6941cde9a79c27f054b5c97a587a1854}{aed2\-::map\-::insert}. 
-\end{DoxyAttention}
-\begin{DoxyRemark}{\-Remarks}
-\-Esta función es similar al operator\mbox{[}\mbox{]}, pero tiene dos ventajas y una desventaja. \-Las ventajas es que 1. se puede indicar un \{hint\} para la búsqueda y 2. no es necesario que \{\-Meaning\} tenga constructor sin parámetros. \-La desventaja es que la notación no es tan bonita. 
-\end{DoxyRemark}
-\hypertarget{classaed2_1_1map_a2ef6723c183916276b0afc4a4c721475}{\index{aed2\-::map@{aed2\-::map}!insert\-\_\-or\-\_\-assign@{insert\-\_\-or\-\_\-assign}}
-\index{insert\-\_\-or\-\_\-assign@{insert\-\_\-or\-\_\-assign}!aed2::map@{aed2\-::map}}
-\subsubsection[{insert\-\_\-or\-\_\-assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf insert\-\_\-or\-\_\-assign} (
-\begin{DoxyParamCaption}
-\item[{{\bf const\-\_\-iterator}}]{hint, }
-\item[{const value\-\_\-type \&}]{value}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a2ef6723c183916276b0afc4a4c721475}
-\{
-\begin{DoxyItemize}
-\item \-Peor caso\-: (((\{$\ast$this\}))  (\{$\ast$this\})  (\{value\}))
-\item \-Si \{hint\} apunta al primer valor con clave al menos \{value\}.first (o \{this\}-\/$>$\hyperlink{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983}{end()} en caso de no existir)\-: ((\{$\ast$this\})  (\{value\})) amortizado. \}
-\end{DoxyItemize}
-
-\begin{DoxyAttention}{\-Attention}
-\-Para prevenir que el nuevo valor redefina uno ya existente, usar \hyperlink{classaed2_1_1map_a6941cde9a79c27f054b5c97a587a1854}{aed2\-::map\-::insert}. 
-\end{DoxyAttention}
-\begin{DoxyRemark}{\-Remarks}
-\-Esta función es similar al operator\mbox{[}\mbox{]}, pero tiene dos ventajas y una desventaja. \-Las ventajas es que 1. se puede indicar un \{hint\} para la búsqueda y 2. no es necesario que \{\-Meaning\} tenga constructor sin parámetros. \-La desventaja es que la notación no es tan bonita. 
-\end{DoxyRemark}
-\hypertarget{classaed2_1_1map_a9128a806713bcc999ebd8a97ab77e765}{\index{aed2\-::map@{aed2\-::map}!insert\-\_\-or\-\_\-assign@{insert\-\_\-or\-\_\-assign}}
-\index{insert\-\_\-or\-\_\-assign@{insert\-\_\-or\-\_\-assign}!aed2::map@{aed2\-::map}}
-\subsubsection[{insert\-\_\-or\-\_\-assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf insert\-\_\-or\-\_\-assign} (
-\begin{DoxyParamCaption}
-\item[{const value\-\_\-type \&}]{value}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a9128a806713bcc999ebd8a97ab77e765}
-\-This is an overloaded member function, provided for convenience. \-It differs from the above function only in what argument(s) it accepts. \hypertarget{classaed2_1_1map_a9128a806713bcc999ebd8a97ab77e765}{\index{aed2\-::map@{aed2\-::map}!insert\-\_\-or\-\_\-assign@{insert\-\_\-or\-\_\-assign}}
-\index{insert\-\_\-or\-\_\-assign@{insert\-\_\-or\-\_\-assign}!aed2::map@{aed2\-::map}}
-\subsubsection[{insert\-\_\-or\-\_\-assign}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf insert\-\_\-or\-\_\-assign} (
-\begin{DoxyParamCaption}
-\item[{const value\-\_\-type \&}]{value}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a9128a806713bcc999ebd8a97ab77e765}
-\-This is an overloaded member function, provided for convenience. \-It differs from the above function only in what argument(s) it accepts. \hypertarget{classaed2_1_1map_a3399d36fdd5a880b494f3a5795d3f18f}{\index{aed2\-::map@{aed2\-::map}!lower\-\_\-bound@{lower\-\_\-bound}}
-\index{lower\-\_\-bound@{lower\-\_\-bound}!aed2::map@{aed2\-::map}}
-\subsubsection[{lower\-\_\-bound}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf const\-\_\-iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf lower\-\_\-bound} (
-\begin{DoxyParamCaption}
-\item[{const \-Key \&}]{key}
-\end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a3399d36fdd5a880b494f3a5795d3f18f}
-
-
-\-Devuelve un iterador al primer valor con clave mayor o igual a \{key\}. 
-
-\-Retorna un iterador apuntando a la primer posición cuyo valor tenga clave al menos \{key\}. \-Si dicho valor no existe, porque \{key\} es mayor a todas las claves de \{$\ast$this\}, entonces el iterador retornado apunta a la posición {\itshape pasando-\/el-\/último\/}.
-
-
-\begin{DoxyParams}{\-Parameters}
-{\em key} & clave a buscar \\
-\hline
-\end{DoxyParams}
-
-\begin{DoxyRetVals}{\-Return values}
-{\em res} & iterador apuntando al valor con clave al menos \{key\} (o a \{this\}-\/$>$\hyperlink{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983}{end()} si dicho elemento no existe)\\
-\hline
-\end{DoxyRetVals}
-\{hay aliasing entre res y el sucesor inmediato de key\}
-
-\begin{DoxyPrecond}{\-Precondition}
-\{true\} 
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{res = crearit\-Aux2(key,inorder($\ast$this))(busca en la secu inorder a key y devuelve el siguiente o null si es mayor a todas las claves)\}
-\end{DoxyPostcond}
-\{(((\{$\ast$this\}))  (\{$\ast$this\}))\}
-\begin{DoxyItemize}
-\item \-Inicia el iterador en el hijo izquierdo de header.
-\item \-Avanzo hasta que la clave sea mayor o igual a key o, en caso de que no exista ninguna, hasta la posición pasando-\/el-\/último.
-\item \-Devuelve el \-Iterador en esa posición. 
-\end{DoxyItemize}\hypertarget{classaed2_1_1map_a3399d36fdd5a880b494f3a5795d3f18f}{\index{aed2\-::map@{aed2\-::map}!lower\-\_\-bound@{lower\-\_\-bound}}
-\index{lower\-\_\-bound@{lower\-\_\-bound}!aed2::map@{aed2\-::map}}
-\subsubsection[{lower\-\_\-bound}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf const\-\_\-iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf lower\-\_\-bound} (
-\begin{DoxyParamCaption}
-\item[{const \-Key \&}]{key}
-\end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a3399d36fdd5a880b494f3a5795d3f18f}
-
-
-\-Devuelve un iterador al primer valor con clave mayor o igual a \{key\}. 
-
-\-Retorna un iterador apuntando a la primer posición cuyo valor tenga clave al menos \{key\}. \-Si dicho valor no existe, porque \{key\} es mayor a todas las claves de \{$\ast$this\}, entonces el iterador retornado apunta a la posición {\itshape pasando-\/el-\/último\/}.
-
-
-\begin{DoxyParams}{\-Parameters}
-{\em key} & clave a buscar \\
-\hline
-\end{DoxyParams}
-
-\begin{DoxyRetVals}{\-Return values}
-{\em res} & iterador apuntando al valor con clave al menos \{key\} (o a \{this\}-\/$>$\hyperlink{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983}{end()} si dicho elemento no existe)\\
-\hline
-\end{DoxyRetVals}
-\{hay aliasing entre res y el sucesor inmediato de key\}
-
-\begin{DoxyPrecond}{\-Precondition}
-\{true\} 
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{res  crearit\-Aux2(key,inorder($\ast$this))(busca en la secu inorder a key y devuelve el siguiente o null si es mayor a todas las claves)\}
-\end{DoxyPostcond}
-\{(((\{$\ast$this\}))  (\{$\ast$this\}))\}
-\begin{DoxyItemize}
-\item \-Inicia el iterador en el hijo izquierdo de header.
-\item \-Avanzo hasta que la clave sea mayor o igual a key o, en caso de que no exista ninguna, hasta la posición pasando-\/el-\/último.
-\item \-Devuelve el \-Iterador en esa posición. 
-\end{DoxyItemize}\hypertarget{classaed2_1_1map_a07b3dd65557c59ee085e5f211269c6b3}{\index{aed2\-::map@{aed2\-::map}!lower\-\_\-bound@{lower\-\_\-bound}}
-\index{lower\-\_\-bound@{lower\-\_\-bound}!aed2::map@{aed2\-::map}}
-\subsubsection[{lower\-\_\-bound}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf lower\-\_\-bound} (
-\begin{DoxyParamCaption}
-\item[{const \-Key \&}]{key}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a07b3dd65557c59ee085e5f211269c6b3}
-\-This is an overloaded member function, provided for convenience. \-It differs from the above function only in what argument(s) it accepts. \hypertarget{classaed2_1_1map_a07b3dd65557c59ee085e5f211269c6b3}{\index{aed2\-::map@{aed2\-::map}!lower\-\_\-bound@{lower\-\_\-bound}}
-\index{lower\-\_\-bound@{lower\-\_\-bound}!aed2::map@{aed2\-::map}}
-\subsubsection[{lower\-\_\-bound}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf lower\-\_\-bound} (
-\begin{DoxyParamCaption}
-\item[{const \-Key \&}]{key}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a07b3dd65557c59ee085e5f211269c6b3}
-\-This is an overloaded member function, provided for convenience. \-It differs from the above function only in what argument(s) it accepts. \hypertarget{classaed2_1_1map_ac606d334809066929522964d45e76317}{\index{aed2\-::map@{aed2\-::map}!operator=@{operator=}}
-\index{operator=@{operator=}!aed2::map@{aed2\-::map}}
-\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf map}\& {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::operator= (
-\begin{DoxyParamCaption}
-\item[{{\bf map}$<$ \-Key, \-Meaning, \-Compare $>$}]{other}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_ac606d334809066929522964d45e76317}
-
-
-\-Operador de asignación. 
-
-
-\begin{DoxyParams}{\-Parameters}
-{\em other} & diccionario a copiar \\
-\hline
-\end{DoxyParams}
-
-\begin{DoxyRetVals}{\-Return values}
-{\em res} & referencia a $\ast$this\\
-\hline
-\end{DoxyRetVals}
-\{no hay\}
-
-\begin{DoxyPrecond}{\-Precondition}
-\{true\} 
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{res  other\}
-\end{DoxyPostcond}
-\{((\{$\ast$this\})  (\{other\}))\}
-
-\begin{DoxyNote}{\-Note}
-\-Es importante remarcar que no se realiza ninguna comparación entre los elementos. -\/destruir this
-\begin{DoxyItemize}
-\item this-\/$>$map(other) 
-\end{DoxyItemize}
-\end{DoxyNote}
-\hypertarget{classaed2_1_1map_ac606d334809066929522964d45e76317}{\index{aed2\-::map@{aed2\-::map}!operator=@{operator=}}
-\index{operator=@{operator=}!aed2::map@{aed2\-::map}}
-\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf map}\& {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::operator= (
-\begin{DoxyParamCaption}
-\item[{{\bf map}$<$ \-Key, \-Meaning, \-Compare $>$}]{other}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_ac606d334809066929522964d45e76317}
-
-
-\-Operador de asignación. 
-
-
-\begin{DoxyParams}{\-Parameters}
-{\em other} & diccionario a copiar \\
-\hline
-\end{DoxyParams}
-
-\begin{DoxyRetVals}{\-Return values}
-{\em res} & referencia a $\ast$this\\
-\hline
-\end{DoxyRetVals}
-\{no hay\}
-
-\begin{DoxyPrecond}{\-Precondition}
-\{true\} 
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{res = other\}
-\end{DoxyPostcond}
-\{((\{$\ast$this\})  (\{other\}))\}
-
-\begin{DoxyNote}{\-Note}
-\-Es importante remarcar que no se realiza ninguna comparación entre los elementos. -\/destruir this
-\begin{DoxyItemize}
-\item this-\/$>$map(other) 
-\end{DoxyItemize}
-\end{DoxyNote}
-\hypertarget{classaed2_1_1map_a96f23896164ab47bee48c26b803f9801}{\index{aed2\-::map@{aed2\-::map}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
-\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!aed2::map@{aed2\-::map}}
-\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ \-Meaning\& {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::operator\mbox{[}$\,$\mbox{]} (
-\begin{DoxyParamCaption}
-\item[{const \-Key \&}]{key}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a96f23896164ab47bee48c26b803f9801}
-
-
-\-Devuelve el significado asociado a \{key\}, asegurando su existencia. 
-
-\-Devuelve el significado asociado a \{key\}. \-Si \{key\} no está definido en \{$\ast$this\}, entonces se inserta un nuevo valor con clave \{key\} y significado \{\-Meaning\}(). \-De esta forma, podemos usar `operator\mbox{[}\mbox{]}` para definir nuevos valores o modificar los existentes.
-
-\-Ejemplo\-: 
-\begin{DoxyCode}
- {.cpp}
- aed2::map<int, int> d;
- d[1] = 2;      //define 1 -> 2
- d[1] = 3;      //redefine 1 -> 3
-
- aed2::map<int, int> m;
- if(m[1] == 3) {...} //posible bug: define 1 -> basura (que puede o no ser 3).
-\end{DoxyCode}
-
-
-
-\begin{DoxyParams}{\-Parameters}
-{\em key} & clave a buscar. \\
-\hline
-\end{DoxyParams}
-
-\begin{DoxyRetVals}{\-Return values}
-{\em res} & referencia al significado asociado a \{key\}.\\
-\hline
-\end{DoxyRetVals}
-\begin{DoxyParagraph}{\-Requerimientos sobre el tipo \{\-Meaning\}}
-\-Requiere que \{\-Meaning\} tenga un constructor sin parámetros con complejidad ({\itshape c\/})
+\begin{DoxyParagraph}{\-Aspectos de aliasing\-:}
+$\backslash$1
 \end{DoxyParagraph}
-\{hay aliasing entre res y obtener(key, $\ast$this)\}
-
-\begin{DoxyPrecond}{\-Precondition}
-\{true\} 
+\begin{DoxyPrecond}{\-Precondición}
+{\bfseries \-P} $\equiv$ \{this $=_{obs}$ d\-\_\-0\} 
 \end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{def?(key, $\ast$this)  res  obtener(key, $\ast$this)\}
+\begin{DoxyPostcond}{\-Postcondición}
+\{(def?(key, this) $\Rightarrow$ this  d\-\_\-0) $\land$ ( $\lnot$ def?(key, this) $\Rightarrow$ (this $=_{obs}$ definir(key, d\-\_\-0) $\land$ \-Siguiente(res) $=_{obs}$ $\rangle$ key, obtener(key, this) $\langle$ ))\}
 \end{DoxyPostcond}
-\{(((\{$\ast$this\}))  (\{$\ast$this\}) + {\itshape x\/}) donde
+
+\begin{DoxyDescription}
+\item[\-Complejidad \-Temporal]
 \begin{DoxyItemize}
-\item {\itshape x\/} = 1 si def?({\itshape self\/}, \{key\}), y
-\item {\itshape x\/} = {\itshape c\/} en caso contrario.\} \-Comienza en la raiz y si el valor es menor sigue la recursión hacia la izquierda, sino a la derecha, hasta que encuentra un nodo con la clave (key) pasada por parámetro y devuelve el significado almacenado en ese nodo, o en el caso que la clave no esté definida, la define con el significado default y además incrementa en uno count. 
-\end{DoxyItemize}\hypertarget{classaed2_1_1map_ac412d3902112122c1bffe2d4283a4e9d}{\index{aed2\-::map@{aed2\-::map}!rbegin@{rbegin}}
-\index{rbegin@{rbegin}!aed2::map@{aed2\-::map}}
-\subsubsection[{rbegin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ reverse\-\_\-iterator {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf rbegin} (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_ac412d3902112122c1bffe2d4283a4e9d}
+\item \-Peor caso\-: $O$( $\log$({\bfseries size}({\bfseries $\ast$this})) $\cdot$ {\bfseries cmp}({\bfseries $\ast$this}) $+$ {\bfseries copy}({\bfseries value}))
+\item \-Si {\bfseries hint} apunta al primer valor con clave al menos {\bfseries value}.first (o {\bfseries this}-\/$>$\hyperlink{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983_a76023e6a56cb625513e1b5ea028bf983}{end()} en caso de no existir)\-: $O$({\bfseries cmp}({\bfseries $\ast$this}) $+$ {\bfseries copy}({\bfseries value})) amortizado. 
+\end{DoxyItemize}
+\end{DoxyDescription}
+
+\begin{DoxyAttention}{\-Atención}
+\-Para garantizar que el nuevo elemento se inserte sí o sí, usar \hyperlink{classaed2_1_1map_a2ef6723c183916276b0afc4a4c721475_a2ef6723c183916276b0afc4a4c721475}{aed2\-::map\-::insert\-\_\-or\-\_\-assign}. 
+\end{DoxyAttention}
 
 
-\-Devuelve un iterador al primer valor del diccionario, en un recorrido al revés. 
+\-Definición en la línea \hyperlink{map_8h_source_l01459}{1459} del archivo \hyperlink{map_8h_source}{map.\-h}.
 
-\{no hay\}
-
-
-\begin{DoxyRetVals}{\-Return values}
-{\em res} & iterador a la primer posicion en un recorrido al revés\\
-\hline
-\end{DoxyRetVals}
-\begin{DoxyPrecond}{\-Precondition}
-\{true\} 
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{res = \-Crear\-It\-Mod(  , postorder($\ast$this))\}
-\end{DoxyPostcond}
-\{(1)\}
-
-\-Inicia un reverse\-\_\-iterator en el hijo derecho de header. \hypertarget{classaed2_1_1map_aa68b6888ae3e256203d4ef273c293586}{\index{aed2\-::map@{aed2\-::map}!rbegin@{rbegin}}
-\index{rbegin@{rbegin}!aed2::map@{aed2\-::map}}
-\subsubsection[{rbegin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ const\-\_\-reverse\-\_\-iterator {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf rbegin} (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_aa68b6888ae3e256203d4ef273c293586}
-\-This is an overloaded member function, provided for convenience. \-It differs from the above function only in what argument(s) it accepts. \hypertarget{classaed2_1_1map_a277f03b4f4b6b98879e4e4921081801f}{\index{aed2\-::map@{aed2\-::map}!rend@{rend}}
-\index{rend@{rend}!aed2::map@{aed2\-::map}}
-\subsubsection[{rend}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ reverse\-\_\-iterator {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf rend} (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a277f03b4f4b6b98879e4e4921081801f}
-
-
-\-Devuelve un iterador apuntando a la posición pasando-\/el-\/ultimo del diccionario, en un recorrido al revés. 
-
-\{no hay\}
-
-
-\begin{DoxyRetVals}{\-Return values}
-{\em res} & iterador a la posicion pasando-\/al-\/ultimo, en un recorrido al revés\\
-\hline
-\end{DoxyRetVals}
-\begin{DoxyPrecond}{\-Precondition}
-\{true\} 
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{res = \-Crear\-It\-Mod(postorder($\ast$this),  )\}
-\end{DoxyPostcond}
-\{(1)\}
-
-\-Inicia un reversre\-\_\-iterator en el hijo izquierdo de header. \hypertarget{classaed2_1_1map_aafce6e53c53c460897613747fec89f9d}{\index{aed2\-::map@{aed2\-::map}!rend@{rend}}
-\index{rend@{rend}!aed2::map@{aed2\-::map}}
-\subsubsection[{rend}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ const\-\_\-reverse\-\_\-iterator {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf rend} (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_aafce6e53c53c460897613747fec89f9d}
-\-This is an overloaded member function, provided for convenience. \-It differs from the above function only in what argument(s) it accepts. \hypertarget{classaed2_1_1map_a89f2613f926ac13293eafe65889d6021}{\index{aed2\-::map@{aed2\-::map}!size@{size}}
-\index{size@{size}!aed2::map@{aed2\-::map}}
-\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ size\-\_\-t {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf size} (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a89f2613f926ac13293eafe65889d6021}
-
-
-\-Devuelve la cantidad de valores en el diccionario. 
-
-
-\begin{DoxyRetVals}{\-Return values}
-{\em res} & cantidad de valores\\
-\hline
-\end{DoxyRetVals}
-\begin{DoxyPrecond}{\-Precondition}
-\{true\} 
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{res = \#claves($\ast$this)\}
-\end{DoxyPostcond}
-\{(1)\} \-Devuelve count; \hypertarget{classaed2_1_1map_a89f2613f926ac13293eafe65889d6021}{\index{aed2\-::map@{aed2\-::map}!size@{size}}
-\index{size@{size}!aed2::map@{aed2\-::map}}
-\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ size\-\_\-t {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf size} (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a89f2613f926ac13293eafe65889d6021}
-
-
-\-Devuelve la cantidad de valores en el diccionario. 
-
-
-\begin{DoxyRetVals}{\-Return values}
-{\em res} & cantidad de valores\\
-\hline
-\end{DoxyRetVals}
-\begin{DoxyPrecond}{\-Precondition}
-\{true\} 
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{res  \#claves($\ast$this)\}
-\end{DoxyPostcond}
-\{(1)\} \-Devuelve count; \hypertarget{classaed2_1_1map_a43ddb71cc91e5c6021a7a1f243d6cc4a}{\index{aed2\-::map@{aed2\-::map}!swap@{swap}}
+\hypertarget{classaed2_1_1map_a43ddb71cc91e5c6021a7a1f243d6cc4a_a43ddb71cc91e5c6021a7a1f243d6cc4a}{\index{aed2\-::map@{aed2\-::map}!swap@{swap}}
 \index{swap@{swap}!aed2::map@{aed2\-::map}}
-\subsubsection[{swap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ void {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf swap} (
+\paragraph[{swap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ void {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf swap} (
 \begin{DoxyParamCaption}
 \item[{{\bf map}$<$ \-Key, \-Meaning, \-Compare $>$ \&}]{other}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a43ddb71cc91e5c6021a7a1f243d6cc4a}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a43ddb71cc91e5c6021a7a1f243d6cc4a_a43ddb71cc91e5c6021a7a1f243d6cc4a}
 
 
-\-Intercambia el contenido de \{$\ast$this\} y \{other\}. 
+\-Intercambia el contenido de {\bfseries $\ast$this} y {\bfseries other} 
 
 
-\begin{DoxyParams}{\-Parameters}
-{\em other} & diccionario a intercambiar con \{$\ast$this\}\\
+\begin{DoxyParams}{\-Parámetros}
+{\em other} & diccionario a intercambiar con {\bfseries $\ast$this}\\
 \hline
 \end{DoxyParams}
-\{\-Todos los iteradores, salvo aquellos que apuntan a las posiciones pasando-\/el-\/ultimo, se mantienen válidos. \-Aquellos iteradores que apuntan a la posición pasando-\/el-\/ultimo de \{$\ast$this\} pasan a apuntar a la posición pasando-\/el-\/ultimo de \{other\}, y viceversa.\}
+\{\-Todos los iteradores, salvo aquellos que apuntan a las posiciones pasando-\/el-\/ultimo, se mantienen válidos. \-Aquellos iteradores que apuntan a la posición pasando-\/el-\/ultimo de {\bfseries $\ast$this} pasan a apuntar a la posición pasando-\/el-\/ultimo de {\bfseries other}, y viceversa.\}
 
 
-\begin{DoxyParams}{\-Parameters}
+\begin{DoxyParams}{\-Parámetros}
 {\em other} & mapa a intercambiar con this\\
 \hline
 \end{DoxyParams}
-\begin{DoxyPrecond}{\-Precondition}
-\{{\itshape self\/} = \{$\ast$this\}  {\itshape oth\/} = \{other\}\} 
+\begin{DoxyPrecond}{\-Precondición}
+{\bfseries \-P} $\equiv$ \{{\itshape self\/} = {\bfseries $\ast$this} $\land$ {\itshape oth\/} = {\bfseries other}\} 
 \end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{\{$\ast$this\}  {\itshape oth\/}  \{other\} = {\itshape self\}\/} 
+\begin{DoxyPostcond}{\-Postcondición}
+{\bfseries \-Q} $\equiv$ \{{\bfseries $\ast$this} $=_{obs}$ {\itshape oth\/} $\land$ {\bfseries other} = {\itshape self\}\/} 
 \end{DoxyPostcond}
-\{(1)\}
 
-\begin{DoxyNote}{\-Note}
+\begin{DoxyDescription}
+\item[\-Complejidad \-Temporal]$O$(1)
+\end{DoxyDescription}
+
+\begin{DoxyNote}{\-Nota}
 \-La razón por la que se \char`\"{}invalidan\char`\"{} los iteradores pasando-\/el-\/fin tiene que ver con la forma en que se implementa el módulo (que emula la implementacion de \-C++). \-No hay ninguna razón técnica que impida mantener los iteradores pasando el fin, salvo por un pequeño ahorro de memoria y tiempo. \-En caso de querer usar los iteradores como punteros, se recomienda usar el iterador nulo de diccionario para representar al valor inválido, en lugar de usar los iteradores pasando-\/el-\/ultimo. 
 \end{DoxyNote}
 
 
-\subsection{\-Friends \-And \-Related \-Function \-Documentation}
-\hypertarget{classaed2_1_1map_abce0fa35c5b25fd67111c2e704616f09}{\index{aed2\-::map@{aed2\-::map}!operator!=@{operator!=}}
-\index{operator!=@{operator!=}!aed2::map@{aed2\-::map}}
-\subsubsection[{operator!=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V , class C $>$ bool operator!= (
+\-Definición en la línea \hyperlink{map_8h_source_l01503}{1503} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a58a95705d54b3dda7f775ce5a22225cb_a58a95705d54b3dda7f775ce5a22225cb}{\index{aed2\-::map@{aed2\-::map}!begin@{begin}}
+\index{begin@{begin}!aed2::map@{aed2\-::map}}
+\paragraph[{begin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf begin} (
 \begin{DoxyParamCaption}
-\item[{const {\bf map}$<$ \-K, \-V, \-C $>$ \&}]{m1, }
-\item[{const {\bf map}$<$ \-K, \-V, \-C $>$ \&}]{m2}
+{}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}related\mbox{]}}}}\label{classaed2_1_1map_abce0fa35c5b25fd67111c2e704616f09}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a58a95705d54b3dda7f775ce5a22225cb_a58a95705d54b3dda7f775ce5a22225cb}
 
 
-\-Renombre de not(\{m1\} == \{m2\}) 
+\-Devuelve un iterador al primer valor del diccionario. 
 
-\begin{DoxySeeAlso}{\-See also}
-aed2\-::operator==() 
-\end{DoxySeeAlso}
-\hypertarget{classaed2_1_1map_a11627296a0eb71c87e69caa89fbd94eb}{\index{aed2\-::map@{aed2\-::map}!operator!=@{operator!=}}
-\index{operator!=@{operator!=}!aed2::map@{aed2\-::map}}
-\subsubsection[{operator!=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V , class C $>$ bool operator!= (
-\begin{DoxyParamCaption}
-\item[{const {\bf map}$<$ \-K, \-V, \-C $>$ \&}]{m}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}related\mbox{]}}}}\label{classaed2_1_1map_a11627296a0eb71c87e69caa89fbd94eb}
-
-
-\-Renombre de not(\{m1\} == \{m2\}) 
-
-\begin{DoxySeeAlso}{\-See also}
-aed2\-::operator==() 
-\end{DoxySeeAlso}
-\hypertarget{classaed2_1_1map_a8ff07f6a24c290ea7e8f63ec7ab24f8d}{\index{aed2\-::map@{aed2\-::map}!operator$<$@{operator$<$}}
-\index{operator$<$@{operator$<$}!aed2::map@{aed2\-::map}}
-\subsubsection[{operator$<$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V , class C $>$ bool operator$<$ (
-\begin{DoxyParamCaption}
-\item[{const {\bf map}$<$ \-K, \-V, \-C $>$ \&}]{m1, }
-\item[{const {\bf map}$<$ \-K, \-V, \-C $>$ \&}]{m2}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}related\mbox{]}}}}\label{classaed2_1_1map_a8ff07f6a24c290ea7e8f63ec7ab24f8d}
-
-
-\-Operador de orden lexicografico entre diccionarios. 
-
-
-\begin{DoxyTemplParams}{\-Template Parameters}
-{\em \-K} & clave del diccionario \\
-\hline
-{\em \-V} & signficado del diccionario \\
-\hline
-{\em \-C} & tipo del comparador\\
-\hline
-\end{DoxyTemplParams}
-\begin{DoxyParagraph}{\-Requerimientos sobre los tipos}
-\{\-K\} y \{\-V\} tienen operator$<$; vamos a usar  para describir los costos de comparación.
+\begin{DoxyParagraph}{\-Aspectos de aliasing\-:}
+$\backslash$1
 \end{DoxyParagraph}
 
-\begin{DoxyParams}{\-Parameters}
-{\em m1} & diccionario a comparar \\
-\hline
-{\em m2} & diccionario a comparar \\
-\hline
-\end{DoxyParams}
-
-\begin{DoxyRetVals}{\-Return values}
-{\em res} & true si m1 es menor a m2 en el orden lexicografico\\
+\begin{DoxyRetVals}{\-Valores devueltos}
+{\em res} & iterador al primer valor\\
 \hline
 \end{DoxyRetVals}
-\begin{DoxyPrecond}{\-Precondition}
-\{completar\} 
+\begin{DoxyPrecond}{\-Precondición}
+{\bfseries \-P} $\equiv$ \{\# \-Claves(this) $>$ 0\} 
 \end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{completar\}
+\begin{DoxyPostcond}{\-Postcondición}
+{\bfseries \-Q} $\equiv$ \{ $\lnot$ hay\-Anterior(res)\}
 \end{DoxyPostcond}
-\{ (((m1) + (m2))  ((m1) + (m2)))\}
 
-\begin{DoxyAttention}{\-Attention}
-\-Para determinar la comparación de las claves no se utiliza el functor de comparación (que podrian ser distintos entre los diccionarios), sino si los valores son los mismos con respecto al operator$<$ de \{\-K\} y \-T\{\-V\}. 
-\end{DoxyAttention}
-\hypertarget{classaed2_1_1map_a4d766795e9a996ed79f8c08fbd1676cd}{\index{aed2\-::map@{aed2\-::map}!operator$<$@{operator$<$}}
-\index{operator$<$@{operator$<$}!aed2::map@{aed2\-::map}}
-\subsubsection[{operator$<$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V , class C $>$ bool operator$<$ (
+\begin{DoxyDescription}
+\item[\-Complejidad \-Temporal]$O$(1)
+\end{DoxyDescription}
+
+\-Definición en la línea \hyperlink{map_8h_source_l01535}{1535} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a1d10432d305bcb5f1af6ab7b75c27c1c_a1d10432d305bcb5f1af6ab7b75c27c1c}{\index{aed2\-::map@{aed2\-::map}!begin@{begin}}
+\index{begin@{begin}!aed2::map@{aed2\-::map}}
+\paragraph[{begin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf const\-\_\-iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf begin} (
 \begin{DoxyParamCaption}
-\item[{const {\bf map}$<$ \-K, \-V, \-C $>$ \&}]{m}
+{}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}related\mbox{]}}}}\label{classaed2_1_1map_a4d766795e9a996ed79f8c08fbd1676cd}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a1d10432d305bcb5f1af6ab7b75c27c1c_a1d10432d305bcb5f1af6ab7b75c27c1c}
+\-Esta es una función miembro sobrecargada que se suministra por conveniencia. \-Difiere de la anterior función solamente en los argumentos que acepta. 
+
+\-Definición en la línea \hyperlink{map_8h_source_l01541}{1541} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_ab96ad892caa28f193481a578f4956a2a_ab96ad892caa28f193481a578f4956a2a}{\index{aed2\-::map@{aed2\-::map}!cbegin@{cbegin}}
+\index{cbegin@{cbegin}!aed2::map@{aed2\-::map}}
+\paragraph[{cbegin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf const\-\_\-iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf cbegin} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_ab96ad892caa28f193481a578f4956a2a_ab96ad892caa28f193481a578f4956a2a}
+\-Esta es una función miembro sobrecargada que se suministra por conveniencia. \-Difiere de la anterior función solamente en los argumentos que acepta. 
+
+\-Definición en la línea \hyperlink{map_8h_source_l01547}{1547} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983_a76023e6a56cb625513e1b5ea028bf983}{\index{aed2\-::map@{aed2\-::map}!end@{end}}
+\index{end@{end}!aed2::map@{aed2\-::map}}
+\paragraph[{end}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf end} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983_a76023e6a56cb625513e1b5ea028bf983}
 
 
-\-Operador de orden lexicografico entre diccionarios. 
+\-Devuelve un iterador apuntando a la posición pasando-\/el-\/ultimo del diccionario. 
 
-
-\begin{DoxyTemplParams}{\-Template Parameters}
-{\em \-K} & clave del diccionario \\
-\hline
-{\em \-V} & signficado del diccionario \\
-\hline
-{\em \-C} & tipo del comparador\\
-\hline
-\end{DoxyTemplParams}
-\begin{DoxyParagraph}{\-Requerimientos sobre los tipos}
-\{\-K\} y \{\-V\} tienen operator$<$; vamos a usar  para describir los costos de comparación.
+\begin{DoxyParagraph}{\-Aspectos de aliasing\-:}
+$\backslash$1
 \end{DoxyParagraph}
 
-\begin{DoxyParams}{\-Parameters}
-{\em m1} & diccionario a comparar \\
-\hline
-{\em m2} & diccionario a comparar \\
-\hline
-\end{DoxyParams}
-
-\begin{DoxyRetVals}{\-Return values}
-{\em res} & true si m1 es menor a m2 en el orden lexicografico\\
+\begin{DoxyRetVals}{\-Valores devueltos}
+{\em res} & iterador a la posicion pasando-\/al-\/ultimo\\
 \hline
 \end{DoxyRetVals}
-\begin{DoxyPrecond}{\-Precondition}
-\{completar\} 
+\begin{DoxyPrecond}{\-Precondición}
+{\bfseries \-P} $\equiv$ \{true\} 
 \end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{completar\}
+\begin{DoxyPostcond}{\-Postcondición}
+{\bfseries \-Q} $\equiv$ \{ $\lnot$ \-Hay\-Siguiente(res)\}
 \end{DoxyPostcond}
-\{ (((m1) + (m2))  ((m1) + (m2)))\}
 
-\begin{DoxyAttention}{\-Attention}
-\-Para determinar la comparación de las claves no se utiliza el functor de comparación (que podrian ser distintos entre los diccionarios), sino si los valores son los mismos con respecto al operator$<$ de \{\-K\} y \-T\{\-V\}. 
-\end{DoxyAttention}
-\hypertarget{classaed2_1_1map_afe374b37f17263d0cad3ee19a590d208}{\index{aed2\-::map@{aed2\-::map}!operator$<$=@{operator$<$=}}
-\index{operator$<$=@{operator$<$=}!aed2::map@{aed2\-::map}}
-\subsubsection[{operator$<$=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V , class C $>$ bool operator$<$= (
+\begin{DoxyDescription}
+\item[\-Complejidad \-Temporal]$O$(1)
+\end{DoxyDescription}
+
+\-Definición en la línea \hyperlink{map_8h_source_l01564}{1564} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a1f847ad4fd46883ac60d764967172179_a1f847ad4fd46883ac60d764967172179}{\index{aed2\-::map@{aed2\-::map}!end@{end}}
+\index{end@{end}!aed2::map@{aed2\-::map}}
+\paragraph[{end}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf const\-\_\-iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf end} (
 \begin{DoxyParamCaption}
-\item[{const {\bf map}$<$ \-K, \-V, \-C $>$ \&}]{m1, }
-\item[{const {\bf map}$<$ \-K, \-V, \-C $>$ \&}]{m2}
+{}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}related\mbox{]}}}}\label{classaed2_1_1map_afe374b37f17263d0cad3ee19a590d208}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a1f847ad4fd46883ac60d764967172179_a1f847ad4fd46883ac60d764967172179}
+\-Esta es una función miembro sobrecargada que se suministra por conveniencia. \-Difiere de la anterior función solamente en los argumentos que acepta. 
 
+\-Definición en la línea \hyperlink{map_8h_source_l01570}{1570} del archivo \hyperlink{map_8h_source}{map.\-h}.
 
-\-Renombre de not(\{m2\} $<$ \{m1\}) 
-
-\begin{DoxySeeAlso}{\-See also}
-aed2\-::operator$<$() 
-\end{DoxySeeAlso}
-\hypertarget{classaed2_1_1map_a42f66578aa7e80b91eded54ac6b745cf}{\index{aed2\-::map@{aed2\-::map}!operator$<$=@{operator$<$=}}
-\index{operator$<$=@{operator$<$=}!aed2::map@{aed2\-::map}}
-\subsubsection[{operator$<$=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V , class C $>$ bool operator$<$= (
+\hypertarget{classaed2_1_1map_a7bb91e94cbc875f1a011b142ef877912_a7bb91e94cbc875f1a011b142ef877912}{\index{aed2\-::map@{aed2\-::map}!cend@{cend}}
+\index{cend@{cend}!aed2::map@{aed2\-::map}}
+\paragraph[{cend}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf const\-\_\-iterator} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf cend} (
 \begin{DoxyParamCaption}
-\item[{const {\bf map}$<$ \-K, \-V, \-C $>$ \&}]{m}
+{}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}related\mbox{]}}}}\label{classaed2_1_1map_a42f66578aa7e80b91eded54ac6b745cf}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a7bb91e94cbc875f1a011b142ef877912_a7bb91e94cbc875f1a011b142ef877912}
+\-Esta es una función miembro sobrecargada que se suministra por conveniencia. \-Difiere de la anterior función solamente en los argumentos que acepta. 
+
+\-Definición en la línea \hyperlink{map_8h_source_l01576}{1576} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_ac412d3902112122c1bffe2d4283a4e9d_ac412d3902112122c1bffe2d4283a4e9d}{\index{aed2\-::map@{aed2\-::map}!rbegin@{rbegin}}
+\index{rbegin@{rbegin}!aed2::map@{aed2\-::map}}
+\paragraph[{rbegin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ reverse\-\_\-iterator {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf rbegin} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_ac412d3902112122c1bffe2d4283a4e9d_ac412d3902112122c1bffe2d4283a4e9d}
 
 
-\-Renombre de not(\{m2\} $<$ \{m1\}) 
+\-Devuelve un iterador al primer valor del diccionario, en un recorrido al revés. 
 
-\begin{DoxySeeAlso}{\-See also}
-aed2\-::operator$<$() 
-\end{DoxySeeAlso}
-\hypertarget{classaed2_1_1map_abfc51b39670220e79037ac067006e933}{\index{aed2\-::map@{aed2\-::map}!operator==@{operator==}}
+\begin{DoxyParagraph}{\-Aspectos de aliasing\-:}
+$\backslash$1
+\end{DoxyParagraph}
+
+\begin{DoxyRetVals}{\-Valores devueltos}
+{\em res} & iterador a la primer posicion en un recorrido al revés\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyPrecond}{\-Precondición}
+{\bfseries \-P} $\equiv$ \{true\} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondición}
+{\bfseries \-Q} $\equiv$ \{ $\lnot$ \-Hay\-Anterior(res)\}
+\end{DoxyPostcond}
+
+\begin{DoxyDescription}
+\item[\-Complejidad \-Temporal]$O$(1)
+\end{DoxyDescription}
+
+\-Definición en la línea \hyperlink{map_8h_source_l01593}{1593} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_aa68b6888ae3e256203d4ef273c293586_aa68b6888ae3e256203d4ef273c293586}{\index{aed2\-::map@{aed2\-::map}!rbegin@{rbegin}}
+\index{rbegin@{rbegin}!aed2::map@{aed2\-::map}}
+\paragraph[{rbegin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ const\-\_\-reverse\-\_\-iterator {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf rbegin} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_aa68b6888ae3e256203d4ef273c293586_aa68b6888ae3e256203d4ef273c293586}
+\-Esta es una función miembro sobrecargada que se suministra por conveniencia. \-Difiere de la anterior función solamente en los argumentos que acepta. 
+
+\-Definición en la línea \hyperlink{map_8h_source_l01598}{1598} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a6ad62765a2b2e00247b9e35a7542b448_a6ad62765a2b2e00247b9e35a7542b448}{\index{aed2\-::map@{aed2\-::map}!crbegin@{crbegin}}
+\index{crbegin@{crbegin}!aed2::map@{aed2\-::map}}
+\paragraph[{crbegin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ const\-\_\-reverse\-\_\-iterator {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf crbegin} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a6ad62765a2b2e00247b9e35a7542b448_a6ad62765a2b2e00247b9e35a7542b448}
+\-Esta es una función miembro sobrecargada que se suministra por conveniencia. \-Difiere de la anterior función solamente en los argumentos que acepta. 
+
+\-Definición en la línea \hyperlink{map_8h_source_l01604}{1604} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a277f03b4f4b6b98879e4e4921081801f_a277f03b4f4b6b98879e4e4921081801f}{\index{aed2\-::map@{aed2\-::map}!rend@{rend}}
+\index{rend@{rend}!aed2::map@{aed2\-::map}}
+\paragraph[{rend}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ reverse\-\_\-iterator {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf rend} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a277f03b4f4b6b98879e4e4921081801f_a277f03b4f4b6b98879e4e4921081801f}
+
+
+\-Devuelve un iterador apuntando a la posición pasando-\/el-\/ultimo del diccionario, en un recorrido al revés. 
+
+\begin{DoxyParagraph}{\-Aspectos de aliasing\-:}
+$\backslash$1
+\end{DoxyParagraph}
+
+\begin{DoxyRetVals}{\-Valores devueltos}
+{\em res} & iterador a la posicion pasando-\/al-\/ultimo, en un recorrido al revés\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyPrecond}{\-Precondición}
+{\bfseries \-P} $\equiv$ \{\# \-Claves(this) $>$ 0\} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{\-Postcondición}
+{\bfseries \-Q} $\equiv$ \{ $\lnot$ \-Hay\-Siguiente?(res)\}
+\end{DoxyPostcond}
+
+\begin{DoxyDescription}
+\item[\-Complejidad \-Temporal]$O$(1)
+\end{DoxyDescription}
+
+\-Definición en la línea \hyperlink{map_8h_source_l01620}{1620} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_aafce6e53c53c460897613747fec89f9d_aafce6e53c53c460897613747fec89f9d}{\index{aed2\-::map@{aed2\-::map}!rend@{rend}}
+\index{rend@{rend}!aed2::map@{aed2\-::map}}
+\paragraph[{rend}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ const\-\_\-reverse\-\_\-iterator {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf rend} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_aafce6e53c53c460897613747fec89f9d_aafce6e53c53c460897613747fec89f9d}
+\-Esta es una función miembro sobrecargada que se suministra por conveniencia. \-Difiere de la anterior función solamente en los argumentos que acepta. 
+
+\-Definición en la línea \hyperlink{map_8h_source_l01625}{1625} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a40933b2efe1cb479de9195ea947244d1_a40933b2efe1cb479de9195ea947244d1}{\index{aed2\-::map@{aed2\-::map}!crend@{crend}}
+\index{crend@{crend}!aed2::map@{aed2\-::map}}
+\paragraph[{crend}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ const\-\_\-reverse\-\_\-iterator {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf crend} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{classaed2_1_1map_a40933b2efe1cb479de9195ea947244d1_a40933b2efe1cb479de9195ea947244d1}
+\-Esta es una función miembro sobrecargada que se suministra por conveniencia. \-Difiere de la anterior función solamente en los argumentos que acepta. 
+
+\-Definición en la línea \hyperlink{map_8h_source_l01630}{1630} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a07ab50eda249a57858a34037d4c4c7b2_a07ab50eda249a57858a34037d4c4c7b2}{\index{aed2\-::map@{aed2\-::map}!root@{root}}
+\index{root@{root}!aed2::map@{aed2\-::map}}
+\paragraph[{root}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf \-Inner\-Node}$\ast$ {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf root} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, private\mbox{]}}}}\label{classaed2_1_1map_a07ab50eda249a57858a34037d4c4c7b2_a07ab50eda249a57858a34037d4c4c7b2}
+
+
+\-Devuelve un puntero al nodo raíz. 
+
+\begin{DoxyReturn}{\-Devuelve}
+\-Nodo a la raiz del arbol. 
+\end{DoxyReturn}
+
+
+\-Definición en la línea \hyperlink{map_8h_source_l02258}{2258} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a89cf44cf0661a97f5dd0985160dcc0e7_a89cf44cf0661a97f5dd0985160dcc0e7}{\index{aed2\-::map@{aed2\-::map}!root@{root}}
+\index{root@{root}!aed2::map@{aed2\-::map}}
+\paragraph[{root}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ const {\bf \-Inner\-Node}$\ast$ {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf root} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline, private\mbox{]}}}}\label{classaed2_1_1map_a89cf44cf0661a97f5dd0985160dcc0e7_a89cf44cf0661a97f5dd0985160dcc0e7}
+\-Esta es una función miembro sobrecargada que se suministra por conveniencia. \-Difiere de la anterior función solamente en los argumentos que acepta. 
+
+\-Definición en la línea \hyperlink{map_8h_source_l02261}{2261} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_ab45cb28bb215cd229383d88b96b3f624_ab45cb28bb215cd229383d88b96b3f624}{\index{aed2\-::map@{aed2\-::map}!eq@{eq}}
+\index{eq@{eq}!aed2::map@{aed2\-::map}}
+\paragraph[{eq}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ bool {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf eq} (
+\begin{DoxyParamCaption}
+\item[{const \-Key \&}]{k1, }
+\item[{const \-Key \&}]{k2}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline, private\mbox{]}}}}\label{classaed2_1_1map_ab45cb28bb215cd229383d88b96b3f624_ab45cb28bb215cd229383d88b96b3f624}
+
+
+\-Retorna true si las claves son iguales con respecto a {\bfseries this}-\/$>$lt. 
+
+
+\begin{DoxyParams}{\-Parámetros}
+{\em k1} & clave a comparar \\
+\hline
+{\em k2} & clave a comparar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Devuelve}
+true cuando {\bfseries k1} y {\bfseries k2} son iguales con respecto a {\bfseries this}-\/$>$lt. 
+\end{DoxyReturn}
+
+
+\-Definición en la línea \hyperlink{map_8h_source_l02305}{2305} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+
+
+\subsubsection{\-Documentación de las funciones relacionadas y clases amigas}
+\hypertarget{classaed2_1_1map_abfc51b39670220e79037ac067006e933_abfc51b39670220e79037ac067006e933}{\index{aed2\-::map@{aed2\-::map}!operator==@{operator==}}
 \index{operator==@{operator==}!aed2::map@{aed2\-::map}}
-\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V , class C $>$ bool operator== (
+\paragraph[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V , class C $>$ bool operator== (
 \begin{DoxyParamCaption}
 \item[{const {\bf map}$<$ \-K, \-V, \-C $>$ \&}]{m1, }
 \item[{const {\bf map}$<$ \-K, \-V, \-C $>$ \&}]{m2}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}related\mbox{]}}}}\label{classaed2_1_1map_abfc51b39670220e79037ac067006e933}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}related\mbox{]}}}}\label{classaed2_1_1map_abfc51b39670220e79037ac067006e933_abfc51b39670220e79037ac067006e933}
 
 
 \-Operador de igualdad entre dos diccionarios. 
@@ -1734,41 +1464,68 @@ aed2\-::operator$<$()
 \hline
 \end{DoxyTemplParams}
 \begin{DoxyParagraph}{\-Requerimientos sobre los tipos}
-\{\-K\} y \{\-V\} tienen operator==; vamos a usar  para describir los costos de comparación.
+\-K y \-V tienen operator==; vamos a usar {\bfseries cmp} para describir los costos de comparación.
 \end{DoxyParagraph}
 
-\begin{DoxyParams}{\-Parameters}
+\begin{DoxyParams}{\-Parámetros}
 {\em m1} & diccionario a comparar \\
 \hline
 {\em m2} & diccionario a comparar \\
 \hline
 \end{DoxyParams}
 
-\begin{DoxyRetVals}{\-Return values}
+\begin{DoxyRetVals}{\-Valores devueltos}
 {\em res} & true si los diccionarios son iguales\\
 \hline
 \end{DoxyRetVals}
-\begin{DoxyPrecond}{\-Precondition}
-\{completar\} 
+\begin{DoxyPrecond}{\-Precondición}
+{\bfseries \-P} $\equiv$ \{true\} 
 \end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{completar\}
+\begin{DoxyPostcond}{\-Postcondición}
+{\bfseries \-Q} $\equiv$ \{ $=_{obs}$ (m1 $=_{obs}$ m2)\}
 \end{DoxyPostcond}
-\{ (((m1) + (m2))  ((m1) + (m2)))\}
 
-\begin{DoxyAttention}{\-Attention}
-\-Para determinar la igualdad de las claves no se utiliza el functor de comparación (que podrian ser distintos entre los diccionarios), sino si los valores son los mismos con respecto al operator== de \{\-K\} y \-T\{\-V\}. 
+\begin{DoxyDescription}
+\item[\-Complejidad \-Temporal]$O$(({\bfseries size(m1)} + {\bfseries size(m2)}) $\cdot$ ({\bfseries cmp(m1)} + {\bfseries cmp(m2)}))
+\end{DoxyDescription}
+
+\begin{DoxyAttention}{\-Atención}
+\-Para determinar la igualdad de las claves no se utiliza el functor de comparación (que podrian ser distintos entre los diccionarios), sino si los valores son los mismos con respecto al operator== de \-K y \-T\{\-V\}. 
 \end{DoxyAttention}
-\hypertarget{classaed2_1_1map_ab32f94f4767358534ab704c98d23ad89}{\index{aed2\-::map@{aed2\-::map}!operator==@{operator==}}
-\index{operator==@{operator==}!aed2::map@{aed2\-::map}}
-\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V , class C $>$ bool operator== (
+
+
+\-Definición en la línea \hyperlink{map_8h_source_l02338}{2338} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_abce0fa35c5b25fd67111c2e704616f09_abce0fa35c5b25fd67111c2e704616f09}{\index{aed2\-::map@{aed2\-::map}!operator!=@{operator!=}}
+\index{operator!=@{operator!=}!aed2::map@{aed2\-::map}}
+\paragraph[{operator!=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V , class C $>$ bool operator!= (
 \begin{DoxyParamCaption}
-\item[{const {\bf map}$<$ \-K, \-V, \-C $>$ \&}]{m}
+\item[{const {\bf map}$<$ \-K, \-V, \-C $>$ \&}]{m1, }
+\item[{const {\bf map}$<$ \-K, \-V, \-C $>$ \&}]{m2}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}related\mbox{]}}}}\label{classaed2_1_1map_ab32f94f4767358534ab704c98d23ad89}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}related\mbox{]}}}}\label{classaed2_1_1map_abce0fa35c5b25fd67111c2e704616f09_abce0fa35c5b25fd67111c2e704616f09}
 
 
-\-Operador de igualdad entre dos diccionarios. 
+\-Renombre de not({\bfseries m1} == {\bfseries m2}) 
+
+\begin{DoxySeeAlso}{\-Ver también}
+aed2\-::operator==() 
+\end{DoxySeeAlso}
+
+
+\-Definición en la línea \hyperlink{map_8h_source_l02349}{2349} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a8ff07f6a24c290ea7e8f63ec7ab24f8d_a8ff07f6a24c290ea7e8f63ec7ab24f8d}{\index{aed2\-::map@{aed2\-::map}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!aed2::map@{aed2\-::map}}
+\paragraph[{operator$<$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V , class C $>$ bool operator$<$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf map}$<$ \-K, \-V, \-C $>$ \&}]{m1, }
+\item[{const {\bf map}$<$ \-K, \-V, \-C $>$ \&}]{m2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}related\mbox{]}}}}\label{classaed2_1_1map_a8ff07f6a24c290ea7e8f63ec7ab24f8d_a8ff07f6a24c290ea7e8f63ec7ab24f8d}
+
+
+\-Operador de orden lexicografico entre diccionarios. 
 
 
 \begin{DoxyTemplParams}{\-Template Parameters}
@@ -1780,97 +1537,103 @@ aed2\-::operator$<$()
 \hline
 \end{DoxyTemplParams}
 \begin{DoxyParagraph}{\-Requerimientos sobre los tipos}
-\{\-K\} y \{\-V\} tienen operator==; vamos a usar  para describir los costos de comparación.
+\-K y \-V tienen operator$<$; vamos a usar {\bfseries cmp} para describir los costos de comparación.
 \end{DoxyParagraph}
 
-\begin{DoxyParams}{\-Parameters}
+\begin{DoxyParams}{\-Parámetros}
 {\em m1} & diccionario a comparar \\
 \hline
 {\em m2} & diccionario a comparar \\
 \hline
 \end{DoxyParams}
 
-\begin{DoxyRetVals}{\-Return values}
-{\em res} & true si los diccionarios son iguales\\
+\begin{DoxyRetVals}{\-Valores devueltos}
+{\em res} & true si m1 es menor a m2 en el orden lexicografico\\
 \hline
 \end{DoxyRetVals}
-\begin{DoxyPrecond}{\-Precondition}
-\{completar\} 
+\begin{DoxyPrecond}{\-Precondición}
+{\bfseries \-P} $\equiv$ \{true\} 
 \end{DoxyPrecond}
-\begin{DoxyPostcond}{\-Postcondition}
-\{completar\}
+\begin{DoxyPostcond}{\-Postcondición}
+\{res $=_{obs}$ \-Menor\-Que(m1, m2)\}
 \end{DoxyPostcond}
-\{ (((m1) + (m2))  ((m1) + (m2)))\}
 
-\begin{DoxyAttention}{\-Attention}
-\-Para determinar la igualdad de las claves no se utiliza el functor de comparación (que podrian ser distintos entre los diccionarios), sino si los valores son los mismos con respecto al operator== de \{\-K\} y \-T\{\-V\}. 
+\begin{DoxyDescription}
+\item[\-Complejidad \-Temporal]$O$(({\bfseries size(m1)} + {\bfseries size(m2)}) $\cdot$ ({\bfseries cmp(m1)} + {\bfseries cmp(m2)}))
+\end{DoxyDescription}
+
+\begin{DoxyAttention}{\-Atención}
+\-Para determinar la comparación de las claves no se utiliza el functor de comparación (que podrian ser distintos entre los diccionarios), sino si los valores son los mismos con respecto al operator$<$ de \-K y \-T\{\-V\}. 
 \end{DoxyAttention}
-\hypertarget{classaed2_1_1map_a2000cd874b72034ce7fe730c811b6c63}{\index{aed2\-::map@{aed2\-::map}!operator$>$@{operator$>$}}
+
+
+\-Definición en la línea \hyperlink{map_8h_source_l02377}{2377} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a2000cd874b72034ce7fe730c811b6c63_a2000cd874b72034ce7fe730c811b6c63}{\index{aed2\-::map@{aed2\-::map}!operator$>$@{operator$>$}}
 \index{operator$>$@{operator$>$}!aed2::map@{aed2\-::map}}
-\subsubsection[{operator$>$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V , class C $>$ bool operator$>$ (
+\paragraph[{operator$>$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V , class C $>$ bool operator$>$ (
 \begin{DoxyParamCaption}
 \item[{const {\bf map}$<$ \-K, \-V, \-C $>$ \&}]{m1, }
 \item[{const {\bf map}$<$ \-K, \-V, \-C $>$ \&}]{m2}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}related\mbox{]}}}}\label{classaed2_1_1map_a2000cd874b72034ce7fe730c811b6c63}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}related\mbox{]}}}}\label{classaed2_1_1map_a2000cd874b72034ce7fe730c811b6c63_a2000cd874b72034ce7fe730c811b6c63}
 
 
-\-Renombre de \{m2\} $<$ \{m1\}. 
+\-Renombre de {\bfseries m2} $<$ {\bfseries m1} 
 
-\begin{DoxySeeAlso}{\-See also}
+\begin{DoxySeeAlso}{\-Ver también}
 aed2\-::operator$<$() 
 \end{DoxySeeAlso}
-\hypertarget{classaed2_1_1map_a964e8d831c17d77f457eb87a2f22d0d0}{\index{aed2\-::map@{aed2\-::map}!operator$>$@{operator$>$}}
-\index{operator$>$@{operator$>$}!aed2::map@{aed2\-::map}}
-\subsubsection[{operator$>$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V , class C $>$ bool operator$>$ (
-\begin{DoxyParamCaption}
-\item[{const {\bf map}$<$ \-K, \-V, \-C $>$ \&}]{m}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}related\mbox{]}}}}\label{classaed2_1_1map_a964e8d831c17d77f457eb87a2f22d0d0}
 
 
-\-Renombre de \{m2\} $<$ \{m1\}. 
+\-Definición en la línea \hyperlink{map_8h_source_l02388}{2388} del archivo \hyperlink{map_8h_source}{map.\-h}.
 
-\begin{DoxySeeAlso}{\-See also}
-aed2\-::operator$<$() 
-\end{DoxySeeAlso}
-\hypertarget{classaed2_1_1map_a093a6d1a055339c5fc6297a1d47a9159}{\index{aed2\-::map@{aed2\-::map}!operator$>$=@{operator$>$=}}
-\index{operator$>$=@{operator$>$=}!aed2::map@{aed2\-::map}}
-\subsubsection[{operator$>$=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V , class C $>$ bool operator$>$= (
+\hypertarget{classaed2_1_1map_afe374b37f17263d0cad3ee19a590d208_afe374b37f17263d0cad3ee19a590d208}{\index{aed2\-::map@{aed2\-::map}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!aed2::map@{aed2\-::map}}
+\paragraph[{operator$<$=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V , class C $>$ bool operator$<$= (
 \begin{DoxyParamCaption}
 \item[{const {\bf map}$<$ \-K, \-V, \-C $>$ \&}]{m1, }
 \item[{const {\bf map}$<$ \-K, \-V, \-C $>$ \&}]{m2}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}related\mbox{]}}}}\label{classaed2_1_1map_a093a6d1a055339c5fc6297a1d47a9159}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}related\mbox{]}}}}\label{classaed2_1_1map_afe374b37f17263d0cad3ee19a590d208_afe374b37f17263d0cad3ee19a590d208}
 
 
-\-Renombre de not(\{m1\} $<$ \{m2\}) 
+\-Renombre de not({\bfseries m2} $<$ {\bfseries m1}) 
 
-\begin{DoxySeeAlso}{\-See also}
+\begin{DoxySeeAlso}{\-Ver también}
 aed2\-::operator$<$() 
 \end{DoxySeeAlso}
-\hypertarget{classaed2_1_1map_a68bf5a52b77446e43584fb67d22c365e}{\index{aed2\-::map@{aed2\-::map}!operator$>$=@{operator$>$=}}
+
+
+\-Definición en la línea \hyperlink{map_8h_source_l02399}{2399} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a093a6d1a055339c5fc6297a1d47a9159_a093a6d1a055339c5fc6297a1d47a9159}{\index{aed2\-::map@{aed2\-::map}!operator$>$=@{operator$>$=}}
 \index{operator$>$=@{operator$>$=}!aed2::map@{aed2\-::map}}
-\subsubsection[{operator$>$=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V , class C $>$ bool operator$>$= (
+\paragraph[{operator$>$=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V , class C $>$ bool operator$>$= (
 \begin{DoxyParamCaption}
-\item[{const {\bf map}$<$ \-K, \-V, \-C $>$ \&}]{m}
+\item[{const {\bf map}$<$ \-K, \-V, \-C $>$ \&}]{m1, }
+\item[{const {\bf map}$<$ \-K, \-V, \-C $>$ \&}]{m2}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}related\mbox{]}}}}\label{classaed2_1_1map_a68bf5a52b77446e43584fb67d22c365e}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}related\mbox{]}}}}\label{classaed2_1_1map_a093a6d1a055339c5fc6297a1d47a9159_a093a6d1a055339c5fc6297a1d47a9159}
 
 
-\-Renombre de not(\{m1\} $<$ \{m2\}) 
+\-Renombre de not({\bfseries m1} $<$ {\bfseries m2}) 
 
-\begin{DoxySeeAlso}{\-See also}
+\begin{DoxySeeAlso}{\-Ver también}
 aed2\-::operator$<$() 
 \end{DoxySeeAlso}
-\hypertarget{classaed2_1_1map_a119cb2938bbc11c25ebd4fb824782a72}{\index{aed2\-::map@{aed2\-::map}!swap@{swap}}
+
+
+\-Definición en la línea \hyperlink{map_8h_source_l02410}{2410} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a119cb2938bbc11c25ebd4fb824782a72_a119cb2938bbc11c25ebd4fb824782a72}{\index{aed2\-::map@{aed2\-::map}!swap@{swap}}
 \index{swap@{swap}!aed2::map@{aed2\-::map}}
-\subsubsection[{swap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V , class C $>$ void {\bf swap} (
+\paragraph[{swap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V , class C $>$ void {\bf swap} (
 \begin{DoxyParamCaption}
 \item[{{\bf map}$<$ \-K, \-V, \-C $>$ \&}]{m1, }
 \item[{{\bf map}$<$ \-K, \-V, \-C $>$ \&}]{m2}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}related\mbox{]}}}}\label{classaed2_1_1map_a119cb2938bbc11c25ebd4fb824782a72}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}related\mbox{]}}}}\label{classaed2_1_1map_a119cb2938bbc11c25ebd4fb824782a72_a119cb2938bbc11c25ebd4fb824782a72}
 
 
 \-Implementa la función swap para cumplir con el concepto swappable. 
@@ -1885,52 +1648,51 @@ aed2\-::operator$<$()
 \hline
 \end{DoxyTemplParams}
 
-\begin{DoxyParams}{\-Parameters}
+\begin{DoxyParams}{\-Parámetros}
 {\em m1} & diccionario a intercambiar \\
 \hline
 {\em m2} & diccionario a intercambiar\\
 \hline
 \end{DoxyParams}
-\{(1)\}
 
-\begin{DoxySeeAlso}{\-See also}
-\mbox{[}\-Swappable\mbox{]}(\href{http://en.cppreference.com/w/cpp/concept/Swappable}{\tt http\-://en.\-cppreference.\-com/w/cpp/concept/\-Swappable}) 
-\end{DoxySeeAlso}
-\hypertarget{classaed2_1_1map_ae9604c72935a908c0c98a9f40bc38eda}{\index{aed2\-::map@{aed2\-::map}!swap@{swap}}
-\index{swap@{swap}!aed2::map@{aed2\-::map}}
-\subsubsection[{swap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class K , class V , class C $>$ void {\bf swap} (
-\begin{DoxyParamCaption}
-\item[{{\bf map}$<$ \-K, \-V, \-C $>$ \&}]{m}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}related\mbox{]}}}}\label{classaed2_1_1map_ae9604c72935a908c0c98a9f40bc38eda}
+\begin{DoxyDescription}
+\item[\-Complejidad \-Temporal]$O$(1)
+\end{DoxyDescription}
 
-
-\-Implementa la función swap para cumplir con el concepto swappable. 
-
-
-\begin{DoxyTemplParams}{\-Template Parameters}
-{\em \-K} & clave del diccionario \\
-\hline
-{\em \-V} & signficado del diccionario \\
-\hline
-{\em \-C} & tipo del comparador\\
-\hline
-\end{DoxyTemplParams}
-
-\begin{DoxyParams}{\-Parameters}
-{\em m1} & diccionario a intercambiar \\
-\hline
-{\em m2} & diccionario a intercambiar\\
-\hline
-\end{DoxyParams}
-\{(1)\}
-
-\begin{DoxySeeAlso}{\-See also}
+\begin{DoxySeeAlso}{\-Ver también}
 \mbox{[}\-Swappable\mbox{]}(\href{http://en.cppreference.com/w/cpp/concept/Swappable}{\tt http\-://en.\-cppreference.\-com/w/cpp/concept/\-Swappable}) 
 \end{DoxySeeAlso}
 
 
-\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\-Definición en la línea \hyperlink{map_8h_source_l02434}{2434} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+
+
+\subsubsection{\-Documentación de los datos miembro}
+\hypertarget{classaed2_1_1map_a0e5be36fae0693e4665bd2a615e7550a_a0e5be36fae0693e4665bd2a615e7550a}{\index{aed2\-::map@{aed2\-::map}!lt@{lt}}
+\index{lt@{lt}!aed2::map@{aed2\-::map}}
+\paragraph[{lt}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ \-Compare {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf lt}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classaed2_1_1map_a0e5be36fae0693e4665bd2a615e7550a_a0e5be36fae0693e4665bd2a615e7550a}
+
+
+\-Orden total para comparar claves. 
+
+\-Definición\-: lt(x, y) == true cuando x es menor que y; si lt(x,y) == lt(y,x) == false, entonces x e y son iguales. 
+
+\-Definición en la línea \hyperlink{map_8h_source_l02242}{2242} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\hypertarget{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}{\index{aed2\-::map@{aed2\-::map}!header@{header}}
+\index{header@{header}!aed2::map@{aed2\-::map}}
+\paragraph[{header}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class \-Key, class \-Meaning, class \-Compare = std\-::less$<$\-Key$>$$>$ {\bf \-Node} {\bf aed2\-::map}$<$ \-Key, \-Meaning, \-Compare $>$\-::{\bf header}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{classaed2_1_1map_a92d93f905c8ad73fba18fdc7e8915cce_a92d93f905c8ad73fba18fdc7e8915cce}
+
+
+\-Cantidad de elementos en el diccionario. 
+
+\-Cabeceera del arbol; ver \hyperlink{Implementacion}{\-Implementación del árbol red-\/black} 
+
+\-Definición en la línea \hyperlink{map_8h_source_l02244}{2244} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+
+
+\-La documentación para esta clase fue generada a partir del siguiente fichero\-:\begin{DoxyCompactItemize}
 \item 
-\hyperlink{map_8h}{map.\-h}\item 
-map2.\-h\end{DoxyCompactItemize}
+\hyperlink{map_8h}{map.\-h}\end{DoxyCompactItemize}

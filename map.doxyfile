@@ -284,7 +284,7 @@ ALIASES += PI1="\f$\pi_1\f$"
 ALIASES += BOTTOM="\f$\bot\f$"
 ALIASES += HAT{1}="\f$\widehat{\1}\f$"
 ALIASES += LANGLE="\f$\langle\f$"
-ALIASES += LANGLE="\f$\rangle\f$"
+ALIASES += RANGLE="\f$\rangle\f$"
 
 
 #alias de formato (Mejor no modificar)

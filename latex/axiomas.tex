@@ -1,3 +1,5 @@
+\-Namespace para las clases de \-A\-E\-D2.
+
 \-En esta pagina, y por conveniencia, se listan todos los axiomas y proposiciones auxiliares requeridos para formalizar los invariantes de representación y las funciones de abstracción. \-Previamente se presentan los renombres de los tipos usados.
 
 \begin{DoxyParagraph}{\-Renombres de tipos}
@@ -7,19 +9,19 @@
 \begin{DoxyItemize}
 \item \-Node es tupla(child\-: arreglo\mbox{[}2\mbox{]} de puntero(\-Node), parent\-: puntero(\-Node), color\-: \-Color, value\-: \-Value)
 \item \-Value es \-Maybe(value\-\_\-type)
-\item value\-\_\-type es tupla(clave\-: \{\-Key\}, significado\-: \{\-Meaning\})
+\item value\-\_\-type es tupla(clave\-: \-Key, significado\-: \-Meaning)
 \end{DoxyItemize}
 
-\-El \-T\-A\-D \-Maybe() representa un tipo  extendido con un valor nulo. \-En otras palabras, el \-T\-A\-D \-Maybe se puede usar para representar los valores de los nodos, donde el nodo cabecera no tiene valor y los nodos internos sí tienen valor. (\-Esto independientemente de si se implementa con herencia o con un puntero o de otra forma.) \-Tiene dos observadores\-:
+\-El \-T\-A\-D \-Maybe( $\alpha$) representa un tipo $\alpha$ extendido con un valor nulo. \-En otras palabras, el \-T\-A\-D \-Maybe se puede usar para representar los valores de los nodos, donde el nodo cabecera no tiene valor y los nodos internos sí tienen valor. (\-Esto independientemente de si se implementa con herencia o con un puntero o de otra forma.) \-Tiene dos observadores\-:
 \begin{DoxyItemize}
 \item nothing?(x)\-: que indica si x tiene un valor nulo, y
 \item data(x)\-: que devuelve el valor de x, suponiendo que no es inválido.
 \end{DoxyItemize}
 
-\-La especificación de este \-T\-A\-D queda como ejercicio (no obligatorio).\hypertarget{axiomas_sec-Axiomas}{}\section{\-Axiomas y proposiciones auxiliares}\label{axiomas_sec-Axiomas}
+\-La especificación de este \-T\-A\-D queda como ejercicio (no obligatorio).\hypertarget{axiomas_sec-Axiomas}{}\subsection{\-Axiomas y proposiciones auxiliares}\label{axiomas_sec-Axiomas}
 \-En esta sección se deben incluir todos los axiomas y proposiciones auxiliares que se usen para describir los invariantes de representación, las funciones de abstracción, las precondiciones y las postcondiciones.
 
-\begin{DoxyRemark}{\-Remarks}
+\begin{DoxyRemark}{\-Comentarios}
 \-Recordar incluir un alias en el archivo doxyfile a fin de poder referenciar automaticamente a cada axioma desde las otras páginas.
 \end{DoxyRemark}
 \-Se muestran algunos ejemplos a continuación.
@@ -27,11 +29,39 @@
 \begin{DoxyParagraph}{es\-Diccionario?}
 \-Retorna true si la secuencia representa un diccionario
 \end{DoxyParagraph}
-\{es\-Diccionario?\}\-: secu(tupla(, ))  bool\par
- es\-Diccionario?(s)  sin\-Repetidos?((s)) 
+es\-Diccionario?\-: secu(tupla( $\alpha$, $\beta$)) $\to$ bool\par
+ es\-Diccionario?(s) $\equiv$ sin\-Repetidos?(\href{axiomas.html#primeros}{\tt primeros}(s)) 
 
 \begin{DoxyParagraph}{primeros}
 \-Proyecta las primeras componentes de una secuencia de pares
 \end{DoxyParagraph}
-\{primeros\}\-: secu(tupla(, ))  secu()\par
- primeros(s)   vacia?(s)  $<$$>$  (prim(s))  (fin(s))   
+primeros\-: secu(tupla( $\alpha$, $\beta$)) $\to$ secu( $\alpha$)\par
+ primeros(s) $\equiv$ {\bfseries if} vacia?(s) {\bfseries then} $<$$>$ {\bfseries else} $\pi_1$(prim(s)) $\bullet$ \href{axiomas.html#primeros}{\tt primeros}(fin(s)) {\bfseries fi} 
+
+\begin{DoxyParagraph}{\-Hasta\-Elem}
+\-Devuelve una secuencia ordenada con elementos del diccionario hasta el elemento e, no inclusive. \-Hasta\-Elem\-: \-Conj( $\alpha$, $\beta$) x $\to$ secu( $\alpha$, $\beta$)\par
+ \-Hasta\-Elem(claves, e) $\equiv$ {\bfseries if} minimo(d) = e {\bfseries then} $<$$>$ {\bfseries else} \-Hasta\-Elem(claves -\/ \{minimo\}, e) 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{\-Desde\-Elem}
+\-Devuelve una secuencia ordenada con elementos del diccionario desde el elemento e inclusive. \-Desde\-Elem\-: \-Conj( $\alpha$) x $\to$ secu( $\alpha$, $\beta$)\par
+ \-Desde\-Elem(claves, e) $\equiv$ {\bfseries if} minimo(d) $<$ e {\bfseries then} $<$$>$ {\bfseries else} minimo(d) $\bullet$ \-Desde\-Elem(claves -\/ \{minimo\}, e) 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{\-Menor\-Que}
+\-Devuelve true si y solo si m1 es lexicograficamente menor que m2. \-Menor\-Que\-: \-Dicc( $\alpha$, $\beta$) d1 x \-Dicc( $\alpha$, $\beta$) d2 $\to$ bool\par
+ \-Menor\-Que(d1, d2) $\equiv$ comparar\-Claves(claves(d1), claves(d2)) 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{comparar\-Claves}
+comparar\-Claves\-: \-Conj() cs1 x \-Conj() cs2 $\to$ bool\par
+ comparar\-Claves(cs1, cs2) $\equiv$ {\bfseries if} \# cs1 == 0 {\bfseries then} true {\bfseries else} {\bfseries if} (\# cs2 == 0 $\lor$ minimo(cs1) $>$ minimo(cs2) ) {\bfseries then} false {\bfseries fi} \-E\-L\-S\-E comparar\-Claves(cs1 -\/ \{minimo\}, cs2 -\/ \{minimo\}) {\bfseries fi} 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{minimo}
+\-Devuelve el elemento del diccionario con la menor clave minimo\-: \-Conj( $\alpha$, $\beta$) $\to$ ( $\alpha$, $\beta$)\par
+ minimo(claves) $\equiv$ minimo\-Aux(claves, dame\-Uno(claves)) 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{minimo\-Aux}
+mínimo\-Aux\-: \-Conj( $\alpha$, $\beta$) x ( $\alpha$, $\beta$) $\to$ ( $\alpha$, $\beta$)\par
+ minimo\-Aux(claves, e) $\equiv$ {\bfseries if} \# claves = 0 {\bfseries then} e {\bfseries else} minimo\-Aux(sin\-Uno(claves), max(e, dame\-Uno(claves))) {\bfseries fi}  \#include $<$functional$>$ \#include $<$iterator$>$ \#include $<$utility$>$ \#include $<$cassert$>$ \#include $<$algorithm$>$ \#include $<$iostream$>$
+\end{DoxyParagraph}
+\#ifdef \-D\-E\-B\-U\-G \-Aca se puede incluir cualquier cosa que consideren que necesitan para debug \#include $<$iostream$>$ \#include $<$iomanip$>$ \#endif
+
+/$\ast$$\ast$ \-Para evitar cualquier tipo de conflictos, todas las clases de \-A\-E\-D2 se implementan en el namespace aed2. \-Recordar el uso de `namespace`, el keyword `using`, y el método \-A\-D\-L para la busqueda de las funciones. 
