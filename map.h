@@ -1122,13 +1122,10 @@ public:
      * \aliasing{res apunta al nodo cuyo key() es key. Se invalida si se elimina el nodo sin usar res como pos}
      *
      * \pre \aedpre{true}
-<<<<<<< HEAD
+
      * \post \aedpost{def?(key, \P{*this}) \IMPLIES (Siguiente(res) \IGOBS \LANGLE key, obtener(key, \P{*this}) \RANGLE) 
-     					\LAND (\LNOT def?(key,\P{*this}) \IMPLIES \LNOT HaySiguiente?(res)) }
-=======
-     * \post \aedpost{def?(key, this) \IMPLIES Siguiente(res) \IGOBS \langle key, obtener(key, this) \rangle
-     					\LAND (\LNOT def?(key,this) \IMPLIES \LNOT HaySiguiente?(res))}
->>>>>>> c65fd8be2a717c6f2a8a1752b749f0f1e1fc8778
+     *					\LAND (\LNOT def?(key,\P{*this}) \IMPLIES \LNOT HaySiguiente?(res)) }
+     *
      *
      * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
      *
