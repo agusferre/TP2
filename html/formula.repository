@@ -26,10 +26,9 @@
 \form#25:$\rangle$
 \form#26:$\langle$
 \form#27:$\lor_{\rm L}$
-<<<<<<< HEAD
-\form#28:$\cup$
-\form#29:$\_linebr eq$
-\form#30:$\shortmid$
-\form#31:$\in$
-=======
->>>>>>> 0cf21500dcc60bdd14dbf4470236b5159feeb7ce
+\form#28:$\emptyset$
+\form#29:$\cup$
+\form#30:$\_linebr eq$
+\form#31:$\shortmid$
+\form#32:$\in$
+\form#33:$=_{\rm obs}$

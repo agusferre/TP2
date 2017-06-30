@@ -114,7 +114,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 </dl>
 <dl class="user"><dt><b>Aspectos de aliasing:</b></dt><dd>\1</dd></dl>
 <dl class="pre"><dt><b>Precondición:</b></dt><dd>{def?(key,this)}</dd></dl>
-<dl class="post"><dt><b>Postcondición:</b></dt><dd>{res <img class="formulaInl" alt="$=_{obs}$" src="form_2.png"/> obtener(key,this)}</dd></dl>
+<dl class="post"><dt><b>Postcondición:</b></dt><dd>{res <img class="formulaInl" alt="$=_{\rm obs}$" src="form_33.png"/> obtener(key,this)}</dd></dl>
 <dl class="section complexity">
 <dt>Complejidad Temporal</dt>
 <dd><img class="formulaInl" alt="$O$" src="form_1.png"/>( <img class="formulaInl" alt="$\log$" src="form_21.png"/>(<b>size</b>(<b class="paramname">*this</b>) <img class="formulaInl" alt="$\cdot$" src="form_15.png"/> <b>cmp</b>(<b class="paramname">*this</b>))</dd>
@@ -122,7 +122,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 <dl class="remark"><dt><b>Comentarios:</b></dt><dd>Esta función, que se asemeja más a la forma de programar propuesta en AED2 que al estándar C++, fue incluida en el estándar C++11. Antes era obligación recurrir a la función find.</dd></dl>
 <p>La funcion tiene el prerrequisito de tener definido un valor con clave = key, por lo que invoca directamente a find, sabiendo que este retornará un nodo interno con value. </p>
 
-<p>Definición en la línea <a class="el" href="map_8h_source.html#l01047">1047</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p>Definición en la línea <a class="el" href="map_8h_source.html#l01045">1045</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
 </div>
 </div>
@@ -147,7 +147,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
       <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a>      </li>
       <li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a>      </li>
 
-    <li class="footer">Generado el Viernes, 23 de Junio de 2017 12:29:28 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 23 de Junio de 2017 14:49:22 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

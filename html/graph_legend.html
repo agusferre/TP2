@@ -3,40 +3,44 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.14"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Trabajo práctico 2: diccionario sobre RB-tree: Colores y flechas del Gráfico</title>
+
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript">
   $(document).ready(initResizable);
 </script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
-  $(document).ready(function() { init_search(); });
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="style.css" rel="stylesheet" type="text/css"/>
+
 </head>
 <body>
-<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div! -->
+
+
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectalign" style="padding-left: 0.5em;">
+  
+  
+  <td style="padding-left: 0.5em;">
    <div id="projectname">Trabajo práctico 2: diccionario sobre RB-tree
    &#160;<span id="projectnumber">0.1</span>
    </div>
    <div id="projectbrief">Nombre Apellido, Nombre Apellido, Nombre Apellido y Nombre Apellido</div>
   </td>
+  
+  
+  
+   
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
           <img id="MSearchSelect" src="search/mag_sel.png"
@@ -52,20 +56,21 @@
           </span>
         </div>
 </td>
+   
+  
  </tr>
  </tbody>
 </table>
 </div>
-<!-- end header part -->
-<!-- Generado por Doxygen 1.8.14 -->
+
+<!-- Generado por Doxygen 1.7.6.1 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </script>
-</div><!-- top -->
+</div>
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
     <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
     </div>
   </div>
   <div id="splitbar" style="-moz-user-select:none;" 
@@ -73,37 +78,58 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('graph_legend.html','');});
+  initNavTree('graph_legend.html','');
 </script>
 <div id="doc-content">
-<!-- window showing the filter options -->
-<div id="MSearchSelectWindow"
-     onmouseover="return searchBox.OnSearchSelectShow()"
-     onmouseout="return searchBox.OnSearchSelectHide()"
-     onkeydown="return searchBox.OnSearchSelectKey(event)">
-</div>
-
-<!-- iframe showing the search results (closed by default) -->
-<div id="MSearchResultsWindow">
-<iframe src="javascript:void(0)" frameborder="0" 
-        name="MSearchResults" id="MSearchResults">
-</iframe>
-</div>
-
 <div class="header">
   <div class="headertitle">
 <div class="title">Colores y flechas del Gráfico</div>  </div>
 </div><!--header-->
 <div class="contents">
 <p>Esta página explica como interpretar los gráficos que son generados por doxygen.</p>
-<p>Considere el siguiente ejemplo: </p><div class="fragment"><div class="line">/*! Clase invisible por truncamiento */</div><div class="line">class Invisible { };</div><div class="line"></div><div class="line">/*! Clase truncada, relación de herencia escondida */</div><div class="line">class Truncated : public Invisible { };</div><div class="line"></div><div class="line">/* Clase no documentada con comentarios de doxygen */</div><div class="line">class Undocumented { };</div><div class="line"></div><div class="line">/*! Clase que es heredera usando herencia publica */</div><div class="line">class PublicBase : public Truncated { };</div><div class="line"></div><div class="line">/*! Clase plantilla */</div><div class="line">template&lt;class T&gt; class Templ { };</div><div class="line"></div><div class="line">/*! Clase que es heredera usando herencia protegida  */</div><div class="line">class ProtectedBase { };</div><div class="line"></div><div class="line">/*! Clase que es heredera usando herencia privada  */</div><div class="line">class PrivateBase { };</div><div class="line"></div><div class="line">/*! Clase que es usada por la clase heredada */</div><div class="line">class Used { };</div><div class="line"></div><div class="line">/*! Super-Clase que hereda de varias otras clases */</div><div class="line">class Inherited : public PublicBase,</div><div class="line">                  protected ProtectedBase,</div><div class="line">                  private PrivateBase,</div><div class="line">                  public Undocumented,</div><div class="line">                  public Templ&lt;int&gt;</div><div class="line">{</div><div class="line">  private:</div><div class="line">    Used *m_usedClass;</div><div class="line">};</div></div><!-- fragment --><p> Dará como resultado el siguiente gráfico:</p>
+<p>Considere el siguiente ejemplo: </p>
+<div class="fragment"><pre class="fragment"><span class="comment">/*! Clase invisible por truncamiento */</span>
+<span class="keyword">class </span>Invisible { };
+<span class="comment"></span>
+<span class="comment">/*! Clase truncada, relación de herencia escondida */</span>
+<span class="keyword">class </span>Truncated : <span class="keyword">public</span> Invisible { };
+
+<span class="comment">/* Clase no documentada con comentarios de doxygen */</span>
+<span class="keyword">class </span>Undocumented { };
+<span class="comment"></span>
+<span class="comment">/*! Clase que es heredera usando herencia publica */</span>
+<span class="keyword">class </span>PublicBase : <span class="keyword">public</span> Truncated { };
+<span class="comment"></span>
+<span class="comment">/*! Clase plantilla */</span>
+<span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt; <span class="keyword">class </span>Templ { };
+<span class="comment"></span>
+<span class="comment">/*! Clase que es heredera usando herencia protegida  */</span>
+<span class="keyword">class </span>ProtectedBase { };
+<span class="comment"></span>
+<span class="comment">/*! Clase que es heredera usando herencia privada  */</span>
+<span class="keyword">class </span>PrivateBase { };
+<span class="comment"></span>
+<span class="comment">/*! Clase que es usada por la clase hija */</span>
+<span class="keyword">class </span>Used { };
+<span class="comment"></span>
+<span class="comment">/*! Super-Clase que hereda de varias otras clases */</span>
+<span class="keyword">class </span>Inherited : <span class="keyword">public</span> PublicBase,
+                  <span class="keyword">protected</span> ProtectedBase,
+                  <span class="keyword">private</span> PrivateBase,
+                  <span class="keyword">public</span> Undocumented,
+                  <span class="keyword">public</span> Templ&lt;int&gt;
+{
+  <span class="keyword">private</span>:
+    Used *m_usedClass;
+};
+</pre></div><p> Si la etiqueta <code>MAX_DOT_GRAPH_HEIGHT</code> en el archivo de configuración tiene valor 240 resultará en el siguiente gráfico:</p>
 <center><div class="image">
-<img src="graph_legend.png"/>
+<img src="graph_legend.png" />
 </div>
-</center><p>Las cajas en el gráfico arriba tienen el siguiente significado: </p>
+</center> <p>Las cajas en el gráfico arriba tienen el siguiente significado: </p>
 <ul>
 <li>
-Una caja llena gris representa la estructura o clase para la cuálse generó el gráfico. </li>
+Una caja llena negra representa la estructura o clase para la cuálse generó el gráfico. </li>
 <li>
 Una caja con borde negro señala una estructura o clase documentada. </li>
 <li>
@@ -125,7 +151,6 @@ Una flecha segmentada púrpura se usa si la clase es contenida o usada por otra 
 Una flecha segmentada amarilla indica la relación entre una instancia template y la clase template de la que se ha instanciado. La flecha se etiqueta con los parámetros con que se llama al template. </li>
 </ul>
 </div><!-- contents -->
-<<<<<<< HEAD
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -144,17 +169,12 @@ Una flecha segmentada amarilla indica la relación entre una instancia template 
   <div id="nav-path" class="navpath">
     <ul>
 
-    <li class="footer">Generado el Viernes, 23 de Junio de 2017 12:29:29 para Trabajo práctico 2: diccionario sobre RB-tree por
-=======
-</div><!-- doc-content -->
-<!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="footer">Generado el Viernes, 23 de Junio de 2017 12:12:02 para Trabajo práctico 2: diccionario sobre RB-tree por
->>>>>>> 0cf21500dcc60bdd14dbf4470236b5159feeb7ce
+    <li class="footer">Generado el Viernes, 23 de Junio de 2017 14:49:23 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
-  </ul>
-</div>
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
+   </ul>
+ </div>
+
+
 </body>
 </html>
