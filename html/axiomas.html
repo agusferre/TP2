@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Trabajo práctico 2: diccionario sobre RB-tree: Axiomas y proposiciones auxiliares</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Trabajo práctico 2: diccionario sobre RB-tree
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+   <div id="projectbrief">Nombre Apellido, Nombre Apellido, Nombre Apellido y Nombre Apellido</div>
+  </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.14 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('axiomas.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Axiomas y proposiciones auxiliares </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p>En esta pagina, y por conveniencia, se listan todos los axiomas y proposiciones auxiliares requeridos para formalizar los invariantes de representación y las funciones de abstracción. Previamente se presentan los renombres de los tipos usados.</p>
+<dl class="section user"><dt>Renombres de tipos</dt><dd></dd></dl>
+<ul>
+<li>Node es tupla(child: arreglo[2] de puntero(Node), parent: puntero(Node), color: Color, value: Value)</li>
+<li>Value es Maybe(value_type)</li>
+<li>value_type es tupla(clave: <span class="paramname">Key</span>, significado: <span class="paramname">Meaning</span>)</li>
+</ul>
+<p>El TAD Maybe( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>) representa un tipo <img class="formulaInl" alt="$\alpha$" src="form_5.png"/> extendido con un valor nulo. En otras palabras, el TAD Maybe se puede usar para representar los valores de los nodos, donde el nodo cabecera no tiene valor y los nodos internos sí tienen valor. (Esto independientemente de si se implementa con herencia o con un puntero o de otra forma.) Tiene dos observadores:</p><ul>
+<li>nothing?(x): que indica si x tiene un valor nulo, y</li>
+<li>data(x): que devuelve el valor de x, suponiendo que no es inválido.</li>
+</ul>
+<p>La especificación de este TAD queda como ejercicio (no obligatorio).</p>
+<h1><a class="anchor" id="sec-Axiomas"></a>
+Axiomas y proposiciones auxiliares</h1>
+<p>En esta sección se deben incluir todos los axiomas y proposiciones auxiliares que se usen para describir los invariantes de representación, las funciones de abstracción, las precondiciones y las postcondiciones.</p>
+<dl class="section remark"><dt>Comentarios</dt><dd>Recordar incluir un alias en el archivo doxyfile a fin de poder referenciar automaticamente a cada axioma desde las otras páginas.</dd></dl>
+<p>Se muestran algunos ejemplos a continuación.</p>
+<dl class="section user"><dt>esDiccionario?</dt><dd><p class="startdd">Retorna true si la secuencia representa un diccionario</p>
+<p class="enddd"><span id="esDiccionario?">esDiccionario?</span>: secu(tupla( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>)) <img class="formulaInl" alt="$\to$" src="form_4.png"/> bool<br />
+esDiccionario?(s) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> sinRepetidos?(<a href="axiomas.html#primeros">primeros</a>(s)) </p>
+</dd></dl>
+<dl class="section user"><dt>primeros</dt><dd><p class="startdd">Proyecta las primeras componentes de una secuencia de pares</p>
+<p class="enddd"><span id="primeros">primeros</span>: secu(tupla( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>)) <img class="formulaInl" alt="$\to$" src="form_4.png"/> secu( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>)<br />
+primeros(s) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> <b>if</b> vacia?(s) <b>then</b> &lt;&gt; <b>else</b> <img class="formulaInl" alt="$\pi_1$" src="form_12.png"/>(prim(s)) <img class="formulaInl" alt="$\bullet$" src="form_6.png"/> <a href="axiomas.html#primeros">primeros</a>(fin(s)) <b>fi</b> </p>
+</dd></dl>
+<p>\ ** Auxiliares para pre y post ** // </p><dl class="section user"><dt>DiccSecu</dt><dd><p class="startdd">Devuelve una secuencia ordenada con elementos del diccionario.</p>
+<p class="enddd"><span id="DiccSecu">DiccSecu</span>: Conj( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>) <img class="formulaInl" alt="$\to$" src="form_4.png"/> secu( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>)<br />
+DiccSecu(elems) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> <b>if</b> <img class="formulaInl" alt="$\emptyset$" src="form_13.png"/> ?(elems) <b>then</b> &lt; &gt; <b>else</b> DiccSecu(elems - minimo(elems)) <img class="formulaInl" alt="$\bot$" src="form_9.png"/> dameUno(elems) <b>fi</b> </p>
+</dd></dl>
+<dl class="section user"><dt>MenorQue</dt><dd><p class="startdd">Devuelve true si y solo si m1 es lexicograficamente menor que m2.</p>
+<p class="enddd"><span id="MenorQue">MenorQue</span>: Dicc( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>) d1 x Dicc( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>) d2 <img class="formulaInl" alt="$\to$" src="form_4.png"/> bool<br />
+MenorQue(d1, d2) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> compararClaves(claves(d1), claves(d2)) </p>
+</dd></dl>
+<dl class="section user"><dt>compararElems</dt><dd><span id="compararElems">compararElems</span>: Conj( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>) cs1 x Conj( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>) cs2 <img class="formulaInl" alt="$\to$" src="form_4.png"/> bool<br />
+compararElems(cs1, cs2) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> <b>if</b> # cs1 = 0 <b>then</b> true <b>else</b> <b>if</b> (# cs2 = 0 <img class="formulaInl" alt="$\lor$" src="form_14.png"/> <img class="formulaInl" alt="$\pi_1$" src="form_12.png"/>(minimo(cs1)) <img class="formulaInl" alt="$&gt;$" src="form_15.png"/> <img class="formulaInl" alt="$\pi_1$" src="form_12.png"/>(minimo(cs2)) || (minimo(cs1)) <img class="formulaInl" alt="$&gt;$" src="form_15.png"/> (minimo(cs2))) <b>then</b> false <b>fi</b> <b>else</b> compararElems(cs1 - {minimo}, cs2 - {minimo}) <b>fi</b> </dd></dl>
+<p>Proposiciones para Rep y Abs</p>
+<dl class="section user"><dt>headerValido</dt><dd>El nodo header no tiene valor. Su padre es la raíz, de color negro, y sus hijos derecho e izquierdo son el mayor y el menor valor del arbol respectivamente.<br />
+ e.header.color == Header <img class="formulaInl" alt="$\land$" src="form_16.png"/> nothing?(e.header.value) <img class="formulaInl" alt="$\land$" src="form_16.png"/> e.header.parent.color == Black <img class="formulaInl" alt="$\land$" src="form_16.png"/> ((e.count == 0 <img class="formulaInl" alt="$\land$" src="form_16.png"/> e.header.child[0] == header) <img class="formulaInl" alt="$\lor$" src="form_14.png"/> (e.count &gt; 0 <img class="formulaInl" alt="$\Rightarrow_{\rm L}$" src="form_17.png"/> *e.header.child[0] = minimo(MapAConjunto(e)))) <img class="formulaInl" alt="$\land$" src="form_16.png"/> ((e.count == 0 <img class="formulaInl" alt="$\land$" src="form_16.png"/> e.header.child[1] == header) <img class="formulaInl" alt="$\lor$" src="form_14.png"/> (e.count &gt; 0 <img class="formulaInl" alt="$\Rightarrow_{\rm L}$" src="form_17.png"/> *e.header.child[1] = maximo(MapAConjunto(e)))) </dd></dl>
+<dl class="section user"><dt>nodosInternosValidos</dt><dd><p class="startdd">Para cada nodo interno, sus ramas descendientes tienen la misma cantidad de nodos negros, y y el subarbol que tiene como raiz ese nodo cumple el invariante de Arbol binario de busqueda. Si es rojo, su o sus hijos son negros.</p>
+<p class="enddd">( <img class="formulaInl" alt="$\forall$" src="form_18.png"/> n: Node) NodoHijo(n, e.header) <img class="formulaInl" alt="$\Rightarrow$" src="form_19.png"/> ((get(n.child[0]) = 0 <img class="formulaInl" alt="$\lor$" src="form_14.png"/> n.chiild[0].color = Black) <img class="formulaInl" alt="$\land$" src="form_16.png"/> (get(n.child[1]) = 0 <img class="formulaInl" alt="$\lor$" src="form_14.png"/> n.chiild[1].color = Black) <img class="formulaInl" alt="$\land$" src="form_16.png"/> nodosNegros(n.child[0]) = nodosNegros(n.child[1]) <img class="formulaInl" alt="$\land$" src="form_16.png"/> arbolBinarioDeBusqueda(n)) </p>
+</dd></dl>
+<dl class="section user"><dt>arbolBinarioDeBusqueda</dt><dd>Todos los nodos de la rama izquierda de n tienen valor menor al de n y todos los de la derecha, mayor. (( <img class="formulaInl" alt="$\forall$" src="form_18.png"/> n':Node) (NodoHijo(n', n) <img class="formulaInl" alt="$\land$" src="form_16.png"/> NodoHijo(n', n.child[0])) <img class="formulaInl" alt="$\Rightarrow$" src="form_19.png"/> n'.value.clave &lt; n.value.clave ) <img class="formulaInl" alt="$\land$" src="form_16.png"/> (( <img class="formulaInl" alt="$\forall$" src="form_18.png"/> n':Node) (NodoHijo(n', n) <img class="formulaInl" alt="$\land$" src="form_16.png"/> NodoHijo(n', n.child[1])) <img class="formulaInl" alt="$\Rightarrow$" src="form_19.png"/> n'.value.clave &gt; n.value.clave ) </dd></dl>
+<dl class="section user"><dt>nodosNegros</dt><dd><p class="startdd"></p>
+<p class="enddd"><span id="nodosNegros">nodosNegros</span> : puntero(Node) <img class="formulaInl" alt="$\to$" src="form_4.png"/> int<br />
+Devuelve la cantidad de nodos negros en un subarbol. nodosNegros(n) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> <b>if</b> get(n) = 0 <img class="formulaInl" alt="$\lor_{\rm L}$" src="form_20.png"/> n.color = Red <b>then</b> 0 <b>else</b> 1 <b>fi</b> + nodosNegros(n.child[0])</p><ul>
+<li>nodosNegros(n.child[1]) </li>
+</ul>
+</dd></dl>
+<pre class="fragment">Auxiliares para Rep y Abs
+</pre><dl class="section user"><dt>nodoHijo</dt><dd><p class="startdd">Devuelve true si el n1 es hijo de n2 en la estructura.</p>
+<p class="enddd"><span id="nodoHijo">nodoHijo</span> : Node n1 x Node n2 <img class="formulaInl" alt="$\to$" src="form_4.png"/> bool<br />
+nodoHijo(n, h) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> <img class="formulaInl" alt="$\lnot$" src="form_21.png"/> nothing?(n.value) <img class="formulaInl" alt="$\land_{\rm L}$" src="form_22.png"/> (n.parent = e.header <img class="formulaInl" alt="$\lor$" src="form_14.png"/> nodoHijo(*n.parent, e)) </p>
+</dd></dl>
+<dl class="section user"><dt>llegarAHeader</dt><dd><p class="startdd">Dado un puntero nodo (de un arbol), devuelve un puntero al header.</p>
+<p>{llegarAlHeader}: puntero(Node) <img class="formulaInl" alt="$\to$" src="form_4.png"/> puntero(Node){get(n)  0}<br />
+(n) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> <b>if</b> (*n) = Header <b>then</b> n <b>else</b> llegarAlHeader((*n)) <b>fi</b> </p>
+<p class="enddd"></p>
+</dd></dl>
+<dl class="section user"><dt>MapAConjunto</dt><dd>Crea un conjunto con los elementos de map.<br />
+ <span id="MapAConjunto">MapAConjunto</span>: Node n <img class="formulaInl" alt="$\to$" src="form_4.png"/> Conj( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>)<br />
+MapAConjunto(n) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> <b>if</b> n.color = Header <b>then</b> MapAConjunto(* (n)) <b>else</b> {*n}  <b>if</b> get(n.child[0])  0 <b>then</b> MapAConjunto(*n.child[0]) <b>fi</b>  <b>if</b> get(n.child[1])  0 <b>then</b> MapAConjunto(*n.child[1]) <b>fi</b> <b>fi</b> </dd></dl>
+<dl class="section user"><dt>EncontrarValor</dt><dd><p class="startdd"></p>
+<p class="enddd"><span id="EncontrarValor">EncontrarValor</span> : Puntero(Node) n x <img class="formulaInl" alt="$\alpha$" src="form_5.png"/> key <img class="formulaInl" alt="$\to$" src="form_4.png"/> <img class="formulaInl" alt="$\beta$" src="form_10.png"/> {get(n)  0}<br />
+EncontrarValor(n, key) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> <b>if</b> <img class="formulaInl" alt="$\pi_1$" src="form_12.png"/>(*n) = key <b>then</b> (*n) <b>else</b> <b>if</b> <img class="formulaInl" alt="$\pi_1$" src="form_12.png"/>(*n) &lt; key <b>then</b> EncontrarValor(n.child[1], key) <b>else</b> EncontrarValor(n.child[0]) <b>fi</b> <b>fi</b> </p>
+</dd></dl>
+<dl class="section user"><dt>minimo</dt><dd>Devuelve el elemento del diccionario con la menor clave <br />
+<span id="minimo">minimo</span>: Conj( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>) <img class="formulaInl" alt="$\to$" src="form_4.png"/> ( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>) { <img class="formulaInl" alt="$\lnot$" src="form_21.png"/> <img class="formulaInl" alt="$\emptyset$" src="form_13.png"/>?(elems)}<br />
+minimo(elems) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> minimoAux(elems, <img class="formulaInl" alt="$\pi_1$" src="form_12.png"/>(dameUno(elems))) </dd></dl>
+<dl class="section user"><dt>minimoAux</dt><dd><span id="minimoAux">minimoAux</span>: Conj( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>) x ( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>) <img class="formulaInl" alt="$\to$" src="form_4.png"/> ( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>)<br />
+minimoAux(elems, e) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> <b>if</b> #elems = 0 <b>then</b> e <b>else</b> <b>if</b> e &gt; <img class="formulaInl" alt="$\pi_1$" src="form_12.png"/>(dameUno(elems)) <b>then</b> minimoAux(sinUno(elems), e) <b>else</b> minimoAux(sinUno(elems), dameUno(elems)) <b>fi</b> </dd></dl>
+<dl class="section user"><dt>maximo</dt><dd>Devuelve el elemento del diccionario con la menor clave<br />
+<span id="maximo">maximo</span>: Conj( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>) <img class="formulaInl" alt="$\to$" src="form_4.png"/> ( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>) { <img class="formulaInl" alt="$\lnot$" src="form_21.png"/> <img class="formulaInl" alt="$\emptyset$" src="form_13.png"/>?(elems)}<br />
+maximo(elems) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> maximoAux(elems, <img class="formulaInl" alt="$\pi_1$" src="form_12.png"/>(dameUno(elems))) </dd></dl>
+<dl class="section user"><dt>maximoAux</dt><dd><span id="maximoAux">maximoAux</span>: Conj( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>) x ( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>) <img class="formulaInl" alt="$\to$" src="form_4.png"/> ( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>)<br />
+maximoAux(elems, e) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> <b>if</b> #elems = 0 <b>then</b> e <b>else</b> <b>if</b> e &gt; <img class="formulaInl" alt="$\pi_1$" src="form_12.png"/>(dameUno(elems)) <b>then</b> maximoAux(sinUno(elems), e) <b>else</b> maximoAux(sinUno(elems), dameUno(elems)) <b>fi</b> </dd></dl>
+</div></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generado el Viernes, 30 de Junio de 2017 01:13:03 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
+  </ul>
+</div>
+</body>
+</html>

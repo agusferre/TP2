@@ -4,6 +4,33 @@
 
 #include <map>
 #include <iostream>
+#include <vector>
+
+std::vector<int> no_libera_memoria;
+
+struct Pepe {
+    Pepe() {
+        v.assign(4, 1);
+    }
+    ~Pepe() {
+        using std::swap;
+        swap(v, no_libera_memoria);
+    }
+    bool operator<(const Pepe& p) const {
+        return v < p.v;
+    }
+    
+    std::vector<int> v;
+};
+
+TEST(TestAdicional, insertOrAssignNoInvalida) {
+    aed2::map<Pepe, int> m;
+    auto it = m.insert({Pepe(), 1});
+    auto pos_en_pepe = it->first.v.begin();
+    EXPECT_EQ(*pos_en_pepe, 1);
+    auto res = m.insert_or_assign({Pepe(), 2});
+    EXPECT_EQ(pos_en_pepe, res->first.v.begin());
+}
 
 ////////////////////////////////////
 // Estructuras básicas de testing //

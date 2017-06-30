@@ -241,8 +241,7 @@ TAB_SIZE = 4
 
 #SE PUEDE MODIFICAR
 #Aliases para poder escribir en forma latex
-ALIASES += IGOBS="\f$=_{obs}\f$"
-#ALIASES += IGOBS="\f$\=_{\rm obs}\f$"
+ALIASES += IGOBS="\f$=_{\rm obs}\f$"
 ALIASES += LAND="\f$\land\f$"
 ALIASES += LAND_L="\f$\land_{\rm L}\f$"
 ALIASES += LOR="\f$\lor\f$"
@@ -254,7 +253,6 @@ ALIASES += TIMES="\f$\times\f$"
 ALIASES += LOG="\f$\log\f$"
 ALIASES += LEQ="\f$\leq\f$"
 ALIASES += GEQ="\f$\geq\f$"
-ALIASES += NEQ="\f$\neq\f$"
 ALIASES += LT="\f$<\f$"
 ALIASES += GT="\f$>\f$"
 ALIASES += MINUS="\f$-\f$"
@@ -284,10 +282,7 @@ ALIASES += BULLET="\f$\bullet\f$"
 ALIASES += PI1="\f$\pi_1\f$"
 ALIASES += BOTTOM="\f$\bot\f$"
 ALIASES += HAT{1}="\f$\widehat{\1}\f$"
-ALIASES += LANGLE="\f$\langle\f$"
-ALIASES += RANGLE="\f$\rangle\f$"
-ALIASES += CUP="\f$\cup\f$"
-ALIASES += SHORTMID="\f$\shortmid\f$"
+
 
 #alias de formato (Mejor no modificar)
 ALIASES += aedPQ{2}="\b \1 \EQUIV \{\2\}"
@@ -304,16 +299,6 @@ ALIASES += refax{1}="<a href=\"axiomas.html#\1\">\1</a>"
 #Por cada axioma, escribir como en el ejemplo
 ALIASES += primeros="\refax{primeros}"
 ALIASES += esDiccionario="\refax{esDiccionario?}"
-ALIASES += HastaElem="\refax{HastaElem}"
-ALIASES += DesdeElem="\refax{DesdeElem}"
-ALIASES += headerValido="\refax{headerValido}"
-ALIASES += nodosInternosValidos="\refax{nodosInternosValidos}"
-ALIASES += arbolBinarioDeBusqueda="\refax{arbolBinarioDeBusqueda}"
-ALIASES += nodosNegros="\refax{nodosNegros}"
-ALIASES += nodoHijo="\refax{nodoHijo}"
-ALIASES += MapAConjunto="\refax{MapAConjunto}"
-ALIASES += EncontrarValor="\refax{EncontrarValor}"
-
 
 
 # This tag can be used to specify a number of word-keyword mappings (TCL only).
