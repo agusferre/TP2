@@ -892,7 +892,7 @@ public:
      * @retval res diccionario recién construido
      *
      * \pre \aedpre{true}
-     * \post \aedpost{this \IGOBS vacio}
+     * \post \aedpost{\P{*this} \IGOBS vacio}
      *
      * \complexity{\O(1)}
      *
@@ -908,7 +908,7 @@ public:
      * @retval res diccionario recien construido
      *
      * \pre \aedpre{true}
-     * \post \aedpost{this \IGOBS other}
+     * \post \aedpost{\P{*this} \IGOBS other}
      *
      * \complexity{\O(\COPY(\P{other}))}
      *
@@ -991,7 +991,7 @@ public:
      * \aliasing{ No hay. }
      *
      * \pre \aedpre{true}
-     * \post \aedpost{res \IGOBS other}
+     * \post \aedpost{P\{*res \IGOBS other}
      *
      * \complexity{\O(\DEL(\P{*this}) \PLUS \COPY(\P{other}))}
      *
@@ -1040,9 +1040,9 @@ public:
      *
      * \aliasing{res es referencia al significado correspondiente a \P{key}.}
      *
-     * \pre \aedpre{def?(key,this)}
+     * \pre \aedpre{def?(key,\P{*this})}
      *
-     * \post \aedpost{res \IGOBS obtener(key,this)}
+     * \post \aedpost{res \IGOBS obtener(key,\P{*this})}
      *
      * \complexity{\O(\LOG(\SIZE(\P{*this}) \CDOT \CMP(\P{*this}))}
      *
@@ -1089,8 +1089,8 @@ public:
      *
      * \aliasing{la operación se invalida si se elimina el elemento cuyo key() = key}
      *
-     * \pre \aedpre{this \IGOBS d_\rm{0}}
-     * \post \aedpost{(def?(key, d_\rm{0}) \LOR this \IGOBS definir(key, this, Meaning()) \LAND res \IGOBS obtener(key, d_0))
+     * \pre \aedpre{\P{*this} \IGOBS d_\rm{0}}
+     * \post \aedpost{(def?(key, d_\rm{0}) \LOR \P{*this} \IGOBS definir(key, \P{*this}, Meaning()) \LAND res \IGOBS obtener(key, d_0))
 
 	 *
      * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}) + \a x) donde
@@ -1122,8 +1122,8 @@ public:
      * \aliasing{res apunta al nodo cuyo key() es key. Se invalida si se elimina el nodo sin usar res como pos}
      *
      * \pre \aedpre{true}
-     * \post \aedpost{def?(key, this) \IMPLIES Siguiente(res) \IGOBS \langle key, obtener(key, this) \rangle 
-     					\LAND (\neg def?(key,this) \IMPLIES \LNOT HaySiguiente?(res)) }
+     * \post \aedpost{def?(key, \P{*this}) \IMPLIES Siguiente(res) \IGOBS \langle key, obtener(key, \P{*this}) \rangle 
+     					\LAND (\neg def?(key,\P{*this}) \IMPLIES \LNOT HaySiguiente?(res)) }
      *
      * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
      *
@@ -1162,9 +1162,9 @@ public:
      * \aliasing{res apunta al nodo cuyo key() es key. Se invalida si se elimina el nodo sin usar res como pos}
      *
      * \pre \aedpre{true}
-     * \post \aedpost{(def?(key, this) \LAND Siguiente(res) \IGOBS \RANGLE key, obtener(key, this) \LANGLE ) \LOR
-     				  (\LNOT def?(key, this) \LAND 
-     				  (\LNOT HaySiguiente(res) \LOR Siguiente(res) \IGOBS PrimerMayorOigual(key, this)))}
+     * \post \aedpost{(def?(key, \P{*this}) \LAND Siguiente(res) \IGOBS \RANGLE key, obtener(key, \P{*this}) \LANGLE ) \LOR
+     				  (\LNOT def?(key, \P{*this}) \LAND 
+     				  (\LNOT HaySiguiente(res) \LOR Siguiente(res) \IGOBS PrimerMayorOigual(key, \P{*this})))}
      *
      * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
      *
@@ -1190,7 +1190,7 @@ public:
      * @retval res denota true si y solo si el diccionario está vacío
      *
      * \pre \aedpre{true}
-     * \post \aedpost{res \IGOBS \#Claves(this) \IGOBS 0}
+     * \post \aedpost{res \IGOBS \#Claves(\P{*this}) \IGOBS 0}
      *
      * \complexity{\O(1)}
      */
@@ -1204,7 +1204,7 @@ public:
      * @retval res cantidad de valores
 	 *
      * \pre \aedpre{true}
-     * \post \aedpost{res \IGOBS \#Claves(this)}
+     * \post \aedpost{res \IGOBS \#Claves(\P{*this})}
      *
      * \complexity{\O(1)}
      */
@@ -1234,9 +1234,9 @@ public:
      			 sin usar res como pos}
      *
      *
-     * \pre \aedpre{this \IGOBS d_{\rm 0}
-     * \post  \aedpost{(def?(key, this) \IMPLIES this \igobs d_0) \LAND (\LNOT def?(key, this) \IMPLIES
-     					(this \IGOBS definir(key, d_0) \LAND Siguiente(res) \IGOBS \RANGLE key, obtener(key, this) \LANGLE ))}
+     * \pre \aedpre{\P{*this} \IGOBS d_{\rm 0}
+     * \post  \aedpost{(def?(key, \P{*this}) \IMPLIES \P{*this} \igobs d_0) \LAND (\LNOT def?(key, \P{*this}) \IMPLIES
+     					(\P{*this} \IGOBS definir(key, d_0) \LAND Siguiente(res) \IGOBS \RANGLE key, obtener(key, \P{*this}) \LANGLE ))}
      *
      * \complexity{
      *  - Peor caso: \O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}) \PLUS \COPY(\P{value}))
@@ -1335,8 +1335,8 @@ public:
      * \aliasing{res apunta al elemento insertado. Se invalida sólo si se elimina dicho elemento 
      			 sin usar res como pos}
      *
-     * \pre \aedpre{this \IGOBS d_0}
-     * \post  \aedpost{this \IGOBS definir(key, this) \LAND Siguiente(res) \IGOBS value}
+     * \pre \aedpre{\P{*this} \IGOBS d_0}
+     * \post  \aedpost{\P{*this} \IGOBS definir(key, \P{*this}) \LAND Siguiente(res) \IGOBS value}
      *
      * \complexity{
      *  - Peor caso: \O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}) \PLUS \COPY(\P{value}))
@@ -1381,8 +1381,8 @@ public:
      * \aliasing{res queda apuntando al siguiente elemento al borrado. Se invalida si se borra ese elemento
      			 sin usar res como pos}.
      *
-     * \pre \aedpre{this \IGOBS d_0 \LAND HaySiguiente?(pos)}
-     * \post \aedpost{res \IGOBS Avanzar(pos) \LAND this \IGOBS borrar(pos.key (chequear), this)}
+     * \pre \aedpre{\P{*this} \IGOBS d_0 \LAND HaySiguiente?(pos)}
+     * \post \aedpost{res \IGOBS Avanzar(pos) \LAND \P{*this} \IGOBS borrar(pos.key (chequear), \P{*this})}
      *
      * \complexity{
      * - Peor caso: \O(\DEL(\P{*pos}) + \LOG(\SIZE(\P{*this})))
@@ -1503,8 +1503,8 @@ public:
      *
      * \aliasing{se invalidan los iteradores que estaban apuntando a un nodo cuyo key() es key}
      *
-     * \pre \aedpre{this \IGOBS d_0 \LAND def?(this, key)}
-     * \post \aedpost{this \IGOBS borrar(key, d_0)}
+     * \pre \aedpre{\P{*this} \IGOBS d_0 \LAND def?(\P{*this}, key)}
+     * \post \aedpost{\P{*this} \IGOBS borrar(key, d_0)}
      *
      * \complexity{\O(\DEL(\P{*pos}) + \LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
      */
@@ -1582,7 +1582,7 @@ public:
      *
      * @retval res iterador al primer valor
      *
-     * \pre \aedpre{\# Claves(this) > 0}
+     * \pre \aedpre{\# Claves(\P{*this}) > 0}
      * \post \aedpost{\LNOT hayAnterior(res)}
      *
      * \complexity{\O(1)}
@@ -1667,7 +1667,7 @@ public:
      *
      * @retval res iterador a la posicion pasando-al-ultimo, en un recorrido al revés
      *
-     * \pre \aedpre{\# Claves(this) > 0}
+     * \pre \aedpre{\# Claves(\P{*this}) > 0}
      * \post \aedpost{\LNOT HaySiguiente?(res)}
      *
      * \complexity{\O(1)}
@@ -1769,7 +1769,7 @@ public:
          * \aliasing{Se invalida si el elemento apuntado es eliminado}
          *
          * \pre \aedpre{HaySiguiente(this)}
-         * \post \aedpost{res \IGOBS *this chequear como se escribe}
+         * \post \aedpost{res \IGOBS *\P{*this}}
          *
          * \complexity{\O(1)}
          */
@@ -1801,8 +1801,8 @@ public:
          *
          * \aliasing{res se invalida si se elimina el elemento apuntado sin usar res como pos}
          *
-         * \pre \aedpre{this \IGOBS it_0 \LAND HaySiguiente(this)}
-         * \post \aedpost{this \IGOBS res \LAND res \IGOBS Avanzar(it_0)}
+         * \pre \aedpre{\P{*this} \IGOBS it_0 \LAND HaySiguiente(\P{*this})}
+         * \post \aedpost{\P{*this} \IGOBS res \LAND res \IGOBS Avanzar(it_0)}
          *
          * \complexity{
          * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
@@ -1820,8 +1820,8 @@ public:
          *
          * \aliasing{res se invalida si se elimina el elemento apuntado sin usar res como pos}
          *
-         * \pre \aedpre{this \IGOBS it_0 \LAND HaySiguiente(it_0)}
-         * \post \aedpost{res \IGOBS it_0 \LAND this \IGOBS Avanzar(it_0)}
+         * \pre \aedpre{\P{*this} \IGOBS it_0 \LAND HaySiguiente(it_0)}
+         * \post \aedpost{res \IGOBS it_0 \LAND \P{*this} \IGOBS Avanzar(it_0)}
          *
          * \complexity{
          * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
@@ -1840,8 +1840,8 @@ public:
          *
          * \aliasing{res se invalida si se elimina el elemento apuntado sin usar res como pos}
          *
-         * \pre \aedpre{this \IGOBS it_0 \LAND HayAnterior(this)}
-         * \post \aedpost{this \IGOBS res \LAND res \IGOBS Retroceder(d_0)}
+         * \pre \aedpre{\P{*this} \IGOBS it_0 \LAND HayAnterior(\P{*this})}
+         * \post \aedpost{\P{*this} \IGOBS res \LAND res \IGOBS Retroceder(d_0)}
          *
          * \complexity{
          * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
@@ -1859,8 +1859,8 @@ public:
          *
          * \aliasing{res se invalida si se elimina el elemento apuntado sin usar res como pos}
          *
-         * \pre \aedpre{this \IGOBS it_0 \LAND HayAnterior(this)}
-         * \post \aedpost{res \IGOBS it_0 \LAND this \IGOBS Retroceder(it_0)}
+         * \pre \aedpre{\P{*this} \IGOBS it_0 \LAND HayAnterior(\P{*this})}
+         * \post \aedpost{res \IGOBS it_0 \LAND \P{*this} \IGOBS Retroceder(it_0)}
          *
          * \complexity{
          * - Peor caso: \O(\LOG(SIZE(\a d)) donde \a d es el diccionario asociado a \P{*this}.
@@ -1886,7 +1886,7 @@ public:
          * - true, cuando ambos son nulos.}
          *
          * \pre \aedpre{true}
-         * \post \aedpost{res \IGOBS Siguiente(this) \IGOBS Siguiente(other)}
+         * \post \aedpost{res \IGOBS Siguiente(\P{*this}) \IGOBS Siguiente(other)}
          *
          * \complexity{\O(1)}
          */
