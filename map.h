@@ -1087,10 +1087,10 @@ public:
      * \par Requerimientos sobre el tipo \T{Meaning}
      * Requiere que \T{Meaning} tenga un constructor sin parámetros con complejidad \O(\a c)
      *
-     * \aliasing{la operación se invalida si se elimina el elemento cuyo key() = key}
+     * \aliasing{res referencia al Meaning del nodo con clave key.}
      *
      * \pre \aedpre{\P{*this} \IGOBS d_\rm{0}}
-     * \post \aedpost{(def?(key, d_\rm{0}) \LOR \P{*this} \IGOBS definir(key, \P{*this}, Meaning()) \LAND res \IGOBS obtener(key, d_0))
+     * \post \aedpost{(def?(key, d_\rm{0}) \LOR \P{*this} \IGOBS definir(key, \P{*this}, Meaning()) \LAND res \IGOBS obtener(key, \P{*this})}
 
 	 *
      * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}) + \a x) donde
@@ -1123,7 +1123,7 @@ public:
      *
      * \pre \aedpre{true}
 
-     * \post \aedpost{def?(key, \P{*this}) \IMPLIES (Siguiente(res) \IGOBS \LANGLE key, obtener(key, \P{*this}) \RANGLE) 
+     * \post \aedpost{def?(key, \P{*this}) \IMPLIES (Siguiente(res) \IGOBS \LANGLEkey, obtener(key, \P{*this})\RANGLE)
      *					\LAND (\LNOT def?(key,\P{*this}) \IMPLIES \LNOT HaySiguiente?(res)) }
      *
      *
@@ -1236,9 +1236,9 @@ public:
      			 sin usar res como pos}
      *
      *
-     * \pre \aedpre{\P{*this} \IGOBS d_{\rm 0}
-     * \post  \aedpost{(def?(key, \P{*this}) \IMPLIES \P{*this} \igobs d_0) \LAND (\LNOT def?(key, \P{*this}) \IMPLIES
-     					(\P{*this} \IGOBS definir(key, d_0) \LAND Siguiente(res) \IGOBS \RANGLE key, obtener(key, \P{*this}) \LANGLE ))}
+     * \pre \aedpre{\P{*this} \IGOBS d_{\rm 0} \LAND \LNOT (get(hint) \IGOBS 0)}
+     * \post  \aedpost{(def?(key, d_{\rm 0}) \IMPLIES \P{*this} \igobs d_{\rm 0}) \LAND (\LNOT def?(key, d_{\rm 0}) \IMPLIES
+     					(\P{*this} \IGOBS definir(key, d_ { \rm 0}) \LAND Siguiente(res) \IGOBS \LANGLE key, obtener(key, \P{*this}) \RANGLE ))}
      *
      * \complexity{
      *  - Peor caso: \O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}) \PLUS \COPY(\P{value}))
@@ -1260,6 +1260,8 @@ public:
       * Evalúa si hint apunta al primer valor con clave al menos \P{value}.
       * Si es así, llama a insert_rapido con hint, de lo contrario llama a insert_rapido con el lower_bound como parametro.
       */
+
+
 
     iterator insert(const_iterator hint, const value_type& value) {
         if (hintValido(hint, value))
@@ -1283,7 +1285,7 @@ public:
      * \aliasing{res apunta al elemento insertado. Se invalida sólo si se elimina dicho elemento 
      			 sin usar res como pos}
      *
-     * \pre \aedpre{\P{*this} \IGOBS d_0}
+     * \pre \aedpre{\P{*this} \IGOBS d_0 \LAND \LNOT (get(hint) \IGOBS 0)}
      * \post  \aedpost{\P{*this} \IGOBS definir(key, \P{*this}) \LAND Siguiente(res) \IGOBS value}
      *
      * \complexity{
@@ -1330,7 +1332,7 @@ public:
      * \aliasing{res queda apuntando al siguiente elemento al borrado. Se invalida si se borra ese elemento
      			 sin usar res como pos}.
      *
-     * \pre \aedpre{\P{*this} \IGOBS d_0 \LAND HaySiguiente?(pos)}
+     * \pre \aedpre{\P{*this} \IGOBS d_0 \LAND \LNOT (get(pos) \IGOBS 0) \LAND HaySiguiente?(pos)}
      * \post \aedpost{res \IGOBS Avanzar(pos) \LAND \P{*this} \IGOBS borrar(pos.key (chequear), \P{*this})}
      *
      * \complexity{
@@ -1474,7 +1476,7 @@ public:
     /**
      * @brief Devuelve un iterador al primer valor del diccionario
      *
-     * \aliasing{res se invalida solo si se elimina el nodo apuntado sin usar res como pos}
+     * \aliasing{res apunta a header.child[0]. Se invalida solo si se elimina el nodo apuntado sin usar res como pos}
      *
      * @retval res iterador al primer valor
      *
@@ -1503,7 +1505,7 @@ public:
     /**
      * @brief Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario
      *
-     * \aliasing{no hay}
+     * \aliasing{res apunta a header}
      *
      * @retval res iterador a la posicion pasando-al-ultimo
      *
@@ -2420,18 +2422,19 @@ private:
     iterator insert_rapido(const_iterator hint, const value_type& value) {
         iterator it(const_cast<Node*>(hint.n));
         if (it.n->is_header() || !eq(it.n->key(), value.first)) {
-            if (it.n->is_header()) {
-                while (it.n->child[1] != nullptr && not it.n->child[0]->is_header())
-                    it.n = it.n->child[1];
+            if (it != begin())
+                it--;
+            /*if (it.n->is_header()) {
+                it--;
             } else {
                 if (it.n->child[0] != nullptr) {
                     it.n = it.n->child[0];
                     while (it.n->child[1] != nullptr && not it.n->child[0]->is_header())
                         it.n = it.n->child[1];
                 }
-            }
-            Node* padre = it.n;
-            InnerNode* nuevo = new InnerNode(padre, value);
+            }*/
+            Node *padre = it.n;
+            InnerNode *nuevo = new InnerNode(padre, value);
             bool esElMenor = (count == 0) || lt(value.first, begin().n->key());
             bool esElMayor = (count == 0) || lt(header.child[1]->key(), value.first);
             if (esElMenor)
@@ -2440,15 +2443,15 @@ private:
                 header.child[1] = nuevo;
             if (padre->is_header()) {
                 header.parent = nuevo;
-            } else if (lt(nuevo->key(),padre->key()))
+            } else if (lt(nuevo->key(), padre->key()))
                 padre->child[0] = nuevo;
             else
                 padre->child[1] = nuevo;
             count++;
             it.n = nuevo;
             insert_fixup(it);
-            return it;
         }
+        return it;
     }
 };
 

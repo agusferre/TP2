@@ -159,16 +159,16 @@ template&lt;class iterator &gt; </div>
 </dl>
 <dl class="section user"><dt>Aspectos de aliasing:</dt><dd><b class="paramname">first</b> y <b class="paramname">last</b> son iteradores que recorren la misma secuencia definida por una colección.</dd></dl>
 <dl class="section pre"><dt>Precondición</dt><dd><p class="startdd"><b class="paramname">last</b> debe ser alcanzable desde <b class="paramname">first</b> y en el rango [<b class="paramname">first</b>, <b class="paramname">last</b>) no pueden haber valores repetidos.</p>
-<p class="enddd"><b>P</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {coleccion(<b class="paramname">first</b>) <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> coleccion(<b class="paramname">last</b>) <img class="formulaInl" alt="$\land$" src="form_16.png"/> esSufijo(Siguientes(<b class="paramname">last</b>), Siguientes(<b class="paramname">first</b>)) <img class="formulaInl" alt="$\land$" src="form_16.png"/> <a href="axiomas.html#esDiccionario?">esDiccionario?</a>(Siguientes(<b class="paramname">first</b>) <img class="formulaInl" alt="$-$" src="form_24.png"/> Siguientes(<b class="paramname">last</b>))} </p>
+<p class="enddd"><b>P</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {coleccion(<b class="paramname">first</b>) <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> coleccion(<b class="paramname">last</b>) <img class="formulaInl" alt="$\land$" src="form_16.png"/> esSufijo(Siguientes(<b class="paramname">last</b>), Siguientes(<b class="paramname">first</b>)) <img class="formulaInl" alt="$\land$" src="form_16.png"/> <a href="axiomas.html#esDiccionario?">esDiccionario?</a>(Siguientes(<b class="paramname">first</b>) <img class="formulaInl" alt="$-$" src="form_25.png"/> Siguientes(<b class="paramname">last</b>))} </p>
 </dd></dl>
 <dl class="section post"><dt>Postcondición</dt><dd><p class="startdd">Los valores definidos en <b class="paramname">res</b> son aquellos que aparecen en [<b class="paramname">first</b>, <b class="paramname">last</b>)</p>
-<p class="enddd"><b>Q</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {( <img class="formulaInl" alt="$\forall$" src="form_18.png"/> k: <span class="paramname">Key</span>)( <img class="formulaInl" alt="$\forall$" src="form_18.png"/> s: <span class="paramname">Meaning</span>) (def?(<b class="paramname">res</b>, k) <img class="formulaInl" alt="$\land_{\rm L}$" src="form_22.png"/> significado(<b class="paramname">res</b>, k) <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> s <img class="formulaInl" alt="$\Leftrightarrow$" src="form_25.png"/> esta((k,s), Siguientes(<b class="paramname">first</b>) <img class="formulaInl" alt="$-$" src="form_24.png"/> Siguientes(<b class="paramname">last</b>))) } </p>
+<p class="enddd"><b>Q</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {( <img class="formulaInl" alt="$\forall$" src="form_18.png"/> k: <span class="paramname">Key</span>)( <img class="formulaInl" alt="$\forall$" src="form_18.png"/> s: <span class="paramname">Meaning</span>) (def?(<b class="paramname">res</b>, k) <img class="formulaInl" alt="$\land_{\rm L}$" src="form_22.png"/> significado(<b class="paramname">res</b>, k) <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> s <img class="formulaInl" alt="$\Leftrightarrow$" src="form_26.png"/> esta((k,s), Siguientes(<b class="paramname">first</b>) <img class="formulaInl" alt="$-$" src="form_25.png"/> Siguientes(<b class="paramname">last</b>))) } </p>
 </dd></dl>
 <dl class="section complexity">
 <dt>Complejidad Temporal</dt>
 <dd><ul>
-<li>En el peor caso: <img class="formulaInl" alt="$O$" src="form_1.png"/>(<b>size</b>(<b class="paramname">res</b>) <img class="formulaInl" alt="$\cdot$" src="form_23.png"/> ( <img class="formulaInl" alt="$\log$" src="form_26.png"/>(<b>size</b>(<b class="paramname">res</b>)) <img class="formulaInl" alt="$\cdot$" src="form_23.png"/> <b>cmp</b>(<b class="paramname">res</b>) + <b>copy</b>(<b class="paramname">res</b>)))</li>
-<li>Si el rango [<b class="paramname">first</b>, <b class="paramname">last</b>) está ordenado: <img class="formulaInl" alt="$O$" src="form_1.png"/>(<b>size</b>(<b class="paramname">res</b>) <img class="formulaInl" alt="$\cdot$" src="form_23.png"/> (<b>cmp</b>(<b class="paramname">res</b>)+ <b>copy</b>(<b class="paramname">res</b>))) </li>
+<li>En el peor caso: <img class="formulaInl" alt="$O$" src="form_1.png"/>(<b>size</b>(<b class="paramname">res</b>) <img class="formulaInl" alt="$\cdot$" src="form_24.png"/> ( <img class="formulaInl" alt="$\log$" src="form_27.png"/>(<b>size</b>(<b class="paramname">res</b>)) <img class="formulaInl" alt="$\cdot$" src="form_24.png"/> <b>cmp</b>(<b class="paramname">res</b>) + <b>copy</b>(<b class="paramname">res</b>)))</li>
+<li>Si el rango [<b class="paramname">first</b>, <b class="paramname">last</b>) está ordenado: <img class="formulaInl" alt="$O$" src="form_1.png"/>(<b>size</b>(<b class="paramname">res</b>) <img class="formulaInl" alt="$\cdot$" src="form_24.png"/> (<b>cmp</b>(<b class="paramname">res</b>)+ <b>copy</b>(<b class="paramname">res</b>))) </li>
 </ul>
 </dd>
 </dl>
@@ -185,7 +185,7 @@ template&lt;class iterator &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a></li><li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a></li>
-    <li class="footer">Generado el Viernes, 30 de Junio de 2017 01:13:03 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 30 de Junio de 2017 04:53:22 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
   </ul>

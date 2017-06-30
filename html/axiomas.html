@@ -155,7 +155,7 @@ nodoHijo(n, h) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> <img c
 </dd></dl>
 <dl class="section user"><dt>MapAConjunto</dt><dd>Crea un conjunto con los elementos de map.<br />
  <span id="MapAConjunto">MapAConjunto</span>: Node n <img class="formulaInl" alt="$\to$" src="form_4.png"/> Conj( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>)<br />
-MapAConjunto(n) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> <b>if</b> n.color = Header <b>then</b> MapAConjunto(* (n)) <b>else</b> {*n}  <b>if</b> get(n.child[0])  0 <b>then</b> MapAConjunto(*n.child[0]) <b>fi</b>  <b>if</b> get(n.child[1])  0 <b>then</b> MapAConjunto(*n.child[1]) <b>fi</b> <b>fi</b> </dd></dl>
+MapAConjunto(n) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> <b>if</b> n.color = Header <b>then</b> MapAConjunto(* (n)) <b>else</b> {*n} <img class="formulaInl" alt="$\cup$" src="form_23.png"/> <b>if</b> get(n.child[0])  0 <b>then</b> MapAConjunto(*n.child[0]) <b>fi</b> <img class="formulaInl" alt="$\cup$" src="form_23.png"/> <b>if</b> get(n.child[1])  0 <b>then</b> MapAConjunto(*n.child[1]) <b>fi</b> <b>fi</b> </dd></dl>
 <dl class="section user"><dt>EncontrarValor</dt><dd><p class="startdd"></p>
 <p class="enddd"><span id="EncontrarValor">EncontrarValor</span> : Puntero(Node) n x <img class="formulaInl" alt="$\alpha$" src="form_5.png"/> key <img class="formulaInl" alt="$\to$" src="form_4.png"/> <img class="formulaInl" alt="$\beta$" src="form_10.png"/> {get(n)  0}<br />
 EncontrarValor(n, key) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> <b>if</b> <img class="formulaInl" alt="$\pi_1$" src="form_12.png"/>(*n) = key <b>then</b> (*n) <b>else</b> <b>if</b> <img class="formulaInl" alt="$\pi_1$" src="form_12.png"/>(*n) &lt; key <b>then</b> EncontrarValor(n.child[1], key) <b>else</b> EncontrarValor(n.child[0]) <b>fi</b> <b>fi</b> </p>
@@ -175,7 +175,7 @@ maximoAux(elems, e) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> <
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generado el Viernes, 30 de Junio de 2017 01:13:03 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 30 de Junio de 2017 04:53:21 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
   </ul>

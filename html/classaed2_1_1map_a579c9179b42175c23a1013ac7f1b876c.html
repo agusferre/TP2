@@ -131,11 +131,11 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
   </dd>
 </dl>
 <dl class="section user"><dt>Aspectos de aliasing:</dt><dd>res es referencia al significado correspondiente a <b class="paramname">key</b>.</dd></dl>
-<dl class="section pre"><dt>Precondición</dt><dd><b>P</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {def?(key,this)}</dd></dl>
-<dl class="section post"><dt>Postcondición</dt><dd><b>Q</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {res <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> obtener(key,this)}</dd></dl>
+<dl class="section pre"><dt>Precondición</dt><dd><b>P</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {def?(key,<b class="paramname">*this</b>)}</dd></dl>
+<dl class="section post"><dt>Postcondición</dt><dd><b>Q</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {res <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> obtener(key,<b class="paramname">*this</b>)}</dd></dl>
 <dl class="section complexity">
 <dt>Complejidad Temporal</dt>
-<dd><img class="formulaInl" alt="$O$" src="form_1.png"/>( <img class="formulaInl" alt="$\log$" src="form_26.png"/>(<b>size</b>(<b class="paramname">*this</b>) <img class="formulaInl" alt="$\cdot$" src="form_23.png"/> <b>cmp</b>(<b class="paramname">*this</b>))</dd>
+<dd><img class="formulaInl" alt="$O$" src="form_1.png"/>( <img class="formulaInl" alt="$\log$" src="form_27.png"/>(<b>size</b>(<b class="paramname">*this</b>) <img class="formulaInl" alt="$\cdot$" src="form_24.png"/> <b>cmp</b>(<b class="paramname">*this</b>))</dd>
 </dl>
 <dl class="section remark"><dt>Comentarios</dt><dd>Esta función, que se asemeja más a la forma de programar propuesta en AED2 que al estándar C++, fue incluida en el estándar C++11. Antes era obligación recurrir a la función find.</dd></dl>
 <p>La funcion tiene el prerrequisito de tener definido un valor con clave = key, por lo que invoca directamente a find, sabiendo que este retornará un nodo interno con value. </p>
@@ -150,7 +150,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a></li><li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a></li>
-    <li class="footer">Generado el Viernes, 30 de Junio de 2017 01:13:03 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 30 de Junio de 2017 04:53:22 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
   </ul>

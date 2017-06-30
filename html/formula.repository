@@ -17,32 +17,16 @@
 \form#16:$\land$
 \form#17:$\Rightarrow_{\rm L}$
 \form#18:$\forall$
-<<<<<<< HEAD
-\form#19:$\land_{\rm L}$
-\form#20:$\Leftrightarrow$
-\form#21:$\log$
-\form#22:$+$
-\form#23:$\Rightarrow$
-\form#24:$\lnot$
-\form#25:$\rangle$
-\form#26:$\langle$
-\form#27:$\lor_{\rm L}$
-\form#28:$\emptyset$
-\form#29:$\pi_2$
-\form#30:$\Rightarrow_{\rm L}$
-\form#31:$\cup$
-\form#32:$\shortmid$
-\form#33:$\in$
-\form#34:$=_{\rm obs}$
-=======
 \form#19:$\Rightarrow$
 \form#20:$\lor_{\rm L}$
 \form#21:$\lnot$
 \form#22:$\land_{\rm L}$
-\form#23:$\cdot$
-\form#24:$-$
-\form#25:$\Leftrightarrow$
-\form#26:$\log$
-\form#27:$+$
-\form#28:$\in$
->>>>>>> c65fd8be2a717c6f2a8a1752b749f0f1e1fc8778
+\form#23:$\cup$
+\form#24:$\cdot$
+\form#25:$-$
+\form#26:$\Leftrightarrow$
+\form#27:$\log$
+\form#28:$+$
+\form#29:$\rangle$
+\form#30:$\langle$
+\form#31:$\in$

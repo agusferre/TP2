@@ -131,15 +131,15 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
   </dd>
 </dl>
 <dl class="section user"><dt>Aspectos de aliasing:</dt><dd>res queda apuntando al siguiente elemento al borrado. Se invalida si se borra ese elemento sin usar res como pos.</dd></dl>
-<dl class="section pre"><dt>Precondición</dt><dd><b>P</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {this <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> d_0 <img class="formulaInl" alt="$\land$" src="form_16.png"/> HaySiguiente?(pos)} </dd></dl>
-<dl class="section post"><dt>Postcondición</dt><dd><b>Q</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {res <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> Avanzar(pos) <img class="formulaInl" alt="$\land$" src="form_16.png"/> this <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> borrar(pos.key (chequear), this)}</dd></dl>
+<dl class="section pre"><dt>Precondición</dt><dd><b>P</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {<b class="paramname">*this</b> <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> d_0 <img class="formulaInl" alt="$\land$" src="form_16.png"/> HaySiguiente?(pos)} </dd></dl>
+<dl class="section post"><dt>Postcondición</dt><dd><b>Q</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {res <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> Avanzar(pos) <img class="formulaInl" alt="$\land$" src="form_16.png"/> <b class="paramname">*this</b> <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> borrar(pos.key (chequear), <b class="paramname">*this</b>)}</dd></dl>
 <p>{</p><ul>
 <li>Peor caso: (({*pos}) + (({*this})))</li>
 <li>Peor caso amortizado: (({*pos})</li>
 </ul>
 <p>Primero se fija si pos apunta al primero o al ultimo y modifica el hijo correspondiente del header para que no quede apuntando a un nodo inválido. Luego, se divide en tres casos. Cuando el hijo derecho del nodo a eliminar es null,transplanta a pos con su hijo izquierdo. Lo análogo con el hijo izquierdo, esta vez con la certeza de que el hijo derecho no es null. Y el caso donde ninguno de los dos es null, se encuentra el sucesor del nodo a borrar, se transplantan los valores y se elimina el sucesor. Se decrementa la variable count del arbol. Por ultimo, en el caso en que el color original del nodo a borrar fuese negro y el nodo x (nodo transplantado con z, nodo a borrar) distinto de null se llama a erase_fixup, para reorganizar el arbol, ya que en el caso en que el nodo fuese rojo no lo desordenaria. Borramos la memoria reservada para el nodo a eliminar. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="map_8h_source.html#l01351">1351</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="map_8h_source.html#l01355">1355</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
 </div>
 </div>
@@ -149,7 +149,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a></li><li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a></li>
-    <li class="footer">Generado el Viernes, 30 de Junio de 2017 01:13:03 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 30 de Junio de 2017 04:53:22 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
   </ul>

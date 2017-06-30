@@ -133,8 +133,8 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
   </dd>
 </dl>
 <dl class="section user"><dt>Aspectos de aliasing:</dt><dd>res apunta al elemento insertado. Se invalida sólo si se elimina dicho elemento sin usar res como pos</dd></dl>
-<dl class="section pre"><dt>Precondición</dt><dd>{this  d_{ 0} </dd></dl>
-<dl class="section post"><dt>Postcondición</dt><dd>{(def?(key, this)  this  d_0)  ( def?(key, this)  (this  definir(key, d_0)  Siguiente(res)   key, obtener(key, this)  ))}</dd></dl>
+<dl class="section pre"><dt>Precondición</dt><dd>{{*this}  d_{ 0} </dd></dl>
+<dl class="section post"><dt>Postcondición</dt><dd>{(def?(key, d_{ 0})  {*this}  d_{ 0})  ( def?(key, d_{ 0})  ({*this}  definir(key, d_ {  0})  Siguiente(res)   key, obtener(key, {*this})  ))}</dd></dl>
 <p>{</p><ul>
 <li>Peor caso: ((({*this}))  ({*this})  ({value}))</li>
 <li>Si {hint} apunta al primer valor con clave al menos {value}.first (o {this}-&gt;<a class="el" href="classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983.html#a76023e6a56cb625513e1b5ea028bf983" title="Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario. ">end()</a> en caso de no existir): (({*this})  ({value})) amortizado. }</li>
@@ -142,7 +142,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 <dl class="section attention"><dt>Atención</dt><dd>Para garantizar que el nuevo elemento se inserte sí o sí, usar <a class="el" href="classaed2_1_1map_a2ef6723c183916276b0afc4a4c721475.html#a2ef6723c183916276b0afc4a4c721475" title="Inserta o Color::Redefine value en el diccionario. ">aed2::map::insert_or_assign</a>.</dd></dl>
 <p>Crea un iterador en la posición en la que insertar, buscandola con lower bound. Llama a insert pasandole el iterador como hint. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="map_8h_source.html#l01252">1252</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="map_8h_source.html#l01254">1254</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
 </div>
 </div>
@@ -152,7 +152,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a></li><li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a></li>
-    <li class="footer">Generado el Viernes, 30 de Junio de 2017 01:13:03 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 30 de Junio de 2017 04:53:22 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
   </ul>
