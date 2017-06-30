@@ -27,16 +27,9 @@
 \form#26:$\langle$
 \form#27:$\lor_{\rm L}$
 \form#28:$\emptyset$
-<<<<<<< HEAD
-\form#29:$\cup$
-\form#30:$\_linebr eq$
-\form#31:$\shortmid$
-\form#32:$\in$
-\form#33:$=_{\rm obs}$
-=======
-\form#29:$\Rightarrow_{\rm L}$
-\form#30:$\cup$
-\form#31:$\_linebr eq$
+\form#29:$\pi_2$
+\form#30:$\Rightarrow_{\rm L}$
+\form#31:$\cup$
 \form#32:$\shortmid$
 \form#33:$\in$
->>>>>>> 9ea902a479045bf92419b175de38f7d309248165
+\form#34:$=_{\rm obs}$
