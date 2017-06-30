@@ -106,15 +106,28 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
           <td></td><td><code> [inline, private]</code></td>
         </tr>
       </table>
+<<<<<<< HEAD
 </div>
 <div class="memdoc">
 <p>Crea un iterador con el hint para que pase a ser iterator y pueda utilizarse para insertar. Chequea si el elemento no estaba definido, para proceder, en caso contrario no inserta nada. A partir del nodo en el que se encuentra busca la hoja en la que insertar el elemento. Crea un <a class="el" href="structaed2_1_1map_1_1InnerNode.html" title="Estructura (privada) de un nodo no cabecera del árbol red-black.">InnerNode</a> "nuevo" con este nodo encontrado (hoja) como padre, de color rojo, por defecto, y con el value pasado por parametro. Evalua si es el menor o el mayor de todos los nodos del arbol respectivamente y de ser asi setea a los hijos del header con este nuevo nodo. Luego ve si el padre es el header entonces lo ubica como raíz, de otra manera se fija si es mayor o menor que el padre y lo ubica como el hijo correspondiente. Por ultimo, aumenta la variable count del arbol en 1, crea un iterador apuntando al nuevo nodo y llama a insert_fixup con este iterador. </p>
 
 <p>Definición en la línea <a class="el" href="map_8h_source.html#l02392">2392</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+=======
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Crea un iterador con el hint para que pase a ser iterator y pueda utilizarse para insertar. Chequea si el elemento no estaba definido, para proceder, en caso contrario no inserta nada. A partir del nodo en el que se encuentra busca la hoja en la que insertar el elemento. Crea un <a class="el" href="structaed2_1_1map_1_1InnerNode.html" title="Estructura (privada) de un nodo no cabecera del árbol red-black. ">InnerNode</a> "nuevo" con este nodo encontrado (hoja) como padre, de color rojo, por defecto, y con el value pasado por parametro. Evalua si es el menor o el mayor de todos los nodos del arbol respectivamente y de ser asi setea a los hijos del header con este nuevo nodo. Luego ve si el padre es el header entonces lo ubica como raíz, de otra manera se fija si es mayor o menor que el padre y lo ubica como el hijo correspondiente. Por ultimo, aumenta la variable count del arbol en 1, crea un iterador apuntando al nuevo nodo y llama a insert_fixup con este iterador. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="map_8h_source.html#l02397">2397</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+>>>>>>> 9ea902a479045bf92419b175de38f7d309248165
 
 </div>
 </div>
 </div><!-- contents -->
+<<<<<<< HEAD
 </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -136,6 +149,14 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
       <li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a>      </li>
 
     <li class="footer">Generado el Viernes, 23 de Junio de 2017 14:49:23 para Trabajo práctico 2: diccionario sobre RB-tree por
+=======
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a></li><li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a></li>
+    <li class="footer">Generado el Viernes, 23 de Junio de 2017 15:55:42 para Trabajo práctico 2: diccionario sobre RB-tree por
+>>>>>>> 9ea902a479045bf92419b175de38f7d309248165
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

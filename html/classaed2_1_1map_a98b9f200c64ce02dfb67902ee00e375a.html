@@ -106,24 +106,42 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
           <td></td><td><code> [inline]</code></td>
         </tr>
       </table>
+<<<<<<< HEAD
 </div>
 <div class="memdoc">
 
 <p>Inserta <b class="paramname">value</b> en el diccionario. </p>
 <p>Inserta un <b>nuevo</b> valor en el diccionario. Si <b class="paramname">*this</b> ya tiene un valor con clave <b class="paramname">value</b>.first, entonces la función no tiene efectos. El iterador de retorno apunta al elemento recien insertado (o aquel que previno la insercion).</p>
 <dl class="params"><dt><b>Parámetros:</b></dt><dd>
+=======
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Inserta <b class="paramname">value</b> en el diccionario. </p>
+<p>Inserta un <b>nuevo</b> valor en el diccionario. Si <b class="paramname">*this</b> ya tiene un valor con clave <b class="paramname">value</b>.first, entonces la función no tiene efectos. El iterador de retorno apunta al elemento recien insertado (o aquel que previno la insercion).</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+>>>>>>> 9ea902a479045bf92419b175de38f7d309248165
   <table class="params">
     <tr><td class="paramname">value</td><td>valor a insertar </td></tr>
     <tr><td class="paramname">hint</td><td>iterador apuntando al diccionario. Se espera que apunte al minimo valor mayor o igual a <b class="paramname">value</b>.first (i.e., a lower_bound(<b class="paramname">value</b>.first)). Igualmente, la función es robusta y funciona correctamente aunque esto no ocurra. </td></tr>
   </table>
   </dd>
 </dl>
+<<<<<<< HEAD
 <dl class="retval"><dt><b>Valores devueltos:</b></dt><dd>
+=======
+<dl class="retval"><dt>Valores devueltos</dt><dd>
+>>>>>>> 9ea902a479045bf92419b175de38f7d309248165
   <table class="retval">
     <tr><td class="paramname">res</td><td>iterador apuntando al elemento insertado o que previno la inserción</td></tr>
   </table>
   </dd>
 </dl>
+<<<<<<< HEAD
 <dl class="user"><dt><b>Aspectos de aliasing:</b></dt><dd>\1</dd></dl>
 <dl class="pre"><dt><b>Precondición:</b></dt><dd>{this  d_{ 0} </dd></dl>
 <dl class="post"><dt><b>Postcondición:</b></dt><dd>{(def?(key, this)  this  d_0)  ( def?(key, this)  (this  definir(key, d_0)  Siguiente(res)   key, obtener(key, this)  ))}</dd></dl>
@@ -136,10 +154,24 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 <p>Crea un iterador en la posición en la que insertar, buscandola con lower bound. Llama a insert pasandole el iterador como hint. </p>
 
 <p>Definición en la línea <a class="el" href="map_8h_source.html#l01441">1441</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+=======
+<dl class="section user"><dt>Aspectos de aliasing:</dt><dd>res apunta al elemento insertado. Se invalida sólo si se elimina dicho elemento sin usar res como pos</dd></dl>
+<dl class="section pre"><dt>Precondición</dt><dd>{this  d_{ 0} </dd></dl>
+<dl class="section post"><dt>Postcondición</dt><dd>{(def?(key, this)  this  d_0)  ( def?(key, this)  (this  definir(key, d_0)  Siguiente(res)   key, obtener(key, this)  ))}</dd></dl>
+<p>{</p><ul>
+<li>Peor caso: ((({*this}))  ({*this})  ({value}))</li>
+<li>Si {hint} apunta al primer valor con clave al menos {value}.first (o {this}-&gt;<a class="el" href="classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983.html#a76023e6a56cb625513e1b5ea028bf983" title="Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario. ">end()</a> en caso de no existir): (({*this})  ({value})) amortizado. }</li>
+</ul>
+<dl class="section attention"><dt>Atención</dt><dd>Para garantizar que el nuevo elemento se inserte sí o sí, usar <a class="el" href="classaed2_1_1map_a2ef6723c183916276b0afc4a4c721475.html#a2ef6723c183916276b0afc4a4c721475" title="Inserta o Color::Redefine value en el diccionario. ">aed2::map::insert_or_assign</a>.</dd></dl>
+<p>Crea un iterador en la posición en la que insertar, buscandola con lower bound. Llama a insert pasandole el iterador como hint. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="map_8h_source.html#l01435">1435</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+>>>>>>> 9ea902a479045bf92419b175de38f7d309248165
 
 </div>
 </div>
 </div><!-- contents -->
+<<<<<<< HEAD
 </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -161,6 +193,14 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
       <li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a>      </li>
 
     <li class="footer">Generado el Viernes, 23 de Junio de 2017 14:49:22 para Trabajo práctico 2: diccionario sobre RB-tree por
+=======
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a></li><li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a></li>
+    <li class="footer">Generado el Viernes, 23 de Junio de 2017 15:55:42 para Trabajo práctico 2: diccionario sobre RB-tree por
+>>>>>>> 9ea902a479045bf92419b175de38f7d309248165
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

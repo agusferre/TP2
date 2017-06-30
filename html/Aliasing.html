@@ -175,6 +175,7 @@ Especificación de los iteradores y el alias</h2>
 <p>De forma similar al TAD puntero de más arriba, los TADs para especificar iteradores son más bien construcciones sintácticas que sirven para expresar la secuencia recorrida. Nuevamente, la idea es poder expresar las pre y postcondiciones en términos algebraicos. Sin embargo, los TADs del apunte de Módulos básicos son insuficientes para este TP, porque no conocen cuál es la colección que están iterando. El problema surge cuando queremos especificar una función como, digamos, swap. Supongamos que queremos una función de swap que intercambie las posiciones apuntadas por dos iteradores `it1` e `it2`. ¿Cómo hacemos para expresar que `it1` e `it2` recorren la misma colección? Claramente, no alcanza con decir que la secuencia subyacente es la misma, porque podrían ser iteradores a listas observacionalmente iguales, pero en posiciones distintas de la memoria.</p>
 <p>El problema con la especificación de los iteradores es que no explotan el concepto de puntero acá descripto. Aunque dejamos como ejercicio (no obligatorio) su especificación, vamos a suponer que los generadores de iteradores reciben un parámetro adicional de tipo puntero(T) que determina la variable de tipo T que se está recorriendo. Asimismo, tiene un observador, llamado colección que retorna el puntero al objeto recorrido. Así pues, podemos expresar que `it1` e `it2` recorren la misma coleccion verificando que coleccion(`it1`) <img class="formulaInl" alt="$=_{\rm obs}$" src="form_33.png"/> coleccion(`it2`). </p>
 </div></div><!-- contents -->
+<<<<<<< HEAD
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -194,6 +195,13 @@ Especificación de los iteradores y el alias</h2>
     <ul>
 
     <li class="footer">Generado el Viernes, 23 de Junio de 2017 14:49:21 para Trabajo práctico 2: diccionario sobre RB-tree por
+=======
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generado el Viernes, 23 de Junio de 2017 15:55:42 para Trabajo práctico 2: diccionario sobre RB-tree por
+>>>>>>> 9ea902a479045bf92419b175de38f7d309248165
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

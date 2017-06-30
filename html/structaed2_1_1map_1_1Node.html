@@ -96,9 +96,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
+<<<<<<< HEAD
 <tr><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaed2_1_1map_1_1Node_a4f3cb2cc4302fe96432e624ced147540.html#a4f3cb2cc4302fe96432e624ced147540">~Node</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor de <a class="el" href="structaed2_1_1map_1_1Node.html" title="Estructura (privada) de un nodo del árbol red-black.">Node</a>.  <a href="#a4f3cb2cc4302fe96432e624ced147540"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structaed2_1_1map_1_1Node.html">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaed2_1_1map_1_1Node_a4d5263c74ea5f78025fea331267730ce.html#a4d5263c74ea5f78025fea331267730ce">inmediato</a> (int dir) const </td></tr>
+=======
+<tr class="memitem:a4f3cb2cc4302fe96432e624ced147540"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaed2_1_1map_1_1Node_a4f3cb2cc4302fe96432e624ced147540.html#a4f3cb2cc4302fe96432e624ced147540">~Node</a> ()</td></tr>
+<tr class="memdesc:a4f3cb2cc4302fe96432e624ced147540"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor de <a class="el" href="structaed2_1_1map_1_1Node.html" title="Estructura (privada) de un nodo del árbol red-black. ">Node</a>.  <a href="structaed2_1_1map_1_1Node_a4f3cb2cc4302fe96432e624ced147540.html#a4f3cb2cc4302fe96432e624ced147540">Más...</a><br /></td></tr>
+<tr class="separator:a4f3cb2cc4302fe96432e624ced147540"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af812885685c8c3285136d444d5169b28"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structaed2_1_1map_1_1Node.html">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaed2_1_1map_1_1Node_af812885685c8c3285136d444d5169b28.html#af812885685c8c3285136d444d5169b28">inmediato</a> (int dir) const</td></tr>
+<tr class="separator:af812885685c8c3285136d444d5169b28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0457bc1ad6576f02057d9e9996cc3e5d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structaed2_1_1map_1_1Node.html">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaed2_1_1map_1_1Node_a0457bc1ad6576f02057d9e9996cc3e5d.html#a0457bc1ad6576f02057d9e9996cc3e5d">sub_minimo</a> () const</td></tr>
+<tr class="separator:a0457bc1ad6576f02057d9e9996cc3e5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26f1400bc53e5ac9a5b3ad6250a4f832"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaed2_1_1map_1_1Node_a26f1400bc53e5ac9a5b3ad6250a4f832.html#a26f1400bc53e5ac9a5b3ad6250a4f832">print</a> (int tab=0) const</td></tr>
+<tr class="memdesc:a26f1400bc53e5ac9a5b3ad6250a4f832"><td class="mdescLeft">&#160;</td><td class="mdescRight">imprime el subarbol apuntado por this  <a href="structaed2_1_1map_1_1Node_a26f1400bc53e5ac9a5b3ad6250a4f832.html#a26f1400bc53e5ac9a5b3ad6250a4f832">Más...</a><br /></td></tr>
+<tr class="separator:a26f1400bc53e5ac9a5b3ad6250a4f832"><td class="memSeparator" colspan="2">&#160;</td></tr>
+>>>>>>> 9ea902a479045bf92419b175de38f7d309248165
 <tr><td colspan="2"><div class="groupHeader">Creación de nodos (constructores)</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>Punteros a los hijos izquierdo (child[0]) y derecho (child[1])</p>
 <p>Puntero al padre: garantiza insercion con puntero en O(1) amortizado e iteracion en O(1) memoria Color del nodo </p>
@@ -125,11 +138,16 @@ struct aed2::map&lt; Key, Meaning, Compare &gt;::Node</h3>
 <p>Además de definir los campos de la estructura de un nodo, esta clase podría usarse para implementar una especie de submodulo que incluya funciones para manipular el arbol red-black. Las funciones incluidas en esta estructura deberían ser aquellas que, si bien no requieren conocer el resto de la estructura red-black, explotan el conocimiento de que el árbol red-black tiene un único nodo sentinela que sirve de cabecera. (Ver ejemplos)</p>
 <dl class="remark"><dt><b>Comentarios:</b></dt><dd>Como <span class="paramname"><a class="el" href="structaed2_1_1map_1_1Node.html" title="Estructura (privada) de un nodo del árbol red-black.">Node</a></span> es una estructura privada, no tiene ventajas imporantes implementarla en forma modular. </dd></dl>
 
+<<<<<<< HEAD
 <p>Definición en la línea <a class="el" href="map_8h_source.html#l02074">2074</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+=======
+<p class="definition">Definición en la línea <a class="el" href="map_8h_source.html#l02068">2068</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+>>>>>>> 9ea902a479045bf92419b175de38f7d309248165
 </div><hr/>La documentación para esta estructura fue generada a partir del siguiente fichero:<ul>
 <li><a class="el" href="map_8h_source.html">map.h</a></li>
 </ul>
 </div><!-- contents -->
+<<<<<<< HEAD
 </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -152,6 +170,14 @@ struct aed2::map&lt; Key, Meaning, Compare &gt;::Node</h3>
       <li class="navelem"><a class="el" href="structaed2_1_1map_1_1Node.html">Node</a>      </li>
 
     <li class="footer">Generado el Viernes, 23 de Junio de 2017 14:49:23 para Trabajo práctico 2: diccionario sobre RB-tree por
+=======
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a></li><li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a></li><li class="navelem"><a class="el" href="structaed2_1_1map_1_1Node.html">Node</a></li>
+    <li class="footer">Generado el Viernes, 23 de Junio de 2017 15:55:42 para Trabajo práctico 2: diccionario sobre RB-tree por
+>>>>>>> 9ea902a479045bf92419b175de38f7d309248165
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

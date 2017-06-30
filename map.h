@@ -426,6 +426,7 @@
  * \b generadores \n
  * - set: Nat \TIMES \ALPHA \TO puntero(\ALPHA)
  *
+ *
  * Vale remarcar que dicho TAD no es más que un TAD sintáctico, cuyo único propósito es almacenar la información de un puntero.  Más aun, cuando
  * \ALPHA sea de tipo tupla, vamos a suponer la existencia de la función -> que permite acceder a los campos de la tupla apuntada.
  * Luego, la función term queda definida como:
@@ -606,7 +607,8 @@
  * son el mayor y el menor valor del arbol respectivamente.\n
  *
  * e.header.color == Header \LAND nothing?(e.header.value) \LAND e.header.parent.color == Black 
- * \LAND *e.header.child[0] =minimo(MapAConjunto(e)) \LAND *e.header.child[1] = maximo(MapAConjunto(e))
+ * \LAND ((e.count == 0 \LAND e.header.child[0] == header) \LOR (e.count > 0 \IMPLIES_L *e.header.child[0] = minimo(MapAConjunto(e))))
+ * \LAND ((e.count == 0 \LAND e.header.child[1] == header) \LOR (e.count > 0 \IMPLIES_L *e.header.child[1] = maximo(MapAConjunto(e))))
  * \endparblock
  *
  *
@@ -620,7 +622,6 @@
  * \LAND (get(n.child[1]) = 0 \LOR n.chiild[1].color = Black) 
  * \LAND nodosNegros(n.child[0]) = nodosNegros(n.child[1]) \LAND arbolBinarioDeBusqueda(n))
  * \endparblock
- * 
  *
  * \par arbolBinarioDeBusqueda
  * \parblock
@@ -639,10 +640,10 @@
  * + nodosNegros(n.child[1])
  * \endparblock
  *
- *     Auxiliares para Rep y Abs 
+ *     Auxiliares para Rep y Abs
  *
  * \par nodoHijo
- *\parblock
+ * \parblock
  * Devuelve true si el n1 es hijo de n2 en la estructura.
  *
  * \axioma{nodoHijo} : Node n1 x Node n2 \TO bool\n
@@ -684,6 +685,7 @@
  * \axioma{minimo}: Conj(\ALPHA, \BETA) \TO (\ALPHA, \BETA) {\LNOT \EMPTYSET?(elems)}\n
  * minimo(elems) \EQUIV minimoAux(elems, \PI1(dameUno(elems)))
  * \endparblock
+ *
  *
  * \par minimoAux
  * \parblock
@@ -1048,7 +1050,7 @@ public:
      * que al estándar C++, fue incluida en el estándar C++11.  Antes era obligación
      * recurrir a la función find.
      * 
-     * La funcion tiene el  prerrequisito de tener definido un valor con clave = key, por lo que invoca
+     * La funcion tiene el prerrequisito de tener definido un valor con clave = key, por lo que invoca
      * directamente a find, sabiendo que este retornará un nodo interno con value. 
      */
     const Meaning& at(const Key& key) const {
@@ -1094,7 +1096,6 @@ public:
      * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}) + \a x) donde
      * - \a x = 1 si def?(\a self, \P{key}), y
      * - \a x = \a c en caso contrario.}
-     *
      *
      * La función primero verifica si el valor esta definido o no. Para esto usa la funcion lower_bound
      * y no find, ya que la primera nos sirve para insertar un valor en caso de que no este definido, y la segunda no.
@@ -1353,7 +1354,6 @@ public:
 	 * Inserta un nuevo valor llamando a insert_rapido, con la seguridad de que it esta correctamente ubicado.
      */
     iterator insert_or_assign(const_iterator hint, const value_type& value) {
-        const_iterator indice = hint;
         iterator it;
         if (hintValido(hint, value))
             it.n = const_cast<Node*>(hint.n);
@@ -1393,31 +1393,29 @@ public:
      * Luego, se divide en tres casos.
      * Cuando el hijo derecho del nodo a eliminar es null,transplanta a pos con su hijo izquierdo.
      * Lo análogo con el hijo izquierdo, esta vez con la certeza de que el hijo derecho no es null.
-     * Y el caso donde ninguno de los dos es null.
-     *
+     * Y el caso donde ninguno de los dos es null, se encuentra el sucesor del nodo a borrar, se transplantan los valores
+     * y se elimina el sucesor.
+     * Se decrementa la variable count del arbol.
+     * Por ultimo, en el caso en que el color original del nodo a borrar fuese negro y el nodo x (nodo transplantado con z,
+     * nodo a borrar) distinto de null se llama a erase_fixup, para reorganizar el arbol, ya que en el caso en que el nodo
+     * fuese rojo no lo desordenaria.
+     * Borramos la memoria reservada para el nodo a eliminar.
      */
     iterator erase(const_iterator pos) {
         Node* z = const_cast<Node*>(pos.n);
     	Node* y = z;
     	Node* x;
-        if (pos.n == header.child[0]){
-            if (count == 1)
-                header.child[0] = &header;
-            else {
-                header.child[0] = const_cast<Node *>((++pos).n);
-                --pos;
-            }
-        }
-        if (pos.n == header.child[1]) {
-            if (count == 1)
-                header.child[1] = &header;
-            else {
-                header.child[1] = const_cast<Node *>((--pos).n);
-                ++pos;
+        for (int i = 0; i < 2; i++) {
+            if (pos.n == header.child[i]) {
+                if (count == 1)
+                    header.child[i] = &header;
+                else {
+                    header.child[i] = const_cast<Node *>(pos.n->inmediato(1-i));
+                }
             }
         }
         iterator res = iterator(const_cast<Node*>((++pos).n));
-    	Color y_colorcito = y->color;
+    	Color y_color_original = y->color;
     	if (z->child[0] == nullptr){
    			x = z->child[1];
    			transplant(z, z->child[1]);
@@ -1425,12 +1423,10 @@ public:
     		x = z->child[0];
     		transplant(z, z->child[0]);
     	} else {
-            y = header.child[0];
-            y_colorcito = y->color;
+            y = z->child[1]->sub_minimo();
+            y_color_original = y->color;
             x = y->child[1];
-            if (y->parent == z)
-                x->parent = y;
-            else {
+            if (y->parent != z) {
                 transplant(y, y->child[1]);
                 y->child[1] = z->child[1];
                 y->child[1]->parent = y;
@@ -1441,13 +1437,14 @@ public:
             y->color = z->color;
         }
         count--;
-        if (y_colorcito == Color::Black && x != nullptr)
+        if (y_color_original == Color::Black && x != nullptr)
             erase_fixup(iterator(x));
         delete z;
     	return res;
     }
 
      /**
+      *
       *
       */
     void transplant(Node* u, Node* v){
@@ -1462,12 +1459,9 @@ public:
     }
 
     /**
-	
-
-	Completar especificacion coloquialmente
-
-
-    **/
+     *
+     *
+     */
     void erase_fixup(iterator it){
         Node* x = it.n;
         Node* w;
@@ -1529,6 +1523,8 @@ public:
      * \post \aedpost{\P{*this} \IGOBS vacio}
      *
      * \complexity{\O(\DEL(\P{*this}))}
+     *
+     * Mientras el arbol tenga elementos va eliminando el primero del mismo.
      */
     void clear() {
         while (not empty()) {
@@ -1945,7 +1941,6 @@ public:
          * rep_iter: puntero(Node) \TO bool\n
          * rep_iter(n) \EQUIV headerValido(*llegarAlHeader(n)) \LAND nodosInternosValidos(*llegarAlHeader(n)) \LAND
          * arbolBinarioDeBusqueda(\(PI2*llegarAlHeader(n)))
-         *
          * rep_iter(n) \EQUIV 1 \LAND 2 \LAND 3 \LAND 4
          *
          * 1) El nodo pertenece arbol
@@ -2216,18 +2211,22 @@ private:
 
         //@}
         /**
-        * COMPLETAR COMPLEJIDAD
-		* La funcion inmediato devuelve el predecesor con dir = 0 y el sucesor inmediato dir = 1.
-		* En el primer caso se verifica si this esta parado en header, ya que para buscar el 
-		* predecesor en ese caso debe simplemente ir a su hijo derecho.
-		* Si no, this esta sobre un nodo interno y quedan dos casos:
-		* Si el child[dir] de this existe, el inmediato es el ultimo child[1-dir] de este.
-		* Si no, el inmediato se encuentra con un nodo indice que sube hacia el header hasta encontrarse el primer 
-		* nodo en el que el indice sea su child[1-dir].
-		* Notar que esta funcion incluye el caso en el inmediato es el header.
-
-        **/
-
+		 * La funcion inmediato devuelve el predecesor con dir = 0 y el sucesor inmediato dir = 1.
+		 * En el primer caso se verifica si this esta parado en header, ya que para buscar el
+		 * predecesor en ese caso debe simplemente ir a su hijo derecho.
+		 * Si no, this esta sobre un nodo interno y quedan dos casos:
+		 * Si el child[dir] de this existe, el inmediato es el ultimo child[1-dir] de este.
+		 * Si no, el inmediato se encuentra con un nodo indice que sube hacia el header hasta encontrarse el primer
+   		 * nodo en el que el indice sea su child[1-dir].
+ 		 * Notar que esta funcion incluye el caso en el inmediato es el header.
+         *
+         * \complexity{
+         * - Peor caso: \O(\LOG(\SIZE(this))) porque puede llegar a tener que subir hasta la raiz del arbol y eso en un
+         * red black tree es logaritmico.
+         * - En cambio si se encuentra en el header o el nodo al que apunta el iterador tiene el hijo correspondiente
+         * y a su vez este no tiene hijo opuesto (si se incrementa el hijo correspondiente seria el izquierdo y este,
+         * a su vez, no deberia tener hijo derecho. Invertido para el caso en que se decrementa), la complejidad sera \O(1)}
+         **/
         const Node* inmediato(int dir) const {
             const Node* res = this;
             if (res->is_header())
@@ -2245,7 +2244,16 @@ private:
             }
             return res;
         }
-#ifdef DEBUG
+
+        /**
+         * Encuentra el minimo nodo en un "sub arbol" a partir de un nodo dado.
+         */
+        Node* sub_minimo() const {
+            Node* res = const_cast<Node*>(this);
+            while (res->child[0] != nullptr)
+                res = res->child[0];
+            return res;
+        }
 
         /**
          * @brief imprime el subarbol apuntado por this
@@ -2257,8 +2265,6 @@ private:
         	if(child[0]) child[0]->print(tab + 2);
         	if(child[1]) child[1]->print(tab + 2);
         }
-
-#endif
     };
 
     /**

@@ -112,6 +112,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
   </table>
   </dd>
 </dl>
+<<<<<<< HEAD
 <dl class="user"><dt><b>Aspectos de aliasing:</b></dt><dd>\1.</dd></dl>
 <dl class="pre"><dt><b>Precondición:</b></dt><dd><b>P</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {this <img class="formulaInl" alt="$=_{\rm obs}$" src="form_33.png"/> d_0 <img class="formulaInl" alt="$\land$" src="form_16.png"/> HaySiguiente?(pos)} </dd></dl>
 <dl class="post"><dt><b>Postcondición:</b></dt><dd>{res <img class="formulaInl" alt="$=_{\rm obs}$" src="form_33.png"/> Avanzar(pos) <img class="formulaInl" alt="$\land$" src="form_16.png"/> this <img class="formulaInl" alt="$=_{\rm obs}$" src="form_33.png"/> borrar(pos.key (chequear), this)}</dd></dl>
@@ -123,10 +124,23 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 <p>Primero se fija si pos apunta al primero o al ultimo y modifica el hijo correspondiente del header para que no quede apuntando a un nodo inválido. Luego, se divide en tres casos. Cuando el hijo derecho del nodo a eliminar es null,transplanta a pos con su hijo izquierdo. Lo análogo con el hijo izquierdo, esta vez con la certeza de que el hijo derecho no es null. Y el caso donde ninguno de los dos es null. </p>
 
 <p>Definición en la línea <a class="el" href="map_8h_source.html#l01387">1387</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+=======
+<dl class="section user"><dt>Aspectos de aliasing:</dt><dd>res queda apuntando al siguiente elemento al borrado. Se invalida si se borra ese elemento sin usar res como pos.</dd></dl>
+<dl class="section pre"><dt>Precondición</dt><dd><b>P</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {this <img class="formulaInl" alt="$=_{obs}$" src="form_2.png"/> d_0 <img class="formulaInl" alt="$\land$" src="form_16.png"/> HaySiguiente?(pos)} </dd></dl>
+<dl class="section post"><dt>Postcondición</dt><dd><b>Q</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {res <img class="formulaInl" alt="$=_{obs}$" src="form_2.png"/> Avanzar(pos) <img class="formulaInl" alt="$\land$" src="form_16.png"/> this <img class="formulaInl" alt="$=_{obs}$" src="form_2.png"/> borrar(pos.key (chequear), this)}</dd></dl>
+<p>{</p><ul>
+<li>Peor caso: (({*pos}) + (({*this})))</li>
+<li>Peor caso amortizado: (({*pos})</li>
+</ul>
+<p>Primero se fija si pos apunta al primero o al ultimo y en tal caso modifica el hijo correspondiente del header para que no quede apuntando a un nodo inválido (porque lo vamos a borrar). Luego, podemos dividir al erase en tres casos. Cuando el hijo derecho del nodo a eliminar es null, entonces transplantamos a pos con su hijo izquierdo. Lo análogo con el hijo izquierdo, esta vez con la certeza de que el hijo derecho no es null. Y el caso donde ninguno de los dos es null, se encuentra el sucesor del nodo a borrar, se transplantan los valores y se elimina el sucesor. Se decrementa la variable count del arbol. Por ultimo, en el caso en que el color original del nodo a borrar fuese negro y el nodo x (nodo transplantado con z, nodo a borrar) distinto de null se llama a erase_fixup, para reorganizar el arbol, ya que en el caso en que el nodo fuese rojo no lo desordenaria. Borramos la memoria reservada para el nodo a eliminar. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="map_8h_source.html#l01389">1389</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+>>>>>>> 9ea902a479045bf92419b175de38f7d309248165
 
 </div>
 </div>
 </div><!-- contents -->
+<<<<<<< HEAD
 </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -148,6 +162,14 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
       <li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a>      </li>
 
     <li class="footer">Generado el Viernes, 23 de Junio de 2017 14:49:22 para Trabajo práctico 2: diccionario sobre RB-tree por
+=======
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a></li><li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a></li>
+    <li class="footer">Generado el Viernes, 23 de Junio de 2017 15:55:42 para Trabajo práctico 2: diccionario sobre RB-tree por
+>>>>>>> 9ea902a479045bf92419b175de38f7d309248165
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

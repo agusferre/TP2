@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var NAVTREE =
 [
   [ "Trabajo práctico 2: diccionario sobre RB-tree", "index.html", [
@@ -23,6 +24,11 @@ var NAVTREE =
     ] ]
   ] ]
 ];
+=======
+var navTreeSubIndices = new Array();
+var arrowDown = '&#9660;';
+var arrowRight = '&#9658;';
+>>>>>>> 9ea902a479045bf92419b175de38f7d309248165
 
 function getData(varName)
 {

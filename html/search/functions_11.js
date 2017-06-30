@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['_7emap',['~map',['../classaed2_1_1map_ab22c9a85c2dadbc286cd30e97069a8e6.html#ab22c9a85c2dadbc286cd30e97069a8e6',1,'aed2::map']]],
-  ['_7enode',['~Node',['../structaed2_1_1map_1_1Node_a4f3cb2cc4302fe96432e624ced147540.html#a4f3cb2cc4302fe96432e624ced147540',1,'aed2::map::Node']]]
+  ['value',['value',['../structaed2_1_1map_1_1Node_af4ada8e79dabb4849fc87de63d3970fb.html#af4ada8e79dabb4849fc87de63d3970fb',1,'aed2::map::Node::value()'],['../structaed2_1_1map_1_1Node_ab66a33cedd0ba5cc20e366d4769184ae.html#ab66a33cedd0ba5cc20e366d4769184ae',1,'aed2::map::Node::value() const']]]
 ];
