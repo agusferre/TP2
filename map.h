@@ -1122,8 +1122,8 @@ public:
      * \aliasing{res apunta al nodo cuyo key() es key. Se invalida si se elimina el nodo sin usar res como pos}
      *
      * \pre \aedpre{true}
-     * \post \aedpost{def?(key, this) \IMPLIES Siguiente(res) \IGOBS \langle key, obtener(key, this) \rangle 
-     					\LAND (\neg def?(key,this) \IMPLIES \LNOT HaySiguiente?(res)) }
+     * \post \aedpost{def?(key, this) \IMPLIES Siguiente(res) \IGOBS \langle key, obtener(key, this) \rangle
+     					\LAND (\LNOT def?(key,this) \IMPLIES \LNOT HaySiguiente?(res))}
      *
      * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
      *
@@ -1265,60 +1265,6 @@ public:
         return insert_rapido(lower_bound(value.first), value);
     }
 
-   /**
-    * Lo que hace esta función es re-organizar el arbol de modo tal que se cumplan las propiedades de un red-black tree.
-    * Para ello, analiza
-    */
-    void insert_fixup(iterator it){
-	    Node* n = it.n;
-	    Node* y;
-        while (n->parent->color == Color::Red) {
-            auto dir = n->parent == n->parent->parent->child[0];
-            y = n->parent->parent->child[dir];
-            if (y == nullptr)
-                y = &header;
-            if (y->color == Color::Red) {
-                n->parent->color = Color::Black;
-                y->color = Color::Black;
-                n->parent->parent->color = Color::Red;
-                n = n->parent->parent;
-            } else {
-                if (n == n->parent->child[dir]) {
-                    n = n->parent;
-                    iterator it2 = iterator(n);
-                    dir_rotate(it2, 1 - dir);
-                }
-                    n->parent->color = Color::Black;
-                    n->parent->parent->color = Color::Red;
-                    iterator it3(n->parent->parent);
-                    dir_rotate(it3, dir);
-            }
-        }
-        header.parent->color = Color::Black;
-    }
-    /**
-
-	Completar especificacion coloquialmente
-
-    **/
-
-    void dir_rotate(iterator it, int dir){
-        Node* n = it.n;
-        Node* y = it.n->child[1-dir];
-        n->child[1-dir] = y->child[dir];
-        if (y->child[dir] != nullptr)
-            y->child[dir]->parent = n;
-        y->parent = n->parent;
-        if(n->parent->is_header())
-            header.parent = y;
-        else if (n == n->parent->child[dir])
-            n->parent->child[dir] = y;
-        else
-            n->parent->child[1-dir] = y;
-        y->child[dir] = n;
-        n->parent = y;
-    }
-
     /**
      * @brief Inserta o Color::Redefine \P{value} en el diccionario
      *
@@ -1360,8 +1306,9 @@ public:
         else
             it = lower_bound(value.first);
         if (not it.n->is_header() && eq(it.n->key(), value.first))
-            it = erase(it);
-        it = insert_rapido(it, value);
+            static_cast<InnerNode*>(it.n)->_value.second = value.second;
+        else
+            it = insert_rapido(it, value);
         return it;
     }
 
@@ -1441,59 +1388,6 @@ public:
             erase_fixup(iterator(x));
         delete z;
     	return res;
-    }
-
-     /**
-      *
-      *
-      */
-    void transplant(Node* u, Node* v){
-    	if (u->parent->is_header())
-    		header.parent = v;
-    	else if (u == u->parent->child[0])
-            u->parent->child[0] = v;
-        else
-            u->parent->child[1] = v;
-        if (v != nullptr)
-            v->parent = u->parent;
-    }
-
-    /**
-     *
-     *
-     */
-    void erase_fixup(iterator it){
-        Node* x = it.n;
-        Node* w;
-        while (x != header.parent && x->color == Color::Black){
-            auto dir = (x == x->parent->child[0]);
-            w = x->parent->child[dir];
-            if (w->color == Color::Red){
-                w->color = Color::Black;
-                x->parent->color = Color::Red;
-                it.n = x->parent;
-                dir_rotate(it, 1-dir);
-                w = x->parent->child[dir];
-            }
-            if (w->child[1-dir]->color == Color::Black && w->child[dir]->color == Color::Black){
-                w->color = Color::Red;
-                x = x->parent;
-            } else {
-                if (w->child[dir]->color == Color::Black){
-                    w->child[1-dir]->color = Color::Black;
-                    w->color = Color::Red;
-                    dir_rotate(iterator(w), dir);
-                    w = x->parent->child[dir];
-                }
-                w->color = x->parent->color;
-                x->parent->color = Color::Black;
-                w->child[dir]->color = Color::Black;
-                it.n = x->parent;
-                dir_rotate(it, 1-dir);
-                x = header.parent;
-            }
-        }
-        x->color = Color::Black;
     }
 
     /**
@@ -2376,6 +2270,112 @@ private:
             res[0] = res[1] = indice;
         }
         return std::make_pair(res[0], res[1]);
+    }
+
+    /**
+    * Lo que hace esta función es re-organizar el arbol de modo tal que se cumplan las propiedades de un red-black tree.
+    */
+    void insert_fixup(iterator it){
+        Node* n = it.n;
+        Node* y;
+        while (n->parent->color == Color::Red) {
+            auto dir = n->parent == n->parent->parent->child[0];
+            y = n->parent->parent->child[dir];
+            if (y == nullptr)
+                y = &header;
+            if (y->color == Color::Red) {
+                n->parent->color = Color::Black;
+                y->color = Color::Black;
+                n->parent->parent->color = Color::Red;
+                n = n->parent->parent;
+            } else {
+                if (n == n->parent->child[dir]) {
+                    n = n->parent;
+                    iterator it2 = iterator(n);
+                    dir_rotate(it2, 1 - dir);
+                }
+                n->parent->color = Color::Black;
+                n->parent->parent->color = Color::Red;
+                iterator it3(n->parent->parent);
+                dir_rotate(it3, dir);
+            }
+        }
+        header.parent->color = Color::Black;
+    }
+    /**
+
+	Completar especificacion coloquialmente
+
+    **/
+
+    void dir_rotate(iterator it, int dir){
+        Node* n = it.n;
+        Node* y = it.n->child[1-dir];
+        n->child[1-dir] = y->child[dir];
+        if (y->child[dir] != nullptr)
+            y->child[dir]->parent = n;
+        y->parent = n->parent;
+        if(n->parent->is_header())
+            header.parent = y;
+        else if (n == n->parent->child[dir])
+            n->parent->child[dir] = y;
+        else
+            n->parent->child[1-dir] = y;
+        y->child[dir] = n;
+        n->parent = y;
+    }
+
+    /**
+     *
+     *
+     */
+    void transplant(Node* u, Node* v){
+        if (u->parent->is_header())
+            header.parent = v;
+        else if (u == u->parent->child[0])
+            u->parent->child[0] = v;
+        else
+            u->parent->child[1] = v;
+        if (v != nullptr)
+            v->parent = u->parent;
+    }
+
+    /**
+     *
+     *
+     */
+    void erase_fixup(iterator it){
+        Node* x = it.n;
+        Node* w;
+        while (x != header.parent && x->color == Color::Black){
+            auto dir = (x == x->parent->child[0]);
+            w = x->parent->child[dir];
+            if (w->color == Color::Red){
+                w->color = Color::Black;
+                x->parent->color = Color::Red;
+                it.n = x->parent;
+                dir_rotate(it, 1-dir);
+                w = x->parent->child[dir];
+            }
+            if (w->child[1-dir]->color == Color::Black && w->child[dir]->color == Color::Black){
+                w->color = Color::Red;
+                x = x->parent;
+            } else {
+                if (w->child[dir]->color == Color::Black){
+                    w->child[1-dir]->color = Color::Black;
+                    w->color = Color::Red;
+                    dir_rotate(iterator(w), dir);
+                    w = x->parent->child[dir];
+                }
+                w->color = x->parent->color;
+                x->parent->color = Color::Black;
+                w->child[dir]->color = Color::Black;
+                it.n = x->parent;
+                dir_rotate(it, 1-dir);
+                x = header.parent;
+            }
+        }
+        x->color = Color::Black;
     }
 
     /**
