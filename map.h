@@ -2311,8 +2311,15 @@ private:
         header.parent->color = Color::Black;
     }
     /**
-     * @brief
-
+     * @brief función que rota el nodo apuntado por it (n) y su child[1- dir] (y), de manera que n quede como child[dir] de y.
+     * it queda apuntando a n.
+     * @pre El child[1-dir] (el hijo con el que va a rotarse) no es null.
+     *
+     * @param it iterador apuntando al nodo n a rotar
+     * @param dir dirección en la que se va a rotar
+     *
+     * \complexity {Se hace una cantidad constante de operaciones: \O(1)}
+     * 
     **/
 
     void dir_rotate(iterator it, int dir){
@@ -2348,7 +2355,7 @@ private:
     }
 
     /**
-     *
+     * @brief 
      *
      */
     void erase_fixup(iterator it){
