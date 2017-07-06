@@ -1296,8 +1296,8 @@ public:
      * \T{Meaning} tenga constructor sin parámetros.  La desventaja es que la notación no es tan bonita.
      * 
 	 * Busca el valor de manera similar al operator[]
-	 * Si lo encuentra, borra el elemento encontrado.
-	 * Inserta un nuevo valor llamando a insert_rapido, con la seguridad de que it esta correctamente ubicado.
+	 * Si lo encuentra, modifica el significado del nodo encontrado.
+	 * Sino inserta un nuevo valor llamando a insert_rapido, con la seguridad de que it esta correctamente ubicado.
      */
     iterator insert_or_assign(const_iterator hint, const value_type& value) {
         iterator it;
