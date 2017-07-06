@@ -580,6 +580,10 @@
  * dameUno(elems) \FI
  * \endparblock
  *
+ * \par itADiccionario
+ * \parblock
+ * Devuelve true si el iterador apunta a this 
+ *
  *
  * \par MenorQue
  * \parblock
@@ -1296,8 +1300,8 @@ public:
      * \T{Meaning} tenga constructor sin parámetros.  La desventaja es que la notación no es tan bonita.
      * 
 	 * Busca el valor de manera similar al operator[]
-	 * Si lo encuentra, borra el elemento encontrado.
-	 * Inserta un nuevo valor llamando a insert_rapido, con la seguridad de que it esta correctamente ubicado.
+	 * Si lo encuentra, modifica el significado del nodo encontrado.
+	 * Sino inserta un nuevo valor llamando a insert_rapido, con la seguridad de que it esta correctamente ubicado.
      */
     iterator insert_or_assign(const_iterator hint, const value_type& value) {
         iterator it;
@@ -2247,11 +2251,15 @@ private:
     }
 
     /**
-     * 
-     * Por defecto setea el arreglo res de dos posiciones con una referencia al header en ambas posiciones.
-     * Luego va iterando hasta encontrar el key o el primer elemento mayor o igual a key.
-     * Si existe un nodo definido con key, devuelve la tupla con ese nodo en ambas posiciones.
-     * De lo contrario, devuelve el primer menor en la primera posicion y el primer mayor en la segunda de la tupla.
+     * @brief Si key esta definida devuelve una tupla con el nodo cuya clave es key en ambas posiciones.
+     * Si no retorna una tupla con los nodos cuyo valor es el mayor de los menores y el menor de los mayores a key.
+     * En caso de que no existe un valor mayor o menor en el diccionario devuelve el header en ambas posiciones de la tupla.
+     * Se utiliza como funcion auxiliar para lower_bound.
+     *
+     * @param key clave a buscar.
+     * @returns Par con el nodo mayor de los menor o igual y el menor de los mayor o igual a key, respectivamente.
+     * Si no existe alguno de ellos devuelve header en ambas posiciones de la tupla.
+     *
      */
     std::pair<Node*, Node*> bounds(const Key& key) {
         auto r = const_cast<const map*>(this)->bounds(key);
