@@ -2395,15 +2395,19 @@ private:
     }
 
     /**
-     * Esta función verifica si el iterador está parado en el lower_bound de value.first para resolver
-     * si es utilizado en las funciones Insert e Insert_or_assign o no.
-     * Primero descarta la posibilidad de que el hint sea null lo que haria indefinir la funcion.
-     * Luego, si hint esta parado en la posicion pasando el ultimo, es el hint adecuado si no hay elementos en el arbol,
-     * o si todos los estos son menores que el value.
-     * En el caso que el hint esta parado al principio, es correcto si todos los elementos del arbol
-     * son mayores.
-     * Por ultimo, si no pasa ninguno de estos casos tenemos que chequear que el elemento sea menor
-     * que el hint pero mayor que el anterior a este.
+     * @brief función que verifica si el iterador está parado en el lower_bound de value.first.
+     * Sirve para chequear de forma prolija la utilidad de los iteradores parámetro en insert, insert_rapido e insert_or_assign)
+     *
+     * @param hint iterador apuntando a un nodo del árbol
+     * @param value referencia al valor que sería definido en las funciones que llaman a hintVálido
+     *
+     * @returns true si hint apunta a lower_bound(value.first) o a header si 
+     * \P{*this} no tiene elementos o estos son menores a value.
+     *
+     * \complexity {
+	 * - Peor caso: \O(\LOG(\SIZE(\P{*this}))).
+	 * - Peor caso amortizado : \O(1)
+     }
      */
     bool hintValido(const_iterator hint, const value_type& value) const {
         bool res;
@@ -2419,14 +2423,20 @@ private:
     }
 
     /**
-     * Es la funcion troncal de inserscion, toma el hint como valido por lo que si la clave no esta definida,
-     * y el hint no es el minimo del diccionario, lo inserta como hijo del nodo anterior al hint.
-     * Lo inserta con color rojo por defecto y se fija si es el menor o el mayor del arbol respectivamente y
-     * en tal caso lo define como el hijo corresponediente del header.
-     * Chequea si es mayor o menor que el padre y lo inserta como el hijo correspondiente.
-     * Por ultimo, aumenta la variable count del arbol en 1, crea un iterador apuntando al nuevo nodo y
-     * llama a insert_fixup con este iterador.
-    */
+     * @brief La funcion inserta el value en el árbol en la posición apuntada por hint, en caso de que
+     * no esté definida todavía. Como asume que el hint apunta a donde debe insertarse, cuesta menos que el insert normal.
+     *
+     * @pre hint apunta a lower_bound(value.first)
+     *
+     * @param hint apuntando a la posición en la que insertar
+     * @param value a definir
+     *
+     * @returns iterador apuntando al nodo insertado.
+     *
+     *\complexity {
+	 * \O(\CMP(\P{*this}) \PLUS \COPY(\P{value})) amortizado.
+	 * }
+     **/
     iterator insert_rapido(const_iterator hint, const value_type& value) {
         iterator it(const_cast<Node*>(hint.n));
         if (it.n->is_header() || !eq(it.n->key(), value.first)) {
