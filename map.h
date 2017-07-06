@@ -580,6 +580,10 @@
  * dameUno(elems) \FI
  * \endparblock
  *
+ * \par itADiccionario
+ * \parblock
+ * Devuelve true si el iterador apunta a this 
+ *
  *
  * \par MenorQue
  * \parblock
@@ -2055,7 +2059,7 @@ private:
          * El objetivo de esta función es poder reemplazar el chequeo de la condición para determinar si el nodo es
          * la cabecera, en caso en que queramos evitar el nuevo color.
          *
-         * @returns true si el nodo actual tiene color aed2::map::Color::Header.
+         * @retval true si el nodo actual tiene color aed2::map::Color::Header.
          *
          * \complexity{\O(1)}
          */
@@ -2248,7 +2252,7 @@ private:
 
     /**
      * @brief Si key esta definida devuelve una tupla con el nodo cuya clave es key en ambas posiciones.
-     * Sino retorna una tupla con los nodos cuyo valor es el mayor de los menores y el menor de los mayores a key.
+     * Si no retorna una tupla con los nodos cuyo valor es el mayor de los menores y el menor de los mayores a key.
      * En caso de que no existe un valor mayor o menor en el diccionario devuelve el header en ambas posiciones de la tupla.
      * Se utiliza como funcion auxiliar para lower_bound.
      *
@@ -2256,7 +2260,6 @@ private:
      * @returns Par con el nodo mayor de los menor o igual y el menor de los mayor o igual a key, respectivamente.
      * Si no existe alguno de ellos devuelve header en ambas posiciones de la tupla.
      *
-     * \complexity{\O(\LOG(\SIZE(\P{*this})))}
      */
     std::pair<Node*, Node*> bounds(const Key& key) {
         auto r = const_cast<const map*>(this)->bounds(key);
@@ -2413,7 +2416,7 @@ private:
      * \complexity {
 	 * - Peor caso: \O(\LOG(\SIZE(\P{*this}))).
 	 * - Peor caso amortizado : \O(1)
-     }
+     * }
      */
     bool hintValido(const_iterator hint, const value_type& value) const {
         bool res;
