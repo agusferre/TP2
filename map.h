@@ -2330,9 +2330,19 @@ private:
     }
 
     /**
-     *
-     *
-     */
+	* @brief Esta función es llamada en el delete para unir el padre del nodo a borrar con el hijo correspondiente.
+	* Para eso, se cambian los punteros de forma que v pase a ocupar el lugar de u (padre e hijos de u pasan a ser los de v). 
+    *
+    * @pre u distinto de null.
+    *
+    * @param u puntero a nodo a ser reemplazado
+    * @param v puntero a nodo remplazante
+    *
+    *
+    * \complexity {La cantidad de operaciones es constante: \O(\LOG(\SIZE(\P{*this})))} 
+    **/
+
+
     void transplant(Node* u, Node* v){
         if (u->parent->is_header())
             header.parent = v;
