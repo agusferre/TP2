@@ -1,36 +1,9 @@
-#define DEBUG
+//#define DEBUG
 #include "map.h"
 #include <gtest/gtest.h>
 
 #include <map>
 #include <iostream>
-#include <vector>
-
-std::vector<int> no_libera_memoria;
-
-struct Pepe {
-    Pepe() {
-        v.assign(4, 1);
-    }
-    ~Pepe() {
-        using std::swap;
-        swap(v, no_libera_memoria);
-    }
-    bool operator<(const Pepe& p) const {
-        return v < p.v;
-    }
-    
-    std::vector<int> v;
-};
-
-TEST(TestAdicional, insertOrAssignNoInvalida) {
-    aed2::map<Pepe, int> m;
-    auto it = m.insert({Pepe(), 1});
-    auto pos_en_pepe = it->first.v.begin();
-    EXPECT_EQ(*pos_en_pepe, 1);
-    auto res = m.insert_or_assign({Pepe(), 2});
-    EXPECT_EQ(pos_en_pepe, res->first.v.begin());
-}
 
 ////////////////////////////////////
 // Estructuras básicas de testing //
@@ -436,6 +409,64 @@ TEST_F(BasicMapInstances, MapDeMap) {
 
 	it++;
 	EXPECT_EQ(it->first, cinco_elementos);
+}
+
+/////////////////////
+// Stress (Alexis) //
+/////////////////////
+
+/**
+ * Estos son los tiempos en los que corrieron los algoritmos en mi maquina.
+ * Tal vez para ser justos antes de correr los test sobre los tps de los chicos
+ * en una maquina hay que actualizar estos datos para "normalizarlos".
+ */
+#define TIEMPO_INSERT 0.5
+#define TIEMPO_DELETE 0.5
+#define TIEMPO_ITERATE 0.5
+
+TEST(StressTest, ComplejidadGlobal) {
+
+	aed2::map<unsigned int, unsigned int> mapTest;
+
+	// 1. Insertamos con el iterador
+	{
+		auto it = mapTest.insert({0, 0});
+		// Momento desde
+		const clock_t begin_time_insert = clock();
+		for(unsigned int i = 1; i < 200000; ++i) {
+			it = mapTest.insert(++it, {i, i});
+		}
+		// Diferencia. Dividimos por los clocks por segundo para evitar que no dependa del usuario
+		auto diff = float( clock () - begin_time_insert ) /  CLOCKS_PER_SEC;
+		//~ std::cout << "tiempo insert con hint bueno (O(1) amortizado)" << diff << std::endl;
+		ASSERT_TRUE(diff < TIEMPO_INSERT*2);
+    }
+
+	// 2. Eliminamos 1 de cada 5. Quedan 160000.
+	{
+		const clock_t begin_time_delete = clock();
+		auto it = mapTest.begin();
+		for(unsigned int i = 0; i < 200000; i = i + 5) {
+			it = mapTest.erase(it);
+			for(int j = 0; j < 4; j++) {
+                ++it;
+            }
+		}
+        auto diff = float( clock () - begin_time_delete ) /  CLOCKS_PER_SEC;
+        //~ std::cout << "tiempo delete O(log n)" << diff << std::endl;
+		ASSERT_TRUE(diff < TIEMPO_DELETE*2);
+		ASSERT_EQ(160000, mapTest.size());
+	}
+
+	// 2. Iteramos todos los elementos en reversa (16000)
+	{
+		const clock_t begin_time_iterate = clock();
+		for(auto rit = mapTest.rbegin(); rit != mapTest.rend(); ++rit)
+			;
+		auto diff = float( clock () - begin_time_iterate ) /  CLOCKS_PER_SEC;
+		//~ std::cout << "tiempo iterate (O(n) amortizado): " << diff << std::endl;
+		ASSERT_TRUE(diff < TIEMPO_ITERATE*2);
+	}
 }
 
 ///////////////////////////

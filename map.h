@@ -2311,7 +2311,7 @@ private:
         header.parent->color = Color::Black;
     }
     /**
-     * @brief 
+     * @brief
 
     **/
 
