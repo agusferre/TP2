@@ -1288,7 +1288,7 @@ public:
      * \aliasing{res apunta al elemento insertado. Se invalida sólo si se elimina dicho elemento 
      			 sin usar res como pos}
      *
-     * \pre \aedpre{\P{*this} \IGOBS d_0 \LAND \LNOT (get(hint) \IGOBS 0)}
+     * \pre \aedpre{ \P{*this} \IGOBS d_{rm 0}\LAND coleccion(hint) \IGOBS DiccASecu(d_{rm 0}) }
      * \post  \aedpost{\P{*this} \IGOBS definir(key, \P{*this}) \LAND Siguiente(res) \IGOBS value}
      *
      * \complexity{
