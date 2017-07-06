@@ -582,8 +582,9 @@
  *
  * \par itADiccionario
  * \parblock
- * Devuelve true si el iterador apunta a this 
+ * Devuelve true si el iterador apunta a this
  *
+ * \endparblock
  *
  * \par MenorQue
  * \parblock
@@ -1125,7 +1126,8 @@ public:
      *
      * \pre \aedpre{true}
 
-     * \post \aedpost{def?(key, \P{*this}) \IMPLIES (Siguiente(res) \IGOBS \LANGLEkey, obtener(key, \P{*this})\RANGLE)
+     * \post \aedpost{ \LAND_L
+     * def?(key, \P{*this}) \IMPLIES (Siguiente(res) \IGOBS \LANGLEkey, obtener(key, \P{*this})\RANGLE)
      *					\LAND (\LNOT def?(key,\P{*this}) \IMPLIES \LNOT HaySiguiente?(res)) }
      *
      *
@@ -1238,8 +1240,9 @@ public:
      			 sin usar res como pos}
      *
      *
-     * \pre \aedpre{\P{*this} \IGOBS d_{\rm 0} \LAND \LNOT (get(hint) \IGOBS 0)}
-     * \post  \aedpost{(def?(key, d_{\rm 0}) \IMPLIES \P{*this} \igobs d_{\rm 0}) \LAND (\LNOT def?(key, d_{\rm 0}) \IMPLIES
+     * \pre \aedpre{\P{*this} \IGOBS d_{\rm 0} \LAND EsDiccionario? (Anteriores(hint) & Siguientes(hint)) \LAND
+     * esPermutacion(DiccASecu(\P{*this}, coleccion(hint))}
+     * \post  \aedpost{ coleccion(res) \IGOBS coleccion(hint) \LAND_L  (def?(key, d_{\rm 0}) \IMPLIES \P{*this} \igobs d_{\rm 0}) \LAND (\LNOT def?(key, d_{\rm 0}) \IMPLIES
      					(\P{*this} \IGOBS definir(key, d_ { \rm 0}) \LAND Siguiente(res) \IGOBS \LANGLE key, obtener(key, \P{*this}) \RANGLE ))}
      *
      * \complexity{
