@@ -1286,10 +1286,11 @@ public:
      * @retval res iterador apuntando al elemento insertado o redefinido
      *
      * \aliasing{res apunta al elemento insertado. Se invalida sólo si se elimina dicho elemento 
-     			 sin usar res como pos}
+     *			 sin usar res como pos}
      *
-     * \pre \aedpre{ \P{*this} \IGOBS d_{rm 0}\LAND coleccion(hint) \IGOBS DiccASecu(d_{rm 0}) }
-     * \post  \aedpost{\P{*this} \IGOBS definir(key, \P{*this}) \LAND Siguiente(res) \IGOBS value}
+     * \pre \aedpre{ \P{*this} \IGOBS d_{\rm 0}\LAND coleccion(hint) \IGOBS DiccASecu(d_{rm 0}) }
+     * \post  \aedpost{\P{*this} \IGOBS definir(key, \P{*this}) \LAND coleccion(res) \IGOBS coleccion(hint) \LAND
+     * HaySiguiente(res) \LAND_L Siguiente(res) \IGOBS value}
      *
      * \complexity{
      *  - Peor caso: \O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}) \PLUS \COPY(\P{value}))
