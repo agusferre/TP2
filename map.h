@@ -2055,7 +2055,7 @@ private:
          * El objetivo de esta función es poder reemplazar el chequeo de la condición para determinar si el nodo es
          * la cabecera, en caso en que queramos evitar el nuevo color.
          *
-         * @returns true si el nodo actual tiene color aed2::map::Color::Header.
+         * @retval true si el nodo actual tiene color aed2::map::Color::Header.
          *
          * \complexity{\O(1)}
          */
@@ -2247,6 +2247,7 @@ private:
     }
 
     /**
+     * 
      * Por defecto setea el arreglo res de dos posiciones con una referencia al header en ambas posiciones.
      * Luego va iterando hasta encontrar el key o el primer elemento mayor o igual a key.
      * Si existe un nodo definido con key, devuelve la tupla con ese nodo en ambas posiciones.
@@ -2407,7 +2408,7 @@ private:
      * \complexity {
 	 * - Peor caso: \O(\LOG(\SIZE(\P{*this}))).
 	 * - Peor caso amortizado : \O(1)
-     }
+     * }
      */
     bool hintValido(const_iterator hint, const value_type& value) const {
         bool res;
