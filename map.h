@@ -920,14 +920,12 @@ public:
      * siempre quede en el lower_bound del key a insertar.
      */
     map(const map& other) : header(), count(0), lt(other.lt) {
-        if (not other.empty()) {
-            auto it_other = iterator(other.header.child[1]);
+            auto it_other = other.rbegin();
             iterator it = end();
-            while ((it_other) != other.end()) {
+            while (it_other != other.rend()) {
                 it = insert_rapido(it, *it_other);
-                it_other--;
+                it_other++;
             }
-        }
     }
 
     /**
@@ -991,7 +989,7 @@ public:
      * \aliasing{ No hay. }
      *
      * \pre \aedpre{true}
-     * \post \aedpost{P\{*res \IGOBS other}
+     * \post \aedpost{\P{*res} \IGOBS other}
      *
      * \complexity{\O(\DEL(\P{*this}) \PLUS \COPY(\P{other}))}
      *
@@ -1614,6 +1612,14 @@ public:
      *
      * \see [Documentacion estándar de iteradores bidireccionales](http://en.cppreference.com/w/cpp/concept/BidirectionalIterator)
      */
+    void show() {
+        auto it = begin();
+        while (it != end()) {
+            it.n->print();
+            it++;
+        }
+    }
+
     class iterator {
         using Node = typename map::Node;
         using InnerNode = typename map::InnerNode;
@@ -1664,10 +1670,10 @@ public:
          *
          * @retval res referencia al valor apuntado por \P{*this}
          *
-         * \aliasing{Se invalida si el elemento apuntado es eliminado}
+         * \aliasing{Se invalida si el elemento apuntado es eliminado  //  res es una referencia al valor que apunta \P{*this}}
          *
          * \pre \aedpre{HaySiguiente(this)}
-         * \post \aedpost{res \IGOBS *\P{*this}}
+         * \post \aedpost{res \IGOBS \P{*this}}
          *
          * \complexity{\O(1)}
          */
@@ -2110,13 +2116,7 @@ private:
         //@}
         /**
 		 * La funcion inmediato devuelve el predecesor con dir = 0 y el sucesor inmediato dir = 1.
-		 * En el primer caso se verifica si this esta parado en header, ya que para buscar el
-		 * predecesor en ese caso debe simplemente ir a su hijo derecho.
-		 * Si no, this esta sobre un nodo interno y quedan dos casos:
-		 * Si el child[dir] de this existe, el inmediato es el ultimo child[1-dir] de este.
-		 * Si no, el inmediato se encuentra con un nodo indice que sube hacia el header hasta encontrarse el primer
-   		 * nodo en el que el indice sea su child[1-dir].
- 		 * Notar que esta funcion incluye el caso en el inmediato es el header.
+		 *
          *
          * \complexity{
          * - Peor caso: \O(\LOG(\SIZE(this))) porque puede llegar a tener que subir hasta la raiz del arbol y eso en un
@@ -2144,7 +2144,11 @@ private:
         }
 
         /**
-         * Encuentra el minimo nodo en un "sub arbol" a partir de un nodo dado.
+         * @brief Encuentra el minimo nodo en un "sub arbol" a partir de un nodo dado y lo devuelve.
+         * this debe ser un un puntero a un Nodo del árbol.
+         * \Complexity {Para encontrarlo recorre la rama del arbol que está más a la izquierda hasta llegar a una hoja, por lo que
+         * toma \O(\LOG(\SIZE(\P{*this}))}
+         *
          */
         Node* sub_minimo() const {
             Node* res = const_cast<Node*>(this);
@@ -2307,8 +2311,7 @@ private:
         header.parent->color = Color::Black;
     }
     /**
-
-	Completar especificacion coloquialmente
+     * @brief 
 
     **/
 
@@ -2361,7 +2364,9 @@ private:
                 dir_rotate(it, 1-dir);
                 w = x->parent->child[dir];
             }
-            if (w->child[1-dir]->color == Color::Black && w->child[dir]->color == Color::Black){
+            auto kaka = it.n->value();
+            auto wkaka = w->value();
+            if ((w->child[1-dir] == nullptr || w->child[1-dir]->color == Color::Black) && (w->child[dir] == nullptr || w->child[dir]->color == Color::Black)){
                 w->color = Color::Red;
                 x = x->parent;
             } else {
