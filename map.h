@@ -920,12 +920,12 @@ public:
      * siempre quede en el lower_bound del key a insertar.
      */
     map(const map& other) : header(), count(0), lt(other.lt) {
-            auto it_other = other.rbegin();
-            iterator it = end();
-            while (it_other != other.rend()) {
-                it = insert_rapido(it, *it_other);
-                it_other++;
-            }
+        auto it_other = other.rbegin();
+        iterator it = end();
+        while (it_other != other.rend()) {
+            it = insert_rapido(it, *it_other);
+        it_other++;
+        }
     }
 
     /**
@@ -1258,8 +1258,6 @@ public:
       * Evalúa si hint apunta al primer valor con clave al menos \P{value}.
       * Si es así, llama a insert_rapido con hint, de lo contrario llama a insert_rapido con el lower_bound como parametro.
       */
-
-
 
     iterator insert(const_iterator hint, const value_type& value) {
         if (hintValido(hint, value))
@@ -1612,14 +1610,6 @@ public:
      *
      * \see [Documentacion estándar de iteradores bidireccionales](http://en.cppreference.com/w/cpp/concept/BidirectionalIterator)
      */
-    void show() {
-        auto it = begin();
-        while (it != end()) {
-            it.n->print();
-            it++;
-        }
-    }
-
     class iterator {
         using Node = typename map::Node;
         using InnerNode = typename map::InnerNode;
@@ -2419,32 +2409,19 @@ private:
     }
 
     /**
-    * Crea un iterador con el hint para que pase a ser iterator y pueda utilizarse para insertar.
-    * Chequea si el elemento no estaba definido, para proceder, en caso contrario no inserta nada.
-    * A partir del nodo en el que se encuentra busca la hoja en la que insertar el elemento.
-    * Crea un InnerNode "nuevo" con este nodo encontrado (hoja) como padre, de color rojo, por defecto,
-    * y con el value pasado por parametro.
-    * Evalua si es el menor o el mayor de todos los nodos del arbol respectivamente y de ser asi setea
-    * a los hijos del header con este nuevo nodo.
-    * Luego ve si el padre es el header entonces lo ubica como raíz, de otra manera se fija si es mayor
-    * o menor que el padre y lo ubica como el hijo correspondiente.
-    * Por ultimo, aumenta la variable count del arbol en 1, crea un iterador apuntando al nuevo nodo y
-    * llama a insert_fixup con este iterador.
+     * Es la funcion troncal de inserscion, toma el hint como valido por lo que si la clave no esta definida,
+     * y el hint no es el minimo del diccionario, lo inserta como hijo del nodo anterior al hint.
+     * Lo inserta con color rojo por defecto y se fija si es el menor o el mayor del arbol respectivamente y
+     * en tal caso lo define como el hijo corresponediente del header.
+     * Chequea si es mayor o menor que el padre y lo inserta como el hijo correspondiente.
+     * Por ultimo, aumenta la variable count del arbol en 1, crea un iterador apuntando al nuevo nodo y
+     * llama a insert_fixup con este iterador.
     */
     iterator insert_rapido(const_iterator hint, const value_type& value) {
         iterator it(const_cast<Node*>(hint.n));
         if (it.n->is_header() || !eq(it.n->key(), value.first)) {
             if (it != begin())
                 it--;
-            /*if (it.n->is_header()) {
-                it--;
-            } else {
-                if (it.n->child[0] != nullptr) {
-                    it.n = it.n->child[0];
-                    while (it.n->child[1] != nullptr && not it.n->child[0]->is_header())
-                        it.n = it.n->child[1];
-                }
-            }*/
             Node *padre = it.n;
             InnerNode *nuevo = new InnerNode(padre, value);
             bool esElMenor = (count == 0) || lt(value.first, begin().n->key());
@@ -2464,6 +2441,14 @@ private:
             insert_fixup(it);
         }
         return it;
+    }
+
+    void show() {
+        auto it = begin();
+        while (it != end()) {
+            it.n->print();
+            it++;
+        }
     }
 };
 
