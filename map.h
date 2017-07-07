@@ -584,7 +584,7 @@
  * Recorre las claves del diccionario para devolver la secuencia ordenada con sus valores.
  * \axioma{PorClave}: Conj(\ALPHA) x Dicc(\ALPHA, \BETA) \TO secu(\ALPHA, \BETA)\n
  * PorClave(cs, d) \EQUIV \IF \EMPTYSET ?(cs) \THEN < > \ELSE \LANGLE minimo(cs) , obtener(minimo(cs), d) \RANGLE
- * \BOTTOM PorClave(cs - {minimo(cs)}, d) \FI
+ * \BULLET PorClave(cs - {minimo(cs)}, d) \FI
  * \endparblock
  *
  * \par MenorQue
@@ -611,11 +611,26 @@
  * \parblock
  * El nodo header no tiene valor. Su padre es la raíz, de color negro, y sus hijos derecho e izquierdo
  * son el mayor y el menor valor del arbol respectivamente.\n
- *
- * e.header.color == Header \LAND nothing?(e.header.value) \LAND e.header.parent.color == Black 
- * \LAND ((e.count == 0 \LAND (e.header.child[0] == header) \LOR (e.count > 0 \IMPLIES_L *e.header.child[0] = llegarAMinimo(e.header.parent))
- * \LAND ((e.count == 0 \LAND (e.header.child[1] == header) \LOR (e.count > 0 \IMPLIES_L *e.header.child[1] = llegarAMaximo(e.header.parent))
+ * \axioma{headerValido}: node n \TO bool\n
+ * headerValido(n) \EQUIV [n.color == Header \LAND nothing?(n.value) \LAND n.parent.color == Black
+ * \LAND (n.parent == NULL \LAND (n.child[0] == &header) \LOR (n.parent != NULL \IMPLIES_L n.child[0] == llegarAMinimo(n.parent))
+ * \LAND (n.parent == NULL \LAND (n.child[1] == &header) \LOR (n.parent != NULL \IMPLIES_L n.child[1] == llegarAMaximo(n.parent))]
  * \endparblock
+ *
+ * \par llegarAMinimo
+ * \parblock
+ * Devuelve un puntero al minimo nodo del subarbol cuya raiz es el nodo parametro.
+ * \axioma{llegarAMinimo}: puntero(node) n \TO puntero(node)\n
+ * llegarAMinimo(n) \EQUIV \IF n.child[0] == NULL \THEN n \ELSE llegarAMinimo(n.child[0]) \FI
+ * \endparblock
+ *
+ * \par llegarAMaximo
+ * \parblock
+ * Devuelve un puntero al minimo nodo del subarbol cuya raiz es el nodo parametro.
+ * \axioma{llegarAMaximo}: puntero(node) n \TO puntero(node)\n
+ * llegarAMinimo(n) \EQUIV \IF n.child[1] == NULL \THEN n \ELSE llegarAMinimo(n.child[1]) \FI
+ * \endparblock
+ *
  *
  *
  * \par nodosInternosValidos
@@ -654,15 +669,15 @@
  * Devuelve true si el n1 es hijo de n2 en la estructura.
  *
  * \axioma{nodoHijo} : Node n1 x Node n2 \TO bool\n
- * nodoHijo(n, h) \EQUIV \LNOT nothing?(n.value) \LAND_L (n.parent = e.header \LOR nodoHijo(*n.parent, e))
+ * nodoHijo(n, h) \EQUIV *n.parent = n2 \LOR nodoHijo(*n.parent, n2))
  * \endparblock
  *
  *
- * \par llegarAHeader
+ * \par llegarAlHeader
  * \parblock
- * Dado un puntero nodo (de un arbol), devuelve un puntero al header.
+ * Dado un puntero a nodo (de un arbol), devuelve un puntero al header.
  *
- * \tadAxioma{llegarAlHeader}: puntero(Node) \TO puntero(Node){get(n) \NEQ 0}\n
+ * \tadAxioma{llegarAlHeader}: puntero(Node) \TO puntero(Node){n \NEQ NULL}\n
  * \llegarAlHeader(n) \EQUIV \IF \PI3(*n) = Header \THEN n \ELSE llegarAlHeader(\PI2(*n)) \FI
  *
  *
@@ -1829,8 +1844,8 @@ public:
          * \par Invariante de representación
          *
          * rep_iter: puntero(Node) \TO bool\n
-         * rep_iter(n) \EQUIV headerValido(*llegarAlHeader(n)) \LAND nodosInternosValidos(*llegarAlHeader(n)) \LAND
-         * arbolBinarioDeBusqueda(\(PI2*llegarAlHeader(n)))
+         * rep_iter(n) \EQUIV n \IGOBS \BOTTOM \LOR_L [tieneHeader(n) \LAND_L headerValido(llegarAlHeader(n)) \LAND
+         * arbolBinarioDeBusqueda(llegarALHeader(n).parent) \]
          * rep_iter(n) \EQUIV 1 \LAND 2 \LAND 3 \LAND 4
          *
          * 1) El nodo pertenece arbol
@@ -2192,7 +2207,7 @@ private:
      * \par Invariante de representacion
 	 * \parblock
 	 * rep: map \TO bool\n
-	 * rep(m) \EQUIV headerValido \LAND nodosInternosValidos
+	 * rep(m) \EQUIV headerValido(e.header) \LAND nodosInternosValidos
 	 * \endparblock
 	 *
 	 * \par Función de abstracción
@@ -2297,7 +2312,7 @@ private:
                 n->parent->parent->color = Color::Red;
                 n = n->parent->parent;
             } else {
-                if (n == n->parent->child[dir])  b{
+                if (n == n->parent->child[dir])  {
                     n = n->parent;
                     iterator it2 = iterator(n);
                     dir_rotate(it2, 1 - dir);
