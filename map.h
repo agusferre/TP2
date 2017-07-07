@@ -596,6 +596,7 @@
  * \endparblock
  *
  *
+ *
  * \par compararElems
  * \parblock
  * \axioma{compararElems}: Conj(\ALPHA, \BETA) cs1 x Conj(\ALPHA, \BETA) cs2 \TO bool\n
@@ -631,6 +632,11 @@
  * llegarAMinimo(n) \EQUIV \IF n.child[1] == NULL \THEN n \ELSE llegarAMinimo(n.child[1]) \FI
  * \endparblock
  *
+ * \par tieneHeader
+ * \parblock
+ * \axioma{tieneHeader}: puntero(node) n \TO bool\n
+ * tieneHeader(n) \EQUIV nothing?(n) \LOR (\LNOT get(n.parent) = 0 \LAND tieneHeader(n.parent))
+ * \endparblock
  *
  *
  * \par nodosInternosValidos
@@ -669,7 +675,7 @@
  * Devuelve true si el n1 es hijo de n2 en la estructura.
  *
  * \axioma{nodoHijo} : Node n1 x Node n2 \TO bool\n
- * nodoHijo(n, h) \EQUIV *n.parent = n2 \LOR nodoHijo(*n.parent, n2))
+ * nodoHijo(n, h) \EQUIV \LNOT get(n.parent) = 0 \LAND (*n.parent = n2 \LOR nodoHijo(*n.parent, n2))
  * \endparblock
  *
  *
@@ -1844,11 +1850,13 @@ public:
          * \par Invariante de representación
          *
          * rep_iter: puntero(Node) \TO bool\n
-         * rep_iter(n) \EQUIV n \IGOBS \BOTTOM \LOR_L [tieneHeader(n) \LAND_L headerValido(llegarAlHeader(n)) \LAND
-         * arbolBinarioDeBusqueda(llegarALHeader(n).parent) \]
+         * rep_iter(n) \EQUIV n \IGOBS \BOTTOM \LOR_L [(n) \LAND_L headerValido(llegarAlHeader(n)) \LAND
+         * get(n.parent) = 0 \LOR arbolBinarioDeBusqueda(llegarALHeader(n).parent) \LAND (\FORALL n': Node) nodoHijo(n', *llegarALHeader(n)) \IMPLIES
+         * ((get(n'.child[0]) = 0 \LOR_L n'.chiild[0].color = Black) \LAND (get(n'.child[1]) = 0 \LOR_L n'.chiild[1].color = Black)
+         * \LAND nodosNegros(n'.child[0]) = nodosNegros(n'.child[1])]
          * rep_iter(n) \EQUIV 1 \LAND 2 \LAND 3 \LAND 4
          *
-         * 1) El nodo pertenece arbol
+         * 1) El iterador apunta a null o a un arbol
          * 2) El arbol es abb
          * 3) Es Roji-negro válido
          * 4) Los hijos del header apuntan al mínimo y al máximo.
@@ -1863,6 +1871,7 @@ public:
          * \attention  No hay forma de expresar el diccionario `d` porque depende de un aspecto de aliasing.  Es por esto que permitimos usar
          * castellano.
          * \endparblock
+         *
          */
         ////////////////////////////////////////////////////////////////////////////////////////////////
         //@{
