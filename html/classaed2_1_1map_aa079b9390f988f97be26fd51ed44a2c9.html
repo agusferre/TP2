@@ -98,9 +98,17 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
       </table>
 </div>
 <div class="memdoc">
-<p>Por defecto setea el arreglo res de dos posiciones con una referencia al header en ambas posiciones. Luego va iterando hasta encontrar el key o el primer elemento mayor o igual a key. Si existe un nodo definido con key, devuelve la tupla con ese nodo en ambas posiciones. De lo contrario, devuelve el primer menor en la primera posicion y el primer mayor en la segunda de la tupla. </p>
 
-<p>Definición en la línea <a class="el" href="map_8h_source.html#l02257">2257</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p>Si key esta definida devuelve una tupla con el nodo cuya clave es key en ambas posiciones. Si no retorna una tupla con los nodos cuyo valor es el mayor de los menores y el menor de los mayores a key. En caso de que no existe un valor mayor o menor en el diccionario devuelve el header en ambas posiciones de la tupla. Se utiliza como funcion auxiliar para lower_bound. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>clave a buscar. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Par con el nodo mayor de los menor o igual y el menor de los mayor o igual a key, respectivamente. Si no existe alguno de ellos devuelve header en ambas posiciones de la tupla. </dd></dl>
+
+<p>Definición en la línea <a class="el" href="map_8h_source.html#l02258">2258</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
 </div>
 </div>
@@ -125,7 +133,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
       <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a>      </li>
       <li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a>      </li>
 
-    <li class="footer">Generado el Viernes, 30 de Junio de 2017 18:17:12 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 7 de Julio de 2017 02:32:42 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

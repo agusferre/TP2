@@ -39,8 +39,17 @@ primeros\-: secu(tupla( $\alpha$, $\beta$)) $\to$ secu( $\alpha$)\par
 $\backslash$ $\ast$$\ast$ \-Auxiliares para pre y post $\ast$$\ast$ // \begin{DoxyParagraph}{\-Dicc\-Secu}
 \-Devuelve una secuencia ordenada con elementos del diccionario.
 \end{DoxyParagraph}
-\-Dicc\-Secu\-: \-Conj( $\alpha$, $\beta$) $\to$ secu( $\alpha$, $\beta$)\par
- \-Dicc\-Secu(elems) $\equiv$ {\bfseries if} $\emptyset$ ?(elems) {\bfseries then} $<$ $>$ {\bfseries else} \-Dicc\-Secu(elems -\/ minimo(elems)) $\bot$ dame\-Uno(elems) {\bfseries fi} 
+\-Dicc\-A\-Secu\-: \-Dicc( $\alpha$, $\beta$) $\to$ secu( $\alpha$, $\beta$)\par
+ \-Dicc\-A\-Secu(d) $\equiv$ \-Por\-Clave(claves(d), d) 
+
+\begin{DoxyParagraph}{\-Por\-Clave}
+\-Recorre las claves del diccionario para devolver la secuencia ordenada con sus valores. \-Por\-Clave\-: \-Conj( $\alpha$) x \-Dicc( $\alpha$, $\beta$) $\to$ secu( $\alpha$, $\beta$)\par
+ \-Por\-Clave(cs, d) $\equiv$ {\bfseries if} $\emptyset$ ?(cs) {\bfseries then} $<$ $>$ {\bfseries else} $\langle$ minimo(cs) , obtener(minimo(cs), d) $\rangle$ $\bot$ \-Por\-Clave(cs -\/ \{minimo(cs)\}, d) {\bfseries fi} 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{it\-A\-Diccionario}
+\-Devuelve true si el iterador apunta a this
+\end{DoxyParagraph}
+
 
 \begin{DoxyParagraph}{\-Menor\-Que}
 \-Devuelve true si y solo si m1 es lexicograficamente menor que m2.

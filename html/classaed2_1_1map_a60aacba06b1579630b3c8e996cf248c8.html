@@ -115,8 +115,8 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
   </dd>
 </dl>
 <dl class="user"><dt><b>Aspectos de aliasing:</b></dt><dd>\1</dd></dl>
-<dl class="pre"><dt><b>Precondición:</b></dt><dd><b>P</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {<b class="paramname">*this</b> <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> d_{ 0} <img class="formulaInl" alt="$\land$" src="form_16.png"/> <img class="formulaInl" alt="$\lnot$" src="form_21.png"/> (get(hint) <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> 0)} </dd></dl>
-<dl class="post"><dt><b>Postcondición:</b></dt><dd>{(def?(key, d_{ 0}) <img class="formulaInl" alt="$\Rightarrow$" src="form_19.png"/> <b class="paramname">*this</b>  d_{ 0}) <img class="formulaInl" alt="$\land$" src="form_16.png"/> ( <img class="formulaInl" alt="$\lnot$" src="form_21.png"/> def?(key, d_{ 0}) <img class="formulaInl" alt="$\Rightarrow$" src="form_19.png"/> (<b class="paramname">*this</b> <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> definir(key, d_ {  0}) <img class="formulaInl" alt="$\land$" src="form_16.png"/> Siguiente(res) <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> <img class="formulaInl" alt="$\langle$" src="form_30.png"/> key, obtener(key, <b class="paramname">*this</b>) <img class="formulaInl" alt="$\rangle$" src="form_29.png"/> ))}</dd></dl>
+<dl class="pre"><dt><b>Precondición:</b></dt><dd><b>P</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {<b class="paramname">*this</b> <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> d_{ 0} <img class="formulaInl" alt="$\land$" src="form_16.png"/> DiccASecu(<b class="paramname">*this</b> <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> SecuSuby(hint)} </dd></dl>
+<dl class="post"><dt><b>Postcondición:</b></dt><dd>{ coleccion(<b class="paramname">res</b>) <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> coleccion(<b class="paramname">hint</b>) <img class="formulaInl" alt="$\land_{\rm L}$" src="form_22.png"/> (def?(key, d_{ 0}) <img class="formulaInl" alt="$\Rightarrow$" src="form_19.png"/> <b class="paramname">*this</b>  d_{ 0}) <img class="formulaInl" alt="$\land$" src="form_16.png"/> ( <img class="formulaInl" alt="$\lnot$" src="form_21.png"/> def?(key, d_{ 0}) <img class="formulaInl" alt="$\Rightarrow$" src="form_19.png"/> (<b class="paramname">*this</b> <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> definir(key, d_ {  0}) <img class="formulaInl" alt="$\land$" src="form_16.png"/> Siguiente(res) <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> <img class="formulaInl" alt="$\langle$" src="form_30.png"/> key, obtener(key, <b class="paramname">*this</b>) <img class="formulaInl" alt="$\rangle$" src="form_29.png"/> ))}</dd></dl>
 <dl class="section complexity">
 <dt>Complejidad Temporal</dt>
 <dd><ul>
@@ -128,7 +128,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 <dl class="attention"><dt><b>Atención:</b></dt><dd>Para garantizar que el nuevo elemento se inserte sí o sí, usar <a class="el" href="classaed2_1_1map_a2ef6723c183916276b0afc4a4c721475.html#a2ef6723c183916276b0afc4a4c721475" title="Inserta o Color::Redefine value en el diccionario.">aed2::map::insert_or_assign</a>.</dd></dl>
 <p>Crea un iterador en la posición en la que insertar, buscandola con lower bound. Llama a insert pasandole el iterador como hint. </p>
 
-<p>Definición en la línea <a class="el" href="map_8h_source.html#l01253">1253</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p>Definición en la línea <a class="el" href="map_8h_source.html#l01263">1263</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
 </div>
 </div>
@@ -153,7 +153,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
       <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a>      </li>
       <li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a>      </li>
 
-    <li class="footer">Generado el Viernes, 30 de Junio de 2017 18:17:12 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 7 de Julio de 2017 02:32:42 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

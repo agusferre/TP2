@@ -14,7 +14,7 @@ virtual \hyperlink{structaed2_1_1map_1_1Node_a4f3cb2cc4302fe96432e624ced147540_a
 const \hyperlink{structaed2_1_1map_1_1Node}{\-Node} $\ast$ \hyperlink{structaed2_1_1map_1_1Node_a4d5263c74ea5f78025fea331267730ce_a4d5263c74ea5f78025fea331267730ce}{inmediato} (int dir) const 
 \item 
 \hyperlink{structaed2_1_1map_1_1Node}{\-Node} $\ast$ \hyperlink{structaed2_1_1map_1_1Node_ae3420a3dca910d193089461151b8dc4e_ae3420a3dca910d193089461151b8dc4e}{sub\-\_\-minimo} () const 
-\item 
+\begin{DoxyCompactList}\small\item\em \-Encuentra el minimo nodo en un \char`\"{}sub arbol\char`\"{} a partir de un nodo dado y lo devuelve. this debe ser un un puntero a un \-Nodo del árbol.  \{\-Para encontrarlo recorre la rama del arbol que está más a la izquierda hasta llegar a una hoja, por lo que toma $O$( $\log$({\bfseries size}({\bfseries $\ast$this}))\}. \end{DoxyCompactList}\item 
 void \hyperlink{structaed2_1_1map_1_1Node_a1c56c9d119479b77b8abb7343a224c7a_a1c56c9d119479b77b8abb7343a224c7a}{print} (int tab=0) const 
 \begin{DoxyCompactList}\small\item\em imprime el subarbol apuntado por this \end{DoxyCompactList}\end{DoxyCompactItemize}
 \begin{Indent}{\bf \-Creación de nodos (constructores)}\par
@@ -55,7 +55,7 @@ const \-Key \& \hyperlink{structaed2_1_1map_1_1Node_a5451f8da0b7ad3582fab1decad5
 \end{DoxyRemark}
 
 
-\-Definición en la línea \hyperlink{map_8h_source_l01983}{1983} del archivo \hyperlink{map_8h_source}{map.\-h}.
+\-Definición en la línea \hyperlink{map_8h_source_l01981}{1981} del archivo \hyperlink{map_8h_source}{map.\-h}.
 
 
 
@@ -78,7 +78,7 @@ const \-Key \& \hyperlink{structaed2_1_1map_1_1Node_a5451f8da0b7ad3582fab1decad5
 \item[\-Complejidad \-Temporal]$O$(1)
 \end{DoxyDescription}
 
-\-Definición en la línea \hyperlink{map_8h_source_l02003}{2003} del archivo \hyperlink{map_8h_source}{map.\-h}.
+\-Definición en la línea \hyperlink{map_8h_source_l02001}{2001} del archivo \hyperlink{map_8h_source}{map.\-h}.
 
 \hypertarget{structaed2_1_1map_1_1Node_a62b5a42e88e219d53af8237a9ebedb6e_a62b5a42e88e219d53af8237a9ebedb6e}{\index{aed2\-::map\-::\-Node@{aed2\-::map\-::\-Node}!\-Node@{\-Node}}
 \index{\-Node@{\-Node}!aed2::map::Node@{aed2\-::map\-::\-Node}}
@@ -106,7 +106,7 @@ const \-Key \& \hyperlink{structaed2_1_1map_1_1Node_a5451f8da0b7ad3582fab1decad5
 \item[\-Complejidad \-Temporal]$O$(1)
 \end{DoxyDescription}
 
-\-Definición en la línea \hyperlink{map_8h_source_l02017}{2017} del archivo \hyperlink{map_8h_source}{map.\-h}.
+\-Definición en la línea \hyperlink{map_8h_source_l02015}{2015} del archivo \hyperlink{map_8h_source}{map.\-h}.
 
 \hypertarget{structaed2_1_1map_1_1Node_a4f3cb2cc4302fe96432e624ced147540_a4f3cb2cc4302fe96432e624ced147540}{\index{aed2\-::map\-::\-Node@{aed2\-::map\-::\-Node}!$\sim$\-Node@{$\sim$\-Node}}
 \index{$\sim$\-Node@{$\sim$\-Node}!aed2::map::Node@{aed2\-::map\-::\-Node}}
@@ -126,7 +126,7 @@ const \-Key \& \hyperlink{structaed2_1_1map_1_1Node_a5451f8da0b7ad3582fab1decad5
 \end{DoxyRemark}
 
 
-\-Definición en la línea \hyperlink{map_8h_source_l02038}{2038} del archivo \hyperlink{map_8h_source}{map.\-h}.
+\-Definición en la línea \hyperlink{map_8h_source_l02036}{2036} del archivo \hyperlink{map_8h_source}{map.\-h}.
 
 
 
@@ -145,15 +145,17 @@ const \-Key \& \hyperlink{structaed2_1_1map_1_1Node_a5451f8da0b7ad3582fab1decad5
 \begin{DoxyRemark}{\-Comentarios}
 \-Vale destacar que hay exactamente dos nodos n con n-\/$>$parent-\/$>$parent = \&n\-: la cabecera y la raíz. \-En la implementación del árbol red-\/black de \-G\-C\-C, el nodo cabecera tiene color \-Rojo. \-De esta forma, se puede distinguir la cabecera de la raíz, que siempre es negra. \-Para ello, alcanza con verificar que `color == \-Color\-::\-Red and (parent == nullptr or parent-\/$>$parent = this)`. \-Sin embargo, esta condicion también podría ser satisfecha por la raíz algún `fixup`. \-Por simplicidad, y para evitar bugs, acá tomamos como solucion que el header tiene un color particular, llamado \-Color\-::\-Header. \-Si bien se necesita mas de un bit para el color, lo cierto es que ningun procesador admite direccionamiento a bit, asi que no se pierde nada en la practica. \-El objetivo de esta función es poder reemplazar el chequeo de la condición para determinar si el nodo es la cabecera, en caso en que queramos evitar el nuevo color.
 \end{DoxyRemark}
-\begin{DoxyReturn}{\-Devuelve}
-true si el nodo actual tiene color aed2\-::map\-::\-Color\-::\-Header.
-\end{DoxyReturn}
+
+\begin{DoxyRetVals}{\-Valores devueltos}
+{\em true} & si el nodo actual tiene color aed2\-::map\-::\-Color\-::\-Header.\\
+\hline
+\end{DoxyRetVals}
 
 \begin{DoxyDescription}
 \item[\-Complejidad \-Temporal]$O$(1)
 \end{DoxyDescription}
 
-\-Definición en la línea \hyperlink{map_8h_source_l02062}{2062} del archivo \hyperlink{map_8h_source}{map.\-h}.
+\-Definición en la línea \hyperlink{map_8h_source_l02060}{2060} del archivo \hyperlink{map_8h_source}{map.\-h}.
 
 \hypertarget{structaed2_1_1map_1_1Node_af4ada8e79dabb4849fc87de63d3970fb_af4ada8e79dabb4849fc87de63d3970fb}{\index{aed2\-::map\-::\-Node@{aed2\-::map\-::\-Node}!value@{value}}
 \index{value@{value}!aed2::map::Node@{aed2\-::map\-::\-Node}}
@@ -179,7 +181,7 @@ valor asociado al nodo.
 \item[\-Complejidad \-Temporal]$O$(1)
 \end{DoxyDescription}
 
-\-Definición en la línea \hyperlink{map_8h_source_l02078}{2078} del archivo \hyperlink{map_8h_source}{map.\-h}.
+\-Definición en la línea \hyperlink{map_8h_source_l02076}{2076} del archivo \hyperlink{map_8h_source}{map.\-h}.
 
 \hypertarget{structaed2_1_1map_1_1Node_a747a33f40ad748d750372fe73aea0b32_a747a33f40ad748d750372fe73aea0b32}{\index{aed2\-::map\-::\-Node@{aed2\-::map\-::\-Node}!value@{value}}
 \index{value@{value}!aed2::map::Node@{aed2\-::map\-::\-Node}}
@@ -190,7 +192,7 @@ valor asociado al nodo.
 ) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{structaed2_1_1map_1_1Node_a747a33f40ad748d750372fe73aea0b32_a747a33f40ad748d750372fe73aea0b32}
 \-Esta es una función miembro sobrecargada que se suministra por conveniencia. \-Difiere de la anterior función solamente en los argumentos que acepta. 
 
-\-Definición en la línea \hyperlink{map_8h_source_l02084}{2084} del archivo \hyperlink{map_8h_source}{map.\-h}.
+\-Definición en la línea \hyperlink{map_8h_source_l02082}{2082} del archivo \hyperlink{map_8h_source}{map.\-h}.
 
 \hypertarget{structaed2_1_1map_1_1Node_a5451f8da0b7ad3582fab1decad5d09cb_a5451f8da0b7ad3582fab1decad5d09cb}{\index{aed2\-::map\-::\-Node@{aed2\-::map\-::\-Node}!key@{key}}
 \index{key@{key}!aed2::map::Node@{aed2\-::map\-::\-Node}}
@@ -216,7 +218,7 @@ clave del valor asociado al nodo.
 \item[\-Complejidad \-Temporal]$O$(1)
 \end{DoxyDescription}
 
-\-Definición en la línea \hyperlink{map_8h_source_l02101}{2101} del archivo \hyperlink{map_8h_source}{map.\-h}.
+\-Definición en la línea \hyperlink{map_8h_source_l02099}{2099} del archivo \hyperlink{map_8h_source}{map.\-h}.
 
 \hypertarget{structaed2_1_1map_1_1Node_a4d5263c74ea5f78025fea331267730ce_a4d5263c74ea5f78025fea331267730ce}{\index{aed2\-::map\-::\-Node@{aed2\-::map\-::\-Node}!inmediato@{inmediato}}
 \index{inmediato@{inmediato}!aed2::map::Node@{aed2\-::map\-::\-Node}}
@@ -225,7 +227,7 @@ clave del valor asociado al nodo.
 \item[{int}]{dir}
 \end{DoxyParamCaption}
 ) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{structaed2_1_1map_1_1Node_a4d5263c74ea5f78025fea331267730ce_a4d5263c74ea5f78025fea331267730ce}
-\-La funcion inmediato devuelve el predecesor con dir = 0 y el sucesor inmediato dir = 1. \-En el primer caso se verifica si this esta parado en header, ya que para buscar el predecesor en ese caso debe simplemente ir a su hijo derecho. \-Si no, this esta sobre un nodo interno y quedan dos casos\-: \-Si el child\mbox{[}dir\mbox{]} de this existe, el inmediato es el ultimo child\mbox{[}1-\/dir\mbox{]} de este. \-Si no, el inmediato se encuentra con un nodo indice que sube hacia el header hasta encontrarse el primer nodo en el que el indice sea su child\mbox{[}1-\/dir\mbox{]}. \-Notar que esta funcion incluye el caso en el inmediato es el header.
+\-La funcion inmediato devuelve el predecesor con dir = 0 y el sucesor inmediato dir = 1.
 
 \{
 \begin{DoxyItemize}
@@ -233,7 +235,7 @@ clave del valor asociado al nodo.
 \item \-En cambio si se encuentra en el header o el nodo al que apunta el iterador tiene el hijo correspondiente y a su vez este no tiene hijo opuesto (si se incrementa el hijo correspondiente seria el izquierdo y este, a su vez, no deberia tener hijo derecho. \-Invertido para el caso en que se decrementa), la complejidad sera $O$(1)\} 
 \end{DoxyItemize}
 
-\-Definición en la línea \hyperlink{map_8h_source_l02124}{2124} del archivo \hyperlink{map_8h_source}{map.\-h}.
+\-Definición en la línea \hyperlink{map_8h_source_l02116}{2116} del archivo \hyperlink{map_8h_source}{map.\-h}.
 
 \hypertarget{structaed2_1_1map_1_1Node_ae3420a3dca910d193089461151b8dc4e_ae3420a3dca910d193089461151b8dc4e}{\index{aed2\-::map\-::\-Node@{aed2\-::map\-::\-Node}!sub\-\_\-minimo@{sub\-\_\-minimo}}
 \index{sub\-\_\-minimo@{sub\-\_\-minimo}!aed2::map::Node@{aed2\-::map\-::\-Node}}
@@ -242,9 +244,13 @@ clave del valor asociado al nodo.
 {}
 \end{DoxyParamCaption}
 ) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{structaed2_1_1map_1_1Node_ae3420a3dca910d193089461151b8dc4e_ae3420a3dca910d193089461151b8dc4e}
-\-Encuentra el minimo nodo en un \char`\"{}sub arbol\char`\"{} a partir de un nodo dado. 
 
-\-Definición en la línea \hyperlink{map_8h_source_l02145}{2145} del archivo \hyperlink{map_8h_source}{map.\-h}.
+
+\-Encuentra el minimo nodo en un \char`\"{}sub arbol\char`\"{} a partir de un nodo dado y lo devuelve. this debe ser un un puntero a un \-Nodo del árbol.  \{\-Para encontrarlo recorre la rama del arbol que está más a la izquierda hasta llegar a una hoja, por lo que toma $O$( $\log$({\bfseries size}({\bfseries $\ast$this}))\}. 
+
+
+
+\-Definición en la línea \hyperlink{map_8h_source_l02141}{2141} del archivo \hyperlink{map_8h_source}{map.\-h}.
 
 \hypertarget{structaed2_1_1map_1_1Node_a1c56c9d119479b77b8abb7343a224c7a_a1c56c9d119479b77b8abb7343a224c7a}{\index{aed2\-::map\-::\-Node@{aed2\-::map\-::\-Node}!print@{print}}
 \index{print@{print}!aed2::map::Node@{aed2\-::map\-::\-Node}}
@@ -259,7 +265,7 @@ imprime el subarbol apuntado por this
 
 \-Esta en una funcion de debugging que se incluye de ejemplo para mostrar cómo usar la técnica. 
 
-\-Definición en la línea \hyperlink{map_8h_source_l02157}{2157} del archivo \hyperlink{map_8h_source}{map.\-h}.
+\-Definición en la línea \hyperlink{map_8h_source_l02153}{2153} del archivo \hyperlink{map_8h_source}{map.\-h}.
 
 
 

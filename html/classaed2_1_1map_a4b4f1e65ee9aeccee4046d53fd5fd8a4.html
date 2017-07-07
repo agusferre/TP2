@@ -108,9 +108,20 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
       </table>
 </div>
 <div class="memdoc">
-<p>Crea un iterador con el hint para que pase a ser iterator y pueda utilizarse para insertar. Chequea si el elemento no estaba definido, para proceder, en caso contrario no inserta nada. A partir del nodo en el que se encuentra busca la hoja en la que insertar el elemento. Crea un <a class="el" href="structaed2_1_1map_1_1InnerNode.html" title="Estructura (privada) de un nodo no cabecera del árbol red-black.">InnerNode</a> "nuevo" con este nodo encontrado (hoja) como padre, de color rojo, por defecto, y con el value pasado por parametro. Evalua si es el menor o el mayor de todos los nodos del arbol respectivamente y de ser asi setea a los hijos del header con este nuevo nodo. Luego ve si el padre es el header entonces lo ubica como raíz, de otra manera se fija si es mayor o menor que el padre y lo ubica como el hijo correspondiente. Por ultimo, aumenta la variable count del arbol en 1, crea un iterador apuntando al nuevo nodo y llama a insert_fixup con este iterador. </p>
 
-<p>Definición en la línea <a class="el" href="map_8h_source.html#l02418">2418</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p>La funcion inserta el value en el árbol en la posición apuntada por hint, en caso de que no esté definida todavía. Como asume que el hint apunta a donde debe insertarse, cuesta menos que el insert normal. </p>
+<dl class="pre"><dt><b>Precondición:</b></dt><dd>hint apunta a lower_bound(value.first)</dd></dl>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hint</td><td>apuntando a la posición en la que insertar </td></tr>
+    <tr><td class="paramname">value</td><td>a definir</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>iterador apuntando al nodo insertado.</dd></dl>
+<p>{ <img class="formulaInl" alt="$O$" src="form_1.png"/>(<b>cmp</b>(<b class="paramname">*this</b>) <img class="formulaInl" alt="$+$" src="form_28.png"/> <b>copy</b>(<b class="paramname">value</b>)) amortizado. } </p>
+
+<p>Definición en la línea <a class="el" href="map_8h_source.html#l02450">2450</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
 </div>
 </div>
@@ -135,7 +146,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
       <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a>      </li>
       <li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a>      </li>
 
-    <li class="footer">Generado el Viernes, 30 de Junio de 2017 18:17:12 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 7 de Julio de 2017 02:32:42 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

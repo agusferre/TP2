@@ -1845,12 +1845,14 @@ public:
          * \par Función de abstracción
          *
          * abs_iter: puntero(Node) n \TO IteradorBidireccional(Diccionario(\T{Key}, \T{Meaning}), tupla(\T{Key}, \T{Meaning}))  {rep_iter(n)}\n
-         * abs_iter(n) \EQUIV it: IteradorBidireccional(\ALPHA) / Siguientes(it) \IGOBS DiccSecu(MapAConjunto(d)) \LAND Anteriores(it) \IGOBS 
+         * abs_iter(n) \EQUIV it: IteradorBidireccional(Diccionario(\T{Key}, \T{Meaning}), tupla(\T{Key}, \T{Meaning})) ¿\LAND?
+         * Siguientes(it) \IGOBS DiccSecu(MapAConjunto(d)) \LAND Anteriores(it) \IGOBS 
          *
          * Nota: se puede usar `d` para referirse al valor computacional del diccionario definido desde la cabecera (como en el constructor).
          *
          * \attention  No hay forma de expresar el diccionario `d` porque depende de un aspecto de aliasing.  Es por esto que permitimos usar
          * castellano.
+         * \endparblock
          */
         ////////////////////////////////////////////////////////////////////////////////////////////////
         //@{

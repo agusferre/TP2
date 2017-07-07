@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Trabajo práctico 2: diccionario sobre RB-tree: aed2::map::operator&lt;=</title>
+<title>Trabajo práctico 2: diccionario sobre RB-tree: aed2::map::show</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -82,37 +82,33 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </script>
 <div id="doc-content">
 <div class="contents">
-<a class="anchor" id="afe374b37f17263d0cad3ee19a590d208"></a><!-- doxytag: member="aed2::map::operator&lt;=" ref="afe374b37f17263d0cad3ee19a590d208" args="(const map&lt; K, V, C &gt; &amp;m1, const map&lt; K, V, C &gt; &amp;m2)" -->
+<a class="anchor" id="a98aadc6fb2ac8f51567a98473a90c30f"></a><!-- doxytag: member="aed2::map::show" ref="a98aadc6fb2ac8f51567a98473a90c30f" args="()" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class K , class V , class C &gt; </div>
+template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">bool operator&lt;= </td>
+          <td class="memname">void <a class="el" href="classaed2_1_1map.html">aed2::map</a>&lt; Key, Meaning, Compare &gt;::<a class="el" href="classaed2_1_1map_a98aadc6fb2ac8f51567a98473a90c30f.html#a98aadc6fb2ac8f51567a98473a90c30f">show</a> </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classaed2_1_1map.html">map</a>&lt; K, V, C &gt; &amp;&#160;</td>
-          <td class="paramname"><em>m1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classaed2_1_1map.html">map</a>&lt; K, V, C &gt; &amp;&#160;</td>
-          <td class="paramname"><em>m2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [related]</code></td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline, private]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Renombre de not(<b class="paramname">m2</b> &lt; <b class="paramname">m1</b>) </p>
-<dl class="see"><dt><b>Ver también:</b></dt><dd>aed2::operator&lt;() </dd></dl>
+<p>Retorna true si las claves son iguales con respecto a <b class="paramname">this</b>-&gt;lt. </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">k1</td><td>clave a comparar </td></tr>
+    <tr><td class="paramname">k2</td><td>clave a comparar </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>true cuando <b class="paramname">k1</b> y <b class="paramname">k2</b> son iguales con respecto a <b class="paramname">this</b>-&gt;lt. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="map_8h_source.html#l02574">2574</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p>Definición en la línea <a class="el" href="map_8h_source.html#l02476">2476</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
 </div>
 </div>
@@ -137,7 +133,7 @@ template&lt;class K , class V , class C &gt; </div>
       <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a>      </li>
       <li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a>      </li>
 
-    <li class="footer">Generado el Viernes, 7 de Julio de 2017 02:32:41 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 7 de Julio de 2017 02:32:42 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

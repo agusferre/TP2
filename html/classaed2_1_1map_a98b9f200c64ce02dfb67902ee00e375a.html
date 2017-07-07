@@ -109,17 +109,18 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 </div>
 <div class="memdoc">
 
-<p>Retorna true si las claves son iguales con respecto a <b class="paramname">this</b>-&gt;lt. </p>
+<p>Esta función es llamada en el delete para unir el padre del nodo a borrar con el hijo correspondiente. Para eso, se cambian los punteros de forma que v pase a ocupar el lugar de u (padre e hijos de u pasan a ser los de v). </p>
+<dl class="pre"><dt><b>Precondición:</b></dt><dd>u distinto de null.</dd></dl>
 <dl class="params"><dt><b>Parámetros:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">k1</td><td>clave a comparar </td></tr>
-    <tr><td class="paramname">k2</td><td>clave a comparar </td></tr>
+    <tr><td class="paramname">u</td><td>puntero a nodo a ser reemplazado </td></tr>
+    <tr><td class="paramname">v</td><td>puntero a nodo remplazante</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Devuelve:</b></dt><dd>true cuando <b class="paramname">k1</b> y <b class="paramname">k2</b> son iguales con respecto a <b class="paramname">this</b>-&gt;lt. </dd></dl>
+<p>{La cantidad de operaciones es constante: <img class="formulaInl" alt="$O$" src="form_1.png"/>( <img class="formulaInl" alt="$\log$" src="form_27.png"/>(<b>size</b>(<b class="paramname">*this</b>)))} </p>
 
-<p>Definición en la línea <a class="el" href="map_8h_source.html#l02332">2332</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p>Definición en la línea <a class="el" href="map_8h_source.html#l02356">2356</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
 </div>
 </div>
@@ -144,7 +145,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
       <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a>      </li>
       <li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a>      </li>
 
-    <li class="footer">Generado el Viernes, 30 de Junio de 2017 18:17:12 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 7 de Julio de 2017 02:32:42 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

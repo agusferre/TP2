@@ -86,431 +86,455 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="title">test.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#define DEBUG</span>
-<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#include &quot;<a class="code" href="map_8h.html">map.h</a>&quot;</span>
+<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">//#define DEBUG</span>
+<a name="l00002"></a>00002 <span class="preprocessor">#include &quot;<a class="code" href="map_8h.html">map.h</a>&quot;</span>
 <a name="l00003"></a>00003 <span class="preprocessor">#include &lt;gtest/gtest.h&gt;</span>
 <a name="l00004"></a>00004 
 <a name="l00005"></a>00005 <span class="preprocessor">#include &lt;map&gt;</span>
 <a name="l00006"></a>00006 <span class="preprocessor">#include &lt;iostream&gt;</span>
-<a name="l00007"></a>00007 <span class="preprocessor">#include &lt;vector&gt;</span>
-<a name="l00008"></a>00008 
-<a name="l00009"></a>00009 std::vector&lt;int&gt; no_libera_memoria;
-<a name="l00010"></a>00010 
-<a name="l00011"></a>00011 <span class="keyword">struct </span>Pepe {
-<a name="l00012"></a>00012     Pepe() {
-<a name="l00013"></a>00013         v.assign(4, 1);
-<a name="l00014"></a>00014     }
-<a name="l00015"></a>00015     ~Pepe() {
-<a name="l00016"></a>00016         <span class="keyword">using</span> std::swap;
-<a name="l00017"></a>00017         swap(v, no_libera_memoria);
-<a name="l00018"></a>00018     }
-<a name="l00019"></a>00019     <span class="keywordtype">bool</span> operator&lt;(<span class="keyword">const</span> Pepe&amp; p)<span class="keyword"> const </span>{
-<a name="l00020"></a>00020         <span class="keywordflow">return</span> v &lt; p.v;
-<a name="l00021"></a>00021     }
-<a name="l00022"></a>00022     
-<a name="l00023"></a>00023     std::vector&lt;int&gt; v;
-<a name="l00024"></a>00024 };
-<a name="l00025"></a>00025 
-<a name="l00026"></a>00026 TEST(TestAdicional, insertOrAssignNoInvalida) {
-<a name="l00027"></a>00027     <a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">aed2::map&lt;Pepe, int&gt;</a> m;
-<a name="l00028"></a>00028     <span class="keyword">auto</span> it = m.<a class="code" href="classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8.html#a60aacba06b1579630b3c8e996cf248c8" title="Inserta value en el diccionario.">insert</a>({Pepe(), 1});
-<a name="l00029"></a>00029     <span class="keyword">auto</span> pos_en_pepe = it-&gt;first.v.begin();
-<a name="l00030"></a>00030     EXPECT_EQ(*pos_en_pepe, 1);
-<a name="l00031"></a>00031     <span class="keyword">auto</span> res = m.<a class="code" href="classaed2_1_1map_a2ef6723c183916276b0afc4a4c721475.html#a2ef6723c183916276b0afc4a4c721475" title="Inserta o Color::Redefine value en el diccionario.">insert_or_assign</a>({Pepe(), 2});
-<a name="l00032"></a>00032     EXPECT_EQ(pos_en_pepe, res-&gt;first.v.begin());
-<a name="l00033"></a>00033 }
-<a name="l00034"></a>00034 
-<a name="l00036"></a>00036 <span class="comment">// Estructuras básicas de testing //</span>
-<a name="l00038"></a>00038 <span class="comment"></span>
-<a name="l00044"></a><a class="code" href="classNat.html">00044</a> <span class="keyword">class </span><a class="code" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>
-<a name="l00045"></a>00045 {
-<a name="l00046"></a>00046     <span class="keyword">public</span>:
-<a name="l00047"></a>00047 
-<a name="l00048"></a>00048         <a class="code" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>() = <span class="keyword">delete</span>;
-<a name="l00049"></a>00049 
-<a name="l00050"></a>00050         <a class="code" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>(<span class="keywordtype">size_t</span> n) : n_( n ) {}
-<a name="l00051"></a>00051 
-<a name="l00052"></a>00052         <a class="code" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>(<span class="keyword">const</span> <a class="code" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>&amp; other) : n_( other.n_ ) {}
-<a name="l00053"></a>00053 
-<a name="l00054"></a>00054         <a class="code" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>&amp; operator = (<span class="keyword">const</span> <a class="code" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>&amp;) = <span class="keyword">delete</span>;
-<a name="l00055"></a>00055 
-<a name="l00056"></a>00056         <span class="keyword">friend</span> <span class="keywordtype">bool</span> operator &lt; (<span class="keyword">const</span> <a class="code" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>&amp; a, <span class="keyword">const</span> <a class="code" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>&amp; b);
-<a name="l00057"></a>00057 
-<a name="l00058"></a>00058     <span class="keyword">private</span>:
-<a name="l00059"></a>00059 
-<a name="l00060"></a>00060         <span class="keywordtype">size_t</span> n_;
-<a name="l00061"></a>00061 };
+<a name="l00007"></a>00007 
+<a name="l00009"></a>00009 <span class="comment">// Estructuras básicas de testing //</span>
+<a name="l00011"></a>00011 <span class="comment"></span>
+<a name="l00017"></a><a class="code" href="classNat.html">00017</a> <span class="keyword">class </span><a class="code" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>
+<a name="l00018"></a>00018 {
+<a name="l00019"></a>00019     <span class="keyword">public</span>:
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021         <a class="code" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>() = <span class="keyword">delete</span>;
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023         <a class="code" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>(<span class="keywordtype">size_t</span> n) : n_( n ) {}
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025         <a class="code" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>(<span class="keyword">const</span> <a class="code" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>&amp; other) : n_( other.n_ ) {}
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027         <a class="code" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>&amp; operator = (<span class="keyword">const</span> <a class="code" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>&amp;) = <span class="keyword">delete</span>;
+<a name="l00028"></a>00028 
+<a name="l00029"></a>00029         <span class="keyword">friend</span> <span class="keywordtype">bool</span> operator &lt; (<span class="keyword">const</span> <a class="code" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>&amp; a, <span class="keyword">const</span> <a class="code" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>&amp; b);
+<a name="l00030"></a>00030 
+<a name="l00031"></a>00031     <span class="keyword">private</span>:
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033         <span class="keywordtype">size_t</span> n_;
+<a name="l00034"></a>00034 };
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036 <span class="keywordtype">bool</span> <a class="code" href="classaed2_1_1map_a8ff07f6a24c290ea7e8f63ec7ab24f8d.html#a8ff07f6a24c290ea7e8f63ec7ab24f8d" title="Operador de orden lexicografico entre diccionarios.">operator &lt; </a>(<span class="keyword">const</span> <a class="code" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>&amp; a, <span class="keyword">const</span> <a class="code" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>&amp; b)
+<a name="l00037"></a>00037 { <span class="keywordflow">return</span> a.n_ &lt; b.n_; }
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039 <span class="keyword">template</span> &lt;<span class="keyword">typename</span> MAP_T&gt;
+<a name="l00040"></a>00040 <span class="keywordtype">void</span> llenarCincoElementos(MAP_T&amp; dicc)
+<a name="l00041"></a>00041 {
+<a name="l00042"></a>00042     dicc.insert({1, <span class="stringliteral">&quot;uno&quot;</span>});
+<a name="l00043"></a>00043     dicc.insert({2, <span class="stringliteral">&quot;dos&quot;</span>});
+<a name="l00044"></a>00044     dicc.insert({3, <span class="stringliteral">&quot;tres&quot;</span>});
+<a name="l00045"></a>00045     dicc.insert({4, <span class="stringliteral">&quot;cuatro&quot;</span>});
+<a name="l00046"></a>00046     dicc.insert({5, <span class="stringliteral">&quot;cinco&quot;</span>});
+<a name="l00047"></a>00047 }
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049 <span class="keyword">struct </span>BasicMapInstances : <span class="keyword">public</span> ::testing::Test
+<a name="l00050"></a>00050 {
+<a name="l00051"></a>00051     <span class="keyword">virtual</span> <span class="keywordtype">void</span> SetUp()
+<a name="l00052"></a>00052     {
+<a name="l00053"></a>00053         singleton.insert({1, <span class="stringliteral">&quot;uno&quot;</span>});
+<a name="l00054"></a>00054 
+<a name="l00055"></a>00055         llenarCincoElementos( cinco_elementos );
+<a name="l00056"></a>00056         llenarCincoElementos( cinco_elementos_std );
+<a name="l00057"></a>00057     }
+<a name="l00058"></a>00058 
+<a name="l00059"></a>00059     <a class="code" href="classaed2_1_1map.html">aed2::map&lt;int, std::string&gt;</a> vacio;
+<a name="l00060"></a>00060     <a class="code" href="classaed2_1_1map.html">aed2::map&lt;int, std::string&gt;</a> singleton;
+<a name="l00061"></a>00061     <a class="code" href="classaed2_1_1map.html">aed2::map&lt;int, std::string&gt;</a> cinco_elementos;
 <a name="l00062"></a>00062 
-<a name="l00063"></a>00063 <span class="keywordtype">bool</span> <a class="code" href="classaed2_1_1map_a8ff07f6a24c290ea7e8f63ec7ab24f8d.html#a8ff07f6a24c290ea7e8f63ec7ab24f8d" title="Operador de orden lexicografico entre diccionarios.">operator &lt; </a>(<span class="keyword">const</span> <a class="code" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>&amp; a, <span class="keyword">const</span> <a class="code" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>&amp; b)
-<a name="l00064"></a>00064 { <span class="keywordflow">return</span> a.n_ &lt; b.n_; }
-<a name="l00065"></a>00065 
-<a name="l00066"></a>00066 <span class="keyword">template</span> &lt;<span class="keyword">typename</span> MAP_T&gt;
-<a name="l00067"></a>00067 <span class="keywordtype">void</span> llenarCincoElementos(MAP_T&amp; dicc)
-<a name="l00068"></a>00068 {
-<a name="l00069"></a>00069     dicc.insert({1, <span class="stringliteral">&quot;uno&quot;</span>});
-<a name="l00070"></a>00070     dicc.insert({2, <span class="stringliteral">&quot;dos&quot;</span>});
-<a name="l00071"></a>00071     dicc.insert({3, <span class="stringliteral">&quot;tres&quot;</span>});
-<a name="l00072"></a>00072     dicc.insert({4, <span class="stringliteral">&quot;cuatro&quot;</span>});
-<a name="l00073"></a>00073     dicc.insert({5, <span class="stringliteral">&quot;cinco&quot;</span>});
+<a name="l00063"></a>00063     <span class="comment">// identico a cinco_elementos pero con la implementación de la std</span>
+<a name="l00064"></a>00064     std::map&lt;int, std::string&gt; cinco_elementos_std;
+<a name="l00065"></a>00065 };
+<a name="l00066"></a>00066 
+<a name="l00068"></a>00068 <span class="comment">// Tests Básicos (Thomas)                                               //</span>
+<a name="l00069"></a>00069 <span class="comment">// Estos son necesarios para poder confiar en las instancias de fixture //</span>
+<a name="l00071"></a>00071 <span class="comment"></span>
+<a name="l00072"></a>00072 TEST(TestsBasicos, DiccionarioVacio) {
+<a name="l00073"></a>00073     <a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">aed2::map&lt;std::string, int&gt;</a> vacio;
 <a name="l00074"></a>00074 }
 <a name="l00075"></a>00075 
-<a name="l00076"></a>00076 <span class="keyword">struct </span>BasicMapInstances : <span class="keyword">public</span> ::testing::Test
-<a name="l00077"></a>00077 {
-<a name="l00078"></a>00078     <span class="keyword">virtual</span> <span class="keywordtype">void</span> SetUp()
-<a name="l00079"></a>00079     {
-<a name="l00080"></a>00080         singleton.insert({1, <span class="stringliteral">&quot;uno&quot;</span>});
-<a name="l00081"></a>00081 
-<a name="l00082"></a>00082         llenarCincoElementos( cinco_elementos );
-<a name="l00083"></a>00083         llenarCincoElementos( cinco_elementos_std );
-<a name="l00084"></a>00084     }
-<a name="l00085"></a>00085 
-<a name="l00086"></a>00086     <a class="code" href="classaed2_1_1map.html">aed2::map&lt;int, std::string&gt;</a> vacio;
-<a name="l00087"></a>00087     <a class="code" href="classaed2_1_1map.html">aed2::map&lt;int, std::string&gt;</a> singleton;
-<a name="l00088"></a>00088     <a class="code" href="classaed2_1_1map.html">aed2::map&lt;int, std::string&gt;</a> cinco_elementos;
-<a name="l00089"></a>00089 
-<a name="l00090"></a>00090     <span class="comment">// identico a cinco_elementos pero con la implementación de la std</span>
-<a name="l00091"></a>00091     std::map&lt;int, std::string&gt; cinco_elementos_std;
-<a name="l00092"></a>00092 };
-<a name="l00093"></a>00093 
-<a name="l00095"></a>00095 <span class="comment">// Tests Básicos (Thomas)                                               //</span>
-<a name="l00096"></a>00096 <span class="comment">// Estos son necesarios para poder confiar en las instancias de fixture //</span>
-<a name="l00098"></a>00098 <span class="comment"></span>
-<a name="l00099"></a>00099 TEST(TestsBasicos, DiccionarioVacio) {
-<a name="l00100"></a>00100     <a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">aed2::map&lt;std::string, int&gt;</a> vacio;
+<a name="l00076"></a>00076 TEST(TestsBasicos, InsertarUnElemento) {
+<a name="l00077"></a>00077     <a class="code" href="classaed2_1_1map.html">aed2::map&lt;int, std::string&gt;</a> singleton;
+<a name="l00078"></a>00078     singleton.<a class="code" href="classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8.html#a60aacba06b1579630b3c8e996cf248c8" title="Inserta value en el diccionario.">insert</a>({1, <span class="stringliteral">&quot;uno&quot;</span>});
+<a name="l00079"></a>00079 }
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081 TEST(TestsBasicos, IteradorAlInsertarUnElemento) {
+<a name="l00082"></a>00082     <a class="code" href="classaed2_1_1map.html">aed2::map&lt;int, std::string&gt;</a> singleton;
+<a name="l00083"></a>00083     <span class="keyword">auto</span> it = singleton.<a class="code" href="classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8.html#a60aacba06b1579630b3c8e996cf248c8" title="Inserta value en el diccionario.">insert</a>({1, <span class="stringliteral">&quot;uno&quot;</span>});
+<a name="l00084"></a>00084     <span class="comment">// TODO esto no va al testear iteradores? deberia ir antes de insertConHint*</span>
+<a name="l00085"></a>00085     EXPECT_NE(it, singleton.<a class="code" href="classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983.html#a76023e6a56cb625513e1b5ea028bf983" title="Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario.">end</a>());
+<a name="l00086"></a>00086     EXPECT_EQ(it-&gt;first, 1);
+<a name="l00087"></a>00087     EXPECT_EQ(it-&gt;second, <span class="stringliteral">&quot;uno&quot;</span>);
+<a name="l00088"></a>00088     EXPECT_EQ(++it, singleton.<a class="code" href="classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983.html#a76023e6a56cb625513e1b5ea028bf983" title="Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario.">end</a>());
+<a name="l00089"></a>00089 }
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091 TEST(TestsBasicos, InsertarTresElemento) {
+<a name="l00092"></a>00092     <a class="code" href="classaed2_1_1map.html">aed2::map&lt;int, std::string&gt;</a> singleton;
+<a name="l00093"></a>00093     singleton.<a class="code" href="classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8.html#a60aacba06b1579630b3c8e996cf248c8" title="Inserta value en el diccionario.">insert</a>({2, <span class="stringliteral">&quot;dos&quot;</span>});
+<a name="l00094"></a>00094     singleton.<a class="code" href="classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8.html#a60aacba06b1579630b3c8e996cf248c8" title="Inserta value en el diccionario.">insert</a>({3, <span class="stringliteral">&quot;tres&quot;</span>});
+<a name="l00095"></a>00095     singleton.<a class="code" href="classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8.html#a60aacba06b1579630b3c8e996cf248c8" title="Inserta value en el diccionario.">insert</a>({1, <span class="stringliteral">&quot;uno&quot;</span>});
+<a name="l00096"></a>00096 }
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098 TEST(TestsBasicos, TipoRestrictivo) {
+<a name="l00099"></a>00099     <a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">aed2::map&lt;Nat, Nat&gt;</a> dicc;
+<a name="l00100"></a>00100     dicc.<a class="code" href="classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8.html#a60aacba06b1579630b3c8e996cf248c8" title="Inserta value en el diccionario.">insert</a>({<a class="code" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>(1), <a class="code" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>(1)});
 <a name="l00101"></a>00101 }
 <a name="l00102"></a>00102 
-<a name="l00103"></a>00103 TEST(TestsBasicos, InsertarUnElemento) {
-<a name="l00104"></a>00104     <a class="code" href="classaed2_1_1map.html">aed2::map&lt;int, std::string&gt;</a> singleton;
-<a name="l00105"></a>00105     singleton.<a class="code" href="classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8.html#a60aacba06b1579630b3c8e996cf248c8" title="Inserta value en el diccionario.">insert</a>({1, <span class="stringliteral">&quot;uno&quot;</span>});
-<a name="l00106"></a>00106 }
-<a name="l00107"></a>00107 
-<a name="l00108"></a>00108 TEST(TestsBasicos, IteradorAlInsertarUnElemento) {
-<a name="l00109"></a>00109     <a class="code" href="classaed2_1_1map.html">aed2::map&lt;int, std::string&gt;</a> singleton;
-<a name="l00110"></a>00110     <span class="keyword">auto</span> it = singleton.<a class="code" href="classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8.html#a60aacba06b1579630b3c8e996cf248c8" title="Inserta value en el diccionario.">insert</a>({1, <span class="stringliteral">&quot;uno&quot;</span>});
-<a name="l00111"></a>00111     <span class="comment">// TODO esto no va al testear iteradores? deberia ir antes de insertConHint*</span>
-<a name="l00112"></a>00112     EXPECT_NE(it, singleton.<a class="code" href="classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983.html#a76023e6a56cb625513e1b5ea028bf983" title="Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario.">end</a>());
-<a name="l00113"></a>00113     EXPECT_EQ(it-&gt;first, 1);
-<a name="l00114"></a>00114     EXPECT_EQ(it-&gt;second, <span class="stringliteral">&quot;uno&quot;</span>);
-<a name="l00115"></a>00115     EXPECT_EQ(++it, singleton.<a class="code" href="classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983.html#a76023e6a56cb625513e1b5ea028bf983" title="Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario.">end</a>());
-<a name="l00116"></a>00116 }
-<a name="l00117"></a>00117 
-<a name="l00118"></a>00118 TEST(TestsBasicos, InsertarTresElemento) {
-<a name="l00119"></a>00119     <a class="code" href="classaed2_1_1map.html">aed2::map&lt;int, std::string&gt;</a> singleton;
-<a name="l00120"></a>00120     singleton.<a class="code" href="classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8.html#a60aacba06b1579630b3c8e996cf248c8" title="Inserta value en el diccionario.">insert</a>({2, <span class="stringliteral">&quot;dos&quot;</span>});
-<a name="l00121"></a>00121     singleton.<a class="code" href="classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8.html#a60aacba06b1579630b3c8e996cf248c8" title="Inserta value en el diccionario.">insert</a>({3, <span class="stringliteral">&quot;tres&quot;</span>});
-<a name="l00122"></a>00122     singleton.<a class="code" href="classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8.html#a60aacba06b1579630b3c8e996cf248c8" title="Inserta value en el diccionario.">insert</a>({1, <span class="stringliteral">&quot;uno&quot;</span>});
-<a name="l00123"></a>00123 }
-<a name="l00124"></a>00124 
-<a name="l00125"></a>00125 TEST(TestsBasicos, TipoRestrictivo) {
-<a name="l00126"></a>00126     <a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">aed2::map&lt;Nat, Nat&gt;</a> dicc;
-<a name="l00127"></a>00127     dicc.<a class="code" href="classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8.html#a60aacba06b1579630b3c8e996cf248c8" title="Inserta value en el diccionario.">insert</a>({<a class="code" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>(1), <a class="code" href="classNat.html" title="La interfaz consta únicamente de las operaciones requeridas por los tipos paramétricos de aed2::map (...">Nat</a>(1)});
+<a name="l00104"></a>00104 <span class="comment">// Tests de &quot;Tamaño del diccionario&quot; (Thomas) //</span>
+<a name="l00106"></a>00106 <span class="comment"></span>
+<a name="l00107"></a>00107 TEST_F(BasicMapInstances, empty) {
+<a name="l00108"></a>00108     EXPECT_TRUE(vacio.empty());
+<a name="l00109"></a>00109     EXPECT_FALSE(singleton.<a class="code" href="classaed2_1_1map_af5320ca0a7df4d16015441d5d055a7ee.html#af5320ca0a7df4d16015441d5d055a7ee" title="Indica si el diccionario esta vacío.">empty</a>());
+<a name="l00110"></a>00110     EXPECT_FALSE(cinco_elementos.empty());
+<a name="l00111"></a>00111 }
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113 TEST_F(BasicMapInstances, size) {
+<a name="l00114"></a>00114     EXPECT_EQ(vacio.size(), 0);
+<a name="l00115"></a>00115     EXPECT_EQ(singleton.<a class="code" href="classaed2_1_1map_a89f2613f926ac13293eafe65889d6021.html#a89f2613f926ac13293eafe65889d6021" title="Devuelve la cantidad de valores en el diccionario.">size</a>(), 1);
+<a name="l00116"></a>00116     EXPECT_EQ(cinco_elementos.size(), 5);
+<a name="l00117"></a>00117 }
+<a name="l00118"></a>00118 
+<a name="l00120"></a>00120 <span class="comment">// Tests de &quot;Busqueda y acceso a los valores&quot; (Thomas) //</span>
+<a name="l00122"></a>00122 <span class="comment"></span>
+<a name="l00123"></a>00123 TEST_F(BasicMapInstances, at) {
+<a name="l00124"></a>00124     EXPECT_EQ(singleton.<a class="code" href="classaed2_1_1map_a0b0a11f906da2926f9eb342fcee79fd7.html#a0b0a11f906da2926f9eb342fcee79fd7" title="Devuelve el significado asociado a key">at</a>(1), <span class="stringliteral">&quot;uno&quot;</span>);
+<a name="l00125"></a>00125     EXPECT_EQ(cinco_elementos.at(1), <span class="stringliteral">&quot;uno&quot;</span>);
+<a name="l00126"></a>00126     EXPECT_EQ(cinco_elementos.at(3), <span class="stringliteral">&quot;tres&quot;</span>);
+<a name="l00127"></a>00127     EXPECT_EQ(cinco_elementos.at(5), <span class="stringliteral">&quot;cinco&quot;</span>);
 <a name="l00128"></a>00128 }
 <a name="l00129"></a>00129 
-<a name="l00131"></a>00131 <span class="comment">// Tests de &quot;Tamaño del diccionario&quot; (Thomas) //</span>
-<a name="l00133"></a>00133 <span class="comment"></span>
-<a name="l00134"></a>00134 TEST_F(BasicMapInstances, empty) {
-<a name="l00135"></a>00135     EXPECT_TRUE(vacio.empty());
-<a name="l00136"></a>00136     EXPECT_FALSE(singleton.<a class="code" href="classaed2_1_1map_af5320ca0a7df4d16015441d5d055a7ee.html#af5320ca0a7df4d16015441d5d055a7ee" title="Indica si el diccionario esta vacío.">empty</a>());
-<a name="l00137"></a>00137     EXPECT_FALSE(cinco_elementos.empty());
-<a name="l00138"></a>00138 }
-<a name="l00139"></a>00139 
-<a name="l00140"></a>00140 TEST_F(BasicMapInstances, size) {
-<a name="l00141"></a>00141     EXPECT_EQ(vacio.size(), 0);
-<a name="l00142"></a>00142     EXPECT_EQ(singleton.<a class="code" href="classaed2_1_1map_a89f2613f926ac13293eafe65889d6021.html#a89f2613f926ac13293eafe65889d6021" title="Devuelve la cantidad de valores en el diccionario.">size</a>(), 1);
-<a name="l00143"></a>00143     EXPECT_EQ(cinco_elementos.size(), 5);
+<a name="l00130"></a>00130 TEST_F(BasicMapInstances, operadorIndex) {
+<a name="l00131"></a>00131     EXPECT_EQ(singleton[1], <span class="stringliteral">&quot;uno&quot;</span>);
+<a name="l00132"></a>00132     EXPECT_EQ(cinco_elementos[1], <span class="stringliteral">&quot;uno&quot;</span>);
+<a name="l00133"></a>00133     EXPECT_EQ(cinco_elementos[3], <span class="stringliteral">&quot;tres&quot;</span>);
+<a name="l00134"></a>00134     EXPECT_EQ(cinco_elementos[5], <span class="stringliteral">&quot;cinco&quot;</span>);
+<a name="l00135"></a>00135 }
+<a name="l00136"></a>00136 
+<a name="l00137"></a>00137 TEST_F(BasicMapInstances, findEnVacio) {
+<a name="l00138"></a>00138     EXPECT_EQ(vacio.find(1), vacio.end());
+<a name="l00139"></a>00139 }
+<a name="l00140"></a>00140 
+<a name="l00141"></a>00141 TEST_F(BasicMapInstances, findQueExisteEnSingleton) {
+<a name="l00142"></a>00142     EXPECT_EQ(singleton.<a class="code" href="classaed2_1_1map_afd0fc1a8234888e61e0e615de7e245b8.html#afd0fc1a8234888e61e0e615de7e245b8" title="Devuelve un iterador a la posicion del valor con clave key">find</a>(1)-&gt;first, 1);
+<a name="l00143"></a>00143     EXPECT_EQ(singleton.<a class="code" href="classaed2_1_1map_afd0fc1a8234888e61e0e615de7e245b8.html#afd0fc1a8234888e61e0e615de7e245b8" title="Devuelve un iterador a la posicion del valor con clave key">find</a>(1)-&gt;second, <span class="stringliteral">&quot;uno&quot;</span>);
 <a name="l00144"></a>00144 }
 <a name="l00145"></a>00145 
-<a name="l00147"></a>00147 <span class="comment">// Tests de &quot;Busqueda y acceso a los valores&quot; (Thomas) //</span>
-<a name="l00149"></a>00149 <span class="comment"></span>
-<a name="l00150"></a>00150 TEST_F(BasicMapInstances, at) {
-<a name="l00151"></a>00151     EXPECT_EQ(singleton.<a class="code" href="classaed2_1_1map_a0b0a11f906da2926f9eb342fcee79fd7.html#a0b0a11f906da2926f9eb342fcee79fd7" title="Devuelve el significado asociado a key">at</a>(1), <span class="stringliteral">&quot;uno&quot;</span>);
-<a name="l00152"></a>00152     EXPECT_EQ(cinco_elementos.at(1), <span class="stringliteral">&quot;uno&quot;</span>);
-<a name="l00153"></a>00153     EXPECT_EQ(cinco_elementos.at(3), <span class="stringliteral">&quot;tres&quot;</span>);
-<a name="l00154"></a>00154     EXPECT_EQ(cinco_elementos.at(5), <span class="stringliteral">&quot;cinco&quot;</span>);
-<a name="l00155"></a>00155 }
-<a name="l00156"></a>00156 
-<a name="l00157"></a>00157 TEST_F(BasicMapInstances, operadorIndex) {
-<a name="l00158"></a>00158     EXPECT_EQ(singleton[1], <span class="stringliteral">&quot;uno&quot;</span>);
-<a name="l00159"></a>00159     EXPECT_EQ(cinco_elementos[1], <span class="stringliteral">&quot;uno&quot;</span>);
-<a name="l00160"></a>00160     EXPECT_EQ(cinco_elementos[3], <span class="stringliteral">&quot;tres&quot;</span>);
-<a name="l00161"></a>00161     EXPECT_EQ(cinco_elementos[5], <span class="stringliteral">&quot;cinco&quot;</span>);
-<a name="l00162"></a>00162 }
-<a name="l00163"></a>00163 
-<a name="l00164"></a>00164 TEST_F(BasicMapInstances, findEnVacio) {
-<a name="l00165"></a>00165     EXPECT_EQ(vacio.find(1), vacio.end());
-<a name="l00166"></a>00166 }
-<a name="l00167"></a>00167 
-<a name="l00168"></a>00168 TEST_F(BasicMapInstances, findQueExisteEnSingleton) {
-<a name="l00169"></a>00169     EXPECT_EQ(singleton.<a class="code" href="classaed2_1_1map_afd0fc1a8234888e61e0e615de7e245b8.html#afd0fc1a8234888e61e0e615de7e245b8" title="Devuelve un iterador a la posicion del valor con clave key">find</a>(1)-&gt;first, 1);
-<a name="l00170"></a>00170     EXPECT_EQ(singleton.<a class="code" href="classaed2_1_1map_afd0fc1a8234888e61e0e615de7e245b8.html#afd0fc1a8234888e61e0e615de7e245b8" title="Devuelve un iterador a la posicion del valor con clave key">find</a>(1)-&gt;second, <span class="stringliteral">&quot;uno&quot;</span>);
+<a name="l00146"></a>00146 TEST_F(BasicMapInstances, findQueNoExisteEnSingleton) {
+<a name="l00147"></a>00147     EXPECT_EQ(singleton.<a class="code" href="classaed2_1_1map_afd0fc1a8234888e61e0e615de7e245b8.html#afd0fc1a8234888e61e0e615de7e245b8" title="Devuelve un iterador a la posicion del valor con clave key">find</a>(2), singleton.<a class="code" href="classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983.html#a76023e6a56cb625513e1b5ea028bf983" title="Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario.">end</a>());
+<a name="l00148"></a>00148 }
+<a name="l00149"></a>00149 
+<a name="l00150"></a>00150 TEST_F(BasicMapInstances, findQueExiste) {
+<a name="l00151"></a>00151     EXPECT_EQ(cinco_elementos.find(1)-&gt;first, 1);
+<a name="l00152"></a>00152     EXPECT_EQ(cinco_elementos.find(1)-&gt;second, <span class="stringliteral">&quot;uno&quot;</span>);
+<a name="l00153"></a>00153 
+<a name="l00154"></a>00154     EXPECT_EQ(cinco_elementos.find(5)-&gt;first, 5);
+<a name="l00155"></a>00155     EXPECT_EQ(cinco_elementos.find(5)-&gt;second, <span class="stringliteral">&quot;cinco&quot;</span>);
+<a name="l00156"></a>00156 }
+<a name="l00157"></a>00157 
+<a name="l00158"></a>00158 TEST_F(BasicMapInstances, findQueNoExiste) {
+<a name="l00159"></a>00159     EXPECT_EQ(cinco_elementos.find(6), cinco_elementos.end());
+<a name="l00160"></a>00160 }
+<a name="l00161"></a>00161 
+<a name="l00162"></a>00162 TEST_F(BasicMapInstances, lowerBoundEnVacio) {
+<a name="l00163"></a>00163     EXPECT_EQ(vacio.lower_bound(6), vacio.end());
+<a name="l00164"></a>00164 }
+<a name="l00165"></a>00165 
+<a name="l00166"></a>00166 TEST_F(BasicMapInstances, lowerBoundEnSingleton) {
+<a name="l00167"></a>00167     EXPECT_EQ(singleton.<a class="code" href="classaed2_1_1map_a3399d36fdd5a880b494f3a5795d3f18f.html#a3399d36fdd5a880b494f3a5795d3f18f" title="Devuelve un iterador al primer valor con clave mayor o igual a key">lower_bound</a>(1)-&gt;first, 1);
+<a name="l00168"></a>00168     EXPECT_EQ(singleton.<a class="code" href="classaed2_1_1map_a3399d36fdd5a880b494f3a5795d3f18f.html#a3399d36fdd5a880b494f3a5795d3f18f" title="Devuelve un iterador al primer valor con clave mayor o igual a key">lower_bound</a>(0)-&gt;first, 1);
+<a name="l00169"></a>00169     EXPECT_EQ(singleton.<a class="code" href="classaed2_1_1map_a3399d36fdd5a880b494f3a5795d3f18f.html#a3399d36fdd5a880b494f3a5795d3f18f" title="Devuelve un iterador al primer valor con clave mayor o igual a key">lower_bound</a>(-1)-&gt;first, 1);
+<a name="l00170"></a>00170     EXPECT_EQ(singleton.<a class="code" href="classaed2_1_1map_a3399d36fdd5a880b494f3a5795d3f18f.html#a3399d36fdd5a880b494f3a5795d3f18f" title="Devuelve un iterador al primer valor con clave mayor o igual a key">lower_bound</a>(2), singleton.<a class="code" href="classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983.html#a76023e6a56cb625513e1b5ea028bf983" title="Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario.">end</a>());
 <a name="l00171"></a>00171 }
 <a name="l00172"></a>00172 
-<a name="l00173"></a>00173 TEST_F(BasicMapInstances, findQueNoExisteEnSingleton) {
-<a name="l00174"></a>00174     EXPECT_EQ(singleton.<a class="code" href="classaed2_1_1map_afd0fc1a8234888e61e0e615de7e245b8.html#afd0fc1a8234888e61e0e615de7e245b8" title="Devuelve un iterador a la posicion del valor con clave key">find</a>(2), singleton.<a class="code" href="classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983.html#a76023e6a56cb625513e1b5ea028bf983" title="Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario.">end</a>());
-<a name="l00175"></a>00175 }
-<a name="l00176"></a>00176 
-<a name="l00177"></a>00177 TEST_F(BasicMapInstances, findQueExiste) {
-<a name="l00178"></a>00178     EXPECT_EQ(cinco_elementos.find(1)-&gt;first, 1);
-<a name="l00179"></a>00179     EXPECT_EQ(cinco_elementos.find(1)-&gt;second, <span class="stringliteral">&quot;uno&quot;</span>);
+<a name="l00173"></a>00173 TEST_F(BasicMapInstances, lowerBoundExtenso) {
+<a name="l00174"></a>00174     EXPECT_EQ(cinco_elementos.lower_bound(1)-&gt;first, 1);
+<a name="l00175"></a>00175     EXPECT_EQ(cinco_elementos.lower_bound(0)-&gt;first, 1);
+<a name="l00176"></a>00176     EXPECT_EQ(cinco_elementos.lower_bound(3)-&gt;first, 3);
+<a name="l00177"></a>00177     EXPECT_EQ(cinco_elementos.lower_bound(5)-&gt;first, 5);
+<a name="l00178"></a>00178     EXPECT_EQ(cinco_elementos.lower_bound(6), cinco_elementos.end());
+<a name="l00179"></a>00179 }
 <a name="l00180"></a>00180 
-<a name="l00181"></a>00181     EXPECT_EQ(cinco_elementos.find(5)-&gt;first, 5);
-<a name="l00182"></a>00182     EXPECT_EQ(cinco_elementos.find(5)-&gt;second, <span class="stringliteral">&quot;cinco&quot;</span>);
-<a name="l00183"></a>00183 }
-<a name="l00184"></a>00184 
-<a name="l00185"></a>00185 TEST_F(BasicMapInstances, findQueNoExiste) {
-<a name="l00186"></a>00186     EXPECT_EQ(cinco_elementos.find(6), cinco_elementos.end());
-<a name="l00187"></a>00187 }
-<a name="l00188"></a>00188 
-<a name="l00189"></a>00189 TEST_F(BasicMapInstances, lowerBoundEnVacio) {
-<a name="l00190"></a>00190     EXPECT_EQ(vacio.lower_bound(6), vacio.end());
+<a name="l00182"></a>00182 <span class="comment">// Tests de &quot;Inserción, borrado y modificación&quot; (Thomas) //</span>
+<a name="l00184"></a>00184 <span class="comment"></span>
+<a name="l00185"></a>00185 <span class="comment">// Esto lo testea el Fixture y los tests de observadores básicos.</span>
+<a name="l00186"></a>00186 <span class="comment">//TEST_F(BasicMapInstances, insertSinHint) {}</span>
+<a name="l00187"></a>00187 
+<a name="l00188"></a>00188 TEST_F(BasicMapInstances, insertElMismoElementoSinHint) {
+<a name="l00189"></a>00189     singleton.<a class="code" href="classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8.html#a60aacba06b1579630b3c8e996cf248c8" title="Inserta value en el diccionario.">insert</a>({1, <span class="stringliteral">&quot;diez&quot;</span>});
+<a name="l00190"></a>00190     EXPECT_EQ(singleton.<a class="code" href="classaed2_1_1map_a0b0a11f906da2926f9eb342fcee79fd7.html#a0b0a11f906da2926f9eb342fcee79fd7" title="Devuelve el significado asociado a key">at</a>(1), <span class="stringliteral">&quot;uno&quot;</span>);
 <a name="l00191"></a>00191 }
 <a name="l00192"></a>00192 
-<a name="l00193"></a>00193 TEST_F(BasicMapInstances, lowerBoundEnSingleton) {
-<a name="l00194"></a>00194     EXPECT_EQ(singleton.<a class="code" href="classaed2_1_1map_a3399d36fdd5a880b494f3a5795d3f18f.html#a3399d36fdd5a880b494f3a5795d3f18f" title="Devuelve un iterador al primer valor con clave mayor o igual a key">lower_bound</a>(1)-&gt;first, 1);
-<a name="l00195"></a>00195     EXPECT_EQ(singleton.<a class="code" href="classaed2_1_1map_a3399d36fdd5a880b494f3a5795d3f18f.html#a3399d36fdd5a880b494f3a5795d3f18f" title="Devuelve un iterador al primer valor con clave mayor o igual a key">lower_bound</a>(0)-&gt;first, 1);
-<a name="l00196"></a>00196     EXPECT_EQ(singleton.<a class="code" href="classaed2_1_1map_a3399d36fdd5a880b494f3a5795d3f18f.html#a3399d36fdd5a880b494f3a5795d3f18f" title="Devuelve un iterador al primer valor con clave mayor o igual a key">lower_bound</a>(-1)-&gt;first, 1);
-<a name="l00197"></a>00197     EXPECT_EQ(singleton.<a class="code" href="classaed2_1_1map_a3399d36fdd5a880b494f3a5795d3f18f.html#a3399d36fdd5a880b494f3a5795d3f18f" title="Devuelve un iterador al primer valor con clave mayor o igual a key">lower_bound</a>(2), singleton.<a class="code" href="classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983.html#a76023e6a56cb625513e1b5ea028bf983" title="Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario.">end</a>());
-<a name="l00198"></a>00198 }
-<a name="l00199"></a>00199 
-<a name="l00200"></a>00200 TEST_F(BasicMapInstances, lowerBoundExtenso) {
-<a name="l00201"></a>00201     EXPECT_EQ(cinco_elementos.lower_bound(1)-&gt;first, 1);
-<a name="l00202"></a>00202     EXPECT_EQ(cinco_elementos.lower_bound(0)-&gt;first, 1);
-<a name="l00203"></a>00203     EXPECT_EQ(cinco_elementos.lower_bound(3)-&gt;first, 3);
-<a name="l00204"></a>00204     EXPECT_EQ(cinco_elementos.lower_bound(5)-&gt;first, 5);
-<a name="l00205"></a>00205     EXPECT_EQ(cinco_elementos.lower_bound(6), cinco_elementos.end());
-<a name="l00206"></a>00206 }
-<a name="l00207"></a>00207 
-<a name="l00209"></a>00209 <span class="comment">// Tests de &quot;Inserción, borrado y modificación&quot; (Thomas) //</span>
-<a name="l00211"></a>00211 <span class="comment"></span>
-<a name="l00212"></a>00212 <span class="comment">// Esto lo testea el Fixture y los tests de observadores básicos.</span>
-<a name="l00213"></a>00213 <span class="comment">//TEST_F(BasicMapInstances, insertSinHint) {}</span>
-<a name="l00214"></a>00214 
-<a name="l00215"></a>00215 TEST_F(BasicMapInstances, insertElMismoElementoSinHint) {
-<a name="l00216"></a>00216     singleton.<a class="code" href="classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8.html#a60aacba06b1579630b3c8e996cf248c8" title="Inserta value en el diccionario.">insert</a>({1, <span class="stringliteral">&quot;diez&quot;</span>});
-<a name="l00217"></a>00217     EXPECT_EQ(singleton.<a class="code" href="classaed2_1_1map_a0b0a11f906da2926f9eb342fcee79fd7.html#a0b0a11f906da2926f9eb342fcee79fd7" title="Devuelve el significado asociado a key">at</a>(1), <span class="stringliteral">&quot;uno&quot;</span>);
+<a name="l00193"></a>00193 TEST_F(BasicMapInstances, insertElMismoElementoConHint) {
+<a name="l00194"></a>00194     <span class="keyword">auto</span> hint = vacio.insert({1, <span class="stringliteral">&quot;uno&quot;</span>});
+<a name="l00195"></a>00195     vacio.insert(++hint, {1, <span class="stringliteral">&quot;diez&quot;</span>});
+<a name="l00196"></a>00196     EXPECT_EQ(vacio.at(1), <span class="stringliteral">&quot;uno&quot;</span>);
+<a name="l00197"></a>00197 }
+<a name="l00198"></a>00198 
+<a name="l00199"></a>00199 TEST_F(BasicMapInstances, insertConHintBueno) {
+<a name="l00200"></a>00200     <span class="keyword">auto</span> hint = vacio.insert({1, <span class="stringliteral">&quot;uno&quot;</span>});
+<a name="l00201"></a>00201 
+<a name="l00202"></a>00202     vacio.insert(++hint, {2, <span class="stringliteral">&quot;dos&quot;</span>});
+<a name="l00203"></a>00203     EXPECT_EQ(vacio.at(1), <span class="stringliteral">&quot;uno&quot;</span>);
+<a name="l00204"></a>00204     EXPECT_EQ(vacio.at(2), <span class="stringliteral">&quot;dos&quot;</span>);
+<a name="l00205"></a>00205 }
+<a name="l00206"></a>00206 
+<a name="l00207"></a>00207 TEST_F(BasicMapInstances, insertConHintMalo) {
+<a name="l00208"></a>00208     <span class="keyword">auto</span> hint = vacio.insert({1, <span class="stringliteral">&quot;uno&quot;</span>});
+<a name="l00209"></a>00209 
+<a name="l00210"></a>00210     vacio.insert(hint, {2, <span class="stringliteral">&quot;dos&quot;</span>});
+<a name="l00211"></a>00211     EXPECT_EQ(vacio.at(1), <span class="stringliteral">&quot;uno&quot;</span>);
+<a name="l00212"></a>00212     EXPECT_EQ(vacio.at(2), <span class="stringliteral">&quot;dos&quot;</span>);
+<a name="l00213"></a>00213 
+<a name="l00214"></a>00214     vacio.insert(vacio.end(), {0, <span class="stringliteral">&quot;cero&quot;</span>});
+<a name="l00215"></a>00215     EXPECT_EQ(vacio.at(0), <span class="stringliteral">&quot;cero&quot;</span>);
+<a name="l00216"></a>00216     EXPECT_EQ(vacio.at(1), <span class="stringliteral">&quot;uno&quot;</span>);
+<a name="l00217"></a>00217     EXPECT_EQ(vacio.at(2), <span class="stringliteral">&quot;dos&quot;</span>);
 <a name="l00218"></a>00218 }
 <a name="l00219"></a>00219 
-<a name="l00220"></a>00220 TEST_F(BasicMapInstances, insertElMismoElementoConHint) {
-<a name="l00221"></a>00221     <span class="keyword">auto</span> hint = vacio.insert({1, <span class="stringliteral">&quot;uno&quot;</span>});
-<a name="l00222"></a>00222     vacio.insert(++hint, {1, <span class="stringliteral">&quot;diez&quot;</span>});
-<a name="l00223"></a>00223     EXPECT_EQ(vacio.at(1), <span class="stringliteral">&quot;uno&quot;</span>);
-<a name="l00224"></a>00224 }
-<a name="l00225"></a>00225 
-<a name="l00226"></a>00226 TEST_F(BasicMapInstances, insertConHintBueno) {
-<a name="l00227"></a>00227     <span class="keyword">auto</span> hint = vacio.insert({1, <span class="stringliteral">&quot;uno&quot;</span>});
-<a name="l00228"></a>00228 
-<a name="l00229"></a>00229     vacio.insert(++hint, {2, <span class="stringliteral">&quot;dos&quot;</span>});
-<a name="l00230"></a>00230     EXPECT_EQ(vacio.at(1), <span class="stringliteral">&quot;uno&quot;</span>);
-<a name="l00231"></a>00231     EXPECT_EQ(vacio.at(2), <span class="stringliteral">&quot;dos&quot;</span>);
-<a name="l00232"></a>00232 }
-<a name="l00233"></a>00233 
-<a name="l00234"></a>00234 TEST_F(BasicMapInstances, insertConHintMalo) {
-<a name="l00235"></a>00235     <span class="keyword">auto</span> hint = vacio.insert({1, <span class="stringliteral">&quot;uno&quot;</span>});
-<a name="l00236"></a>00236 
-<a name="l00237"></a>00237     vacio.insert(hint, {2, <span class="stringliteral">&quot;dos&quot;</span>});
-<a name="l00238"></a>00238     EXPECT_EQ(vacio.at(1), <span class="stringliteral">&quot;uno&quot;</span>);
-<a name="l00239"></a>00239     EXPECT_EQ(vacio.at(2), <span class="stringliteral">&quot;dos&quot;</span>);
+<a name="l00220"></a>00220 <span class="comment">// Ya probé inserts, asi que solo voy a testear assigns</span>
+<a name="l00221"></a>00221 
+<a name="l00222"></a>00222 TEST_F(BasicMapInstances, insertOrAssignSinHint) {
+<a name="l00223"></a>00223     singleton.<a class="code" href="classaed2_1_1map_a2ef6723c183916276b0afc4a4c721475.html#a2ef6723c183916276b0afc4a4c721475" title="Inserta o Color::Redefine value en el diccionario.">insert_or_assign</a>({1, <span class="stringliteral">&quot;diez&quot;</span>});
+<a name="l00224"></a>00224     EXPECT_EQ(singleton.<a class="code" href="classaed2_1_1map_a0b0a11f906da2926f9eb342fcee79fd7.html#a0b0a11f906da2926f9eb342fcee79fd7" title="Devuelve el significado asociado a key">at</a>(1), <span class="stringliteral">&quot;diez&quot;</span>);
+<a name="l00225"></a>00225 }
+<a name="l00226"></a>00226 
+<a name="l00227"></a>00227 TEST_F(BasicMapInstances, insertOrAssignConHintBueno) {
+<a name="l00228"></a>00228     <span class="keyword">auto</span> hint = vacio.insert({1, <span class="stringliteral">&quot;uno&quot;</span>});
+<a name="l00229"></a>00229     vacio.insert_or_assign(++hint, {1, <span class="stringliteral">&quot;diez&quot;</span>});
+<a name="l00230"></a>00230     EXPECT_EQ(vacio.at(1), <span class="stringliteral">&quot;diez&quot;</span>);
+<a name="l00231"></a>00231 }
+<a name="l00232"></a>00232 
+<a name="l00233"></a>00233 TEST_F(BasicMapInstances, insertOrAssignConHintMalo) {
+<a name="l00234"></a>00234     <span class="keyword">auto</span> hint = cinco_elementos.insert({7, <span class="stringliteral">&quot;siete&quot;</span>});
+<a name="l00235"></a>00235     cinco_elementos.insert_or_assign(hint, {1, <span class="stringliteral">&quot;diez&quot;</span>});
+<a name="l00236"></a>00236     EXPECT_EQ(cinco_elementos.at(1), <span class="stringliteral">&quot;diez&quot;</span>);
+<a name="l00237"></a>00237     cinco_elementos.insert_or_assign(cinco_elementos.begin(), {7, <span class="stringliteral">&quot;setenta&quot;</span>});
+<a name="l00238"></a>00238     EXPECT_EQ(cinco_elementos.at(7), <span class="stringliteral">&quot;setenta&quot;</span>);
+<a name="l00239"></a>00239 }
 <a name="l00240"></a>00240 
-<a name="l00241"></a>00241     vacio.insert(vacio.end(), {0, <span class="stringliteral">&quot;cero&quot;</span>});
-<a name="l00242"></a>00242     EXPECT_EQ(vacio.at(0), <span class="stringliteral">&quot;cero&quot;</span>);
-<a name="l00243"></a>00243     EXPECT_EQ(vacio.at(1), <span class="stringliteral">&quot;uno&quot;</span>);
-<a name="l00244"></a>00244     EXPECT_EQ(vacio.at(2), <span class="stringliteral">&quot;dos&quot;</span>);
-<a name="l00245"></a>00245 }
-<a name="l00246"></a>00246 
-<a name="l00247"></a>00247 <span class="comment">// Ya probé inserts, asi que solo voy a testear assigns</span>
+<a name="l00241"></a>00241 TEST_F(BasicMapInstances, erasePorClave) {
+<a name="l00242"></a>00242     singleton.<a class="code" href="classaed2_1_1map_ad8e796bf9c9c558e5ce6b61e116253fe.html#ad8e796bf9c9c558e5ce6b61e116253fe" title="Elimina el valor apuntado por pos">erase</a>( 1 );
+<a name="l00243"></a>00243     EXPECT_TRUE( singleton.<a class="code" href="classaed2_1_1map_af5320ca0a7df4d16015441d5d055a7ee.html#af5320ca0a7df4d16015441d5d055a7ee" title="Indica si el diccionario esta vacío.">empty</a>() );
+<a name="l00244"></a>00244 
+<a name="l00245"></a>00245     cinco_elementos.erase(1);
+<a name="l00246"></a>00246     EXPECT_EQ(cinco_elementos.size(), 4);
+<a name="l00247"></a>00247     EXPECT_EQ(cinco_elementos.find(1), cinco_elementos.end());
 <a name="l00248"></a>00248 
-<a name="l00249"></a>00249 TEST_F(BasicMapInstances, insertOrAssignSinHint) {
-<a name="l00250"></a>00250     singleton.<a class="code" href="classaed2_1_1map_a2ef6723c183916276b0afc4a4c721475.html#a2ef6723c183916276b0afc4a4c721475" title="Inserta o Color::Redefine value en el diccionario.">insert_or_assign</a>({1, <span class="stringliteral">&quot;diez&quot;</span>});
-<a name="l00251"></a>00251     EXPECT_EQ(singleton.<a class="code" href="classaed2_1_1map_a0b0a11f906da2926f9eb342fcee79fd7.html#a0b0a11f906da2926f9eb342fcee79fd7" title="Devuelve el significado asociado a key">at</a>(1), <span class="stringliteral">&quot;diez&quot;</span>);
-<a name="l00252"></a>00252 }
-<a name="l00253"></a>00253 
-<a name="l00254"></a>00254 TEST_F(BasicMapInstances, insertOrAssignConHintBueno) {
-<a name="l00255"></a>00255     <span class="keyword">auto</span> hint = vacio.insert({1, <span class="stringliteral">&quot;uno&quot;</span>});
-<a name="l00256"></a>00256     vacio.insert_or_assign(++hint, {1, <span class="stringliteral">&quot;diez&quot;</span>});
-<a name="l00257"></a>00257     EXPECT_EQ(vacio.at(1), <span class="stringliteral">&quot;diez&quot;</span>);
-<a name="l00258"></a>00258 }
-<a name="l00259"></a>00259 
-<a name="l00260"></a>00260 TEST_F(BasicMapInstances, insertOrAssignConHintMalo) {
-<a name="l00261"></a>00261     <span class="keyword">auto</span> hint = cinco_elementos.insert({7, <span class="stringliteral">&quot;siete&quot;</span>});
-<a name="l00262"></a>00262     cinco_elementos.insert_or_assign(hint, {1, <span class="stringliteral">&quot;diez&quot;</span>});
-<a name="l00263"></a>00263     EXPECT_EQ(cinco_elementos.at(1), <span class="stringliteral">&quot;diez&quot;</span>);
-<a name="l00264"></a>00264     cinco_elementos.insert_or_assign(cinco_elementos.begin(), {7, <span class="stringliteral">&quot;setenta&quot;</span>});
-<a name="l00265"></a>00265     EXPECT_EQ(cinco_elementos.at(7), <span class="stringliteral">&quot;setenta&quot;</span>);
-<a name="l00266"></a>00266 }
-<a name="l00267"></a>00267 
-<a name="l00268"></a>00268 TEST_F(BasicMapInstances, erasePorClave) {
-<a name="l00269"></a>00269     singleton.<a class="code" href="classaed2_1_1map_ad8e796bf9c9c558e5ce6b61e116253fe.html#ad8e796bf9c9c558e5ce6b61e116253fe" title="Elimina el valor apuntado por pos">erase</a>( 1 );
-<a name="l00270"></a>00270     EXPECT_TRUE( singleton.<a class="code" href="classaed2_1_1map_af5320ca0a7df4d16015441d5d055a7ee.html#af5320ca0a7df4d16015441d5d055a7ee" title="Indica si el diccionario esta vacío.">empty</a>() );
-<a name="l00271"></a>00271 
-<a name="l00272"></a>00272     cinco_elementos.erase(1);
-<a name="l00273"></a>00273     EXPECT_EQ(cinco_elementos.size(), 4);
-<a name="l00274"></a>00274     EXPECT_EQ(cinco_elementos.find(1), cinco_elementos.end());
+<a name="l00249"></a>00249     cinco_elementos.erase(5);
+<a name="l00250"></a>00250     EXPECT_EQ(cinco_elementos.size(), 3);
+<a name="l00251"></a>00251     EXPECT_EQ(cinco_elementos.find(5), cinco_elementos.end());
+<a name="l00252"></a>00252 
+<a name="l00253"></a>00253     cinco_elementos.erase(3);
+<a name="l00254"></a>00254     EXPECT_EQ(cinco_elementos.size(), 2);
+<a name="l00255"></a>00255     EXPECT_EQ(cinco_elementos.find(3), cinco_elementos.end());
+<a name="l00256"></a>00256 }
+<a name="l00257"></a>00257 
+<a name="l00258"></a>00258 TEST_F(BasicMapInstances, erasePorIterador) {
+<a name="l00259"></a>00259     singleton.<a class="code" href="classaed2_1_1map_ad8e796bf9c9c558e5ce6b61e116253fe.html#ad8e796bf9c9c558e5ce6b61e116253fe" title="Elimina el valor apuntado por pos">erase</a>( singleton.<a class="code" href="classaed2_1_1map_a58a95705d54b3dda7f775ce5a22225cb.html#a58a95705d54b3dda7f775ce5a22225cb" title="Devuelve un iterador al primer valor del diccionario.">begin</a>() );
+<a name="l00260"></a>00260     EXPECT_TRUE( singleton.<a class="code" href="classaed2_1_1map_af5320ca0a7df4d16015441d5d055a7ee.html#af5320ca0a7df4d16015441d5d055a7ee" title="Indica si el diccionario esta vacío.">empty</a>() );
+<a name="l00261"></a>00261 
+<a name="l00262"></a>00262     <span class="keyword">auto</span> it = cinco_elementos.insert({7, <span class="stringliteral">&quot;siete&quot;</span>});
+<a name="l00263"></a>00263     it = cinco_elementos.erase( it );
+<a name="l00264"></a>00264     EXPECT_EQ(it, cinco_elementos.end());
+<a name="l00265"></a>00265 
+<a name="l00266"></a>00266     it = cinco_elementos.insert({0, <span class="stringliteral">&quot;cero&quot;</span>});
+<a name="l00267"></a>00267     it = cinco_elementos.erase( it );
+<a name="l00268"></a>00268     EXPECT_EQ(it, cinco_elementos.begin());
+<a name="l00269"></a>00269 }
+<a name="l00270"></a>00270 
+<a name="l00271"></a>00271 TEST_F(BasicMapInstances, clear) {
+<a name="l00272"></a>00272     vacio.clear();
+<a name="l00273"></a>00273     EXPECT_TRUE(vacio.empty());
+<a name="l00274"></a>00274     EXPECT_EQ(vacio.size(), 0);
 <a name="l00275"></a>00275 
-<a name="l00276"></a>00276     cinco_elementos.erase(5);
-<a name="l00277"></a>00277     EXPECT_EQ(cinco_elementos.size(), 3);
-<a name="l00278"></a>00278     EXPECT_EQ(cinco_elementos.find(5), cinco_elementos.end());
+<a name="l00276"></a>00276     singleton.<a class="code" href="classaed2_1_1map_a2bfa5165825979bf2431db55bc6bc9ca.html#a2bfa5165825979bf2431db55bc6bc9ca" title="Vacia el diccionario.">clear</a>();
+<a name="l00277"></a>00277     EXPECT_TRUE(singleton.<a class="code" href="classaed2_1_1map_af5320ca0a7df4d16015441d5d055a7ee.html#af5320ca0a7df4d16015441d5d055a7ee" title="Indica si el diccionario esta vacío.">empty</a>());
+<a name="l00278"></a>00278     EXPECT_EQ(singleton.<a class="code" href="classaed2_1_1map_a89f2613f926ac13293eafe65889d6021.html#a89f2613f926ac13293eafe65889d6021" title="Devuelve la cantidad de valores en el diccionario.">size</a>(), 0);
 <a name="l00279"></a>00279 
-<a name="l00280"></a>00280     cinco_elementos.erase(3);
-<a name="l00281"></a>00281     EXPECT_EQ(cinco_elementos.size(), 2);
-<a name="l00282"></a>00282     EXPECT_EQ(cinco_elementos.find(3), cinco_elementos.end());
+<a name="l00280"></a>00280     cinco_elementos.clear();
+<a name="l00281"></a>00281     EXPECT_TRUE(cinco_elementos.empty());
+<a name="l00282"></a>00282     EXPECT_EQ(cinco_elementos.size(), 0);
 <a name="l00283"></a>00283 }
 <a name="l00284"></a>00284 
-<a name="l00285"></a>00285 TEST_F(BasicMapInstances, erasePorIterador) {
-<a name="l00286"></a>00286     singleton.<a class="code" href="classaed2_1_1map_ad8e796bf9c9c558e5ce6b61e116253fe.html#ad8e796bf9c9c558e5ce6b61e116253fe" title="Elimina el valor apuntado por pos">erase</a>( singleton.<a class="code" href="classaed2_1_1map_a58a95705d54b3dda7f775ce5a22225cb.html#a58a95705d54b3dda7f775ce5a22225cb" title="Devuelve un iterador al primer valor del diccionario.">begin</a>() );
-<a name="l00287"></a>00287     EXPECT_TRUE( singleton.<a class="code" href="classaed2_1_1map_af5320ca0a7df4d16015441d5d055a7ee.html#af5320ca0a7df4d16015441d5d055a7ee" title="Indica si el diccionario esta vacío.">empty</a>() );
-<a name="l00288"></a>00288 
-<a name="l00289"></a>00289     <span class="keyword">auto</span> it = cinco_elementos.insert({7, <span class="stringliteral">&quot;siete&quot;</span>});
-<a name="l00290"></a>00290     it = cinco_elementos.erase( it );
-<a name="l00291"></a>00291     EXPECT_EQ(it, cinco_elementos.end());
+<a name="l00285"></a>00285 <span class="comment">// TODO fijarse que ya testeamos constructor por copia e igualdad antes</span>
+<a name="l00286"></a>00286 
+<a name="l00287"></a>00287 TEST_F(BasicMapInstances, swapConVacio) {
+<a name="l00288"></a>00288     <span class="keyword">auto</span> copia_vacio( vacio );
+<a name="l00289"></a>00289     <span class="keyword">auto</span> copia_cinco_elementos( cinco_elementos );
+<a name="l00290"></a>00290 
+<a name="l00291"></a>00291     vacio.swap( cinco_elementos );
 <a name="l00292"></a>00292 
-<a name="l00293"></a>00293     it = cinco_elementos.insert({0, <span class="stringliteral">&quot;cero&quot;</span>});
-<a name="l00294"></a>00294     it = cinco_elementos.erase( it );
-<a name="l00295"></a>00295     EXPECT_EQ(it, cinco_elementos.begin());
-<a name="l00296"></a>00296 }
-<a name="l00297"></a>00297 
-<a name="l00298"></a>00298 TEST_F(BasicMapInstances, clear) {
-<a name="l00299"></a>00299     vacio.clear();
-<a name="l00300"></a>00300     EXPECT_TRUE(vacio.empty());
-<a name="l00301"></a>00301     EXPECT_EQ(vacio.size(), 0);
+<a name="l00293"></a>00293     EXPECT_EQ(vacio, copia_cinco_elementos);
+<a name="l00294"></a>00294     EXPECT_EQ(copia_vacio, cinco_elementos);
+<a name="l00295"></a>00295 }
+<a name="l00296"></a>00296 
+<a name="l00297"></a>00297 TEST_F(BasicMapInstances, swapConSingleton) {
+<a name="l00298"></a>00298     <span class="keyword">auto</span> copia_singleton( singleton );
+<a name="l00299"></a>00299     <span class="keyword">auto</span> copia_cinco_elementos( cinco_elementos );
+<a name="l00300"></a>00300 
+<a name="l00301"></a>00301     singleton.<a class="code" href="classaed2_1_1map_a43ddb71cc91e5c6021a7a1f243d6cc4a.html#a43ddb71cc91e5c6021a7a1f243d6cc4a" title="Intercambia el contenido de *this y other">swap</a>( cinco_elementos );
 <a name="l00302"></a>00302 
-<a name="l00303"></a>00303     singleton.<a class="code" href="classaed2_1_1map_a2bfa5165825979bf2431db55bc6bc9ca.html#a2bfa5165825979bf2431db55bc6bc9ca" title="Vacia el diccionario.">clear</a>();
-<a name="l00304"></a>00304     EXPECT_TRUE(singleton.<a class="code" href="classaed2_1_1map_af5320ca0a7df4d16015441d5d055a7ee.html#af5320ca0a7df4d16015441d5d055a7ee" title="Indica si el diccionario esta vacío.">empty</a>());
-<a name="l00305"></a>00305     EXPECT_EQ(singleton.<a class="code" href="classaed2_1_1map_a89f2613f926ac13293eafe65889d6021.html#a89f2613f926ac13293eafe65889d6021" title="Devuelve la cantidad de valores en el diccionario.">size</a>(), 0);
+<a name="l00303"></a>00303     EXPECT_EQ(singleton, copia_cinco_elementos);
+<a name="l00304"></a>00304     EXPECT_EQ(copia_singleton, cinco_elementos);
+<a name="l00305"></a>00305 }
 <a name="l00306"></a>00306 
-<a name="l00307"></a>00307     cinco_elementos.clear();
-<a name="l00308"></a>00308     EXPECT_TRUE(cinco_elementos.empty());
-<a name="l00309"></a>00309     EXPECT_EQ(cinco_elementos.size(), 0);
-<a name="l00310"></a>00310 }
-<a name="l00311"></a>00311 
-<a name="l00312"></a>00312 <span class="comment">// TODO fijarse que ya testeamos constructor por copia e igualdad antes</span>
-<a name="l00313"></a>00313 
-<a name="l00314"></a>00314 TEST_F(BasicMapInstances, swapConVacio) {
-<a name="l00315"></a>00315     <span class="keyword">auto</span> copia_vacio( vacio );
-<a name="l00316"></a>00316     <span class="keyword">auto</span> copia_cinco_elementos( cinco_elementos );
-<a name="l00317"></a>00317 
-<a name="l00318"></a>00318     vacio.swap( cinco_elementos );
-<a name="l00319"></a>00319 
-<a name="l00320"></a>00320     EXPECT_EQ(vacio, copia_cinco_elementos);
-<a name="l00321"></a>00321     EXPECT_EQ(copia_vacio, cinco_elementos);
-<a name="l00322"></a>00322 }
-<a name="l00323"></a>00323 
-<a name="l00324"></a>00324 TEST_F(BasicMapInstances, swapConSingleton) {
-<a name="l00325"></a>00325     <span class="keyword">auto</span> copia_singleton( singleton );
-<a name="l00326"></a>00326     <span class="keyword">auto</span> copia_cinco_elementos( cinco_elementos );
-<a name="l00327"></a>00327 
-<a name="l00328"></a>00328     singleton.<a class="code" href="classaed2_1_1map_a43ddb71cc91e5c6021a7a1f243d6cc4a.html#a43ddb71cc91e5c6021a7a1f243d6cc4a" title="Intercambia el contenido de *this y other">swap</a>( cinco_elementos );
-<a name="l00329"></a>00329 
-<a name="l00330"></a>00330     EXPECT_EQ(singleton, copia_cinco_elementos);
-<a name="l00331"></a>00331     EXPECT_EQ(copia_singleton, cinco_elementos);
-<a name="l00332"></a>00332 }
-<a name="l00333"></a>00333 
-<a name="l00335"></a>00335 <span class="comment">// Recorridos e iteradores (Alexis) //</span>
-<a name="l00337"></a>00337 <span class="comment"></span>
-<a name="l00338"></a>00338 <span class="comment">// Básicamente vamos a comparar todos los iteradores de aed2::map con los de std::map</span>
-<a name="l00339"></a>00339 TEST_F(BasicMapInstances, Begin) {
-<a name="l00340"></a>00340     EXPECT_TRUE(std::equal(cinco_elementos.begin(), cinco_elementos.end(), cinco_elementos_std.begin()));
-<a name="l00341"></a>00341 }
-<a name="l00342"></a>00342 
-<a name="l00343"></a>00343 TEST_F(BasicMapInstances, ConstBegin) {
-<a name="l00344"></a>00344     <span class="keyword">const</span> <span class="keyword">auto</span>&amp; cinco_elementos_const = cinco_elementos;
-<a name="l00345"></a>00345     <span class="keyword">const</span> <span class="keyword">auto</span>&amp; cinco_elementos_std_const = cinco_elementos_std;
-<a name="l00346"></a>00346     EXPECT_TRUE(std::equal(cinco_elementos_const.begin(), cinco_elementos_const.end(), cinco_elementos_std_const.begin()));
-<a name="l00347"></a>00347 }
-<a name="l00348"></a>00348 
-<a name="l00349"></a>00349 TEST_F(BasicMapInstances, CBegin) {
-<a name="l00350"></a>00350     <span class="keyword">const</span> <span class="keyword">auto</span>&amp; cinco_elementos_std_const = cinco_elementos_std;
-<a name="l00351"></a>00351     EXPECT_TRUE(std::equal(cinco_elementos.cbegin(), cinco_elementos.cend(), cinco_elementos_std_const.begin()));
-<a name="l00352"></a>00352 }
-<a name="l00353"></a>00353 
-<a name="l00354"></a>00354 TEST_F(BasicMapInstances, RBegin) {
-<a name="l00355"></a>00355     EXPECT_TRUE(std::equal(cinco_elementos.rbegin(), cinco_elementos.rend(), cinco_elementos_std.rbegin()));
-<a name="l00356"></a>00356 }
-<a name="l00357"></a>00357 
-<a name="l00358"></a>00358 TEST_F(BasicMapInstances, ConstRBegin) {
-<a name="l00359"></a>00359     <span class="keyword">const</span> <span class="keyword">auto</span>&amp; cinco_elementos_const = cinco_elementos;
-<a name="l00360"></a>00360     <span class="keyword">const</span> <span class="keyword">auto</span>&amp; cinco_elementos_std_const = cinco_elementos_std;
-<a name="l00361"></a>00361     EXPECT_TRUE(std::equal(cinco_elementos_const.rbegin(), cinco_elementos_const.rend(), cinco_elementos_std_const.rbegin()));
-<a name="l00362"></a>00362 }
+<a name="l00308"></a>00308 <span class="comment">// Recorridos e iteradores (Alexis) //</span>
+<a name="l00310"></a>00310 <span class="comment"></span>
+<a name="l00311"></a>00311 <span class="comment">// Básicamente vamos a comparar todos los iteradores de aed2::map con los de std::map</span>
+<a name="l00312"></a>00312 TEST_F(BasicMapInstances, Begin) {
+<a name="l00313"></a>00313     EXPECT_TRUE(std::equal(cinco_elementos.begin(), cinco_elementos.end(), cinco_elementos_std.begin()));
+<a name="l00314"></a>00314 }
+<a name="l00315"></a>00315 
+<a name="l00316"></a>00316 TEST_F(BasicMapInstances, ConstBegin) {
+<a name="l00317"></a>00317     <span class="keyword">const</span> <span class="keyword">auto</span>&amp; cinco_elementos_const = cinco_elementos;
+<a name="l00318"></a>00318     <span class="keyword">const</span> <span class="keyword">auto</span>&amp; cinco_elementos_std_const = cinco_elementos_std;
+<a name="l00319"></a>00319     EXPECT_TRUE(std::equal(cinco_elementos_const.begin(), cinco_elementos_const.end(), cinco_elementos_std_const.begin()));
+<a name="l00320"></a>00320 }
+<a name="l00321"></a>00321 
+<a name="l00322"></a>00322 TEST_F(BasicMapInstances, CBegin) {
+<a name="l00323"></a>00323     <span class="keyword">const</span> <span class="keyword">auto</span>&amp; cinco_elementos_std_const = cinco_elementos_std;
+<a name="l00324"></a>00324     EXPECT_TRUE(std::equal(cinco_elementos.cbegin(), cinco_elementos.cend(), cinco_elementos_std_const.begin()));
+<a name="l00325"></a>00325 }
+<a name="l00326"></a>00326 
+<a name="l00327"></a>00327 TEST_F(BasicMapInstances, RBegin) {
+<a name="l00328"></a>00328     EXPECT_TRUE(std::equal(cinco_elementos.rbegin(), cinco_elementos.rend(), cinco_elementos_std.rbegin()));
+<a name="l00329"></a>00329 }
+<a name="l00330"></a>00330 
+<a name="l00331"></a>00331 TEST_F(BasicMapInstances, ConstRBegin) {
+<a name="l00332"></a>00332     <span class="keyword">const</span> <span class="keyword">auto</span>&amp; cinco_elementos_const = cinco_elementos;
+<a name="l00333"></a>00333     <span class="keyword">const</span> <span class="keyword">auto</span>&amp; cinco_elementos_std_const = cinco_elementos_std;
+<a name="l00334"></a>00334     EXPECT_TRUE(std::equal(cinco_elementos_const.rbegin(), cinco_elementos_const.rend(), cinco_elementos_std_const.rbegin()));
+<a name="l00335"></a>00335 }
+<a name="l00336"></a>00336 
+<a name="l00337"></a>00337 TEST_F(BasicMapInstances, CRBegin) {
+<a name="l00338"></a>00338     <span class="keyword">const</span> <span class="keyword">auto</span>&amp; cinco_elementos_std_const = cinco_elementos_std;
+<a name="l00339"></a>00339     EXPECT_TRUE(std::equal(cinco_elementos.crbegin(), cinco_elementos.crend(), cinco_elementos_std_const.rbegin()));
+<a name="l00340"></a>00340 }
+<a name="l00341"></a>00341 
+<a name="l00343"></a>00343 <span class="comment">// Recorridos e iteradores (Alexis) //</span>
+<a name="l00345"></a>00345 <span class="comment"></span>
+<a name="l00346"></a>00346 <span class="comment">// Asumo que si andan los iteradores =&gt; anda el operador ==</span>
+<a name="l00347"></a>00347 
+<a name="l00348"></a>00348 <span class="keyword">template</span>&lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V, <span class="keyword">class</span> CMP&gt;
+<a name="l00349"></a>00349 <span class="keywordtype">bool</span> <a class="code" href="classaed2_1_1map_abfc51b39670220e79037ac067006e933.html#abfc51b39670220e79037ac067006e933" title="Operador de igualdad entre dos diccionarios.">operator == </a>(<span class="keyword">const</span> std::map&lt;K,V,CMP&gt;&amp; m1, <span class="keyword">const</span> <a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">aed2::map&lt;K,V,CMP&gt;</a>&amp; m2) {
+<a name="l00350"></a>00350     <span class="keywordflow">return</span> m1.size() == m2.<a class="code" href="classaed2_1_1map_a89f2613f926ac13293eafe65889d6021.html#a89f2613f926ac13293eafe65889d6021" title="Devuelve la cantidad de valores en el diccionario.">size</a>() and std::equal(m1.begin(), m1.end(), m2.<a class="code" href="classaed2_1_1map_a58a95705d54b3dda7f775ce5a22225cb.html#a58a95705d54b3dda7f775ce5a22225cb" title="Devuelve un iterador al primer valor del diccionario.">begin</a>());
+<a name="l00351"></a>00351 }
+<a name="l00352"></a>00352 
+<a name="l00353"></a>00353 TEST_F(BasicMapInstances, CompareConstructor) {
+<a name="l00354"></a>00354 
+<a name="l00355"></a>00355     <span class="keyword">struct </span>ReverseIntCompare
+<a name="l00356"></a>00356     {
+<a name="l00357"></a>00357         <span class="keyword">inline</span> <span class="keywordtype">bool</span> operator () (<span class="keyword">const</span> <span class="keywordtype">int</span>&amp; a, <span class="keyword">const</span> <span class="keywordtype">int</span>&amp; b)<span class="keyword"> const</span>
+<a name="l00358"></a>00358 <span class="keyword">        </span>{ <span class="keywordflow">return</span> b &lt; a; }
+<a name="l00359"></a>00359     };
+<a name="l00360"></a>00360 
+<a name="l00361"></a>00361     <a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">aed2::map&lt;int, std::string, ReverseIntCompare&gt;</a> cinco_elementos_rev;
+<a name="l00362"></a>00362     std::map&lt;int, std::string, ReverseIntCompare&gt; cinco_elementos_rev_std;
 <a name="l00363"></a>00363 
-<a name="l00364"></a>00364 TEST_F(BasicMapInstances, CRBegin) {
-<a name="l00365"></a>00365     <span class="keyword">const</span> <span class="keyword">auto</span>&amp; cinco_elementos_std_const = cinco_elementos_std;
-<a name="l00366"></a>00366     EXPECT_TRUE(std::equal(cinco_elementos.crbegin(), cinco_elementos.crend(), cinco_elementos_std_const.rbegin()));
-<a name="l00367"></a>00367 }
-<a name="l00368"></a>00368 
-<a name="l00370"></a>00370 <span class="comment">// Recorridos e iteradores (Alexis) //</span>
-<a name="l00372"></a>00372 <span class="comment"></span>
-<a name="l00373"></a>00373 <span class="comment">// Asumo que si andan los iteradores =&gt; anda el operador ==</span>
-<a name="l00374"></a>00374 
-<a name="l00375"></a>00375 <span class="keyword">template</span>&lt;<span class="keyword">class</span> K, <span class="keyword">class</span> V, <span class="keyword">class</span> CMP&gt;
-<a name="l00376"></a>00376 <span class="keywordtype">bool</span> <a class="code" href="classaed2_1_1map_abfc51b39670220e79037ac067006e933.html#abfc51b39670220e79037ac067006e933" title="Operador de igualdad entre dos diccionarios.">operator == </a>(<span class="keyword">const</span> std::map&lt;K,V,CMP&gt;&amp; m1, <span class="keyword">const</span> <a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">aed2::map&lt;K,V,CMP&gt;</a>&amp; m2) {
-<a name="l00377"></a>00377     <span class="keywordflow">return</span> m1.size() == m2.<a class="code" href="classaed2_1_1map_a89f2613f926ac13293eafe65889d6021.html#a89f2613f926ac13293eafe65889d6021" title="Devuelve la cantidad de valores en el diccionario.">size</a>() and std::equal(m1.begin(), m1.end(), m2.<a class="code" href="classaed2_1_1map_a58a95705d54b3dda7f775ce5a22225cb.html#a58a95705d54b3dda7f775ce5a22225cb" title="Devuelve un iterador al primer valor del diccionario.">begin</a>());
-<a name="l00378"></a>00378 }
-<a name="l00379"></a>00379 
-<a name="l00380"></a>00380 TEST_F(BasicMapInstances, CompareConstructor) {
+<a name="l00364"></a>00364     llenarCincoElementos( cinco_elementos_rev );
+<a name="l00365"></a>00365     llenarCincoElementos( cinco_elementos_rev_std );
+<a name="l00366"></a>00366 
+<a name="l00367"></a>00367     EXPECT_TRUE(cinco_elementos_rev_std == cinco_elementos_rev);
+<a name="l00368"></a>00368 }
+<a name="l00369"></a>00369 
+<a name="l00370"></a>00370 TEST_F(BasicMapInstances, CopyConstructor) {
+<a name="l00371"></a>00371     decltype( cinco_elementos ) copia_de_cinco_elementos( cinco_elementos );
+<a name="l00372"></a>00372     EXPECT_TRUE(copia_de_cinco_elementos == cinco_elementos);
+<a name="l00373"></a>00373 
+<a name="l00374"></a>00374     cinco_elementos.insert({6, <span class="stringliteral">&quot;seis&quot;</span>});
+<a name="l00375"></a>00375     EXPECT_FALSE(copia_de_cinco_elementos == cinco_elementos);
+<a name="l00376"></a>00376 }
+<a name="l00377"></a>00377 
+<a name="l00378"></a>00378 TEST_F(BasicMapInstances, AssignmentConstructor) {
+<a name="l00379"></a>00379     decltype( cinco_elementos ) copia_de_cinco_elementos = cinco_elementos;
+<a name="l00380"></a>00380     EXPECT_TRUE(copia_de_cinco_elementos == cinco_elementos);
 <a name="l00381"></a>00381 
-<a name="l00382"></a>00382     <span class="keyword">struct </span>ReverseIntCompare
-<a name="l00383"></a>00383     {
-<a name="l00384"></a>00384         <span class="keyword">inline</span> <span class="keywordtype">bool</span> operator () (<span class="keyword">const</span> <span class="keywordtype">int</span>&amp; a, <span class="keyword">const</span> <span class="keywordtype">int</span>&amp; b)<span class="keyword"> const</span>
-<a name="l00385"></a>00385 <span class="keyword">        </span>{ <span class="keywordflow">return</span> b &lt; a; }
-<a name="l00386"></a>00386     };
-<a name="l00387"></a>00387 
-<a name="l00388"></a>00388     <a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">aed2::map&lt;int, std::string, ReverseIntCompare&gt;</a> cinco_elementos_rev;
-<a name="l00389"></a>00389     std::map&lt;int, std::string, ReverseIntCompare&gt; cinco_elementos_rev_std;
-<a name="l00390"></a>00390 
-<a name="l00391"></a>00391     llenarCincoElementos( cinco_elementos_rev );
-<a name="l00392"></a>00392     llenarCincoElementos( cinco_elementos_rev_std );
+<a name="l00382"></a>00382     cinco_elementos.insert({6, <span class="stringliteral">&quot;seis&quot;</span>});
+<a name="l00383"></a>00383     EXPECT_FALSE(copia_de_cinco_elementos == cinco_elementos);
+<a name="l00384"></a>00384 }
+<a name="l00385"></a>00385 
+<a name="l00386"></a>00386 TEST_F(BasicMapInstances, IteratorConstructor) {
+<a name="l00387"></a>00387     decltype( cinco_elementos ) copia_de_cinco_elementos(cinco_elementos.begin(), cinco_elementos.end());
+<a name="l00388"></a>00388     EXPECT_TRUE(copia_de_cinco_elementos == cinco_elementos);
+<a name="l00389"></a>00389 
+<a name="l00390"></a>00390     cinco_elementos.insert({6, <span class="stringliteral">&quot;seis&quot;</span>});
+<a name="l00391"></a>00391     EXPECT_FALSE(copia_de_cinco_elementos == cinco_elementos);
+<a name="l00392"></a>00392 }
 <a name="l00393"></a>00393 
-<a name="l00394"></a>00394     EXPECT_TRUE(cinco_elementos_rev_std == cinco_elementos_rev);
-<a name="l00395"></a>00395 }
-<a name="l00396"></a>00396 
-<a name="l00397"></a>00397 TEST_F(BasicMapInstances, CopyConstructor) {
-<a name="l00398"></a>00398     decltype( cinco_elementos ) copia_de_cinco_elementos( cinco_elementos );
-<a name="l00399"></a>00399     EXPECT_TRUE(copia_de_cinco_elementos == cinco_elementos);
-<a name="l00400"></a>00400 
-<a name="l00401"></a>00401     cinco_elementos.insert({6, <span class="stringliteral">&quot;seis&quot;</span>});
-<a name="l00402"></a>00402     EXPECT_FALSE(copia_de_cinco_elementos == cinco_elementos);
-<a name="l00403"></a>00403 }
-<a name="l00404"></a>00404 
-<a name="l00405"></a>00405 TEST_F(BasicMapInstances, AssignmentConstructor) {
-<a name="l00406"></a>00406     decltype( cinco_elementos ) copia_de_cinco_elementos = cinco_elementos;
-<a name="l00407"></a>00407     EXPECT_TRUE(copia_de_cinco_elementos == cinco_elementos);
-<a name="l00408"></a>00408 
-<a name="l00409"></a>00409     cinco_elementos.insert({6, <span class="stringliteral">&quot;seis&quot;</span>});
-<a name="l00410"></a>00410     EXPECT_FALSE(copia_de_cinco_elementos == cinco_elementos);
-<a name="l00411"></a>00411 }
-<a name="l00412"></a>00412 
-<a name="l00413"></a>00413 TEST_F(BasicMapInstances, IteratorConstructor) {
-<a name="l00414"></a>00414     decltype( cinco_elementos ) copia_de_cinco_elementos(cinco_elementos.begin(), cinco_elementos.end());
-<a name="l00415"></a>00415     EXPECT_TRUE(copia_de_cinco_elementos == cinco_elementos);
-<a name="l00416"></a>00416 
-<a name="l00417"></a>00417     cinco_elementos.insert({6, <span class="stringliteral">&quot;seis&quot;</span>});
-<a name="l00418"></a>00418     EXPECT_FALSE(copia_de_cinco_elementos == cinco_elementos);
-<a name="l00419"></a>00419 }
-<a name="l00420"></a>00420 
-<a name="l00422"></a>00422 <span class="comment">// Map de Map (Thomas) //</span>
-<a name="l00424"></a>00424 <span class="comment"></span>
-<a name="l00425"></a>00425 TEST_F(BasicMapInstances, MapDeMap) {
-<a name="l00426"></a>00426     <a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">aed2::map&lt;aed2::map&lt;int, std::string&gt;</a>, std::string&gt; map_de_map;
-<a name="l00427"></a>00427     map_de_map.<a class="code" href="classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8.html#a60aacba06b1579630b3c8e996cf248c8" title="Inserta value en el diccionario.">insert</a>({vacio, <span class="stringliteral">&quot;vacio&quot;</span>});
-<a name="l00428"></a>00428     map_de_map.<a class="code" href="classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8.html#a60aacba06b1579630b3c8e996cf248c8" title="Inserta value en el diccionario.">insert</a>({singleton, <span class="stringliteral">&quot;singleton&quot;</span>});
-<a name="l00429"></a>00429     map_de_map.<a class="code" href="classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8.html#a60aacba06b1579630b3c8e996cf248c8" title="Inserta value en el diccionario.">insert</a>({cinco_elementos, <span class="stringliteral">&quot;cinco_elementos&quot;</span>});
+<a name="l00395"></a>00395 <span class="comment">// Map de Map (Thomas) //</span>
+<a name="l00397"></a>00397 <span class="comment"></span>
+<a name="l00398"></a>00398 TEST_F(BasicMapInstances, MapDeMap) {
+<a name="l00399"></a>00399     <a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">aed2::map&lt;aed2::map&lt;int, std::string&gt;</a>, std::string&gt; map_de_map;
+<a name="l00400"></a>00400     map_de_map.<a class="code" href="classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8.html#a60aacba06b1579630b3c8e996cf248c8" title="Inserta value en el diccionario.">insert</a>({vacio, <span class="stringliteral">&quot;vacio&quot;</span>});
+<a name="l00401"></a>00401     map_de_map.<a class="code" href="classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8.html#a60aacba06b1579630b3c8e996cf248c8" title="Inserta value en el diccionario.">insert</a>({singleton, <span class="stringliteral">&quot;singleton&quot;</span>});
+<a name="l00402"></a>00402     map_de_map.<a class="code" href="classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8.html#a60aacba06b1579630b3c8e996cf248c8" title="Inserta value en el diccionario.">insert</a>({cinco_elementos, <span class="stringliteral">&quot;cinco_elementos&quot;</span>});
+<a name="l00403"></a>00403 
+<a name="l00404"></a>00404     <span class="keyword">auto</span> it = map_de_map.<a class="code" href="classaed2_1_1map_a58a95705d54b3dda7f775ce5a22225cb.html#a58a95705d54b3dda7f775ce5a22225cb" title="Devuelve un iterador al primer valor del diccionario.">begin</a>();
+<a name="l00405"></a>00405     EXPECT_EQ(it-&gt;first, vacio);
+<a name="l00406"></a>00406 
+<a name="l00407"></a>00407     it++;
+<a name="l00408"></a>00408     EXPECT_EQ(it-&gt;first, singleton);
+<a name="l00409"></a>00409 
+<a name="l00410"></a>00410     it++;
+<a name="l00411"></a>00411     EXPECT_EQ(it-&gt;first, cinco_elementos);
+<a name="l00412"></a>00412 }
+<a name="l00413"></a>00413 
+<a name="l00415"></a>00415 <span class="comment">// Stress (Alexis) //</span>
+<a name="l00417"></a>00417 <span class="comment"></span>
+<a name="l00423"></a>00423 <span class="preprocessor">#define TIEMPO_INSERT 0.5</span>
+<a name="l00424"></a>00424 <span class="preprocessor"></span><span class="preprocessor">#define TIEMPO_DELETE 0.5</span>
+<a name="l00425"></a>00425 <span class="preprocessor"></span><span class="preprocessor">#define TIEMPO_ITERATE 0.5</span>
+<a name="l00426"></a>00426 <span class="preprocessor"></span>
+<a name="l00427"></a>00427 TEST(StressTest, ComplejidadGlobal) {
+<a name="l00428"></a>00428 
+<a name="l00429"></a>00429     <a class="code" href="classaed2_1_1map.html" title="Modulo que implementa un diccionario.">aed2::map&lt;unsigned int, unsigned int&gt;</a> mapTest;
 <a name="l00430"></a>00430 
-<a name="l00431"></a>00431     <span class="keyword">auto</span> it = map_de_map.<a class="code" href="classaed2_1_1map_a58a95705d54b3dda7f775ce5a22225cb.html#a58a95705d54b3dda7f775ce5a22225cb" title="Devuelve un iterador al primer valor del diccionario.">begin</a>();
-<a name="l00432"></a>00432     EXPECT_EQ(it-&gt;first, vacio);
-<a name="l00433"></a>00433 
-<a name="l00434"></a>00434     it++;
-<a name="l00435"></a>00435     EXPECT_EQ(it-&gt;first, singleton);
-<a name="l00436"></a>00436 
-<a name="l00437"></a>00437     it++;
-<a name="l00438"></a>00438     EXPECT_EQ(it-&gt;first, cinco_elementos);
-<a name="l00439"></a>00439 }
-<a name="l00440"></a>00440 
-<a name="l00442"></a>00442 <span class="comment">// Correr todos los test //</span>
-<a name="l00444"></a>00444 <span class="comment"></span>
-<a name="l00445"></a>00445 <span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[]) {
-<a name="l00446"></a>00446     ::testing::InitGoogleTest(&amp;argc, argv);
-<a name="l00447"></a>00447   <span class="keywordflow">return</span> RUN_ALL_TESTS();
-<a name="l00448"></a>00448 }
+<a name="l00431"></a>00431     <span class="comment">// 1. Insertamos con el iterador</span>
+<a name="l00432"></a>00432     {
+<a name="l00433"></a>00433         <span class="keyword">auto</span> it = mapTest.<a class="code" href="classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8.html#a60aacba06b1579630b3c8e996cf248c8" title="Inserta value en el diccionario.">insert</a>({0, 0});
+<a name="l00434"></a>00434         <span class="comment">// Momento desde</span>
+<a name="l00435"></a>00435         <span class="keyword">const</span> clock_t begin_time_insert = clock();
+<a name="l00436"></a>00436         <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 1; i &lt; 200000; ++i) {
+<a name="l00437"></a>00437             it = mapTest.<a class="code" href="classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8.html#a60aacba06b1579630b3c8e996cf248c8" title="Inserta value en el diccionario.">insert</a>(++it, {i, i});
+<a name="l00438"></a>00438         }
+<a name="l00439"></a>00439         <span class="comment">// Diferencia. Dividimos por los clocks por segundo para evitar que no dependa del usuario</span>
+<a name="l00440"></a>00440         <span class="keyword">auto</span> diff = float( clock () - begin_time_insert ) /  CLOCKS_PER_SEC;
+<a name="l00441"></a>00441         <span class="comment">//~ std::cout &lt;&lt; &quot;tiempo insert con hint bueno (O(1) amortizado)&quot; &lt;&lt; diff &lt;&lt; std::endl;</span>
+<a name="l00442"></a>00442         ASSERT_TRUE(diff &lt; TIEMPO_INSERT*2);
+<a name="l00443"></a>00443     }
+<a name="l00444"></a>00444 
+<a name="l00445"></a>00445     <span class="comment">// 2. Eliminamos 1 de cada 5. Quedan 160000.</span>
+<a name="l00446"></a>00446     {
+<a name="l00447"></a>00447         <span class="keyword">const</span> clock_t begin_time_delete = clock();
+<a name="l00448"></a>00448         <span class="keyword">auto</span> it = mapTest.<a class="code" href="classaed2_1_1map_a58a95705d54b3dda7f775ce5a22225cb.html#a58a95705d54b3dda7f775ce5a22225cb" title="Devuelve un iterador al primer valor del diccionario.">begin</a>();
+<a name="l00449"></a>00449         <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; 200000; i = i + 5) {
+<a name="l00450"></a>00450             it = mapTest.<a class="code" href="classaed2_1_1map_ad8e796bf9c9c558e5ce6b61e116253fe.html#ad8e796bf9c9c558e5ce6b61e116253fe" title="Elimina el valor apuntado por pos">erase</a>(it);
+<a name="l00451"></a>00451             <span class="keywordflow">for</span>(<span class="keywordtype">int</span> j = 0; j &lt; 4; j++) {
+<a name="l00452"></a>00452                 ++it;
+<a name="l00453"></a>00453             }
+<a name="l00454"></a>00454         }
+<a name="l00455"></a>00455         <span class="keyword">auto</span> diff = float( clock () - begin_time_delete ) /  CLOCKS_PER_SEC;
+<a name="l00456"></a>00456         <span class="comment">//~ std::cout &lt;&lt; &quot;tiempo delete O(log n)&quot; &lt;&lt; diff &lt;&lt; std::endl;</span>
+<a name="l00457"></a>00457         ASSERT_TRUE(diff &lt; TIEMPO_DELETE*2);
+<a name="l00458"></a>00458         ASSERT_EQ(160000, mapTest.<a class="code" href="classaed2_1_1map_a89f2613f926ac13293eafe65889d6021.html#a89f2613f926ac13293eafe65889d6021" title="Devuelve la cantidad de valores en el diccionario.">size</a>());
+<a name="l00459"></a>00459     }
+<a name="l00460"></a>00460 
+<a name="l00461"></a>00461     <span class="comment">// 2. Iteramos todos los elementos en reversa (16000)</span>
+<a name="l00462"></a>00462     {
+<a name="l00463"></a>00463         <span class="keyword">const</span> clock_t begin_time_iterate = clock();
+<a name="l00464"></a>00464         <span class="keywordflow">for</span>(<span class="keyword">auto</span> rit = mapTest.<a class="code" href="classaed2_1_1map_ac412d3902112122c1bffe2d4283a4e9d.html#ac412d3902112122c1bffe2d4283a4e9d" title="Devuelve un iterador al primer valor del diccionario, en un recorrido al revés.">rbegin</a>(); rit != mapTest.<a class="code" href="classaed2_1_1map_a277f03b4f4b6b98879e4e4921081801f.html#a277f03b4f4b6b98879e4e4921081801f" title="Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario, en un recorrido al re...">rend</a>(); ++rit)
+<a name="l00465"></a>00465             ;
+<a name="l00466"></a>00466         <span class="keyword">auto</span> diff = float( clock () - begin_time_iterate ) /  CLOCKS_PER_SEC;
+<a name="l00467"></a>00467         <span class="comment">//~ std::cout &lt;&lt; &quot;tiempo iterate (O(n) amortizado): &quot; &lt;&lt; diff &lt;&lt; std::endl;</span>
+<a name="l00468"></a>00468         ASSERT_TRUE(diff &lt; TIEMPO_ITERATE*2);
+<a name="l00469"></a>00469     }
+<a name="l00470"></a>00470 }
+<a name="l00471"></a>00471 
+<a name="l00473"></a>00473 <span class="comment">// Correr todos los test //</span>
+<a name="l00475"></a>00475 <span class="comment"></span>
+<a name="l00476"></a>00476 <span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[]) {
+<a name="l00477"></a>00477     ::testing::InitGoogleTest(&amp;argc, argv);
+<a name="l00478"></a>00478   <span class="keywordflow">return</span> RUN_ALL_TESTS();
+<a name="l00479"></a>00479 }
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->
@@ -531,7 +555,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
     <ul>
       <li class="navelem"><b>test.cpp</b>      </li>
 
-    <li class="footer">Generado el Viernes, 30 de Junio de 2017 18:17:11 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 7 de Julio de 2017 02:32:41 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

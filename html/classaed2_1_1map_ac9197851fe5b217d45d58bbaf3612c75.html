@@ -98,9 +98,15 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
       </table>
 </div>
 <div class="memdoc">
-<p>Lo que hace esta función es re-organizar el arbol de modo tal que se cumplan las propiedades de un red-black tree. </p>
+<p>Lo que hace esta función es re-organizar el arbol de modo tal que se conserven las propiedades de un red-black tree tras insertar un nuevo nodo (cambia los colores de los nodos y lo re-balancea). No tiene prerrequisitos y deja a <b class="paramname">*this</b> cumpliendo con el invariante de representacion de un red-black tree.</p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">it</td><td>iterador apuntando al nodo recien insertado.  {La función tiene un solo ciclo en el que realiza una cantidad constante de operaciones elementales (observar que dir_rotate toma <img class="formulaInl" alt="$O$" src="form_1.png"/>(1)). En el ciclo se recorre una rama del arbol llegando, como maximo, al header, por lo que toma <img class="formulaInl" alt="$O$" src="form_1.png"/>( <img class="formulaInl" alt="$\log$" src="form_27.png"/>(<b>size</b>(<b class="paramname">*this</b>))) en peor caso.} </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definición en la línea <a class="el" href="map_8h_source.html#l02278">2278</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p>Definición en la línea <a class="el" href="map_8h_source.html#l02286">2286</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
 </div>
 </div>
@@ -125,7 +131,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
       <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a>      </li>
       <li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a>      </li>
 
-    <li class="footer">Generado el Viernes, 30 de Junio de 2017 18:17:12 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 7 de Julio de 2017 02:32:42 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

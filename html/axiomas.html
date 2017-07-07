@@ -112,8 +112,11 @@ Axiomas y proposiciones auxiliares</h2>
  primeros(s) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> <b>if</b> vacia?(s) <b>then</b> &lt;&gt; <b>else</b> <img class="formulaInl" alt="$\pi_1$" src="form_12.png"/>(prim(s)) <img class="formulaInl" alt="$\bullet$" src="form_6.png"/> <a href="axiomas.html#primeros">primeros</a>(fin(s)) <b>fi</b> </p>
 <p>\ ** Auxiliares para pre y post ** // </p>
 <dl class="user"><dt><b>DiccSecu</b></dt><dd>Devuelve una secuencia ordenada con elementos del diccionario.</dd></dl>
-<p><span id="DiccSecu">DiccSecu</span>: Conj( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>) <img class="formulaInl" alt="$\to$" src="form_4.png"/> secu( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>)<br/>
- DiccSecu(elems) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> <b>if</b> <img class="formulaInl" alt="$\emptyset$" src="form_13.png"/> ?(elems) <b>then</b> &lt; &gt; <b>else</b> DiccSecu(elems - minimo(elems)) <img class="formulaInl" alt="$\bot$" src="form_9.png"/> dameUno(elems) <b>fi</b> </p>
+<p><span id="DiccASecu">DiccASecu</span>: Dicc( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>) <img class="formulaInl" alt="$\to$" src="form_4.png"/> secu( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>)<br/>
+ DiccASecu(d) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> PorClave(claves(d), d) </p>
+<dl class="user"><dt><b>PorClave</b></dt><dd>Recorre las claves del diccionario para devolver la secuencia ordenada con sus valores. <span id="PorClave">PorClave</span>: Conj( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>) x Dicc( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>) <img class="formulaInl" alt="$\to$" src="form_4.png"/> secu( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>)<br/>
+ PorClave(cs, d) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> <b>if</b> <img class="formulaInl" alt="$\emptyset$" src="form_13.png"/> ?(cs) <b>then</b> &lt; &gt; <b>else</b> <img class="formulaInl" alt="$\langle$" src="form_30.png"/> minimo(cs) , obtener(minimo(cs), d) <img class="formulaInl" alt="$\rangle$" src="form_29.png"/> <img class="formulaInl" alt="$\bot$" src="form_9.png"/> PorClave(cs - {minimo(cs)}, d) <b>fi</b> </dd></dl>
+<dl class="user"><dt><b>itADiccionario</b></dt><dd>Devuelve true si el iterador apunta a this</dd></dl>
 <dl class="user"><dt><b>MenorQue</b></dt><dd>Devuelve true si y solo si m1 es lexicograficamente menor que m2.</dd></dl>
 <p><span id="MenorQue">MenorQue</span>: Dicc( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>) d1 x Dicc( <img class="formulaInl" alt="$\alpha$" src="form_5.png"/>, <img class="formulaInl" alt="$\beta$" src="form_10.png"/>) d2 <img class="formulaInl" alt="$\to$" src="form_4.png"/> bool<br/>
  MenorQue(d1, d2) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> compararClaves(claves(d1), claves(d2)) </p>
@@ -172,7 +175,7 @@ Axiomas y proposiciones auxiliares</h2>
   <div id="nav-path" class="navpath">
     <ul>
 
-    <li class="footer">Generado el Viernes, 30 de Junio de 2017 18:17:11 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 7 de Julio de 2017 02:32:41 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

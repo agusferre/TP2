@@ -108,9 +108,23 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
       </table>
 </div>
 <div class="memdoc">
-<p>Esta función verifica si el iterador está parado en el lower_bound de value.first para resolver si es utilizado en las funciones Insert e Insert_or_assign o no. Primero descarta la posibilidad de que el hint sea null lo que haria indefinir la funcion. Luego, si hint esta parado en la posicion pasando el ultimo, es el hint adecuado si no hay elementos en el arbol, o si todos los estos son menores que el value. En el caso que el hint esta parado al principio, es correcto si todos los elementos del arbol son mayores. Por ultimo, si no pasa ninguno de estos casos tenemos que chequear que el elemento sea menor que el hint pero mayor que el anterior a este. </p>
 
-<p>Definición en la línea <a class="el" href="map_8h_source.html#l02392">2392</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p>función que verifica si el iterador está parado en el lower_bound de value.first. Sirve para chequear de forma prolija la utilidad de los iteradores parámetro en insert, insert_rapido e insert_or_assign) </p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hint</td><td>iterador apuntando a un nodo del árbol </td></tr>
+    <tr><td class="paramname">value</td><td>referencia al valor que sería definido en las funciones que llaman a hintVálido</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>true si hint apunta a lower_bound(value.first) o a header si <b class="paramname">*this</b> no tiene elementos o estos son menores a value.</dd></dl>
+<p>{</p>
+<ul>
+<li>Peor caso: <img class="formulaInl" alt="$O$" src="form_1.png"/>( <img class="formulaInl" alt="$\log$" src="form_27.png"/>(<b>size</b>(<b class="paramname">*this</b>))).</li>
+<li>Peor caso amortizado : <img class="formulaInl" alt="$O$" src="form_1.png"/>(1) } </li>
+</ul>
+
+<p>Definición en la línea <a class="el" href="map_8h_source.html#l02422">2422</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
 </div>
 </div>
@@ -135,7 +149,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
       <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a>      </li>
       <li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a>      </li>
 
-    <li class="footer">Generado el Viernes, 30 de Junio de 2017 18:17:12 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 7 de Julio de 2017 02:32:42 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

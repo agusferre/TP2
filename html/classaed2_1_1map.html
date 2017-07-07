@@ -184,17 +184,23 @@ Métodos privados</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_ab45cb28bb215cd229383d88b96b3f624.html#ab45cb28bb215cd229383d88b96b3f624">eq</a> (const Key &amp;k1, const Key &amp;k2) const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna true si las claves son iguales con respecto a <b class="paramname">this</b>-&gt;lt.  <a href="#ab45cb28bb215cd229383d88b96b3f624"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::pair&lt; <a class="el" href="structaed2_1_1map_1_1Node.html">Node</a> *, <a class="el" href="structaed2_1_1map_1_1Node.html">Node</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_aa079b9390f988f97be26fd51ed44a2c9.html#aa079b9390f988f97be26fd51ed44a2c9">bounds</a> (const Key &amp;key)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Si key esta definida devuelve una tupla con el nodo cuya clave es key en ambas posiciones. Si no retorna una tupla con los nodos cuyo valor es el mayor de los menores y el menor de los mayores a key. En caso de que no existe un valor mayor o menor en el diccionario devuelve el header en ambas posiciones de la tupla. Se utiliza como funcion auxiliar para lower_bound.  <a href="#aa079b9390f988f97be26fd51ed44a2c9"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::pair&lt; const <a class="el" href="structaed2_1_1map_1_1Node.html">Node</a> *, const <br class="typebreak"/>
 <a class="el" href="structaed2_1_1map_1_1Node.html">Node</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_a4d903414b3f1f1e6f785342bb3900572.html#a4d903414b3f1f1e6f785342bb3900572">bounds</a> (const Key &amp;key) const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna true si las claves son iguales con respecto a <b class="paramname">this</b>-&gt;lt.  <a href="#a4d903414b3f1f1e6f785342bb3900572"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_ac9197851fe5b217d45d58bbaf3612c75.html#ac9197851fe5b217d45d58bbaf3612c75">insert_fixup</a> (<a class="el" href="classaed2_1_1map_1_1iterator.html">iterator</a> it)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_a94f2862ada0c9ed4f4457eac42ea8f23.html#a94f2862ada0c9ed4f4457eac42ea8f23">dir_rotate</a> (<a class="el" href="classaed2_1_1map_1_1iterator.html">iterator</a> it, int dir)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">función que rota el nodo apuntado por it (n) y su child[1- dir] (y), de manera que n quede como child[dir] de y. it queda apuntando a n.  <a href="#a94f2862ada0c9ed4f4457eac42ea8f23"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_a98b9f200c64ce02dfb67902ee00e375a.html#a98b9f200c64ce02dfb67902ee00e375a">transplant</a> (<a class="el" href="structaed2_1_1map_1_1Node.html">Node</a> *u, <a class="el" href="structaed2_1_1map_1_1Node.html">Node</a> *v)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna true si las claves son iguales con respecto a <b class="paramname">this</b>-&gt;lt.  <a href="#a98b9f200c64ce02dfb67902ee00e375a"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Esta función es llamada en el delete para unir el padre del nodo a borrar con el hijo correspondiente. Para eso, se cambian los punteros de forma que v pase a ocupar el lugar de u (padre e hijos de u pasan a ser los de v).  <a href="#a98b9f200c64ce02dfb67902ee00e375a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_a7870c8f26e82b00d0aeb2e9f331dfec6.html#a7870c8f26e82b00d0aeb2e9f331dfec6">erase_fixup</a> (<a class="el" href="classaed2_1_1map_1_1iterator.html">iterator</a> it)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna true si las claves son iguales con respecto a <b class="paramname">this</b>-&gt;lt.  <a href="#a7870c8f26e82b00d0aeb2e9f331dfec6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_a45b04533e9acf27438813ab4a2604443.html#a45b04533e9acf27438813ab4a2604443">hintValido</a> (<a class="el" href="classaed2_1_1map_1_1const__iterator.html">const_iterator</a> hint, const value_type &amp;value) const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">función que verifica si el iterador está parado en el lower_bound de value.first. Sirve para chequear de forma prolija la utilidad de los iteradores parámetro en insert, insert_rapido e insert_or_assign)  <a href="#a45b04533e9acf27438813ab4a2604443"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classaed2_1_1map_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_a4b4f1e65ee9aeccee4046d53fd5fd8a4.html#a4b4f1e65ee9aeccee4046d53fd5fd8a4">insert_rapido</a> (<a class="el" href="classaed2_1_1map_1_1const__iterator.html">const_iterator</a> hint, const value_type &amp;value)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">La funcion inserta el value en el árbol en la posición apuntada por hint, en caso de que no esté definida todavía. Como asume que el hint apunta a donde debe insertarse, cuesta menos que el insert normal.  <a href="#a4b4f1e65ee9aeccee4046d53fd5fd8a4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_a98aadc6fb2ac8f51567a98473a90c30f.html#a98aadc6fb2ac8f51567a98473a90c30f">show</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna true si las claves son iguales con respecto a <b class="paramname">this</b>-&gt;lt.  <a href="#a98aadc6fb2ac8f51567a98473a90c30f"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Atributos privados</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Estructura de representación</div></td></tr>
@@ -281,7 +287,7 @@ class aed2::map&lt; Key, Meaning, Compare &gt;</h3>
 <dl class="user"><dt><b>Se explica con</b></dt><dd>Diccionario(<span class="paramname">Key</span>, <span class="paramname">Meaning</span>) con parámetro formal <img class="formulaInl" alt="$<$" src="form_0.png"/> = f.operator() para algún f de tipo <span class="paramname">Compare</span>.</dd></dl>
 <dl class="attention"><dt><b>Atención:</b></dt><dd>No tenemos forma en AED2 de decir que el parámetro formal se define en tiempo de ejecución, como ocurre en este caso. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="map_8h_source.html#l00810">810</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p>Definición en la línea <a class="el" href="map_8h_source.html#l00822">822</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
 </div><hr/>La documentación para esta clase fue generada a partir del siguiente fichero:<ul>
 <li><a class="el" href="map_8h_source.html">map.h</a></li>
 </ul>
@@ -306,7 +312,7 @@ class aed2::map&lt; Key, Meaning, Compare &gt;</h3>
       <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a>      </li>
       <li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a>      </li>
 
-    <li class="footer">Generado el Viernes, 30 de Junio de 2017 18:17:12 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 7 de Julio de 2017 02:32:41 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

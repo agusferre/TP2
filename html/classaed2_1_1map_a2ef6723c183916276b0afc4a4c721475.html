@@ -125,8 +125,8 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
   </dd>
 </dl>
 <dl class="user"><dt><b>Aspectos de aliasing:</b></dt><dd>\1</dd></dl>
-<dl class="pre"><dt><b>Precondición:</b></dt><dd><b>P</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {<b class="paramname">*this</b> <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> d_0 <img class="formulaInl" alt="$\land$" src="form_16.png"/> <img class="formulaInl" alt="$\lnot$" src="form_21.png"/> (get(hint) <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> 0)} </dd></dl>
-<dl class="post"><dt><b>Postcondición:</b></dt><dd>{<b class="paramname">*this</b> <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> definir(key, <b class="paramname">*this</b>) <img class="formulaInl" alt="$\land$" src="form_16.png"/> Siguiente(res) <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> value}</dd></dl>
+<dl class="pre"><dt><b>Precondición:</b></dt><dd><b>P</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> { <b class="paramname">*this</b> <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> d_{ 0} <img class="formulaInl" alt="$\land$" src="form_16.png"/> SecuSuby(hint) <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> DiccASecu(d_{ 0})} </dd></dl>
+<dl class="post"><dt><b>Postcondición:</b></dt><dd>{<b class="paramname">*this</b> <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> definir(key, <b class="paramname">*this</b>) <img class="formulaInl" alt="$\land$" src="form_16.png"/> coleccion(res) <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> coleccion(hint) <img class="formulaInl" alt="$\land$" src="form_16.png"/> HaySiguiente(res) <img class="formulaInl" alt="$\land_{\rm L}$" src="form_22.png"/> Siguiente(res) <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> value}</dd></dl>
 <dl class="section complexity">
 <dt>Complejidad Temporal</dt>
 <dd><ul>
@@ -137,9 +137,9 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 </dl>
 <dl class="attention"><dt><b>Atención:</b></dt><dd>Para prevenir que el nuevo valor redefina uno ya existente, usar <a class="el" href="classaed2_1_1map_a60aacba06b1579630b3c8e996cf248c8.html#a60aacba06b1579630b3c8e996cf248c8" title="Inserta value en el diccionario.">aed2::map::insert</a>. </dd></dl>
 <dl class="remark"><dt><b>Comentarios:</b></dt><dd>Esta función es similar al operator[], pero tiene dos ventajas y una desventaja. Las ventajas es que 1. se puede indicar un <b class="paramname">hint</b> para la búsqueda y 2. no es necesario que <span class="paramname">Meaning</span> tenga constructor sin parámetros. La desventaja es que la notación no es tan bonita.</dd></dl>
-<p>Busca el valor de manera similar al operator[] Si lo encuentra, borra el elemento encontrado. Inserta un nuevo valor llamando a insert_rapido, con la seguridad de que it esta correctamente ubicado. </p>
+<p>Busca el valor de manera similar al operator[] Si lo encuentra, modifica el significado del nodo encontrado. Sino inserta un nuevo valor llamando a insert_rapido, con la seguridad de que it esta correctamente ubicado. </p>
 
-<p>Definición en la línea <a class="el" href="map_8h_source.html#l01304">1304</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p>Definición en la línea <a class="el" href="map_8h_source.html#l01313">1313</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
 </div>
 </div>
@@ -164,7 +164,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
       <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a>      </li>
       <li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a>      </li>
 
-    <li class="footer">Generado el Viernes, 30 de Junio de 2017 18:17:12 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 7 de Julio de 2017 02:32:42 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>
