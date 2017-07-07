@@ -1,0 +1,29 @@
+-# operator* de iterador
+  -# mal especificada (*)
+
+  -# Esta mal Q del operator=. Listo?
+
+-# Constructor por copia
+  -# codigo ofuscado; simplificar.
+  -# no cumple la complejidad pedida. (*)
+
+-# Operator[] - Chequear
+  -# no entiendo el aspecto de aliasing
+  -# res deberia versar sobre *this, no sobre d_0 . Listo?
+  -# estan recorriendo tres veces el diccionario alcanza con recorrer
+una unica vez (alcanza con `return insert(lower_bound, Meaning())`
+cuando no existe la clave
+
+  -# La postcondicion es incorrecta (*) (find, lower bound, insert)
+  -# La precondicion con hint es incorrecta (insert, insert or assign, erase)
+
+-# begin, end, rbegin, rend, etc (*)
+  -# Esta mal la documentacion (¿¿??)
+
+insert_rapido
+  -# Era mejor que tomara ambos bounds, que solo el lower_bound.  De
+esta manera, no tienen que recorrer en el medio.  Ademas, se evitan el
+doble recorrido en insert, al verificar que --hint sea valido y luego
+recorrer.  Por ultimo, no reutilizan --it, sino que reimplementan.
+
+

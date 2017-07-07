@@ -3,40 +3,44 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.14"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Trabajo práctico 2: diccionario sobre RB-tree: aed2::map::find</title>
+
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript">
   $(document).ready(initResizable);
 </script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
-  $(document).ready(function() { init_search(); });
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="style.css" rel="stylesheet" type="text/css"/>
+
 </head>
 <body>
-<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div! -->
+
+
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectalign" style="padding-left: 0.5em;">
+  
+  
+  <td style="padding-left: 0.5em;">
    <div id="projectname">Trabajo práctico 2: diccionario sobre RB-tree
    &#160;<span id="projectnumber">0.1</span>
    </div>
-   <div id="projectbrief">Nombre Apellido, Nombre Apellido, Nombre Apellido y Nombre Apellido</div>
+   <div id="projectbrief">Agustín Ferré y Paula González</div>
   </td>
+  
+  
+  
+   
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
           <img id="MSearchSelect" src="search/mag_sel.png"
@@ -52,20 +56,21 @@
           </span>
         </div>
 </td>
+   
+  
  </tr>
  </tbody>
 </table>
 </div>
-<!-- end header part -->
-<!-- Generado por Doxygen 1.8.14 -->
+
+<!-- Generado por Doxygen 1.7.6.1 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </script>
-</div><!-- top -->
+</div>
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
     <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
     </div>
   </div>
   <div id="splitbar" style="-moz-user-select:none;" 
@@ -73,15 +78,63 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('classaed2_1_1map_afd0fc1a8234888e61e0e615de7e245b8.html','');});
+  initNavTree('classaed2_1_1map.html','');
 </script>
 <div id="doc-content">
+<div class="contents">
+<a class="anchor" id="afd0fc1a8234888e61e0e615de7e245b8"></a><!-- doxytag: member="aed2::map::find" ref="afd0fc1a8234888e61e0e615de7e245b8" args="(const Key &amp;key)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classaed2_1_1map_1_1iterator.html">iterator</a> <a class="el" href="classaed2_1_1map.html">aed2::map</a>&lt; Key, Meaning, Compare &gt;::<a class="el" href="classaed2_1_1map_afd0fc1a8234888e61e0e615de7e245b8.html#afd0fc1a8234888e61e0e615de7e245b8">find</a> </td>
+          <td>(</td>
+          <td class="paramtype">const Key &amp;&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Devuelve un iterador a la posicion del valor con clave <b class="paramname">key</b> </p>
+<p>Retorna un iterador apuntando a la posicion del valor con clave <b class="paramname">key</b>. Si dicho valor no existe, porque la clave no fue definida, entonces el iterador retornado apunta a la posición <em>pasando-el-ultimo</em>.</p>
+<dl class="params"><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>clave a buscar </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt><b>Valores devueltos:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">res</td><td>iterador apuntando al valor con clave <b class="paramname">key</b> (o a <b class="paramname">this</b>-&gt;<a class="el" href="classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983.html#a76023e6a56cb625513e1b5ea028bf983" title="Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario.">end()</a> si dicho elemento no existe)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="user"><dt><b>Aspectos de aliasing:</b></dt><dd>\1</dd></dl>
+<dl class="pre"><dt><b>Precondición:</b></dt><dd><b>P</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {true}</dd></dl>
+<dl class="post"><dt><b>Postcondición:</b></dt><dd>{ SecuSuby(<b class="paramname">res</b>) <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> DiccASecu(<b class="paramname">*this</b>)) <img class="formulaInl" alt="$\land_{\rm L}$" src="form_22.png"/> def?(key, <b class="paramname">*this</b>) <img class="formulaInl" alt="$\Rightarrow$" src="form_19.png"/> (Siguiente(<b class="paramname">res</b>) <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> , obtener(key, <b class="paramname">*this</b>) <img class="formulaInl" alt="$\rangle$" src="form_29.png"/>) <img class="formulaInl" alt="$\land$" src="form_16.png"/> ( <img class="formulaInl" alt="$\lnot$" src="form_21.png"/> def?(key,<b class="paramname">*this</b>) <img class="formulaInl" alt="$\Rightarrow$" src="form_19.png"/> <img class="formulaInl" alt="$\lnot$" src="form_21.png"/> HaySiguiente?(<b class="paramname">res</b>)) }</dd></dl>
+<dl class="section complexity">
+<dt>Complejidad Temporal</dt>
+<dd><img class="formulaInl" alt="$O$" src="form_1.png"/>( <img class="formulaInl" alt="$\log$" src="form_27.png"/>(<b>size</b>(<b class="paramname">*this</b>)) <img class="formulaInl" alt="$\cdot$" src="form_24.png"/> <b>cmp</b>(<b class="paramname">*this</b>))</dd>
+</dl>
+<dl class="attention"><dt><b>Atención:</b></dt><dd>Si el objetivo es insertar un valor con clave <b class="paramname">key</b> de acuerdo a alguna condición, entonces conviene usar <a class="el" href="classaed2_1_1map_a3399d36fdd5a880b494f3a5795d3f18f.html#a3399d36fdd5a880b494f3a5795d3f18f" title="Devuelve un iterador al primer valor con clave mayor o igual a key">aed2::map::lower_bound</a> para la búsqueda, dado que el resultado puede ser usado como hint, mejorando la complejidad de la inserción.</dd></dl>
+<p>La función verifica si los bounds de key son iguales. Si esto pasa, el elemento esta definido y se retorna un iterador apuntando a uno de los bounds. Por el contrario, si son distintos se retorna un iterador inicializado en <a class="el" href="classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983.html#a76023e6a56cb625513e1b5ea028bf983" title="Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario.">end()</a>. </p>
+
+<p>Definición en la línea <a class="el" href="map_8h_source.html#l01151">1151</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-</div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Amigas</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -90,71 +143,17 @@ $(document).ready(function(){initNavTree('classaed2_1_1map_afd0fc1a8234888e61e0e
 </iframe>
 </div>
 
-<div class="contents">
-<a id="afd0fc1a8234888e61e0e615de7e245b8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afd0fc1a8234888e61e0e615de7e245b8">&#9670;&nbsp;</a></span>find() <span class="overload">[1/2]</span></h2>
+  <div id="nav-path" class="navpath">
+    <ul>
+      <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a>      </li>
+      <li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a>      </li>
 
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classaed2_1_1map_1_1iterator.html">iterator</a> <a class="el" href="classaed2_1_1map.html">aed2::map</a>&lt; Key, Meaning, Compare &gt;::find </td>
-          <td>(</td>
-          <td class="paramtype">const Key &amp;&#160;</td>
-          <td class="paramname"><em>key</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Devuelve un iterador a la posicion del valor con clave <b class="paramname">key</b> </p>
-<p>Retorna un iterador apuntando a la posicion del valor con clave <b class="paramname">key</b>. Si dicho valor no existe, porque la clave no fue definida, entonces el iterador retornado apunta a la posición <em>pasando-el-ultimo</em>.</p>
-<dl class="params"><dt>Parámetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">key</td><td>clave a buscar </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="retval"><dt>Valores devueltos</dt><dd>
-  <table class="retval">
-    <tr><td class="paramname">res</td><td>iterador apuntando al valor con clave <b class="paramname">key</b> (o a <b class="paramname">this</b>-&gt;<a class="el" href="classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983.html#a76023e6a56cb625513e1b5ea028bf983" title="Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario. ">end()</a> si dicho elemento no existe)</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section user"><dt>Aspectos de aliasing:</dt><dd>res apunta al nodo cuyo key() es key. Se invalida si se elimina el nodo sin usar res como pos</dd></dl>
-<dl class="section pre"><dt>Precondición</dt><dd><b>P</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {true}</dd></dl>
-<dl class="section post"><dt>Postcondición</dt><dd><b>Q</b> <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> {def?(key, <b class="paramname">*this</b>) <img class="formulaInl" alt="$\Rightarrow$" src="form_19.png"/> (Siguiente(res) <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> , obtener(key, <b class="paramname">*this</b>) <img class="formulaInl" alt="$\rangle$" src="form_29.png"/>) <img class="formulaInl" alt="$\land$" src="form_16.png"/> ( <img class="formulaInl" alt="$\lnot$" src="form_21.png"/> def?(key,<b class="paramname">*this</b>) <img class="formulaInl" alt="$\Rightarrow$" src="form_19.png"/> <img class="formulaInl" alt="$\lnot$" src="form_21.png"/> HaySiguiente?(res)) }</dd></dl>
-<dl class="section complexity">
-<dt>Complejidad Temporal</dt>
-<dd><img class="formulaInl" alt="$O$" src="form_1.png"/>( <img class="formulaInl" alt="$\log$" src="form_27.png"/>(<b>size</b>(<b class="paramname">*this</b>)) <img class="formulaInl" alt="$\cdot$" src="form_24.png"/> <b>cmp</b>(<b class="paramname">*this</b>))</dd>
-</dl>
-<dl class="section attention"><dt>Atención</dt><dd>Si el objetivo es insertar un valor con clave <b class="paramname">key</b> de acuerdo a alguna condición, entonces conviene usar <a class="el" href="classaed2_1_1map_a62075a47afdf89267c5462f88164af3d.html#a62075a47afdf89267c5462f88164af3d" title="Devuelve un iterador al primer valor con clave mayor o igual a key ">aed2::map::lower_bound</a> para la búsqueda, dado que el resultado puede ser usado como hint, mejorando la complejidad de la inserción.</dd></dl>
-<p>La función verifica si los bounds de key son iguales. Si esto pasa, el elemento esta definido y se retorna un iterador apuntando a uno de los bounds. Por el contrario, si son distintos se retorna un iterador inicializado en <a class="el" href="classaed2_1_1map_a76023e6a56cb625513e1b5ea028bf983.html#a76023e6a56cb625513e1b5ea028bf983" title="Devuelve un iterador apuntando a la posición pasando-el-ultimo del diccionario. ">end()</a>. </p>
-
-<p class="definition">Definición en la línea <a class="el" href="map_8h_source.html#l01140">1140</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
-
-</div>
-</div>
-</div><!-- contents -->
-</div><!-- doc-content -->
-<!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a></li><li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a></li>
-    <li class="footer">Generado el Viernes, 30 de Junio de 2017 04:53:22 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 7 de Julio de 2017 02:32:41 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
-  </ul>
-</div>
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
+   </ul>
+ </div>
+
+
 </body>
 </html>
