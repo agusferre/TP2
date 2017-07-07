@@ -570,7 +570,6 @@
  * primeros(s) \EQUIV \IF vacia?(s) \THEN <> \ELSE \PI1(prim(s)) \BULLET \primeros(fin(s)) \FI
  * \endparblock
  *
- *   \\ ** Auxiliares para pre y post ** //
  * \par DiccASecu
  * \parblock
  * Devuelve una secuencia ordenada con elementos del diccionario.
@@ -582,6 +581,7 @@
  * \par PorClave
  * \parblock
  * Recorre las claves del diccionario para devolver la secuencia ordenada con sus valores.
+ *
  * \axioma{PorClave}: Conj(\ALPHA) x Dicc(\ALPHA, \BETA) \TO secu(\ALPHA, \BETA)\n
  * PorClave(cs, d) \EQUIV \IF \EMPTYSET ?(cs) \THEN < > \ELSE \LANGLE minimo(cs) , obtener(minimo(cs), d) \RANGLE
  * \BULLET PorClave(cs - {minimo(cs)}, d) \FI
@@ -596,48 +596,61 @@
  * \endparblock
  *
  *
- *
- * \par compararElems
+ * \par compararClaves
  * \parblock
- * \axioma{compararElems}: Conj(\ALPHA, \BETA) cs1 x Conj(\ALPHA, \BETA) cs2 \TO bool\n
- * compararElems(cs1, cs2) \EQUIV \IF \# cs1 = 0 \THEN true \ELSE \IF (\# cs2 = 0 \LOR
+ *
+ * \axioma{compararClaves}: Conj(\ALPHA, \BETA) cs1 x Conj(\ALPHA, \BETA) cs2 \TO bool\n
+ * compararClaves(cs1, cs2) \EQUIV \IF \# cs1 = 0 \THEN true \ELSE \IF (\# cs2 = 0 \LOR
  * \PI1(minimo(cs1)) \GT \PI1(minimo(cs2)) || \PI2(minimo(cs1)) \GT \PI2(minimo(cs2))) \THEN false \FI
  * \ELSE compararElems(cs1 - {minimo}, cs2 - {minimo}) \FI
  * \endparblock
  *
+ * \par hastaElem
+ * \parblock
+ * Devuelve una secuencia de valores hasta el valor con clave = key (no inclusive).
  *
- *   Proposiciones para Rep y Abs
+ * \axioma{hastaElem}: secu(\ALPHA, \BETA) s x \ALPHA key \TO secu(\ALPHA, \BETA)\n
+ * hastaElem(s,k) \EQUIV \IF vacia?(s) \LOR_L \PI1(prim(s)) = key \THEN < > \ELSE
+ * prim(s) \BULLET hastaElem(fin(s), k) \FI
+ * \endparblock
+ *
+ *
+ * \par desdeElem
+ * \parblock
+ * Devuelve una secuencia desde el elemento con clave = key inclusive.
+ *
+ * \axioma{desdeElem}: secu(\ALPHA, \BETA) s x \ALPHA key \TO secu(\ALPHA, \BETA)\n
+ * desdeElem(s,k) \EQUIV \IF vacia?(s) \THEN < > \ELSE \IF \PI1(prim(s)) < key \THEN desdeElem(fin(s),k)
+ * \ELSE s \FI \FI
+ * \endparblock
+ *
  *
  * \par headerValido
  * \parblock
  * El nodo header no tiene valor. Su padre es la raíz, de color negro, y sus hijos derecho e izquierdo
- * son el mayor y el menor valor del arbol respectivamente.\n
- * \axioma{headerValido}: node n \TO bool\n
+ * son el mayor y el menor valor del arbol respectivamente.
+ *
+ * \axioma{headerValido}: Node n \TO bool\n
  * headerValido(n) \EQUIV [n.color == Header \LAND nothing?(n.value) \LAND n.parent.color == Black
- * \LAND (n.parent == NULL \LAND (n.child[0] == &header) \LOR (n.parent != NULL \IMPLIES_L n.child[0] == llegarAMinimo(n.parent))
- * \LAND (n.parent == NULL \LAND (n.child[1] == &header) \LOR (n.parent != NULL \IMPLIES_L n.child[1] == llegarAMaximo(n.parent))]
+ * \LAND (n.parent = \BOTTOM \LAND (n.child[0] == &header) \LOR (n.parent \NEQ \BOTTOM \IMPLIES_L n.child[0] = llegarAMinimo(n.parent))
+ * \LAND (n.parent = \BOTTOM \LAND (n.child[1] == &header) \LOR (n.parent \NEQ \BOTTOM \IMPLIES_L n.child[1] = llegarAMaximo(n.parent))]
  * \endparblock
  *
  * \par llegarAMinimo
  * \parblock
  * Devuelve un puntero al minimo nodo del subarbol cuya raiz es el nodo parametro.
- * \axioma{llegarAMinimo}: puntero(node) n \TO puntero(node)\n
+ *
+ * \axioma{llegarAMinimo}: puntero(node) n \TO puntero(node) {n \NEQ \BOTTOM}\n
  * llegarAMinimo(n) \EQUIV \IF n.child[0] == NULL \THEN n \ELSE llegarAMinimo(n.child[0]) \FI
  * \endparblock
  *
  * \par llegarAMaximo
  * \parblock
  * Devuelve un puntero al minimo nodo del subarbol cuya raiz es el nodo parametro.
+ *
  * \axioma{llegarAMaximo}: puntero(node) n \TO puntero(node)\n
  * llegarAMinimo(n) \EQUIV \IF n.child[1] == NULL \THEN n \ELSE llegarAMinimo(n.child[1]) \FI
  * \endparblock
- *
- * \par tieneHeader
- * \parblock
- * \axioma{tieneHeader}: puntero(node) n \TO bool\n
- * tieneHeader(n) \EQUIV nothing?(n) \LOR (\LNOT get(n.parent) = 0 \LAND tieneHeader(n.parent))
- * \endparblock
- *
  *
  * \par nodosInternosValidos
  * \parblock
@@ -645,37 +658,47 @@
  * y el subarbol que tiene como raiz ese nodo cumple el invariante de Arbol binario de busqueda.
  * Si es rojo, su o sus hijos son negros.
  *
- * (\FORALL n: Node) nodoHijo(n, e.header) \IMPLIES ((get(n.child[0]) = 0 \LOR_L n.chiild[0].color = Black)
- * \LAND (get(n.child[1]) = 0 \LOR_L n.chiild[1].color = Black)
+ * (\FORALL n: Node) nodoHijo(n, e.header) \IMPLIES (n.child[0] = \BOTTOM \LOR_L n.child[0]->color = Black)
+ * \LAND (n.child[1] = \BOTTOM \LOR_L n.child[1]->color = Black)
  * \LAND nodosNegros(n.child[0]) = nodosNegros(n.child[1]) \LAND arbolBinarioDeBusqueda(n))
  * \endparblock
+ *
+ *
+ * \par Termina
+ * \parblock
+ *
+ * \axioma{Termina}: puntero(node) n x Nat k \TO bool\n
+ * Termina(n) \EQUIV long(inorder(n)) < k
+ * \endparblock
+ *
+ *
  *
  * \par arbolBinarioDeBusqueda
  * \parblock
  * Todos los nodos de la rama izquierda de n tienen valor menor al de n y todos los de la derecha, mayor.
- * \axioma{arbolBinarioDeBusqueda}: puntero(node) n \TO bool \n
- * arbolBinarioDeBusqueda(n) \EQUIV (n->child[0]) == NULL \LOR_L (n->child[0]->value < n->value \LAND
- * arbolBinarioDeBusqueda(n->child[0]))) \LAND (n->child[0]) == NULL \LOR_L (n->child[0]->value > n->value \LAND
+ *
+ * \axioma{arbolBinarioDeBusqueda}: puntero(Node) n \TO bool\n
+ * arbolBinarioDeBusqueda(n) \EQUIV n->child[0] \IGOBS BOTTOM \LOR_L (n->child[0]->value < n->value \LAND
+ * arbolBinarioDeBusqueda(n->child[0]))) \LAND n->child[0] \IGOBS \BOTTOM \LOR_L (n->child[0]->value > n->value \LAND
  * arbolBinarioDeBusqueda(n->child[0])))
  * \endparblock
  *
  * \par nodosNegros
  * \parblock
+ * Devuelve la cantidad de nodos negros en un subarbol.
  *
  * \axioma{nodosNegros} : puntero(Node) \TO int\n
- * Devuelve la cantidad de nodos negros en un subarbol.
- * nodosNegros(n) \EQUIV \IF n == NULL \LOR_L n.color = Red \THEN 0 \ELSE 1 \FI + nodosNegros(n.child[0])
- * + nodosNegros(n.child[1])
+ * nodosNegros(n) \EQUIV \IF n \IGOBS \BOTTOM \LOR_L n->color = Red \THEN 0 \ELSE 1 \FI + nodosNegros(n->child[0])
+ * + nodosNegros(n->child[1])
  * \endparblock
  *
- *     Auxiliares para Rep y Abs
  *
  * \par nodoHijo
  * \parblock
  * Devuelve true si el n1 es hijo de n2 en la estructura.
  *
  * \axioma{nodoHijo} : Node n1 x Node n2 \TO bool\n
- * nodoHijo(n, h) \EQUIV \LNOT get(n.parent) = 0 \LAND (*n.parent = n2 \LOR nodoHijo(*n.parent, n2))
+ * nodoHijo(n, h) \EQUIV \LNOT n.parent \IGOBS BOTTOM \LAND (*n.parent = n2 \LOR nodoHijo(*n.parent, n2))
  * \endparblock
  *
  *
@@ -683,27 +706,26 @@
  * \parblock
  * Dado un puntero a nodo (de un arbol), devuelve un puntero al header.
  *
- * \tadAxioma{llegarAlHeader}: puntero(Node) \TO puntero(Node){n \NEQ NULL}\n
- * \llegarAlHeader(n) \EQUIV \IF \PI3(*n) = Header \THEN n \ELSE llegarAlHeader(\PI2(*n)) \FI
- *
- *
- * 
- * \par MapAConjunto
- * \parblock Crea un conjunto con los elementos de map.\n
- *
- * \axioma{MapAConjunto}: Node n \TO Conj(\ALPHA)\n
- * MapAConjunto(n) \EQUIV \IF n.color = Header \THEN MapAConjunto(* \PI2(n)) \ELSE {*n} \CUP \IF
- * get(n.child[0]) \NEQ 0 \THEN MapAConjunto(*n.child[0]) \FI \CUP \IF
- * get(n.child[1]) \NEQ 0 \THEN MapAConjunto(*n.child[1]) \FI \FI
+ * \tadAxioma{llegarAlHeader}: puntero(Node) \TO puntero(Node){n \NEQ \BOTTOM}\n
+ * \llegarAlHeader(n) \EQUIV \IF n->color = Header \THEN n \ELSE llegarAlHeader(n->parent) \FI
  * \endparblock
  *
+ * \par inorder
+ * \parblock
+ * Dado un puntero a un nodo, devuelve una secuencia con los elementos del arbol inorder.
  *
- * \par EncontrarValor
- * \parblock 
+ * \axioma{inorder}: puntero(Node) \TO secu(\ALPHA, \BETA)\n
+ * inorder(n) \EQUIV \IF n \IGOBS \BOTTOM \THEN < > \ELSE inorder(n->child[0]) & (n->value \BULLET
+ * inorder(n->child[1])) \FI
+ * \endparblock 
  * 
- * \axioma{EncontrarValor} : Puntero(Node) n x \ALPHA key \TO \BETA {get(n) \NEQ 0}\n
- * EncontrarValor(n, key) \EQUIV \IF \PI1(*n) = key \THEN \PI2(*n) \ELSE \IF \PI1(*n) < key \THEN
- * EncontrarValor(n.child[1], key) \ELSE EncontrarValor(n.child[0]) \FI \FI
+ * \par MapAConjunto
+ * \parblock Crea un conjunto con los elementos de map.
+ *
+ * \axioma{MapAConjunto}: Node n \TO Conj(\ALPHA, \BETA)\n
+ * MapAConjunto(n) \EQUIV \IF n.color = Header \THEN MapAConjunto(n.parent) \ELSE {n.value} \CUP \IF
+ * n.child[0] \NEQ \BOTTOM \THEN MapAConjunto(*n.child[0]) \FI \CUP \IF
+ * n.child[1] \NEQ \BOTTOM \THEN MapAConjunto(*n.child[1]) \FI \FI
  * \endparblock
  *
  *
@@ -1494,7 +1516,7 @@ public:
      * @retval res iterador al primer valor
      *
      * \pre \aedpre{\# Claves(\P{*this}) > 0}
-     * \post \aedpost{ res \IGOBS CrearItBi(< > , DiccASecu(\P{*this})) }
+     * \post \aedpost{ res \IGOBS CrearItBi(& d, < >, DiccASecu(\P{*this})) }
      *
      * \complexity{\O(1)}
      */
@@ -1523,7 +1545,7 @@ public:
      * @retval res iterador a la posicion pasando-al-ultimo
      *
      * \pre \aedpre{true}
-     * \post \aedpost{res \IGOBS CrearItBi(DiccASecu(\P{*this}), < > ) }
+     * \post \aedpost{res \IGOBS CrearItBi(&d, DiccASecu(\P{*this}), < > ) }
      *
      * \complexity{\O(1)}
      */
@@ -1552,7 +1574,7 @@ public:
      * @retval res iterador a la primer posicion en un recorrido al revés
      *
      * \pre \aedpre{true}
-     * \post \aedpost{\res \IGOBS CrearItBi(< > , DiccASecu(\P{*this})) }
+     * \post \aedpost{\res \IGOBS CrearItBi(&d, < > , DiccASecu(\P{*this})) }
      *
      * \complexity{\O(1)}
      */
@@ -1579,7 +1601,7 @@ public:
      * @retval res iterador a la posicion pasando-al-ultimo, en un recorrido al revés
      *
      * \pre \aedpre{\# Claves(\P{*this}) > 0}
-     * \post \aedpost{res \IGOBS CrearItBi(fin(DiccASecu(\P{*this})), prim(DiccASecu(\P{*this})) }
+     * \post \aedpost{res \IGOBS CrearItBi(&d, fin(DiccASecu(\P{*this})), prim(DiccASecu(\P{*this})) }
      *
      * \complexity{\O(1)}
      */
@@ -1844,15 +1866,15 @@ public:
         operator Node*() const {return n;}
         /////////////////////////////////////////////////////////////////////////////////////////////////
         /** \name Estructura de representación
-         *
+         * 
          * \T{iterator} se representa con \P{n}: puntero(Node)
          *
          * \par Invariante de representación
-         *
+         * 
          * rep_iter: puntero(Node) \TO bool\n
-         * rep_iter(n) \EQUIV n \IGOBS \BOTTOM \LOR_L [(n) \LAND_L headerValido(llegarAlHeader(n)) \LAND
-         * get(n.parent) = 0 \LOR arbolBinarioDeBusqueda(llegarALHeader(n).parent) \LAND (\FORALL n': Node) nodoHijo(n', *llegarALHeader(n)) \IMPLIES
-         * ((get(n'.child[0]) = 0 \LOR_L n'.chiild[0].color = Black) \LAND (get(n'.child[1]) = 0 \LOR_L n'.chiild[1].color = Black)
+         * rep_iter(n) \EQUIV n \IGOBS \BOTTOM \LOR_L [(\EXISTS k: Nat) Termina(n, k) \LAND_L headerValido(llegarAlHeader(n)) \LAND
+         * n->parent \IGOBS \BOTTOM \LOR arbolBinarioDeBusqueda(llegarALHeader(n)->parent) \LAND (\FORALL n': Node) nodoHijo(n', *llegarALHeader(n)) \IMPLIES
+         * (n'.child[0] \IGOBS \BOTTOM \LOR_L n'.chiild[0]->color = Black) \LAND (n'.child[1] \IGOBS \BOTTOM \LOR_L n'.chiild[1]->color = Black)
          * \LAND nodosNegros(n'.child[0]) = nodosNegros(n'.child[1])]
          * rep_iter(n) \EQUIV 1 \LAND 2 \LAND 3 \LAND 4
          *
@@ -1863,14 +1885,18 @@ public:
          * \par Función de abstracción
          *
          * abs_iter: puntero(Node) n \TO IteradorBidireccional(Diccionario(\T{Key}, \T{Meaning}), tupla(\T{Key}, \T{Meaning}))  {rep_iter(n)}\n
-         * abs_iter(n) \EQUIV it: IteradorBidireccional(Diccionario(\T{Key}, \T{Meaning}), tupla(\T{Key}, \T{Meaning})) ¿\LAND?
-         * Siguientes(it) \IGOBS DiccSecu(MapAConjunto(d)) \LAND Anteriores(it) \IGOBS 
+         * (\FORALL n: puntero(Node)) abs_iter(n) \EQUIV it: IteradorBidireccional(Diccionario(\T{Key}, \T{Meaning}), tupla(\T{Key}, \T{Meaning})) \SHORTMID
+         * n \IGOBS \BOTTOM \LAND coleccion(it) \IGOBS \BOTTOM \LAND vacia?(SecuSuby(it)) \LOR (
+         * \LNOT n \IGOBS \BOTTOM \LAND coleccion(it) \IGOBS &d \LAND Anteriores (it) & Siguientes(it))
+         * \IGOBS inorder(llegarAlHeader(n)->parent)
+         *
+         *
          *
          * Nota: se puede usar `d` para referirse al valor computacional del diccionario definido desde la cabecera (como en el constructor).
          *
          * \attention  No hay forma de expresar el diccionario `d` porque depende de un aspecto de aliasing.  Es por esto que permitimos usar
          * castellano.
-         * \endparblock
+         * 
          *
          */
         ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2389,8 +2415,18 @@ private:
     }
 
     /**
-     * @brief 
+     * @brief Esta función es llamada en erase cuando el nodo borrado es negro, lo que implica que
+     * la raiz pueda dejar de ser negra, que la cantidad de nodos negros en cada rama cambie y que pueda
+     * quedar un nodo rojo con hijo rojo(cuando se llama a transplant). Erase_fixup tiene en cuenta estas situaciones
+     * para restaurar las propiedades del red-black tree.
      *
+     *  El prerrequisito es que el iterador apunte a un nodo del árbol. 
+     *	@param it apuntando al hijo del nodo borrado(es a lo sumo uno y si no existe, erase_fixup no es llamada)
+     *
+     * \P{*this} queda con las propiedades de red-black tree vigentes.
+     *
+     * \complexity { \O(\LOG(\SIZE(\P{*this}))) en peor caso (la función itera desde el hijo del nodo borrado hasta la raiz (en el peor caso)
+     * haciendo pocas comparaciones en cada iteracion)}
      */
     void erase_fixup(iterator it){
         Node* x = it.n;
