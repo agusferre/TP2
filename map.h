@@ -575,9 +575,16 @@
  * \parblock
  * Devuelve una secuencia ordenada con elementos del diccionario.
  *
- * \axioma{DiccSecu}: Conj(\ALPHA, \BETA) \TO secu(\ALPHA, \BETA)\n
- * DiccSecu(elems) \EQUIV \IF \EMPTYSET ?(elems) \THEN < > \ELSE DiccSecu(elems - minimo(elems)) \BOTTOM
- * dameUno(elems) \FI
+ * \axioma{DiccASecu}: Dicc(\ALPHA, \BETA) \TO secu(\ALPHA, \BETA)\n
+ * DiccASecu(d) \EQUIV PorClave(claves(d), d)
+ * \endparblock
+ *
+ * \par PorClave
+ * \parblock
+ * Recorre las claves del diccionario para devolver la secuencia ordenada con sus valores.
+ * \axioma{PorClave}: Conj(\ALPHA) x Dicc(\ALPHA, \BETA) \TO secu(\ALPHA, \BETA)\n
+ * PorClave(cs, d) \EQUIV \IF \EMPTYSET ?(cs) \THEN < > \ELSE \LANGLE minimo(cs) , obtener(minimo(cs), d) \RANGLE
+ * \BOTTOM PorClave(cs - {minimo(cs)}, d) \FI
  * \endparblock
  *
  * \par itADiccionario
@@ -994,7 +1001,7 @@ public:
      * \aliasing{ No hay. }
      *
      * \pre \aedpre{true}
-     * \post \aedpost{\P{*res} \IGOBS other}
+     * \post \aedpost{\P{res} \IGOBS other}
      *
      * \complexity{\O(\DEL(\P{*this}) \PLUS \COPY(\P{other}))}
      *
@@ -1126,9 +1133,9 @@ public:
      *
      * \pre \aedpre{true}
 
-     * \post \aedpost{ \LAND_L
-     * def?(key, \P{*this}) \IMPLIES (Siguiente(res) \IGOBS \LANGLEkey, obtener(key, \P{*this})\RANGLE)
-     *					\LAND (\LNOT def?(key,\P{*this}) \IMPLIES \LNOT HaySiguiente?(res)) }
+     * \post \aedpost{ SecuSuby(\P{res}) \IGOBS DiccASecu(\P{*this}))
+     *   \LAND_L def?(key, \P{*this}) \IMPLIES (Siguiente(\P{res}) \IGOBS \LANGLEkey, obtener(key, \P{*this})\RANGLE)
+     *					\LAND (\LNOT def?(key,\P{*this}) \IMPLIES \LNOT HaySiguiente?(\P{res})) }
      *
      *
      * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
@@ -1168,9 +1175,8 @@ public:
      * \aliasing{res apunta al nodo cuyo key() es key. Se invalida si se elimina el nodo sin usar res como pos}
      *
      * \pre \aedpre{true}
-     * \post \aedpost{(def?(key, \P{*this}) \LAND Siguiente(res) \IGOBS \RANGLE key, obtener(key, \P{*this}) \LANGLE ) \LOR
-     				  (\LNOT def?(key, \P{*this}) \LAND 
-     				  (\LNOT HaySiguiente(res) \LOR Siguiente(res) \IGOBS PrimerMayorOigual(key, \P{*this})))}
+     * \post \aedpost{ SecuSuby(\P{res}) \IGOBS DiccASecu(\P{*this})
+     *   \LAND_L (\LNOT HaySiguiente?(\P{res}) \LOR_L Siguiente(\P{res}) \IGOBS primerMayorOIgual(SecuSuby(\P{res}), \P{key}))}
      *
      * \complexity{\O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}))}
      *
@@ -1240,10 +1246,9 @@ public:
      			 sin usar res como pos}
      *
      *
-     * \pre \aedpre{\P{*this} \IGOBS d_{\rm 0} \LAND EsDiccionario? (Anteriores(hint) & Siguientes(hint)) \LAND
-     * esPermutacion(DiccASecu(\P{*this}, coleccion(hint))}
-     * \post  \aedpost{ coleccion(res) \IGOBS coleccion(hint) \LAND_L  (def?(key, d_{\rm 0}) \IMPLIES \P{*this} \igobs d_{\rm 0}) \LAND (\LNOT def?(key, d_{\rm 0}) \IMPLIES
-     					(\P{*this} \IGOBS definir(key, d_ { \rm 0}) \LAND Siguiente(res) \IGOBS \LANGLE key, obtener(key, \P{*this}) \RANGLE ))}
+     * \pre \aedpre{\P{*this} \IGOBS d_{\rm 0} \LAND DiccASecu(\P{*this} \IGOBS SecuSuby(hint)}
+     * \post  \aedpost{ coleccion(\P{res}) \IGOBS coleccion(\P{hint}) \LAND_L  (def?(key, d_{\rm 0}) \IMPLIES \P{*this} \igobs d_{\rm 0}) \LAND
+     * (\LNOT def?(key, d_{\rm 0}) \IMPLIES (\P{*this} \IGOBS definir(key, d_ { \rm 0}) \LAND Siguiente(res) \IGOBS \LANGLE key, obtener(key, \P{*this}) \RANGLE ))}
      *
      * \complexity{
      *  - Peor caso: \O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}) \PLUS \COPY(\P{value}))
@@ -1288,7 +1293,7 @@ public:
      * \aliasing{res apunta al elemento insertado. Se invalida sólo si se elimina dicho elemento 
      *			 sin usar res como pos}
      *
-     * \pre \aedpre{ \P{*this} \IGOBS d_{\rm 0}\LAND coleccion(hint) \IGOBS DiccASecu(d_{rm 0}) }
+     * \pre \aedpre{ \P{*this} \IGOBS d_{\rm 0}\LAND SecuSuby(hint) \IGOBS DiccASecu(d_{\rm 0})}
      * \post  \aedpost{\P{*this} \IGOBS definir(key, \P{*this}) \LAND coleccion(res) \IGOBS coleccion(hint) \LAND
      * HaySiguiente(res) \LAND_L Siguiente(res) \IGOBS value}
      *
@@ -1336,26 +1341,14 @@ public:
      * \aliasing{res queda apuntando al siguiente elemento al borrado. Se invalida si se borra ese elemento
      			 sin usar res como pos}.
      *
-     * \pre \aedpre{\P{*this} \IGOBS d_0 \LAND \LNOT (get(pos) \IGOBS 0) \LAND HaySiguiente?(pos)}
-     * \post \aedpost{res \IGOBS Avanzar(pos) \LAND \P{*this} \IGOBS borrar(pos.key (chequear), \P{*this})}
+     * \pre \aedpre{\P{*this} \IGOBS d_0 \LAND SecuSuby(pos) \IGOBS DiccASecu(\P{*this})}
+     * \post \aedpost{res \IGOBS EliminarSiguiente(\P{pos}) \LAND \P{*this} \IGOBS borrar(\PI1(Siguiente(\P{pos})),\P{*this})}
      *
      * \complexity{
      * - Peor caso: \O(\DEL(\P{*pos}) + \LOG(\SIZE(\P{*this})))
      * - Peor caso amortizado: \O(\DEL(\P{*pos})
      *
-     * Primero se fija si pos apunta al primero o al ultimo y modifica el hijo correspondiente del
-     * header para que no quede apuntando a un nodo inválido.
-     * Luego, se divide en tres casos.
-     * Cuando el hijo derecho del nodo a eliminar es null,transplanta a pos con su hijo izquierdo.
-     * Lo análogo con el hijo izquierdo, esta vez con la certeza de que el hijo derecho no es null.
-     * Y el caso donde ninguno de los dos es null, se encuentra el sucesor del nodo a borrar, se transplantan los valores
-     * y se elimina el sucesor.
-     * Se decrementa la variable count del arbol.
-     * Por ultimo, en el caso en que el color original del nodo a borrar fuese negro y el nodo x (nodo transplantado con z,
-     * nodo a borrar) distinto de null se llama a erase_fixup, para reorganizar el arbol, ya que en el caso en que el nodo
-     * fuese rojo no lo desordenaria.
-     * Borramos la memoria reservada para el nodo a eliminar.
-     */
+     **/
     iterator erase(const_iterator pos) {
         Node* z = const_cast<Node*>(pos.n);
     	Node* y = z;
@@ -1485,7 +1478,7 @@ public:
      * @retval res iterador al primer valor
      *
      * \pre \aedpre{\# Claves(\P{*this}) > 0}
-     * \post \aedpost{\LNOT hayAnterior(res)}
+     * \post \aedpost{ res \IGOBS CrearItBi(< > , DiccASecu(\P{*this})) }
      *
      * \complexity{\O(1)}
      */
@@ -1514,7 +1507,7 @@ public:
      * @retval res iterador a la posicion pasando-al-ultimo
      *
      * \pre \aedpre{true}
-     * \post \aedpost{\LNOT HaySiguiente(res)}
+     * \post \aedpost{res \IGOBS CrearItBi(DiccASecu(\P{*this}), < > ) }
      *
      * \complexity{\O(1)}
      */
@@ -1538,12 +1531,12 @@ public:
     /**
      * @brief Devuelve un iterador al primer valor del diccionario, en un recorrido al revés
      *
-     * \aliasing{no hay chequear}
+     * \aliasing{el iterador apunta a header}
      *
      * @retval res iterador a la primer posicion en un recorrido al revés
      *
      * \pre \aedpre{true}
-     * \post \aedpost{\LNOT HayAnterior(res)}
+     * \post \aedpost{\res \IGOBS CrearItBi(< > , DiccASecu(\P{*this})) }
      *
      * \complexity{\O(1)}
      */
@@ -1570,7 +1563,7 @@ public:
      * @retval res iterador a la posicion pasando-al-ultimo, en un recorrido al revés
      *
      * \pre \aedpre{\# Claves(\P{*this}) > 0}
-     * \post \aedpost{\LNOT HaySiguiente?(res)}
+     * \post \aedpost{res \IGOBS CrearItBi(fin(DiccASecu(\P{*this})), prim(DiccASecu(\P{*this})) }
      *
      * \complexity{\O(1)}
      */
@@ -1671,7 +1664,7 @@ public:
          * \aliasing{Se invalida si el elemento apuntado es eliminado  //  res es una referencia al valor que apunta \P{*this}}
          *
          * \pre \aedpre{HaySiguiente(this)}
-         * \post \aedpost{res \IGOBS \P{*this}}
+         * \post \aedpost{res \IGOBS \P{Siguiente(\P{res})}
          *
          * \complexity{\O(1)}
          */
@@ -2284,7 +2277,14 @@ private:
     }
 
     /**
-    * Lo que hace esta función es re-organizar el arbol de modo tal que se cumplan las propiedades de un red-black tree.
+     * Lo que hace esta función es re-organizar el arbol de modo tal que se conserven las propiedades de un red-black tree
+     * tras insertar un nuevo nodo (cambia los colores de los nodos y lo re-balancea).
+     * No tiene prerrequisitos y deja a \P{*this} cumpliendo con el invariante de representacion de un red-black tree.
+     *
+     * @param it iterador apuntando al nodo recien insertado.
+     * \complexity {La función tiene un solo ciclo en el que realiza una cantidad constante de operaciones elementales
+     * (observar que dir_rotate toma \O(1)). En el ciclo se recorre una rama del arbol llegando, como maximo, al header,
+     * por lo que toma \O(\LOG(\SIZE(\P{*this}))) en peor caso.}
     */
     void insert_fixup(iterator it){
         Node* n = it.n;
@@ -2300,7 +2300,7 @@ private:
                 n->parent->parent->color = Color::Red;
                 n = n->parent->parent;
             } else {
-                if (n == n->parent->child[dir]) {
+                if (n == n->parent->child[dir])  b{
                     n = n->parent;
                     iterator it2 = iterator(n);
                     dir_rotate(it2, 1 - dir);
