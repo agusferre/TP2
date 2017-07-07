@@ -251,26 +251,26 @@
  * \section Cabecera Nodo cabecera
  *
  * En \cite CormenLeisersonRivestStein2009 se sugiere mantener un nodo especial, llamado
- * centinela, que sirva para representar hojas <em>externas</em> al árbol.  Es decir,
+ * centinela, que sirva para representar hojas <em>externas</em> al árbol. Es decir,
  * suponer que el árbol consiste de nodos internos y que sus hojas son <em>centinelas</em>
- * (i.e., nodos sin valor) que se usan por comodidad.  En esta implementación, en lugar
+ * (i.e., nodos sin valor) que se usan por comodidad. En esta implementación, en lugar
  * de nodos centinela para la hojas, vamos a usar un nodo centinela para la
- * <em>cabecera</em>.  Las razones de esta elección, y las implicancias se discuten en
+ * <em>cabecera</em>. Las razones de esta elección, y las implicancias se discuten en
  * esta sección.
  *
  * Un primer problema a resolver es cómo ubicar el primer nodo del recorrido inorder.
  * Obviamente, alcanza con descender hacia la izquierda hasta encontrar un nodo sin
- * hijo izquierdo.  El problema de esta implementación es que toma tiempo \O(\a h).
- * La solución obvia es mantener un puntero que apunte al primer nodo.  Análogamente,
- * podemos mantener un puntero al último nodo.  Sin embargo, esta solución no es del todo
+ * hijo izquierdo. El problema de esta implementación es que toma tiempo \O(\a h).
+ * La solución obvia es mantener un puntero que apunte al primer nodo. Análogamente,
+ * podemos mantener un puntero al último nodo. Sin embargo, esta solución no es del todo
  * satisfactoria, porque complica la implementación de los iteradores.  Si un iterador `it`
  * es únicamente un puntero a nodo, entonces no hay forma de que `it` sepa si está o no
  * apuntando al último nodo.  Esto se puede determinar una vez que se avanza `it`, en cuyo
- * caso `it` debe apuntar a una dirección inválida, digamos `nullptr`.  El problema de este
- * enfoque es que no hay forma de saber, una vez parado en `nullptr`, a qué dirección retroceder.  Hay dos soluciones
- * posibles.  La primera es almacenar, además del puntero al nodo, un puntero al diccionario
- * para tener acceso al puntero al último.  La segunda es apuntar a un nodo especial que
- * sirva para retroceder.  La ventaja de esta última solución es que los iteradores son
+ * caso `it` debe apuntar a una dirección inválida, digamos `nullptr`. El problema de este
+ * enfoque es que no hay forma de saber, una vez parado en `nullptr`, a qué dirección retroceder. Hay dos soluciones
+ * posibles. La primera es almacenar, además del puntero al nodo, un puntero al diccionario
+ * para tener acceso al puntero al último. La segunda es apuntar a un nodo especial que
+ * sirva para retroceder. La ventaja de esta última solución es que los iteradores son
  * más livianos.
  *
  * En esta implementación optamos por la segunda versión, aprovechando el nodo especial
@@ -582,8 +582,9 @@
  *
  * \par itADiccionario
  * \parblock
- * Devuelve true si el iterador apunta a this 
+ * Devuelve true si el iterador apunta a this
  *
+ * \endparblock
  *
  * \par MenorQue
  * \parblock
@@ -1125,7 +1126,8 @@ public:
      *
      * \pre \aedpre{true}
 
-     * \post \aedpost{def?(key, \P{*this}) \IMPLIES (Siguiente(res) \IGOBS \LANGLEkey, obtener(key, \P{*this})\RANGLE)
+     * \post \aedpost{ \LAND_L
+     * def?(key, \P{*this}) \IMPLIES (Siguiente(res) \IGOBS \LANGLEkey, obtener(key, \P{*this})\RANGLE)
      *					\LAND (\LNOT def?(key,\P{*this}) \IMPLIES \LNOT HaySiguiente?(res)) }
      *
      *
@@ -1238,8 +1240,9 @@ public:
      			 sin usar res como pos}
      *
      *
-     * \pre \aedpre{\P{*this} \IGOBS d_{\rm 0} \LAND \LNOT (get(hint) \IGOBS 0)}
-     * \post  \aedpost{(def?(key, d_{\rm 0}) \IMPLIES \P{*this} \igobs d_{\rm 0}) \LAND (\LNOT def?(key, d_{\rm 0}) \IMPLIES
+     * \pre \aedpre{\P{*this} \IGOBS d_{\rm 0} \LAND EsDiccionario? (Anteriores(hint) & Siguientes(hint)) \LAND
+     * esPermutacion(DiccASecu(\P{*this}, coleccion(hint))}
+     * \post  \aedpost{ coleccion(res) \IGOBS coleccion(hint) \LAND_L  (def?(key, d_{\rm 0}) \IMPLIES \P{*this} \igobs d_{\rm 0}) \LAND (\LNOT def?(key, d_{\rm 0}) \IMPLIES
      					(\P{*this} \IGOBS definir(key, d_ { \rm 0}) \LAND Siguiente(res) \IGOBS \LANGLE key, obtener(key, \P{*this}) \RANGLE ))}
      *
      * \complexity{
@@ -1283,10 +1286,11 @@ public:
      * @retval res iterador apuntando al elemento insertado o redefinido
      *
      * \aliasing{res apunta al elemento insertado. Se invalida sólo si se elimina dicho elemento 
-     			 sin usar res como pos}
+     *			 sin usar res como pos}
      *
-     * \pre \aedpre{\P{*this} \IGOBS d_0 \LAND \LNOT (get(hint) \IGOBS 0)}
-     * \post  \aedpost{\P{*this} \IGOBS definir(key, \P{*this}) \LAND Siguiente(res) \IGOBS value}
+     * \pre \aedpre{ \P{*this} \IGOBS d_{\rm 0}\LAND coleccion(hint) \IGOBS DiccASecu(d_{rm 0}) }
+     * \post  \aedpost{\P{*this} \IGOBS definir(key, \P{*this}) \LAND coleccion(res) \IGOBS coleccion(hint) \LAND
+     * HaySiguiente(res) \LAND_L Siguiente(res) \IGOBS value}
      *
      * \complexity{
      *  - Peor caso: \O(\LOG(\SIZE(\P{*this})) \CDOT \CMP(\P{*this}) \PLUS \COPY(\P{value}))
