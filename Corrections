@@ -1,0 +1,88 @@
+-# Invariante de representacion (*)
+  -# faltan parametros
+  -# header valido -> falta tipo
+  -# hay errores de tipo en header valido.
+  -# Resumen: en general estan las ideas, pero estan muy mal
+expresadas.  No hacen buen uso de la recursion; no esta claro qué es
+proposicion y qué función; etc.
+
+-# Funcion de abstraccion
+  -# Era mas facil transformar el map directamente a un diccionario,
+que hacer dos pasos
+
+-# Funcion de abstraccion de iter
+  -# esta mal especificada
+
+-# operator* de iterador
+  -# mal especificada (*)
+  -# Esta mal Q del operator=. Listo?
+
+-# Constructor por copia
+  -# codigo ofuscado; simplificar.
+
+
+-# Operator[] - Chequear
+  -# no entiendo el aspecto de aliasing
+  -# res deberia versar sobre *this, no sobre d_0 . Listo?
+  -# estan recorriendo tres veces el diccionario alcanza con recorrer
+una unica vez (alcanza con `return insert(lower_bound, Meaning())`
+cuando no existe la clave
+
+-# Find
+  -# La postcondicion es incorrecta (*)
+
+-# Lower_bound
+  -# La postcondicion es incorrecta (*)
+
+-# Insert
+  -# La postcondicion es incorrecta (*) return it cambiado.
+  -# La version con hint tiene una documentacion rota (que expone las
+funciones privadas) (*)
+  -# La precondicion con hint es incorrecta
+
+-# InsertOrAssign (*) Listo?
+  -# El codigo no cumple la complejidad pedida. Erase rompia complejidad?
+  -# La precondicion es incorrecta
+
+-# Erase
+  -# La precondicion es incorrecta (*) Listo?
+
+-# EraseFixUp (*)
+  -# Esta mal documentada
+
+-# begin, end, rbegin, rend, etc (*)
+  -# Esta mal la documentacion (¿¿??)
+
+CONSULTAR
+-# Insertar rapido (*)
+  -# La descripcion no dice cuál es su proposito, sino que es un
+recitado del código: imposible de entender
+  -# No tiene complejidad
+  -# No tiene descripcion de parametros
+  -# No dice qué retorna
+  -# Era mejor que tomara ambos bounds, que solo el lower_bound.  De
+esta manera, no tienen que recorrer en el medio.  Ademas, se evitan el
+doble recorrido en insert, al verificar que --hint sea valido y luego
+recorrer.  Por ultimo, no reutilizan --it, sino que reimplementan.
+
+-# Bounds (*)
+  -# La descripcion no dice cuál es su proposito, sino que es un
+recitado del código: imposible de entender
+  -# No tiene complejidad
+  -# No tiene descripcion de parametros
+  -# No dice qué retorna
+
+-# HintValido (*)
+  -# La descripcion dice apenas cuál es su proposito y luego recita el
+código: imposible de entender
+  -# No tiene complejidad
+  -# No tiene descripcion de parametros
+  -# No dice qué retorna
+
+-# InsertFixUp (*)
+  -# La descripcion dice apenas cuál es su proposito; ¿sacaron el
+codigo de algun lado? ¿de dónde?
+  -# No tiene complejidad
+  -# No tiene descripcion de parametros
+
+-# dir_rotate
