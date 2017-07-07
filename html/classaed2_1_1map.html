@@ -194,7 +194,7 @@ Métodos privados</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_a98b9f200c64ce02dfb67902ee00e375a.html#a98b9f200c64ce02dfb67902ee00e375a">transplant</a> (<a class="el" href="structaed2_1_1map_1_1Node.html">Node</a> *u, <a class="el" href="structaed2_1_1map_1_1Node.html">Node</a> *v)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Esta función es llamada en el delete para unir el padre del nodo a borrar con el hijo correspondiente. Para eso, se cambian los punteros de forma que v pase a ocupar el lugar de u (padre e hijos de u pasan a ser los de v).  <a href="#a98b9f200c64ce02dfb67902ee00e375a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_a7870c8f26e82b00d0aeb2e9f331dfec6.html#a7870c8f26e82b00d0aeb2e9f331dfec6">erase_fixup</a> (<a class="el" href="classaed2_1_1map_1_1iterator.html">iterator</a> it)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna true si las claves son iguales con respecto a <b class="paramname">this</b>-&gt;lt.  <a href="#a7870c8f26e82b00d0aeb2e9f331dfec6"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Esta función es llamada en erase cuando el nodo borrado es negro, lo que implica que la raiz pueda dejar de ser negra, que la cantidad de nodos negros en cada rama cambie y que pueda quedar un nodo rojo con hijo rojo(cuando se llama a transplant). Erase_fixup tiene en cuenta estas situaciones para restaurar las propiedades del red-black tree.  <a href="#a7870c8f26e82b00d0aeb2e9f331dfec6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_a45b04533e9acf27438813ab4a2604443.html#a45b04533e9acf27438813ab4a2604443">hintValido</a> (<a class="el" href="classaed2_1_1map_1_1const__iterator.html">const_iterator</a> hint, const value_type &amp;value) const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">función que verifica si el iterador está parado en el lower_bound de value.first. Sirve para chequear de forma prolija la utilidad de los iteradores parámetro en insert, insert_rapido e insert_or_assign)  <a href="#a45b04533e9acf27438813ab4a2604443"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classaed2_1_1map_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_a4b4f1e65ee9aeccee4046d53fd5fd8a4.html#a4b4f1e65ee9aeccee4046d53fd5fd8a4">insert_rapido</a> (<a class="el" href="classaed2_1_1map_1_1const__iterator.html">const_iterator</a> hint, const value_type &amp;value)</td></tr>
@@ -207,9 +207,9 @@ Atributos privados</h2></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>Nota: vamos a omitir la discusión del functor de comparación, ya que no entra dentro del contexto de los TADs de la materia. Para poder definirlos, habría que 1. especificar el tipo functor y 2. extender el TAD Diccionario para que pueda crearse con una instancia del TAD functor.</p>
 <dl class="user"><dt><b>Representación</b></dt><dd>Diccionario se representa con map: tupla(header: Node, count: Nat). Ver <a class="el" href="axiomas.html">Axiomas y proposiciones auxiliares</a></dd></dl>
 <dl class="user"><dt><b>Invariante de representacion</b></dt><dd>rep: map <img class="formulaInl" alt="$\to$" src="form_4.png"/> bool<br/>
- rep(m) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> headerValido <img class="formulaInl" alt="$\land$" src="form_16.png"/> nodosInternosValidos </dd></dl>
+ rep(m) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> headerValido(e.header) <img class="formulaInl" alt="$\land$" src="form_16.png"/> nodosInternosValidos </dd></dl>
 <dl class="user"><dt><b>Función de abstracción</b></dt><dd>abs: map m <img class="formulaInl" alt="$\to$" src="form_4.png"/> Diccionario(<span class="paramname">Key</span>, <span class="paramname">Meaning</span>) {rep(n)}<br/>
- abs(m) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> d: Diccionario(<span class="paramname">Key</span>, <span class="paramname">Meaning</span>)  ( <img class="formulaInl" alt="$\forall$" src="form_18.png"/> a: <span class="paramname">Key</span>) def?(a,m) <img class="formulaInl" alt="$\Leftrightarrow$" src="form_26.png"/> a <img class="formulaInl" alt="$\in$" src="form_31.png"/> MapAConjunto(m) <img class="formulaInl" alt="$\land_{\rm L}$" src="form_22.png"/> def?(a, m) <img class="formulaInl" alt="$\Rightarrow$" src="form_19.png"/> obtener(a, m) <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> EncontrarValor(m)  </dd></dl>
+ abs(m) <img class="formulaInl" alt="$\equiv$" src="form_11.png"/> d: Diccionario(<span class="paramname">Key</span>, <span class="paramname">Meaning</span>)  ( <img class="formulaInl" alt="$\forall$" src="form_18.png"/> a: <span class="paramname">Key</span>) def?(a,m) <img class="formulaInl" alt="$\Leftrightarrow$" src="form_26.png"/> a <img class="formulaInl" alt="$\in$" src="form_31.png"/> MapAConjunto(m) <img class="formulaInl" alt="$\land_{\rm L}$" src="form_22.png"/> def?(a, m) <img class="formulaInl" alt="$\Rightarrow$" src="form_19.png"/> obtener(a, m) <img class="formulaInl" alt="$=_{\rm obs}$" src="form_2.png"/> Encontra rValor(m)  </dd></dl>
 </div></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Compare&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaed2_1_1map_a0e5be36fae0693e4665bd2a615e7550a.html#a0e5be36fae0693e4665bd2a615e7550a">lt</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Orden total para comparar claves.  <a href="#a0e5be36fae0693e4665bd2a615e7550a"></a><br/></td></tr>
@@ -287,7 +287,7 @@ class aed2::map&lt; Key, Meaning, Compare &gt;</h3>
 <dl class="user"><dt><b>Se explica con</b></dt><dd>Diccionario(<span class="paramname">Key</span>, <span class="paramname">Meaning</span>) con parámetro formal <img class="formulaInl" alt="$<$" src="form_0.png"/> = f.operator() para algún f de tipo <span class="paramname">Compare</span>.</dd></dl>
 <dl class="attention"><dt><b>Atención:</b></dt><dd>No tenemos forma en AED2 de decir que el parámetro formal se define en tiempo de ejecución, como ocurre en este caso. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="map_8h_source.html#l00822">822</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p>Definición en la línea <a class="el" href="map_8h_source.html#l00860">860</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
 </div><hr/>La documentación para esta clase fue generada a partir del siguiente fichero:<ul>
 <li><a class="el" href="map_8h_source.html">map.h</a></li>
 </ul>
@@ -312,7 +312,7 @@ class aed2::map&lt; Key, Meaning, Compare &gt;</h3>
       <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a>      </li>
       <li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a>      </li>
 
-    <li class="footer">Generado el Viernes, 7 de Julio de 2017 02:32:41 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 7 de Julio de 2017 15:38:27 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

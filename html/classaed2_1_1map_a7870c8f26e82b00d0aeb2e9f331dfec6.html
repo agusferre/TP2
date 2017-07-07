@@ -99,17 +99,18 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
 </div>
 <div class="memdoc">
 
-<p>Retorna true si las claves son iguales con respecto a <b class="paramname">this</b>-&gt;lt. </p>
+<p>Esta función es llamada en erase cuando el nodo borrado es negro, lo que implica que la raiz pueda dejar de ser negra, que la cantidad de nodos negros en cada rama cambie y que pueda quedar un nodo rojo con hijo rojo(cuando se llama a transplant). Erase_fixup tiene en cuenta estas situaciones para restaurar las propiedades del red-black tree. </p>
+<p>El prerrequisito es que el iterador apunte a un nodo del árbol. </p>
 <dl class="params"><dt><b>Parámetros:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">k1</td><td>clave a comparar </td></tr>
-    <tr><td class="paramname">k2</td><td>clave a comparar </td></tr>
+    <tr><td class="paramname">it</td><td>apuntando al hijo del nodo borrado(es a lo sumo uno y si no existe, erase_fixup no es llamada)</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Devuelve:</b></dt><dd>true cuando <b class="paramname">k1</b> y <b class="paramname">k2</b> son iguales con respecto a <b class="paramname">this</b>-&gt;lt. </dd></dl>
+<p><b class="paramname">*this</b> queda con las propiedades de red-black tree vigentes.</p>
+<p>{ <img class="formulaInl" alt="$O$" src="form_1.png"/>( <img class="formulaInl" alt="$\log$" src="form_27.png"/>(<b>size</b>(<b class="paramname">*this</b>))) en peor caso (la función itera desde el hijo del nodo borrado hasta la raiz (en el peor caso) haciendo pocas comparaciones en cada iteracion)} </p>
 
-<p>Definición en la línea <a class="el" href="map_8h_source.html#l02371">2371</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p>Definición en la línea <a class="el" href="map_8h_source.html#l02427">2427</a> del archivo <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
 </div>
 </div>
@@ -134,7 +135,7 @@ template&lt;class Key, class Meaning, class Compare = std::less&lt;Key&gt;&gt; <
       <li class="navelem"><a class="el" href="namespaceaed2.html">aed2</a>      </li>
       <li class="navelem"><a class="el" href="classaed2_1_1map.html">map</a>      </li>
 
-    <li class="footer">Generado el Viernes, 7 de Julio de 2017 02:32:42 para Trabajo práctico 2: diccionario sobre RB-tree por
+    <li class="footer">Generado el Viernes, 7 de Julio de 2017 15:38:28 para Trabajo práctico 2: diccionario sobre RB-tree por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>
