@@ -571,7 +571,7 @@
  * \endparblock
  *
  *   \\ ** Auxiliares para pre y post ** //
- * \par DiccSecu
+ * \par DiccASecu
  * \parblock
  * Devuelve una secuencia ordenada con elementos del diccionario.
  *
@@ -585,12 +585,6 @@
  * \axioma{PorClave}: Conj(\ALPHA) x Dicc(\ALPHA, \BETA) \TO secu(\ALPHA, \BETA)\n
  * PorClave(cs, d) \EQUIV \IF \EMPTYSET ?(cs) \THEN < > \ELSE \LANGLE minimo(cs) , obtener(minimo(cs), d) \RANGLE
  * \BOTTOM PorClave(cs - {minimo(cs)}, d) \FI
- * \endparblock
- *
- * \par itADiccionario
- * \parblock
- * Devuelve true si el iterador apunta a this
- *
  * \endparblock
  *
  * \par MenorQue
@@ -619,8 +613,8 @@
  * son el mayor y el menor valor del arbol respectivamente.\n
  *
  * e.header.color == Header \LAND nothing?(e.header.value) \LAND e.header.parent.color == Black 
- * \LAND ((e.count == 0 \LAND e.header.child[0] == header) \LOR (e.count > 0 \IMPLIES_L *e.header.child[0] = minimo(MapAConjunto(e))))
- * \LAND ((e.count == 0 \LAND e.header.child[1] == header) \LOR (e.count > 0 \IMPLIES_L *e.header.child[1] = maximo(MapAConjunto(e))))
+ * \LAND ((e.count == 0 \LAND (e.header.child[0] == header) \LOR (e.count > 0 \IMPLIES_L *e.header.child[0] = llegarAMinimo(e.header.parent))
+ * \LAND ((e.count == 0 \LAND (e.header.child[1] == header) \LOR (e.count > 0 \IMPLIES_L *e.header.child[1] = llegarAMaximo(e.header.parent))
  * \endparblock
  *
  *
@@ -630,17 +624,18 @@
  * y el subarbol que tiene como raiz ese nodo cumple el invariante de Arbol binario de busqueda.
  * Si es rojo, su o sus hijos son negros.
  *
- * (\FORALL n: Node) NodoHijo(n, e.header) \IMPLIES ((get(n.child[0]) = 0 \LOR n.chiild[0].color = Black) 
- * \LAND (get(n.child[1]) = 0 \LOR n.chiild[1].color = Black) 
+ * (\FORALL n: Node) nodoHijo(n, e.header) \IMPLIES ((get(n.child[0]) = 0 \LOR_L n.chiild[0].color = Black)
+ * \LAND (get(n.child[1]) = 0 \LOR_L n.chiild[1].color = Black)
  * \LAND nodosNegros(n.child[0]) = nodosNegros(n.child[1]) \LAND arbolBinarioDeBusqueda(n))
  * \endparblock
  *
  * \par arbolBinarioDeBusqueda
  * \parblock
  * Todos los nodos de la rama izquierda de n tienen valor menor al de n y todos los de la derecha, mayor.
- * ((\FORALL n':Node) (NodoHijo(n', n) \LAND NodoHijo(n', n.child[0])) \IMPLIES 
- * n'.value.clave < n.value.clave ) \LAND ((\FORALL n':Node) (NodoHijo(n', n) \LAND NodoHijo(n', n.child[1]))
- * \IMPLIES n'.value.clave > n.value.clave )
+ * \axioma{arbolBinarioDeBusqueda}: puntero(node) n \TO bool \n
+ * arbolBinarioDeBusqueda(n) \EQUIV (n->child[0]) == NULL \LOR_L (n->child[0]->value < n->value \LAND
+ * arbolBinarioDeBusqueda(n->child[0]))) \LAND (n->child[0]) == NULL \LOR_L (n->child[0]->value > n->value \LAND
+ * arbolBinarioDeBusqueda(n->child[0])))
  * \endparblock
  *
  * \par nodosNegros
@@ -648,7 +643,7 @@
  *
  * \axioma{nodosNegros} : puntero(Node) \TO int\n
  * Devuelve la cantidad de nodos negros en un subarbol.
- * nodosNegros(n) \EQUIV \IF get(n) = 0 \LOR_L n.color = Red \THEN 0 \ELSE 1 \FI + nodosNegros(n.child[0])
+ * nodosNegros(n) \EQUIV \IF n == NULL \LOR_L n.color = Red \THEN 0 \ELSE 1 \FI + nodosNegros(n.child[0])
  * + nodosNegros(n.child[1])
  * \endparblock
  *
@@ -2202,7 +2197,7 @@ private:
 	 * \parblock
 	 * abs: map m \TO Diccionario(\T{Key}, \T{Meaning})  {rep(n)}\n
 	 * abs(m) \EQUIV d: Diccionario(\T{Key}, \T{Meaning}) \SHORTMID ( \FORALL a: \T{Key}) def?(a,m) \IFF
-	 * a \IN MapAConjunto(m) \LAND_L def?(a, m) \IMPLIES obtener(a, m) \IGOBS EncontrarValor(m)
+	 * a \IN MapAConjunto(m) \LAND_L def?(a, m) \IMPLIES obtener(a, m) \IGOBS Encontra  rValor(m)
 	 * \endparblock
      */
     //////////////////////////////////////////////////////////////////////////////////////////////////////
